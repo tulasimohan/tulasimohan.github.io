@@ -1,5 +1,32 @@
+# Ignore all hidden files by default
+.*
+
+# But keep these specific hidden files
+!.gitignore
+!.nojekyll
+!.github
+
+# System files
 .DS_Store
+Thumbs.db
 
-/.quarto/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-/.luarc.json
+# Quarto temporary files
+.quarto/
+_freeze/
+_site/
+*_files/
+*.html
+!docs/**/*.html
+
+# System files
+Thumbs.db

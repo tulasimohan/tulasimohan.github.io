@@ -8,6 +8,15 @@ project:
     - googlef48d8f5728f4a046.html
     - sitemap.xml
 
+# Configure bibliography and citation styles
+bibliography: assets/bibliography/My Library.bib
+csl: assets/citation-styles/apa.csl
+
+# Configure LaTeX macros
+include-in-header:
+  text: |
+    \input{assets/tex-macros/_macros.tex}
+
 website:
   title: "Tulasimohan Molli"
   site-url: "https://tulasimohan.github.io"
@@ -22,7 +31,7 @@ website:
       - text: Publications 
         href: publications/publications.qmd
       - text: Teaching
-        href: src/pages/teaching.qmd
+        href: teaching.qmd
       - text: Links
         href: src/pages/links.qmd
       - text: CV
