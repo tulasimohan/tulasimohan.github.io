@@ -1,0 +1,222 @@
+---
+title: "Life in Portugal"
+subtitle: Getting started as a Postdoc in Lisbon.  
+---
+
+# Tasks
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Passport
+
+To re-new or get a new Indian Passport
+
+-   Create an account on the Passport Seva webpage
+-   Schedule an appointment by paying around Rupees 1500(Non-Tatkal)/3000(Tatkal).
+-   Documents needed:
+    -   AADHAAR,
+    -   PAN card
+    -   2 Photos according to specifications.
+    -   Tatkaal/ Non Tatkaal
+    -   Tatkaal mode can get a passport wihtin a week, sometimes within 3days. Non-tatkaal takes a month.
+:::
+
+::::::::::::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Visa
+
+You can get the necessary information at this VFS page. The Visa issued will have a validity of 4 months, during this period you are expected to get a residence permit. Here is a list of items you need for your application:
+
+:::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Visa Appointment
+
+Know your Visa category before appointment. You may book the appointment the appointment from the VFS page.
+
+::: {.callout-tip appearance="simple" collapse="true"}
+# Tip
+
+If you are not able to book an appointment online. Contact the embassy for an appointment, or ask you host to contact the embassy for an appointment.
+:::
+::::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Visa category
+
+-   Postdoc : D3/D4
+-   Dependent Visa: DF
+:::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Police Clearance Certificate (PCC)
+
+-   Book an appointment for from the Passport seva portal.
+-   Carry you passport and AADHAAR card on the scheduled date and time to the designated PAssport seva kendra. - With a couple of Photographs. (refer to the webpage to be sure of all the necessary documents)
+-   The police will come to your address to verfiy and typically you should get your PCC by post in 10 days(at most).
+:::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Means of Subsistance
+
+-   Offer letter
+-   Bank statement (Optional)
+:::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Flight Tickets
+
+It takes around 15 days for the visa application to process and to get back your passport by mail. So, book you tickets accordingly.
+:::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Medical and Travel Insurance
+
+The Visa you get will have a validity of 4 months. So, you are expected to get a policy for atleast 4 months.
+:::
+
+-   Offer letter
+
+:::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Apostille
+
+-   The Visa office expects certain documents like your PhD degree and marriage certificate to be apostilled.
+-   Apostille is like an attestation process done by the Ministry of External Affairs(MEA) of India.
+
+::: {.callout-tip icon="false" appearance="simple" collapse="true"}
+There are several services which you can find online based in Delhi which get this done for a fee of approximately 1000 Rupees per document.
+:::
+::::
+
+-   2 Photos accordig to the Visa office’s specifications.
+
+::: {.callout-tip icon="true" appearance="simple" collapse="true"}
+# Tip
+
+During the appointment check if you can also get an appointment for Residence permit in Portugal. In many cases, the visa issued would have a link of the appointment for Residence permit printed on it.
+:::
+
+**Please double-check this list with the check-list which is part of Visa application.**
+:::::::::::::
+
+:::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# NIF
+
+Tax identity is very important to do almost everything else in Portugal. For example: NISS, Contract, Apartment, Residence Permit, SNS, Bank Account etc.
+
+-   Standing in line at early in the morning at your favourite Loja da Cidadao to get an appointment for later in the day.
+-   Once you get the appointment, you host needs to be present during the appointment to vouch for you.
+
+::: {.callout-tip icon="true" collapse="true" appearance="simple"}
+# Tip
+
+-   We showed up at the Loja da Cidadao at Saldanha at 4 AM and stood in line till 9 AM to get the appointment.
+-   I heard the Loja at Larenjeiras is better. (Worth a try!)
+:::
+::::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# FCUL contract
+
+-   Your contract will be prepared by the office once you give them your NIF and a temporary address.
+-   You need the signed contract for getting a Bank Account among other things.
+-   After signing the contract, you need to get a bank account to get you salary which is ususally around 23rd of each month.
+:::
+
+:::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# NISS
+
+Social Security number. Getting this easy and not as stressful as getting NIF.
+
+register for your NISS at this NISS webpage you will get an e-mail within a week with a phone number. You need to call the given number and book an appointment to collect your NISS document by hand at a ISS office.
+
+::: {.callout-tip appearance="simple" collpase="true"}
+The appointments in Lisbon city are not immediate. If it it is urgent, you can ask them for earliest appointmet in some far away place which they will be happy to suggest.
+:::
+::::
+
+:::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Residence Permit
+
+-   Getiing an appointment for this is painful if you don’t already have one on your Visa.
+-   Check your visa for a link which will take you to the SEF/AIMA webpage with an appointment.
+-   Otherwise you need to call the AIMA and book an appointment when they are open. This might take a while.
+
+::: {.callout-tip appearance="simple" collapse="true"}
+# Tip
+
+If you search on facebook etc, you might find people who call and book and appointment on your behalf for a fee(could be around 300 euros).
+:::
+::::
+
+::: {.callout-note icon="false" appearance="simple" collapse="true"}
+# Residence certificate issued by Junta de Fregusia
+
+-   Apporoach your local Espaco Cidadao(these are different from Loja da Cidadao) with a filled in application and you would get it in a couple of days.
+-   There are ways you could residence certificate Get two people who belong to the same parish to vouch for you.
+-   Provide your utlities bills with your address as proof. This is needed for your residence permit.
+:::
+
+::: {.callout-note icon="true" appearance="simple" collapse="true"}
+# SNS number
+
+Servico Nacional de Saude
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# ADSE (health insurances)
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# Chave Movel
+:::
+
+:::: {.callout-note icon="true" appearance="simple" collapse="true"}
+# Banking
+
+::: {.callout-note icon="true" appearance="simple"}
+# MB way
+:::
+::::
+
+::::: {.callout-note icon="true" appearance="simple" collapse="true"}
+# Transport
+
+::: {.callout-note icon="true" appearance="simple"}
+# Metro
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# Gira
+:::
+:::::
+
+::::::: {.callout-note icon="true" appearance="simple" collapse="true"}
+# Apartment
+
+::: {.callout-note icon="true" appearance="simple"}
+# Contract
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# Internet
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# Water
+:::
+
+::: {.callout-note icon="true" appearance="simple"}
+# Electricity and Gass
+:::
+:::::::
+
+# Resources
+
+::: {.callout-warning icon="true" appearance="simple"}
+# Loja da Cidadao
+:::
+
+::: {.callout-warning icon="true" appearance="simple"}
+# Espaco Cidadao
+:::
+
+::: {.callout-warning icon="true" appearance="simple"}
+# Financas  
+:::

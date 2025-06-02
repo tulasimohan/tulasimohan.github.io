@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../assets/images/TM_logo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-42a49f52b10c207433be27e0af9558e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/images/TM_logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-821f5d70ad0324ff4621bf59e4360ad1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-date','listing-title','listing-reading-time','listing-categories','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -97,25 +97,38 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
-<style>html{ scroll-behavior: smooth; }</style>
-<link rel="alternate" type="application/rss+xml" title="Tulasimohan Molli" href="notes.xml" data-external="1"></head><body class="nav-fixed">google-site-verification: googlef48d8f5728f4a046.html
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      calQ: '\\mathcal{Q}',
+      calI: '\\mathcal{I}',
+      calP: '\\mathcal{P}',
+      calR: '\\mathcal{R}',
+      calT: '\\mathcal{T}',
+      calG: '\\mathcal{G}',
+      R: '\\mathbb{R}',
+      Adv: '\\mathrm{Adv}',
+      E: ['\\mathbb{E}_{#1}\\left[#2\\right]', 2],
+      pr: ['\\mathrm{Pr}_{#1}\\left[ #2\\right]', 2],
+      bra: ['\\left(#1\\right)', 1],
+      sbra: ['\\left[#1\\right]', 1],
+      cbra: ['\\left\\{#1\\right\\}', 1],
+      abra: ['\\langle#1\\rangle', 1],
+      abs: ['\\left| #1 \\right|', 1],
+      F: '\\mathbb{F}',
+      zo: '\\{0,1\\}',
+      pmone: '\\{-1,1\\}',
+      CDT: '\\mathrm{CDT}',
+      rhotilde: '\\tilde{\\rho}',
+      depth: '\\operatorname{depth}'
+    }
+  }
+});
+</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -144,18 +157,16 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../assets/css/styles.css">
-<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="alternate" type="application/rss+xml" title="Tulasimohan Molli" href="notes.xml" data-external="1"></head>
 
-
-
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -166,23 +177,23 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications/publications.html"> 
+    <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../src/pages/teaching.html"> 
+    <a class="nav-link" href="./teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../src/pages/links.html"> 
+    <a class="nav-link" href="./links.html"> 
 <span class="menu-text">Links</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../assets/pdf/Tulasi_s_Resume.pdf"> 
+    <a class="nav-link" href="./assets/documents/Tulasi_s_Resume.pdf"> 
 <span class="menu-text">CV</span></a>
   </li>  
 </ul>
@@ -198,7 +209,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -252,124 +263,12 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1747596804554">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/criticality.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/criticality.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/criticality.html" class="no-external"></a></p><a href="../../publications/notes/criticality.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1747596805332">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/fourier.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/fourier.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/fourier.html" class="no-external"></a></p><a href="../../publications/notes/fourier.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1747596803800">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/probabilistic polynomials.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/probabilistic polynomials.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/probabilistic polynomials.html" class="no-external"></a></p><a href="../../publications/notes/probabilistic polynomials.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1746660232991">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/references.bib" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/references.bib" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/references.bib" class="no-external"></a></p><a href="../../publications/notes/references.bib" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1747596806897">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/timeline.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/timeline.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/timeline.html" class="no-external"></a></p><a href="../../publications/notes/timeline.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1747569745927">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/timeline.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/timeline.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/timeline.html" class="no-external"></a></p><a href="../../publications/notes/timeline.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1747596806057">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/vertical_timeline.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/vertical_timeline.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/vertical_timeline.html" class="no-external"></a></p><a href="../../publications/notes/vertical_timeline.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1747569746362">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../publications/notes/vertical_timeline.html" class="no-external"></a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../publications/notes/vertical_timeline.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="../../publications/notes/vertical_timeline.html" class="no-external"></a></p><a href="../../publications/notes/vertical_timeline.html" class="no-external">
-</a>
-</div>
-</div>
+
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
 </div></main> <!-- /main -->
-google-site-verification: googlef48d8f5728f4a046.html
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -791,8 +690,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2025 Tulasimohan Molli</p>
+</div>   
     <div class="nav-footer-center">
 <p>Made with <a href="https://quarto.org">Quarto</a> ∙ h/t <a href="https://www.neeldhara.com/">Neeldhara Misra</a>.</p>
 </div>
@@ -841,5 +740,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

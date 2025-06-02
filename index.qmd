@@ -1,29 +1,30 @@
 ---
 title: "Tulasimohan Molli"
 # Deployment test: 2025-04-23
+layout: full
 toc: false
 sidebar: false
 subtitle: Postdoc, FCUL.
 about:
   id: hero-heading
   template: trestles
-  image: images/profile_pic.jpeg
+  image: assets/images/profile_pic.jpeg
   image-width: 12em 
   image-shape: rounded
   image-title: Tulasimohan Molli
   links:
-    - text: "<img src='images/phone.jpg' width='16' alt='Phone'>"
+    - text: "<img src='assets/images/phone.jpg' width='16' alt='Phone'>"
       href: "tel:+351920457" 
-    - text: "<img src='images/email.png' width='18' alt='Email'>"
+    - text: "<img src='assets/images/email.png' width='18' alt='Email'>"
       href: "mailto:tulasimohanm@gmail.com"
 description: 
   "<div style='padding: 10px;'>
-  <img src='images/location.png' alt='Address' style='width: 16px; vertical-align: middle;'> *C 6.2.36* <br> 
+  <img src='assets/images/location.png' alt='Address' style='width: 16px; vertical-align: middle;'> *C 6.2.36* <br> 
   *Universidad de Lisboa* <br>
   *Campo Grande* <br>
   *Lisbon, Portugal.*
   </div>"
-css: css/about.css
+css: assets/css/about.css
 ---
 
 ::: {#hero-heading}
@@ -45,7 +46,6 @@ MSc in Computer Science \| 2014 </br> Chennai Mathematical Institute, Chennai.
 
 BSc(Hons.) in Mathematics and Computer Science \| 2012 </br> Chennai Mathematical Institute, Chennai.
 :::
-
 <!-- Add meta tags for SEO -->
 <meta name="description" content="Welcome to the official homepage of Tulasimohan Molli. Explore research, publications, teaching resources, and more.">
 <meta name="keywords" content="Tulasimohan Molli, Research, Publications, Teaching, Personal Website, Academic, Homepage">
@@ -55,9 +55,8 @@ BSc(Hons.) in Mathematics and Computer Science \| 2012 </br> Chennai Mathematica
 <meta property="og:description" content="Explore the personal website of Tulasimohan Molli, featuring research, publications, and teaching resources.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tulasimohan.github.io">
-<meta property="og:image" content="https://tulasimohan.github.io/images/profile_pic.jpeg">
+<meta property="og:image" content="https://tulasimohan.github.io/assets/images/profile_pic.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tulasimohan Molli - Official Homepage">
 <meta name="twitter:description" content="Explore the personal website of Tulasimohan Molli, featuring research, publications, and teaching resources.">
-<meta name="twitter:image" content="https://tulasimohan.github.io/images/profile_pic.jpeg">
-
+<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/profile_pic.jpeg">

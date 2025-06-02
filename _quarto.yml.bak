@@ -8,44 +8,15 @@ project:
     - googlef48d8f5728f4a046.html
     - sitemap.xml
 
+# Configure bibliography and citation styles
 bibliography: assets/bibliography/My Library.bib
 csl: assets/citation-styles/apa.csl
 
+# Configure LaTeX macros
 format:
   html:
-    theme: 
-      light: [cosmo, assets/css/custom.scss]
-    include-in-header:
-      text: |
-        <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          TeX: {
-            Macros: {
-              calQ: '\\mathcal{Q}',
-              calI: '\\mathcal{I}',
-              calP: '\\mathcal{P}',
-              calR: '\\mathcal{R}',
-              calT: '\\mathcal{T}',
-              calG: '\\mathcal{G}',
-              R: '\\mathbb{R}',
-              Adv: '\\mathrm{Adv}',
-              E: ['\\mathbb{E}_{#1}\\left[#2\\right]', 2],
-              pr: ['\\mathrm{Pr}_{#1}\\left[ #2\\right]', 2],
-              bra: ['\\left(#1\\right)', 1],
-              sbra: ['\\left[#1\\right]', 1],
-              cbra: ['\\left\\{#1\\right\\}', 1],
-              abra: ['\\langle#1\\rangle', 1],
-              abs: ['\\left| #1 \\right|', 1],
-              F: '\\mathbb{F}',
-              zo: '\\{0,1\\}',
-              pmone: '\\{-1,1\\}',
-              CDT: '\\mathrm{CDT}',
-              rhotilde: '\\tilde{\\rho}',
-              depth: '\\operatorname{depth}'
-            }
-          }
-        });
-        </script>
+    include-in-header: 
+      - file: assets/tex-macros/_macros.tex
 
 website:
   title: "Tulasimohan Molli"
@@ -55,7 +26,9 @@ website:
   navbar:
     background: white
     pinned: true
-    logo: ""  # Using text-based title only
+    logo: assets/images/TM_logo.png
+    logo-alt: "TM Logo"
+    title: false  # This will hide the text title but keep the logo
     right:
       - href: index.qmd
         text: About
@@ -67,8 +40,7 @@ website:
         href: links.qmd
       - text: CV
         href: assets/documents/Tulasi_s_Resume.pdf
-  page-footer:
-    left: "© 2025 Tulasimohan Molli"
+  page-footer: 
     center: "Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/)."
     right: 
       - text: "<img src='assets/images/github.svg' width='16' alt='GitHub'>"
@@ -85,3 +57,27 @@ website:
         href: https://orcid.org/0000-0001-6683-9050
       - text: "<img src='assets/images/google_scholar.png' width='16' alt='Google Scholar'>"
         href: https://scholar.google.com/citations?user=_WTuVPIAAAAJ&hl=en
+     
+
+format:
+  html:
+    base-url: "/"
+    theme: 
+      light: [cosmo, assets/css/custom.scss]
+    css: 
+      - assets/css/styles.css
+      - assets/css/fonts.css
+    toc: true
+    html-math-method: katex
+    smooth-scroll: true
+    anchor-sections: true
+    page-layout: full
+    include-after-body: googlef48d8f5728f4a046.html
+    mainfont: "IBM Plex Serif"
+    monofont: "IBM Plex Mono"
+    linkcolor: "#198754"
+
+# Ensure the Google Search Console verification file and sitemap are included in the output
+resources:
+  - googlef48d8f5728f4a046.html
+  - sitemap.xml

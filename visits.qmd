@@ -1,0 +1,46 @@
+---
+layout: article
+draft: true
+---
+
+## Visiting positions
+
+- Visiting Scientist with Prof. Irit Dinur. 
+Weizmann Institute of Sciences.  2017 
+- Visiting Scientist 
+IISER Berhampur Jan 2022 - May 20222 
+
+## Schools and Workshops attended
+
+- NMI Workshop on “COMPLEXITY AND CRYPTOGRAPHY” 
+Indian Institute of Science, Bangalore 
+January 10 - 13, 2017.
+
+- NMI workshop on Complexity Theory 
+IIT Gandhinagar.
+4-6 November, 2016. 
+
+- NMI workshop of Arithmetic Complexity, 
+IMSc, Chennai.
+https://www.imsc.res.in/~meena/nmi17-wac/nmi-2017-arithmetic-complexity.html
+27 Feb - 3 March, 2017.
+
+- Indo-US workshop on Pseudorandomness. 
+IISc Bangalore. 
+Organised by Arnab Bhattacharya. 
+
+- S3CS Stockholm Sweden. 
+- Mysore park workshop. 
+Infosys campus, Mysore. August 14-17, 2016. 
+- Le kaleidoscope de la complexité (Complexity as a kaleidoscope) 
+Marsaille, France.  31 March – 4 April, 2025
+https://conferences.cirm-math.fr/3225.html
+
+
+## Conferences attended
+- FSTTCS 2018, Gandhinagar. 
+- FSTTCS Delhi
+- FSTTCS Mumbai 2011, 2019
+- FSTTCS IIIT Hyderabad.
+
+

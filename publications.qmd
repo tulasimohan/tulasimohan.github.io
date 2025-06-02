@@ -1,5 +1,6 @@
 ---
-page-layout: article
+page-layout: full
+toc: true
 ---
 
 # Papers 
