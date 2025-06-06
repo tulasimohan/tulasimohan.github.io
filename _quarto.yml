@@ -20,6 +20,7 @@ website:
       - text: CV
         href: Tulasi_s_Resume.pdf
   page-footer: 
+    left: "Last modified: {{< modified date >}}"
     center: "Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/)."
     right: 
       - text: "<img src='/images/github.svg' width='16' alt='GitHub'>"
