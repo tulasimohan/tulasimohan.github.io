@@ -1,0 +1,21 @@
+---
+layout: article
+draft: true
+---
+Talks 
+- FSTTCS 2019 IIT Gandhinagar
+- FSTTCS 2022 Virtual 
+- Pseudoranmness Workshop IISc. 
+- Bruno's Seminar at University of Lisbon.
+- STCS Day 
+
+Slides 
+- Synopsis Seminar. 
+- Thesis defence.
+- FSTTCS IIT Gandhinagar. 
+- Qualifier presentation TIFR Mumbai. 
+- STCS day 
+
+Student Seminars
+
+Reading groups   

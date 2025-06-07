@@ -3,13 +3,13 @@ title: Notes
 sidebar: true
 toc: true
 listing:
-  contents: "publications/notes"  # Updated path to point to notes from root
+  contents: "/../../publications/notes"  # Updated to point to the correct folder
   sort: "date desc"
   type: default  
   categories: true
   sort-ui: true
   filter-ui: true
-  fields: [date, title, reading-time, categories, author]
+  fields: [date, title, reading-time, categories,author]
   feed: true
 page-layout: full
 title-block-banner: false

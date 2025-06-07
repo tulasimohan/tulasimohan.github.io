@@ -15,6 +15,10 @@ format:
   html:
     theme: 
       light: [cosmo, assets/css/custom.scss]
+    css: assets/css/custom.scss
+    page-width: 100%
+    margin-left: "0"
+    margin-right: "0"
     include-in-header:
       text: |
         <script type="text/x-mathjax-config">

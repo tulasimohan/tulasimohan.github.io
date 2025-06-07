@@ -1,6 +1,5 @@
 ---
-page-layout: full
-toc: true
+page-layout: article
 ---
 # Courses
 
