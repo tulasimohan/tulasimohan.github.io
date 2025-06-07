@@ -1,0 +1,20 @@
+---
+title: "Useful Links & Resources"
+description: "A curated collection of helpful tools and resources"
+---
+
+## Research Tools
+
+### Conference Search
+- [ETH Conference Search Tool](https://stag-library.ethz.ch/client/en_GB/default/search/simple?&qf=ETHCSEARCH_LOCATION&qu=ETHCSEARCH) - A comprehensive database for searching academic conferences and events
+
+### Academic Resources
+- [Google Scholar](https://scholar.google.com/citations?user=_WTuVPIAAAAJ) - Search across scholarly literature
+- [arXiv](https://arxiv.org/) - Open access archive for scholarly articles
+- [DBLP](https://dblp.org/pid/231/1775.html) - Computer Science Bibliography
+- [ECCC](https://eccc.weizmann.ac.il/) - Electronic Colloquium on Computational Complexity
+
+### Research and Note-taking Tools
+- [Zotero](https://www.zotero.org/) - Reference management software
+- [Obsidian](https://obsidian.md/) - Knowledge base and note-taking
+- [Notion](https://www.notion.so/) - All-in-one workspace for notes and collaboration
