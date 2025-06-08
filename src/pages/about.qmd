@@ -24,7 +24,7 @@ description:
   *Campo Grande* <br>
   *Lisbon, Portugal*
   </div>"
-css: css/about.css
+class: about-page
 ---
 
 :::{#hero-heading}

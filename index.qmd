@@ -4,14 +4,14 @@ title: "Tulasimohan Molli"
 layout: full
 toc: false
 sidebar: false
-subtitle: Postdoc, FCUL.
+subtitle: "Postdoc, FCUL"
 about:
   id: hero-heading
   template: trestles
   image: assets/images/profile_pic.jpeg
   image-width: 12em 
   image-shape: rounded
-  image-title: Tulasimohan Molli
+  image-title: "Tulasimohan Molli\nPostdoc, FCUL"
   links:
     - text: "<img src='assets/images/phone.jpg' width='16' alt='Phone'>"
       href: "tel:+351920457" 
@@ -24,15 +24,13 @@ description:
   *Campo Grande* <br>
   *Lisbon, Portugal.*
   </div>"
-css: assets/css/about.css
+css: assets/css/_about.scss
 ---
 
 ::: {#hero-heading}
 I am a Postdoctoral Researcher in the Department of Mathematics at [ULisboa](https://www.ulisboa.pt/), working under the supervision of [Bruno Loff](https://brunoloff.wordpress.com/) on the Hardness of Finding Good Algorithms ([HoFGA](https://brunoloff.wordpress.com/hofga/)) project. I am also a member of [LASIGE](https://lasige.pt/), a research unit at the Faculty of Sciences, University of Lisbon ([FCUL](https://ciencias.ulisboa.pt/)).
 
-I obtained my PhD from Tata Institute of Fundamental Research ([TIFR](https://www.tifr.res.in/)), Mumbai, under the guidance of [Prahladh Harsha](https://www.tcs.tifr.res.in/~prahladh/).
-
-<!-- I earned my Bachelor's and Master's degrees from Chennai Mathematical Institute (CMI), during which I also attended courses at the Institute of Mathematical Sciences (IMSc), Chennai. For my Master's project, I collaborated with Srikanth Srinivasan at IIT Bombay and completed a qualifier project under the guidance of Arkadev Chattopadhyay at TIFR. -->
+I did my PhD from Tata Institute of Fundamental Research ([TIFR](https://www.tifr.res.in/)), Mumbai, under the guidance of [Prahladh Harsha](https://www.tcs.tifr.res.in/~prahladh/).
 
 ## Research Interests
 
@@ -46,6 +44,7 @@ MSc in Computer Science \| 2014 </br> Chennai Mathematical Institute, Chennai.
 
 BSc(Hons.) in Mathematics and Computer Science \| 2012 </br> Chennai Mathematical Institute, Chennai.
 :::
+
 <!-- Add meta tags for SEO -->
 <meta name="description" content="Welcome to the official homepage of Tulasimohan Molli. Explore research, publications, teaching resources, and more.">
 <meta name="keywords" content="Tulasimohan Molli, Research, Publications, Teaching, Personal Website, Academic, Homepage">

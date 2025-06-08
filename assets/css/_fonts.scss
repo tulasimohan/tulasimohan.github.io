@@ -1,0 +1,39 @@
+// Font variables
+$font-display: swap;
+$font-stretch: normal;
+
+// Mixin for font-face declarations
+@mixin font-face($family, $style: normal, $weight: normal, $file, $format: 'woff2') {
+    @font-face {
+        font-family: $family;
+        font-style: $style;
+        font-weight: $weight;
+        font-stretch: $font-stretch;
+        font-display: $font-display;
+        src: url('/assets/fonts/#{$file}') format($format);
+    }
+}
+
+// Heliotrope 3 Font Family
+@include font-face('heliotrope_3', normal, normal, 'heliotrope_3_regular.woff2');
+@include font-face('heliotrope_3', italic, normal, 'heliotrope_3_italic.woff2');
+@include font-face('heliotrope_3', normal, bold, 'heliotrope_3_bold.woff2');
+@include font-face('heliotrope_3', italic, bold, 'heliotrope_3_bold_italic.woff2');
+
+// Amsterdam Font Family
+@include font-face('amsterdamkingdom', normal, normal, 'AmsterdamKindom.woff', 'woff');
+@include font-face('amsterdamkingdomitalic', italic, bold, 'AmsterdamKindom-Italic.woff', 'woff');
+@include font-face('amsterdam', normal, bold, 'amsterdam-webfont.woff2');
+@include font-face('amsterdam2', normal, bold, 'amsterdam_variation_2-webfont.woff2');
+@include font-face('amsterdam3', normal, bold, 'amsterdam_variation_3-webfont.woff2');
+@include font-face('amsterdam1', normal, bold, 'amsterdam_variation_1-webfont.woff2');
+
+// Other Fonts
+@include font-face('axelords', italic, bold, 'Axelords.woff2');
+@include font-face('romttar', normal, bold, 'Romttar.woff2');
+
+// IBM Plex Font Family
+@include font-face('IBM Plex Mono', normal, normal, 'IBMPlexMono-Regular.woff2');
+@include font-face('IBM Plex Math', normal, normal, 'IBMPlexMath-Regular.woff2');
+@include font-face('IBM Plex Serif', normal, normal, 'IBMPlexSerif-Regular.woff2');
+@include font-face('IBM Plex Serif', normal, 500, 'IBMPlexSerif-Medium.woff2'); 

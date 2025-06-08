@@ -7,49 +7,49 @@ project:
     - .nojekyll
     - googlef48d8f5728f4a046.html
     - sitemap.xml
+    - assets/fonts/**/*
+    - assets/images/**/*
+    - assets/tex-macros/**/*
+    - assets/css/**/*
 
 bibliography: assets/bibliography/My Library.bib
 csl: assets/citation-styles/apa.csl
 
 format:
   html:
+    base-url: "/"
     theme: 
       light: [cosmo, assets/css/custom.scss]
-    css: assets/css/custom.scss
+    css: 
+      - assets/css/custom.scss
+    toc: true
+    smooth-scroll: true
+    anchor-sections: true
+    page-layout: full
+    include-in-header: 
+      text: |
+        <script src="/assets/tex-macros/macros.js"></script>
+        <!-- Preload critical fonts -->
+        <link rel="preload" href="/assets/fonts/heliotrope_3_regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/amsterdam-webfont.woff2" as="font" type="font/woff2" crossorigin>
+        <script>
+          // Font loading strategy
+          if ("fonts" in document) {
+            Promise.all([
+              document.fonts.load("1em heliotrope_3"),
+              document.fonts.load("1em amsterdam")
+            ]).then(() => {
+              document.documentElement.classList.add("fonts-loaded");
+            });
+          }
+        </script>
+    include-after-body: 
+      text: |
+        <script src="/googlef48d8f5728f4a046.html"></script>
+    linkcolor: "#198754"
     page-width: 100%
     margin-left: "0"
     margin-right: "0"
-    include-in-header:
-      text: |
-        <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-          TeX: {
-            Macros: {
-              calQ: '\\mathcal{Q}',
-              calI: '\\mathcal{I}',
-              calP: '\\mathcal{P}',
-              calR: '\\mathcal{R}',
-              calT: '\\mathcal{T}',
-              calG: '\\mathcal{G}',
-              R: '\\mathbb{R}',
-              Adv: '\\mathrm{Adv}',
-              E: ['\\mathbb{E}_{#1}\\left[#2\\right]', 2],
-              pr: ['\\mathrm{Pr}_{#1}\\left[ #2\\right]', 2],
-              bra: ['\\left(#1\\right)', 1],
-              sbra: ['\\left[#1\\right]', 1],
-              cbra: ['\\left\\{#1\\right\\}', 1],
-              abra: ['\\langle#1\\rangle', 1],
-              abs: ['\\left| #1 \\right|', 1],
-              F: '\\mathbb{F}',
-              zo: '\\{0,1\\}',
-              pmone: '\\{-1,1\\}',
-              CDT: '\\mathrm{CDT}',
-              rhotilde: '\\tilde{\\rho}',
-              depth: '\\operatorname{depth}'
-            }
-          }
-        });
-        </script>
 
 website:
   title: "Tulasimohan Molli"
@@ -64,28 +64,36 @@ website:
       - href: index.qmd
         text: About
       - text: Publications 
-        href: publications.qmd
+        href: src/pages/publications.qmd
       - text: Teaching
-        href: teaching.qmd
+        href: src/pages/teaching.qmd
       - text: Links
-        href: links.qmd
+        menu:
+          - text: Overview
+            href: src/pages/links/index.qmd
+          - text: Visits
+            href: src/pages/links/visits.qmd
+          - text: Talks
+            href: src/pages/links/talks.qmd
+          - text: Portugal
+            href: src/pages/links/portugal.qmd
       - text: CV
         href: assets/documents/Tulasi_s_Resume.pdf
   page-footer:
     left: "© 2025 Tulasimohan Molli"
     center: "Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/)."
     right: 
-      - text: "<img src='assets/images/github.svg' width='16' alt='GitHub'>"
+      - text: "<img src='/assets/images/github.svg' width='16' alt='GitHub'>"
         href: https://github.com/tulasimohan
-      - text: "<img src='assets/images/linkedin.png' width='16' alt='LinkedIn'>"
+      - text: "<img src='/assets/images/linkedin.png' width='16' alt='LinkedIn'>"
         href: https://www.linkedin.com/in/tulasimohan-molli-b206b2164
-      - text: "<img src='assets/images/mastodon.png' width='16' alt='Mastodon'>"
+      - text: "<img src='/assets/images/mastodon.png' width='16' alt='Mastodon'>"
         href: https://mathstodon.xyz/@tulasimohan
-      - text: "<img src='assets/images/bluesky.png' width='16' alt='Bluesky'>"
+      - text: "<img src='/assets/images/bluesky.png' width='16' alt='Bluesky'>"
         href: https://bsky.app/profile/tulasimohan.bsky.social
-      - text: "<img src='assets/images/dblp.png' width='16' alt='DBLP'>"
+      - text: "<img src='/assets/images/dblp.png' width='16' alt='DBLP'>"
         href: https://dblp.org/pid/231/1775.html
-      - text: "<img src='assets/images/ORCID.png' width='16' alt='ORCID'>"
+      - text: "<img src='/assets/images/ORCID.png' width='16' alt='ORCID'>"
         href: https://orcid.org/0000-0001-6683-9050
-      - text: "<img src='assets/images/google_scholar.png' width='16' alt='Google Scholar'>"
+      - text: "<img src='/assets/images/google_scholar.png' width='16' alt='Google Scholar'>"
         href: https://scholar.google.com/citations?user=_WTuVPIAAAAJ&hl=en

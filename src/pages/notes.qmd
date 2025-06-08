@@ -3,7 +3,7 @@ title: Notes
 sidebar: true
 toc: true
 listing:
-  contents: "/../../publications/notes"  # Updated to point to the correct folder
+  contents: "../../notes"
   sort: "date desc"
   type: default  
   categories: true
