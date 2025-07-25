@@ -1,25 +1,13 @@
 /*-- scss:defaults --*/
 
+@import '_variables.scss';
 @import '_fonts.scss';
 @import '_callouts.scss';
 @import '_home.scss';
 @import '_about.scss';
 @import '_contact.scss';
 @import '_credits.scss';
-
-$primary:  #1d90e2 !default;
-$navbar-hl: rgb(4,122,6) !default;
-
-$myred: indianred !default;
-$mygreen: darkseagreen !default;
-
-$font-family-base: 'heliotrope_3', 'Lato', 'Merriweather', 'Roboto', 'Cabin', serif !default;
-$headings-font-family: 'heliotrope_3', 'Apple Chancery', 'Playfair Display', 'Montserrat', 'Prata', 'Roboto', serif !default;
-
-$h3-font-size: 1.24em !default;
-
-$link-color: rgb(4, 122, 6) !default;
-$link-decoration: none !default;
+@import '_layout.scss';
 
 $bs-body-bg: white !important; 
 :root{
@@ -46,39 +34,6 @@ $bs-body-bg: white !important;
     padding-bottom: 0.1rem;
 }
 
-/* Make the page content wider */
-.quarto-title {
-    max-width: 100% !important;
-}
-
-#quarto-content {
-    max-width: 100% !important;
-}
-
-.container-fluid {
-    max-width: 100% !important;
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-.navbar {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-/* Ensure the main content area uses full width */
-main {
-    max-width: 100% !important;
-    margin: 0 auto;
-}
-
-/* Adjust the hero section to use more width */
-#hero-heading {
-    max-width: 100% !important;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
 // Global styles
 body {
     font-family: 'heliotrope_3';
@@ -91,14 +46,12 @@ html {
   &.fonts-loaded {
     .navbar-title,
     h1, h2, h3, h4, h5, h6 {
-      opacity: 1;
-      transition: opacity 0.3s ease;
+      // Opacity transition removed for FOUT
     }
   }
 }
 
 .navbar-title,
 h1, h2, h3, h4, h5, h6 {
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  // Opacity transition removed for FOUT
 }

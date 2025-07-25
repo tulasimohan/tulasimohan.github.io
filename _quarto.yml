@@ -32,17 +32,7 @@ format:
         <!-- Preload critical fonts -->
         <link rel="preload" href="/assets/fonts/heliotrope_3_regular.woff2" as="font" type="font/woff2" crossorigin>
         <link rel="preload" href="/assets/fonts/amsterdam-webfont.woff2" as="font" type="font/woff2" crossorigin>
-        <script>
-          // Font loading strategy
-          if ("fonts" in document) {
-            Promise.all([
-              document.fonts.load("1em heliotrope_3"),
-              document.fonts.load("1em amsterdam")
-            ]).then(() => {
-              document.documentElement.classList.add("fonts-loaded");
-            });
-          }
-        </script>
+        
     include-after-body: 
       text: |
         <script src="/googlef48d8f5728f4a046.html"></script>

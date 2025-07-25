@@ -8,7 +8,7 @@ subtitle: "Postdoc, FCUL"
 about:
   id: hero-heading
   template: trestles
-  image: assets/images/profile_pic.jpeg
+  image: assets/images/profile_pic.webp
   image-width: 12em 
   image-shape: rounded
   image-title: "Tulasimohan Molli\nPostdoc, FCUL"
