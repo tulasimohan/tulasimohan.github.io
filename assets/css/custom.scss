@@ -1,67 +1,182 @@
 /*-- scss:defaults --*/
 
-@import '_variables.scss';
-@import '_fonts.scss';
-@import '_callouts.scss';
-@import '_home.scss';
-@import '_about.scss';
-@import '_contact.scss';
-@import '_credits.scss';
-@import '_layout.scss';
-
-$bs-body-bg: white !important;
-:root {
-  --bs-body-bg: white !important;
+@font-face {
+    font-family: heliotrope_3;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/heliotrope_3_regular.woff2') format('woff2');
 }
 
-.red {
-  color: $myred !important;
+@font-face {
+    font-family: heliotrope_3;
+    font-style: italic;
+    font-weight: normal;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/heliotrope_3_italic.woff2') format('woff2');
 }
 
-.green {
-  color: $mygreen !important;
+@font-face {
+    font-family: heliotrope_3;
+    font-style: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/heliotrope_3_bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: heliotrope_3;
+    font-style: italic;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/heliotrope_3_bold_italic.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-family: amsterdamkingdom;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/AmsterdamKindom.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: amsterdamkingdomitalic;
+    font-style: italic;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/AmsterdamKindom-Italic.woff') format('woff2');
+}
+
+@font-face {
+    font-family: amsterdam;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/amsterdam-webfont.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: amsterdam2;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/amsterdam_variation_2-webfont.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: amsterdam3;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/amsterdam_variation_3-webfont.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: amsterdam1;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/amsterdam_variation_1-webfont.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: axelords;
+    font-style: italic;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/Axelords.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: romttar;
+    font-weight: bold;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/Romttar.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IBMPlexMono;
+    font-weight: Regular;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/IBMPlexMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IBMPlexMath;
+    font-weight: Regular;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/IBMPlexMath-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IBMPlexSerif;
+    font-weight: Regular;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/IBMPlexSerif-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: IBMPlexSerif1;
+    font-weight: Medium;
+    font-stretch: normal;
+    font-display: auto;
+    src: url('assets/fonts/IBMPlexSerif-Medium.woff2') format('woff2');
+}
+
+
+
+$primary:  #1d90e2 !default;
+//  $body-color: rgb(33, 87, 132) !default;
+$navbar-hl: rgb(4,122,6) !default;
+
+$myred: indianred !default;
+$mygreen: darkseagreen !default;
+
+$font-family-base:  'heliotrope_3',  'Lato', 'Merriweather', 'Roboto Regular', 'Cabin Regular' !default;
+
+$headings-font-family: 'heliotrope_3', 'Apple Chancery','Playfair Display','Montserrat', 'Prata', 'Roboto'  !default;
+
+
+$h3-font-size: 1.24em !default;
+
+$link-color: rgb(4, 122, 6) !default;
+$link-decoration: none !default;
+
+$bs-body-bg: white !important; 
+:root{
+    --bs-body-bg: white !important; 
+}
+
+.red{
+    color: $myred !important;
+}
+
+.green{
+    color: $mygreen !important;
 }
 
 .navbar-title {
-  font-family: 'amsterdam', 'heliotrope_3';
-  font-size: 1.9em;
-  font-weight: bolder;
-  color: #333;
+    font-family: 'amsterdam', 'heliotrope_3';
+    font-size: 1.9em;
+    font-weight:bolder;
+    color: #333;
 }
 
 .navbar-brand-container {
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-}
-
-// Global styles
-body {
-  font-family: 'heliotrope_3';
-}
-
-$font-display: swap;
-
-// Font loading state
-html {
-  &.fonts-loaded {
-    .navbar-title,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      // Opacity transition removed for FOUT
-    }
-  }
-}
-
-.navbar-title,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  // Opacity transition removed for FOUT
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
 }
