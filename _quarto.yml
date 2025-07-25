@@ -9,7 +9,6 @@ project:
     - sitemap.xml
     - assets/fonts/**/*
     - assets/images/**/*
-    - assets/tex-macros/**/*
     - assets/css/**/*
 
 bibliography: assets/bibliography/My Library.bib
@@ -17,43 +16,34 @@ csl: assets/citation-styles/apa.csl
 
 format:
   html:
-    base-url: "/"
-    theme: 
+    base-url: '/'
+    theme:
       light: [cosmo, assets/css/custom.scss]
-    css: 
+    css:
       - assets/css/custom.scss
     toc: true
     smooth-scroll: true
     anchor-sections: true
     page-layout: full
-    include-in-header: 
-      text: |
-        <script src="/assets/tex-macros/macros.js"></script>
-        <!-- Preload critical fonts -->
-        <link rel="preload" href="/assets/fonts/heliotrope_3_regular.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/assets/fonts/amsterdam-webfont.woff2" as="font" type="font/woff2" crossorigin>
-        
-    include-after-body: 
-      text: |
-        <script src="/googlef48d8f5728f4a046.html"></script>
-    linkcolor: "#198754"
+    
+    linkcolor: '#198754'
     page-width: 100%
-    margin-left: "0"
-    margin-right: "0"
+    margin-left: '0'
+    margin-right: '0'
 
 website:
-  title: "Tulasimohan Molli"
-  site-url: "https://tulasimohan.github.io"
+  title: 'Tulasimohan Molli'
+  site-url: 'https://tulasimohan.github.io'
   favicon: assets/images/TM_logo.png
   description: "Tulasimohan Molli's personal website"
   navbar:
     background: white
     pinned: true
-    logo: ""  # Using text-based title only
+    logo: '' # Using text-based title only
     right:
       - href: index.qmd
         text: About
-      - text: Publications 
+      - text: Publications
         href: src/pages/publications.qmd
       - text: Teaching
         href: src/pages/teaching.qmd
@@ -70,9 +60,9 @@ website:
       - text: CV
         href: assets/documents/Tulasi_s_Resume.pdf
   page-footer:
-    left: "© 2025 Tulasimohan Molli"
-    center: "Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/)."
-    right: 
+    left: '© 2025 Tulasimohan Molli'
+    center: 'Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/).'
+    right:
       - text: "<img src='/assets/images/github.svg' width='16' alt='GitHub'>"
         href: https://github.com/tulasimohan
       - text: "<img src='/assets/images/linkedin.png' width='16' alt='LinkedIn'>"
