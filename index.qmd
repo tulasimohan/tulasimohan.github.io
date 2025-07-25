@@ -22,7 +22,7 @@ description:
   <img src='assets/images/location.png' alt='Address' style='width: 16px; vertical-align: middle;'> *C 6.2.36* <br> 
   *Universidad de Lisboa* <br>
   *Campo Grande* <br>
-  *Lisbon, Portugal.*
+  *Lisbon, Portugal.* 
   </div>"
 css: assets/css/_about.scss
 ---

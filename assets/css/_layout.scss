@@ -1,32 +1,32 @@
 /* Make the page content wider */
 .quarto-title {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 #quarto-content {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .container-fluid {
-    max-width: 100% !important;
-    padding-left: 2rem;
-    padding-right: 2rem;
+  max-width: 100% !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .navbar {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 /* Ensure the main content area uses full width */
 main {
-    max-width: 100% !important;
-    margin: 0 auto;
+  max-width: 100% !important;
+  margin: 0 auto;
 }
 
 /* Adjust the hero section to use more width */
 #hero-heading {
-    max-width: 100% !important;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 100% !important;
+  margin: 0 auto;
+  padding: 2rem;
 }

@@ -5,6 +5,7 @@
 !.gitignore
 !.nojekyll
 !.github
+!.markdownlintignore
 
 # System files
 .DS_Store

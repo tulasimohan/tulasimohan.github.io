@@ -9,34 +9,34 @@
 @import '_credits.scss';
 @import '_layout.scss';
 
-$bs-body-bg: white !important; 
-:root{
-    --bs-body-bg: white !important; 
+$bs-body-bg: white !important;
+:root {
+  --bs-body-bg: white !important;
 }
 
-.red{
-    color: $myred !important;
+.red {
+  color: $myred !important;
 }
 
-.green{
-    color: $mygreen !important;
+.green {
+  color: $mygreen !important;
 }
 
 .navbar-title {
-    font-family: 'amsterdam', 'heliotrope_3';
-    font-size: 1.9em;
-    font-weight:bolder;
-    color: #333;
+  font-family: 'amsterdam', 'heliotrope_3';
+  font-size: 1.9em;
+  font-weight: bolder;
+  color: #333;
 }
 
 .navbar-brand-container {
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 // Global styles
 body {
-    font-family: 'heliotrope_3';
+  font-family: 'heliotrope_3';
 }
 
 $font-display: swap;
@@ -45,13 +45,23 @@ $font-display: swap;
 html {
   &.fonts-loaded {
     .navbar-title,
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       // Opacity transition removed for FOUT
     }
   }
 }
 
 .navbar-title,
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   // Opacity transition removed for FOUT
 }
