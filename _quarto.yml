@@ -25,7 +25,16 @@ format:
     smooth-scroll: true
     anchor-sections: true
     page-layout: full
-    
+    include-in-header:
+      text: |
+        <script src="/assets/tex-macros/macros.js"></script>
+        <!-- Preload critical fonts -->
+        <link rel="preload" href="/assets/fonts/heliotrope_3_regular.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/fonts/amsterdam-webfont.woff2" as="font" type="font/woff2" crossorigin>
+
+    include-after-body:
+      text: |
+        <script src="/googlef48d8f5728f4a046.html"></script>
     linkcolor: '#198754'
     page-width: 100%
     margin-left: '0'

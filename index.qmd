@@ -8,10 +8,10 @@ subtitle: "Postdoc, FCUL"
 about:
   id: hero-heading
   template: trestles
-  image: assets/images/profile_pic.webp
+  image: assets/images/profile_pic.jpeg
   image-width: 12em 
   image-shape: rounded
-  image-title: "Tulasimohan Molli\nPostdoc, FCUL"
+  image-title: Tulasimohan Molli
   links:
     - text: "<img src='assets/images/phone.jpg' width='16' alt='Phone'>"
       href: "tel:+351920457" 
@@ -22,15 +22,15 @@ description:
   <img src='assets/images/location.png' alt='Address' style='width: 16px; vertical-align: middle;'> *C 6.2.36* <br> 
   *Universidad de Lisboa* <br>
   *Campo Grande* <br>
-  *Lisbon, Portugal.* 
+  *Lisbon, Portugal.*
   </div>"
-css: assets/css/_about.scss
+css: assets/css/about.css
 ---
 
 ::: {#hero-heading}
 I am a Postdoctoral Researcher in the Department of Mathematics at [ULisboa](https://www.ulisboa.pt/), working under the supervision of [Bruno Loff](https://brunoloff.wordpress.com/) on the Hardness of Finding Good Algorithms ([HoFGA](https://brunoloff.wordpress.com/hofga/)) project. I am also a member of [LASIGE](https://lasige.pt/), a research unit at the Faculty of Sciences, University of Lisbon ([FCUL](https://ciencias.ulisboa.pt/)).
 
-I did my PhD from Tata Institute of Fundamental Research ([TIFR](https://www.tifr.res.in/)), Mumbai, under the guidance of [Prahladh Harsha](https://www.tcs.tifr.res.in/~prahladh/).
+I obtained my PhD from Tata Institute of Fundamental Research ([TIFR](https://www.tifr.res.in/)), Mumbai, under the guidance of [Prahladh Harsha](https://www.tcs.tifr.res.in/~prahladh/).
 
 ## Research Interests
 
