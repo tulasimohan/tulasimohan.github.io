@@ -1,6 +1,6 @@
 ---
 layout: article
-draft: true
+draft: false
 ---
 
 ## Visiting positions

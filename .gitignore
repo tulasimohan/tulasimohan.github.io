@@ -29,6 +29,12 @@ _site/
 *.html
 !docs/**/*.html
 
+# Node modules
+node_modules/
+
+# Quarto output directory
+docs/
+
 # System files
 Thumbs.db
 
