@@ -48,16 +48,16 @@ website:
         href: src/pages/publications.qmd
       - text: Teaching
         href: src/pages/teaching.qmd
-      - text: Links
-        menu:
-          - text: Resources
-            href: src/pages/links/index.qmd
-          # - text: Visits
-          #   href: src/pages/links/visits.qmd
-          # - text: Talks
-          #   href: src/pages/links/talks.qmd
-          - text: Portugal
-            href: src/pages/links/portugal.qmd
+      # - text: Links
+      #   menu:
+      #     - text: Resources
+      #       href: src/pages/links/index.qmd
+      #     # - text: Visits
+      #     #   href: src/pages/links/visits.qmd
+      #     # - text: Talks
+      #     #   href: src/pages/links/talks.qmd
+      #     - text: Portugal
+      #       href: src/pages/links/portugal.qmd
       - text: CV
         href: assets/documents/Tulasi_s_Resume.pdf
   page-footer:
