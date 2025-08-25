@@ -31,6 +31,8 @@ format:
     page-width: 100%
     margin-left: '0'
     margin-right: '0'
+    include-after-body:
+      - assets/html/doodle.html
 
 website:
   title: 'Tulasimohan Molli'
