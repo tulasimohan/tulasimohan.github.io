@@ -17,3 +17,48 @@ h1{
     font-family:'heliotrope_3';
     font-size: xx-large;
 }
+
+/* Make about links inline, icon-style, and mobile-friendly */
+.about-links, .about-link-list, .about-link {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  justify-content: flex-start;
+  align-items: center;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.about-link, .about-link a, .about-link-list a {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.25em !important;
+  margin: 0 !important;
+  min-width: unset !important;
+  min-height: unset !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+.about-link img, .about-link-list img {
+  display: inline-block;
+  width: 1.5em !important;
+  height: 1.5em !important;
+  margin: 0 !important;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .about-links, .about-link-list {
+    gap: 1em;
+    justify-content: center;
+  }
+}
