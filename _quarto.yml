@@ -6,7 +6,6 @@ project:
     - CNAME
     - .nojekyll
     - googlef48d8f5728f4a046.html
-    - sitemap.xml
     
     - assets/images/**/*
     - assets/css/**/*
