@@ -6,7 +6,6 @@ project:
     - CNAME
     - .nojekyll
     - googlef48d8f5728f4a046.html
-    - sitemap.xml
     
     - assets/images/**/*
     - assets/css/**/*
@@ -33,6 +32,11 @@ format:
     margin-right: '0'
     include-after-body:
       - assets/html/doodle.html
+    include-in-header:
+      - text: |
+          <script type="application/ld+json">
+          {{ read("assets/seo/person.json") }}
+          </script>
 
 website:
   title: 'Tulasimohan Molli'
@@ -58,10 +62,10 @@ website:
       #     #   href: src/pages/links/visits.qmd
       #     # - text: Talks
       #     #   href: src/pages/links/talks.qmd
-      #     - text: Portugal
-      #       href: src/pages/links/portugal.qmd
+      #     # - text: Portugal
+      #     #   href: src/pages/links/portugal.qmd
       - text: CV
-        href: assets/documents/Resume_Aug_2025.pdf
+        href: assets/documents/cv_2025-09-08.pdf
   page-footer:
     left: '© 2025 Tulasimohan Molli'
     center: 'Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/).'

@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tulasimohan Molli",
+  "url": "https://tulasimohan.github.io",
+  "image": "https://tulasimohan.github.io/assets/images/profile_pic.jpeg",
+  "jobTitle": "Postdoctoral Researcher",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Universidad de Lisboa"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Tata Institute of Fundamental Research"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Chennai Mathematical Institute"
+    }
+  ],
+  "email": "mailto:tulasimohanm@gmail.com",
+  "sameAs": [
+    "https://scholar.google.com/citations?user=YOUR_ID",
+    "https://orcid.org/YOUR_ORCID",
+    "https://github.com/tulasimohan"
+  ]
+}

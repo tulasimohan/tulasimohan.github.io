@@ -59,3 +59,5 @@ BSc(Hons.) in Mathematics and Computer Science \| 2012 </br> Chennai Mathematica
 <meta name="twitter:title" content="Tulasimohan Molli - Official Homepage">
 <meta name="twitter:description" content="Explore the personal website of Tulasimohan Molli, featuring research, publications, and teaching resources.">
 <meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/profile_pic.jpeg">
+
+<!-- Structured Data for SEO is now included via Quarto's _quarto.yml includes -->
