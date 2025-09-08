@@ -63,7 +63,7 @@ website:
       #     - text: Portugal
       #       href: src/pages/links/portugal.qmd
       - text: CV
-        href: assets/documents/Tulasi_s_Resume.pdf
+        href: assets/documents/cv_2025-09-08.pdf
   page-footer:
     left: '© 2025 Tulasimohan Molli'
     center: 'Made with [Quarto](https://quarto.org) &#8729; h/t [Neeldhara Misra](https://www.neeldhara.com/).'
