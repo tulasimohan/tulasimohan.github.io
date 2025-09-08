@@ -8,10 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -19,7 +15,12 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render and Deploy
-        uses: quarto-dev/quarto-actions/deploy@v2
+      - name: Render Quarto Project
+        run: quarto render
+
+      - name: Commit and push if changed
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          target: gh-pages
+          commit_message: "Render and deploy website"
+          branch: main
+          file_pattern: docs/
