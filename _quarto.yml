@@ -6,9 +6,9 @@ project:
     - CNAME
     - .nojekyll
     - googlef48d8f5728f4a046.html
-    
     - assets/images/**/*
     - assets/css/**/*
+    - assets/documents/**/*
 
 bibliography: assets/bibliography/My Library.bib
 csl: assets/citation-styles/apa.csl
