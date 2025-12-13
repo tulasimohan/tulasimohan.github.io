@@ -1,0 +1,39 @@
+---
+title: "Probabilistic Polyomials"
+author: "Tulasimohan Molli"
+date: "2023-10-05"
+categories: [Polynomials, Probabilistic polynomials, Boolean functions]
+tags: [complexity]
+bibliography: ../../assets/bibliography/My Library.bib
+draft: true
+---
+
+## Preliminaries
+
+A Probabilistic polynomial is a distribution on Polynomials.
+
+A low-degree probabilistic polynomial is a supported on low-degree polynomials.
+
+### Possible alternatives:
+
+-   Distribution on Polynomials of low-sparsity polynomials. What is the complexity measure to track here.
+
+-   Right now, degree is the minimum of degrees of all polynomials in the support. Can we use an average notion?
+
+-   PAC polynomials: Probably Approximate Polynomials.
+
+### Applications of Probabilistic polynomials:
+
+-   Braverman and Bazzi's poly-logarithmic independence fools \$AC\^0\$.
+
+-   Ryan- Williams' algorithms.
+
+Probabilistic Polynomials and Hamming Nearest Neighbours \[Alman, Williams\]
+
+Show how to compute any symmetric Boolean function on $n$ variables over any field (as well as the integers) with a probabilistic polynomial of degree $O(\sqrt{n \log 1/\epsilon})$ and error at most ϵ.
+
+-   Does Probabilistic polynomials offer speed-up in for computing other functions?
+
+    -   [ ] review and write about the proof of Bazzi and Impagliazzo's poly-logarithmic independence fools \$AC\^0\$.
+
+-   What are tricks useful for computing functions using probabilistic polynomials?

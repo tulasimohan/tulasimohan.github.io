@@ -17,10 +17,8 @@ This repository contains the source code for my personal academic website built 
 The website is built using Quarto. To build locally:
 
 ```bash
-quarto render
 ```
 
 ## License
 
 All content is © Tulasimohan Molli. All rights reserved.
- 

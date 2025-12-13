@@ -1,0 +1,64 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - assets/**/*
+    - CNAME
+    - .nojekyll
+    - googlef48d8f5728f4a046.html
+
+bibliography: assets/bibliography/My Library.bib
+csl: assets/citation-styles/apa.csl
+
+format:
+  html:
+    base-url: '/'
+    theme:
+      light: [cosmo, assets/css/custom.scss]
+    css:
+      - assets/css/custom.scss
+    toc: true
+    smooth-scroll: true
+    anchor-sections: true
+    page-layout: full
+    linkcolor: '#2A9D8F' # Teal accent
+    page-width: 100%
+    include-after-body: assets/js/particles-loader.txt
+
+website:
+  title: 'Tulasimohan Molli'
+  site-url: 'https://tulasimohan.github.io'
+  favicon: assets/images/TM_logo.png
+  description: "Tulasimohan Molli's personal website"
+  navbar:
+    background: "#F8F9FA" # Very light grey (almost white)
+    foreground: "#212529"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - text: Projects
+        href: src/pages/projects/index.qmd
+      - text: Research
+        href: src/pages/research/index.qmd
+      - text: Interests
+        href: src/pages/interests/index.qmd
+      - text: CV
+        href: assets/documents/CV_2025-09-08.pdf
+    right:
+      - icon: github
+        href: https://github.com/tulasimohan
+      - icon: linkedin
+        href: https://www.linkedin.com/in/tulasimohan-molli-b206b2164
+      - icon: twitter
+        href: https://twitter.com/tulasimohan # Placeholder if applicable
+  
+  page-footer:
+    left: '© 2025 Tulasimohan Molli'
+    center: 'Built with [Quarto](https://quarto.org)'
+    right:
+      - icon: mastodon
+        href: https://mathstodon.xyz/@tulasimohan
+      - icon: envelope
+        href: mailto:tulasimohanm@gmail.com

@@ -1,0 +1,45 @@
+---
+title: "Useful Links & Resources"
+description: "A curated collection of helpful tools and resources"
+---
+
+## Research Tools
+
+### Conference Search
+- [ETH Conference Search Tool](https://stag-library.ethz.ch/client/en_GB/default/search/simple?&qf=ETHCSEARCH_LOCATION&qu=ETHCSEARCH) - A comprehensive database for searching academic conferences and events
+
+### Academic Resources
+- [Google Scholar](https://scholar.google.com/citations?user=_WTuVPIAAAAJ) - Search across scholarly literature
+- [arXiv](https://arxiv.org/) - Open access archive for scholarly articles
+- [DBLP](https://dblp.org/pid/231/1775.html) - Computer Science Bibliography
+- [ECCC](https://eccc.weizmann.ac.il/) - Electronic Colloquium on Computational Complexity
+
+### Research and Note-taking Tools
+- [Zotero](https://www.zotero.org/) - Reference management software
+- [Obsidian](https://obsidian.md/) - Knowledge base and note-taking
+- [Notion](https://www.notion.so/) - All-in-one workspace for notes and collaboration
+
+<!-- ## Programming & Development
+
+### Documentation
+- [Python Documentation](https://docs.python.org/3/) - Official Python programming language documentation
+- [Quarto Guide](https://quarto.org/docs/guide/) - Comprehensive guide for Quarto publishing system -->
+
+<!-- ### Tools
+- [GitHub](https://github.com/) - Code hosting and collaboration platform
+- [VS Code](https://code.visualstudio.com/) - Popular code editor with extensive features -->
+
+<!-- ## Data Science Resources
+
+### Libraries & Frameworks
+- [Pandas](https://pandas.pydata.org/) - Data manipulation and analysis
+- [scikit-learn](https://scikit-learn.org/) - Machine learning in Python
+- [TensorFlow](https://www.tensorflow.org/) - End-to-end machine learning platform -->
+
+<!-- ### Tutorials & Learning
+- [Kaggle](https://www.kaggle.com/) - Data science competitions and learning resources
+- [DataCamp](https://www.datacamp.com/) - Interactive data science courses
+
+::: {.callout-note}
+This is a living document that will be updated regularly with new resources. If you have suggestions for additions, please feel free to reach out!
+::: -->

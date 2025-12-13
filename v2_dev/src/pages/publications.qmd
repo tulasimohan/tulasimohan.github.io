@@ -1,0 +1,44 @@
+---
+page-layout: full
+toc: true
+---
+
+# Papers 
+:::{.callout-warning icon=false appearance="minimal"}
+# **Criticality of $AC^0$ formulae.**
+Prahladh Harsha, Tulasimohan Molli, Ashutosh Shankar </br>
+[CCC 2023](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CCC.2023.19) |  [arXiv](https://arxiv.org/abs/2212.08397) 
+:::
+
+:::{.callout-warning icon=false appearance="minimal"}
+# **Tight Chang's lemma type bounds for Boolean functions.**
+Sourav Chakraborty, Nikhil S. Mande, Rajat Mittal, Tulasimohan Molli, Manaswi Paraashar, Swagato Sanyal. </br>
+[FSTTCS 2021](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.FSTTCS.2021.10) | [arXiv](https://arxiv.org/abs/2012.02335) 
+:::
+
+:::{.callout-warning icon=false appearance="minimal"}
+# **Probabilistic degree of OR over the Reals.**
+Siddharth Bhandari, Prahladh Harsha, Tulasimohan Molli, Srikanth Srinivasan. </br>
+[FSTTCS 2019](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.FSTTCS.2018.5) | [RSA Journal](https://onlinelibrary.wiley.com/doi/10.1002/rsa.20991) | [arXiv](https://arxiv.org/abs/1812.01982) | [eccc](https://eccc.weizmann.ac.il/report/2018/207/)
+:::
+
+# Theses and Reports 
+
+:::{.callout-note icon=false appearance="minimal"}
+# **PhD Thesis: On Complexity Measures of Boolean Functions**
+under the guidance of Prof. Prahladh Harsha </br>
+at Tata Institute of Fundamental Research, Mumbai.
+:::
+
+:::{.callout-note icon=false appearance="minimal"}
+# **Master Project: Structural results and applications to Arithmetic Circuit Complexity**
+under the guidance of Prof. Srikanth Srinivasan, </br>
+as a part of my Master's Thesis at Chennai Mathematical Institute.
+:::
+
+:::{.callout-note icon=false appearance="minimal"}
+# **Qualifier project: Lowerbonds for Depth-2 circuits with Threshold and Mod-gates**
+under the guidance of Prof. Arkadev Chattopadhyay, </br>
+at Tata Institute of Fundamental Research.
+:::
+
