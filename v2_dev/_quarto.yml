@@ -14,16 +14,17 @@ format:
   html:
     base-url: '/'
     theme:
-      light: [cosmo, assets/css/custom.scss]
-    css:
-      - assets/css/custom.scss
+      light: [assets/css/theme-light.scss, assets/css/custom.scss, cosmo]
+      dark: [assets/css/theme-dark.scss, assets/css/custom.scss, darkly]
     toc: true
     smooth-scroll: true
     anchor-sections: true
     page-layout: full
-    linkcolor: '#2A9D8F' # Teal accent
+    linkcolor: '#5CCAE8' # BITS Sky Blue
     page-width: 100%
-    include-after-body: assets/js/particles-loader.txt
+    lang: en
+include-after-body:
+  - assets/js/particles-loader.txt
 
 website:
   title: 'Tulasimohan Molli'
@@ -31,8 +32,6 @@ website:
   favicon: assets/images/TM_logo.png
   description: "Tulasimohan Molli's personal website"
   navbar:
-    background: "#F8F9FA" # Very light grey (almost white)
-    foreground: "#212529"
     left:
       - href: index.qmd
         text: Home

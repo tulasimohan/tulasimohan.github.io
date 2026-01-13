@@ -10,6 +10,8 @@ toc: false
 
 I am a Postdoctoral Researcher at **Universidad de Lisboa**, formerly at TIFR and CMI. My research focuses on theoretical computer science, specifically [User: Add Specific Areas].
 
+I will be joining **BITS Pilani Hyderabad Campus** as an **Assistant Professor** in the Department of Computer Science and Engineering, starting **[Month Year]**.
+
 This website is a collection of my academic work, coding projects, and personal learnings. I aim to present complex ideas with clarity and elegance.
 
 </div>

@@ -9,12 +9,12 @@ toc: false
 ::: {.g-col-12}
 ::: {.unified-hero-card .animate-fade-up}
 ::: {.hero-profile}
-![](/assets/images/profile_pic.jpeg){.profile-pic}
+<img src="/assets/images/profile_pic.jpeg" alt="Profile picture of Tulasimohan Molli" class="profile-pic">
 
 <div class="contact-buttons">
-  <a href="tel:+" class="btn-icon" title="Mobile"><i class="bi bi-phone"></i></a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Sciences,+University+of+Lisbon" target="_blank" class="btn-icon" title="Address"><i class="bi bi-geo-alt"></i></a>
-  <a href="mailto:tulasimohanm@gmail.com" class="btn-icon" title="Mail"><i class="bi bi-envelope"></i></a>
+  <a href="tel:+" class="btn-icon" title="Mobile" aria-label="Phone"><i class="bi bi-phone"></i></a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Sciences,+University+Lisbon" target="_blank" class="btn-icon" title="Address" aria-label="Address"><i class="bi bi-geo-alt"></i></a>
+  <a href="mailto:tulasimohanm@gmail.com" class="btn-icon" title="Mail" aria-label="Email"><i class="bi bi-envelope"></i></a>
 </div>
 :::
 
@@ -24,7 +24,7 @@ Tulasimohan Molli
 :::
 
 ::: {.affiliation-title}
-Theoretical Computer Scientist<br>& Researcher
+Theoretical Computer Scientist & Researcher
 :::
 
 ::: {.affiliation-subtitle}
@@ -35,6 +35,10 @@ Postdoctoral Researcher
 **Universidad de Lisboa**<br>
 Previously at TIFR and CMI.
 :::
+
+<div class="mt-4">
+[Download CV](/assets/documents/CV_2025-09-08.pdf){.btn .btn-outline-primary .btn-sm}
+</div>
 :::
 :::
 :::
