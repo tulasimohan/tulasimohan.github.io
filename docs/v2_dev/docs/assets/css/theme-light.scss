@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+// BITS Brand Foundation
+$bits-blue: #2b2b88; // Cosmic Cobalt
+$bits-sky: #5ccae8; // Sky Blue
+$bits-gold: #b78a2d; // University Gold
+$bits-yellow: #ffe275; // Shandy
+$bits-red: #cf2027; // Fire Engine Red
+
+// Light Theme Specifics
+$body-bg: #ffffff;
+$body-color: #212529;
+$link-color: $bits-sky;
+
+$navbar-bg: $body-bg;
+$navbar-fg: $bits-blue;
+$footer-bg: $body-bg;
+$footer-fg: #6c757d;
+
+$primary: $bits-blue;
+$info: $bits-sky;
+$warning: $bits-gold;
+$danger: $bits-red;

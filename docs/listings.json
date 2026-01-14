@@ -2,5 +2,17 @@
   {
     "listing": "/src/pages/notes.html",
     "items": []
+  },
+  {
+    "listing": "/v2_dev/src/pages/notes.html",
+    "items": []
+  },
+  {
+    "listing": "/v2_dev/src/pages/research/index.html",
+    "items": []
+  },
+  {
+    "listing": "/v2_dev/src/pages/projects/index.html",
+    "items": []
   }
 ]

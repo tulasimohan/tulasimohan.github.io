@@ -145,5 +145,187 @@
     "title": "Tulasimohan Molli",
     "section": "Conferences attended",
     "text": "Conferences attended\n\nFSTTCS 2018, Gandhinagar.\nFSTTCS Delhi\nFSTTCS Mumbai 2011, 2019\nFSTTCS IIIT Hyderabad."
+  },
+  {
+    "objectID": "v2_dev/src/pages/interests/index.html",
+    "href": "v2_dev/src/pages/interests/index.html",
+    "title": "Interests",
+    "section": "",
+    "text": "A collection of standard resources, YouTube videos, and heavy reads that I find fascinating.\n\n\nComing soon…\n\n\n\nComing soon…"
+  },
+  {
+    "objectID": "v2_dev/src/pages/interests/index.html#videos",
+    "href": "v2_dev/src/pages/interests/index.html#videos",
+    "title": "Interests",
+    "section": "",
+    "text": "Coming soon…"
+  },
+  {
+    "objectID": "v2_dev/src/pages/interests/index.html#readings",
+    "href": "v2_dev/src/pages/interests/index.html#readings",
+    "title": "Interests",
+    "section": "",
+    "text": "Coming soon…"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/visits.html",
+    "href": "v2_dev/src/pages/links/visits.html",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Visiting Scientist with Prof. Irit Dinur. Weizmann Institute of Sciences. 2017\nVisiting Scientist IISER Berhampur Jan 2022 - May 20222"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/visits.html#visiting-positions",
+    "href": "v2_dev/src/pages/links/visits.html#visiting-positions",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Visiting Scientist with Prof. Irit Dinur. Weizmann Institute of Sciences. 2017\nVisiting Scientist IISER Berhampur Jan 2022 - May 20222"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/visits.html#schools-and-workshops-attended",
+    "href": "v2_dev/src/pages/links/visits.html#schools-and-workshops-attended",
+    "title": "Tulasimohan Molli",
+    "section": "Schools and Workshops attended",
+    "text": "Schools and Workshops attended\n\nNMI Workshop on “COMPLEXITY AND CRYPTOGRAPHY” Indian Institute of Science, Bangalore January 10 - 13, 2017.\nNMI workshop on Complexity Theory IIT Gandhinagar. 4-6 November, 2016.\nNMI workshop of Arithmetic Complexity, IMSc, Chennai. https://www.imsc.res.in/~meena/nmi17-wac/nmi-2017-arithmetic-complexity.html 27 Feb - 3 March, 2017.\nIndo-US workshop on Pseudorandomness. IISc Bangalore. Organised by Arnab Bhattacharya.\nS3CS Stockholm Sweden.\nMysore park workshop. Infosys campus, Mysore. August 14-17, 2016.\nLe kaleidoscope de la complexité (Complexity as a kaleidoscope) Marsaille, France. 31 March – 4 April, 2025 https://conferences.cirm-math.fr/3225.html"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/visits.html#conferences-attended",
+    "href": "v2_dev/src/pages/links/visits.html#conferences-attended",
+    "title": "Tulasimohan Molli",
+    "section": "Conferences attended",
+    "text": "Conferences attended\n\nFSTTCS 2018, Gandhinagar.\nFSTTCS Delhi\nFSTTCS Mumbai 2011, 2019\nFSTTCS IIIT Hyderabad."
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/talks.html",
+    "href": "v2_dev/src/pages/links/talks.html",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "FSTTCS 2019 IIT Gandhinagar\nFSTTCS 2022 Virtual\nPseudoranmness Workshop IISc.\nBruno’s Seminar at University of Lisbon.\nSTCS Day"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/talks.html#talks",
+    "href": "v2_dev/src/pages/links/talks.html#talks",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "FSTTCS 2019 IIT Gandhinagar\nFSTTCS 2022 Virtual\nPseudoranmness Workshop IISc.\nBruno’s Seminar at University of Lisbon.\nSTCS Day"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/talks.html#slides",
+    "href": "v2_dev/src/pages/links/talks.html#slides",
+    "title": "Tulasimohan Molli",
+    "section": "Slides",
+    "text": "Slides\n\nSynopsis Seminar.\nThesis defence.\nFSTTCS IIT Gandhinagar.\nQualifier presentation TIFR Mumbai.\nSTCS day"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/talks.html#student-seminars",
+    "href": "v2_dev/src/pages/links/talks.html#student-seminars",
+    "title": "Tulasimohan Molli",
+    "section": "Student Seminars",
+    "text": "Student Seminars"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/talks.html#reading-groups",
+    "href": "v2_dev/src/pages/links/talks.html#reading-groups",
+    "title": "Tulasimohan Molli",
+    "section": "Reading groups",
+    "text": "Reading groups"
+  },
+  {
+    "objectID": "v2_dev/src/pages/publications.html",
+    "href": "v2_dev/src/pages/publications.html",
+    "title": "Papers",
+    "section": "",
+    "text": "Papers\n\n\n\n\n\n\nCriticality of \\(AC^0\\) formulae.\n\n\n\nPrahladh Harsha, Tulasimohan Molli, Ashutosh Shankar  CCC 2023 | arXiv\n\n\n\n\n\n\n\n\nTight Chang’s lemma type bounds for Boolean functions.\n\n\n\nSourav Chakraborty, Nikhil S. Mande, Rajat Mittal, Tulasimohan Molli, Manaswi Paraashar, Swagato Sanyal.  FSTTCS 2021 | arXiv\n\n\n\n\n\n\n\n\nProbabilistic degree of OR over the Reals.\n\n\n\nSiddharth Bhandari, Prahladh Harsha, Tulasimohan Molli, Srikanth Srinivasan.  FSTTCS 2019 | RSA Journal | arXiv | eccc\n\n\n\n\nTheses and Reports\n\n\n\n\n\n\nPhD Thesis: On Complexity Measures of Boolean Functions\n\n\n\nunder the guidance of Prof. Prahladh Harsha  at Tata Institute of Fundamental Research, Mumbai.\n\n\n\n\n\n\n\n\nMaster Project: Structural results and applications to Arithmetic Circuit Complexity\n\n\n\nunder the guidance of Prof. Srikanth Srinivasan,  as a part of my Master’s Thesis at Chennai Mathematical Institute.\n\n\n\n\n\n\n\n\nQualifier project: Lowerbonds for Depth-2 circuits with Threshold and Mod-gates\n\n\n\nunder the guidance of Prof. Arkadev Chattopadhyay,  at Tata Institute of Fundamental Research."
+  },
+  {
+    "objectID": "v2_dev/src/pages/notes.html",
+    "href": "v2_dev/src/pages/notes.html",
+    "title": "Notes",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "v2_dev/src/pages/research/index.html",
+    "href": "v2_dev/src/pages/research/index.html",
+    "title": "Research Writeups",
+    "section": "",
+    "text": "Research Surveys & Summaries\nDetailed writeups on interesting results I’ve read, surveys of topics in TCS, and shorter research notes.\n\nComing soon…\n\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "v2_dev/about.html",
+    "href": "v2_dev/about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a Postdoctoral Researcher at Universidad de Lisboa, formerly at TIFR and CMI. My research focuses on theoretical computer science, specifically [User: Add Specific Areas].\nI will be joining BITS Pilani Hyderabad Campus as an Assistant Professor in the Department of Computer Science and Engineering, starting [Month Year].\nThis website is a collection of my academic work, coding projects, and personal learnings. I aim to present complex ideas with clarity and elegance."
+  },
+  {
+    "objectID": "v2_dev/index.html",
+    "href": "v2_dev/index.html",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Tulasimohan Molli\n\n\nTheoretical Computer Scientist & Researcher\n\n\nPostdoctoral Researcher\n\n\nUniversidad de Lisboa Previously at TIFR and CMI.\n\n\nDownload CV"
+  },
+  {
+    "objectID": "v2_dev/index.html#latest-news",
+    "href": "v2_dev/index.html#latest-news",
+    "title": "Tulasimohan Molli",
+    "section": " Latest News",
+    "text": "Latest News\n\n2025-09: Joined Universidad de Lisboa as a Postdoc.\n2025-08: Paper accepted at [Conference].\n2025-07: Completed PhD defense."
+  },
+  {
+    "objectID": "v2_dev/src/pages/teaching.html",
+    "href": "v2_dev/src/pages/teaching.html",
+    "title": "Courses",
+    "section": "",
+    "text": "Courses\n\n\n\n\n\n\nCS304: Discrete Structures and Computation\n\n\n\nUndergradate level course taught at IISER Berhampur in the even semester of 2022. Course page\n\n\n\n\nTeaching Assistant\n\n\n\n\n\n\nTheory of Computation\n\n\n\nT.A. for the undergradate level course taught by Prof. Sourav Chakraborty at Chennai Mathematical Institute in the even semester of 2012.\n\n\n\n\n\n\n\n\nDiscrete Mathematics\n\n\n\nT.A. for the undergradate level course taught by Prof. Sourav Chakraborty at Chennai Mathematical Institute in the odd semester of 2012."
+  },
+  {
+    "objectID": "v2_dev/src/pages/projects/index.html",
+    "href": "v2_dev/src/pages/projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Code & Implementations\nHere I showcase my coding projects, algorithm implementations, and software tools.\n\nComing soon…\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "v2_dev/src/pages/about.html",
+    "href": "v2_dev/src/pages/about.html",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Phone\n  \n  \n    \n     e-mail\n  \n\n  \n  \nI am a Postdoctoral Researcher in the Department of Mathematics at ULisboa, working under the supervision of Bruno Loff on the Hardness of Finding Good Algorithms (HoFGA) project. I am also a member of LASIGE, a research unit at the Faculty of Sciences, University of Lisbon (FCUL).\nI obtained my PhD from Tata Institute of Fundamental Research (TIFR), Mumbai, under the guidance of Prahladh Harsha.\n\n\n\nCircuit Complexity, Communication and Query Complexity, Analysis of Boolean functions, Data Structures.\n\n\n\n\nPhD in Computer Science | 2023  Tata Institute of Fundamental Research, Mumbai.\nMSc in Computer Science | 2014  Chennai Mathematical Institute, Chennai.\nBSc(Hons.) in Mathematics and Computer Science | 2012  Chennai Mathematical Institute, Chennai."
+  },
+  {
+    "objectID": "v2_dev/src/pages/about.html#research-interests",
+    "href": "v2_dev/src/pages/about.html#research-interests",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Circuit Complexity, Communication and Query Complexity, Analysis of Boolean functions, Data Structures."
+  },
+  {
+    "objectID": "v2_dev/src/pages/about.html#education",
+    "href": "v2_dev/src/pages/about.html#education",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "PhD in Computer Science | 2023  Tata Institute of Fundamental Research, Mumbai.\nMSc in Computer Science | 2014  Chennai Mathematical Institute, Chennai.\nBSc(Hons.) in Mathematics and Computer Science | 2012  Chennai Mathematical Institute, Chennai."
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/index.html",
+    "href": "v2_dev/src/pages/links/index.html",
+    "title": "Useful Links & Resources",
+    "section": "",
+    "text": "ETH Conference Search Tool - A comprehensive database for searching academic conferences and events\n\n\n\n\n\nGoogle Scholar - Search across scholarly literature\narXiv - Open access archive for scholarly articles\nDBLP - Computer Science Bibliography\nECCC - Electronic Colloquium on Computational Complexity\n\n\n\n\n\nZotero - Reference management software\nObsidian - Knowledge base and note-taking\nNotion - All-in-one workspace for notes and collaboration"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/index.html#research-tools",
+    "href": "v2_dev/src/pages/links/index.html#research-tools",
+    "title": "Useful Links & Resources",
+    "section": "",
+    "text": "ETH Conference Search Tool - A comprehensive database for searching academic conferences and events\n\n\n\n\n\nGoogle Scholar - Search across scholarly literature\narXiv - Open access archive for scholarly articles\nDBLP - Computer Science Bibliography\nECCC - Electronic Colloquium on Computational Complexity\n\n\n\n\n\nZotero - Reference management software\nObsidian - Knowledge base and note-taking\nNotion - All-in-one workspace for notes and collaboration"
+  },
+  {
+    "objectID": "v2_dev/src/pages/links/portugal.html",
+    "href": "v2_dev/src/pages/links/portugal.html",
+    "title": "Life in Portugal",
+    "section": "",
+    "text": "Tasks\n\n\n\n\n\n\nPassport\n\n\n\n\n\nTo re-new or get a new Indian Passport\n\nCreate an account on the Passport Seva webpage\nSchedule an appointment by paying around Rupees 1500(Non-Tatkal)/3000(Tatkal).\nDocuments needed:\n\nAADHAAR,\nPAN card\n2 Photos according to specifications.\nTatkaal/ Non Tatkaal\nTatkaal mode can get a passport wihtin a week, sometimes within 3days. Non-tatkaal takes a month.\n\n\n\n\n\n\n\n\n\n\n\nVisa\n\n\n\n\n\nYou can get the necessary information at this VFS page. The Visa issued will have a validity of 4 months, during this period you are expected to get a residence permit. Here is a list of items you need for your application:\n\n\n\n\n\n\nVisa Appointment\n\n\n\n\n\nKnow your Visa category before appointment. You may book the appointment the appointment from the VFS page.\n\n\n\n\n\n\nTip\n\n\n\n\n\nIf you are not able to book an appointment online. Contact the embassy for an appointment, or ask you host to contact the embassy for an appointment.\n\n\n\n\n\n\n\n\n\n\n\n\nVisa category\n\n\n\n\n\n\nPostdoc : D3/D4\nDependent Visa: DF\n\n\n\n\n\n\n\n\n\n\nPolice Clearance Certificate (PCC)\n\n\n\n\n\n\nBook an appointment for from the Passport seva portal.\nCarry you passport and AADHAAR card on the scheduled date and time to the designated PAssport seva kendra. - With a couple of Photographs. (refer to the webpage to be sure of all the necessary documents)\nThe police will come to your address to verfiy and typically you should get your PCC by post in 10 days(at most).\n\n\n\n\n\n\n\n\n\n\nMeans of Subsistance\n\n\n\n\n\n\nOffer letter\nBank statement (Optional)\n\n\n\n\n\n\n\n\n\n\nFlight Tickets\n\n\n\n\n\nIt takes around 15 days for the visa application to process and to get back your passport by mail. So, book you tickets accordingly.\n\n\n\n\n\n\n\n\n\nMedical and Travel Insurance\n\n\n\n\n\nThe Visa you get will have a validity of 4 months. So, you are expected to get a policy for atleast 4 months.\n\n\n\n\nOffer letter\n\n\n\n\n\n\n\nApostille\n\n\n\n\n\n\nThe Visa office expects certain documents like your PhD degree and marriage certificate to be apostilled.\nApostille is like an attestation process done by the Ministry of External Affairs(MEA) of India.\n\n\n\n\n\n\n\nThere are several services which you can find online based in Delhi which get this done for a fee of approximately 1000 Rupees per document.\n\n\n\n\n\n\n\n2 Photos accordig to the Visa office’s specifications.\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nDuring the appointment check if you can also get an appointment for Residence permit in Portugal. In many cases, the visa issued would have a link of the appointment for Residence permit printed on it.\n\n\n\nPlease double-check this list with the check-list which is part of Visa application.\n\n\n\n\n\n\n\n\n\nNIF\n\n\n\n\n\nTax identity is very important to do almost everything else in Portugal. For example: NISS, Contract, Apartment, Residence Permit, SNS, Bank Account etc.\n\nStanding in line at early in the morning at your favourite Loja da Cidadao to get an appointment for later in the day.\nOnce you get the appointment, you host needs to be present during the appointment to vouch for you.\n\n\n\n\n\n\n\nTip\n\n\n\n\n\n\nWe showed up at the Loja da Cidadao at Saldanha at 4 AM and stood in line till 9 AM to get the appointment.\nI heard the Loja at Larenjeiras is better. (Worth a try!)\n\n\n\n\n\n\n\n\n\n\n\n\n\nFCUL contract\n\n\n\n\n\n\nYour contract will be prepared by the office once you give them your NIF and a temporary address.\nYou need the signed contract for getting a Bank Account among other things.\nAfter signing the contract, you need to get a bank account to get you salary which is ususally around 23rd of each month.\n\n\n\n\n\n\n\n\n\n\nNISS\n\n\n\n\n\nSocial Security number. Getting this easy and not as stressful as getting NIF.\nregister for your NISS at this NISS webpage you will get an e-mail within a week with a phone number. You need to call the given number and book an appointment to collect your NISS document by hand at a ISS office.\n\n\n\n\n\n\nThe appointments in Lisbon city are not immediate. If it it is urgent, you can ask them for earliest appointmet in some far away place which they will be happy to suggest.\n\n\n\n\n\n\n\n\n\n\n\n\nResidence Permit\n\n\n\n\n\n\nGetiing an appointment for this is painful if you don’t already have one on your Visa.\nCheck your visa for a link which will take you to the SEF/AIMA webpage with an appointment.\nOtherwise you need to call the AIMA and book an appointment when they are open. This might take a while.\n\n\n\n\n\n\n\nTip\n\n\n\n\n\nIf you search on facebook etc, you might find people who call and book and appointment on your behalf for a fee(could be around 300 euros).\n\n\n\n\n\n\n\n\n\n\n\n\nResidence certificate issued by Junta de Fregusia\n\n\n\n\n\n\nApporoach your local Espaco Cidadao(these are different from Loja da Cidadao) with a filled in application and you would get it in a couple of days.\nThere are ways you could residence certificate Get two people who belong to the same parish to vouch for you.\nProvide your utlities bills with your address as proof. This is needed for your residence permit.\n\n\n\n\n\n\n\n\n\n\nSNS number\n\n\n\n\n\nServico Nacional de Saude\n\n\n\n\n\n\n\n\n\nADSE (health insurances)\n\n\n\n\n\n\n\n\n\n\n\n\nChave Movel\n\n\n\n\n\n\n\n\n\n\n\n\nBanking\n\n\n\n\n\n\n\n\n\n\n\nMB way\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTransport\n\n\n\n\n\n\n\n\n\n\n\nMetro\n\n\n\n\n\n\n\n\n\n\n\n\nGira\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApartment\n\n\n\n\n\n\n\n\n\n\n\nContract\n\n\n\n\n\n\n\n\n\n\n\n\nInternet\n\n\n\n\n\n\n\n\n\n\n\n\nWater\n\n\n\n\n\n\n\n\n\n\n\n\nElectricity and Gass\n\n\n\n\n\n\n\n\n\n\n\nResources\n\n\n\n\n\n\nLoja da Cidadao\n\n\n\n\n\n\n\n\n\n\n\n\nEspaco Cidadao\n\n\n\n\n\n\n\n\n\n\n\n\nFinancas"
   }
 ]

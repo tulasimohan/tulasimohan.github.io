@@ -1,0 +1,250 @@
+/*-- scss:defaults --*/
+
+// Typography Overrides
+$font-family-sans-serif:
+  'heliotrope_3',
+  system-ui,
+  -apple-system,
+  sans-serif !default;
+$font-family-base:
+  'heliotrope_3',
+  system-ui,
+  -apple-system,
+  sans-serif !default;
+$headings-font-family: 'heliotrope_3', sans-serif !default;
+$font-family-monospace: 'IBMPlexMono', monospace !default;
+
+/*-- scss:rules --*/
+
+/* Typography */
+@font-face {
+  font-family: heliotrope_3;
+  src: url('/assets/fonts/heliotrope_3_regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: amsterdam;
+  font-weight: bold;
+  src: url('/assets/fonts/amsterdam-webfont.woff2') format('woff2');
+}
+
+/* Global Layout */
+html,
+body {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+// Seamless Background Handling
+// To keep particles visible, we allow the body to be slightly transparent
+// and place the color on the particles container or body itself depending on theme.
+body {
+  background-color: var(--quarto-body-bg) !important;
+  color: var(--quarto-body-color) !important;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-color: var(--quarto-body-bg);
+}
+
+/* Elegant Navbar & Footer (Seamless) */
+.navbar,
+footer {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+.navbar-brand {
+  font-family: 'amsterdam', serif !important;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.navbar-nav .nav-link {
+  color: inherit !important;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+    color: $bits-sky !important;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+/* Glass Cards */
+.glass-card {
+  background: rgba(var(--quarto-body-bg-rgb), 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba($bits-gold, 0.15);
+  margin-bottom: 2.5rem;
+  transition: all 0.4s ease;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+    border-color: rgba($bits-gold, 0.3);
+  }
+}
+
+/* Hero Elements */
+.unified-hero-card {
+  @extend .glass-card;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+.hero-profile {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 4px solid white;
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.name-header {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, $bits-blue, $bits-sky);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.1;
+}
+
+.affiliation-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  opacity: 0.9;
+}
+
+.affiliation-subtitle {
+  font-size: 1.3rem;
+  color: $bits-gold;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+/* Buttons */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: $bits-blue;
+  border: 1px solid rgba($bits-blue, 0.1);
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-3px);
+    background: $bits-blue;
+    color: white;
+  }
+}
+
+.btn-icon[aria-label='Email']:hover {
+  background: $bits-red;
+}
+
+.btn-outline-primary {
+  color: $bits-blue;
+  border-color: rgba($bits-blue, 0.3);
+  &:hover {
+    background-color: $bits-blue;
+    border-color: $bits-blue;
+    color: white;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .unified-hero-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  .hero-content {
+    text-align: center;
+  }
+  .name-header {
+    font-size: 2.2rem;
+  }
+}
+
+/* Utility */
+.section-gap {
+  margin-top: 4rem;
+}
+.mt-4 {
+  margin-top: 1.5rem;
+}
