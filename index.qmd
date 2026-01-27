@@ -4,7 +4,7 @@ title: "Tulasimohan Molli"
 layout: full
 toc: false
 sidebar: false
-subtitle: "Incoming Assistant Professor, BITS Pilani"
+subtitle: "Incoming Assistant Professor, </br>BITS Pilani Hyderabad Campus"
 about:
   id: hero-heading
   template: trestles
@@ -17,13 +17,6 @@ about:
       href: "tel:+351920457" 
     - text: "<img src='assets/images/email.png' width='18' alt='Email'>"
       href: "mailto:tulasimohanm@gmail.com"
-description: 
-  "<div style='padding: 10px;'>
-  <img src='assets/images/location.png' alt='Address' style='width: 16px; vertical-align: middle;'> *C 6.2.36* <br> 
-  *Universidad de Lisboa* <br>
-  *Campo Grande* <br>
-  *Lisbon, Portugal.*
-  </div>"
 css: assets/css/about.css
 ---
 
