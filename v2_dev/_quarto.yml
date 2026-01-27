@@ -37,14 +37,12 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - text: Projects
-        href: src/pages/projects/index.qmd
       - text: Research
         href: src/pages/research/index.qmd
-      - text: Interests
-        href: src/pages/interests/index.qmd
-      - text: CV
-        href: assets/documents/CV_2025-09-08.pdf
+      - text: Teaching
+        href: src/pages/teaching.qmd
+      - text: Digital Garden
+        href: src/garden/index.qmd
     right:
       - icon: github
         href: https://github.com/tulasimohan
@@ -61,3 +59,4 @@ website:
         href: https://mathstodon.xyz/@tulasimohan
       - icon: envelope
         href: mailto:tulasimohanm@gmail.com
+

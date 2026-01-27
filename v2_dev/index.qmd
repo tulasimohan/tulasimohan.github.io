@@ -9,13 +9,11 @@ toc: false
 ::: {.g-col-12}
 ::: {.unified-hero-card .animate-fade-up}
 ::: {.hero-profile}
-<img src="/assets/images/profile_pic.jpeg" alt="Profile picture of Tulasimohan Molli" class="profile-pic">
+![](/assets/images/profile_pic.jpeg){.profile-pic alt="Profile picture of Tulasimohan Molli"}
 
-<div class="contact-buttons">
-  <a href="tel:+" class="btn-icon" title="Mobile" aria-label="Phone"><i class="bi bi-phone"></i></a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Sciences,+University+Lisbon" target="_blank" class="btn-icon" title="Address" aria-label="Address"><i class="bi bi-geo-alt"></i></a>
-  <a href="mailto:tulasimohanm@gmail.com" class="btn-icon" title="Mail" aria-label="Email"><i class="bi bi-envelope"></i></a>
-</div>
+::: {.mt-3 .text-center}
+[Download CV](/assets/documents/CV_2025-09-08.pdf){.btn .btn-outline-primary .btn-sm}
+:::
 :::
 
 ::: {.hero-content}
@@ -24,44 +22,75 @@ Tulasimohan Molli
 :::
 
 ::: {.affiliation-title}
-Theoretical Computer Scientist & Researcher
+Incoming Assistant Professor
 :::
 
 ::: {.affiliation-subtitle}
-Postdoctoral Researcher
+BITS Pilani, Hyderabad Campus
 :::
 
 ::: {.affiliation-details}
-**Universidad de Lisboa**<br>
-Previously at TIFR and CMI.
+Starting **January 29, 2026**.
+
+Previously a Postdoctoral Researcher at **ULisboa** (until Oct 2025), working with **Bruno Loff**.
+PhD from **TIFR Mumbai**, advised by Prahladh Harsha.
 :::
 
-<div class="mt-4">
-[Download CV](/assets/documents/CV_2025-09-08.pdf){.btn .btn-outline-primary .btn-sm}
+<div class="contact-buttons">
+  <a href="mailto:tulasimohanm@gmail.com" class="btn-icon" title="Mail" aria-label="Email"><i class="bi bi-envelope"></i></a>
+  <a href="tel:+351920457" class="btn-icon" title="Phone" aria-label="Phone"><i class="bi bi-telephone-fill"></i></a>
+  <a href="https://www.linkedin.com/in/tulasimohan-molli-b206b2164" class="btn-icon" title="LinkedIn" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <a href="https://github.com/tulasimohan" class="btn-icon" title="GitHub" aria-label="GitHub"><i class="bi bi-github"></i></a>
+  <a href="https://scholar.google.com/citations?user=YOUR_ID" class="btn-icon" title="Google Scholar" aria-label="Google Scholar"><i class="bi bi-mortarboard-fill"></i></a>
+  <a href="https://dblp.org/pid/231/6401.html" class="btn-icon" title="DBLP" aria-label="DBLP"><img src="/assets/images/dblp.png" alt="DBLP" style="height: 1.2em; width: auto; vertical-align: middle;"></a>
+  <a href="https://orcid.org/0000-0002-5369-0414" class="btn-icon" title="ORCID" aria-label="ORCID"><svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" style="height: 1.2em; width: auto; vertical-align: middle;"><path d="M256 128c0 70.692-57.308 128-128 128C57.308 256 0 198.692 0 128 0 57.308 57.308 0 128 0c70.692 0 128 57.308 128 128Z" fill="#A6CE39"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h33c30.2 0 44.7 19.6 44.7 39.1 0 16.4-10.5 39.1-44.9 39.1h-32.8v28.9h21.4c15 0 21.4 0 21.4 0zM108.9 141.8h30.6c18 0 28.5-12.8 28.5-24.8 0-14.2-12.2-22.1-29-22.1h-30.1v46.9zM150.4 186.2h-15.4v-28.9h15.4v28.9zM78.6 73.9c-5 0-9-4-9-9s4-9 9-9 9 4 9 9-4 9-9 9z" fill="#FFF"/></svg></a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Sciences,+University+Lisbon" target="_blank" class="btn-icon" title="Address" aria-label="Address"><i class="bi bi-geo-alt-fill"></i></a>
 </div>
 :::
 :::
 :::
-
 :::
 
-<div class="mb-5"></div>
+::: {.mb-5}
+:::
+
+::: {.grid}
+::: {.g-col-12 .g-col-md-6}
+::: {.glass-card .animate-fade-up .delay-100}
+## Research Interests
+
+<ul class="icon-list" style="list-style: none; padding-left: 0;">
+  <li><i class="bi bi-cpu"></i> Circuit Complexity</li>
+  <li><i class="bi bi-chat-left-dots"></i> Communication & Query Complexity</li>
+  <li><i class="bi bi-toggle-on"></i> Analysis of Boolean Functions</li>
+  <li><i class="bi bi-hdd-stack"></i> Data Structures</li>
+</ul>
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.glass-card .animate-fade-up .delay-200}
+## Education
+
+![](/assets/images/tifr_logo.png){height=20 style="vertical-align: middle; margin-right: 10px;"} **PhD in Computer Science** | 2023, </br>Tata Institute of Fundamental Research, Mumbai.
+
+![](/assets/images/cmi_logo.png){height=20 style="vertical-align: middle; margin-right: 10px;"} **MSc in Computer Science** | 2014, </br>Chennai Mathematical Institute, Chennai.
+
+![](/assets/images/cmi_logo.png){height=20 style="vertical-align: middle; margin-right: 10px;"} **BSc (Hons.) in Math & CS** | 2012, </br>Chennai Mathematical Institute, Chennai.
+:::
+:::
+:::
 
 ::: {.grid}
 ::: {.g-col-12}
-<div class="glass-card animate-fade-up delay-200">
+::: {.glass-card .animate-fade-up .delay-200}
 ## <i class="bi bi-newspaper"></i> Latest News
 
+- **2026-01**: Joining BITS Pilani, Hyderabad Campus as an Assistant Professor.
 - **2025-09**: Joined Universidad de Lisboa as a Postdoc.
 - **2025-08**: Paper accepted at [Conference].
 - **2025-07**: Completed PhD defense.
-</div>
+:::
 :::
 :::
 
----
-
-### Recent Updates
-:::{#listing-updates}
-<!-- Auto-listing placeholder -->
-:::

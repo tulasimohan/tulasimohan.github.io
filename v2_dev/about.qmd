@@ -8,9 +8,9 @@ toc: false
 ::: {.g-col-12 .g-col-md-8 .g-start-md-3}
 <div class="glass-card animate-fade-up">
 
-I am a Postdoctoral Researcher at **Universidad de Lisboa**, formerly at TIFR and CMI. My research focuses on theoretical computer science, specifically [User: Add Specific Areas].
+I will be joining **BITS Pilani Hyderabad Campus** as an **Assistant Professor** in the Department of Computer Science and Engineering, starting **Jan 29, 2026**.
 
-I will be joining **BITS Pilani Hyderabad Campus** as an **Assistant Professor** in the Department of Computer Science and Engineering, starting **[Month Year]**.
+Prior to this, I was a Postdoctoral Researcher at **Universidad de Lisboa**, and formerly at TIFR and CMI. My research focuses on theoretical computer science, specifically Circuit Complexity, Communication & Query Complexity, Analysis of Boolean Functions, and Data Structures.
 
 This website is a collection of my academic work, coding projects, and personal learnings. I aim to present complex ideas with clarity and elegance.
 
