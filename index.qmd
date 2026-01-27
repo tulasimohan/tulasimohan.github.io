@@ -4,7 +4,7 @@ title: "Tulasimohan Molli"
 layout: full
 toc: false
 sidebar: false
-subtitle: "Postdoc, FCUL"
+subtitle: "Incoming Assistant Professor, BITS Pilani"
 about:
   id: hero-heading
   template: trestles
@@ -28,7 +28,9 @@ css: assets/css/about.css
 ---
 
 ::: {#hero-heading}
-I am a Postdoctoral Researcher in the Department of Mathematics at [ULisboa](https://www.ulisboa.pt/), working under the supervision of [Bruno Loff](https://brunoloff.wordpress.com/) on the Hardness of Finding Good Algorithms ([HoFGA](https://brunoloff.wordpress.com/hofga/)) project. I am also a member of [LASIGE](https://lasige.pt/), a research unit at the Faculty of Sciences, University of Lisbon ([FCUL](https://ciencias.ulisboa.pt/)).
+I will be joining **[BITS Pilani Hyderabad Campus](https://www.bits-pilani.ac.in/hyderabad/)** as an **Assistant Professor** in the Department of Computer Science and Engineering, starting **Jan 29, 2026**.
+
+Prior to this, I was a Postdoctoral Researcher in the Department of Mathematics at [ULisboa](https://www.ulisboa.pt/), working under the supervision of [Bruno Loff](https://brunoloff.wordpress.com/) on the Hardness of Finding Good Algorithms ([HoFGA](https://brunoloff.wordpress.com/hofga/)) project. I was also a member of [LASIGE](https://lasige.pt/), a research unit at the Faculty of Sciences, University of Lisbon ([FCUL](https://ciencias.ulisboa.pt/)).
 
 I obtained my PhD from Tata Institute of Fundamental Research ([TIFR](https://www.tifr.res.in/)), Mumbai, under the guidance of [Prahladh Harsha](https://www.tcs.tifr.res.in/~prahladh/).
 
