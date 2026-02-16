@@ -1,18 +1,26 @@
 [
   {
-    "listing": "/v2_dev/src/pages/notes.html",
+    "listing": "/test_research.html",
     "items": []
   },
   {
-    "listing": "/src/pages/notes.html",
+    "listing": "/teaching.html",
     "items": []
   },
   {
-    "listing": "/v2_dev/src/pages/projects/index.html",
+    "listing": "/research.html",
     "items": []
   },
   {
-    "listing": "/v2_dev/src/pages/research/index.html",
+    "listing": "/index.html",
     "items": []
+  },
+  {
+    "listing": "/misc/digital-garden/index.html",
+    "items": [
+      "/misc/digital-garden/notes/gardening.html",
+      "/misc/digital-garden/notes/portugal-guide.html",
+      "/misc/digital-garden/notes/sample-note.html"
+    ]
   }
 ]

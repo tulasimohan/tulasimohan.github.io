@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
+<meta name="dcterms.date" content="2026-02-12">
+<meta name="description" content="Notes on growing green things.">
 
-<title>Tulasimohan Molli</title>
+<title>Gardening – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/images/network-nodes.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-73a9c9a4cb442ec1f2b09d13a6a22b35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/images/network-nodes.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-73a9c9a4cb442ec1f2b09d13a6a22b35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,87 +70,27 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-news .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-subtitle","listing-description","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-news'] = new List('listing-news', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="custom.css">
-<meta property="og:title" content="Tulasimohan Molli">
-<meta property="og:description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
-<meta property="og:image" content="https://tulasimohan.github.io/assets/images/BITS_pic.JPG">
+<link rel="stylesheet" href="../../../custom.css">
+<meta property="og:title" content="Gardening – Tulasimohan Molli">
+<meta property="og:description" content="Notes on growing green things.">
+<meta property="og:image" content="https://tulasimohan.github.io/misc/digital-garden/notes/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
-<meta property="og:image:alt" content="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad">
-<meta name="twitter:title" content="Tulasimohan Molli">
-<meta name="twitter:description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
-<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/BITS_pic.JPG">
-<meta name="twitter:image:alt" content="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad">
+<meta name="twitter:title" content="Gardening – Tulasimohan Molli">
+<meta name="twitter:description" content="Notes on growing green things.">
+<meta name="twitter:image" content="https://tulasimohan.github.io/misc/digital-garden/notes/assets/images/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -162,19 +101,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html"> 
+    <a class="nav-link" href="../../../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -183,11 +122,11 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-misc">    
         <li>
-    <a class="dropdown-item" href="./misc/index.html">
+    <a class="dropdown-item" href="../../../misc/index.html">
  <span class="dropdown-text">Overview</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./misc/digital-garden/index.html">
+    <a class="dropdown-item" href="../../../misc/digital-garden/index.html">
  <span class="dropdown-text">Digital Garden</span></a>
   </li>  
     </ul>
@@ -203,101 +142,49 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Gardening</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Hobbies</div>
+  </div>
+  </div>
 
-
-
-<div class="hero-section">
-<div class="hero-image">
-<p><img src="assets/images/BITS_pic.JPG" class="profile-photo img-fluid" alt="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad"></p>
-</div>
-<section id="tulasimohan-molli" class="level1 hero-name hero-text">
-<h1 class="hero-name">Tulasimohan Molli</h1>
-<section id="assistant-professor" class="level3">
-<h3 class="anchored" data-anchor-id="assistant-professor">Assistant Professor</h3>
-<p>Department of Computer Science and Information Systems<br>
-BITS Pilani Hyderabad Campus</p>
-<div class="about-links">
-<p><a href="mailto:tulasimohanm@gmail.com" class="about-link email" aria-label="Email"><i class="bi bi-envelope"></i></a> <a href="tel:+9104066303620" class="about-link phone" aria-label="Phone"><i class="bi bi-telephone"></i></a> <a href="https://maps.app.goo.gl/YourLocation" class="about-link address" aria-label="Office Location"><i class="bi bi-geo-alt"></i></a> <a href="https://twitter.com" class="about-link twitter" aria-label="Twitter/X"><i class="bi bi-twitter"></i></a> <a href="https://github.com/tulasimohan" class="about-link github" aria-label="GitHub"><i class="bi bi-github"></i></a> <a href="https://linkedin.com" class="about-link linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=YOUR_ID" class="about-link scholar" aria-label="Google Scholar"><i class="bi bi-mortarboard-fill"></i></a> <a href="https://dblp.org/pid/231/6401.html" class="about-link dblp" aria-label="DBLP"><img src="assets/images/dblp.png" alt="DBLP" class="dblp-icon"></a> <a href="https://orcid.org/0000-0002-5369-0414" class="about-link orcid" aria-label="ORCID"><svg viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="orcid-svg" aria-hidden="true"><path d="M256 128c0 70.692-57.308 128-128 128C57.308 256 0 198.692 0 128 0 57.308 57.308 0 128 0c70.692 0 128 57.308 128 128Z" fill="#A6CE39"></path><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h33c30.2 0 44.7 19.6 44.7 39.1 0 16.4-10.5 39.1-44.9 39.1h-32.8v28.9h21.4c15 0 21.4 0 21.4 0zM108.9 141.8h30.6c18 0 28.5-12.8 28.5-24.8 0-14.2-12.2-22.1-29-22.1h-30.1v46.9zM150.4 186.2h-15.4v-28.9h15.4v28.9zM78.6 73.9c-5 0-9-4-9-9s4-9 9-9 9 4 9 9-4 9-9 9z" fill="#FFF"></path></svg></a> <a href="https://arxiv.org/a/molli_t_1" class="about-link arxiv" aria-label="arXiv"><img src="assets/images/arxiv-smiley.ico" alt="arXiv" class="arxiv-icon"></a></p>
-</div>
-</section>
-</section>
-</div>
-<section id="research-interests" class="level2 column-page-inset">
-<h2 class="anchored" data-anchor-id="research-interests">Research Interests</h2>
-<p>I specialize in <strong>Theoretical Computer Science</strong>, with research interests spanning Algorithms, Complexity Theory, and Data Structures. My work explores the fundamental limits of computational models using algebraic, analytical, and combinatorial approaches.</p>
-<div class="research-cloud">
-<p><span class="cloud-tag"><i class="bi bi-cpu"></i> Circuit Complexity</span> <span class="cloud-tag"><i class="bi bi-arrow-left-right"></i> Communication &amp; Query Complexity</span> <span class="cloud-tag"><i class="bi bi-code-square"></i> Analysis of Boolean Functions</span> <span class="cloud-tag"><i class="bi bi-diagram-3"></i> Data Structures</span></p>
-</div>
-</section>
-<section id="news" class="level2">
-<h2 class="anchored" data-anchor-id="news">News</h2>
-<div id="listing-news" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1780252200000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Paper Accepted at STOC 2026
-</h5>
-<div class="card-text listing-description delink">
-<p><strong>The natural proofs barrier against data-structure lower-bounds</strong> accepted at <strong>STOC 2026</strong>.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jun 1, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1773081000000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Upcoming Visit
-</h5>
-<div class="card-text listing-description delink">
-<p>Visiting <strong>Tata Institute of Fundamental Research (TIFR)</strong>.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Mar 10, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1769625000000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Joined BITS Pilani
-</h5>
-<div class="card-text listing-description delink">
-<p>Joined <strong>BITS Pilani Hyderabad Campus</strong> as Assistant Professor.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Jan 29, 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
+<div>
+  <div class="description">
+    Notes on growing green things.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-</section>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 12, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>🚧 <strong>Work in Progress</strong> 🚧</p>
+<p>I’m starting to document my gardening journey here. Expect updates on: - Plant care tips - Seasonal planning - My balcony garden progress</p>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -711,7 +598,7 @@ Jan 29, 2026
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./sitemap.html">
+    <a class="nav-link" href="../../../sitemap.html">
 <p>Sitemap</p>
 </a>
   </li>  

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
 
-<title>Tulasimohan Molli</title>
+<title>Research Test – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,20 +73,48 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-news .list');
+    const listingTargetEl = window.document.querySelector('#listing-listing-test-default .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-subtitle','listing-author','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-subtitle","listing-description","listing-date"],
+      searchColumns: ["listing-title","listing-venue_key","listing-year","listing-author","listing-date","listing-venue_tag","listing-categories","listing-bibtex","listing-abstract","listing-links"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-news'] = new List('listing-news', options);
+    window['quarto-listings']['listing-listing-test-default'] = new List('listing-listing-test-default', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing-test-table .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-year','listing-title','listing-venue_key',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
+      
+      searchColumns: ["listing-title","listing-venue_key","listing-year","listing-author","listing-date","listing-venue_tag","listing-categories","listing-bibtex","listing-abstract","listing-links"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing-test-table'] = new List('listing-listing-test-table', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -132,19 +159,15 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="custom.css">
-<meta property="og:title" content="Tulasimohan Molli">
-<meta property="og:description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
-<meta property="og:image" content="https://tulasimohan.github.io/assets/images/BITS_pic.JPG">
+<meta property="og:title" content="Research Test – Tulasimohan Molli">
+<meta property="og:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
-<meta property="og:image:alt" content="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad">
-<meta name="twitter:title" content="Tulasimohan Molli">
-<meta name="twitter:description" content="Welcome to the academic portfolio of Tulasimohan Molli, specializing in Theoretical Computer Science.">
-<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/BITS_pic.JPG">
-<meta name="twitter:image:alt" content="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad">
+<meta name="twitter:title" content="Research Test – Tulasimohan Molli">
+<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -162,7 +185,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -203,95 +226,233 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#default-listing" id="toc-default-listing" class="nav-link active" data-scroll-target="#default-listing">Default Listing</a></li>
+  <li><a href="#table-listing" id="toc-table-listing" class="nav-link" data-scroll-target="#table-listing">Table Listing</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Research Test</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<div class="hero-section">
-<div class="hero-image">
-<p><img src="assets/images/BITS_pic.JPG" class="profile-photo img-fluid" alt="Tulasimohan Molli - Assistant Professor at BITS Pilani Hyderabad"></p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="default-listing" class="level2">
+<h2 class="anchored" data-anchor-id="default-listing">Default Listing</h2>
+<div id="listing-listing-test-default" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="U1RPQw==" data-listing-date-sort="1780252200000">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="" class="no-external">The natural proofs barrier against data-structure lower-bounds</a>
+</h3>
+<div class="listing-subtitle">
+<a href="" class="no-external"></a>
 </div>
-<section id="tulasimohan-molli" class="level1 hero-name hero-text">
-<h1 class="hero-name">Tulasimohan Molli</h1>
-<section id="assistant-professor" class="level3">
-<h3 class="anchored" data-anchor-id="assistant-professor">Assistant Professor</h3>
-<p>Department of Computer Science and Information Systems<br>
-BITS Pilani Hyderabad Campus</p>
-<div class="about-links">
-<p><a href="mailto:tulasimohanm@gmail.com" class="about-link email" aria-label="Email"><i class="bi bi-envelope"></i></a> <a href="tel:+9104066303620" class="about-link phone" aria-label="Phone"><i class="bi bi-telephone"></i></a> <a href="https://maps.app.goo.gl/YourLocation" class="about-link address" aria-label="Office Location"><i class="bi bi-geo-alt"></i></a> <a href="https://twitter.com" class="about-link twitter" aria-label="Twitter/X"><i class="bi bi-twitter"></i></a> <a href="https://github.com/tulasimohan" class="about-link github" aria-label="GitHub"><i class="bi bi-github"></i></a> <a href="https://linkedin.com" class="about-link linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=YOUR_ID" class="about-link scholar" aria-label="Google Scholar"><i class="bi bi-mortarboard-fill"></i></a> <a href="https://dblp.org/pid/231/6401.html" class="about-link dblp" aria-label="DBLP"><img src="assets/images/dblp.png" alt="DBLP" class="dblp-icon"></a> <a href="https://orcid.org/0000-0002-5369-0414" class="about-link orcid" aria-label="ORCID"><svg viewbox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="orcid-svg" aria-hidden="true"><path d="M256 128c0 70.692-57.308 128-128 128C57.308 256 0 198.692 0 128 0 57.308 57.308 0 128 0c70.692 0 128 57.308 128 128Z" fill="#A6CE39"></path><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h33c30.2 0 44.7 19.6 44.7 39.1 0 16.4-10.5 39.1-44.9 39.1h-32.8v28.9h21.4c15 0 21.4 0 21.4 0zM108.9 141.8h30.6c18 0 28.5-12.8 28.5-24.8 0-14.2-12.2-22.1-29-22.1h-30.1v46.9zM150.4 186.2h-15.4v-28.9h15.4v28.9zM78.6 73.9c-5 0-9-4-9-9s4-9 9-9 9 4 9 9-4 9-9 9z" fill="#FFF"></path></svg></a> <a href="https://arxiv.org/a/molli_t_1" class="about-link arxiv" aria-label="arXiv"><img src="assets/images/arxiv-smiley.ico" alt="arXiv" class="arxiv-icon"></a></p>
+<div class="delink listing-description"><a href="" class="no-external">
+</a></div>
 </div>
-</section>
-</section>
-</div>
-<section id="research-interests" class="level2 column-page-inset">
-<h2 class="anchored" data-anchor-id="research-interests">Research Interests</h2>
-<p>I specialize in <strong>Theoretical Computer Science</strong>, with research interests spanning Algorithms, Complexity Theory, and Data Structures. My work explores the fundamental limits of computational models using algebraic, analytical, and combinatorial approaches.</p>
-<div class="research-cloud">
-<p><span class="cloud-tag"><i class="bi bi-cpu"></i> Circuit Complexity</span> <span class="cloud-tag"><i class="bi bi-arrow-left-right"></i> Communication &amp; Query Complexity</span> <span class="cloud-tag"><i class="bi bi-code-square"></i> Analysis of Boolean Functions</span> <span class="cloud-tag"><i class="bi bi-diagram-3"></i> Data Structures</span></p>
-</div>
-</section>
-<section id="news" class="level2">
-<h2 class="anchored" data-anchor-id="news">News</h2>
-<div id="listing-news" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1780252200000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Paper Accepted at STOC 2026
-</h5>
-<div class="card-text listing-description delink">
-<p><strong>The natural proofs barrier against data-structure lower-bounds</strong> accepted at <strong>STOC 2026</strong>.</p>
-</div>
-<div class="card-attribution card-text-small end">
+<div class="metadata">
+<a href="" class="no-external">
 <div class="listing-date">
 Jun 1, 2026
 </div>
+<div class="listing-author">
+Bruno Loff, Michal Koucký, Tulasimohan Molli, Michael Saks
+</div>
+</a>
 </div>
 </div>
-</div></a>
+<div class="quarto-post image-right" data-index="1" data-categories="Q0NDJTJDYXJYaXYlMkNFQ0ND" data-listing-date-sort="1688149800000">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="" class="no-external">Criticality of AC0 formulae</a>
+</h3>
+<div class="listing-subtitle">
+<a href="" class="no-external"></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1773081000000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Upcoming Visit
-</h5>
-<div class="card-text listing-description delink">
-<p>Visiting <strong>Tata Institute of Fundamental Research (TIFR)</strong>.</p>
+<div class="delink listing-description"><a href="" class="no-external">
+</a></div>
 </div>
-<div class="card-attribution card-text-small end">
+<div class="metadata">
+<a href="" class="no-external">
 <div class="listing-date">
-Mar 10, 2026
+Jul 1, 2023
+</div>
+<div class="listing-author">
+Prahladh Harsha, Tulasimohan Molli, Ashutosh Shankar
+</div>
+</a>
 </div>
 </div>
+<div class="quarto-post image-right" data-index="2" data-categories="RlNUVENTJTJDYXJYaXY=" data-listing-date-sort="1638297000000">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="" class="no-external">Tight Chang’s lemma type bounds for Boolean functions</a>
+</h3>
+<div class="listing-subtitle">
+<a href="" class="no-external"></a>
 </div>
-</div></a>
+<div class="delink listing-description"><a href="" class="no-external">
+</a></div>
 </div>
-<div class="g-col-1" data-index="2" data-listing-date-sort="1769625000000">
-<a href="" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Joined BITS Pilani
-</h5>
-<div class="card-text listing-description delink">
-<p>Joined <strong>BITS Pilani Hyderabad Campus</strong> as Assistant Professor.</p>
-</div>
-<div class="card-attribution card-text-small end">
+<div class="metadata">
+<a href="" class="no-external">
 <div class="listing-date">
-Jan 29, 2026
+Dec 1, 2021
+</div>
+<div class="listing-author">
+Sourav Chakraborty, Nikhil S. Mande, Rajat Mittal, Tulasimohan Molli, Manaswi Paraashar, Swagato Sanyal
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="RlNUVENTJTJDSm91cm5hbCUyQ1JTQSUyQ2FyWGl2JTJDRUNDQw==" data-listing-date-sort="1609439400000">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="" class="no-external">Probabilistic degree of OR over the Reals</a>
+</h3>
+<div class="listing-subtitle">
+<a href="" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="" class="no-external">
+</a></div>
+</div>
+<div class="metadata">
+<a href="" class="no-external">
+<div class="listing-date">
+Jan 1, 2021
+</div>
+<div class="listing-author">
+Siddharth Bhandari, Prahladh Harsha, Tulasimohan Molli, Srikanth Srinivasan
+</div>
+</a>
 </div>
 </div>
 </div>
-</div></a>
+<div class="listing-no-matching d-none">No matching items</div>
 </div>
+</section>
+<section id="table-listing" class="level2">
+<h2 class="anchored" data-anchor-id="table-listing">Table Listing</h2>
+<div id="listing-listing-test-table" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-test-table-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-test-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-venue_key" data-direction="asc">
+        venue_key
+      </option>
+      <option value="listing-year" data-direction="asc">
+        year
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+
+<th>
+<a class="sort" data-sort="listing-year" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">year</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-venue_key" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">venue_key</a>
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-categories="U1RPQw==" data-listing-date-sort="1780252200000" data-listing-title-sort="The natural proofs barrier against data-structure lower-bounds">
+<td>
+<span class="listing-year">2026</span>
+</td>
+<td>
+<span class="listing-title">The natural proofs barrier against data-structure lower-bounds</span>
+</td>
+<td>
+<span class="listing-venue_key">STOC</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="Q0NDJTJDYXJYaXYlMkNFQ0ND" data-listing-date-sort="1688149800000" data-listing-title-sort="Criticality of AC0 formulae">
+<td>
+<span class="listing-year">2023</span>
+</td>
+<td>
+<span class="listing-title">Criticality of AC0 formulae</span>
+</td>
+<td>
+<span class="listing-venue_key">CCC</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="RlNUVENTJTJDYXJYaXY=" data-listing-date-sort="1638297000000" data-listing-title-sort="Tight Chang's lemma type bounds for Boolean functions">
+<td>
+<span class="listing-year">2021</span>
+</td>
+<td>
+<span class="listing-title">Tight Chang’s lemma type bounds for Boolean functions</span>
+</td>
+<td>
+<span class="listing-venue_key">FSTTCS</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="RlNUVENTJTJDSm91cm5hbCUyQ1JTQSUyQ2FyWGl2JTJDRUNDQw==" data-listing-date-sort="1609439400000" data-listing-title-sort="Probabilistic degree of OR over the Reals">
+<td>
+<span class="listing-year">2021</span>
+</td>
+<td>
+<span class="listing-title">Probabilistic degree of OR over the Reals</span>
+</td>
+<td>
+<span class="listing-venue_key">FSTTCS</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 
