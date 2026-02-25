@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-filename','listing-file-modified',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-image','listing-names',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -239,39 +239,13 @@ window.Quarto = {
 <p>This directory compiles fish names across various languages, sourced from Bava’s Kitchen.</p>
 <div id="listing-fish-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-fish-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-fish-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-filename" data-direction="asc">
-        File Name
-      </option>
-      <option value="listing-file-modified-sort" data-direction="asc">
-        Modified - Oldest
-      </option>
-      <option value="listing-file-modified-sort" data-direction="desc">
-        Modified - Newest
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
 <div class="row g-4 list">
-<pre><code>&lt;div class="col-md-4 col-sm-6 mb-4"&gt;
-  &lt;div class="card h-100 shadow-sm"&gt;
-    
-    &lt;div class="card-body"&gt;
-      &lt;h5 class="card-title listing-title"&gt;&lt;/h5&gt;
-      &lt;div class="card-text text-muted small mt-3"&gt;
-        
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>

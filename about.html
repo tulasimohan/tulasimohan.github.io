@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-filename','listing-file-modified',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-start_year','listing-end_year','listing-role','listing-place_id','listing-place_name','listing-category',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -248,16 +248,6 @@ window.Quarto = {
 </div>
 <div id="listing-listing-about-timeline" class="quarto-listing quarto-listing-container-custom">
 <div class="about-timeline">
-
-  
-
-<div class="timeline-item">
-<div class="timeline-year"> - </div>
-<div class="timeline-role"></div>
-<div class="timeline-inst">
-
-</div>
-</div>
 
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
