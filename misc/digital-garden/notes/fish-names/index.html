@@ -86,8 +86,9 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-title','listing-image','listing-names',{ data: ['index'] },{ data: ['categories'] }],
-      
-      searchColumns: [],
+      page: 50,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-image","listing-names"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -239,15 +240,1895 @@ window.Quarto = {
 <p>This directory compiles fish names across various languages, sourced from Bava’s Kitchen.</p>
 <div id="listing-fish-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-fish-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-fish-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-image" data-direction="asc">
+      </option>
+      <option value="listing-names" data-direction="asc">
+        names
+      </option>
+    </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
 <div class="row g-4 list">
-
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Allied kingfish/Amberjack</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Punnara Meen, Punnaara</li>
+                
+                  <li><strong>Arabic:</strong> Hamam,Halwayo,Inch,Intias,Intyâs,Jibb,Sholah,Tsola</li>
+                
+                  <li><strong>English:</strong> Allied kingfish, Amberjack, Great amberfish, Great yellowtail, Greater amberjack, Greater amberjack (German: Grosse Bernsteinmakrele) , Greater yellowtail, jenny lind, purplish amberjack, Rock salmon,Sailor’s choice,Samson fish, Yellow tail</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Anchovy</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Nethili, Kozhuva, Natholi, Netha , Nathal</li>
+                
+                  <li><strong>Tamil:</strong> Nethali, Nethili, Thogai meen</li>
+                
+                  <li><strong>Telugu:</strong> Nethallu, poorava ,Kelba, Poravallu</li>
+                
+                  <li><strong>Kannada:</strong> Bolingei Kollathuru</li>
+                
+                  <li><strong>Other:</strong> Capsali Mandli(konkani) Phasa, Phansa(bengali)Purasa, Churali Patua, Dinasi, motyala, Enaga, Onaga, Phansi</li>
+                
+                  <li><strong>Arabic:</strong> Barriya, Phyasa, padni(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Barracuda (Sea Pike)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Neduva, chilavu, thinda,Koduva, Cheela, Thiruthakkadian, Sheelavu, Cheeelahoo</li>
+                
+                  <li><strong>Tamil:</strong> Ooli, Pilinjan, ,Sheela, cheela, goli, gola, oozha, Seela</li>
+                
+                  <li><strong>Telugu:</strong> Jellow</li>
+                
+                  <li><strong>Kannada:</strong> Obantol, Kanaki. Konkani: Tonki</li>
+                
+                  <li><strong>Other:</strong> Ghalse, Badvi, Badri, Jaban Tal (Marathi) Goli, Gola, Oozha</li>
+                
+                  <li><strong>Arabic:</strong> Al Gidd, Agam, al kebeer, sabaat Kund(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Barramundi / Bekti(Gaint sea Perch, Begti, Cock-up, seabass)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Chemali narimeen, Nair meen, Nuddee meen, tanad, koduva, kolen</li>
+                
+                  <li><strong>Tamil:</strong> Painee meen, Koduvai, Kodusa Keduwa, Koduwa, koduva, Painee Meen</li>
+                
+                  <li><strong>Telugu:</strong> Pandu Chepa, Pandu Meenu, Pandu Koppa, pandu goppa</li>
+                
+                  <li><strong>Kannada:</strong> Koliji, Mudar menu, koleji</li>
+                
+                  <li><strong>Other:</strong> Koliji,Keliji (Kanada)Bekkut, Durruah (Oriya), Gariyu(gujarati)Khajura,Jiteda, Fitadar, Khajuri (Marathi), Bekti Koral, River snapper, Chonak(chonak), Tamoshi, Englishmans fish</li>
+                
+                  <li><strong>Arabic:</strong> Sarah, Nai sarah Dangri (in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Bluefin Travally</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Vatta, Kuluvel, Oyupara, maduthala</li>
+                
+                  <li><strong>Tamil:</strong> Parai</li>
+                
+                  <li><strong>Telugu:</strong> Kuroogoo-Parah</li>
+                
+                  <li><strong>Other:</strong> Shitap(marathi), Bluefin jack</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Bombay Duck</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Bummili</li>
+                
+                  <li><strong>Tamil:</strong> Vangaravasi,</li>
+                
+                  <li><strong>Telugu:</strong> Vanamattalu , Coco Muttah, Cucah Sawahri</li>
+                
+                  <li><strong>Kannada:</strong> Banguli</li>
+                
+                  <li><strong>Other:</strong> Bombil,Nehare,Bunmalo (Marathi) loitta,Lutia, Bumaloh(Bengali)Bumla, Gulchi (Gujarati) Bombil(Oriya) Bombil, bombala(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Butterfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Nachara</li>
+                
+                  <li><strong>Kannada:</strong> Konande, Bonke(Black-banded trevally) [fish no. 3 in the image]</li>
+                
+                  <li><strong>Other:</strong> Saudalo, karchani(Konkani) Pabda Jhol(Bengali)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Catfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> etta, Valia Etta, Kaari , Thendu Kadu(Freshwater Stinging Catfish)</li>
+                
+                  <li><strong>Tamil:</strong> Kelluthi, Kezhuthi, Mandai, Kaleru, Irung Keletee, Kellettee, Keliru</li>
+                
+                  <li><strong>Kannada:</strong> Thede, Shede, Shede Galiya</li>
+                
+                  <li><strong>Other:</strong> Pungas(freshwater), Tedi jella, jellalu, Ungilayi, Jella,walaga(Telugu) Kamada(Oriya), Kan Magur(Bengali) Walshingala, Walshingti(kanada) Nal Shingala(Marathi) Mogamshede, Pangusg, Shingala,Sangot, Sangtam, Shyade, Sangat, Vari Choongum, Varichundan Mushi</li>
+                
+                  <li><strong>Arabic:</strong> Chim Khen, kumal Khagga, Singhara, Kun (in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Catla(Bengal Carp)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Karakatla, Karaka, Karacatla, Katla,</li>
+                
+                  <li><strong>Tamil:</strong> Catla, Katla, Kendai, Theppu Meenu, Kanavi ,Koora-Kendai , Theppu Meenu ,Thopaameenu , Japan Kendai, Thoppu meen, Yamaneri kendai, Karavai</li>
+                
+                  <li><strong>Telugu:</strong> Botchee, Botchi, Botcha , Krishnabotcha</li>
+                
+                  <li><strong>Other:</strong> Bhakua, Baudhekera , Baudhekra (Assamese),Katla,Pla Kra Ho (Bengali), Bawas,Tambra,Thambra (Gujarati)Boassa,Chepti ,Bhakur,Katla (Hindi)Tambra,Katala,Pla Kra Ho (Marathi),Bahkur,Barkur,Bhakur (Oriya)Theil ,Theila,Thaila (Punjabi),Boassa (Rajasthani)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Clam</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kakka, Eninthti, Kakka matti</li>
+                
+                  <li><strong>Tamil:</strong> Kilinjal, Matti(Vjtlia), inatti ,vari Matti, Panja matti, Vazhi, vazhukkumatti, Chippi(sometimes)</li>
+                
+                  <li><strong>Other:</strong> Tisre, Khubbe, Tisrio, Teesrya</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Cod</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Mullan, Sarghan, Chemmun, panna Mahi mahi</li>
+                
+                  <li><strong>Tamil:</strong> Panna, Kalava</li>
+                
+                  <li><strong>Other:</strong> Gobro(konkan), Kallmurya</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Convict Surgeonfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kurichil, Nelalan, Varipara, Paalla</li>
+                
+                  <li><strong>Tamil:</strong> Kozhimeen,</li>
+                
+                  <li><strong>Kannada:</strong> mada</li>
+                
+                  <li><strong>Telugu:</strong> Mootah</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Crab</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Njandu, Nandu</li>
+                
+                  <li><strong>Tamil:</strong> Nandu</li>
+                
+                  <li><strong>Telugu:</strong> Pitha, Peetha,</li>
+                
+                  <li><strong>Other:</strong> Kekda, Kurlya, Aedi, Nona(Konkan) Kekra, kukri,googoo tanga(in Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> gabgoob, gubgub,saratan sabih</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Cuttle</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Tonadi Kanava, Kalaan Kanava</li>
+                
+                  <li><strong>Tamil:</strong> Kanavai, Totti kanava</li>
+                
+                  <li><strong>Other:</strong> Maya Mach Mayya, mus(in Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> habbar</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Dart(snubnose dart/Silver Pompano)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Peeyada</li>
+                
+                  <li><strong>Tamil:</strong> Kootili, kutili</li>
+                
+                  <li><strong>Kannada:</strong> Kaduvai, Kokkare.</li>
+                
+                  <li><strong>Other:</strong> Ladagoo, Katattitaka</li>
+                
+                  <li><strong>Arabic:</strong> Tallaha, Al sibin, seben Onaf, sonam, sonab(sindhi in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Dolphin Fish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Avvnose, Abanoos</li>
+                
+                  <li><strong>Tamil:</strong> Avlis, Kal vanna,badahlen, Koppurai Kula, ailai</li>
+                
+                  <li><strong>Kannada:</strong> Abanoos</li>
+                
+                  <li><strong>Arabic:</strong> Anfalous, bakti Mahlar, amlooshk, amrusk(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Eel</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Pambu meen, Malanjil , Manangil, Malungulu, Maniangal,malanjal</li>
+                
+                  <li><strong>Tamil:</strong> Vilongu, Vilangu, Seram Pambu, Velangoo, Vlangu</li>
+                
+                  <li><strong>Kannada:</strong> Kencholi, Hari Meenu</li>
+                
+                  <li><strong>Other:</strong> Kamila(Bengali) Ahir(Marathi), Kolaav Barn, Sankh, Saang (in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Emperor/Mula/pigface bream</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> valiya vilmeen, Kurali</li>
+                
+                  <li><strong>Tamil:</strong> valai meen, Kulli kozhi meen, Vannatthi, Vilaimeen</li>
+                
+                  <li><strong>Kannada:</strong> Erimeenu, Kokkare Arabic : shaour, Sheiri Arabi,gahash Mulla, Gadeer(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Fin Bream</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Navara, Kellimeen, Killimeen, Chengavaal, chennavira, henvaara,puthiyappalla kora</li>
+                
+                  <li><strong>Tamil:</strong> Navara, Sennagarai, Navarei, karuppu Mattavan,Changarah, Kandal meen, thullu kendai</li>
+                
+                  <li><strong>Kannada:</strong> Mudumagalu, madmal,madumagala</li>
+                
+                  <li><strong>Telugu:</strong> chalaneera kanti, sallenganti</li>
+                
+                  <li><strong>Other:</strong> Ruppan(bengali)Rain(gujarati)Rani(Marathi),rano krisi, bammi,</li>
+                
+                  <li><strong>Arabic:</strong> sultan Ibrahim, hemamah, hamarah,bassi, abu sena Katti, kolonto(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Finned bulleye</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Unnimary, chuvana, chenvara</li>
+                
+                  <li><strong>Tamil:</strong> Cheena Varai, Kakkasi</li>
+                
+                  <li><strong>Kannada:</strong> Disco menu</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Flying Fish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Tamil:</strong> parava, Para Kola, Kola, Paravai Kola</li>
+                
+                  <li><strong>Kannada:</strong> Parava menu Thuri, Jirri(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Garfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kola Meen, Kolaan, Karu thonamkunhi, Mural, kolan, Kokki(freshwater)</li>
+                
+                  <li><strong>Tamil:</strong> Kola, Mural, Kokkimeen, Vellai murrel, moorel</li>
+                
+                  <li><strong>Kannada:</strong> Kokkare, konti</li>
+                
+                  <li><strong>Other:</strong> Kaikka,Kankely(bengali), tokali(Marathi) Kande toe, havu menu, tole</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Goatfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> manakkam</li>
+                
+                  <li><strong>Tamil:</strong> nagarai, navarai, kal nakharai, kulnaven</li>
+                
+                  <li><strong>Telugu:</strong> Rahtee goolivinda</li>
+                
+                  <li><strong>Kannada:</strong> Kurli, Purli</li>
+                
+                  <li><strong>Arabic:</strong> hedie hammer,alu tamrah, hidi, Sultan ibrahim,kasarmala Manori, kolonto(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Greas Carp fish/ Reba Carp</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Reba, rogu</li>
+                
+                  <li><strong>Tamil:</strong> Poorali, Coala Kendai, Aranjan Podi, Aringal</li>
+                
+                  <li><strong>Telugu:</strong> Arju, Chittahri, Elamosa</li>
+                
+                  <li><strong>Other:</strong> Raig, Batta(Bengali)Podha,Purha(oriya), Panjali, Rewah, Loli</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Grouper(Reef Cod)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kalava, murumeen</li>
+                
+                  <li><strong>Tamil:</strong> kalavan, panni meen, komeri, kelavan</li>
+                
+                  <li><strong>Kannada:</strong> Guri, Gopra, Muri Meenu</li>
+                
+                  <li><strong>Other:</strong> Bile koral</li>
+                
+                  <li><strong>Arabic:</strong> Hammour, Semana, hader, kosher, khulkhull Dhambo, Gisser, Klanch, Golori(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Grunt/Grunter bream/Silver Grunt</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Karukaruppan, Kurukuruppan</li>
+                
+                  <li><strong>Kannada:</strong> Thondakappe,Thondo</li>
+                
+                  <li><strong>Tamil:</strong> Cheri, Ghorakan, Kadichani, Kakan, Korukkai, Seraiah, Kalianthalai, komkee,Kalianthalai, Komkee, Kurumutti, Mullankra, Pullikurimeen</li>
+                
+                  <li><strong>Telugu:</strong> Gorakka,Karuppi</li>
+                
+                  <li><strong>Other:</strong> Karkara(marathi)</li>
+                
+                  <li><strong>Arabic:</strong> Nagroor, Nagrur, Nakroor</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Herring gaint</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Vallipoomen</li>
+                
+                  <li><strong>Tamil:</strong> Mooran Kenda,Manna, Allathi, Ullahti</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Herring(5 spot)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Tamil:</strong> koimeen,nunalai</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Herring(Indian)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kannan Mathi</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Hilsa/Indian shad</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Paluva</li>
+                
+                  <li><strong>Tamil:</strong> Ullam, Oolum, Vengannai, Sevva</li>
+                
+                  <li><strong>Other:</strong> Kodal Swadi, Paliya, Palasa, Mallas(kanada)Hilsa, Peddi(Vonog), killalu(telugu),ilisg(bangle), Chaksi(Marathi)Palwar, tikki palwar(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Horse Mackerel</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Vankaad, Chamba, Koolipara, para, Vangada, Kanni Ayala</li>
+                
+                  <li><strong>Tamil:</strong> Parai, Paarai, Vangada, Puli Parai, Thenga Parai, Vengadai Parai, Kilisai</li>
+                
+                  <li><strong>Kannada:</strong> Bangada(big eye scad), Kodanate, Goukae(hard tail)</li>
+                
+                  <li><strong>Other:</strong> Hado bangdo(Konkani)Par(Telugu)</li>
+                
+                  <li><strong>Arabic:</strong> busaimy</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Indian Scad</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kozhiyala, Thiriyan,Vatta Kanni or Vattankanni(Big eye scad)</li>
+                
+                  <li><strong>Tamil:</strong> Parai/Paarai. Kumara parai, Kilichai</li>
+                
+                  <li><strong>Kannada:</strong> thidumpu</li>
+                
+                  <li><strong>Arabic:</strong> Jinnis, Sima Seem(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Jewfish(Ghol, croaker)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kora, Manham, pallikora, Maham</li>
+                
+                  <li><strong>Tamil:</strong> Kathalai, Panna, kopayen, Vari Kathalai,vanakathal,vellai kathalai, Kora</li>
+                
+                  <li><strong>Telugu:</strong> pullipanna,gorasa,tella,katchelu,goraka</li>
+                
+                  <li><strong>Kannada:</strong> Ghoti</li>
+                
+                  <li><strong>Other:</strong> Bara Poa, Lambu(bengali)dodyaro(konkani)Poma, Goli, Balvi, Dodi, Dantya,Bengal corvine, vella jaltelle,karoos katlellr,bola</li>
+                
+                  <li><strong>Arabic:</strong> Nagroor,shimahi Mushka, chan, boro, tont(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">King Fish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Tamil:</strong> vajaram, kadal viral,batang,kuluval, Kadavara, Kadal-viral,Cuddul-verarl,Cuddal-verarl</li>
+                
+                  <li><strong>Telugu:</strong> Vajaram, Peddah-mottah</li>
+                
+                  <li><strong>Kannada:</strong> surmai</li>
+                
+                  <li><strong>Other:</strong> surmai,visonu, viswon , Modasa (Gujarati) Madusa ,Muddus,sakla, Sakala (Marathi) Sanghta, Aangh, Sanglor(in Pakistan – sindhi and balochi), Cobia(Black King fish)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Leatherskin (Queenfish)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Leather, koda</li>
+                
+                  <li><strong>Tamil:</strong> Theera, Katta, Tol Para</li>
+                
+                  <li><strong>Kannada:</strong> Palai-meenu</li>
+                
+                  <li><strong>Arabic:</strong> Alsain,lihlah,Zelaa, Bassardareb Aal, Saram,(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Lizard fish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Arranna</li>
+                
+                  <li><strong>Tamil:</strong> Thumbili, thanni panna</li>
+                
+                  <li><strong>Telugu:</strong> Cade mottah</li>
+                
+                  <li><strong>Kannada:</strong> Aranai meenu</li>
+                
+                  <li><strong>Arabic:</strong> Macarona, Abu al leban, baram Koniari, bombala(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Lobster</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Konjan</li>
+                
+                  <li><strong>Tamil:</strong> Singi Raal, Kalral, Singi Erali, Maaku Eral, Kal eral</li>
+                
+                  <li><strong>Kannada:</strong> konju Kikat, kikka(Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> Kufea, shurkh al amaaq</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Mackerel</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Ayala, Aila</li>
+                
+                  <li><strong>Tamil:</strong> kanangeluthi, Kana Kayuthai, kanaam, keluthi aila,Kumla, Augalai, Ailai, Kanangeluthi</li>
+                
+                  <li><strong>Kannada:</strong> Bangde,Banguda, Telbangade</li>
+                
+                  <li><strong>Telugu:</strong> Kannangadatha,kanagarthalu</li>
+                
+                  <li><strong>Other:</strong> Bangda, Bangdo, Bangade,</li>
+                
+                  <li><strong>Arabic:</strong> Basha, garfa,bagha Srmai,surmaya, bangra(Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Malabar Trevally</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Paara</li>
+                
+                  <li><strong>Tamil:</strong> Paarai, Thol Parai</li>
+                
+                  <li><strong>Kannada:</strong> Kodavai, Bonke, Long fin trevally- Bonke koduvai</li>
+                
+                  <li><strong>Arabic:</strong> Rabeeb, Sal, Jash, glaaef Bangra, kakkar,pattar(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Malabar thryssa/Malabar Anchovy</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Manangu, Manang, Thryssa purava</li>
+                
+                  <li><strong>Tamil:</strong> poruva, poorava, Nedum poruva</li>
+                
+                  <li><strong>Kannada:</strong> Tharave, Larrae manangu</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Mangrove Jack(Mangrove red snapper)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kalavayan</li>
+                
+                  <li><strong>Tamil:</strong> Seppilli, Vekkattai, Thokkal, Pullikarayan Noolani</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Milkfish(White Mullet)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Poomeen,</li>
+                
+                  <li><strong>Tamil:</strong> Chano chanos, Palmeen, Paal Kendai, Palai meen</li>
+                
+                  <li><strong>Telugu:</strong> palabontha</li>
+                
+                  <li><strong>Kannada:</strong> Hoovu menu, Hoomeenu</li>
+                
+                  <li><strong>Arabic:</strong> Nemara, Eiffah Ghonshi, Murru, Murra(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Moonfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Ambattan Para</li>
+                
+                  <li><strong>Tamil:</strong> Kannadi Karel, Amattikatti, Ambattan para</li>
+                
+                  <li><strong>Kannada:</strong> Hakkimeen</li>
+                
+                  <li><strong>Gujarathi:</strong> Vaniani</li>
+                
+                  <li><strong>Arabic:</strong> Halwayou</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Mrigal(Cauvery White Carp)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Venkanda, Venkenda, Vellaranjan, Mrigal, Mrigalam, Venkata</li>
+                
+                  <li><strong>Tamil:</strong> Mrigal, Venkendai, Venkendai, Pudukendai, Mrigala, Arinjan , Dudu Kendai, Vencandi, Mrigala, Gudu Kendai</li>
+                
+                  <li><strong>Telugu:</strong> Arju, Yerramosu, Aruzu, Ballalamosa, Yerramosa kannada: Mrigal, Mrigala, Dodda-arja</li>
+                
+                  <li><strong>Other:</strong> Mrigal, Mrigala (Bengali) Mirka, Mariga, Mirrgah (Assamese) Morakhee, Nagari (Gujarati)Nain, Nainee, Narain, Mirki, Mrigal (Hindi) Mirga,Mirya, Mrigal (Marathi) Mirgali , Mirikali,Mirrga , Mirrgah (Oriya), Mori , Movakha (Punjabi)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Mullet</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Thiruta, maalan , Mallan, grey mullet-Thirutha, Red mullet – Kanambu</li>
+                
+                  <li><strong>Tamil:</strong> Madavai kendai, Saala(small), Kavyangalu, velisa, Surada, madavakandai, Chiryakandai, Cheluva kandai, Gejameena kendai</li>
+                
+                  <li><strong>Telugu:</strong> Koniga,bontha parigi, Bontha Chepa, Kathiparego</li>
+                
+                  <li><strong>Kannada:</strong> Male, Mala, Malu, Pare</li>
+                
+                  <li><strong>Other:</strong> Bhangan(bengali)Hunra(in UP and bihar), Bol (in mumbai)Andawai, Boil, Parshey, shev , tali,manakai, Bata, chiryakandai,</li>
+                
+                  <li><strong>Arabic:</strong> Biyah, maid, biah,wagena, arabi , (Red mullet: sultan Ibrahim) Boi, meengh,tagan,mori, chhodi, pharra, murbo, mundi(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Murrel</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Korava,Manathu kannan, Vatton, Vattudi</li>
+                
+                  <li><strong>Tamil:</strong> Viraal, viral meen, koravai, pothi meenp</li>
+                
+                  <li><strong>Telugu:</strong> Korrameenu, Erramatta, mottu, mohkorava, thunda, korava</li>
+                
+                  <li><strong>Other:</strong> Cheng (Bengali), Daku(Marathi) haal, shawl, shol (Assam),Ikan aruan, haruan, ruan, tomam paya (Malaysia), Soali (Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Mussels</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> kadukka, kallummakkaya, kallumakkai,kakka,kadiika, kadalkai, kalliimakai, nilakakka</li>
+                
+                  <li><strong>Tamil:</strong> aazhi, matti,Kallikai, Pachaiali, pachchai ali, chippi</li>
+                
+                  <li><strong>Telugu:</strong> Ala chippa</li>
+                
+                  <li><strong>Other:</strong> pacile, Ajeer, chippi</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Oyster</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Kakka, miriuga, Muni</li>
+                
+                  <li><strong>Tamil:</strong> Sippy, Sippi,niuthlut chippi,muthu sippi–empty oysrer-sippi, live oyster-kavaddi</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Pearl spot/green chromide</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> karimeen, Erimeen</li>
+                
+                  <li><strong>Tamil:</strong> pattai, Seththa Kendai, Palincha, Karassar</li>
+                
+                  <li><strong>Telugu:</strong> Cashimera, Maatalu</li>
+                
+                  <li><strong>Other:</strong> Karimeen, kaagalsi,kaleram kagalsi, ( kalundar-in konkani), Putulkas</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Perch</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Keeri, Kotha, Kallakeedam(Karippidi,karooppu-climbing perch)</li>
+                
+                  <li><strong>Tamil:</strong> Kilichan, Keeli, keechan, Prachi,Palin-Kichan (Panaiyeri kendai, Paunieyri, sennal,-climbing perch))</li>
+                
+                  <li><strong>Other:</strong> Pal(konkan), Naveri(marathi), Gahnu(oriya) (Kawai, koi,-climbing perch)</li>
+                
+                  <li><strong>Telugu:</strong> chamallu,kataili, Baikeeli, kilipothu, ganam (Kavaiyan-climbing perch)</li>
+                
+                  <li><strong>Kannada:</strong> keeli</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Pomfret</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Aavoli, Akoli, Aakoli</li>
+                
+                  <li><strong>Tamil:</strong> vawal, Vavwall, vaval,</li>
+                
+                  <li><strong>Telugu:</strong> Tellachanduva(white), Nalla chanduva, Nalla sandawah(black)</li>
+                
+                  <li><strong>Kannada:</strong> Manji, Bili Manji(silver) Kappu Manji(black)</li>
+                
+                  <li><strong>Other:</strong> sagoti(Konkani)Paplet, chandava, halva, Saranga, poplait, chendu vallu, chanda, foli chanda(silver), Rup Chanda(Chinese),</li>
+                
+                  <li><strong>Arabic:</strong> zubaidy, halwayooh Karopitho, kala-poplet, siak tighlum, kala pithoo(black)-(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Prawns/shrimp</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Konch, chemmeen, Konj</li>
+                
+                  <li><strong>Tamil:</strong> Eral, Eraal, ira</li>
+                
+                  <li><strong>Telugu:</strong> Royyaalu,</li>
+                
+                  <li><strong>Kannada:</strong> Boli etti, etti</li>
+                
+                  <li><strong>Other:</strong> jhinga,chingri,sungat,Chaha,harina,bagda, Royyalu(Telugu) Kalri, madak, jaira, lassa(pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> gambari</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Rabbit fish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Arabic:</strong> safi, sunafi, oran, kalloron Kakina,mahparri(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Rayfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> kottiva, Therandi, Tirandi, therandi</li>
+                
+                  <li><strong>Tamil:</strong> thirukkai,</li>
+                
+                  <li><strong>Telugu:</strong> Teki, belugiri,Tenku</li>
+                
+                  <li><strong>Other:</strong> thorake(Kananda) Waghole(konkani), Shaplapata, Haush(Bengali)waghla, thirukkai Pittan(pakistan) Arabic-Luchmah,abu-safan</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Red Snapper(Mangrove red snapper, river snapper, Jobfish)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Pahari, Chemballi murumeen(black spot snapper)</li>
+                
+                  <li><strong>Tamil:</strong> Sankara, Parithi vela meen, Sudhati, pulariam,sep pilli, Cheppilli, Chenganni,Thokkal,kalavai, Karuvalai, kondal, Seppilli/Noolani(Malabar Red snapper)</li>
+                
+                  <li><strong>Kannada:</strong> Chemballi</li>
+                
+                  <li><strong>Telugu:</strong> Thundava, Rangu, Kaliviya, Korameemu</li>
+                
+                  <li><strong>Other:</strong> Rane, Ranga,choukya, Thamoshi(Konkani),Ratado(Guj)</li>
+                
+                  <li><strong>Arabic:</strong> Hamra(red snapper), Neisarah (blackspot) yezak(jobfish) Umm al durais, kaleb, mergan Hira, hiro, kunla, kanalcha(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Ribbon fish/belt fish/Hairtail</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Vaala, Thalayan, vala (boal- fresh water –attu valai)</li>
+                
+                  <li><strong>Tamil:</strong> Vaalai,Bale, Savalai,Valai, vazhi meen (boal- fresh water –wallah)</li>
+                
+                  <li><strong>Kannada:</strong> Pambole ,Hanbole,Saalai, pambol</li>
+                
+                  <li><strong>Telugu:</strong> Savallu</li>
+                
+                  <li><strong>Other:</strong> Chhuri mach, churi (Bengali)Kamble, Hambli, Baale(konkani) Talwar, tinji, chindi(Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> salsool, humalan</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Rohu (Carp Fish)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Rohu, Rohitham</li>
+                
+                  <li><strong>Tamil:</strong> rohu, Kannadi Kendai</li>
+                
+                  <li><strong>Telugu:</strong> Bocha, Gandu meenu</li>
+                
+                  <li><strong>Other:</strong> Roe, rohiti , row, Rahu, Ruee, Rui, Tapra, Dumra, Tambada masa</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Sailfish (Indian sailfish)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Ola-meen, Olameen</li>
+                
+                  <li><strong>Tamil:</strong> Thalapaththu, Kopparan, Mayilmeen</li>
+                
+                  <li><strong>Gujarathi:</strong> Kunga, Tadmachi</li>
+                
+                  <li><strong>Marathi:</strong> Tadmasa</li>
+                
+                  <li><strong>Arabic:</strong> Faras, Kheil al bahar</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Salmon (Indian Salmon/ Threadfin)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> kaalaa,kora,bameen,</li>
+                
+                  <li><strong>Tamil:</strong> kala,kaala, Thiravalai,</li>
+                
+                  <li><strong>Telugu:</strong> maga, Budathamaga</li>
+                
+                  <li><strong>Kannada:</strong> Darha, Balu, Ramus</li>
+                
+                  <li><strong>Other:</strong> Raavaas, Rawas,ravs,lakhea, Kaala,ravns,ravese, Lakhua</li>
+                
+                  <li><strong>Arabic:</strong> Andag</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Sardines- pilchard are more bony but great taste</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> mathi, chaala(oil saradine-nalla mathi), veloori(white saradine)</li>
+                
+                  <li><strong>Tamil:</strong> mathi,salai, Vellai Suda(White saradine), Paichalai, Kavalai, neethu Kavalai</li>
+                
+                  <li><strong>Telugu:</strong> Kavallu, Noonakaala(Oil sardines), Noona Kavallu</li>
+                
+                  <li><strong>Kannada:</strong> Boothai, buthai, Boige(oil saradine) Pedi, Erabai-deep bodies, Berjal Swadi-white saradine</li>
+                
+                  <li><strong>Other:</strong> kanda,tarlo, Tarsulo(round bellied saradine) (Konkani) Haird (Marathi)Pedvey,chareeaddee, pedi,baige,tarle,trale,tori,bhutai,</li>
+                
+                  <li><strong>Arabic:</strong> Ooma, alfa, aida Palli, palla, goi , mitti(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Sawfish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> vakusravu</li>
+                
+                  <li><strong>Tamil:</strong> Vela, Vezha, Uluvai</li>
+                
+                  <li><strong>Telugu:</strong> yalla Khari-mangar, lair, lairo, suddo, chaiti(Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> syaf</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Seer fish(Spanish mackerel)</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> naymeen,naimeen,ayokora,ayakura,</li>
+                
+                  <li><strong>Tamil:</strong> Vanjaram,naimeem, Savara, Mavulasi, Cheela, Nettaiyan Cheela, Mavuladi</li>
+                
+                  <li><strong>Telugu:</strong> Vanjaram,Konema</li>
+                
+                  <li><strong>Kannada:</strong> neimeenu Arkale, Anjal, Dandi, Bawan,Ayakoorai</li>
+                
+                  <li><strong>Other:</strong> surmai (Konkani)surma mach, surmai, ison, seela(in some places of tamil nadu),</li>
+                
+                  <li><strong>Arabic:</strong> kanad, Chanaad khubat, derak Kalgund, kulgun,Ghore, gore(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Shark</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> sraavu, choraku, Shravu</li>
+                
+                  <li><strong>Tamil:</strong> sura,Sorrah</li>
+                
+                  <li><strong>Kannada:</strong> thatte, balliar(tulu/kannada)</li>
+                
+                  <li><strong>Telugu:</strong> Sora, Soraputtu, Pala sora, Geeda sora</li>
+                
+                  <li><strong>Other:</strong> mori (Konkani)Boalu, zori,sorrah,</li>
+                
+                  <li><strong>Arabic:</strong> jargoor, gursh,lakham, walad Mangra, Pishi kamot, sorapi pishik(Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Silver barfish/ Dorab Wolf herring</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> mulluvala, Vala</li>
+                
+                  <li><strong>Tamil:</strong> karu vaali, Mullu Vallai, Valai</li>
+                
+                  <li><strong>Other:</strong> Korli(Konkani), Karli, Mullibala</li>
+                
+                  <li><strong>Arabic:</strong> Helf</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Silver belly/ Pony fish/silverbelly</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Thali mullen, kaea, karal, mullen, nalla mullen</li>
+                
+                  <li><strong>Tamil:</strong> kaaral podi, kaarai,thata kavel, kavel, ,karal, kara podi</li>
+                
+                  <li><strong>Kannada:</strong> Guruku, Kurchi, kurichi</li>
+                
+                  <li><strong>Other:</strong> Kadal bale, Kurli bale. Kodu bale(kanada) surgutta,velli (Konkani),gurkku,kampa,(khampi-(Konkani)kara(telugu) Mith, Kaanteri, Neela punto(in pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> Saal, Geraish</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Silver biddy/majorras</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Tamil:</strong> uduvan,oodan,udagam, Velludan</li>
+                
+                  <li><strong>Malayalam:</strong> pranjin,kodian purachi</li>
+                
+                  <li><strong>Kannada:</strong> Paiya, Hole bainge,</li>
+                
+                  <li><strong>Other:</strong> Shekti(konkan)</li>
+                
+                  <li><strong>Arabic:</strong> badah,bedha, kass Jerki, Mudro(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Solefish</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> nang, nangu, Manangu</li>
+                
+                  <li><strong>Tamil:</strong> nangu,naaku meen, virahi, Manangu</li>
+                
+                  <li><strong>Kannada:</strong> Nangu Lyamp ,Chirate nangu, Guddel Nangu / Nangu.</li>
+                
+                  <li><strong>Other:</strong> lep(Konkani)moral, repti, leppe, pooli kuchi,sola,</li>
+                
+                  <li><strong>Telugu:</strong> Tamba ratta</li>
+                
+                  <li><strong>Arabic:</strong> lisan, Al thor lesan al-baher Muna swasoo, Phani, bans-patta, buti, swaso(Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Squid</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> kanava</li>
+                
+                  <li><strong>Telugu:</strong> Komiti sanchi,</li>
+                
+                  <li><strong>Tamil:</strong> oosi kanawa, kanavai, kadama Mayya, mus(in Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> naggar</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Tilapia</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Tamil:</strong> kari, neyyi,jilapi,jilehi,thilaepia</li>
+                
+                  <li><strong>Arabic:</strong> boulty</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Tuna</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> choora, chura</li>
+                
+                  <li><strong>Telugu:</strong> Toora chepa,</li>
+                
+                  <li><strong>Tamil:</strong> soorai, vari soorai(skip jack) mas choora</li>
+                
+                  <li><strong>Kannada:</strong> Gedare(Skip jack) Peepa, kedar, gedar, Surai menu(little tuna, kawakawa)</li>
+                
+                  <li><strong>Other:</strong> chura,choora,toona,bugudi,tokke,kawakawa (little tuna)</li>
+                
+                  <li><strong>Arabic:</strong> taban, tuban, shiriwa,zainoop</li>
+                
+                  <li><strong>Pakistan:</strong> Chuki, chunki, Dawan, ulus(kawakawa)kishki(skip jack)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Turbot</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Manthal, Aayiram Pali</li>
+                
+                  <li><strong>Tamil:</strong> Potha, Pothal, Erumei-Nakku</li>
+                
+                  <li><strong>Telugu:</strong> Dodda Nangu, Kolli Nangu , Noree-Nalaka</li>
+                
+                  <li><strong>Other:</strong> Kuppa machli, Haro Jeeb (Gujarati) Bhakas (Marathi) Hajam, dandani, kochuk(Pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> Kubzet al bahar,madas Indian Spiny Turbot,Indian Halibut,Indian Turbot (English)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Vela</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> velavu,vella para</li>
+                
+                  <li><strong>Tamil:</strong> vela meen</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Wahoo</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> Ayakoora Ghore, gore, yahoo(in Pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">White fish/false trevally</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> parava, Kuthuppu, Paravas, Kadu</li>
+                
+                  <li><strong>Tamil:</strong> neer suthumbu, sudumhu, Guthippu</li>
+                
+                  <li><strong>Telugu:</strong> Sadumi Bukko, chilanker(in pakistan)</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Whiting/ Indian whiting/lady fish/sillago</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> poozhan,noongal, poovan, nangol, cudeerah</li>
+                
+                  <li><strong>Tamil:</strong> kilangan, kelangan,kilachi, kelakkan kannada: Kane, nogli</li>
+                
+                  <li><strong>Other:</strong> kisu fish,mudoshi (Konkani), Tular dandi(lady fish) kane, nogli, murdosh, kilanganan Viat, Mushk, Bhambor, Hashoor(in pakistan)</li>
+                
+                  <li><strong>Arabic:</strong> hassom</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4 col-sm-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        
+        <div class="card-body">
+          <h5 class="card-title listing-title anchored">Yellowfin tuna</h5>
+          <div class="card-text text-muted small mt-3">
+            
+              <ul class="list-unstyled mb-0">
+                
+                  <li><strong>Malayalam:</strong> valliya chura, poovan choora</li>
+                
+                  <li><strong>Tamil:</strong> keerai</li>
+                
+                  <li><strong>Kannada:</strong> Kedar, Sooral menu</li>
+                
+                  <li><strong>Arabic:</strong> gaider, thamad</li>
+                
+              </ul>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="fish-listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div>
 
 
