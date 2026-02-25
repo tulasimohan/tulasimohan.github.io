@@ -1,0 +1,30 @@
+[
+  {
+    "title": "CS F211: Data Structures and Algorithms (DSA)",
+    "year_display": "2026",
+    "term_display": "Jan - May",
+    "description": "**Role**: Instructor (Tutorials & Lab). Conducting **2 Tutorials** and **1 Lab** section.<br>Course Instructor: Prof. NL Bhanu Murthy.<br>[Programming Solutions](teaching/dsa-solutions.qmd)",
+    "date": "2026-01-01"
+  },
+  {
+    "title": "CS304: Discrete Structures and Computation",
+    "year_display": "2022",
+    "term_display": "Jan - May",
+    "description": "**Role**: Instructor at *IISER Berhampur*.<br>[Course Page](https://sites.google.com/view/cs304)",
+    "date": "2022-01-01"
+  },
+  {
+    "title": "Theory of Computation",
+    "year_display": "2012",
+    "term_display": "Jan - May",
+    "description": "**Role**: Teaching Assistant at *Chennai Mathematical Institute*.<br>Course Instructor: Prof. Sourav Chakraborty",
+    "date": "2012-01-01"
+  },
+  {
+    "title": "Discrete Mathematics",
+    "year_display": "2012",
+    "term_display": "Jan - May",
+    "description": "**Role**: Teaching Assistant at *Chennai Mathematical Institute*.<br>Course Instructor: Prof. Sourav Chakraborty",
+    "date": "2012-01-01"
+  }
+]
