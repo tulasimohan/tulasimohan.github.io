@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-year_display','listing-term_display','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-year_display','listing-term_display','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: ["listing-title","listing-year_display","listing-term_display","listing-description","listing-date"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -113,9 +113,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-year_display','listing-term_display',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-filename-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-year_display','listing-term_display',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: ["listing-title","listing-year_display","listing-term_display","listing-description","listing-date"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -273,19 +273,80 @@ window.Quarto = {
 <div class="timeline-item" data-index="">
 <div class="timeline-date-label">
 <div class="date-year">
-
+2026
 </div>
 <div class="date-term">
-
+Jan - May
 </div>
 </div>
 <div class="timeline-content">
 <!-- Header: Title -->
 <h5 class="listing-title mb-1 anchored">
+CS F211: Data Structures and Algorithms (DSA)
 </h5>
 <!-- Description -->
 <div class="listing-description mt-2 text-muted">
-
+<p><strong>Role</strong>: Instructor (Tutorials &amp; Lab). Conducting <strong>2 Tutorials</strong> and <strong>1 Lab</strong> section.<br>Course Instructor: Prof.&nbsp;NL Bhanu Murthy.<br><a href="./teaching/dsa-solutions.html">Programming Solutions</a></p>
+</div>
+</div>
+</div>
+<div class="timeline-item" data-index="">
+<div class="timeline-date-label">
+<div class="date-year">
+2022
+</div>
+<div class="date-term">
+Jan - May
+</div>
+</div>
+<div class="timeline-content">
+<!-- Header: Title -->
+<h5 class="listing-title mb-1 anchored">
+CS304: Discrete Structures and Computation
+</h5>
+<!-- Description -->
+<div class="listing-description mt-2 text-muted">
+<p><strong>Role</strong>: Instructor at <em>IISER Berhampur</em>.<br><a href="https://sites.google.com/view/cs304">Course Page</a></p>
+</div>
+</div>
+</div>
+<div class="timeline-item" data-index="">
+<div class="timeline-date-label">
+<div class="date-year">
+2012
+</div>
+<div class="date-term">
+Jan - May
+</div>
+</div>
+<div class="timeline-content">
+<!-- Header: Title -->
+<h5 class="listing-title mb-1 anchored">
+Theory of Computation
+</h5>
+<!-- Description -->
+<div class="listing-description mt-2 text-muted">
+<p><strong>Role</strong>: Teaching Assistant at <em>Chennai Mathematical Institute</em>.<br>Course Instructor: Prof.&nbsp;Sourav Chakraborty</p>
+</div>
+</div>
+</div>
+<div class="timeline-item" data-index="">
+<div class="timeline-date-label">
+<div class="date-year">
+2012
+</div>
+<div class="date-term">
+Jan - May
+</div>
+</div>
+<div class="timeline-content">
+<!-- Header: Title -->
+<h5 class="listing-title mb-1 anchored">
+Discrete Mathematics
+</h5>
+<!-- Description -->
+<div class="listing-description mt-2 text-muted">
+<p><strong>Role</strong>: Teaching Assistant at <em>Chennai Mathematical Institute</em>.<br>Course Instructor: Prof.&nbsp;Sourav Chakraborty</p>
 </div>
 </div>
 </div>
@@ -296,6 +357,22 @@ window.Quarto = {
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="listing-listing-teaching-table" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-teaching-table-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-teaching-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Course
+      </option>
+      <option value="listing-year_display" data-direction="asc">
+        Year
+      </option>
+      <option value="listing-term_display" data-direction="asc">
+        Term
+      </option>
+    </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
@@ -306,30 +383,69 @@ window.Quarto = {
 <tr>
 
 <th>
-Course
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Course</a>
 </th>
 
 <th>
-Year
+<a class="sort" data-sort="listing-year_display" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Year</a>
 </th>
 
 <th>
-Term
+<a class="sort" data-sort="listing-term_display" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Term</a>
 </th>
 
 </tr>
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1772021297482" data-listing-filename-sort="teaching.json">
+<tr data-index="0" data-listing-date-sort="1767225600000" data-listing-title-sort="CS F211: Data Structures and Algorithms (DSA)">
 <td>
-<a href="./data/teaching.json" class="title listing-title">&nbsp;</a>
+<span class="listing-title">CS F211: Data Structures and Algorithms (DSA)</span>
 </td>
 <td>
-<span class="listing-year_display">&nbsp;</span>
+<span class="listing-year_display">2026</span>
 </td>
 <td>
-<span class="listing-term_display">&nbsp;</span>
+<span class="listing-term_display">Jan - May</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-date-sort="1640995200000" data-listing-title-sort="CS304: Discrete Structures and Computation">
+<td>
+<span class="listing-title">CS304: Discrete Structures and Computation</span>
+</td>
+<td>
+<span class="listing-year_display">2022</span>
+</td>
+<td>
+<span class="listing-term_display">Jan - May</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-date-sort="1325376000000" data-listing-title-sort="Theory of Computation">
+<td>
+<span class="listing-title">Theory of Computation</span>
+</td>
+<td>
+<span class="listing-year_display">2012</span>
+</td>
+<td>
+<span class="listing-term_display">Jan - May</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-date-sort="1325376000000" data-listing-title-sort="Discrete Mathematics">
+<td>
+<span class="listing-title">Discrete Mathematics</span>
+</td>
+<td>
+<span class="listing-year_display">2012</span>
+</td>
+<td>
+<span class="listing-term_display">Jan - May</span>
 </td>
 
 </tr>

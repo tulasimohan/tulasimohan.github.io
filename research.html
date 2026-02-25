@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-author','listing-description','listing-date','listing-links','listing-bibtex','listing-venue_key',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-subtitle','listing-author','listing-description','listing-date','listing-links','listing-bibtex','listing-venue_key',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: ["listing-title","listing-venue_key","listing-year","listing-author","listing-date","listing-venue_tag","listing-categories","listing-bibtex","listing-abstract","listing-links"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -113,9 +113,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-venue_tag',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-filename-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-venue_tag',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-filename","listing-file-modified"],
+      searchColumns: ["listing-title","listing-venue_key","listing-year","listing-author","listing-date","listing-venue_tag","listing-categories","listing-bibtex","listing-abstract","listing-links"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -273,20 +273,102 @@ window.Quarto = {
 <div class="quarto-post image-right" data-index="0">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<span class="text-muted" style="font-size: 0.8em;">[]</span>
+The natural proofs barrier against data-structure lower-bounds <span class="text-muted" style="font-size: 0.8em;">[STOC’26]</span>
 </h3>
 <div class="listing-subtitle">
-
+<p>Bruno Loff, Michal Koucký, Tulasimohan Molli, Michael Saks</p>
 </div>
 <div class="listing-links mt-1 d-flex flex-row flex-wrap gap-1 align-items-center">
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark abstract-button d-inline-flex align-items-center" data-abstract-id="abstract-0" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-file-text me-1"></i> Abstract </a></p>
 <p><a href="#" role="button" class="btn btn-sm btn-outline-dark cite-button d-inline-flex align-items-center" data-bibtex-id="bibtex-0" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-quote me-1"></i> Cite </a></p>
+<p><a href="" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-manuscript" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-link-45deg me-1"></i> Manuscript </a></p>
 </div>
 <!-- Hidden Content -->
 <div id="bibtex-0" class="bibtex-hidden" style="display: none;">
-
+<p><span class="citation" data-cites="inproceedings">@inproceedings</span>{LKMS26, author = {Loff, Bruno and Koucký, Michal and Molli, Tulasimohan and Saks, Michael}, title = {The natural proofs barrier against data-structure lower-bounds}, booktitle = {58th Annual ACM Symposium on Theory of Computing (STOC)}, year = {2026} }</p>
 </div>
 <div id="abstract-0" class="abstract-hidden" style="display: none;">
-
+<p>Consider a data structure problem with possible data coming from a set <span class="math inline">\(\mathcal D\)</span>, queries coming from a set <span class="math inline">\(\mathcal Q\)</span>, and in the dynamic case updates coming from a set <span class="math inline">\(\mathcal U\)</span>. Then, the current state of the art in data structure lower bounds is <span class="math inline">\(t = \tilde\Omega(\log |\mathcal Q|)\)</span> for static data structure problems, and <span class="math inline">\(\max(t_{\mathrm q},t_{\mathrm u}) = \tilde\Omega((\log n)^2)\)</span> where <span class="math inline">\(n = \max(|\mathcal Q|,|\mathcal U|,\log |\mathcal D|)\)</span> for dynamic.</p>
+We port Razborov and Rudich’s natural-proofs framework to the setting of static and dynamic data structures in the cell probe model, in a way that strongly suggests this state of the art is unlikely to be improved anytime soon. A similar direction was recently taken also by Korten, Pitassi and Impagliazzo (FOCS 2025) who look at static data structure lower bounds in a different regime of parameters. Our contribution is:
+</div>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1">
+<div class="body">
+<h3 class="no-anchor listing-title">
+Criticality of AC0 formulae <span class="text-muted" style="font-size: 0.8em;">[CCC’23]</span>
+</h3>
+<div class="listing-subtitle">
+<p>Prahladh Harsha, Tulasimohan Molli, Ashutosh Shankar</p>
+</div>
+<div class="listing-links mt-1 d-flex flex-row flex-wrap gap-1 align-items-center">
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark abstract-button d-inline-flex align-items-center" data-abstract-id="abstract-1" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-file-text me-1"></i> Abstract </a></p>
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark cite-button d-inline-flex align-items-center" data-bibtex-id="bibtex-1" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-quote me-1"></i> Cite </a></p>
+<p><a href="https://doi.org/10.4230/LIPIcs.CCC.2023.19" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-conference" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-journal-bookmark me-1"></i> CCC </a></p>
+<p><a href="https://doi.org/10.48550/arXiv.2212.08397" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-arxiv" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-file-earmark-pdf me-1"></i> arXiv </a></p>
+<p><a href="https://eccc.weizmann.ac.il/report/2022/182" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-eccc" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-file-earmark-text me-1"></i> ECCC </a></p>
+</div>
+<!-- Hidden Content -->
+<div id="bibtex-1" class="bibtex-hidden" style="display: none;">
+<p><span class="citation" data-cites="inproceedings">@inproceedings</span>{HMS23, author = {Harsha, Prahladh and Molli, Tulasimohan and Shankar, Ashutosh}, title = {Criticality of AC0 formulae}, booktitle = {38th Computational Complexity Conference (CCC)}, year = {2023} }</p>
+</div>
+<div id="abstract-1" class="abstract-hidden" style="display: none;">
+<p>A <span class="math inline">\(p\)</span>-random restriction is a random partial input obtained by independently setting each variable to either 0,1 with (1-p)/2 each or leaving it unset with probability <span class="math inline">\(p\)</span>. In this work, we study decision trees of bounded depth formulas under <span class="math inline">\(p\)</span>-random restrictions.</p>
+<p> of a boolean function <span class="math inline">\(f\)</span> is defined to be the probability <span class="math inline">\(p\)</span> at which the decision tree depth <span class="math inline">\(t\)</span> of a random restriction of <span class="math inline">\(f\)</span> goes down exponentially in <span class="math inline">\(t\)</span>. Criticality has been implicitly studied in circuit complexity in the works of {all criticality results here}. The ground breaking work of Hastad’s switching lemma is a bound on criticality of CNFs and DNFs. Rossman defined the notion of criticality and showed its connection to average case lower bounds, fourier tail bounds, learning algorithms and decision tree size.</p>
+<p>In this we work we show optimal bound on criticality of <span class="math inline">\(\AC^0\)</span> which for a formula of depth <span class="math inline">\(d+1\)</span> and size <span class="math inline">\(S\)</span> is <span class="math inline">\(\bra{\frac{\log S}{d}}^d\)</span>. Prior to this work, Rossman showed a similar bound for regular formulas: the class of <span class="math inline">\(\AC^0\)</span> formulas in which all gates at any given depth have the same fan-in. We extend their proof the general <span class="math inline">\(\AC^0\)</span> formulas.</p>
+</div>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2">
+<div class="body">
+<h3 class="no-anchor listing-title">
+Tight Chang’s lemma type bounds for Boolean functions <span class="text-muted" style="font-size: 0.8em;">[FSTTCS’21]</span>
+</h3>
+<div class="listing-subtitle">
+<p>Sourav Chakraborty, Nikhil S. Mande, Rajat Mittal, Tulasimohan Molli, Manaswi Paraashar, Swagato Sanyal</p>
+</div>
+<div class="listing-links mt-1 d-flex flex-row flex-wrap gap-1 align-items-center">
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark abstract-button d-inline-flex align-items-center" data-abstract-id="abstract-2" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-file-text me-1"></i> Abstract </a></p>
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark cite-button d-inline-flex align-items-center" data-bibtex-id="bibtex-2" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-quote me-1"></i> Cite </a></p>
+<p><a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2021.10" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-conference" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-journal-bookmark me-1"></i> FSTTCS </a></p>
+<p><a href="https://arxiv.org/abs/2012.02335" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-arxiv" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-file-earmark-pdf me-1"></i> arXiv </a></p>
+</div>
+<!-- Hidden Content -->
+<div id="bibtex-2" class="bibtex-hidden" style="display: none;">
+<p><span class="citation" data-cites="inproceedings">@inproceedings</span>{CMM21, author = {Chakraborty, Sourav and Mande, Nikhil S. and Mittal, Rajat and Molli, Tulasimohan and Paraashar, Manaswi and Sanyal, Swagato}, title = {Tight Chang’s lemma type bounds for Boolean functions}, booktitle = {41st IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science (FSTTCS)}, year = {2021} }</p>
+</div>
+<div id="abstract-2" class="abstract-hidden" style="display: none;">
+Chang’s lemma (Duke Mathematical Journal, 2002) is a classical result in mathematics, with applications spanning across additive combinatorics, combinatorial number theory, analysis of Boolean functions, communication complexity and algorithm design. For a Boolean function <span class="math inline">\(f\)</span> that takes values in <span class="math inline">\(\pmone\)</span> let <span class="math inline">\(r(f)\)</span> denote its Fourier rank (i.e., the dimension of the span of its Fourier support). For each positive threshold <span class="math inline">\(t\)</span>, Chang’s lemma provides a lower bound on <span class="math inline">\(\delta(f):=\Pr[f(x)=-1]\)</span> in terms of the dimension of the span of its characters with Fourier coefficients of magnitude at least <span class="math inline">\(1/t\)</span>. In this work we examine the tightness of Chang’s lemma with respect to the following three natural settings of the threshold:
+<p>In this work we prove new lower bounds on <span class="math inline">\(\delta(f)\)</span> in terms of the above measures. One of our lower bounds, <span class="math inline">\(\delta(f)=\Omega\left(r(f)^2/(k(f) \log^2 k(f))\right)\)</span>, subsumes and refines the previously best known upper bound on <span class="math inline">\(r(f)\)</span> in terms of <span class="math inline">\(k(f)\)</span> by Sanyal (Theory of Computing, 2019). Another lower bound, <span class="math inline">\(\delta(f) =\Omega\left(r(f)/(\seerank(f) \log k(f))\right)\)</span>, is based on our improvement of a bound by Chattopadhyay, Hatami, Lovett and Tal~(ITCS, 2019) on the sum of absolute values of level-<span class="math inline">\(1\)</span> Fourier coefficients in terms of <span class="math inline">\(\ftwo\)</span>-degree. We further show that Chang’s lemma for the above-mentioned choices of the threshold is asymptotically outperformed by our bounds for most settings of the parameters involved.</p>
+Next, we show that our bounds are tight for a wide range of the parameters involved, by constructing functions witnessing their tightness. All the functions we construct are modifications of the Addressing function, where we replace certain input variables by suitable functions. Our final contribution is to construct Boolean functions <span class="math inline">\(f\)</span> for which
+<p>Our results imply more refined deterministic one-way communication complexity upper bounds for XOR functions. Given the wide-ranging application of Chang’s lemma, we strongly feel that our refinements of Chang’s lemma will find many more applications.</p>
+</div>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3">
+<div class="body">
+<h3 class="no-anchor listing-title">
+Probabilistic degree of OR over the Reals <span class="text-muted" style="font-size: 0.8em;">[FSTTCS’18, RSA’21]</span>
+</h3>
+<div class="listing-subtitle">
+<p>Siddharth Bhandari, Prahladh Harsha, Tulasimohan Molli, Srikanth Srinivasan</p>
+</div>
+<div class="listing-links mt-1 d-flex flex-row flex-wrap gap-1 align-items-center">
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark abstract-button d-inline-flex align-items-center" data-abstract-id="abstract-3" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-file-text me-1"></i> Abstract </a></p>
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark cite-button d-inline-flex align-items-center" data-bibtex-id="bibtex-3" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-quote me-1"></i> Cite </a></p>
+<p><a href="https://doi.org/10.1002/rsa.20991" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-journal" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-link-45deg me-1"></i> RSA </a></p>
+<p><a href="https://doi.org/10.4230/LIPIcs.FSTTCS.2018.5" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-conference" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-journal-bookmark me-1"></i> FSTTCS </a></p>
+<p><a href="https://arxiv.org/abs/1812.01982" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-arxiv" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-file-earmark-pdf me-1"></i> arXiv </a></p>
+<p><a href="https://eccc.weizmann.ac.il/report/2018/207" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-eccc" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-file-earmark-text me-1"></i> ECCC </a></p>
+</div>
+<!-- Hidden Content -->
+<div id="bibtex-3" class="bibtex-hidden" style="display: none;">
+<p><span class="citation" data-cites="article">@article</span>{BHMS21, author = {Bhandari, Siddharth and Harsha, Prahladh and Molli, Tulasimohan and Srinivasan, Srikanth}, title = {On the probabilistic degree of OR over the reals}, journal = {Random Struct. Algorithms}, volume = {59}, number = {1}, pages = {53–67}, year = {2021} }</p>
+</div>
+<div id="abstract-3" class="abstract-hidden" style="display: none;">
+<p>We study the probabilistic degree over <span class="math inline">\(\reals\)</span> of the <span class="math inline">\(\OR\)</span> function on <span class="math inline">\(n\)</span> variables. For <span class="math inline">\(\eps \in (0,1/3)\)</span>, the <span class="math inline">\(\eps\)</span>-error probabilistic degree of any Boolean function <span class="math inline">\(f:\zo^n\to \zo\)</span> over <span class="math inline">\(\reals\)</span> is the smallest non-negative integer <span class="math inline">\(d\)</span> such that the following holds: there exists a distribution <span class="math inline">\(\distP\)</span> of polynomials <span class="math inline">\(P(x_1,\ldots,x_n)  \in \reals[x_1,\ldots,x_n]\)</span> of degree at most <span class="math inline">\(d\)</span> such that for all <span class="math inline">\(\bar{x}
+\in \zo^n\)</span>, we have <span class="math inline">\(\Pr_{P \sim \distP}[P(\bar{x}) = f(\bar{x}) ] \geq 1- \eps\)</span>. It is known from the works of Tarui ({} 1993) and Beigel, Reingold, and Spielman ({} 1991), that the <span class="math inline">\(\eps\)</span>-error probabilistic degree of the <span class="math inline">\(\OR\)</span> function is at most <span class="math inline">\(O(\log n \cdot \lepsinv)\)</span>. Our first observation is that this can be improved to <span class="math inline">\(\bigo{\ans}\)</span> % <span class="math inline">\(\bigo{\log {\genfrac{(}{)}{0pt}{}{n}{\lepsinv}}}\)</span> which is better for small values of <span class="math inline">\(\eps\)</span>.</p>
+<p>In all known constructions of probabilistic polynomials for the <span class="math inline">\(\OR\)</span> function (including the above improvement), the polynomials <span class="math inline">\(P\)</span> in the support of the distribution <span class="math inline">\(\distP\)</span> have the following special structure: [ P(x_1,,x_n) = 1 - _{i } (1- L_i(x_1,,x_n)), ] where each <span class="math inline">\(L_i(x_1,\dots, x_n)\)</span> is a linear form in the variables <span class="math inline">\(x_1,\ldots,x_n\)</span>, i.e., the polynomial <span class="math inline">\(1-P(\bar{x})\)</span> is a product of affine forms. We show that the <span class="math inline">\(\eps\)</span>-error probabilistic degree of <span class="math inline">\(\OR\)</span> when restricted to polynomials of the above form is <span class="math inline">\(\Omega\left( \ans/\log^2 \left( \ans \right)\right)\)</span>, thus matching the above upper bound (up to poly-logarithmic factors).</p>
 </div>
 </div>
 </div>
@@ -376,6 +458,22 @@ this.innerHTML = originalIcon;
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="listing-listing-dblp" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-dblp-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-dblp'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Authors
+      </option>
+      <option value="listing-venue_tag" data-direction="asc">
+        Venues
+      </option>
+    </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
@@ -386,30 +484,69 @@ this.innerHTML = originalIcon;
 <tr>
 
 <th>
-Title
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 
 <th>
-Authors
+<a class="sort" data-sort="listing-author" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Authors</a>
 </th>
 
 <th>
-Venues
+<a class="sort" data-sort="listing-venue_tag" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Venues</a>
 </th>
 
 </tr>
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1772021297482" data-listing-filename-sort="publications.json">
+<tr data-index="0" data-categories="U1RPQw==" data-listing-date-sort="1780272000000" data-listing-title-sort="The natural proofs barrier against data-structure lower-bounds">
 <td>
-<a href="./data/publications.json" class="title listing-title">&nbsp;</a>
+<span class="listing-title">The natural proofs barrier against data-structure lower-bounds</span>
 </td>
 <td>
-<span class="listing-author">&nbsp;</span>
+<span class="listing-author">Bruno Loff, Michal Koucký, Tulasimohan Molli, Michael Saks</span>
 </td>
 <td>
-<span class="listing-venue_tag">&nbsp;</span>
+<span class="listing-venue_tag">STOC’26</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="Q0NDJTJDYXJYaXYlMkNFQ0ND" data-listing-date-sort="1688169600000" data-listing-title-sort="Criticality of AC0 formulae">
+<td>
+<span class="listing-title">Criticality of AC0 formulae</span>
+</td>
+<td>
+<span class="listing-author">Prahladh Harsha, Tulasimohan Molli, Ashutosh Shankar</span>
+</td>
+<td>
+<span class="listing-venue_tag">CCC’23</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="RlNUVENTJTJDYXJYaXY=" data-listing-date-sort="1638316800000" data-listing-title-sort="Tight Chang's lemma type bounds for Boolean functions">
+<td>
+<span class="listing-title">Tight Chang’s lemma type bounds for Boolean functions</span>
+</td>
+<td>
+<span class="listing-author">Sourav Chakraborty, Nikhil S. Mande, Rajat Mittal, Tulasimohan Molli, Manaswi Paraashar, Swagato Sanyal</span>
+</td>
+<td>
+<span class="listing-venue_tag">FSTTCS’21</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="RlNUVENTJTJDSm91cm5hbCUyQ1JTQSUyQ2FyWGl2JTJDRUNDQw==" data-listing-date-sort="1609459200000" data-listing-title-sort="Probabilistic degree of OR over the Reals">
+<td>
+<span class="listing-title">Probabilistic degree of OR over the Reals</span>
+</td>
+<td>
+<span class="listing-author">Siddharth Bhandari, Prahladh Harsha, Tulasimohan Molli, Srikanth Srinivasan</span>
+</td>
+<td>
+<span class="listing-venue_tag">FSTTCS’18, RSA’21</span>
 </td>
 
 </tr>
