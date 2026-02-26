@@ -1,0 +1,13 @@
+{
+  "listingMap": {
+    "src/pages/research/index.qmd": [
+      "posts"
+    ],
+    "src/pages/notes.qmd": [
+      "../../notes"
+    ],
+    "src/pages/projects/index.qmd": [
+      "posts"
+    ]
+  }
+}

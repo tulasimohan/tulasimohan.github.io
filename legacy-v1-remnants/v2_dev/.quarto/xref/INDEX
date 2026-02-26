@@ -1,0 +1,53 @@
+{
+  "index.qmd": {
+    "index.html": "425d6462"
+  },
+  "about.qmd": {
+    "about.html": "0f7362aa"
+  },
+  "src/notes/probabilistic polynomials.qmd": {
+    "probabilistic polynomials.html": "e605b586"
+  },
+  "src/notes/criticality.qmd": {
+    "criticality.html": "34962ee8"
+  },
+  "src/notes/fourier.qmd": {
+    "fourier.html": "eacf2949"
+  },
+  "src/pages/research/index.qmd": {
+    "index.html": "dd8ae16f"
+  },
+  "src/pages/teaching.qmd": {
+    "teaching.html": "5213c8e1"
+  },
+  "src/pages/notes.qmd": {
+    "notes.html": "09b14b5e"
+  },
+  "src/pages/projects/index.qmd": {
+    "index.html": "be4fe2e0"
+  },
+  "src/pages/publications.qmd": {
+    "publications.html": "41769538"
+  },
+  "src/pages/about.qmd": {
+    "about.html": "dfa14682"
+  },
+  "src/pages/links/talks.qmd": {
+    "talks.html": "01c366b2"
+  },
+  "src/pages/links/index.qmd": {
+    "index.html": "324d990b"
+  },
+  "src/pages/links/visits.qmd": {
+    "visits.html": "68208746"
+  },
+  "src/pages/links/portugal.qmd": {
+    "portugal.html": "0666b010"
+  },
+  "src/pages/interests/index.qmd": {
+    "index.html": "d9da7426"
+  },
+  "src/garden/index.qmd": {
+    "index.html": "fb2cf5a0"
+  }
+}
