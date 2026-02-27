@@ -312,10 +312,6 @@ details.bibtex-toggle[open] > pre {
   margin-bottom: 2px;
 }
 
-#logo-cmi {
-  height: 32px !important; /* Decrease CMI height as requested */
-}
-
 /* About Page Text Justification */
 .about-text-justified {
   text-align: justify;
