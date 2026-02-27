@@ -310,6 +310,15 @@ details.bibtex-toggle[open] > pre {
   max-width: 150px;
   object-fit: contain;
   margin-bottom: 2px;
+  transition: transform 0.2s ease-in-out; /* Smooth hover transition */
+}
+
+/* Link interactability */
+.hover-scale {
+  cursor: pointer;
+}
+.hover-scale:hover {
+  filter: brightness(1.15); /* Slight pop matching standard web links */
 }
 
 /* Individual Logo Fine-Tuning Scale Overrides */
