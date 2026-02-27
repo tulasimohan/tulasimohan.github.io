@@ -268,8 +268,9 @@ details.bibtex-toggle[open] > pre {
   line-height: 1.2 !important;
 
   display: flex !important;
-  align-items: center !important;
-  gap: 1rem !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.5rem !important;
 }
 
 .about-timeline .timeline-role {
@@ -287,9 +288,8 @@ details.bibtex-toggle[open] > pre {
 }
 
 .about-timeline .timeline-logo {
-  border-radius: 4px;
-  background-color: white; /* For transparent logos */
-  padding: 2px;
+  mix-blend-mode: multiply;
+  max-width: 100%;
 }
 
 /* About Page Text Justification */
