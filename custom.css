@@ -269,7 +269,7 @@ details.bibtex-toggle[open] > pre {
   ) !important; /* Anchor past the dot into the margin */
   right: auto !important;
   top: 50% !important;
-  transform: translateY(-50%) !important;
+  transform: translateY(15px) !important;
   width: max-content !important; /* Allow spelling into margin */
   white-space: nowrap !important;
   text-align: left !important;
