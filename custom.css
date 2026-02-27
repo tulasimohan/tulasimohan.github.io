@@ -312,6 +312,20 @@ details.bibtex-toggle[open] > pre {
   margin-bottom: 2px;
 }
 
+/* Individual Logo Fine-Tuning Scale Overrides */
+#logo-phd_tifr {
+  transform: translateX(-50%) scale(0.8) !important; /* Decrease TIFR to 80% */
+}
+
+#logo-postdoc_lasige {
+  transform: translateX(-50%) scale(0.9) !important; /* Decrease FCUL to 90% */
+}
+
+#logo-msc_cmi,
+#logo-bsc_cmi {
+  transform: translateX(-50%) scale(0.7) !important; /* Decrease CMI to 70% */
+}
+
 /* About Page Text Justification */
 .about-text-justified {
   text-align: justify;
