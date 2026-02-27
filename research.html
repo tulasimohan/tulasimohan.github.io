@@ -462,31 +462,40 @@ bsModal = new window.bootstrap.Modal(modalElement);
 
 // Cite Buttons
 document.querySelectorAll('.cite-button').forEach(btn => {
-btn.addEventListener('click', function() {
-const id = this.getAttribute('data-bibtex-id');
-const div = document.getElementById(id);
-if (div) {
-const pre = div.querySelector('pre');
-modalTitle.textContent = "Cite this paper";
-modalText.textContent = pre ? pre.textContent : div.textContent;
-copyBtn.style.display = 'block'; // Show copy button for BibTeX
-if (bsModal) bsModal.show();
-}
-});
+  btn.addEventListener('click', function() {
+    const id = this.getAttribute('data-bibtex-id');
+    const div = document.getElementById(id);
+    if (div) {
+      const pre = div.querySelector('pre');
+      modalTitle.textContent = "Cite this paper";
+      modalText.textContent = pre ? pre.textContent : div.textContent;
+      copyBtn.style.display = 'block'; // Show copy button for BibTeX
+      
+      // Reset modal width for citations
+      modalElement.querySelector('.modal-dialog').classList.remove('modal-lg');
+      
+      if (bsModal) bsModal.show();
+    }
+  });
 });
 
 // Abstract Buttons
 document.querySelectorAll('.abstract-button').forEach(btn => {
-btn.addEventListener('click', function() {
-const id = this.getAttribute('data-abstract-id');
-const div = document.getElementById(id);
-if (div) {
-modalTitle.textContent = "Abstract";
-modalText.textContent = div.textContent.trim();
-copyBtn.style.display = 'none'; // Hide copy button for Abstract
-if (bsModal) bsModal.show();
-}
-});
+  btn.addEventListener('click', function() {
+    const id = this.getAttribute('data-abstract-id');
+    const div = document.getElementById(id);
+    if (div) {
+      modalTitle.textContent = "Abstract";
+      // Use innerHTML instead of textContent so KaTeX/MathJax renders correctly
+      modalText.innerHTML = div.innerHTML.trim();
+      copyBtn.style.display = 'none'; // Hide copy button for Abstract
+      
+      // Make the modal wider for reading abstracts
+      modalElement.querySelector('.modal-dialog').classList.add('modal-lg');
+      
+      if (bsModal) bsModal.show();
+    }
+  });
 });
 
 // Copy Functionality
