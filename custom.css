@@ -275,7 +275,7 @@ details.bibtex-toggle[open] > pre {
   text-align: left !important;
 
   font-weight: 700 !important;
-  color: #2b2b88 !important;
+  color: #6c757d !important; /* Changed to light gray for better contrast with blue logos */
   font-size: 0.95rem !important;
   line-height: 1.2 !important;
 }
