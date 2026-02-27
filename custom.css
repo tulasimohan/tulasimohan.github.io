@@ -222,11 +222,19 @@ details.bibtex-toggle[open] > pre {
   margin-top: 2rem !important;
   border-right: 2px solid #5ccae8 !important; /* Line on the RIGHT */
   padding-right: 1.5rem !important; /* Space between text and line */
-  margin-right: 16rem !important; /* Reserve space for Years & Logos on the right */
+  margin-right: 8rem !important; /* Shrink margin to push line right */
   border-left: none !important;
   padding-left: 0 !important;
   text-align: right !important;
   position: relative !important; /* Context */
+}
+
+.about-timeline h3 {
+  text-align: left !important;
+  margin-right: -1.5rem !important; /* Reset padding offset so line doesn't cut it visually if long */
+  padding-right: 2rem !important;
+  margin-bottom: 2rem !important;
+  color: #2b2b88 !important; /* Match year color */
 }
 
 .about-timeline .timeline-item {
@@ -256,7 +264,7 @@ details.bibtex-toggle[open] > pre {
 
 .about-timeline .timeline-year {
   position: absolute !important;
-  right: -17.5rem !important; /* Move to right side of line: 1.5rem padding + 16rem margin space */
+  right: -9.5rem !important; /* Move to right side of line: 1.5rem padding + 8rem margin space */
   top: 50% !important;
   transform: translateY(-50%) !important;
   width: 14rem !important;
