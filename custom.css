@@ -318,7 +318,7 @@ details.bibtex-toggle[open] > pre {
 }
 
 #logo-postdoc_lasige {
-  transform: translateX(-50%) scale(0.9) !important; /* Decrease FCUL to 90% */
+  transform: translateX(-50%) scale(0.81) !important; /* Decrease FCUL to 90% of its previously scaled 0.9 size */
 }
 
 #logo-msc_cmi,
