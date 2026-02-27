@@ -305,8 +305,9 @@ details.bibtex-toggle[open] > pre {
   bottom: 100%; /* Float above the dash */
   left: 50%;
   transform: translateX(-50%); /* Centered exactly above the dash */
-  width: 44px; /* Maintain readable size */
-  height: 44px;
+  height: 44px; /* Unify height so wide logos look appropriately large */
+  width: auto; /* Let rectangles (CMI, Sri Chaitanya) expand natively */
+  max-width: 150px;
   object-fit: contain;
   margin-bottom: 2px;
 }
