@@ -288,3 +288,33 @@ details.bibtex-toggle[open] > pre {
   text-justify: inter-word;
   padding-right: 2rem; /* Add some right margin to the text block for breathing room next to timeline */
 }
+
+/* --- Collapsibles / Expandable Abstracts (from Neeldhara) --- */
+.collapsible {
+  background-color: transparent;
+  width: 100%;
+  color: #1d90e2; /* Modern blue link color */
+  border: none;
+  outline: none;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.collactive,
+.collapsible:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.collcontent {
+  padding: 0 10px;
+  max-height: 0;
+  overflow: hidden;
+  background-color: transparent;
+  transition: max-height 0.2s ease-out;
+  font-size: 0.9rem;
+  color: #555;
+}
