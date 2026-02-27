@@ -8,7 +8,7 @@
 
 <meta name="author" content="PARTH MUNJAL">
 <meta name="author" content="AKARSH JAIN">
-<meta name="dcterms.date" content="2026-02-26">
+<meta name="dcterms.date" content="2026-02-27">
 
 <title>Lab Sheet 1: Basics &amp; Arrays – Tulasimohan Molli</title>
 <style>
@@ -110,9 +110,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -251,7 +266,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 26, 2026</p>
+      <p class="date">February 27, 2026</p>
     </div>
   </div>
   
@@ -360,7 +375,7 @@ Topper: Alice</code></pre>
 </section>
 <section id="q2-matrix-multiplication" class="level1">
 <h1>Q2: Matrix Multiplication</h1>
-<p><strong>Description:</strong> Write a program to multiply two matrices. Read two matrices A and B. Check if multiplication is possible (<span class="math inline">\(C1 == R2\)</span>).</p>
+<p><strong>Description:</strong> Write a program to multiply two matrices. Read two matrices A and B. Check if multiplication is possible (<span class="math inline">C1 == R2</span>).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1955,4 +1970,5 @@ Intersection: 2 3</code></pre>
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -132,9 +132,24 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -269,6 +284,40 @@ window.Quarto = {
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div id="listing-listing-cards" class="quarto-listing quarto-listing-container-custom">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-cards-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-cards'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-venue_key" data-direction="asc">
+        venue_key
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-bibtex" data-direction="asc">
+        bibtex
+      </option>
+      <option value="listing-links" data-direction="asc">
+        links
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
 <div class="quarto-post image-right" data-index="0">
 <div class="body">
@@ -288,7 +337,7 @@ The natural proofs barrier against data-structure lower-bounds <span class="text
 <p><span class="citation" data-cites="inproceedings">@inproceedings</span>{LKMS26, author = {Loff, Bruno and Koucký, Michal and Molli, Tulasimohan and Saks, Michael}, title = {The natural proofs barrier against data-structure lower-bounds}, booktitle = {58th Annual ACM Symposium on Theory of Computing (STOC)}, year = {2026} }</p>
 </div>
 <div id="abstract-0" class="abstract-hidden" style="display: none;">
-<p>Consider a data structure problem with possible data coming from a set <span class="math inline">\(\mathcal D\)</span>, queries coming from a set <span class="math inline">\(\mathcal Q\)</span>, and in the dynamic case updates coming from a set <span class="math inline">\(\mathcal U\)</span>. Then, the current state of the art in data structure lower bounds is <span class="math inline">\(t = \tilde\Omega(\log |\mathcal Q|)\)</span> for static data structure problems, and <span class="math inline">\(\max(t_{\mathrm q},t_{\mathrm u}) = \tilde\Omega((\log n)^2)\)</span> where <span class="math inline">\(n = \max(|\mathcal Q|,|\mathcal U|,\log |\mathcal D|)\)</span> for dynamic.</p>
+<p>Consider a data structure problem with possible data coming from a set <span class="math inline">\mathcal D</span>, queries coming from a set <span class="math inline">\mathcal Q</span>, and in the dynamic case updates coming from a set <span class="math inline">\mathcal U</span>. Then, the current state of the art in data structure lower bounds is <span class="math inline">t = \tilde\Omega(\log |\mathcal Q|)</span> for static data structure problems, and <span class="math inline">\max(t_{\mathrm q},t_{\mathrm u}) = \tilde\Omega((\log n)^2)</span> where <span class="math inline">n = \max(|\mathcal Q|,|\mathcal U|,\log |\mathcal D|)</span> for dynamic.</p>
 We port Razborov and Rudich’s natural-proofs framework to the setting of static and dynamic data structures in the cell probe model, in a way that strongly suggests this state of the art is unlikely to be improved anytime soon. A similar direction was recently taken also by Korten, Pitassi and Impagliazzo (FOCS 2025) who look at static data structure lower bounds in a different regime of parameters. Our contribution is:
 </div>
 </div>
@@ -313,9 +362,9 @@ Criticality of AC0 formulae <span class="text-muted" style="font-size: 0.8em;">[
 <p><span class="citation" data-cites="inproceedings">@inproceedings</span>{HMS23, author = {Harsha, Prahladh and Molli, Tulasimohan and Shankar, Ashutosh}, title = {Criticality of AC0 formulae}, booktitle = {38th Computational Complexity Conference (CCC)}, year = {2023} }</p>
 </div>
 <div id="abstract-1" class="abstract-hidden" style="display: none;">
-<p>A <span class="math inline">\(p\)</span>-random restriction is a random partial input obtained by independently setting each variable to either 0,1 with (1-p)/2 each or leaving it unset with probability <span class="math inline">\(p\)</span>. In this work, we study decision trees of bounded depth formulas under <span class="math inline">\(p\)</span>-random restrictions.</p>
-<p> of a boolean function <span class="math inline">\(f\)</span> is defined to be the probability <span class="math inline">\(p\)</span> at which the decision tree depth <span class="math inline">\(t\)</span> of a random restriction of <span class="math inline">\(f\)</span> goes down exponentially in <span class="math inline">\(t\)</span>. Criticality has been implicitly studied in circuit complexity in the works of {all criticality results here}. The ground breaking work of Hastad’s switching lemma is a bound on criticality of CNFs and DNFs. Rossman defined the notion of criticality and showed its connection to average case lower bounds, fourier tail bounds, learning algorithms and decision tree size.</p>
-<p>In this we work we show optimal bound on criticality of <span class="math inline">\(\AC^0\)</span> which for a formula of depth <span class="math inline">\(d+1\)</span> and size <span class="math inline">\(S\)</span> is <span class="math inline">\(\bra{\frac{\log S}{d}}^d\)</span>. Prior to this work, Rossman showed a similar bound for regular formulas: the class of <span class="math inline">\(\AC^0\)</span> formulas in which all gates at any given depth have the same fan-in. We extend their proof the general <span class="math inline">\(\AC^0\)</span> formulas.</p>
+<p>A <span class="math inline">p</span>-random restriction is a random partial input obtained by independently setting each variable to either 0,1 with (1-p)/2 each or leaving it unset with probability <span class="math inline">p</span>. In this work, we study decision trees of bounded depth formulas under <span class="math inline">p</span>-random restrictions.</p>
+<p> of a boolean function <span class="math inline">f</span> is defined to be the probability <span class="math inline">p</span> at which the decision tree depth <span class="math inline">t</span> of a random restriction of <span class="math inline">f</span> goes down exponentially in <span class="math inline">t</span>. Criticality has been implicitly studied in circuit complexity in the works of {all criticality results here}. The ground breaking work of Hastad’s switching lemma is a bound on criticality of CNFs and DNFs. Rossman defined the notion of criticality and showed its connection to average case lower bounds, fourier tail bounds, learning algorithms and decision tree size.</p>
+<p>In this we work we show optimal bound on criticality of <span class="math inline">\AC^0</span> which for a formula of depth <span class="math inline">d+1</span> and size <span class="math inline">S</span> is <span class="math inline">\bra{\frac{\log S}{d}}^d</span>. Prior to this work, Rossman showed a similar bound for regular formulas: the class of <span class="math inline">\AC^0</span> formulas in which all gates at any given depth have the same fan-in. We extend their proof the general <span class="math inline">\AC^0</span> formulas.</p>
 </div>
 </div>
 </div>
@@ -338,9 +387,9 @@ Tight Chang’s lemma type bounds for Boolean functions <span class="text-muted"
 <p><span class="citation" data-cites="inproceedings">@inproceedings</span>{CMM21, author = {Chakraborty, Sourav and Mande, Nikhil S. and Mittal, Rajat and Molli, Tulasimohan and Paraashar, Manaswi and Sanyal, Swagato}, title = {Tight Chang’s lemma type bounds for Boolean functions}, booktitle = {41st IARCS Annual Conference on Foundations of Software Technology and Theoretical Computer Science (FSTTCS)}, year = {2021} }</p>
 </div>
 <div id="abstract-2" class="abstract-hidden" style="display: none;">
-Chang’s lemma (Duke Mathematical Journal, 2002) is a classical result in mathematics, with applications spanning across additive combinatorics, combinatorial number theory, analysis of Boolean functions, communication complexity and algorithm design. For a Boolean function <span class="math inline">\(f\)</span> that takes values in <span class="math inline">\(\pmone\)</span> let <span class="math inline">\(r(f)\)</span> denote its Fourier rank (i.e., the dimension of the span of its Fourier support). For each positive threshold <span class="math inline">\(t\)</span>, Chang’s lemma provides a lower bound on <span class="math inline">\(\delta(f):=\Pr[f(x)=-1]\)</span> in terms of the dimension of the span of its characters with Fourier coefficients of magnitude at least <span class="math inline">\(1/t\)</span>. In this work we examine the tightness of Chang’s lemma with respect to the following three natural settings of the threshold:
-<p>In this work we prove new lower bounds on <span class="math inline">\(\delta(f)\)</span> in terms of the above measures. One of our lower bounds, <span class="math inline">\(\delta(f)=\Omega\left(r(f)^2/(k(f) \log^2 k(f))\right)\)</span>, subsumes and refines the previously best known upper bound on <span class="math inline">\(r(f)\)</span> in terms of <span class="math inline">\(k(f)\)</span> by Sanyal (Theory of Computing, 2019). Another lower bound, <span class="math inline">\(\delta(f) =\Omega\left(r(f)/(\seerank(f) \log k(f))\right)\)</span>, is based on our improvement of a bound by Chattopadhyay, Hatami, Lovett and Tal~(ITCS, 2019) on the sum of absolute values of level-<span class="math inline">\(1\)</span> Fourier coefficients in terms of <span class="math inline">\(\ftwo\)</span>-degree. We further show that Chang’s lemma for the above-mentioned choices of the threshold is asymptotically outperformed by our bounds for most settings of the parameters involved.</p>
-Next, we show that our bounds are tight for a wide range of the parameters involved, by constructing functions witnessing their tightness. All the functions we construct are modifications of the Addressing function, where we replace certain input variables by suitable functions. Our final contribution is to construct Boolean functions <span class="math inline">\(f\)</span> for which
+Chang’s lemma (Duke Mathematical Journal, 2002) is a classical result in mathematics, with applications spanning across additive combinatorics, combinatorial number theory, analysis of Boolean functions, communication complexity and algorithm design. For a Boolean function <span class="math inline">f</span> that takes values in <span class="math inline">\pmone</span> let <span class="math inline">r(f)</span> denote its Fourier rank (i.e., the dimension of the span of its Fourier support). For each positive threshold <span class="math inline">t</span>, Chang’s lemma provides a lower bound on <span class="math inline">\delta(f):=\Pr[f(x)=-1]</span> in terms of the dimension of the span of its characters with Fourier coefficients of magnitude at least <span class="math inline">1/t</span>. In this work we examine the tightness of Chang’s lemma with respect to the following three natural settings of the threshold:
+<p>In this work we prove new lower bounds on <span class="math inline">\delta(f)</span> in terms of the above measures. One of our lower bounds, <span class="math inline">\delta(f)=\Omega\left(r(f)^2/(k(f) \log^2 k(f))\right)</span>, subsumes and refines the previously best known upper bound on <span class="math inline">r(f)</span> in terms of <span class="math inline">k(f)</span> by Sanyal (Theory of Computing, 2019). Another lower bound, <span class="math inline">\delta(f) =\Omega\left(r(f)/(\seerank(f) \log k(f))\right)</span>, is based on our improvement of a bound by Chattopadhyay, Hatami, Lovett and Tal~(ITCS, 2019) on the sum of absolute values of level-<span class="math inline">1</span> Fourier coefficients in terms of <span class="math inline">\ftwo</span>-degree. We further show that Chang’s lemma for the above-mentioned choices of the threshold is asymptotically outperformed by our bounds for most settings of the parameters involved.</p>
+Next, we show that our bounds are tight for a wide range of the parameters involved, by constructing functions witnessing their tightness. All the functions we construct are modifications of the Addressing function, where we replace certain input variables by suitable functions. Our final contribution is to construct Boolean functions <span class="math inline">f</span> for which
 <p>Our results imply more refined deterministic one-way communication complexity upper bounds for XOR functions. Given the wide-ranging application of Chang’s lemma, we strongly feel that our refinements of Chang’s lemma will find many more applications.</p>
 </div>
 </div>
@@ -366,9 +415,9 @@ Probabilistic degree of OR over the Reals <span class="text-muted" style="font-s
 <p><span class="citation" data-cites="article">@article</span>{BHMS21, author = {Bhandari, Siddharth and Harsha, Prahladh and Molli, Tulasimohan and Srinivasan, Srikanth}, title = {On the probabilistic degree of OR over the reals}, journal = {Random Struct. Algorithms}, volume = {59}, number = {1}, pages = {53–67}, year = {2021} }</p>
 </div>
 <div id="abstract-3" class="abstract-hidden" style="display: none;">
-<p>We study the probabilistic degree over <span class="math inline">\(\reals\)</span> of the <span class="math inline">\(\OR\)</span> function on <span class="math inline">\(n\)</span> variables. For <span class="math inline">\(\eps \in (0,1/3)\)</span>, the <span class="math inline">\(\eps\)</span>-error probabilistic degree of any Boolean function <span class="math inline">\(f:\zo^n\to \zo\)</span> over <span class="math inline">\(\reals\)</span> is the smallest non-negative integer <span class="math inline">\(d\)</span> such that the following holds: there exists a distribution <span class="math inline">\(\distP\)</span> of polynomials <span class="math inline">\(P(x_1,\ldots,x_n)  \in \reals[x_1,\ldots,x_n]\)</span> of degree at most <span class="math inline">\(d\)</span> such that for all <span class="math inline">\(\bar{x}
-\in \zo^n\)</span>, we have <span class="math inline">\(\Pr_{P \sim \distP}[P(\bar{x}) = f(\bar{x}) ] \geq 1- \eps\)</span>. It is known from the works of Tarui ({} 1993) and Beigel, Reingold, and Spielman ({} 1991), that the <span class="math inline">\(\eps\)</span>-error probabilistic degree of the <span class="math inline">\(\OR\)</span> function is at most <span class="math inline">\(O(\log n \cdot \lepsinv)\)</span>. Our first observation is that this can be improved to <span class="math inline">\(\bigo{\ans}\)</span> % <span class="math inline">\(\bigo{\log {\genfrac{(}{)}{0pt}{}{n}{\lepsinv}}}\)</span> which is better for small values of <span class="math inline">\(\eps\)</span>.</p>
-<p>In all known constructions of probabilistic polynomials for the <span class="math inline">\(\OR\)</span> function (including the above improvement), the polynomials <span class="math inline">\(P\)</span> in the support of the distribution <span class="math inline">\(\distP\)</span> have the following special structure: [ P(x_1,,x_n) = 1 - _{i } (1- L_i(x_1,,x_n)), ] where each <span class="math inline">\(L_i(x_1,\dots, x_n)\)</span> is a linear form in the variables <span class="math inline">\(x_1,\ldots,x_n\)</span>, i.e., the polynomial <span class="math inline">\(1-P(\bar{x})\)</span> is a product of affine forms. We show that the <span class="math inline">\(\eps\)</span>-error probabilistic degree of <span class="math inline">\(\OR\)</span> when restricted to polynomials of the above form is <span class="math inline">\(\Omega\left( \ans/\log^2 \left( \ans \right)\right)\)</span>, thus matching the above upper bound (up to poly-logarithmic factors).</p>
+<p>We study the probabilistic degree over <span class="math inline">\reals</span> of the <span class="math inline">\OR</span> function on <span class="math inline">n</span> variables. For <span class="math inline">\eps \in (0,1/3)</span>, the <span class="math inline">\eps</span>-error probabilistic degree of any Boolean function <span class="math inline">f:\zo^n\to \zo</span> over <span class="math inline">\reals</span> is the smallest non-negative integer <span class="math inline">d</span> such that the following holds: there exists a distribution <span class="math inline">\distP</span> of polynomials <span class="math inline">P(x_1,\ldots,x_n)  \in \reals[x_1,\ldots,x_n]</span> of degree at most <span class="math inline">d</span> such that for all <span class="math inline">\bar{x}
+\in \zo^n</span>, we have <span class="math inline">\Pr_{P \sim \distP}[P(\bar{x}) = f(\bar{x}) ] \geq 1- \eps</span>. It is known from the works of Tarui ({} 1993) and Beigel, Reingold, and Spielman ({} 1991), that the <span class="math inline">\eps</span>-error probabilistic degree of the <span class="math inline">\OR</span> function is at most <span class="math inline">O(\log n \cdot \lepsinv)</span>. Our first observation is that this can be improved to <span class="math inline">\bigo{\ans}</span> % <span class="math inline">\bigo{\log {\genfrac{(}{)}{0pt}{}{n}{\lepsinv}}}</span> which is better for small values of <span class="math inline">\eps</span>.</p>
+<p>In all known constructions of probabilistic polynomials for the <span class="math inline">\OR</span> function (including the above improvement), the polynomials <span class="math inline">P</span> in the support of the distribution <span class="math inline">\distP</span> have the following special structure: [ P(x_1,,x_n) = 1 - _{i } (1- L_i(x_1,,x_n)), ] where each <span class="math inline">L_i(x_1,\dots, x_n)</span> is a linear form in the variables <span class="math inline">x_1,\ldots,x_n</span>, i.e., the polynomial <span class="math inline">1-P(\bar{x})</span> is a product of affine forms. We show that the <span class="math inline">\eps</span>-error probabilistic degree of <span class="math inline">\OR</span> when restricted to polynomials of the above form is <span class="math inline">\Omega\left( \ans/\log^2 \left( \ans \right)\right)</span>, thus matching the above upper bound (up to poly-logarithmic factors).</p>
 </div>
 </div>
 </div>
@@ -987,4 +1036,5 @@ this.innerHTML = originalIcon;
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

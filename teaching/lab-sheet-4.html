@@ -8,7 +8,7 @@
 
 <meta name="author" content="PARTH MUNJAL">
 <meta name="author" content="AKARSH JAIN">
-<meta name="dcterms.date" content="2026-02-26">
+<meta name="dcterms.date" content="2026-02-27">
 
 <title>Lab Sheet 4: Advanced Search &amp; Sorting – Tulasimohan Molli</title>
 <style>
@@ -110,9 +110,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -253,7 +268,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 26, 2026</p>
+      <p class="date">February 27, 2026</p>
     </div>
   </div>
   
@@ -267,7 +282,7 @@ window.Quarto = {
 
 <section id="q1-search-in-a-sorted-2d-matrix" class="level1">
 <h1>Q1: Search in a sorted 2D matrix</h1>
-<p><strong>Description:</strong> Search for K in an M x N matrix where rows and columns are sorted. Time Complexity: <span class="math inline">\(O(M + N)\)</span>.</p>
+<p><strong>Description:</strong> Search for K in an M x N matrix where rows and columns are sorted. Time Complexity: <span class="math inline">O(M + N)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -424,7 +439,7 @@ window.Quarto = {
 </section>
 <section id="q3-same-element-beyond-k" class="level1">
 <h1>Q3: Same Element beyond K</h1>
-<p><strong>Description:</strong> Find if there exist two equal elements with distance <span class="math inline">\(&gt; K\)</span> using sorting.</p>
+<p><strong>Description:</strong> Find if there exist two equal elements with distance <span class="math inline">&gt; K</span> using sorting.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -516,7 +531,7 @@ window.Quarto = {
 </section>
 <section id="q4-where-is-groot" class="level1">
 <h1>Q4: where is gROOT?</h1>
-<p><strong>Description:</strong> Largest integer <span class="math inline">\(X\)</span> such that <span class="math inline">\(X^2 \le K\)</span>.</p>
+<p><strong>Description:</strong> Largest integer <span class="math inline">X</span> such that <span class="math inline">X^2 \le K</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -988,7 +1003,7 @@ Contiguous</code></pre>
 </section>
 <section id="q10-the-fair-tax-cap-optimizer" class="level1">
 <h1>Q10: The Fair Tax Cap Optimizer</h1>
-<p><strong>Description:</strong> Find smallest integer Cap C such that total tax collected <span class="math inline">\(\ge G\)</span>.</p>
+<p><strong>Description:</strong> Find smallest integer Cap C such that total tax collected <span class="math inline">\ge G</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2131,4 +2146,5 @@ Contiguous</code></pre>
 
 
 
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
