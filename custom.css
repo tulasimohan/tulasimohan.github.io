@@ -282,6 +282,12 @@ details.bibtex-toggle[open] > pre {
   line-height: 1.3 !important;
 }
 
+.about-timeline .timeline-logo {
+  border-radius: 4px;
+  background-color: white; /* For transparent logos */
+  padding: 2px;
+}
+
 /* About Page Text Justification */
 .about-text-justified {
   text-align: justify;

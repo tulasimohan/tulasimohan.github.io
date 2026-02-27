@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self';">  -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <script src="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/js/jquery.min.js"></script>
+  <script src="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/js/owl.carousel.js"></script>
+  <link rel='stylesheet' href='https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/css/sweetalert2.min.css' type="text/css">
+  </link>
+  <script src="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/js/owl.carousel.js"></script>
+  <script src="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/js/common.js?var=0.0.2"></script>
+  <script src="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/css/bootstrap.min.css" type="text/css">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <link href="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/css/google-fonts.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/css/owl.carousel.css" type="text/css">
+  <link rel="stylesheet" href="https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/assets/css/style.css?var=0.0.20" type="text/css">
+
+  <script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v20.1 (Yoast SEO v20.2.1) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Page not found - Sri Chaitanya</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found - Sri Chaitanya" />
+	<meta property="og:site_name" content="Sri Chaitanya" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://srichaitanya.net/#website","url":"https://srichaitanya.net/","name":"Sri Chaitanya","description":"","publisher":{"@id":"https://srichaitanya.net/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://srichaitanya.net/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://srichaitanya.net/#organization","name":"Sri Chaitanya","url":"https://srichaitanya.net/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://srichaitanya.net/#/schema/logo/image/","url":"https://srichaitanya.net/wp-content/uploads/2023/01/logo-1-1.jpg","contentUrl":"https://srichaitanya.net/wp-content/uploads/2023/01/logo-1-1.jpg","width":270,"height":56,"caption":"Sri Chaitanya"},"image":{"@id":"https://srichaitanya.net/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/SriChaitanyaEducationalSM","https://twitter.com/Sri_Chaitanya_"]}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Sri Chaitanya &raquo; Feed" href="https://srichaitanya.net/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Sri Chaitanya &raquo; Comments Feed" href="https://srichaitanya.net/comments/feed/" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='wp-block-library-inline-css'>
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}.has-text-align-center{text-align:center}.has-text-align-left{text-align:left}.has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-wrap:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--dark-gray: #1a1a1a;--wp--preset--color--medium-gray: #686868;--wp--preset--color--light-gray: #e5e5e5;--wp--preset--color--blue-gray: #4d545c;--wp--preset--color--bright-blue: #007acc;--wp--preset--color--light-blue: #9adffd;--wp--preset--color--dark-brown: #402b30;--wp--preset--color--medium-brown: #774e24;--wp--preset--color--dark-red: #640c1f;--wp--preset--color--bright-red: #ff675f;--wp--preset--color--yellow: #ffef8e;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='dashicons-css' href='https://srichaitanya.net/wp-includes/css/dashicons.min.css?ver=6.9.1' media='all' />
+<link rel='stylesheet' id='post-views-counter-frontend-css' href='https://srichaitanya.net/wp-content/plugins/post-views-counter/css/frontend.min.css?ver=1.3.12' media='all' />
+<link rel='stylesheet' id='megamenu-css' href='https://srichaitanya.net/wp-content/uploads/maxmegamenu/style.css?ver=2ae2f8' media='all' />
+<link rel='stylesheet' id='parent-style-css' href='https://srichaitanya.net/wp-content/themes/twentysixteen/style.css?ver=6.9.1' media='all' />
+<link rel='stylesheet' id='twentysixteen-fonts-css' href='https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' />
+<link rel='stylesheet' id='genericons-css' href='https://srichaitanya.net/wp-content/themes/twentysixteen/genericons/genericons.css?ver=20201208' media='all' />
+<link rel='stylesheet' id='twentysixteen-style-css' href='https://srichaitanya.net/wp-content/themes/chaitanya-child-theme/style.css?ver=20221101' media='all' />
+<link rel='stylesheet' id='twentysixteen-block-style-css' href='https://srichaitanya.net/wp-content/themes/twentysixteen/css/blocks.css?ver=20221004' media='all' />
+<link rel='stylesheet' id='mystickyelements-google-fonts-css' href='https://fonts.googleapis.com/css?family=Poppins%3A400%2C500%2C600%2C700&#038;ver=2.0.9' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css' href='https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/css/font-awesome.min.css?ver=2.0.9' media='all' />
+<link rel='stylesheet' id='mystickyelements-front-css-css' href='https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/css/mystickyelements-front.min.css?ver=2.0.9' media='all' />
+<link rel='stylesheet' id='intl-tel-input-css' href='https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/intl-tel-input-src/build/css/intlTelInput.css?ver=2.0.9' media='all' />
+<link rel="https://api.w.org/" href="https://srichaitanya.net/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://srichaitanya.net/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.1" />
+<link rel="icon" href="https://srichaitanya.net/wp-content/uploads/2022/09/cropped-logo-bb-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://srichaitanya.net/wp-content/uploads/2022/09/cropped-logo-bb-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://srichaitanya.net/wp-content/uploads/2022/09/cropped-logo-bb-180x180.png" />
+<meta name="msapplication-TileImage" content="https://srichaitanya.net/wp-content/uploads/2022/09/cropped-logo-bb-270x270.png" />
+		<style id="wp-custom-css">
+			.footer-1 .footer-content_bx ul li .fa {font-size:18px;}
+a{
+	  color: #0D2252;
+}
+.pdf-link {
+	text-transform: uppercase;
+}		</style>
+		<style type="text/css">/** Mega Menu CSS: fs **/</style>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M4GHNSJ');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10880067413"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10880067413');
+</script>
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '722168163799208');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=722168163799208&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17143348634"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17143348634');
+</script>
+
+
+</head>
+
+<body class="error404 wp-custom-logo wp-embed-responsive wp-theme-twentysixteen wp-child-theme-chaitanya-child-theme mega-menu-header-menu group-blog no-sidebar hfeed">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4GHNSJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<style>
+    #mega-menu-wrap-header-menu, #mega-menu-wrap-header-menu #mega-menu-header-menu, #mega-menu-wrap-header-menu #mega-menu-header-menu ul.mega-sub-menu, #mega-menu-wrap-header-menu #mega-menu-header-menu li.mega-menu-item, #mega-menu-wrap-header-menu #mega-menu-header-menu li.mega-menu-row, #mega-menu-wrap-header-menu #mega-menu-header-menu li.mega-menu-column, #mega-menu-wrap-header-menu #mega-menu-header-menu a.mega-menu-link, #mega-menu-wrap-header-menu #mega-menu-header-menu span.mega-menu-badge {
+      font-family: 'Poppins' !important;    
+    } 
+    .inner-section-head {
+      margin-top: -65px !important; 
+    }
+</style>
+
+
+  <div class="wrapper">
+    <header class="header_nav">
+      <div class="top-nav-section">
+        <div class="container">
+          <div class="ph"><a href="tel:04066060606"><i class="fa fa-phone" aria-hidden="true"></i> 040-66 06 06 06</a></div>
+          <button class="tp_nav"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
+          <div class="rht_nav">
+            <button class="close_nav">X</button>
+            <div class="menu-top-menu-container"><ul id="menu-top-menu" class="menu"><li id="menu-item-4445" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4445"><a href="https://epraghna.com/">Student Login</a></li>
+<li id="menu-item-4446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4446"><a href="#">Deposit Slips</a>
+<ul class="sub-menu">
+	<li id="menu-item-4447" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4447"><a href="https://srichaitanya.net/wp-content/uploads/2022/09/Deposit-Slip-Fee.pdf">Deposit Slips &#8211; Fee</a></li>
+	<li id="menu-item-4448" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4448"><a href="https://srichaitanya.net/wp-content/uploads/2022/09/Deposit-Slip-New-Admission.pdf">Deposit Slip &#8211; New Admission</a></li>
+</ul>
+</li>
+<li id="menu-item-4449" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4449"><a href="#">Pay Online</a>
+<ul class="sub-menu">
+	<li id="menu-item-4450" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4450"><a href="https://srichaitanya.net/payments/">Existing Student</a></li>
+</ul>
+</li>
+<li id="menu-item-4451" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-4451"><a href="#">Admissions</a>
+<ul class="sub-menu">
+	<li id="menu-item-4452" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4452"><a href="https://applicationsales.scaits.net/SrichaitanyaMEO">Admission By MEO</a></li>
+	<li id="menu-item-4453" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4453"><a href="https://applicationsales.scaits.net/Srichaitanya">New Admission</a></li>
+</ul>
+</li>
+<li id="menu-item-4454" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4454"><a href="https://srichaitanyaalumni.com/">Alumni</a></li>
+ <li>
+                <form role="search" method="get" class="search-form tm-search" action="https://srichaitanya.net/">
+                  <label>
+                    <span class="screen-reader-text">Search for:</span>
+                    <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                  </label>
+                  <button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
+                </form>
+              </li></ul></div>          </div>
+        </div>
+      </div>
+      <div class="secondry_bottom">
+        <div class="container">
+          <div class="logo_"> <a href="https://srichaitanya.net">
+              <a href="https://srichaitanya.net/" class="custom-logo-link" rel="home"><img width="270" height="56" src="https://srichaitanya.net/wp-content/uploads/2023/01/logo-1-1.jpg" class="custom-logo" alt="Sri Chaitanya Logo" decoding="async" /></a>            </a> </div>
+          <div class="main_nav"><div id="mega-menu-wrap-header-menu" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"></div><div class="mega-toggle-blocks-center"></div><div class="mega-toggle-blocks-right"><div class='mega-toggle-block mega-menu-toggle-animated-block mega-toggle-block-0' id='mega-toggle-block-0'><button aria-label="Toggle Menu" class="mega-toggle-animated mega-toggle-animated-slider" type="button" aria-expanded="false">
+                  <span class="mega-toggle-animated-box">
+                    <span class="mega-toggle-animated-inner"></span>
+                  </span>
+                </button></div></div></div><ul id="mega-menu-header-menu" class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="fade_up" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-mobile-force-width="false" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="768" data-unbind="true" data-mobile-state="collapse_all" data-hover-intent-timeout="300" data-hover-intent-interval="100"><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-hide-arrow mega-menu-item-3865' id='mega-menu-item-3865'><a class="mega-menu-link" href="https://srichaitanya.net/about/" tabindex="0">About</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-menu-megamenu mega-align-bottom-left mega-menu-grid mega-menu-item-3888' id='mega-menu-item-3888'><a class="mega-menu-link" href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Courses<span class="mega-indicator" tabindex="0" role="button" aria-label="Courses submenu"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-row' id='mega-menu-3888-0'>
+	<ul class="mega-sub-menu">
+<li class='mega-menu-column mega-menu-columns-1-of-3' id='mega-menu-3888-0-0'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-3889' id='mega-menu-item-3889'><a class="mega-menu-link" href="#"><strong>Schools</strong></a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-has-icon mega-icon-left mega-menu-item-3882' id='mega-menu-item-3882'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/sri-chaitanya-pre-primary-schools/">Pre-Primary</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-has-icon mega-icon-left mega-menu-item-3883' id='mega-menu-item-3883'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/sri-chaitanya-primary-schools/">Primary Schools</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-has-icon mega-icon-left mega-menu-item-3881' id='mega-menu-item-3881'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/sri-chaitanya-high-school/">High School</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-has-icon mega-icon-left mega-4-columns mega-menu-item-4160' id='mega-menu-item-4160'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/sri-chaitanya-olympiads/">Olympiads</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-has-icon mega-icon-left mega-menu-item-4925' id='mega-menu-item-4925'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/champion-aits/">Champion AITS</a></li>		</ul>
+</li><li class='mega-menu-column mega-menu-columns-1-of-3' id='mega-menu-3888-0-1'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-3890' id='mega-menu-item-3890'><a class="mega-menu-link" href="#"><strong>Colleges</strong></a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4419' id='mega-menu-item-4419'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/iit-main-advanced/">JEE (Main & Advanced)</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4424' id='mega-menu-item-4424'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/neet-ug/">NEET UG</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4423' id='mega-menu-item-4423'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/national-engineering-intensive-course/">National Engineering</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4420' id='mega-menu-item-4420'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/intermediate-public-exam/">Intermediate</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-has-icon mega-icon-left mega-menu-item-5696' id='mega-menu-item-5696'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanyaacademy.net/">Sri Chaitanya Academy</a></li>		</ul>
+</li><li class='mega-menu-column mega-menu-columns-1-of-3' id='mega-menu-3888-0-2'>
+		<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-3891' id='mega-menu-item-3891'><a class="mega-menu-link" href="#"><strong>Professional Courses</strong></a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4426' id='mega-menu-item-4426'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/upsc-services/">UPSC Services</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4418' id='mega-menu-item-4418'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/clat-programme/">CLAT Program</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4421' id='mega-menu-item-4421'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/ipm-programme/">IPM Program</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-courses mega-has-icon mega-icon-left mega-menu-item-4425' id='mega-menu-item-4425'><a class="dashicons-arrow-right mega-menu-link" href="https://srichaitanya.net/courses/sat-programme/">SAT Program</a></li>		</ul>
+</li>	</ul>
+</li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-3866' id='mega-menu-item-3866'><a class="mega-menu-link" href="https://srichaitanya.net/achievement/" tabindex="0">Results</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-3897' id='mega-menu-item-3897'><a class="mega-menu-link" href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Life at Campus<span class="mega-indicator" tabindex="0" role="button" aria-label="Life at Campus submenu"></span></a>
+<ul class="mega-sub-menu">
+<li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3871' id='mega-menu-item-3871'><a class="mega-menu-link" href="https://srichaitanya.net/food-dining-health/">Food, Dining &#038; Health</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3872' id='mega-menu-item-3872'><a class="mega-menu-link" href="https://srichaitanya.net/hostel-boarding-facilities/">Hostel &#038; Boarding Facilities</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3876' id='mega-menu-item-3876'><a class="mega-menu-link" href="https://srichaitanya.net/library-and-study-materials/">Library and Study Materials</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-3880' id='mega-menu-item-3880'><a class="mega-menu-link" href="https://srichaitanya.net/social-cultural-activities/">Social &#038; Cultural Activities</a></li></ul>
+</li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-3867' id='mega-menu-item-3867'><a class="mega-menu-link" href="https://srichaitanya.net/branch-locator/" tabindex="0">Branches</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-3868' id='mega-menu-item-3868'><a class="mega-menu-link" href="https://srichaitanya.net/careers/" tabindex="0">Careers</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-3914' id='mega-menu-item-3914'><a class="mega-menu-link" href="https://srichaitanya.net/blog/" tabindex="0">Blog</a></li><li class='mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-align-bottom-left mega-menu-flyout mega-menu-item-3870' id='mega-menu-item-3870'><a class="mega-menu-link" href="https://srichaitanya.net/contact-us/" tabindex="0">Contact Us</a></li><li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-menu-item-5514' id='mega-menu-item-5514'><a class="mega-menu-link" href="https://parent.scaits.net/" tabindex="0">Grievance</a></li></ul></div></div>
+        </div>
+      </div>
+    </header>
+<style type="text/css">
+.center {height: 100%;display: flex;align-items: center;justify-content: center;flex-direction: column;}
+.error {display: flex;flex-direction: row;justify-content: space-between;align-content: center;}
+.number {color:#0B254B;font-weight: 900;font-size: 15rem;line-height: 1;}
+.illustration {position: relative;width: 12.2rem;margin: 0 2.1rem;}
+.circle {position: absolute;bottom: 0;left: 0;width: 12.2rem;height: 11.4rem;border-radius: 50%;background-color: #0B254B;}
+.clip {position: absolute;bottom: 0.3rem;left: 50%;transform: translateX(-50%);overflow: hidden;width: 12.5rem;height: 13rem;border-radius: 0 0 50% 50%;}
+.paper {position: absolute;bottom: -0.3rem;left: 50%;transform: translateX(-50%);width: 9.2rem;height: 12.4rem;border: 0.3rem solid #0B254B;background-color: white;border-radius: 0.8rem;}
+.paper::before {  content: "";  position: absolute;  top: -0.7rem;  right: -0.7rem;  width: 1.4rem;  height: 1rem;  background-color: white;  border-bottom: 0.3rem solid #0B254B;  transform: rotate(45deg);}
+.face {position: relative;margin-top: 2.3rem;}
+.eyes {position: absolute;top: 0;left: 2.4rem;width: 4.6rem;height: 0.8rem;}
+.eye {position: absolute;bottom: 0;width: 0.8rem;height: 0.8rem;border-radius: 50%;background-color: #0B254B;animation-name: eye;animation-duration: 4s;animation-iteration-count: infinite;animation-timing-function: ease-in-out;}
+.eye-left {  left: 0;}
+.eye-right {  right: 0;}
+@keyframes eye {
+  0% {
+    height: 0.8rem;
+  }
+  50% {
+    height: 0.8rem;
+  }
+  52% {
+    height: 0.1rem;
+  }
+  54% {
+    height: 0.8rem;
+  }
+  100% {
+    height: 0.8rem;
+  }
+}
+
+.rosyCheeks {position: absolute;top: 1.6rem;width: 1rem;height: 0.2rem;border-radius: 50%;background-color: #fdabaf;}
+.rosyCheeks-left {  left: 1.4rem;}
+.rosyCheeks-right {  right: 1.4rem;}
+.mouth {position: absolute;top: 3.1rem;left: 50%;width: 1.6rem;height: 0.2rem;border-radius: 0.1rem;transform: translateX(-50%);background-color: #0B254B;}
+.text {margin-top: 2rem;font-weight: 300;color: #0B254B;}
+.button {margin-top: 2rem;border-radius:0.25rem;text-transform:uppercase;font-weight:600;padding: 0.8rem 2rem;color: white;background-color: #dd0028;}
+.button:hover { background-color: #0B254B; color:#ffffff;}
+</style>
+
+
+	<section class="container error-404 not-found text-center pt-5">
+		<header class="page-header">
+			<h1 class="page-title fw-light">Oops! The page you&rsquo;re looking for doesn&rsquo;t exist.</h1>
+		</header>
+		<div class="page-content">
+			<div class="center mb-lg-5">
+				<div class="error">
+					<div class="number">4</div>
+					<div class="illustration">
+					<div class="circle"></div>
+					<div class="clip">
+						<div class="paper">
+						<div class="face">
+							<div class="eyes">
+							<div class="eye eye-left"></div>
+							<div class="eye eye-right"></div>
+							</div>
+							<div class="rosyCheeks rosyCheeks-left"></div>
+							<div class="rosyCheeks rosyCheeks-right"></div>
+							<div class="mouth"></div>
+						</div>
+						</div>
+					</div>
+					</div>
+					<div class="number">4</div>
+				</div>
+				<h3 class="text">If you want back to home!</h3>
+				<a class="button" href="/">Go Home</a>
+			</div>
+		</div>
+		<!-- .page-content -->
+	</section><!-- .error-404 -->
+
+	
+	<div class="container ">
+		<div class="">
+			<h2 class="display-6 fw-bold">Popular Articles..</h2>
+		</div>
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-lg-5 g-4 pb-lg-5">
+							<div class="col mb-3">
+					<div class="card border-0">
+						<div class="card-body">
+							<div class="ccard-title">
+								<p class="f-s-4 text-uppercase mb-2">Important Updates</p>
+							</div>
+							<div class="mb-4">
+								<a href="https://srichaitanya.net/blog/jee-main-2026-paper-solutions/" class="d-block wrap-pic-w trans-03">
+									<img src="https://srichaitanya.net/wp-content/uploads/2026/01/JEEMain2026solutions-1200x422.jpeg" alt="IMG">
+								</a>
+								<p class="post-date-read-time small my-2"><span class="fw-bold">11min read</span> / 21-Jan-2026</p>
+								<h6 class="fw-bold">
+									<a href="https://srichaitanya.net/blog/jee-main-2026-paper-solutions/" class="blog-title hov-cl10 trans-03">
+										JEE Main 2026 Session 1 &#8211; Paper Solution									</a>
+								</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+							<div class="col mb-3">
+					<div class="card border-0">
+						<div class="card-body">
+							<div class="ccard-title">
+								<p class="f-s-4 text-uppercase mb-2">NEET Blog Update</p>
+							</div>
+							<div class="mb-4">
+								<a href="https://srichaitanya.net/blog/neet-2026-exam-schedule/" class="d-block wrap-pic-w trans-03">
+									<img src="https://srichaitanya.net/wp-content/uploads/2025/12/neetexam-1200x675-1.jpg" alt="IMG">
+								</a>
+								<p class="post-date-read-time small my-2"><span class="fw-bold">12min read</span> / 12-Dec-2025</p>
+								<h6 class="fw-bold">
+									<a href="https://srichaitanya.net/blog/neet-2026-exam-schedule/" class="blog-title hov-cl10 trans-03">
+										NEET 2026 Exam Schedule									</a>
+								</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+							<div class="col mb-3">
+					<div class="card border-0">
+						<div class="card-body">
+							<div class="ccard-title">
+								<p class="f-s-4 text-uppercase mb-2">Important Updates</p>
+							</div>
+							<div class="mb-4">
+								<a href="https://srichaitanya.net/blog/were-hiring/" class="d-block wrap-pic-w trans-03">
+									<img src="https://srichaitanya.net/wp-content/uploads/2025/10/hiring_image-1200x544.jpeg" alt="IMG">
+								</a>
+								<p class="post-date-read-time small my-2"><span class="fw-bold">8min read</span> / 11-Oct-2025</p>
+								<h6 class="fw-bold">
+									<a href="https://srichaitanya.net/blog/were-hiring/" class="blog-title hov-cl10 trans-03">
+										We’re Hiring!									</a>
+								</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+						
+		</div>
+	</div>
+
+<footer class="footerinformation">
+  <div class="container">
+    <div class="top_ft">
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <div class="footer-logo"><a href="https://srichaitanya.net"><li id="media_image-2" class="widget widget_media_image"><img width="270" height="56" src="https://srichaitanya.net/wp-content/uploads/2023/01/ft-logo.png" class="image wp-image-4366  attachment-full size-full" alt="Sri Chaitanya" style="max-width: 100%; height: auto;" decoding="async" loading="lazy" /></li>
+</a></div>
+        </div>
+        <div class="col-6 col-md-6">
+          <div class="social-icons">
+            <h5>Connect With Us: </h5>
+            <ul>
+              <li><a href="https://facebook.com/SriChaitanyaEducationalSM" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://twitter.com/Sri_Chaitanya_" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/srichaitanyaeducational/" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://youtube.com/c/SriChaitanyaEdu/" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="secondry_footer">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="footer-1">
+            <li id="nav_menu-2" class="widget widget_nav_menu"><h4 class="widgettitle">Quick Links</h4><nav class="menu-footer-1-container" aria-label="Quick Links"><ul id="menu-footer-1" class="menu"><li id="menu-item-3926" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3926"><a href="https://srichaitanyaalumni.com/">Sri Chaitanya Alumni</a></li>
+<li id="menu-item-1020" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1020"><a href="http://www.scaits.net/college-student/home.jml">Student Login</a></li>
+<li id="menu-item-1022" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1022"><a href="http://www.scaits.net/college-student/home.jml">Parent Login</a></li>
+<li id="menu-item-4233" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4233"><a href="https://srichaitanya.net/branch-locator/">Branch Locator</a></li>
+<li id="menu-item-4234" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4234"><a href="https://srichaitanya.net/blog/">Our Blog</a></li>
+<li id="menu-item-4235" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4235"><a href="https://srichaitanya.net/contact-us/">Contact Us</a></li>
+</ul></nav></li>          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-1">
+            <li id="nav_menu-3" class="widget widget_nav_menu"><h4 class="widgettitle">Courses</h4><nav class="menu-footer-2-container" aria-label="Courses"><ul id="menu-footer-2" class="menu"><li id="menu-item-4237" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4237"><a href="https://srichaitanya.net/courses/neet-ug/">NEET UG</a></li>
+<li id="menu-item-4517" class="menu-item menu-item-type-post_type menu-item-object-courses menu-item-4517"><a href="https://srichaitanya.net/courses/iit-main-advanced/">IIT (Main &#038; Advanced)</a></li>
+<li id="menu-item-4516" class="menu-item menu-item-type-post_type menu-item-object-courses menu-item-4516"><a href="https://srichaitanya.net/courses/national-engineering-intensive-course/">National Engineering Intensive Course</a></li>
+<li id="menu-item-3726" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3726"><a href="https://srichaitanya.net/courses/intermediate-public-exam/">Intermediate Public Exam</a></li>
+<li id="menu-item-4515" class="menu-item menu-item-type-post_type menu-item-object-courses menu-item-4515"><a href="https://srichaitanya.net/courses/upsc-services/">UPSC SERVICES</a></li>
+<li id="menu-item-4236" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4236"><a href="https://srichaitanyaacademy.net/">Sri Chaitanya Academy</a></li>
+</ul></nav></li>          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-1">
+            <li id="nav_menu-4" class="widget widget_nav_menu"><h4 class="widgettitle">Institutes</h4><nav class="menu-footer-3-container" aria-label="Institutes"><ul id="menu-footer-3" class="menu"><li id="menu-item-604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-604"><a href="https://srichaitanya.net/">Sri Chaitanya Colleges</a></li>
+<li id="menu-item-606" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-606"><a href="https://srichaitanyaschool.net/">Sri Chaitanya Schools</a></li>
+<li id="menu-item-3800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3800"><a href="https://www.futurepathways.in/">Future Pathways</a></li>
+<li id="menu-item-608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-608"><a href="https://srichaitanyaias.net/">Sri Chaitanya IAS Academy</a></li>
+<li id="menu-item-3802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3802"><a href="https://srichaitanyaacademy.net/">Sri Chaitanya Academy</a></li>
+<li id="menu-item-3801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3801"><a href="https://infinitylearn.com">Infinity Learn</a></li>
+</ul></nav></li>          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="footer-1">
+            <li id="custom_html-2" class="widget_text widget widget_custom_html"><h4 class="widgettitle">Contact Details</h4><div class="textwidget custom-html-widget"><div class="footer-content_bx">
+                <ul>
+                  <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="https://parent.scaits.net/"  rel="noopener noreferrer" target="_blank">For College Grievances</a></li>
+                  <li><i class="fa fa-phone" aria-hidden="true"></i> <a href="tel:040-66060606"  rel="noopener noreferrer">040-66 06 06 06</a> <br>
+                    Timing: 9:30 AM to 6:30 PM <br> (Mon-Sat) </li>
+                  <li><i class="fa fa-map-marker" aria-hidden="true"></i> Plot # 304,
+                    Kasetty Heights, <br> Sri Ayyappa Society,
+                    Madhapur, Hyderabad - 500081, <br> Telangana, INDIA. </li>
+                </ul>
+              </div></div></li>          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; Copyright 2026. Sri Chaitanya Group. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><a href="https://srichaitanya.net/privacy-policy/">Privacy Policy</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<!-- QP Download  -->
+<div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content shadow-lg">
+      
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Access PDF</h5>
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- STEP 1 : USER FORM -->
+        <div id="formStep">
+          <div class="mb-3">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="nameq" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email *</label>
+            <input type="email" id="emailq" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mobile *</label>
+            <input type="tel" id="mobileq" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Class (Optional)</label>
+            <input type="text" id="classNameq" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">College (Optional)</label>
+            <input type="text" id="collegeq" class="form-control">
+          </div>
+        </div>
+
+        <!-- STEP 2 : OTP -->
+        <div id="otpStep" class="d-none text-center">
+          <p class="fw-semibold">Enter the OTP sent to your mobile</p>
+
+          <input type="text" id="otp" placeholder="Enter OTP" class="form-control text-center mb-2" maxlength="6">
+
+          <!-- NEW: RESEND OTP BUTTON -->
+          <div class="text-center mt-5">
+            <button id="resendOtpBtn" type="button" class="btn btn-warning w-100" disabled>
+                Resend OTP (30s)
+            </button>
+          </div>
+
+        </div>
+
+        <div class="alert alert-danger mt-2 d-none" id="errorMsg"></div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary w-100" id="submitBtn">
+          Continue
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- QP Download  -->
+
+
+<style>
+  .search-submit {
+    display: none
+  }
+
+  .content-area .pagination {
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+  }
+
+  .pagination .page-numbers {
+    background: #333;
+    color: #ffffff;
+    padding: 5px 8px 7px;
+    border: 1px solid #333;
+    border-radius: 5px;
+  }
+
+  .pagination .current {
+    background-color: #e93314;
+    border: 1px solid #e93314;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .pagination {
+    display: block !important;
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width:767px) {
+    .social_tab_links,.tbs-post-data,.Courses_Offered_l { display:none!important}
+    .bc-latest-post li figure {
+      width: 100%;
+      float: left;
+      margin: 0px;
+    }
+
+    .bc-latest-post li .b-post-content {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 13px;
+      float: left;
+    }
+
+    .news-post-wrap {
+      border-right: 0;
+      padding-right: 0;
+      width: 100%;
+      float: left;
+    }
+
+    .sidebar-information {
+      margin-top: 30px;
+    }
+  }
+  .f-error {
+      color: red;
+      font-size: 11px;
+      font-weight: 500;
+  }
+
+</style>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/chaitanya-child-theme/*","/wp-content/themes/twentysixteen/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script src="https://srichaitanya.net/wp-content/themes/twentysixteen/js/skip-link-focus-fix.js?ver=20170530" id="twentysixteen-skip-link-focus-fix-js"></script>
+<script id="twentysixteen-script-js-extra">
+var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+//# sourceURL=twentysixteen-script-js-extra
+</script>
+<script src="https://srichaitanya.net/wp-content/themes/twentysixteen/js/functions.js?ver=20211130" id="twentysixteen-script-js"></script>
+<script src="https://srichaitanya.net/wp-includes/js/hoverIntent.min.js?ver=1.10.2" id="hoverIntent-js"></script>
+<script id="megamenu-js-extra">
+var megamenu = {"timeout":"300","interval":"100"};
+//# sourceURL=megamenu-js-extra
+</script>
+<script src="https://srichaitanya.net/wp-content/plugins/megamenu/js/maxmegamenu.js?ver=3.1.1" id="megamenu-js"></script>
+<script id="intl-tel-input-js-js-extra">
+var mystickyelement_obj = {"plugin_url":"https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/"};
+//# sourceURL=intl-tel-input-js-js-extra
+</script>
+<script src="https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/intl-tel-input-src/build/js/intlTelInput.js?ver=2.0.9" id="intl-tel-input-js-js"></script>
+<script src="https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/js/jquery.cookie.js?ver=2.0.9" id="mystickyelements-cookie-js-js"></script>
+<script id="mystickyelements-fronted-js-js-extra">
+var mystickyelements = {"ajaxurl":"https://srichaitanya.net/wp-admin/admin-ajax.php","ajax_nonce":"17e97444d3","google_analytics":""};
+//# sourceURL=mystickyelements-fronted-js-js-extra
+</script>
+<script src="https://srichaitanya.net/wp-content/plugins/mystickyelements-pro/js/mystickyelements-fronted.min.js?ver=2.0.9" id="mystickyelements-fronted-js-js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://srichaitanya.net/wp-includes/js/wp-emoji-release.min.js?ver=6.9.1"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://srichaitanya.net/wp-includes/js/wp-emoji-loader.min.js
+</script>
+                        <input type="hidden" class="mystickyelement-country-list-hidden"
+                               value=""/>
+                        <div class="mystickyelements-fixed mystickyelements-fixed-widget-0 mystickyelements-position-screen-center mystickyelements-position-mobile-right mystickyelements-on-click mystickyelements-size-medium mystickyelements-mobile-size-medium mystickyelements-position-right mystickyelements-templates-default mystickyelements-entry-effect-slide-in"  data-custom-position=""
+                             data-custom-position-mobile=""
+                             data-mystickyelement-widget="0"
+                             data-widget-time-delay="0"
+                             id="mystickyelement-widget-0"
+                             data-istimedelay="0">
+                            <div class="mystickyelement-lists-wrap">
+                                <ul class="mystickyelements-lists mysticky"
+                                    data-mystickyelement-widget="0">
+                                                                            <li class="mystickyelements-minimize "
+                                            data-mystickyelement-widget="0">
+                                            <span class="mystickyelements-minimize minimize-position-right minimize-position-mobile-right"
+                                                  style="background: #000000" >
+                            &rarr;                                            </span>
+                                        </li>
+                                    
+                                                                            <li id="mystickyelements-contact-form"
+                                            class="mystickyelements-contact-form  element-desktop-on element-mobile-on"                                             data-tab-opt="click"
+                                            data-isphone-formate="0">
+                                                                                        <span class="mystickyelements-social-icon "
+                                                  data-tab-setting='click'
+                                                  data-mobile-behavior="disable"
+                                                  data-click="0"
+                                                  data-flyout="disable"
+                                                  style="background-color: #ff3a3a; color: #FFFFFF;"
+                                                  data-mystickyelement-widget="0"><i
+                                                        class="far fa-envelope"></i>Quick Contact</span>
+                                            
+
+                                            <div class="element-contact-form"
+                                                 style="background-color: #ffffff">
+                                                                                                <h3 style="color: #ff6d6d;background-color:#ffffff">
+                                                    Contact Form                                                    <a href="javascript:void(0);" class="element-contact-close"
+                                                       data-mystickyelement-widget="0"><i
+                                                                class="fas fa-times"></i></a>
+                                                </h3>
+                                                                                                <form id="stickyelements-form" class="stickyelements-form" action=""
+                                                      method="post" autocomplete="off" enctype="multipart/form-data"
+                                                      data-mystickyelement-widget="0" >
+                                                    <input type="hidden" name="action"
+                                                           value="mystickyelements_contact_form"/>
+                                                    <input type="hidden" name="security"
+                                                           value="17e97444d3"/>
+                                                                                                                        <input
+                                                                            class=" required"
+                                                                            type="text" id="contact-form-name"
+                                                                            name="contact-form-name" value=""
+                                                                            placeholder="Student Name*"  required autocomplete="off"/>
+                                                                                                                                    <input
+                                                                            class=" required contact-phone-default-field"
+                                                                            type="tel" id="contact-form-phone"
+                                                                            name="contact-form-phone" value=""
+                                                                            placeholder="Mobile Number*"  required  autocomplete="off"/>
+
+                                                                    <input type="hidden"
+                                                                           id="phone_formate_0"
+                                                                           value="0">
+                                                                                                                                    <input
+                                                                            class="email  required"
+                                                                            type="email" id="contact-form-email"
+                                                                            name="contact-form-email" value=""
+                                                                            placeholder="Email*"  required  autocomplete="off"/>
+                                                                                                                                    <select id="contact-form-dropdown"
+                                                                            name="contact-form-dropdown"
+                                                                            class=" required"  required >
+
+                                                                        <option value="" disabled
+                                                                                selected>- Select -*</option>
+                                                                                                                                                    <option value="General Enquiry">General Enquiry</option>
+                                                                                                                                                    <option value="NEET Enquiry">NEET Enquiry</option>
+                                                                                                                                                    <option value="IIT Enquiry">IIT Enquiry</option>
+                                                                                                                                                    <option value="Civil Services">Civil Services</option>
+                                                                                                                                                    <option value="IPE (Intermediate)">IPE (Intermediate)</option>
+                                                                                                                                            </select>
+
+                                                                                                                                    <textarea
+                                                                            class=" required"
+                                                                            id="contact-form-message"
+                                                                            name="contact-form-message"
+                                                                            placeholder="Message*"  required ></textarea>
+                                                                
+                                                    <p class="mse-form-success-message" id="mse-form-error"
+                                                       style="display:none;"></p>
+                                                    <input id="stickyelements-submit-form" type="submit"
+                                                           name="contact-form-submit"
+                                                           value="Submit"
+                                                           style="background-color: #ff0000;color:#FFFFFF;"/>
+                                                                                                        <input type="hidden" name="nonce"
+                                                           value="69a17d51ee3b8177219105769a17d51ee3bb">
+                                                    <input type="hidden" name="widget_name"
+                                                           value="">
+                                                    <input type="hidden" name="widget_number"
+                                                           value="">
+                                                    <input type="hidden" name="form_id"
+                                                           value="e17edfb6f7">
+                                                    <input type="hidden" id="stickyelements-page-link"
+                                                           name="stickyelements-page-link"
+                                                           value="https://srichaitanya.net/wp-content/themes/sri/library/images/logo.png"/>
+                                                </form>
+                                            </div>
+                                        </li>
+                                                                                <li id="mystickyelements-social-facebook"
+                                                class="mystickyelements-social-icon-li mystickyelements-social-facebook  element-desktop-on element-mobile-on">
+                                                                                                    <style>
+                                                                                                            </style>
+                                                                                                    <span class="mystickyelements-social-icon social-facebook social-custom"
+                                                      data-tab-setting='click'
+                                                      data-tab-setting='click'
+                                                      data-mobile-behavior="disable"
+                                                      data-click="0"
+                                                      data-flyout="disable"
+                                              style="background: #4267B2" >
+                                                                                                   <a href="https://www.facebook.com/SriChaitanyaEducationalSM"   target="_blank" rel="noopener"  data-url="https://www.facebook.com/SriChaitanyaEducationalSM"
+                                                           data-tab-setting='click'
+                                                           data-mobile-behavior="disable"
+                                                           data-flyout="disable">
+                                                                                              <i class="fab fa-facebook-f" ></i>
+                                                                                                       </a>
+                                                                                                                                                    </span>
+
+                                                                                                    <span class="mystickyelements-social-text "
+                                                          style="background: #4267B2;"
+                                                          data-flyout="disable">
+                                                                                                    <a href="https://www.facebook.com/SriChaitanyaEducationalSM"  target="_blank" rel="noopener"   data-flyout="disable">
+                                                Facebook                                                                                                    </a>
+                                                                                                </span>
+                                                
+                                            </li>
+
+                                                                                    <li id="mystickyelements-social-insagram"
+                                                class="mystickyelements-social-icon-li mystickyelements-social-insagram  element-desktop-on element-mobile-on">
+                                                                                                <span class="mystickyelements-social-icon social-insagram social-custom"
+                                                      data-tab-setting='click'
+                                                      data-tab-setting='click'
+                                                      data-mobile-behavior="disable"
+                                                      data-click="0"
+                                                      data-flyout="disable"
+                                            >
+                                                                                                   <a href="https://www.instagram.com/srichaitanyaeducational/"   target="_blank" rel="noopener"  data-url="https://www.instagram.com/srichaitanyaeducational/"
+                                                           data-tab-setting='click'
+                                                           data-mobile-behavior="disable"
+                                                           data-flyout="disable">
+                                                                                              <i class="fab fa-instagram" ></i>
+                                                                                                       </a>
+                                                                                                                                                    </span>
+
+                                                                                                    <span class="mystickyelements-social-text "
+                                                          style=""
+                                                          data-flyout="disable">
+                                                                                                    <a href="https://www.instagram.com/srichaitanyaeducational/"  target="_blank" rel="noopener"   data-flyout="disable">
+                                                Instagram                                                                                                    </a>
+                                                                                                </span>
+                                                
+                                            </li>
+
+                                                                                    <li id="mystickyelements-social-youtube"
+                                                class="mystickyelements-social-icon-li mystickyelements-social-youtube  element-desktop-on element-mobile-on">
+                                                                                                    <style>
+                                                                                                            </style>
+                                                                                                    <span class="mystickyelements-social-icon social-youtube social-custom"
+                                                      data-tab-setting='click'
+                                                      data-tab-setting='click'
+                                                      data-mobile-behavior="disable"
+                                                      data-click="0"
+                                                      data-flyout="disable"
+                                              style="background: #F54E4E" >
+                                                                                                   <a href="https://www.youtube.com/channel/UCG31O2eprG8EAJkv9kMWVDg"   target="_blank" rel="noopener"  data-url="https://www.youtube.com/channel/UCG31O2eprG8EAJkv9kMWVDg"
+                                                           data-tab-setting='click'
+                                                           data-mobile-behavior="disable"
+                                                           data-flyout="disable">
+                                                                                              <i class="fab fa-youtube" ></i>
+                                                                                                       </a>
+                                                                                                                                                    </span>
+
+                                                                                                    <span class="mystickyelements-social-text "
+                                                          style="background: #F54E4E;"
+                                                          data-flyout="disable">
+                                                                                                    <a href="https://www.youtube.com/channel/UCG31O2eprG8EAJkv9kMWVDg"  target="_blank" rel="noopener"   data-flyout="disable">
+                                                YouTube                                                                                                    </a>
+                                                                                                </span>
+                                                
+                                            </li>
+
+                                                                        </ul>
+                            </div>
+                        </div>
+                                                <style>
+                            form#stickyelements-form input::-moz-placeholder {
+                                color: #4F4F4F;
+                            }
+
+                            form#stickyelements-form input::-ms-input-placeholder {
+                                color: #4F4F4F                            }
+
+                            form#stickyelements-form input::-webkit-input-placeholder {
+                                color: #4F4F4F                            }
+
+                            form#stickyelements-form input::placeholder {
+                                color: #4F4F4F                            }
+
+                            form#stickyelements-form textarea::placeholder {
+                                color: #4F4F4F                            }
+
+                            form#stickyelements-form textarea::-moz-placeholder {
+                                color: #4F4F4F                            }
+
+                                                    </style>
+                        		<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),
+                _trfd.push({'tccl.baseHost':'secureserver.net'}),
+                _trfd.push({'ap':'wpaas_v2'},
+                    {'server':'be5099fb9a55'},
+                    {'pod':'c29-prod-p3-us-west-2'},
+                                        {'xid':'45410622'},
+                    {'wp':'6.9.1'},
+                    {'php':'7.4.33.12'},
+                    {'loggedin':'0'},
+                    {'cdn':'1'},
+                    {'builder':'wp-classic-editor'},
+                    {'theme':'twentysixteen'},
+                    {'wds':'0'},
+                    {'wp_alloptions_count':'499'},
+                    {'wp_alloptions_bytes':'173723'},
+                    {'gdl_coming_soon_page':'0'}
+                    , {'appid':'785402'}                 );
+            var trafficScript = document.createElement('script'); trafficScript.src = 'https://img1.wsimg.com/signals/js/clients/scc-c2/scc-c2.min.js'; window.document.head.appendChild(trafficScript);</script>
+		<script>window.addEventListener('click', function (elem) { var _elem$target, _elem$target$dataset, _window, _window$_trfq; return (elem === null || elem === void 0 ? void 0 : (_elem$target = elem.target) === null || _elem$target === void 0 ? void 0 : (_elem$target$dataset = _elem$target.dataset) === null || _elem$target$dataset === void 0 ? void 0 : _elem$target$dataset.eid) && ((_window = window) === null || _window === void 0 ? void 0 : (_window$_trfq = _window._trfq) === null || _window$_trfq === void 0 ? void 0 : _window$_trfq.push(["cmdLogEvent", "click", elem.target.dataset.eid]));});</script>
+		<script src='https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js' onload="window.tti.calculateTTI()"></script>
+		
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    $('#contact_form').submit(function (e) {
+        e.preventDefault();
+        jQuery('.input-field').removeClass('error');
+        jQuery('.input-field').next('.f-error').remove();
+
+        var name = jQuery('#name').val();
+        var email = jQuery('#email').val();
+        var number = jQuery('#phone').val();
+        var subject = jQuery('#subject').val();
+        var msg = jQuery('#msg').val();
+
+        var regName = /^[a-zA-Z ]*$/;
+        var regNum = /[6789][0-9]{9}/;
+        var regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        var nameS, numS, emailS, schoolS, cityS;
+        if (name == "") {
+            jQuery('#name').addClass('error');
+            jQuery('#name').after('<span class="f-error">Please Enter Your Name</span>');
+            nameS = false;
+        // } else if (regName.test(name) == false) {
+        //     jQuery('#name').addClass('error');
+        //     jQuery('#name').after('<span class="f-error">Please Enter valid Your Name</span>');
+        //     nameS = false;
+        } else { nameS = true; }
+        if (email == "") {
+            jQuery('#email').addClass('error');
+            jQuery('#email').after('<span class="f-error">Please Enter Email Id</span>');
+            emailS = false;
+        } else if (regEmail.test(email) == false) {
+            jQuery('#email').addClass('error');
+            jQuery('#email').after('<span class="f-error">Please Enter valid Email Id</span>');
+            emailS = false;
+        } else if (regEmail.test(email) == false) {
+            jQuery('#email').addClass('error');
+            jQuery('#email').after('<span class="f-error">Please Enter valid Email Id</span>');
+            emailS = false;
+        } else { emailS = true; }
+        if (number == "") {
+            jQuery('#phone').addClass('error');
+            jQuery('#phone').after('<span class="f-error">Please Enter Phone Number</span>');
+            numS = false;
+        } else if (regNum.test(number) == false) {
+            jQuery('#phone').addClass('error');
+            jQuery('#phone').after('<span class="f-error">Please Enter Valid Phone Number</span>');
+            numS = false;
+        } else if (number.length > 10) {
+            jQuery('#phone').addClass('error');
+            jQuery('#phone').after('<span class="f-error">Please Enter Valid Phone Number</span>');
+            numS = false;
+        } else { numS = true; }
+        if (subject == "") {
+            jQuery('#subject').addClass('error');
+            jQuery('#subject').after('<span class="f-error">Please Enter Subject</span>');
+            schoolS = false;
+        } else if (regName.test(subject) == false) {
+            jQuery('#subject').addClass('error');
+            jQuery('#subject').after('<span class="f-error">Please Enter valid Subject</span>');
+            schoolS = false;
+        } else { schoolS = true; }
+        if (msg == "") {
+            jQuery('#msg').addClass('error');
+            jQuery('#msg').after('<span class="f-error">Please Enter Message</span>');
+            cityS = false;
+        } else if (regName.test(msg) == false) {
+            jQuery('#msg').addClass('error');
+            jQuery('#msg').after('<span class="f-error">Please Enter valid Message</span>');
+            cityS = false;
+        } else { cityS = true; }
+
+        if (nameS != true || emailS != true || numS != true || schoolS != true || cityS != true) {
+            return false;
+        } else {
+
+            var response = grecaptcha.getResponse();
+            if (response.length == 0) {
+                //reCaptcha not verified
+                alert("please verify you are human!");
+                e.preventDefault();
+                return false;
+            }
+
+            var frmData = $("#contact_form").serialize();
+            var actionUrl = "https://srichaitanya.net"; 
+            jQuery('.register_button').attr("disabled", true);
+
+            jQuery.ajax({
+                url: actionUrl+"/branch-data/formSave.php",
+                method: "POST",
+                data: frmData,
+                cache : false,
+                processData: false,
+                success: function (response) {
+                    var check = jQuery.parseJSON(response);
+                    if (check.status == '1') {
+                        jQuery('#contact_form')[0].reset();
+                        jQuery('.register_button').attr("disabled", false);
+                        $("#contact_form").hide();
+                        //$(".formCustom").html("Will Contact you soon.");
+                        window.location.href = "https://srichaitanya.net/thank-you";
+                    } else {
+                        alert('some error');
+                        jQuery('.register_button').attr("disabled", false);
+                        return false;
+                    }
+                }
+            });
+
+        }
+    });
+  </script>
+
+<script>
+
+const domain = window.location.origin;
+let selectedPdf = "";
+let leadId = "";
+const modal = new bootstrap.Modal(document.getElementById("pdfModal"));
+
+// $('#pdfModal').modal({
+//   backdrop: 'static',
+//   keyboard: false
+// });
+
+document.addEventListener("click", function (e) {
+  const link = e.target.closest(".pdf-link");
+  if (!link) return;
+
+  e.preventDefault();
+  selectedPdf = link.href;
+  
+  // Check session first
+  fetch(domain + "/branch-data/check_session.php")
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === "success") {
+      window.open(selectedPdf, "_blank");
+    } else {
+      // No session → show OTP modal
+      resetModal();
+      $('#pdfModal').modal('show');
+    }
+  });
+  // resetModal();
+  // modal.show();
+  // $('#pdfModal').modal('show');
+});
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+  if (!leadId) submitForm();
+  else verifyOtp();
+});
+
+document.getElementById("resendOtpBtn").addEventListener("click", resendOtp);
+
+function submitForm() {
+  const data = {
+    name: $("#nameq").val().trim(),
+    email: $("#emailq").val().trim(),
+    mobile: $("#mobileq").val().trim(),
+    className: $("#classNameq").val().trim(),
+    college: $("#collegeq").val().trim(),
+    pdf : selectedPdf
+  };
+
+  if (!data.name || !data.email || !data.mobile ) {
+    return showError("Please fill all required fields.");
+  }
+  if (!/^\d{10}$/.test(data.mobile)) {
+    return showError("Mobile number must be exactly 10 digits.");
+  }
+
+  fetch( domain + "/branch-data/saveQp.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === 'fail') return showError(res.message);
+    leadId = res.lead_id;
+    showOtpStep();
+  });
+}
+
+function verifyOtp() {
+  fetch( domain + "/branch-data/verify_otp.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ lead_id: leadId, otp: otp.value })
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === 'fail') return showError("Invalid OTP");
+    resetModal();
+    // modal.hide();
+    $('#pdfModal').modal('hide');
+    window.open(selectedPdf, "_blank");
+  });
+}
+
+function resendOtp() {
+  fetch( domain + "/branch-data/resend_otp.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ lead_id: leadId })
+  })
+  .then(res => res.json())
+  .then(res => {
+      if (res.message) return showError(res.message);
+  });
+  
+}
+
+function showOtpStep() {
+  document.getElementById("formStep").classList.add("d-none");
+  document.getElementById("otpStep").classList.remove("d-none");
+  submitBtn.textContent = "Verify OTP";
+  setTimeout(() => {
+      startResendTimer();
+  }, 500);
+}
+
+function resetModal() {
+  leadId = "";
+  document.getElementById("formStep").classList.remove("d-none");
+  document.getElementById("otpStep").classList.add("d-none");
+  document.getElementById("submitBtn").textContent = "Continue";
+  document.querySelector("form")?.reset();
+  document.querySelectorAll('#formStep input, #otpStep input').forEach(input => {
+    input.value = '';
+  });
+  hideError();
+}
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.classList.remove("d-none");
+}
+
+function hideError() {
+  errorMsg.classList.add("d-none");
+}
+
+function startResendTimer() {
+  let timer = 120;
+  $("#resendOtpBtn").prop("disabled", true).text(`Resend OTP (${timer}s)`);
+
+  let countdown = setInterval(() => {
+      timer--;
+      $("#resendOtpBtn").text(`Resend OTP (${timer}s)`); 
+
+      if (timer <= 0) {
+          clearInterval(countdown);
+          $("#resendOtpBtn").prop("disabled", false).text("Resend OTP");
+      }
+  }, 1000);
+}
+
+</script>
+
+
+
+</body>
+
+</html>

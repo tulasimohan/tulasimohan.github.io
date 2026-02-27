@@ -85,9 +85,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-start_year','listing-end_year','listing-role','listing-place_id','listing-place_name','listing-category',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-start_year','listing-end_year','listing-role','listing-place_id','listing-place_name','listing-category','listing-logo',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-id","listing-role","listing-place_id","listing-start_year","listing-end_year","listing-category","listing-place_name"],
+      searchColumns: ["listing-id","listing-role","listing-place_id","listing-start_year","listing-end_year","listing-category","listing-place_name","listing-logo"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -153,11 +153,17 @@ window.Quarto = {
 <link rel="stylesheet" href="custom.css">
 <meta property="og:title" content="– Tulasimohan Molli">
 <meta property="og:description" content="Learn more about Tulasimohan Molli’s academic background, education, and professional experience.">
-<meta property="og:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<meta property="og:image" content="https://tulasimohan.github.io/assets/images/logos/bits.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
+<meta property="og:image:alt" content="BITS Pilani, Hyderabad Campus logo">
+<meta property="og:image:height" content="1200">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="– Tulasimohan Molli">
 <meta name="twitter:description" content="Learn more about Tulasimohan Molli’s academic background, education, and professional experience.">
-<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/logos/bits.png">
+<meta name="twitter:image:alt" content="BITS Pilani, Hyderabad Campus logo">
+<meta name="twitter:image-height" content="1200">
+<meta name="twitter:image-width" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -271,16 +277,22 @@ window.Quarto = {
 <div class="timeline-item">
 <div class="timeline-year">2026 - Present</div>
 <div class="timeline-role">Assistant Professor</div>
-<div class="timeline-inst">
-BITS Pilani, Hyderabad Campus
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">BITS Pilani, Hyderabad Campus</span>
+  
+    <img src="assets/images/logos/bits.png" alt="BITS Pilani, Hyderabad Campus logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">2023 - 2025</div>
 <div class="timeline-role">Postdoctoral Researcher</div>
-<div class="timeline-inst">
-LASIGE, Univ. of Lisbon
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">LASIGE, Univ. of Lisbon</span>
+  
+    <img src="assets/images/logos/ulisboa.png" alt="LASIGE, Univ. of Lisbon logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
@@ -291,48 +303,62 @@ LASIGE, Univ. of Lisbon
 <div class="timeline-item">
 <div class="timeline-year">2014 - 2023</div>
 <div class="timeline-role">Ph.D. in Computer Science</div>
-<div class="timeline-inst">
-TIFR, Mumbai
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">TIFR, Mumbai</span>
+  
+    <img src="assets/images/logos/tifr.png" alt="TIFR, Mumbai logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">2012 - 2014</div>
 <div class="timeline-role">M.Sc. in Computer Science</div>
-<div class="timeline-inst">
-CMI, Chennai
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">CMI, Chennai</span>
+  
+    <img src="assets/images/logos/cmi.png" alt="CMI, Chennai logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">2008 - 2012</div>
 <div class="timeline-role">B.Sc. (Hons) Math &amp; CS</div>
-<div class="timeline-inst">
-CMI, Chennai
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">CMI, Chennai</span>
+  
+    <img src="assets/images/logos/cmi.png" alt="CMI, Chennai logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">2006 - 2008</div>
 <div class="timeline-role">Intermediate</div>
-<div class="timeline-inst">
-Sri Chaitanya Raman Bhavan, Vijayawada
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">Sri Chaitanya Raman Bhavan, Vijayawada</span>
+  
+    <img src="assets/images/logos/srichaitanya.png" alt="Sri Chaitanya Raman Bhavan, Vijayawada logo" class="timeline-logo" style="width: 32px; height: 32px; object-fit: contain;">
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">2001 - 2006</div>
 <div class="timeline-role">Secondary School</div>
-<div class="timeline-inst">
-Pragati Little Public School, Kakinada
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">Pragati Little Public School, Kakinada</span>
+  
 </div>
 </div>
 
 <div class="timeline-item">
 <div class="timeline-year">1996 - 2001</div>
 <div class="timeline-role">Primary School</div>
-<div class="timeline-inst">
-Priyadarsini High School, Pithapuram
+<div class="timeline-inst d-flex flex-row align-items-center justify-content-end mt-2">
+  <span class="me-2">Priyadarsini High School, Pithapuram</span>
+  
 </div>
 </div>
 
