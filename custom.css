@@ -264,32 +264,26 @@ details.bibtex-toggle[open] > pre {
 
 .about-timeline .timeline-year {
   position: absolute !important;
-  right: -9.5rem !important; /* Move to right side of line: 1.5rem padding + 8rem margin space */
+  left: calc(
+    100% + 3.5rem
+  ) !important; /* Anchor past the dot into the margin */
+  right: auto !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  width: 14rem !important;
+  width: max-content !important; /* Allow spelling into margin */
+  white-space: nowrap !important;
   text-align: left !important;
 
   font-weight: 700 !important;
   color: #2b2b88 !important;
   font-size: 0.95rem !important;
   line-height: 1.2 !important;
-
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-end !important;
-  gap: 0.5rem !important;
 }
 
 .about-timeline .logo-dash-container {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-}
-
-.about-timeline .logo-dash-container .dash {
-  line-height: 1 !important;
+  position: relative;
+  display: inline-block;
+  margin: 0 4px;
 }
 
 .about-timeline .timeline-role {
@@ -307,7 +301,14 @@ details.bibtex-toggle[open] > pre {
 }
 
 .about-timeline .timeline-logo {
-  max-width: 100%;
+  position: absolute;
+  bottom: 100%; /* Float above the dash */
+  left: 50%;
+  transform: translateX(-50%); /* Centered exactly above the dash */
+  width: 44px; /* Maintain readable size */
+  height: 44px;
+  object-fit: contain;
+  margin-bottom: 2px;
 }
 
 /* About Page Text Justification */
