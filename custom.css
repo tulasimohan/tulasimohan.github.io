@@ -316,23 +316,36 @@ details.bibtex-toggle[open] > pre {
 /* Link interactability */
 .hover-scale {
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy pop */
 }
 .hover-scale:hover {
-  filter: brightness(1.15); /* Slight pop matching standard web links */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) brightness(1.1);
+  transform: translateX(-50%) scale(1.1) !important; /* Base Logos */
+  z-index: 10;
 }
 
 /* Individual Logo Fine-Tuning Scale Overrides */
 #logo-phd_tifr {
   transform: translateX(-50%) scale(0.8) !important; /* Decrease TIFR to 80% */
 }
+#logo-phd_tifr:hover {
+  transform: translateX(-50%) scale(0.9) !important;
+}
 
 #logo-postdoc_lasige {
   transform: translateX(-50%) scale(0.81) !important; /* Decrease FCUL to 90% of its previously scaled 0.9 size */
+}
+#logo-postdoc_lasige:hover {
+  transform: translateX(-50%) scale(0.91) !important;
 }
 
 #logo-msc_cmi,
 #logo-bsc_cmi {
   transform: translateX(-50%) scale(0.7) !important; /* Decrease CMI to 70% */
+}
+#logo-msc_cmi:hover,
+#logo-bsc_cmi:hover {
+  transform: translateX(-50%) scale(0.8) !important;
 }
 
 /* About Page Text Justification */
