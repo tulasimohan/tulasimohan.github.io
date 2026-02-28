@@ -229,6 +229,19 @@ details.bibtex-toggle[open] > pre {
   position: relative !important; /* Context */
 }
 
+/* Arrow at top of timeline */
+.about-timeline::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -8px !important;
+  right: -5px !important; /* Center the 8px wide arrow over the 2px border */
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+  border-bottom: 6px solid #5ccae8 !important;
+}
+
 .about-timeline h3 {
   text-align: left !important;
   margin-right: -1.5rem !important; /* Reset padding offset so line doesn't cut it visually if long */
