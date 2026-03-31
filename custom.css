@@ -287,9 +287,10 @@ details.bibtex-toggle[open] > pre {
   white-space: nowrap !important;
   text-align: left !important;
 
-  font-weight: 700 !important;
+  font-weight: normal !important;
+  font-style: italic !important;
   color: #666 !important; /* Color matched exactly to timeline-inst location text */
-  font-size: 0.95rem !important;
+  font-size: 0.9rem !important;
   line-height: 1.2 !important;
 }
 
