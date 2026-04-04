@@ -362,6 +362,11 @@ details.bibtex-toggle[open] > pre {
   transform: translateX(-50%) scale(0.8) !important;
 }
 
+#logo-pri_priyadarsini {
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.1); /* Ensure pure white becomes transparent */
+}
+
 /* About Page Text Justification */
 .about-text-justified {
   text-align: justify;
