@@ -164,9 +164,15 @@ details.bibtex-toggle[open] > pre {
 #listing-news .list.grid {
   display: flex !important;
   flex-wrap: nowrap !important;
-  gap: 1rem !important;
+  gap: 0 !important; /* Removed gap, we'll use margin on items instead */
   width: max-content; /* Ensure container is wide enough */
   animation: scrollNews 20s linear infinite;
+}
+
+#listing-news .quarto-grid-item {
+  width: 280px; /* Fixed width for ticker items */
+  flex: 0 0 auto;
+  margin-right: 1.5rem !important; /* Fixed margin for consistent spacing */
 }
 
 /* Pause on hover */
@@ -184,11 +190,7 @@ details.bibtex-toggle[open] > pre {
   } /* Scroll halfway if content is doubled, or -100% if not seamlessly looping yet. For now -100% but it snaps back. Ideal is duplication. */
 }
 
-/* Compact Card Styles for Ticker */
-#listing-news .quarto-grid-item {
-  width: 280px; /* Fixed width for ticker items */
-  flex: 0 0 auto;
-}
+/* Removed fixed width from here as it's now in the item selector above */
 
 #listing-news .quarto-grid-item .card-body {
   padding: 0.5rem 0.75rem !important;
@@ -402,4 +404,15 @@ details.bibtex-toggle[open] > pre {
   transition: max-height 0.2s ease-out;
   font-size: 0.9rem;
   color: #555;
+}
+
+/* Fix for Homepage Social Links interactability */
+.about-links {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
+.about-link {
+  pointer-events: auto !important;
 }

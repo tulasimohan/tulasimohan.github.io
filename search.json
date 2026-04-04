@@ -91,25 +91,25 @@
     "text": "This website is a result of a streamlined workflow combining modern tools for knowledge management and web development.\n\n\n\nQuarto: The core framework for generating this static site.\nObsidian: My primary tool for Personal Knowledge Management (PKM).\nZotero: For reference management and citation workflows.\nNotion: Used for project tracking and collaboration.\nWorkflows: Custom scripts and automations to streamline my digital life.\nGemini & Antigravity: AI assistants that helped accelerate the coding and content generation.\nCLI: Heavily relied on command-line tools for version control and build processes.\n\n\n\n\nThe content reflects my journey through various institutions and research projects: - CMI: Where I built my foundation in Computer Science and Mathematics. - IMSc & TIFR: Institutes where I honed my research skills in Complexity Theory. - HoFGA: My postdoctoral work on Hardness of Fine-Grained Approximation with Bruno Loff at LASIGE. - DSLB: Extensive literature survey and research on Data Structure Lower Bounds.\n\n\n\nHome town Kakinada: I hail from Kakinada, a serene city known for its rich culture and famous Kakinada Kaja. It’s where my journey began.\n\n\n\nPortugal Days: My time in Lisbon was transformative, filled with research, pastéis de nata, and the beautiful Atlantic coast. I’m compiling a guide for anyone visiting!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Tulasimohan Molli",
+    "objectID": "location.html",
+    "href": "location.html",
+    "title": "Location & Contact",
     "section": "",
-    "text": "Department of Computer Science and Information Systems\nBITS Pilani Hyderabad Campus"
+    "text": "Room H 134\nAcademic Block H\nDepartment of Computer Science and Information Systems\nBITS Pilani, Hyderabad Campus\nJawahar Nagar, Kapra Mandal\nHyderabad, Telangana - 500078, India\n\n\n\nThe office is located in Block H, which is the primary academic building for Computer Science.\n\n\n\n\n\n\n Open in Google Maps"
   },
   {
-    "objectID": "index.html#research-interests",
-    "href": "index.html#research-interests",
-    "title": "Tulasimohan Molli",
-    "section": "Research Interests",
-    "text": "Research Interests\nI specialize in Theoretical Computer Science, with research interests spanning Algorithms, Complexity Theory, and Data Structures. My work explores the fundamental limits of computational models using algebraic, analytical, and combinatorial approaches.\n\n Circuit Complexity  Communication & Query Complexity  Analysis of Boolean Functions  Data Structures"
+    "objectID": "location.html#office-address",
+    "href": "location.html#office-address",
+    "title": "Location & Contact",
+    "section": "",
+    "text": "Room H 134\nAcademic Block H\nDepartment of Computer Science and Information Systems\nBITS Pilani, Hyderabad Campus\nJawahar Nagar, Kapra Mandal\nHyderabad, Telangana - 500078, India"
   },
   {
-    "objectID": "index.html#news",
-    "href": "index.html#news",
-    "title": "Tulasimohan Molli",
-    "section": "News",
-    "text": "News\n\n\n\n\n\n\n\nPaper Accepted at STOC 2026\n\n\nThe natural proofs barrier against data-structure lower-bounds accepted at STOC 2026.\n\n\n\nJun 1, 2026\n\n\n\n\n\n\n\n\n\n\nUpcoming Visit\n\n\nVisiting Tata Institute of Fundamental Research (TIFR).\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\n\n\n\nJoined BITS Pilani\n\n\nJoined BITS Pilani Hyderabad Campus as Assistant Professor.\n\n\n\nJan 29, 2026\n\n\n\n\n\n\nNo matching items"
+    "objectID": "location.html#directions",
+    "href": "location.html#directions",
+    "title": "Location & Contact",
+    "section": "",
+    "text": "The office is located in Block H, which is the primary academic building for Computer Science.\n\n\n\n\n\n\n Open in Google Maps"
   },
   {
     "objectID": "about.html",
@@ -138,6 +138,27 @@
     "title": "Tulasimohan Molli",
     "section": "",
     "text": "Visiting Scientist (2022) | IISER Berhampur\nVisiting Scientist (2017) | Weizmann Institute, Israel"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Tulasimohan Molli",
+    "section": "",
+    "text": "Department of Computer Science and Information Systems\nBITS Pilani Hyderabad Campus"
+  },
+  {
+    "objectID": "index.html#research-interests",
+    "href": "index.html#research-interests",
+    "title": "Tulasimohan Molli",
+    "section": "Research Interests",
+    "text": "Research Interests\nI specialize in Theoretical Computer Science, with research interests spanning Algorithms, Complexity Theory, and Data Structures. My work explores the fundamental limits of computational models using algebraic, analytical, and combinatorial approaches.\n\n Circuit Complexity  Communication & Query Complexity  Analysis of Boolean Functions  Data Structures"
+  },
+  {
+    "objectID": "index.html#news",
+    "href": "index.html#news",
+    "title": "Tulasimohan Molli",
+    "section": "News",
+    "text": "News\n\n\n\n\n\n\n\nPaper Accepted at STOC 2026\n\n\nThe natural proofs barrier against data-structure lower-bounds accepted at STOC 2026.\n\n\n\nJun 1, 2026\n\n\n\n\n\n\n\n\n\n\nTIFR Visit & Talk\n\n\nVisited Tata Institute of Fundamental Research (TIFR) and gave a talk about Data Structures and Natural Proofs.\n\n\n\nMar 10, 2026\n\n\n\n\n\n\n\n\n\n\nJoined BITS Pilani\n\n\nJoined BITS Pilani Hyderabad Campus as Assistant Professor.\n\n\n\nJan 29, 2026\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "misc/credits.html",
