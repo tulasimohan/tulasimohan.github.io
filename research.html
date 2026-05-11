@@ -146,9 +146,11 @@ window.KATEX_MACROS = {
     "\\eps": "\\epsilon"
 };
 </script>
-<script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -163,7 +165,7 @@ window.KATEX_MACROS = {
    });
 }}});
   </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -349,6 +351,7 @@ The natural proofs barrier against data-structure lower-bounds <span class="text
 </div>
 <div class="listing-links mt-1 d-flex flex-row flex-wrap gap-1 align-items-center">
 <p><a href="#" role="button" class="btn btn-sm btn-outline-dark abstract-button d-inline-flex align-items-center" data-abstract-id="abstract-0" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-file-text me-1"></i> Abstract </a></p>
+<p><a href="#" role="button" class="btn btn-sm btn-outline-dark presentation-button d-inline-flex align-items-center" data-presentation-url="/assets/TIFR_talk/TIFR_talk.html" data-presentation-password="natural2026" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-easel me-1"></i> Slides </a></p>
 <p><a href="#" role="button" class="btn btn-sm btn-outline-dark cite-button d-inline-flex align-items-center" data-bibtex-id="bibtex-0" style="font-size: 0.8rem; padding: 0.1rem 0.4rem;"> <i class="bi bi-quote me-1"></i> Cite </a></p>
 <p><a href="https://brunoloff.wordpress.com/wp-content/uploads/2025/12/natural_proof_barrier_for_data_structures-8.pdf" class="btn btn-sm btn-outline-dark d-inline-flex align-items-center link-manuscript" style="font-size: 0.8rem; padding: 0.1rem 0.4rem; text-decoration: none;"> <i class="bi bi-link-45deg me-1"></i> Manuscript </a></p>
 </div>
@@ -369,6 +372,20 @@ The natural proofs barrier against data-structure lower-bounds <span class="text
 <li>So if one is interested in improving upon the state of the art in static or dynamic data structure lower bounds, one must find a non-natural method of proving such lower bounds (no such method currently exists), or one may as well begin by trying to break our PRF candidates.</li>
 </ul>
 </div>
+<script type="text/plain" id="abstract-raw-0">
+Consider a data structure problem with possible data coming from a set $\mathcal D$, queries coming from a set $\mathcal Q$, and in the dynamic case updates coming from a set $\mathcal U$. Then, the current state of the art in data structure lower bounds is $t = \tilde\Omega(\log |\mathcal Q|)$ for static data structure problems, and $\max(t_{\mathrm q},t_{\mathrm u}) = \tilde\Omega((\log n)^2)$ where $n = \max(|\mathcal Q|,|\mathcal U|,\log |\mathcal D|)$ for dynamic.
+ 
+We port Razborov and Rudich's natural-proofs framework to the setting of static and dynamic data structures in the cell probe model, in a way that strongly suggests this state of the art is unlikely to be improved anytime soon. A similar direction was recently taken also by Korten, Pitassi and Impagliazzo (FOCS 2025) who look at static data structure lower bounds in a different regime of parameters. Our contribution is:
+
+* We define notions analogous to pseudorandom functions (PRF). We call these primitives *local PRFs*, in the context of static data structures, and *local and locally updatable (LLU) PRFs*, in the context of dynamic data structures.
+* We then formulate cryptographic conjectures, namely, that secure local PRFs and secure LLU PRFs exist, precisely at the frontier where we are no longer able to prove static, respectively dynamic, data structure lower bounds. If these conjectures are true, it follows that the current state of the art in data structure lower bounds cannot be improved by a natural proof.
+* We show that (almost) every single known data structure lower bound proof is a natural proof, by surveying all lower bounds in the literature (known to us). (The only exception is proofs based on lifting theorems.)
+* It follows that, if our cryptographic conjecture is true, then all known lower bound proof techniques (minus the one exception) are unable to improve upon the state of the art. (We also attempt to address the exception.)
+* Further, we provide concrete candidate constructions for our two pseudo-ran\-dom primitives. We conjecture that our constructions are secure for parameters just above the state-of-the-art lower bounds.
+* We also show that, whether or not they are secure, our candidate PRFs at least satisfy the natural properties appearing in all (but one) known proofs.
+* So if one is interested in improving upon the state of the art in static or dynamic data structure lower bounds, one must find a non-natural method of proving such lower bounds (no such method currently exists), or one may as well begin by trying to break our PRF candidates.
+
+</script>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="1">
@@ -395,6 +412,20 @@ Criticality of AC0 formulae <span class="text-muted" style="font-size: 0.8em;">[
 <p><em>Criticality</em> of a boolean function <span class="math inline">f</span> is defined to be the probability <span class="math inline">p</span> at which the decision tree depth <span class="math inline">t</span> of a random restriction of <span class="math inline">f</span> goes down exponentially in <span class="math inline">t</span>. Criticality has been implicitly studied in circuit complexity in the works of {all criticality results here}. The ground breaking work of Hastad’s switching lemma is a bound on criticality of CNFs and DNFs. Rossman defined the notion of criticality and showed its connection to average case lower bounds, fourier tail bounds, learning algorithms and decision tree size.</p>
 <p>In this we work we show optimal bound on criticality of <span class="math inline">\AC^0</span> which for a formula of depth <span class="math inline">d+1</span> and size <span class="math inline">S</span> is <span class="math inline">\bra{\frac{\log S}{d}}^d</span>. Prior to this work, Rossman showed a similar bound for regular formulas: the class of <span class="math inline">\AC^0</span> formulas in which all gates at any given depth have the same fan-in. We extend their proof the general <span class="math inline">\AC^0</span> formulas.</p>
 </div>
+<script type="text/plain" id="abstract-raw-1">
+A $p$-random restriction is a random partial input 
+obtained by independently setting each variable to either 0,1 with (1-p)/2 each or leaving it unset with probability $p$. 
+In this work, we study decision trees of bounded depth formulas under $p$-random restrictions.
+
+_Criticality_ of a boolean function $f$ is defined to be the probability $p$ at which the decision tree depth $t$ of a random restriction of $f$ goes down exponentially in $t$.
+Criticality has been implicitly studied in circuit complexity in the works of {all criticality results here}. 
+The ground breaking work of Hastad's switching lemma is a bound on criticality of CNFs and DNFs.
+Rossman defined the notion of criticality and showed its connection to average case lower bounds, fourier tail bounds, learning algorithms and decision tree size. 
+
+In this we work we show optimal bound on criticality of $\AC^0$ which for a formula of depth $d+1$ and size $S$ is $\bra{\frac{\log S}{d}}^d$.
+Prior to this work, Rossman showed a similar bound for regular formulas: the class of $\AC^0$ formulas in which all gates at any given depth have the same fan-in. We extend their proof the general $\AC^0$ formulas.
+
+</script>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="2">
@@ -428,6 +459,23 @@ Tight Chang’s lemma type bounds for Boolean functions <span class="text-muted"
 <li>for any choice of the threshold <span class="math inline">t</span>, the lower bound obtained from Chang’s lemma is asymptotically smaller than <span class="math inline">\delta(f)</span>. Our results imply more refined deterministic one-way communication complexity upper bounds for XOR functions. Given the wide-ranging application of Chang’s lemma, we strongly feel that our refinements of Chang’s lemma will find many more applications.</li>
 </ul>
 </div>
+<script type="text/plain" id="abstract-raw-2">
+Chang's lemma (Duke Mathematical Journal, 2002) is a classical result in mathematics, with applications spanning across additive combinatorics, combinatorial number theory, analysis of Boolean functions, communication complexity and algorithm design. For a Boolean function $f$ that takes values in $\pmone$ let $r(f)$ denote its Fourier rank (i.e., the dimension of the span of its Fourier support). For each positive threshold $t$, Chang's lemma provides a lower bound on $\delta(f):=\Pr[f(x)=-1]$ in terms of the dimension of the span of its characters with Fourier coefficients of magnitude at least $1/t$. In this work we examine the tightness of Chang's lemma with respect to the following three natural settings of the threshold:
+
+* the Fourier sparsity of $f$, denoted $k(f)$,
+* the Fourier max-supp-entropy of $f$, denoted $k'(f)$, defined to be the maximum value of the reciprocal of the absolute value of a non-zero Fourier coefficient,
+* the Fourier max-rank-entropy of $f$, denoted $k''(f)$, defined to be the minimum $t$ such that characters whose coefficients are at least $1/t$ in magnitude span a $r(f)$-dimensional space.
+In this work we prove new lower bounds on $\delta(f)$ in terms of the above measures. One of our lower bounds, $\delta(f)=\Omega\left(r(f)^2/(k(f) \log^2 k(f))\right)$, subsumes and refines the previously best known upper bound on $r(f)$ in terms of $k(f)$ by Sanyal (Theory of Computing, 2019). Another lower bound, $\delta(f) =\Omega\left(r(f)/(\seerank(f) \log k(f))\right)$, is based on our improvement of a bound by Chattopadhyay, Hatami, Lovett and Tal (ITCS, 2019) on the sum of absolute values of level-$1$ Fourier coefficients in terms of $\ftwo$-degree. We further show that Chang's lemma for the above-mentioned choices of the threshold is asymptotically outperformed by our bounds for most settings of the parameters involved.
+
+Next, we show that our bounds are tight for a wide range of the parameters involved, by constructing functions witnessing their tightness. All the functions we construct are modifications of the Addressing function, where we replace certain input variables by suitable functions.
+Our final contribution is to construct Boolean functions $f$ for which 
+
+* our lower bounds asymptotically match $\delta(f)$, and
+* for any choice of the threshold $t$, the lower bound obtained from Chang's lemma is asymptotically smaller than $\delta(f)$.
+Our results imply more refined deterministic one-way communication complexity upper bounds for XOR functions.
+Given the wide-ranging application of Chang's lemma, we strongly feel that our refinements of Chang's lemma will find many more applications.
+
+</script>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="3">
@@ -456,6 +504,16 @@ Probabilistic degree of OR over the Reals <span class="text-muted" style="font-s
 <p>[ P(x_1,,x_n) = 1 - _{i } (1- L_i(x_1,,x_n)), ]</p>
 <p>where each <span class="math inline">L_i(x_1,\dots, x_n)</span> is a linear form in the variables <span class="math inline">x_1,\ldots,x_n</span>, i.e., the polynomial <span class="math inline">1-P(\bar{x})</span> is a product of affine forms. We show that the <span class="math inline">\eps</span>-error probabilistic degree of <span class="math inline">\OR</span> when restricted to polynomials of the above form is <span class="math inline">\Omega\left( \ans/\log^2 \left( \ans \right)\right)</span>, thus matching the above upper bound (up to poly-logarithmic factors).</p>
 </div>
+<script type="text/plain" id="abstract-raw-3">
+We study the probabilistic degree over $\reals$ of the $\OR$ function on $n$ variables. For $\eps \in (0,1/3)$, the $\eps$-error probabilistic degree of any Boolean function $f:\zo^n\to \zo$ over $\reals$ is the smallest non-negative integer $d$ such that the following holds: there exists a distribution $\distP$ of polynomials $P(x_1,\ldots,x_n)  \in \reals[x_1,\ldots,x_n]$ of degree at most $d$ such that for all $\bar{x} \in \zo^n$, we have $\Pr_{P \sim \distP}[P(\bar{x}) = f(\bar{x}) ] \geq 1- \eps$. It is known from the works of Tarui (*Theoret. Comput. Sci.* 1993) and Beigel, Reingold, and Spielman (*Proc. 6th CCC* 1991), that the $\eps$-error probabilistic degree of the $\OR$ function is at most $O(\log n \cdot \lepsinv)$. Our first observation is that this can be improved to $\bigo{\ans}$ which is better for small values of $\eps$.
+
+In all known constructions of probabilistic polynomials for the $\OR$ function (including the above improvement), the polynomials $P$ in the support of the distribution $\distP$ have the following special structure:
+
+\[ P(x_1,\dots,x_n) = 1 - \prod_{i \in [t]} \left(1- L_i(x_1,\dots,x_n)\right), \]
+
+where each $L_i(x_1,\dots, x_n)$ is a linear form in the variables $x_1,\ldots,x_n$, i.e., the polynomial $1-P(\bar{x})$ is a product of affine forms. We show that the $\eps$-error probabilistic degree of $\OR$ when restricted to polynomials of the above form is $\Omega\left( \ans/\log^2 \left( \ans \right)\right)$, thus matching the above upper bound (up to poly-logarithmic factors).
+
+</script>
 </div>
 </div>
 </div>
@@ -541,28 +599,52 @@ document.querySelectorAll('.abstract-button').forEach(btn => {
     const div = document.getElementById(id);
     if (div) {
       modalTitle.textContent = "Abstract";
-      // Use innerHTML instead of textContent so KaTeX/MathJax renders correctly
-      modalText.innerHTML = div.innerHTML.trim();
       
-      // Explicitly trigger KaTeX rendering for the new content
-      if (window.renderMathInElement) {
-        renderMathInElement(modalText, {
-          delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false},
-            {left: "\\(", right: "\\)", display: false},
-            {left: "\\[", right: "\\]", display: true}
-          ],
-          macros: window.KATEX_MACROS || {},
-          throwOnError: false
-        });
+      try {
+        const rawId = id.replace('abstract-', 'abstract-raw-');
+        const rawDiv = document.getElementById(rawId);
+        
+        // Always get the text from our clean 'abstract-raw' script tag
+        let rawContent = rawDiv ? rawDiv.textContent : div.textContent;
+        
+        // Simple Markdown-style cleanup for the popup:
+        // 1. Handle line breaks
+        // 2. Handle simple bullet points (* or -)
+        let formattedContent = rawContent
+          .trim()
+          .replace(/\r\n/g, '\n')
+          .split('\n')
+          .map(line => {
+            const trimmed = line.trim();
+            if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+              return '<div style="margin-left: 1.5em; text-indent: -1em;">• ' + trimmed.substring(2) + '</div>';
+            }
+            return '<div>' + trimmed + '</div>';
+          })
+          .join('');
+
+        modalText.innerHTML = formattedContent;
+        
+        // Render Math fresh from the clean text
+        if (window.renderMathInElement) {
+          renderMathInElement(modalText, {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "\\[", right: "\\]", display: true}
+            ],
+            macros: window.KATEX_MACROS || {},
+            throwOnError: false
+          });
+        }
+      } catch (err) {
+        console.error("Popup render error:", err);
+        modalText.innerHTML = div.innerHTML; // Emergency fallback
       }
 
-      copyBtn.style.display = 'none'; // Hide copy button for Abstract
-      
-      // Make the modal wider for reading abstracts
+      copyBtn.style.display = 'none';
       modalElement.querySelector('.modal-dialog').classList.add('modal-lg');
-      
       if (bsModal) bsModal.show();
     }
   });
