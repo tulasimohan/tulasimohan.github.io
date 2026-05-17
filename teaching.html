@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4babee66435350c27c03acf130e4aa35.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-eb4fc4afe2de33e5f49c36f45173d099.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -74,48 +74,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing-teaching .list');
+    const listingTargetEl = window.document.querySelector('#listing-courses-table .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-year_display','listing-term_display','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-year_display','listing-term_display','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
       
       searchColumns: ["listing-title","listing-year_display","listing-term_display","listing-description","listing-date"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing-teaching'] = new List('listing-listing-teaching', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing-teaching-table .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-year_display','listing-term_display',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-title","listing-year_display","listing-term_display","listing-description","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing-teaching-table'] = new List('listing-listing-teaching-table', options);
+    window['quarto-listings']['listing-courses-table'] = new List('listing-courses-table', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -208,7 +180,7 @@ window.Quarto = {
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -246,168 +218,56 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Teaching</h1>
-                  <div>
-        <div class="description">
-          Courses taught and academic instruction history of Tulasimohan Molli.
-        </div>
-      </div>
-                </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Teaching</h1>
+</div>
 
-
-
-
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Detailed</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Table View</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-listing-teaching" class="quarto-listing quarto-listing-container-custom">
-<div class="timeline-listing teaching-timeline">
-<div class="timeline-item" data-index="">
-<div class="timeline-date-label">
-<div class="date-year">
-2026
-</div>
-<div class="date-term">
-Jan - May
-</div>
-</div>
-<div class="timeline-content">
-<!-- Header: Title -->
-<h5 class="listing-title mb-1 anchored">
-CS F211: Data Structures and Algorithms (DSA)
-</h5>
-<!-- Description -->
-<div class="listing-description mt-2 text-muted">
-<p><strong>Role</strong>: Instructor (Tutorials &amp; Lab). Conducting <strong>2 Tutorials</strong> and <strong>1 Lab</strong> section.<br>Course Instructor: Prof.&nbsp;NL Bhanu Murthy.<br><a href="./teaching/dsa-solutions.html">Programming Solutions</a></p>
-</div>
-</div>
-</div>
-<div class="timeline-item" data-index="">
-<div class="timeline-date-label">
-<div class="date-year">
-2022
-</div>
-<div class="date-term">
-Jan - May
-</div>
-</div>
-<div class="timeline-content">
-<!-- Header: Title -->
-<h5 class="listing-title mb-1 anchored">
-CS304: Discrete Structures and Computation
-</h5>
-<!-- Description -->
-<div class="listing-description mt-2 text-muted">
-<p><strong>Role</strong>: Instructor at <em>IISER Berhampur</em>.<br><a href="https://sites.google.com/view/cs304">Course Page</a></p>
-</div>
-</div>
-</div>
-<div class="timeline-item" data-index="">
-<div class="timeline-date-label">
-<div class="date-year">
-2012
-</div>
-<div class="date-term">
-Jan - May
-</div>
-</div>
-<div class="timeline-content">
-<!-- Header: Title -->
-<h5 class="listing-title mb-1 anchored">
-Theory of Computation
-</h5>
-<!-- Description -->
-<div class="listing-description mt-2 text-muted">
-<p><strong>Role</strong>: Teaching Assistant at <em>Chennai Mathematical Institute</em>.<br>Course Instructor: Prof.&nbsp;Sourav Chakraborty</p>
-</div>
-</div>
-</div>
-<div class="timeline-item" data-index="">
-<div class="timeline-date-label">
-<div class="date-year">
-2012
-</div>
-<div class="date-term">
-Jan - May
-</div>
-</div>
-<div class="timeline-content">
-<!-- Header: Title -->
-<h5 class="listing-title mb-1 anchored">
-Discrete Mathematics
-</h5>
-<!-- Description -->
-<div class="listing-description mt-2 text-muted">
-<p><strong>Role</strong>: Teaching Assistant at <em>Chennai Mathematical Institute</em>.<br>Course Instructor: Prof.&nbsp;Sourav Chakraborty</p>
-</div>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-listing-teaching-table" class="quarto-listing quarto-listing-container-table">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-teaching-table-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing-teaching-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title-sort" data-direction="asc">
-        Course
-      </option>
-      <option value="listing-year_display" data-direction="asc">
-        Year
-      </option>
-      <option value="listing-term_display" data-direction="asc">
-        Term
-      </option>
-    </select>
+<div>
+  <div class="description">
+    Courses taught and academic instruction history of Tulasimohan Molli.
   </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
 </div>
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="listing-courses-table" class="quarto-listing quarto-listing-container-table">
 <table class="quarto-listing-table table">
 <thead>
 <tr>
 
 <th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Course</a>
+year_display
 </th>
 
 <th>
-<a class="sort" data-sort="listing-year_display" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Year</a>
+term_display
 </th>
 
 <th>
-<a class="sort" data-sort="listing-term_display" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Term</a>
+title
+</th>
+
+<th>
+description
 </th>
 
 </tr>
@@ -416,52 +276,64 @@ Discrete Mathematics
 
 <tr data-index="0" data-listing-date-sort="1767225600000" data-listing-title-sort="CS F211: Data Structures and Algorithms (DSA)">
 <td>
-<span class="listing-title">CS F211: Data Structures and Algorithms (DSA)</span>
-</td>
-<td>
 <span class="listing-year_display">2026</span>
 </td>
 <td>
 <span class="listing-term_display">Jan - May</span>
+</td>
+<td>
+<span class="listing-title">CS F211: Data Structures and Algorithms (DSA)</span>
+</td>
+<td>
+<span class="listing-description"><i class="bi bi-person-workspace"></i> Instructor (Tutorials &amp; Lab) · 2 Tutorials, 1 Lab<br><i class="bi bi-person-badge"></i> Prof.&nbsp;NL Bhanu Murthy<br><a href="./teaching/dsa-solutions.html"><i class="bi bi-code-slash"></i> Programming Solutions</a></span>
 </td>
 
 </tr>
 
 <tr data-index="1" data-listing-date-sort="1640995200000" data-listing-title-sort="CS304: Discrete Structures and Computation">
 <td>
-<span class="listing-title">CS304: Discrete Structures and Computation</span>
-</td>
-<td>
 <span class="listing-year_display">2022</span>
 </td>
 <td>
 <span class="listing-term_display">Jan - May</span>
+</td>
+<td>
+<span class="listing-title">CS304: Discrete Structures and Computation</span>
+</td>
+<td>
+<span class="listing-description"><i class="bi bi-person-workspace"></i> Instructor · IISER Berhampur<br><a href="https://sites.google.com/view/cs304"><i class="bi bi-link-45deg"></i> Course Page</a></span>
 </td>
 
 </tr>
 
 <tr data-index="2" data-listing-date-sort="1325376000000" data-listing-title-sort="Theory of Computation">
 <td>
-<span class="listing-title">Theory of Computation</span>
-</td>
-<td>
 <span class="listing-year_display">2012</span>
 </td>
 <td>
 <span class="listing-term_display">Jan - May</span>
+</td>
+<td>
+<span class="listing-title">Theory of Computation</span>
+</td>
+<td>
+<span class="listing-description"><i class="bi bi-person-video3"></i> Teaching Assistant · Chennai Mathematical Institute<br><i class="bi bi-person-badge"></i> Prof.&nbsp;Sourav Chakraborty</span>
 </td>
 
 </tr>
 
 <tr data-index="3" data-listing-date-sort="1325376000000" data-listing-title-sort="Discrete Mathematics">
 <td>
-<span class="listing-title">Discrete Mathematics</span>
-</td>
-<td>
 <span class="listing-year_display">2012</span>
 </td>
 <td>
 <span class="listing-term_display">Jan - May</span>
+</td>
+<td>
+<span class="listing-title">Discrete Mathematics</span>
+</td>
+<td>
+<span class="listing-description"><i class="bi bi-person-video3"></i> Teaching Assistant · Chennai Mathematical Institute<br><i class="bi bi-person-badge"></i> Prof.&nbsp;Sourav Chakraborty</span>
 </td>
 
 </tr>
@@ -470,9 +342,73 @@ Discrete Mathematics
 </table>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-</div>
-</div>
-</div>
+<style>
+/* Neeldhara-style minimalist ledger table */
+#listing-courses-table table.quarto-listing-table {
+  margin-top: 1rem;
+  border: none;
+  width: 100%;
+}
+#listing-courses-table thead {
+  display: none !important; /* Remove heavy headers */
+}
+#listing-courses-table td {
+  padding: 0.75rem 0.5rem !important; /* Compact padding */
+  vertical-align: top;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+#listing-courses-table tr:last-child td {
+  border-bottom: none !important;
+}
+#listing-courses-table tr:hover {
+  background-color: #fcfcfc !important;
+}
+
+/* Typography & Layout Alignments */
+#listing-courses-table .listing-year_display {
+  width: 60px;
+  font-weight: 700;
+  color: #333;
+  font-family: 'Heliotrope', sans-serif;
+  font-size: 1.1rem;
+}
+#listing-courses-table .listing-term_display {
+  width: 90px;
+  color: #777;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-top: 0.85rem !important; /* Align with title */
+}
+#listing-courses-table .listing-title {
+  font-weight: 600 !important;
+  color: #2b2b88 !important;
+  font-size: 1rem;
+  width: 38%;
+}
+#listing-courses-table .listing-description {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+#listing-courses-table .listing-description p {
+  margin-bottom: 0;
+}
+#listing-courses-table .listing-description a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #d71920;
+  border-bottom: 1px solid rgba(215, 25, 32, 0.2);
+  padding-bottom: 1px;
+}
+#listing-courses-table .listing-description a:hover {
+  border-bottom-color: #d71920;
+}
+#listing-courses-table .listing-description i {
+  color: #888;
+  margin-right: 4px;
+}
+</style>
 
 
 
