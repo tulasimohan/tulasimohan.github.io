@@ -25,49 +25,49 @@
     "href": "teaching/dsa-solutions.html",
     "title": "DSA Programming Solutions",
     "section": "",
-    "text": "Welcome to the Data Structures & Algorithms (DSA) solution repository. This section provides comprehensive C implementations for all tutorial and lab sheet problems, now organized by topic for better accessibility.\n\n\n\n\n\n\nKey Features\n\n\n\n\nDynamic Memory: All solutions use malloc and free for efficient resource management.\nEnhanced I/O: Sample test cases are clearly demarcated using callouts.\nOptimized Algorithms: Key problems like “Sum of Subarray Minimums” use O(N) approaches.\n\n\n\n\n\n\n\n\n\nExecution Note\n\n\n\nThese C solutions are designed for local compilation and execution. While Quarto provides a beautiful web interface, C code blocks with interactive stdin (like scanf) cannot be executed directly within the browser/rendered page. To test these solutions: 1. Copy the code into a local file (e.g., solution.c). 2. Compile using a C compiler: gcc solution.c -o solution. 3. Run the executable: ./solution."
+    "text": "Welcome to the Data Structures & Algorithms (DSA) solution repository. This section provides comprehensive C implementations for all tutorial and lab sheet problems, now organized by topic for better accessibility."
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-1-basics-arrays",
-    "href": "teaching/dsa-solutions.html#lab-sheet-1-basics-arrays",
+    "objectID": "teaching/dsa-solutions.html#l1-basics-arrays",
+    "href": "teaching/dsa-solutions.html#l1-basics-arrays",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 1: Basics & Arrays",
-    "text": "Lab Sheet 1: Basics & Arrays\n\nStructs and Students Merit System\nMatrix Multiplication\nText Analysis and Set Operations\nArray Rotations and Frequency Counting"
+    "section": "L1: Basics & Arrays",
+    "text": "L1: Basics & Arrays\n\nStructs and Students Merit System\nMatrix Multiplication\nText Analysis and Set Operations\nArray Rotations and Frequency Counting"
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-2-linked-lists",
-    "href": "teaching/dsa-solutions.html#lab-sheet-2-linked-lists",
+    "objectID": "teaching/dsa-solutions.html#l2-linked-lists",
+    "href": "teaching/dsa-solutions.html#l2-linked-lists",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 2: Linked Lists",
-    "text": "Lab Sheet 2: Linked Lists\n\nPalindrome Checks (In-place)\nSegregating Even/Odd nodes\nList Rotations and Pair Swapping\nIncremental Subsequences"
+    "section": "L2: Linked Lists",
+    "text": "L2: Linked Lists\n\nPalindrome Checks (In-place)\nSegregating Even/Odd nodes\nList Rotations and Pair Swapping\nIncremental Subsequences"
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-3-binary-search-sorting",
-    "href": "teaching/dsa-solutions.html#lab-sheet-3-binary-search-sorting",
+    "objectID": "teaching/dsa-solutions.html#l3-binary-search-sorting",
+    "href": "teaching/dsa-solutions.html#l3-binary-search-sorting",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 3: Binary Search & Sorting",
-    "text": "Lab Sheet 3: Binary Search & Sorting\n\nStudent Ranking with Tie Handling\nFinding Peak Elements\nMinimum Eating Speed (Binary Search on Answer)\nRotated Array Search\nInversion Count (Merge Sort)"
+    "section": "L3: Binary Search & Sorting",
+    "text": "L3: Binary Search & Sorting\n\nStudent Ranking with Tie Handling\nFinding Peak Elements\nMinimum Eating Speed (Binary Search on Answer)\nRotated Array Search\nInversion Count (Merge Sort)"
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-4-advanced-search-sorting",
-    "href": "teaching/dsa-solutions.html#lab-sheet-4-advanced-search-sorting",
+    "objectID": "teaching/dsa-solutions.html#l4-advanced-search-sorting",
+    "href": "teaching/dsa-solutions.html#l4-advanced-search-sorting",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 4: Advanced Search & Sorting",
-    "text": "Lab Sheet 4: Advanced Search & Sorting\n\n2D Matrix Search (O(M+N))\nZig-Zag Group Sorting\nBitwise Strength Sort\nMissing Frequency and Painting Timelines\nFair Tax Cap Optimization"
+    "section": "L4: Advanced Search & Sorting",
+    "text": "L4: Advanced Search & Sorting\n\n2D Matrix Search (O(M+N))\nZig-Zag Group Sorting\nBitwise Strength Sort\nMissing Frequency and Painting Timelines\nFair Tax Cap Optimization"
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-5-advanced-topics",
-    "href": "teaching/dsa-solutions.html#lab-sheet-5-advanced-topics",
+    "objectID": "teaching/dsa-solutions.html#l5-advanced-topics",
+    "href": "teaching/dsa-solutions.html#l5-advanced-topics",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 5: Advanced Topics",
-    "text": "Lab Sheet 5: Advanced Topics\n\n2D Prefix Sums (Rectangle Sum)\nArithmetic Progression identification\nXOR Balancing\nQuick Select (Kth Largest)\nRadix Sort"
+    "section": "L5: Advanced Topics",
+    "text": "L5: Advanced Topics\n\n2D Prefix Sums (Rectangle Sum)\nArithmetic Progression identification\nXOR Balancing\nQuick Select (Kth Largest)\nRadix Sort"
   },
   {
-    "objectID": "teaching/dsa-solutions.html#lab-sheet-6-stacks",
-    "href": "teaching/dsa-solutions.html#lab-sheet-6-stacks",
+    "objectID": "teaching/dsa-solutions.html#l6-stacks",
+    "href": "teaching/dsa-solutions.html#l6-stacks",
     "title": "DSA Programming Solutions",
-    "section": "Lab Sheet 6: Stacks",
-    "text": "Lab Sheet 6: Stacks\n\nMonotonic Stacks (Stock Span, Daily Temp)\nLargest Rectangle in Histogram\nExpression Evaluation (Postfix)\nString Decoding and Stack Permutations\nSparse Matrix to Adjacency List"
+    "section": "L6: Stacks",
+    "text": "L6: Stacks\n\nMonotonic Stacks (Stock Span, Daily Temp)\nLargest Rectangle in Histogram\nExpression Evaluation (Postfix)\nString Decoding and Stack Permutations\nSparse Matrix to Adjacency List"
   },
   {
     "objectID": "sitemap.html",
@@ -186,7 +186,7 @@
     "href": "teaching.html",
     "title": "Teaching",
     "section": "",
-    "text": "year_display\n\n\n\nterm_display\n\n\n\ntitle\n\n\n\ndescription\n\n\n\n\n\n\n\n\n2026\n\n\nJan - May\n\n\nCS F211: Data Structures and Algorithms (DSA)\n\n\n Instructor (Tutorials & Lab) · 2 Tutorials, 1 Lab Prof. NL Bhanu Murthy Programming Solutions\n\n\n\n\n\n\n2022\n\n\nJan - May\n\n\nCS304: Discrete Structures and Computation\n\n\n Instructor · IISER Berhampur Course Page\n\n\n\n\n\n\n2012\n\n\nJan - May\n\n\nTheory of Computation\n\n\n Teaching Assistant · Chennai Mathematical Institute Prof. Sourav Chakraborty\n\n\n\n\n\n\n2012\n\n\nJan - May\n\n\nDiscrete Mathematics\n\n\n Teaching Assistant · Chennai Mathematical Institute Prof. Sourav Chakraborty\n\n\n\n\n\n\nNo matching items"
+    "text": "BITS Pilani, Hyderabad CampusIISER BerhampurCMI\n\n\n\n\n\n\n\n\nyear_display\n\n\n\nterm_display\n\n\n\ntitle\n\n\n\ndescription\n\n\n\n\n\n\n\n\n2026\n\n\nAug - Dec\n\n\nAdvanced Algorithms and Complexity\n\n\n Instructor\n\n\n\n\n\n\n2026\n\n\nMay - Jul\n\n\nDesign and Analysis of Algorithms (DAA)\n\n\n Instructor (Summer Course)\n\n\n\n\n\n\n2026\n\n\nJan - May\n\n\nCS F211: Data Structures and Algorithms (DSA)\n\n\n Instructor (Tutorials & Lab) · 2 Tutorials, 1 Lab Prof. NL Bhanu Murthy Programming Solutions\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nyear_display\n\n\n\nterm_display\n\n\n\ntitle\n\n\n\ndescription\n\n\n\n\n\n\n\n\n2022\n\n\nJan - May\n\n\nCS304: Discrete Structures and Computation\n\n\n Instructor Course Page\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nyear_display\n\n\n\nterm_display\n\n\n\ntitle\n\n\n\ndescription\n\n\n\n\n\n\n\n\n2012\n\n\nAug - Dec\n\n\nTheory of Computation\n\n\n Teaching Assistant Prof. Sourav Chakraborty\n\n\n\n\n\n\n2012\n\n\nJan - May\n\n\nDiscrete Mathematics\n\n\n Teaching Assistant Prof. Sourav Chakraborty\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "teaching/lab-sheet-1.html",
