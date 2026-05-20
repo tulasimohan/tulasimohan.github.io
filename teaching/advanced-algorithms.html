@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Teaching – Tulasimohan Molli</title>
+<title>Advanced Algorithms and Complexity – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/images/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-eb4fc4afe2de33e5f49c36f45173d099.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-eb4fc4afe2de33e5f49c36f45173d099.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,91 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-bits-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
-      
-      searchColumns: ["listing-project","listing-lang","listing-website","listing-format","listing-katex","listing-_quarto-vars","listing-language","listing-title","listing-subtitle","listing-path","listing-outputHref","listing-date","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-code","listing-year","listing-term","listing-status","listing-course_type"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-bits-listing'] = new List('listing-bits-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-iiser-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-iiser-listing'] = new List('listing-iiser-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-cmi-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
-      
-      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-cmi-listing'] = new List('listing-cmi-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 window.KATEX_MACROS = {
@@ -177,56 +90,15 @@ window.KATEX_MACROS = {
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles/custom.css">
-<meta property="og:title" content="Teaching – Tulasimohan Molli">
-<meta property="og:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<link rel="stylesheet" href="../styles/custom.css">
+<meta property="og:title" content="Advanced Algorithms and Complexity – Tulasimohan Molli">
+<meta property="og:description" content="CS G526 | Aug-Dec 2026">
+<meta property="og:image" content="https://tulasimohan.github.io/teaching/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
-<meta name="twitter:title" content="Teaching – Tulasimohan Molli">
-<meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<meta name="twitter:title" content="Advanced Algorithms and Complexity – Tulasimohan Molli">
+<meta name="twitter:description" content="CS G526 | Aug-Dec 2026">
+<meta name="twitter:image" content="https://tulasimohan.github.io/teaching/assets/images/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -237,7 +109,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -248,19 +120,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./teaching.html" aria-current="page"> 
+    <a class="nav-link" href="../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -271,21 +143,32 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#target-audience" id="toc-target-audience" class="nav-link active" data-scroll-target="#target-audience">Target Audience</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#course-plan" id="toc-course-plan" class="nav-link" data-scroll-target="#course-plan">Course Plan</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Teaching</h1>
+<h1 class="title">Advanced Algorithms and Complexity</h1>
+<p class="subtitle lead">CS G526 | Aug-Dec 2026</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -297,166 +180,32 @@ window.Quarto = {
 </header>
 
 
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">BPHC</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Other</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-bits-listing" class="quarto-listing quarto-listing-container-custom">
-<div class="table-responsive">
-
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
-<tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1785542400000" data-listing-file-modified-sort="1779311558324" data-listing-reading-time-sort="1" data-listing-word-count-sort="49" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./teaching/advanced-algorithms.html" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS G526</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./teaching/advanced-algorithms.html" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Advanced Algorithms and Complexity</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Aug - Dec" style="background-color: #198754; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-<tr class="even" data-index="1" data-listing-date-sort="1777593600000" data-listing-file-modified-sort="1779311558324" data-listing-reading-time-sort="3" data-listing-word-count-sort="446" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./teaching/daa.html" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS F364</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./teaching/daa.html" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Design and Analysis of Algorithms (DAA)</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="May - July" style="background-color: #fd7e14; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-<tr class="odd" data-index="2" data-listing-date-sort="1767225600000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./../../../../../teaching/dsa-solutions.qmd" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS F211</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./../../../../../teaching/dsa-solutions.qmd" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Data Structures and Algorithms (DSA)</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-</tbody>
-</table>
-
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-iiser-listing" class="quarto-listing quarto-listing-container-custom">
-<div class="table-responsive">
-
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
-<tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1640995200000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="https://sites.google.com/view/cs304" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS304</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="https://sites.google.com/view/cs304" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Discrete Structures and Computation</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2022</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-<div id="listing-cmi-listing" class="quarto-listing quarto-listing-container-custom">
-<div class="table-responsive">
-
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
-<tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1343779200000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap"></td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><span style="color: #212529;">Theory of Computation</span></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Aug - Dec" style="background-color: #198754; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2012</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-<tr class="even" data-index="1" data-listing-date-sort="1325376000000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap"></td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><span style="color: #212529;">Discrete Mathematics</span></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2012</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
+<div class="callout-body-container">
+<p><strong>Instructor:</strong> TBD<br>
+<strong>Timings &amp; Venue:</strong> TBD</p>
 </div>
 </div>
 </div>
-</div>
-<style>
-/* Neeldhara-style minimalist ledger table */
-table.quarto-listing-table {
-  margin-top: 1rem;
-  border: none;
-  width: 100%;
-}
-table.quarto-listing-table thead {
-  display: none !important; /* Remove heavy headers */
-}
-table.quarto-listing-table td {
-  padding: 0.75rem 0.5rem !important; /* Compact padding */
-  vertical-align: top;
-  border-bottom: 1px solid #f0f0f0 !important;
-}
-table.quarto-listing-table tr:last-child td {
-  border-bottom: none !important;
-}
-table.quarto-listing-table tr:hover {
-  background-color: #fcfcfc !important;
-}
-
-/* Typography & Layout Alignments */
-table.quarto-listing-table .listing-year_display {
-  width: 60px;
-  font-weight: 700;
-  color: #333;
-  font-family: 'Heliotrope', sans-serif;
-  font-size: 1.1rem;
-}
-table.quarto-listing-table .listing-term_display {
-  width: 90px;
-  color: #777;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-top: 0.85rem !important; /* Align with title */
-}
-table.quarto-listing-table .listing-title {
-  font-weight: 600 !important;
-  color: #2b2b88 !important;
-  font-size: 1rem;
-  width: 38%;
-}
-table.quarto-listing-table .listing-description {
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-table.quarto-listing-table .listing-description p {
-  margin-bottom: 0;
-}
-table.quarto-listing-table .listing-description a {
-  font-weight: 600;
-  text-decoration: none;
-  color: #d71920;
-  border-bottom: 1px solid rgba(215, 25, 32, 0.2);
-  padding-bottom: 1px;
-}
-table.quarto-listing-table .listing-description a:hover {
-  border-bottom-color: #d71920;
-}
-table.quarto-listing-table .listing-description i {
-  color: #888;
-  margin-right: 4px;
-}
-</style>
+<p>This postgraduate course covers state-of-the-art algorithmic paradigms, randomized algorithms, approximation algorithms, and computational complexity theory.</p>
+<section id="target-audience" class="level2">
+<h2 class="anchored" data-anchor-id="target-audience">Target Audience</h2>
+<p>Postgraduate students and advanced undergraduates with a strong theoretical computer science background.</p>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>Design and Analysis of Algorithms (CS F364) or equivalent.</p>
+</section>
+<section id="course-plan" class="level2">
+<h2 class="anchored" data-anchor-id="course-plan">Course Plan</h2>
+<p><em>Coming Soon.</em></p>
 
 
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -865,12 +614,12 @@ table.quarto-listing-table .listing-description i {
 <p>© 2026 Tulasimohan Molli</p>
 </div>   
     <div class="nav-footer-center">
-<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="./misc/credits.html">Credits</a></p>
+<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="../misc/credits.html">Credits</a></p>
 </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./sitemap.html">
+    <a class="nav-link" href="../sitemap.html">
 <p>Sitemap</p>
 </a>
   </li>  
@@ -882,5 +631,5 @@ table.quarto-listing-table .listing-description i {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="PARTH MUNJAL">
-<meta name="author" content="AKARSH JAIN">
-<meta name="dcterms.date" content="2026-05-17">
 
-<title>DSA Programming Solutions – Tulasimohan Molli</title>
+<title>Design and Analysis of Algorithms – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,57 +90,14 @@ window.KATEX_MACROS = {
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles/custom.css">
-<meta property="og:title" content="DSA Programming Solutions – Tulasimohan Molli">
-<meta property="og:description" content="Data Structures &amp; Algorithms | Instructor: Prof.&nbsp;N L Bhanu Murthy">
+<meta property="og:title" content="Design and Analysis of Algorithms – Tulasimohan Molli">
+<meta property="og:description" content="CS F364 | May-July 2026">
 <meta property="og:image" content="https://tulasimohan.github.io/teaching/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
-<meta name="twitter:title" content="DSA Programming Solutions – Tulasimohan Molli">
-<meta name="twitter:description" content="Data Structures &amp; Algorithms | Instructor: Prof.&nbsp;N L Bhanu Murthy">
+<meta name="twitter:title" content="Design and Analysis of Algorithms – Tulasimohan Molli">
+<meta name="twitter:description" content="CS F364 | May-July 2026">
 <meta name="twitter:image" content="https://tulasimohan.github.io/teaching/assets/images/social-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -192,47 +146,23 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#l1-basics-arrays" id="toc-l1-basics-arrays" class="nav-link active" data-scroll-target="#l1-basics-arrays">L1: Basics &amp; Arrays</a></li>
-  <li><a href="#l2-linked-lists" id="toc-l2-linked-lists" class="nav-link" data-scroll-target="#l2-linked-lists">L2: Linked Lists</a></li>
-  <li><a href="#l3-binary-search-sorting" id="toc-l3-binary-search-sorting" class="nav-link" data-scroll-target="#l3-binary-search-sorting">L3: Binary Search &amp; Sorting</a></li>
-  <li><a href="#l4-advanced-search-sorting" id="toc-l4-advanced-search-sorting" class="nav-link" data-scroll-target="#l4-advanced-search-sorting">L4: Advanced Search &amp; Sorting</a></li>
-  <li><a href="#l5-advanced-topics" id="toc-l5-advanced-topics" class="nav-link" data-scroll-target="#l5-advanced-topics">L5: Advanced Topics</a></li>
-  <li><a href="#l6-stacks" id="toc-l6-stacks" class="nav-link" data-scroll-target="#l6-stacks">L6: Stacks</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DSA Programming Solutions</h1>
-<p class="subtitle lead">Data Structures &amp; Algorithms | Instructor: Prof.&nbsp;N L Bhanu Murthy</p>
+<h1 class="title">Design and Analysis of Algorithms</h1>
+<p class="subtitle lead">CS F364 | May-July 2026</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>PARTH MUNJAL </p>
-             <p>AKARSH JAIN </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 17, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -242,97 +172,255 @@ window.Quarto = {
 </header>
 
 
-<p>Welcome to the Data Structures &amp; Algorithms (DSA) solution repository. This section provides comprehensive C implementations for all tutorial and lab sheet problems, now organized by topic for better accessibility.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Instructor:</strong> Dr.&nbsp;Tulasimohan Molli<br>
+<strong>Chamber Consultation:</strong> 2 PM on Friday</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Features
+Course Handout (PDF)
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>Dynamic Memory</strong>: All solutions use <code>malloc</code> and <code>free</code> for efficient resource management.</li>
-<li><strong>Enhanced I/O</strong>: Sample test cases are clearly demarcated using callouts.</li>
-<li><strong>Optimized Algorithms</strong>: Key problems like “Sum of Subarray Minimums” use <span class="math inline">O(N)</span> approaches.</li>
-</ul>
+<p><a href="handout/handout.pdf" class="btn btn-primary btn-sm">Download PDF handout</a></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Execution Note
+Scope &amp; Objectives
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>These C solutions are designed for local compilation and execution. While Quarto provides a beautiful web interface, C code blocks with interactive <code>stdin</code> (like <code>scanf</code>) cannot be executed directly within the browser/rendered page. To test these solutions: 1. Copy the code into a local file (e.g., <code>solution.c</code>). 2. Compile using a C compiler: <code>gcc solution.c -o solution</code>. 3. Run the executable: <code>./solution</code>.</p>
+<section id="scope-and-objective-of-the-course" class="level3">
+<h3 class="anchored" data-anchor-id="scope-and-objective-of-the-course">1. Scope and Objective of the Course</h3>
+<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
+</section>
+<section id="textbooks" class="level3">
+<h3 class="anchored" data-anchor-id="textbooks">2. Textbooks</h3>
+<ol type="1">
+<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
+</ol>
+</section>
+<section id="reference-books" class="level3">
+<h3 class="anchored" data-anchor-id="reference-books">3. Reference Books</h3>
+<ol type="1">
+<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
+<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
+<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
+<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
+<li><strong>(AR)</strong> Additional reading / research papers.</li>
+</ol>
+</section>
 </div>
 </div>
-<section id="l1-basics-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="l1-basics-arrays"><a href="../teaching/lab-sheet-1.html">L1: Basics &amp; Arrays</a></h2>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lecture‑wise Topic Table
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Lecture</th>
+<th style="text-align: center;">Learning Objectives</th>
+<th style="text-align: center;">Topics</th>
+<th style="text-align: center;">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1‑5</strong></td>
+<td style="text-align: center;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
+<td style="text-align: center;">Intro to Growth of Function</td>
+<td style="text-align: center;">T1: Ch 1‑3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6‑10</strong></td>
+<td style="text-align: center;">Design &amp; analyze Divide &amp; Conquer algorithms.</td>
+<td style="text-align: center;">Divide &amp; Conquer</td>
+<td style="text-align: center;">T1: Ch 4, R1‑2, AR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>11‑13</strong></td>
+<td style="text-align: center;">Formulate DP solutions.</td>
+<td style="text-align: center;">Dynamic Programming</td>
+<td style="text-align: center;">T1: Ch 15, R1‑2, AR</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>14‑20</strong></td>
+<td style="text-align: center;">Apply greedy &amp; matroid theory.</td>
+<td style="text-align: center;">Greedy &amp; Matroid Theory</td>
+<td style="text-align: center;">T1: Ch 16, 23‑24, R1‑2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>21‑26</strong></td>
+<td style="text-align: center;">Model problems with flow &amp; randomization.</td>
+<td style="text-align: center;">Network Flow &amp; Randomization</td>
+<td style="text-align: center;">T1: Ch 26, 5, R1‑3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>27‑33</strong></td>
+<td style="text-align: center;">Study complexity classes &amp; NP‑completeness.</td>
+<td style="text-align: center;">Complexity &amp; NP‑Completeness</td>
+<td style="text-align: center;">T1: Ch 34, R4, AR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>34‑37</strong></td>
+<td style="text-align: center;">Explore backtracking, branch‑&amp;‑bound, approximation.</td>
+<td style="text-align: center;">Hard‑Problem Techniques</td>
+<td style="text-align: center;">T1: Ch 35, R2, R4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>38‑40</strong></td>
+<td style="text-align: center;">Linear programming formulation &amp; simplex.</td>
+<td style="text-align: center;">Linear Programming</td>
+<td style="text-align: center;">T1: Ch 29, AR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>41‑42</strong></td>
+<td style="text-align: center;">Parallel &amp; multithreaded algorithms.</td>
+<td style="text-align: center;">Parallel &amp; Multithreading</td>
+<td style="text-align: center;">T1: Ch 27, R1‑2, AR</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>—</strong></td>
+<td style="text-align: center;"><em>TBA / Post‑lecture</em></td>
+<td style="text-align: center;"><em>Add slides &amp; material</em></td>
+<td style="text-align: center;"><em>—</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evaluation Scheme
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Duration / Format</th>
+<th>Weight</th>
+<th>Date &amp; Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>In‑class Evaluation</td>
+<td>10‑15 min surprise quizzes</td>
+<td>10%</td>
+<td>Best 10 of 12‑15 quizzes</td>
+</tr>
+<tr class="even">
+<td>Assignments (2)</td>
+<td>Take‑home + viva</td>
+<td>20%</td>
+<td>One before mid, one after</td>
+</tr>
+<tr class="odd">
+<td>Midterm Exam</td>
+<td>90 min (closed book)</td>
+<td>30%</td>
+<td>20/06/2026</td>
+</tr>
+<tr class="even">
+<td>Comprehensive Exam</td>
+<td>3 h (closed book)</td>
+<td>40%</td>
+<td>15/07/2026</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Course Policies
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="chamber-consultation-hour" class="level3">
+<h3 class="anchored" data-anchor-id="chamber-consultation-hour">Chamber Consultation Hour</h3>
+<p>2 PM on Friday.</p>
+</section>
+<section id="notices" class="level3">
+<h3 class="anchored" data-anchor-id="notices">Notices</h3>
+<p>All announcements via LMS or email.</p>
+</section>
+<section id="makeup-policy" class="level3">
+<h3 class="anchored" data-anchor-id="makeup-policy">Make‑up Policy</h3>
 <ul>
-<li>Structs and Students Merit System</li>
-<li>Matrix Multiplication</li>
-<li>Text Analysis and Set Operations</li>
-<li>Array Rotations and Frequency Counting</li>
+<li>Assignments &amp; in‑class: no make‑up.</li>
+<li>Midterm: case‑by‑case with approval.</li>
+<li>Comprehensive: as per university guidelines.</li>
 </ul>
 </section>
-<section id="l2-linked-lists" class="level2">
-<h2 class="anchored" data-anchor-id="l2-linked-lists"><a href="../teaching/lab-sheet-2.html">L2: Linked Lists</a></h2>
-<ul>
-<li>Palindrome Checks (In-place)</li>
-<li>Segregating Even/Odd nodes</li>
-<li>List Rotations and Pair Swapping</li>
-<li>Incremental Subsequences</li>
-</ul>
+<section id="academic-honesty" class="level3">
+<h3 class="anchored" data-anchor-id="academic-honesty">Academic Honesty</h3>
+<p>Strict adherence required; violations will be penalised.</p>
 </section>
-<section id="l3-binary-search-sorting" class="level2">
-<h2 class="anchored" data-anchor-id="l3-binary-search-sorting"><a href="../teaching/lab-sheet-3.html">L3: Binary Search &amp; Sorting</a></h2>
-<ul>
-<li>Student Ranking with Tie Handling</li>
-<li>Finding Peak Elements</li>
-<li>Minimum Eating Speed (Binary Search on Answer)</li>
-<li>Rotated Array Search</li>
-<li>Inversion Count (Merge Sort)</li>
-</ul>
-</section>
-<section id="l4-advanced-search-sorting" class="level2">
-<h2 class="anchored" data-anchor-id="l4-advanced-search-sorting"><a href="../teaching/lab-sheet-4.html">L4: Advanced Search &amp; Sorting</a></h2>
-<ul>
-<li>2D Matrix Search (<span class="math inline">O(M+N)</span>)</li>
-<li>Zig-Zag Group Sorting</li>
-<li>Bitwise Strength Sort</li>
-<li>Missing Frequency and Painting Timelines</li>
-<li>Fair Tax Cap Optimization</li>
-</ul>
-</section>
-<section id="l5-advanced-topics" class="level2">
-<h2 class="anchored" data-anchor-id="l5-advanced-topics"><a href="../teaching/lab-sheet-5.html">L5: Advanced Topics</a></h2>
-<ul>
-<li>2D Prefix Sums (Rectangle Sum)</li>
-<li>Arithmetic Progression identification</li>
-<li>XOR Balancing</li>
-<li>Quick Select (Kth Largest)</li>
-<li>Radix Sort</li>
-</ul>
-</section>
-<section id="l6-stacks" class="level2">
-<h2 class="anchored" data-anchor-id="l6-stacks"><a href="../teaching/lab-sheet-6.html">L6: Stacks</a></h2>
-<ul>
-<li>Monotonic Stacks (Stock Span, Daily Temp)</li>
-<li>Largest Rectangle in Histogram</li>
-<li>Expression Evaluation (Postfix)</li>
-<li>String Decoding and Stack Permutations</li>
-<li>Sparse Matrix to Adjacency List</li>
-</ul>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

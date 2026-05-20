@@ -17,6 +17,9 @@
   },
   {
     "listing": "/teaching.html",
-    "items": []
+    "items": [
+      "/teaching/advanced-algorithms.html",
+      "/teaching/daa.html"
+    ]
   }
 ]
