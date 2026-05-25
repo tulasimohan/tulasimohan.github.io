@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-lec_date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-lec_date","listing-title","listing-summary","listing-published","listing-slides"],
+      searchColumns: ["listing-date","listing-title","listing-summary","listing-published","listing-slides"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -447,8 +447,11 @@ Registration &amp; Logistics
     <select id="listing-lecture-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lecture-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
-      <option value="listing-lec_date" data-direction="asc">
-        Date
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
       </option>
       <option value="listing-title-sort" data-direction="asc">
         Lecture
@@ -471,7 +474,7 @@ Registration &amp; Logistics
 <tr>
 
 <th>
-<a class="sort" data-sort="listing-lec_date" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 
 <th>
@@ -490,9 +493,9 @@ Registration &amp; Logistics
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-title-sort="Lec 1">
+<tr data-index="0" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 1">
 <td>
-<span class="listing-lec_date">21 May, 2026</span>
+<span class="listing-date">May 21, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 1</span>
@@ -506,9 +509,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="1" data-listing-title-sort="Lec 2">
+<tr data-index="1" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 2">
 <td>
-<span class="listing-lec_date">21 May, 2026</span>
+<span class="listing-date">May 21, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 2</span>
@@ -522,9 +525,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="2" data-listing-title-sort="Lec 3">
+<tr data-index="2" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 3">
 <td>
-<span class="listing-lec_date">23 May, 2026</span>
+<span class="listing-date">May 23, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 3</span>
@@ -538,9 +541,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="3" data-listing-title-sort="Lec 4">
+<tr data-index="3" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 4">
 <td>
-<span class="listing-lec_date">23 May, 2026</span>
+<span class="listing-date">May 23, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 4</span>
@@ -663,12 +666,11 @@ div#lecture-listing table tr:hover {
   background-color: #fcfcfc !important;
 }
 div#lecture-listing table td:first-child {
-  width: 110px;
-  min-width: 110px;
+  width: 80px;
   font-weight: 600;
   color: #333;
   font-size: 0.85rem;
-  white-space: nowrap !important;
+  white-space: nowrap;
 }
 div#lecture-listing table td:nth-child(2) {
   font-weight: 600;

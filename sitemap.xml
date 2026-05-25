@@ -2,74 +2,226 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/teaching/daa.html</loc>
-    <lastmod>2026-05-25T16:12:55.821Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.262Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-6.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-4.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-2.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/dsa-solutions.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/sitemap.html</loc>
-    <lastmod>2026-05-25T16:12:55.567Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.015Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/news.html</loc>
-    <lastmod>2026-05-25T16:12:55.565Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.013Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/misc/credits.html</loc>
-    <lastmod>2026-05-25T16:12:55.529Z</lastmod>
+    <lastmod>2026-05-25T18:22:34.981Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/index.html</loc>
-    <lastmod>2026-05-25T16:12:55.383Z</lastmod>
+    <lastmod>2026-05-25T18:22:34.846Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/template-slides.html</loc>
+    <lastmod>2026-05-25T18:22:34.721Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-8/Lecture-8.html</loc>
+    <lastmod>2026-05-25T18:22:34.705Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-6/Lecture-6.html</loc>
+    <lastmod>2026-05-25T18:22:34.694Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-4/Lecture-4.html</loc>
+    <lastmod>2026-05-25T18:22:34.682Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-37/Lecture-37.html</loc>
+    <lastmod>2026-05-25T18:22:34.672Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-35/Lecture-35.html</loc>
+    <lastmod>2026-05-25T18:22:34.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-33/Lecture-33.html</loc>
+    <lastmod>2026-05-25T18:22:34.654Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-31/Lecture-31.html</loc>
+    <lastmod>2026-05-25T18:22:34.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-3/Lecture-3.html</loc>
+    <lastmod>2026-05-25T18:22:34.634Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-28/Lecture-28.html</loc>
+    <lastmod>2026-05-25T18:22:34.625Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-26/Lecture-26.html</loc>
+    <lastmod>2026-05-25T18:22:34.613Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-23/Lecture-23.html</loc>
+    <lastmod>2026-05-25T18:22:34.600Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-21/Lecture-21.html</loc>
+    <lastmod>2026-05-25T18:22:34.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-2/Lecture-2.html</loc>
+    <lastmod>2026-05-25T18:22:34.578Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-18/Lecture-18.html</loc>
+    <lastmod>2026-05-25T18:22:34.568Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-15-16/Lecture-15-16.html</loc>
+    <lastmod>2026-05-25T18:22:34.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-13/Lecture-13.html</loc>
+    <lastmod>2026-05-25T18:22:34.544Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-11/Lecture-11.html</loc>
+    <lastmod>2026-05-25T18:22:34.534Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-1/Lecture-1.html</loc>
+    <lastmod>2026-05-25T18:22:34.519Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Handout/handout.html</loc>
+    <lastmod>2026-05-25T18:22:34.518Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-10/Lecture-10.html</loc>
+    <lastmod>2026-05-25T18:22:34.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-12/Lecture-12.html</loc>
+    <lastmod>2026-05-25T18:22:34.539Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-14/Lecture-14.html</loc>
+    <lastmod>2026-05-25T18:22:34.550Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-17/Lecture-17.html</loc>
+    <lastmod>2026-05-25T18:22:34.562Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-19/Lecture-19.html</loc>
+    <lastmod>2026-05-25T18:22:34.573Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-20/Lecture-20.html</loc>
+    <lastmod>2026-05-25T18:22:34.585Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-22/Lecture-22.html</loc>
+    <lastmod>2026-05-25T18:22:34.595Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-24-25/Lecture-24-25.html</loc>
+    <lastmod>2026-05-25T18:22:34.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-27/Lecture-27.html</loc>
+    <lastmod>2026-05-25T18:22:34.620Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-29/Lecture-29.html</loc>
+    <lastmod>2026-05-25T18:22:34.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-30/Lecture-30.html</loc>
+    <lastmod>2026-05-25T18:22:34.640Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-32/Lecture-32.html</loc>
+    <lastmod>2026-05-25T18:22:34.649Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-34/Lecture-34.html</loc>
+    <lastmod>2026-05-25T18:22:34.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-36/Lecture-36.html</loc>
+    <lastmod>2026-05-25T18:22:34.668Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-38/Lecture-38.html</loc>
+    <lastmod>2026-05-25T18:22:34.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-5/Lecture-5.html</loc>
+    <lastmod>2026-05-25T18:22:34.687Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-7/Lecture-7.html</loc>
+    <lastmod>2026-05-25T18:22:34.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/Resources/Lectures/Lecture-9/Lecture-9.html</loc>
+    <lastmod>2026-05-25T18:22:34.710Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/about.html</loc>
-    <lastmod>2026-05-25T16:12:55.257Z</lastmod>
+    <lastmod>2026-05-25T18:22:34.732Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/location.html</loc>
-    <lastmod>2026-05-25T16:12:55.529Z</lastmod>
+    <lastmod>2026-05-25T18:22:34.981Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/misc/index.html</loc>
-    <lastmod>2026-05-25T16:12:55.565Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.013Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/research.html</loc>
-    <lastmod>2026-05-25T16:12:55.565Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.013Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-1.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-3.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/DSA_2026/lab-sheet-5.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/advanced-algorithms.html</loc>
-    <lastmod>2026-05-25T16:12:55.568Z</lastmod>
+    <lastmod>2026-05-25T18:22:35.016Z</lastmod>
   </url>
 </urlset>
