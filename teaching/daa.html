@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../assets/images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -68,6 +70,36 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-lecture-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      page: 30,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-date","listing-title","listing-summary","listing-slides"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-lecture-listing'] = new List('listing-lecture-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
 window.KATEX_MACROS = {
@@ -90,6 +122,49 @@ window.KATEX_MACROS = {
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles/custom.css">
 <meta property="og:title" content="Design and Analysis of Algorithms – Tulasimohan Molli">
@@ -143,14 +218,12 @@ window.KATEX_MACROS = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -160,7 +233,7 @@ window.KATEX_MACROS = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -172,172 +245,151 @@ window.KATEX_MACROS = {
 </header>
 
 
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
+<section id="cs-f364.-design-and-analysis-of-algorithms." class="level2">
+<h2 class="anchored" data-anchor-id="cs-f364.-design-and-analysis-of-algorithms.">CS F364. Design and Analysis of Algorithms.</h2>
+<section id="may-july-2026" class="level5">
+<h5 class="anchored">May-July 2026</h5>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-body-container">
-<p><strong>Instructor:</strong> Dr.&nbsp;Tulasimohan Molli<br>
-<strong>Chamber Consultation:</strong> 2 PM on Friday</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
 <div class="callout-title-container flex-fill">
-Course Handout (PDF)
+About the Course
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><a href="handout/handout.pdf" class="btn btn-primary btn-sm">Download PDF handout</a></p>
+<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
+<p><a href="handout/handout.pdf" class="btn btn-primary btn-sm">Download Course Handout (PDF)</a></p>
+<section id="topics" class="level3">
+<h3 class="anchored" data-anchor-id="topics">Topics</h3>
+<ul>
+<li>Asymptotic analysis and recurrences</li>
+<li>Divide and Conquer (maximum subarray, closest pair)</li>
+<li>Sorting lower bounds and Randomized Quicksort</li>
+<li>Order statistics and selection (QuickSelect, Median of Medians)</li>
+<li>Dynamic Programming (Floyd-Warshall, Matrix Chain, RNA structure)</li>
+<li>Greedy Algorithms (Activity Selection, Huffman Codes, Matroids)</li>
+<li>Minimum Spanning Trees (Kruskal, Prim, Boruvka)</li>
+<li>Amortized Analysis</li>
+<li>Network Flow (Max Flow Min Cut, Ford-Fulkerson, Edmonds-Karp)</li>
+<li>Randomized Algorithms</li>
+<li>Computational Complexity (P, NP, NP-Completeness)</li>
+<li>Approximation Algorithms (Vertex Cover, Set Cover, Metric TSP)</li>
+</ul>
+</section>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Scope &amp; Objectives
+Target Audience
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="scope-and-objective-of-the-course" class="level3">
-<h3 class="anchored" data-anchor-id="scope-and-objective-of-the-course">1. Scope and Objective of the Course</h3>
-<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
-</section>
-<section id="textbooks" class="level3">
-<h3 class="anchored" data-anchor-id="textbooks">2. Textbooks</h3>
-<ol type="1">
-<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
-</ol>
-</section>
-<section id="reference-books" class="level3">
-<h3 class="anchored" data-anchor-id="reference-books">3. Reference Books</h3>
-<ol type="1">
-<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
-<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
-<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
-<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
-<li><strong>(AR)</strong> Additional reading / research papers.</li>
-</ol>
-</section>
+<p>Undergraduate students in their third or fourth year with a solid background in Data Structures and Algorithms.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lecture‑wise Topic Table
+Prerequisites
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Lecture</th>
-<th style="text-align: center;">Learning Objectives</th>
-<th style="text-align: center;">Topics</th>
-<th style="text-align: center;">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>1‑5</strong></td>
-<td style="text-align: center;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
-<td style="text-align: center;">Intro to Growth of Function</td>
-<td style="text-align: center;">T1: Ch 1‑3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>6‑10</strong></td>
-<td style="text-align: center;">Design &amp; analyze Divide &amp; Conquer algorithms.</td>
-<td style="text-align: center;">Divide &amp; Conquer</td>
-<td style="text-align: center;">T1: Ch 4, R1‑2, AR</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>11‑13</strong></td>
-<td style="text-align: center;">Formulate DP solutions.</td>
-<td style="text-align: center;">Dynamic Programming</td>
-<td style="text-align: center;">T1: Ch 15, R1‑2, AR</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>14‑20</strong></td>
-<td style="text-align: center;">Apply greedy &amp; matroid theory.</td>
-<td style="text-align: center;">Greedy &amp; Matroid Theory</td>
-<td style="text-align: center;">T1: Ch 16, 23‑24, R1‑2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>21‑26</strong></td>
-<td style="text-align: center;">Model problems with flow &amp; randomization.</td>
-<td style="text-align: center;">Network Flow &amp; Randomization</td>
-<td style="text-align: center;">T1: Ch 26, 5, R1‑3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>27‑33</strong></td>
-<td style="text-align: center;">Study complexity classes &amp; NP‑completeness.</td>
-<td style="text-align: center;">Complexity &amp; NP‑Completeness</td>
-<td style="text-align: center;">T1: Ch 34, R4, AR</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>34‑37</strong></td>
-<td style="text-align: center;">Explore backtracking, branch‑&amp;‑bound, approximation.</td>
-<td style="text-align: center;">Hard‑Problem Techniques</td>
-<td style="text-align: center;">T1: Ch 35, R2, R4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>38‑40</strong></td>
-<td style="text-align: center;">Linear programming formulation &amp; simplex.</td>
-<td style="text-align: center;">Linear Programming</td>
-<td style="text-align: center;">T1: Ch 29, AR</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>41‑42</strong></td>
-<td style="text-align: center;">Parallel &amp; multithreaded algorithms.</td>
-<td style="text-align: center;">Parallel &amp; Multithreading</td>
-<td style="text-align: center;">T1: Ch 27, R1‑2, AR</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>—</strong></td>
-<td style="text-align: center;"><em>TBA / Post‑lecture</em></td>
-<td style="text-align: center;"><em>Add slides &amp; material</em></td>
-<td style="text-align: center;"><em>—</em></td>
-</tr>
-</tbody>
-</table>
+<p>Data Structures and Algorithms (CS F213) or equivalent. Working knowledge of programming in C/C++ or Python.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Evaluation Scheme
+References
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="textbooks" class="level3">
+<h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
+<ol type="1">
+<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
+</ol>
+</section>
+<section id="reference-books" class="level3">
+<h3 class="anchored" data-anchor-id="reference-books">Reference Books</h3>
+<ol type="1">
+<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
+<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
+<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
+<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
+</ol>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Timings and Venue
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Instructor:</strong> Dr.&nbsp;Tulasimohan Molli</p>
+<p><strong>Lectures:</strong> TBA<br>
+<strong>Venue:</strong> TBA</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Office Hours
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Chamber Consultation Hour:</strong> 2 PM on Friday (or by appointment).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evaluation Policy
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <table class="caption-top table">
 <colgroup>
@@ -357,7 +409,7 @@ Evaluation Scheme
 <tbody>
 <tr class="odd">
 <td>In‑class Evaluation</td>
-<td>10‑15 min surprise quizzes</td>
+<td>10‑15 min surprise quizzes</td>
 <td>10%</td>
 <td>Best 10 of 12‑15 quizzes</td>
 </tr>
@@ -369,58 +421,873 @@ Evaluation Scheme
 </tr>
 <tr class="odd">
 <td>Midterm Exam</td>
-<td>90 min (closed book)</td>
+<td>90 min (closed book)</td>
 <td>30%</td>
 <td>20/06/2026</td>
 </tr>
 <tr class="even">
 <td>Comprehensive Exam</td>
-<td>3 h (closed book)</td>
+<td>3 h (closed book)</td>
 <td>40%</td>
 <td>15/07/2026</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Course Policies
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<section id="chamber-consultation-hour" class="level3">
-<h3 class="anchored" data-anchor-id="chamber-consultation-hour">Chamber Consultation Hour</h3>
-<p>2 PM on Friday.</p>
-</section>
-<section id="notices" class="level3">
-<h3 class="anchored" data-anchor-id="notices">Notices</h3>
-<p>All announcements via LMS or email.</p>
-</section>
-<section id="makeup-policy" class="level3">
-<h3 class="anchored" data-anchor-id="makeup-policy">Make‑up Policy</h3>
 <ul>
 <li>Assignments &amp; in‑class: no make‑up.</li>
 <li>Midterm: case‑by‑case with approval.</li>
 <li>Comprehensive: as per university guidelines.</li>
+<li>Strict adherence to Academic Honesty required; violations will be penalised.</li>
 </ul>
-</section>
-<section id="academic-honesty" class="level3">
-<h3 class="anchored" data-anchor-id="academic-honesty">Academic Honesty</h3>
-<p>Strict adherence required; violations will be penalised.</p>
-</section>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Registration &amp; Logistics
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>All announcements via LMS or email.</p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Lectures</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Syllabus</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Assignments</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Quizzes</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="listing-lecture-listing" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-lecture-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lecture-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-title-sort" data-direction="asc">
+        Lecture
+      </option>
+      <option value="listing-summary" data-direction="asc">
+        Summary
+      </option>
+      <option value="listing-slides" data-direction="asc">
+        Slides
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Lecture</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-summary" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Summary</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-slides" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Slides</a>
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-listing-date-sort="978307200000" data-listing-title-sort="Foundations, Asymptotic Analysis, and Recurrences">
+<td>
+<span class="listing-date">Jan 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Foundations, Asymptotic Analysis, and Recurrences</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to the course goals, the importance of mathematical analysis for correctness and efficiency, and an overview of algorithmic paradigms and basic recurrences.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-1/Lecture-1.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-date-sort="980985600000" data-listing-title-sort="Lect 2">
+<td>
+<span class="listing-date">Feb 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 2</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to basic sorting algorithms (Bubble Sort and Insertion Sort) and their time complexities, followed by an introduction to formal asymptotic analysis including Big-Oh, Big-Omega, and Big-Theta notations.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-2/Lecture-2.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-date-sort="983404800000" data-listing-title-sort="Lect 3">
+<td>
+<span class="listing-date">Mar 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 3</span>
+</td>
+<td>
+<span class="listing-summary">Continuation of asymptotic analysis with Little-o and Little-omega, followed by formal correctness proofs and divide-and-conquer recurrence analysis for Merge Sort and Insertion Sort.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-3/Lecture-3.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-date-sort="986083200000" data-listing-title-sort="Lect 4">
+<td>
+<span class="listing-date">Apr 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 4</span>
+</td>
+<td>
+<span class="listing-summary">Techniques for solving algorithmic recurrence relations, specifically focusing on the substitution method, proofs by mathematical induction, and recursion trees.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-4/Lecture-4.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-date-sort="988675200000" data-listing-title-sort="Lect 5">
+<td>
+<span class="listing-date">May 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 5</span>
+</td>
+<td>
+<span class="listing-summary">Detailed algorithm and complexity analysis for solving the Closest Pair of Points problem in 2D using Divide and Conquer.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-5/Lecture-5.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-date-sort="991353600000" data-listing-title-sort="Lect 6">
+<td>
+<span class="listing-date">Jun 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 6</span>
+</td>
+<td>
+<span class="listing-summary">Information-theoretic lower bounds for comparison-based sorting using decision trees, and an introduction to Randomized Quicksort.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-6/Lecture-6.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-date-sort="993945600000" data-listing-title-sort="Lect 7">
+<td>
+<span class="listing-date">Jul 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 7</span>
+</td>
+<td>
+<span class="listing-summary">Deep dive into the worst-case and expected running time analysis of Randomized Quicksort.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-7/Lecture-7.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-listing-date-sort="996624000000" data-listing-title-sort="Lect 8">
+<td>
+<span class="listing-date">Aug 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 8</span>
+</td>
+<td>
+<span class="listing-summary">Algorithms for order statistics and finding the median, covering both the randomized selection algorithm and the deterministic linear-time selection algorithm.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-8/Lecture-8.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-listing-date-sort="999302400000" data-listing-title-sort="Lect 29">
+<td>
+<span class="listing-date">Sep 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 29</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to Dynamic Programming concepts, overcoming overlapping subproblems, and applying DP to compute transitive closure using the Floyd-Warshall algorithm.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-9/Lecture-9.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-listing-date-sort="1001894400000" data-listing-title-sort="Lect 10">
+<td>
+<span class="listing-date">Oct 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 10</span>
+</td>
+<td>
+<span class="listing-summary">Application of Dynamic Programming to the Matrix Chain Multiplication problem to find the optimal parenthesization of matrices.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-10/Lecture-10.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="10" data-listing-date-sort="1004572800000" data-listing-title-sort="Lect 11">
+<td>
+<span class="listing-date">Nov 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 11</span>
+</td>
+<td>
+<span class="listing-summary">A practical application of Dynamic Programming in computational biology for RNA Secondary Structure Prediction.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-11/Lecture-11.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="11" data-listing-date-sort="1007164800000" data-listing-title-sort="Lect 12">
+<td>
+<span class="listing-date">Dec 1, 2001</span>
+</td>
+<td>
+<span class="listing-title">Lect 12</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to Greedy Algorithms, exploring the Activity Selection problem and the required properties: greedy choice and optimal substructure.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-12/Lecture-12.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="12" data-listing-date-sort="NaN" data-listing-title-sort="Lect 13">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 13</span>
+</td>
+<td>
+<span class="listing-summary">Application of greedy strategies to optimal source coding through the design and analysis of Huffman Codes.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-13/Lecture-13.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="13" data-listing-date-sort="NaN" data-listing-title-sort="Lect 14-17">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 14-17</span>
+</td>
+<td>
+<span class="listing-summary">Theoretical foundations of greedy algorithms using Matroids, discussing independence, optimization, and the equivalence of greedy approaches and matroids.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-14/Lecture-14.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="14" data-listing-date-sort="NaN" data-listing-title-sort="Lect 15-17">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 15-17</span>
+</td>
+<td>
+<span class="listing-summary">Continued theoretical study of Matroids and their relationship to proving the optimality of greedy algorithms.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-15-16/Lecture-15-16.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="15" data-listing-date-sort="NaN" data-listing-title-sort="Lect 16">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 16</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to the Minimum Spanning Tree (MST) problem, fundamental properties like graph cuts and cycle properties, and Kruskal’s algorithm.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-15-16/Lecture-15-16.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="16" data-listing-date-sort="NaN" data-listing-title-sort="Lect 17">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 17</span>
+</td>
+<td>
+<span class="listing-summary">Further MST algorithms including Prim’s and Boruvka’s algorithms, and using exchange arguments to prove correctness.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-17/Lecture-17.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="17" data-listing-date-sort="NaN" data-listing-title-sort="Lect 18">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 18</span>
+</td>
+<td>
+<span class="listing-summary">Problem-solving session dedicated to applying algorithmic concepts.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-18/Lecture-18.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="18" data-listing-date-sort="NaN" data-listing-title-sort="Lect 19">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 19</span>
+</td>
+<td>
+<span class="listing-summary">Techniques for Average Case Analysis, with applications to Insertion Sort and Independent Sets.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-19/Lecture-19.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="19" data-listing-date-sort="NaN" data-listing-title-sort="Lect 20">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 20</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to Amortized Analysis using the aggregate method, accounting method, and potential method, analyzed through a binary counter example.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-20/Lecture-20.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="20" data-listing-date-sort="NaN" data-listing-title-sort="Lect 21">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 21</span>
+</td>
+<td>
+<span class="listing-summary">Further applications of Amortized Analysis on the multipop stack and dynamic tables (hash tables) handling insertions.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-21/Lecture-21.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="21" data-listing-date-sort="NaN" data-listing-title-sort="Lect 22">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 22</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to Network Flow problems, modeling maximum flow and minimum cut duality in flow networks.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-22/Lecture-22.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="22" data-listing-date-sort="NaN" data-listing-title-sort="Lect 23">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 23</span>
+</td>
+<td>
+<span class="listing-summary">Deep dive into the Max Flow Min Cut Theorem, Residual Graphs, and the Ford-Fulkerson algorithm for flow augmentation.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-23/Lecture-23.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="23" data-listing-date-sort="NaN" data-listing-title-sort="Lect 24">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 24</span>
+</td>
+<td>
+<span class="listing-summary">Continued analysis and proof of the Max Flow Min Cut theorem and optimality of network flow algorithms.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-24-25/Lecture-24-25.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="24" data-listing-date-sort="NaN" data-listing-title-sort="Lect 25">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 25</span>
+</td>
+<td>
+<span class="listing-summary">Complexity analysis of Ford-Fulkerson, introduction of the Edmonds-Karp algorithm, and reduction of Maximum Bipartite Matching to Network Flow.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-24-25/Lecture-24-25.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="25" data-listing-date-sort="NaN" data-listing-title-sort="Lect 26">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lect 26</span>
+</td>
+<td>
+<span class="listing-summary">Foundations of Randomized Algorithms, exploring introductory communication protocols like Alice and Bob checking for string equality.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-26/Lecture-26.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="26" data-listing-date-sort="NaN" data-listing-title-sort="Lec-29: Computational Models">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lec-29: Computational Models</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to computational models, covering the RAM Model, logic circuits, and finite-state machines. Formalizes the distinction between decision problems and optimization problems, and introduces complexity classes and language representations.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-27/Lecture-27.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="27" data-listing-date-sort="NaN" data-listing-title-sort="[Add Lecture 30 Title]">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 30 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-28/Lecture-28.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="28" data-listing-date-sort="NaN" data-listing-title-sort="[Add Lecture 31 Title]">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 31 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-29/Lecture-29.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="29" data-listing-date-sort="NaN" data-listing-title-sort="[Add Lecture 32 Title]">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 32 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-30/Lecture-30.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="30" data-listing-date-sort="NaN" data-listing-title-sort="Lec-33: Time Complexity Classes">
+<td>
+<span class="listing-date">Invalid Date</span>
+</td>
+<td>
+<span class="listing-title">Lec-33: Time Complexity Classes</span>
+</td>
+<td>
+<span class="listing-summary">Overview of computational time complexity classes including P, NP, EXP, and R. Discusses the Halting Problem as an example of an undecidable problem.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-31/Lecture-31.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="31" data-listing-date-sort="1956528000000" data-listing-title-sort="Lec-34: NP-Completeness">
+<td>
+<span class="listing-date">Jan 1, 2032</span>
+</td>
+<td>
+<span class="listing-title">Lec-34: NP-Completeness</span>
+</td>
+<td>
+<span class="listing-summary">Deep dive into NP-Completeness proofs, specifically proving that the CLIQUE problem is NP-Complete by reducing it from 3-SAT.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-32/Lecture-32.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="32" data-listing-date-sort="1988150400000" data-listing-title-sort="Lec-35-36: Approximation Algorithms">
+<td>
+<span class="listing-date">Jan 1, 2033</span>
+</td>
+<td>
+<span class="listing-title">Lec-35-36: Approximation Algorithms</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to Approximation Algorithms for solving NP-Complete optimization problems. Defines terminology, approximation factors, and compares them with exact algorithms and heuristics.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-33/Lecture-33.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="33" data-listing-date-sort="2019686400000" data-listing-title-sort="Lec-35-36: Approximation Algorithms">
+<td>
+<span class="listing-date">Jan 1, 2034</span>
+</td>
+<td>
+<span class="listing-title">Lec-35-36: Approximation Algorithms</span>
+</td>
+<td>
+<span class="listing-summary">Continued discussion on Approximation Algorithms, focusing on performance guarantees for NP-Complete optimization problems.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-34/Lecture-34.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="34" data-listing-date-sort="2051222400000" data-listing-title-sort="Lec-37: Metric TSP Approximation">
+<td>
+<span class="listing-date">Jan 1, 2035</span>
+</td>
+<td>
+<span class="listing-title">Lec-37: Metric TSP Approximation</span>
+</td>
+<td>
+<span class="listing-summary">A practical approximation algorithm for the Metric Traveling Salesperson Problem (TSP). Proves a 2-approximation factor utilizing Minimum Spanning Trees and the triangle inequality.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-35/Lecture-35.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="35" data-listing-date-sort="2082758400000" data-listing-title-sort="[Add Lecture 38 Title]">
+<td>
+<span class="listing-date">Jan 1, 2036</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 38 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-36/Lecture-36.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="36" data-listing-date-sort="2114380800000" data-listing-title-sort="[Add Lecture 39 Title]">
+<td>
+<span class="listing-date">Jan 1, 2037</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 39 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-37/Lecture-37.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="37" data-listing-date-sort="2145916800000" data-listing-title-sort="[Add Lecture 40 Title]">
+<td>
+<span class="listing-date">Jan 1, 2038</span>
+</td>
+<td>
+<span class="listing-title">[Add Lecture 40 Title]</span>
+</td>
+<td>
+<span class="listing-summary">&nbsp;</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-38/Lecture-38.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+<nav id="lecture-listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Lecture</th>
+<th style="text-align: left;">Learning Objectives</th>
+<th style="text-align: left;">Topics</th>
+<th style="text-align: left;">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1‑5</strong></td>
+<td style="text-align: left;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
+<td style="text-align: left;">Asymptotic Analysis, Recurrences, Divide &amp; Conquer</td>
+<td style="text-align: left;">T1: Ch 1‑4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6‑9</strong></td>
+<td style="text-align: left;">Sorting lower bounds, randomized algorithms, selection.</td>
+<td style="text-align: left;">Quicksort, Order Statistics</td>
+<td style="text-align: left;">T1: Ch 7‑9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>10‑12</strong></td>
+<td style="text-align: left;">Formulate and solve DP problems.</td>
+<td style="text-align: left;">Dynamic Programming</td>
+<td style="text-align: left;">T1: Ch 15, R1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>13‑16</strong></td>
+<td style="text-align: left;">Apply greedy strategies and matroid theory.</td>
+<td style="text-align: left;">Greedy Algorithms, Matroids</td>
+<td style="text-align: left;">T1: Ch 16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>17‑18</strong></td>
+<td style="text-align: left;">MST algorithms and exchange arguments.</td>
+<td style="text-align: left;">Minimum Spanning Trees</td>
+<td style="text-align: left;">T1: Ch 23</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>19‑22</strong></td>
+<td style="text-align: left;">Average-case and amortized analysis.</td>
+<td style="text-align: left;">Amortized Analysis</td>
+<td style="text-align: left;">T1: Ch 17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>23‑26</strong></td>
+<td style="text-align: left;">Network flow modelling and algorithms.</td>
+<td style="text-align: left;">Network Flow, Matching</td>
+<td style="text-align: left;">T1: Ch 26</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>27‑30</strong></td>
+<td style="text-align: left;">Randomized algorithms and complexity classes.</td>
+<td style="text-align: left;">Randomization, P vs NP</td>
+<td style="text-align: left;">T1: Ch 5, 34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>31‑32</strong></td>
+<td style="text-align: left;">NP-Completeness proofs.</td>
+<td style="text-align: left;">NP-Completeness</td>
+<td style="text-align: left;">T1: Ch 34, R4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>33‑35</strong></td>
+<td style="text-align: left;">Approximation algorithms and guarantees.</td>
+<td style="text-align: left;">Approximation Algorithms</td>
+<td style="text-align: left;">T1: Ch 35, R2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>36‑38</strong></td>
+<td style="text-align: left;">Advanced topics.</td>
+<td style="text-align: left;">TBD</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><em>Coming soon.</em></p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><em>Coming soon.</em></p>
+</div>
+</div>
+</div>
+<style>
+/* Lecture listing table */
+div#lecture-listing table {
+  width: 100%;
+  border: none;
+  margin-top: 0.5rem;
+}
+div#lecture-listing table thead {
+  display: none !important;
+}
+div#lecture-listing table td {
+  padding: 0.6rem 0.5rem !important;
+  vertical-align: top;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+div#lecture-listing table tr:last-child td {
+  border-bottom: none !important;
+}
+div#lecture-listing table tr:hover {
+  background-color: #fcfcfc !important;
+}
+div#lecture-listing table td:first-child {
+  width: 80px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+div#lecture-listing table td:nth-child(2) {
+  font-weight: 600;
+  color: #2b2b88;
+  font-size: 0.95rem;
+}
+div#lecture-listing table td:nth-child(3) {
+  color: #555;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+div#lecture-listing table td:nth-child(4) {
+  width: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+div#lecture-listing table td:nth-child(4) a {
+  color: #d71920;
+  text-decoration: none;
+}
+div#lecture-listing table td:nth-child(4) a:hover {
+  opacity: 0.7;
+}
+/* Syllabus table */
+.panel-tabset table {
+  font-size: 0.9rem;
+}
+.panel-tabset table td, .panel-tabset table th {
+  padding: 0.5rem 0.75rem;
+}
+</style>
 
 
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
