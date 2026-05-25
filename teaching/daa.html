@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-summary","listing-published","listing-slides"],
     };
@@ -447,12 +447,6 @@ Registration &amp; Logistics
     <select id="listing-lecture-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lecture-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
       <option value="listing-title-sort" data-direction="asc">
         Lecture
       </option>
@@ -474,10 +468,6 @@ Registration &amp; Logistics
 <tr>
 
 <th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
-</th>
-
-<th>
 <a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Lecture</a>
 </th>
 
@@ -493,12 +483,9 @@ Registration &amp; Logistics
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 1">
+<tr data-index="0" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 1 — Thu, 21 May 2026">
 <td>
-<span class="listing-date">May 21, 2026</span>
-</td>
-<td>
-<span class="listing-title">Lec 1</span>
+<span class="listing-title">Lec 1 — Thu, 21 May 2026</span>
 </td>
 <td>
 <span class="listing-summary">Introduction to the course goals, importance of mathematical analysis for correctness and efficiency, Interger Multiplication, Karatsuba’s algorithm.</span>
@@ -509,12 +496,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="1" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 2">
+<tr data-index="1" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 2 — Thu, 21 May 2026">
 <td>
-<span class="listing-date">May 21, 2026</span>
-</td>
-<td>
-<span class="listing-title">Lec 2</span>
+<span class="listing-title">Lec 2 — Thu, 21 May 2026</span>
 </td>
 <td>
 <span class="listing-summary">Bubble Sort, Insertion Sort, Merge Sort, Detailed study of Big-Oh, Big-Omega, and Big-Theta notations.</span>
@@ -525,12 +509,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="2" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 3">
+<tr data-index="2" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 3 — Sat, 23 May 2026">
 <td>
-<span class="listing-date">May 23, 2026</span>
-</td>
-<td>
-<span class="listing-title">Lec 3</span>
+<span class="listing-title">Lec 3 — Sat, 23 May 2026</span>
 </td>
 <td>
 <span class="listing-summary">Proof of Correctness and Running time analysis of Sorting algorithms</span>
@@ -541,12 +522,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="3" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 4">
+<tr data-index="3" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 4 — Sat, 23 May 2026">
 <td>
-<span class="listing-date">May 23, 2026</span>
-</td>
-<td>
-<span class="listing-title">Lec 4</span>
+<span class="listing-title">Lec 4 — Sat, 23 May 2026</span>
 </td>
 <td>
 <span class="listing-summary">Solving recurrences, recursion tree, mathematical induction</span>
@@ -666,32 +644,27 @@ div#lecture-listing table tr:hover {
   background-color: #fcfcfc !important;
 }
 div#lecture-listing table td:first-child {
-  width: 80px;
-  font-weight: 600;
-  color: #333;
-  font-size: 0.85rem;
   white-space: nowrap;
-}
-div#lecture-listing table td:nth-child(2) {
   font-weight: 600;
   color: #2b2b88;
   font-size: 0.95rem;
+  padding-right: 1rem;
 }
-div#lecture-listing table td:nth-child(3) {
+div#lecture-listing table td:nth-child(2) {
   color: #555;
   font-size: 0.88rem;
   line-height: 1.4;
 }
-div#lecture-listing table td:nth-child(4) {
+div#lecture-listing table td:nth-child(3) {
   width: 40px;
   text-align: center;
   font-size: 1.1rem;
 }
-div#lecture-listing table td:nth-child(4) a {
+div#lecture-listing table td:nth-child(3) a {
   color: #d71920;
   text-decoration: none;
 }
-div#lecture-listing table td:nth-child(4) a:hover {
+div#lecture-listing table td:nth-child(3) a:hover {
   opacity: 0.7;
 }
 /* Syllabus table */
