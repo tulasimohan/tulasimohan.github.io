@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-eb4fc4afe2de33e5f49c36f45173d099.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-4964e8d82315c42bd34ff6dd1e84ceb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-lec_date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-summary","listing-published","listing-slides"],
+      searchColumns: ["listing-lec_date","listing-title","listing-summary","listing-published","listing-slides"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -447,11 +447,8 @@ Registration &amp; Logistics
     <select id="listing-lecture-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lecture-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
+      <option value="listing-lec_date" data-direction="asc">
+        Date
       </option>
       <option value="listing-title-sort" data-direction="asc">
         Lecture
@@ -474,7 +471,7 @@ Registration &amp; Logistics
 <tr>
 
 <th>
-<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+<a class="sort" data-sort="listing-lec_date" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 
 <th>
@@ -493,9 +490,9 @@ Registration &amp; Logistics
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 1">
+<tr data-index="0" data-listing-title-sort="Lec 1">
 <td>
-<span class="listing-date">May 21, 2026</span>
+<span class="listing-lec_date">21 May, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 1</span>
@@ -509,9 +506,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="1" data-listing-date-sort="1779321600000" data-listing-title-sort="Lec 2">
+<tr data-index="1" data-listing-title-sort="Lec 2">
 <td>
-<span class="listing-date">May 21, 2026</span>
+<span class="listing-lec_date">21 May, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 2</span>
@@ -525,9 +522,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="2" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 3">
+<tr data-index="2" data-listing-title-sort="Lec 3">
 <td>
-<span class="listing-date">May 23, 2026</span>
+<span class="listing-lec_date">23 May, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 3</span>
@@ -541,9 +538,9 @@ Registration &amp; Logistics
 
 </tr>
 
-<tr data-index="3" data-listing-date-sort="1779494400000" data-listing-title-sort="Lec 4">
+<tr data-index="3" data-listing-title-sort="Lec 4">
 <td>
-<span class="listing-date">May 23, 2026</span>
+<span class="listing-lec_date">23 May, 2026</span>
 </td>
 <td>
 <span class="listing-title">Lec 4</span>
@@ -553,6 +550,70 @@ Registration &amp; Logistics
 </td>
 <td>
 <span class="listing-slides"><a href="daa-2026/Lecture-4/Lecture-4.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-title-sort="Lec 5">
+<td>
+<span class="listing-lec_date">26 May, 2026</span>
+</td>
+<td>
+<span class="listing-title">Lec 5</span>
+</td>
+<td>
+<span class="listing-summary">Divide and conquer applications covering the Maximum Subarray problem and introduction to the Closest Pair of Points problem in 1D and 2D.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-5/Lecture-5.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-title-sort="Lec 6">
+<td>
+<span class="listing-lec_date">26 May, 2026</span>
+</td>
+<td>
+<span class="listing-title">Lec 6</span>
+</td>
+<td>
+<span class="listing-summary">Detailed algorithm and complexity analysis for solving the Closest Pair of Points problem in 2D using Divide and Conquer with the vertical line approach and δ-strip optimization.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-6/Lecture-6.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-title-sort="Lec 7">
+<td>
+<span class="listing-lec_date">28 May, 2026</span>
+</td>
+<td>
+<span class="listing-title">Lec 7</span>
+</td>
+<td>
+<span class="listing-summary">Information-theoretic lower bounds for comparison-based sorting using decision trees, introduction to Quicksort and Randomized Quicksort, and worst-case O(n²) analysis.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-7/Lecture-7.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-listing-title-sort="Lec 8">
+<td>
+<span class="listing-lec_date">28 May, 2026</span>
+</td>
+<td>
+<span class="listing-title">Lec 8</span>
+</td>
+<td>
+<span class="listing-summary">Probability primer covering sample spaces, random variables, expectation, and linearity of expectation, followed by average-case O(n log n) analysis of Randomized Quicksort using indicator random variables.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="daa-2026/Lecture-8/Lecture-8.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
 </td>
 
 </tr>
@@ -666,11 +727,12 @@ div#lecture-listing table tr:hover {
   background-color: #fcfcfc !important;
 }
 div#lecture-listing table td:first-child {
-  width: 80px;
+  width: 110px;
+  min-width: 110px;
   font-weight: 600;
   color: #333;
   font-size: 0.85rem;
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 div#lecture-listing table td:nth-child(2) {
   font-weight: 600;
