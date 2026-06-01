@@ -1,0 +1,29 @@
+[
+  {
+    "listing": "/teaching/daa.html",
+    "items": []
+  },
+  {
+    "listing": "/news.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/about.html",
+    "items": []
+  },
+  {
+    "listing": "/research.html",
+    "items": []
+  },
+  {
+    "listing": "/teaching.html",
+    "items": [
+      "/teaching/advanced-algorithms.html",
+      "/teaching/daa.html"
+    ]
+  }
+]

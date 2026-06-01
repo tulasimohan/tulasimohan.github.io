@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40">
+  <!-- E (Orange) -->
+  <rect x="0" y="0" width="35" height="40" rx="5" fill="#E65100"/>
+  <path d="M10 12h15 M10 20h15 M10 28h15" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- C (Grey) -->
+  <rect x="40" y="0" width="35" height="40" rx="5" fill="#616161"/>
+  <path d="M65 12h-10a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h10" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- C (Grey) -->
+  <rect x="80" y="0" width="35" height="40" rx="5" fill="#616161"/>
+  <path d="M105 12h-10a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h10" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- C (Grey) -->
+  <rect x="120" y="0" width="35" height="40" rx="5" fill="#616161"/>
+  <path d="M145 12h-10a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h10" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>
