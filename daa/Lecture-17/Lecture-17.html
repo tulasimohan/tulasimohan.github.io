@@ -1894,13 +1894,17 @@ margin-right: 0; }
 <li>Ground set <span class="math inline">\(E = E_1 \cup E_2 \cup \dots \cup E_m\)</span> (all employees, partitioned by department).</li>
 <li><span class="math inline">\(X \subseteq E\)</span> is <strong>independent</strong> if it respects every department’s quota: <span class="math inline">\(|X \cap E_i| \le c_i\)</span> for each <span class="math inline">\(i\)</span>.</li>
 </ul>
-<p><strong>Example:</strong> - Dept A has 5 employees (<span class="math inline">\(E_1\)</span>), quota <span class="math inline">\(c_1 = 2\)</span>. - Dept B has 3 employees (<span class="math inline">\(E_2\)</span>), quota <span class="math inline">\(c_2 = 1\)</span>. - <span class="math inline">\(X = \{\text{Alice},\,\text{Bob}\}\)</span> from Dept A is independent (<span class="math inline">\(2 \le 2\)</span> ✓). - Adding Charlie from Dept A gives <span class="math inline">\(|X \cap E_1| = 3 &gt; 2\)</span>, violating the quota → <strong>not independent</strong>.</p>
-</section>
-<section id="partition-matroid-why-its-a-matroid" class="slide level2 frame">
-<h2>Partition Matroid — Why It’s a Matroid</h2>
+<p><strong>Example:</strong></p>
 <ul>
-<li><p><strong>(I1) Hereditary:</strong> Removing people from a committee never violates a quota. ✓</p></li>
-<li><p><strong>(I2) Exchange:</strong> If committee <span class="math inline">\(Y\)</span> has more representatives than <span class="math inline">\(X\)</span> from some department <span class="math inline">\(E_i\)</span>, then <span class="math inline">\(Y\)</span> has someone from <span class="math inline">\(E_i\)</span> not in <span class="math inline">\(X\)</span> who can safely join <span class="math inline">\(X\)</span> without exceeding <span class="math inline">\(c_i\)</span>. ✓</p></li>
+<li>Dept A has 5 employees (<span class="math inline">\(E_1\)</span>), quota <span class="math inline">\(c_1 = 2\)</span>.</li>
+<li>Dept B has 3 employees (<span class="math inline">\(E_2\)</span>), quota <span class="math inline">\(c_2 = 1\)</span>.</li>
+<li><span class="math inline">\(X = \{\text{Alice},\,\text{Bob}\}\)</span> from Dept A is independent (<span class="math inline">\(2 \le 2\)</span> ✓).</li>
+<li>Adding Charlie from Dept A gives <span class="math inline">\(|X \cap E_1| = 3 &gt; 2\)</span>, violating the quota → <strong>not independent</strong>.</li>
+</ul>
+<p><strong>Why it’s a matroid:</strong></p>
+<ul>
+<li><strong>(I1):</strong> Removing people from a committee never violates a quota. ✓</li>
+<li><strong>(I2):</strong> If committee <span class="math inline">\(Y\)</span> has more people than <span class="math inline">\(X\)</span> from some department <span class="math inline">\(E_i\)</span>, then <span class="math inline">\(Y\)</span> has someone from <span class="math inline">\(E_i\)</span> not in <span class="math inline">\(X\)</span> who can safely join <span class="math inline">\(X\)</span> without exceeding <span class="math inline">\(c_i\)</span>. ✓</li>
 </ul>
 <p><strong>Application:</strong> Selecting the <span class="math inline">\(c_i\)</span> best candidates from each department — greedy works because this is a matroid.</p>
 </section></section>
