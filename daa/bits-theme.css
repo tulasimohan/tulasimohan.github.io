@@ -1,0 +1,727 @@
+@charset "UTF-8";
+/*-- scss:defaults --*/
+/* Local Font Loading */
+@font-face {
+  font-family: "Heliotrope";
+  src: url("fonts/heliotrope_3_regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Heliotrope";
+  src: url("fonts/heliotrope_3_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Heliotrope";
+  src: url("fonts/heliotrope_3_italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+/* Deeper for projector contrast */
+/* Slightly darkened for contrast */
+/* BITS Gold */
+/* BITS Yellow */
+/* Slightly deeper red */
+/* Near black for maximum contrast */
+/*-- scss:rules --*/
+.reveal-viewport {
+  border-top: none !important;
+}
+
+.reveal::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: linear-gradient(to right, #4bb8d6 0%, #4bb8d6 33.33%, #ffbb00 33.33%, #ffbb00 66.66%, #bb151b 66.66%, #bb151b 100%) !important;
+}
+
+.reveal::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  background: linear-gradient(to right, #4bb8d6 0%, #4bb8d6 33.33%, #ffbb00 33.33%, #ffbb00 66.66%, #bb151b 66.66%, #bb151b 100%) !important;
+}
+
+.reveal {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  font-family: "Heliotrope", "Georgia", serif;
+}
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #1a1a66;
+  font-family: "Heliotrope", "Georgia", serif;
+  font-weight: 700;
+}
+.reveal .progress {
+  position: fixed !important;
+  bottom: 1.25em !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 0.1em !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  z-index: 12 !important;
+}
+.reveal .progress span {
+  background: #bb151b !important;
+}
+.reveal .footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 10 !important;
+  background-color: transparent !important;
+  color: #333 !important;
+  font-size: 0.45em !important;
+  font-weight: 300 !important;
+  height: 1.25em !important;
+  padding: 0 0.6em !important;
+  width: 100% !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.reveal .footer *,
+.reveal .footer p,
+.reveal .footer span,
+.reveal .footer div {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.25em !important;
+}
+.reveal .footer .footer-title {
+  font-style: italic;
+  opacity: 0.7;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+.reveal .footer .footer-divider {
+  display: inline-block !important;
+  width: 0.1em !important;
+  height: 0.1em !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+  border-radius: 50% !important;
+  margin: 0 0.6em !important;
+  vertical-align: middle !important;
+}
+.reveal .footer .footer-author {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+.reveal .slide-number {
+  position: fixed !important;
+  z-index: 11 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+  font-size: 0.45em !important;
+  bottom: 0 !important;
+  height: 1.25em !important;
+  right: 0.6em !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.reveal .slide-number *,
+.reveal .slide-number p,
+.reveal .slide-number span,
+.reveal .slide-number div {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.25em !important;
+}
+.reveal h1 {
+  color: #1a1a66;
+  font-size: 1.8em;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin-top: 0;
+}
+.reveal .title-container {
+  margin-top: 0.5em;
+  text-align: left;
+}
+.reveal .title-container h1 {
+  color: #1a1a66 !important;
+  font-size: 1.8em !important;
+  font-weight: 300 !important;
+  text-transform: none !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.4em !important;
+  border: none !important;
+  text-align: left !important;
+}
+.reveal .title-container .venue-text {
+  color: #666;
+  font-size: 0.8em;
+  margin-bottom: 3.5em;
+  font-weight: 300;
+  display: block;
+  text-align: center;
+}
+.reveal .title-container .venue-text .fa-location-dot {
+  color: #bb151b;
+}
+.reveal .title-container .venue-text .fa-calendar {
+  color: #4bb8d6;
+}
+.reveal .author-block {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  border-top: 0.05em solid #eee;
+  padding-top: 1.2em;
+  margin-top: 1.5em;
+}
+.reveal .author-block .presenter-side {
+  text-align: right;
+  flex: 1;
+  margin-top: 1.8em;
+}
+.reveal .author-block .presenter-side .name {
+  font-size: 0.85em;
+  color: #bb151b;
+  font-weight: 400;
+  display: block;
+}
+.reveal .author-block .presenter-side .affiliation {
+  color: #666;
+  font-size: 0.58em;
+  display: block;
+  margin-top: 0.15em;
+}
+.reveal .author-block .coauthor-side {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1.5em;
+  text-align: left;
+  flex-shrink: 0;
+}
+.reveal .author-block .coauthor-side .coauthor-item {
+  width: 3.35em;
+  text-align: center;
+}
+.reveal .author-block .coauthor-side .coauthor-item p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.reveal .author-block .coauthor-side .coauthor-item img {
+  border-radius: 50%;
+  width: 3.35em;
+  height: 3.35em;
+  object-fit: cover;
+  border: 0.1em solid #eee;
+  margin-bottom: 0.25em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.reveal .author-block .coauthor-side .coauthor-item .coauthor-name {
+  font-size: 0.41em;
+  line-height: 1.15;
+  color: #333;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  display: block;
+  white-space: nowrap;
+  text-align: center;
+}
+.reveal h2 {
+  font-size: 1.2em;
+  color: #1a1a66;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.7em;
+  padding-left: 0.4em;
+  padding-bottom: 0.25em;
+  border-left: 0.1em solid #bb151b;
+  border-bottom: 0.03em solid #eee;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+.reveal h3 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  color: #555;
+}
+.reveal blockquote {
+  border-left: 0.25em solid #4bb8d6;
+  background: rgba(92, 202, 232, 0.05);
+  padding: 0.4em 0.8em;
+  margin: 0.5em 0;
+  font-style: italic;
+  color: #555;
+}
+.reveal .callout {
+  margin: 0.5em 0 !important;
+  padding: 0.4em 0.8em !important;
+  font-size: 0.9em !important;
+}
+.reveal .callout .callout-header {
+  padding: 0.2em 0.5em !important;
+}
+.reveal {
+  /* --- Custom Mathematical Environments --- */
+}
+.reveal .bits-theorem,
+.reveal .bits-lemma,
+.reveal .bits-definition,
+.reveal .bits-conjecture,
+.reveal .bits-claim,
+.reveal .bits-proposition,
+.reveal .bits-remark,
+.reveal .bits-example,
+.reveal .bits-goal,
+.reveal .bits-proof {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-left: 0.1em solid;
+  border-radius: 0.25em;
+  background-color: #ffffff;
+  box-shadow: 0 0.1em 0.15em rgba(0, 0, 0, 0.1);
+}
+.reveal .bits-theorem [class$=-title] a,
+.reveal .bits-lemma [class$=-title] a,
+.reveal .bits-definition [class$=-title] a,
+.reveal .bits-conjecture [class$=-title] a,
+.reveal .bits-claim [class$=-title] a,
+.reveal .bits-proposition [class$=-title] a,
+.reveal .bits-remark [class$=-title] a,
+.reveal .bits-example [class$=-title] a,
+.reveal .bits-goal [class$=-title] a,
+.reveal .bits-proof [class$=-title] a {
+  color: inherit !important;
+  text-decoration: underline;
+  font-weight: normal;
+}
+.reveal .bits-theorem-title,
+.reveal .bits-lemma-title,
+.reveal .bits-definition-title,
+.reveal .bits-conjecture-title,
+.reveal .bits-claim-title,
+.reveal .bits-proposition-title,
+.reveal .bits-remark-title,
+.reveal .bits-example-title,
+.reveal .bits-proof-title,
+.reveal .bits-goal-title {
+  font-weight: bold;
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  color: inherit;
+}
+.reveal {
+  /* Theorem & Lemma: Navy Blue Theme */
+}
+.reveal .bits-theorem,
+.reveal .bits-lemma,
+.reveal .bits-goal {
+  border-left-color: #1a1a66;
+}
+.reveal .bits-theorem .bits-theorem-title, .reveal .bits-theorem .bits-lemma-title, .reveal .bits-theorem .bits-goal-title, .reveal .bits-theorem h1, .reveal .bits-theorem h2, .reveal .bits-theorem h3, .reveal .bits-theorem h4, .reveal .bits-theorem h5, .reveal .bits-theorem h6,
+.reveal .bits-lemma .bits-theorem-title,
+.reveal .bits-lemma .bits-lemma-title,
+.reveal .bits-lemma .bits-goal-title,
+.reveal .bits-lemma h1,
+.reveal .bits-lemma h2,
+.reveal .bits-lemma h3,
+.reveal .bits-lemma h4,
+.reveal .bits-lemma h5,
+.reveal .bits-lemma h6,
+.reveal .bits-goal .bits-theorem-title,
+.reveal .bits-goal .bits-lemma-title,
+.reveal .bits-goal .bits-goal-title,
+.reveal .bits-goal h1,
+.reveal .bits-goal h2,
+.reveal .bits-goal h3,
+.reveal .bits-goal h4,
+.reveal .bits-goal h5,
+.reveal .bits-goal h6 {
+  color: #1a1a66;
+}
+.reveal {
+  /* Claim & Proposition: Purple Theme */
+}
+.reveal .bits-claim,
+.reveal .bits-proposition {
+  border-left-color: #8e44ad;
+}
+.reveal .bits-claim .bits-claim-title, .reveal .bits-claim .bits-proposition-title, .reveal .bits-claim h1, .reveal .bits-claim h2, .reveal .bits-claim h3, .reveal .bits-claim h4, .reveal .bits-claim h5, .reveal .bits-claim h6,
+.reveal .bits-proposition .bits-claim-title,
+.reveal .bits-proposition .bits-proposition-title,
+.reveal .bits-proposition h1,
+.reveal .bits-proposition h2,
+.reveal .bits-proposition h3,
+.reveal .bits-proposition h4,
+.reveal .bits-proposition h5,
+.reveal .bits-proposition h6 {
+  color: #8e44ad;
+}
+.reveal {
+  /* Definition: Light Blue Theme */
+}
+.reveal .bits-definition {
+  border-left-color: #4bb8d6;
+}
+.reveal .bits-definition .bits-definition-title, .reveal .bits-definition h1, .reveal .bits-definition h2, .reveal .bits-definition h3, .reveal .bits-definition h4, .reveal .bits-definition h5, .reveal .bits-definition h6 {
+  color: #4bb8d6;
+}
+.reveal {
+  /* Remark & Example: Green Theme */
+}
+.reveal .bits-remark,
+.reveal .bits-example {
+  border-left-color: #219150;
+}
+.reveal .bits-remark .bits-remark-title, .reveal .bits-remark .bits-example-title, .reveal .bits-remark h1, .reveal .bits-remark h2, .reveal .bits-remark h3, .reveal .bits-remark h4, .reveal .bits-remark h5, .reveal .bits-remark h6,
+.reveal .bits-example .bits-remark-title,
+.reveal .bits-example .bits-example-title,
+.reveal .bits-example h1,
+.reveal .bits-example h2,
+.reveal .bits-example h3,
+.reveal .bits-example h4,
+.reveal .bits-example h5,
+.reveal .bits-example h6 {
+  color: #219150;
+}
+.reveal {
+  /* Conjecture/Proof: Gold Theme */
+}
+.reveal .bits-conjecture {
+  border-left-color: #ffbb00;
+}
+.reveal .bits-conjecture .bits-conjecture-title, .reveal .bits-conjecture h1, .reveal .bits-conjecture h2, .reveal .bits-conjecture h3, .reveal .bits-conjecture h4, .reveal .bits-conjecture h5, .reveal .bits-conjecture h6 {
+  color: #ffbb00;
+}
+.reveal .bits-proof {
+  background-color: transparent;
+  box-shadow: none;
+  border-left: 0.25em solid #ffbb00;
+}
+.reveal .bits-proof-title {
+  color: #ffbb00;
+  font-style: italic;
+}
+.reveal {
+  /* 
+   * Universal 20% font size reduction on all standard slide content 
+   * Explicitly ignores the Title Slide so its proportions stay perfect.
+   * Automatically fixes overflowing tall content boxes (like long callouts).
+   */
+}
+.reveal .slides section:not(#main-title-slide):not(.stack) {
+  font-size: 0.85em;
+}
+.reveal .small-diagram {
+  max-height: 30% !important;
+  margin: 1rem auto !important;
+  display: flex;
+  justify-content: center;
+}
+.reveal .small-diagram svg {
+  max-height: 30% !important;
+  width: auto !important;
+}
+.reveal {
+  /* Tricolor borders are handled via .reveal:has(section#main-title-slide.present) pseudo-elements. */
+  /* Ensure progress bar is visible on title slide if desired, or at least not causing bugs */
+}
+.reveal:has(section#main-title-slide.present) .progress {
+  display: block !important;
+}
+.reveal {
+  /* === SECTION INTERSTITIAL SLIDES === */
+  /* Hide h1 on interstitial slides — the timeline itself shows the section name */
+}
+.reveal section.title-slide:not(#main-title-slide) {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 700px !important; /* Matches Reveal.js configured slide height */
+}
+.reveal section.title-slide:not(#main-title-slide) h1 {
+  display: none !important;
+}
+.reveal section.title-slide:not(#main-title-slide).present {
+  background-color: #ffffff !important;
+}
+.reveal {
+  /* Timeline on interstitial slides: use block flow, no absolute positioning needed */
+}
+.reveal section.title-slide:not(#main-title-slide) .outline-timeline {
+  width: 98% !important;
+  margin: 0 auto !important;
+}
+.reveal {
+  /* Hide footer and slide numbers explicitly on the main title slide */
+}
+.reveal:has(section#main-title-slide.present) .footer, .reveal:has(section#main-title-slide.present) .slide-number {
+  display: none !important;
+}
+.reveal {
+  /* ==== RESPONSIVE TIMELINE REWRITE ==== */
+}
+.reveal .outline-timeline {
+  display: flex !important;
+  flex-wrap: nowrap !important; /* Force single line for projector/high-end feel */
+  gap: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  list-style: none !important;
+  padding: 4rem 0 !important; /* Increased padding for the zig-zag text */
+  margin: 0 auto !important;
+  width: 98% !important;
+  background: transparent !important;
+  position: relative !important;
+}
+.reveal {
+  /* Remove the broken absolute background line/arrow from the container */
+}
+.reveal .outline-timeline::after {
+  display: none !important;
+}
+.reveal .timeline-item {
+  flex: 1 1 0 !important; /* Equal spacing */
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: rgba(75, 184, 214, 0.4) !important; /* Darkened Bits light blue */
+  border-radius: 0.25em !important;
+  font-size: 0.7em !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+  position: relative !important;
+  height: 0.6em !important; /* Match dot height exactly */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.reveal {
+  /* Re-inject the connecting line segment inside each item instead of the container */
+}
+.reveal .timeline-item::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important; /* Start from center of node */
+  right: -50% !important; /* End at center of next node */
+  top: 50% !important;
+  height: 0.1em !important;
+  background: #ccc !important;
+  z-index: 1 !important;
+  transform: translateY(-50%) !important;
+}
+.reveal {
+  /* Hide the connecting line segment for the very last item in the sequence */
+}
+.reveal .timeline-item:last-child::after {
+  display: none !important;
+}
+.reveal {
+  /* The actual "dot" for the timeline node */
+}
+.reveal .timeline-item::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 0.6em !important;
+  height: 0.6em !important;
+  border-radius: 50% !important;
+  background: rgba(92, 202, 232, 0.4) !important;
+  z-index: 2 !important;
+}
+.reveal {
+  /* The active node loses the highlight box, keeps the text blue, and turns the dot red */
+}
+.reveal .timeline-item.active {
+  background: transparent !important;
+  color: #003366 !important; /* Deep blue */
+  font-weight: 600 !important;
+}
+.reveal .timeline-item.active::before {
+  background: #d71920 !important; /* Red dot for active */
+  transform: translate(-50%, -50%) scale(1.3) !important;
+}
+.reveal {
+  /* Alternating text position with absolute mapping */
+}
+.reveal .timeline-item:nth-child(odd) .timeline-text {
+  bottom: 1.6rem !important; /* Fixed distance above node */
+}
+.reveal .timeline-item:nth-child(even) .timeline-text {
+  top: 1.6rem !important; /* Fixed distance below node */
+}
+.reveal {
+  /* Adjust timeline text styling */
+}
+.reveal .timeline-item .timeline-text {
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 9em !important; /* Increased from 140px (~7.7em) */
+  max-width: 10em !important;
+  text-align: center !important;
+  font-size: 0.85em !important;
+  color: inherit !important;
+  opacity: 1 !important;
+  word-wrap: break-word !important;
+  display: block !important;
+  z-index: 3 !important;
+}
+.reveal .timeline-item.active .timeline-text {
+  color: #003366 !important;
+}
+.reveal .ds-matrix-container {
+  display: grid !important;
+  grid-template-areas: ". top" "left matrix" !important;
+  grid-template-columns: min-content auto !important;
+  gap: 0.4em !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 1em auto !important;
+  max-height: 25em !important;
+  max-width: 90% !important;
+  overflow: hidden !important;
+}
+.reveal .ds-matrix-top-label {
+  grid-area: top;
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.9em;
+  color: #1a1a66;
+  margin-bottom: 0.3em;
+}
+.reveal .ds-matrix-left-label {
+  grid-area: left;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  font-family: inherit;
+  font-size: 0.9em;
+  color: #1a1a66;
+  margin-right: 0.8em;
+}
+.reveal table.ds-matrix-table {
+  grid-area: matrix !important;
+  border-collapse: collapse !important;
+  border: 0.05em solid #333 !important;
+  background: transparent !important;
+}
+.reveal table.ds-matrix-table *, .reveal table.ds-matrix-table thead, .reveal table.ds-matrix-table tbody, .reveal table.ds-matrix-table tr, .reveal table.ds-matrix-table th, .reveal table.ds-matrix-table td {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+}
+.reveal table.ds-matrix-table td {
+  width: 1.8em !important;
+  height: 1.8em !important;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.1em !important;
+  margin: 0 !important;
+  font-size: 0.7em !important;
+  line-height: 1 !important;
+}
+.reveal table.ds-matrix-table .ds-col-header {
+  border-bottom: 0.1em solid #333 !important;
+  font-family: inherit;
+  font-style: italic;
+  color: #1a1a66;
+  vertical-align: bottom !important;
+  padding-bottom: 0.5em !important;
+}
+.reveal table.ds-matrix-table .ds-row-header {
+  border-right: 0.1em solid #333 !important;
+  font-family: inherit;
+  font-style: italic;
+  color: #1a1a66;
+  padding-right: 0.8em !important;
+  text-align: right !important;
+}
+.reveal table.ds-matrix-table .ds-header-corner {
+  border-right: 0.1em solid #333 !important;
+  border-bottom: 0.1em solid #333 !important;
+}
+.reveal table.ds-matrix-table .ds-matrix-highlight {
+  border: 0.05em solid #bb151b !important;
+  color: #bb151b !important;
+  font-weight: 500;
+}
+
+.reveal section.frame table {
+  max-width: 100%;
+}
+.reveal section.frame table td,
+.reveal section.frame table th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.reveal section.frame pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.reveal section.frame img {
+  max-width: 100%;
+  height: auto;
+}
+.reveal section.frame .math {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+.reveal section.frame .callout,
+.reveal section.frame .bits-theorem,
+.reveal section.frame .bits-lemma,
+.reveal section.frame .bits-proof,
+.reveal section.frame .bits-definition {
+  max-height: none !important;
+  overflow: visible !important;
+}
+.reveal section.frame ul,
+.reveal section.frame ol {
+  margin: 0.3em 0 !important;
+}
+.reveal section.frame li {
+  margin: 0.15em 0 !important;
+}
+.reveal section.frame p {
+  margin: 0.3em 0 !important;
+}
+.reveal section.frame h2 {
+  margin-bottom: 0.4em !important;
+}
+.reveal section.frame .columns {
+  align-items: flex-start;
+}
+.reveal section.frame .column {
+  overflow-x: visible;
+}
