@@ -16,6 +16,33 @@
   a:hover { text-decoration: underline; }
   .info { background: #f0f7ff; border-left: 4px solid #2b2b88; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
   .tag { display: inline-block; background: #d71920; color: #fff; font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: middle; }
+  .assn-hero { margin-bottom: 1rem; }
+  .assn-hero h3 { font-size: 1.3rem; color: #2b2b88; margin: 0; border: none; padding: 0; }
+  .assn-hero p { font-size: 0.85rem; color: #666; margin: 0.1rem 0 0 0; }
+  .assn-term { display: inline-block; background: #2b2b88; color: #fff; font-size: 0.65rem; padding: 0.12rem 0.4rem; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; font-weight: 600; letter-spacing: 0.3px; }
+  .assn-strip { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem; }
+  .assn-item { background: #fff; border: 1px solid #eee; border-radius: 6px; padding: 0.35rem 0.6rem; display: flex; flex-direction: column; font-size: 0.78rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); flex: 1; min-width: 90px; }
+  .assn-item strong { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.5px; color: #999; margin-bottom: 0.05rem; }
+  .assn-item span { color: #333; font-weight: 600; }
+  .assn-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.4rem 0; }
+  .assn-step { background: #fff; border: 1px solid #eee; border-radius: 7px; padding: 0.5rem 0.6rem; display: flex; align-items: flex-start; gap: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: transform 0.15s; }
+  .assn-step:hover { transform: translateY(-1px); }
+  .assn-num { background: #2b2b88; color: #fff; width: 1.3rem; height: 1.3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; }
+  .assn-text { font-size: 0.8rem; line-height: 1.35; color: #444; }
+  .assn-text code { font-size: 0.78em; background: #f0f0f0; padding: 0.05rem 0.25rem; border-radius: 3px; }
+  .assn-note { background: rgba(254, 204, 11, 0.08); border-left: 3px solid #fecc0b; padding: 0.4rem 0.7rem; font-size: 0.78rem; color: #666; border-radius: 0 4px 4px 0; margin: 0.6rem 0; }
+  .assn-cards { display: flex; flex-direction: column; gap: 0.5rem; }
+  .assn-card { display: flex; align-items: stretch; background: #fff; border: 1px solid #eee; border-radius: 7px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; color: inherit; }
+  .assn-card:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.06); border-color: #5ccae8; color: inherit; }
+  .assn-label { background: #2b2b88; color: #fff; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; min-width: 2.2rem; flex-shrink: 0; }
+  .assn-body { padding: 0.5rem 0.7rem; flex: 1; }
+  .assn-title { font-size: 0.88rem; font-weight: 700; color: #2b2b88; margin-bottom: 0.05rem; }
+  .assn-desc { font-size: 0.78rem; color: #666; line-height: 1.35; }
+  .assn-tip { position: relative; cursor: help; }
+  .assn-tip .assn-popup { visibility: hidden; opacity: 0; position: absolute; top: 50%; left: calc(100% + 8px); transform: translateY(-50%); background: #5ccae8; color: #fff; font-size: 0.7rem; line-height: 1.35; padding: 0.4rem 0.5rem; border-radius: 4px; white-space: normal; width: 200px; text-align: center; z-index: 10; transition: opacity 0.15s, visibility 0.15s; pointer-events: none; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+  .assn-tip .assn-popup::after { content: ""; position: absolute; top: 50%; right: 100%; margin-top: -4px; border: 4px solid transparent; border-right-color: #5ccae8; }
+  .assn-tip:hover .assn-popup { visibility: visible; opacity: 1; }
+  .assn-sectitle { font-size: 0.95rem; margin: 1.2rem 0 0.5rem 0; color: #2b2b88; font-weight: 700; border-bottom: 1.5px solid #eee; padding-bottom: 0.3rem; }
 </style>
 </head>
 <body>
@@ -79,8 +106,30 @@
 </tr>
 </tbody></table>
 <h2>Assignments</h2>
-<table><thead><tr><th>#</th><th>Topic</th><th>Link</th></tr></thead><tbody>
-<tr><td>01</td><td>Assignment 1</td><td><a href="assignments/assignment-01/index.html">📝</a></td></tr>
-</tbody></table>
+<div class="assn-hero">
+<h3>Assignment 1</h3>
+<p>CS F364 — Design &amp; Analysis of Algorithms <span class="assn-term">Summer 2026</span></p>
+</div>
+<div class="assn-strip">
+<div class="assn-item"><strong>Due</strong><span>30 Jun 2026, 2:00 PM</span></div>
+<div class="assn-item"><strong>Weight</strong><span>10%</span></div>
+<div class="assn-item"><strong>Submission</strong><span>Individual</span></div>
+<div class="assn-item assn-tip"><strong>Final mark</strong><span>Score (out of 50) &times; Viva &divide; 10</span><span class="assn-popup">The viva score (0&#8211;10) acts as a weightage multiplier. High viva = you keep most marks. Low viva = proportional reduction.</span></div>
+</div>
+<div class="assn-sectitle">How it works</div>
+<div class="assn-steps">
+<div class="assn-step"><div class="assn-num">1</div><div class="assn-text">Pick <strong>one</strong> of the four problems below.</div></div>
+<div class="assn-step"><div class="assn-num">2</div><div class="assn-text">Solve it in <strong>Python</strong>, <strong>C</strong>, or <strong>C++</strong>. Discussion allowed, but the code you submit must be entirely your own.</div></div>
+<div class="assn-step"><div class="assn-num">3</div><div class="assn-text">Upload your single source file as <code>&lt;rollno&gt;_assignment1.&lt;ext&gt;</code> to Google Classroom before the deadline.</div></div>
+<div class="assn-step"><div class="assn-num">4</div><div class="assn-text">Attend a 1-on-1 viva. Your assignment is scored out of 50. The viva (out of 10) decides what fraction you keep: <strong>Final = Score &times; (Viva &divide; 10)</strong>.</div></div>
+</div>
+<div class="assn-note">Make sure your code compiles and runs before you submit. It will be tested against hidden test cases. The deadline will not be extended for any reason. Plagiarism will result in a zero grade and disciplinary action.</div>
+<div class="assn-sectitle">Choose a Problem</div>
+<div class="assn-cards">
+<a href="assignments/assignment-01/problem-a.html" class="assn-card"><div class="assn-label">A</div><div class="assn-body"><div class="assn-title">Closest Pair of Points</div><div class="assn-desc">Find the closest pair among <i>n</i> points in <b>O</b>(<i>n</i> log <i>n</i>) time using the <b>&delta;</b>-strip optimisation.</div></div></a>
+<a href="assignments/assignment-01/problem-b.html" class="assn-card"><div class="assn-label">B</div><div class="assn-body"><div class="assn-title">Longest Common Subsequence</div><div class="assn-desc">Compute the LCS of two strings and produce an optimal alignment with <b>O</b>(<i>mn</i>) DP.</div></div></a>
+<a href="assignments/assignment-01/problem-c.html" class="assn-card"><div class="assn-label">C</div><div class="assn-body"><div class="assn-title">Huffman Coding</div><div class="assn-desc">Build optimal prefix-free codes, encode a message, and decode it back using a min-heap.</div></div></a>
+<a href="assignments/assignment-01/problem-d.html" class="assn-card"><div class="assn-label">D</div><div class="assn-body"><div class="assn-title">Kruskal&#39;s Minimum Spanning Tree</div><div class="assn-desc">Find the MST using Kruskal&#39;s algorithm with Union-Find and path compression.</div></div></a>
+</div>
 <hr><p style="color:#888;font-size:0.85rem;text-align:center">CS F364 — Design &amp; Analysis of Algorithms · BITS Pilani, Hyderabad Campus · Summer 2026</p>
 </body></html>
