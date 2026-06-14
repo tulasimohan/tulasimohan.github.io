@@ -674,3 +674,54 @@
   color: #bb151b !important;
   font-weight: 500;
 }
+
+.reveal section.frame table {
+  max-width: 100%;
+}
+.reveal section.frame table td,
+.reveal section.frame table th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.reveal section.frame pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.reveal section.frame img {
+  max-width: 100%;
+  height: auto;
+}
+.reveal section.frame .math {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+.reveal section.frame .callout,
+.reveal section.frame .bits-theorem,
+.reveal section.frame .bits-lemma,
+.reveal section.frame .bits-proof,
+.reveal section.frame .bits-definition {
+  max-height: none !important;
+  overflow: visible !important;
+}
+.reveal section.frame ul,
+.reveal section.frame ol {
+  margin: 0.3em 0 !important;
+}
+.reveal section.frame li {
+  margin: 0.15em 0 !important;
+}
+.reveal section.frame p {
+  margin: 0.3em 0 !important;
+}
+.reveal section.frame h2 {
+  margin-bottom: 0.4em !important;
+}
+.reveal section.frame .columns {
+  align-items: flex-start;
+}
+.reveal section.frame .column {
+  overflow-x: visible;
+}
