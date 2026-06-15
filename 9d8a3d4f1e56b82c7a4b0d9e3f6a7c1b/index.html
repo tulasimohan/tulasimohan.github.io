@@ -1697,7 +1697,7 @@ margin-right: 0; }
 <li><strong>Queries (Q)</strong>: Points <span class="math inline">\(a \in \mathbb{F}_p\)</span>.</li>
 <li><strong>Answer</strong>: <span class="math inline">\(P(a)\)</span>.</li>
 </ul>
-<p><span class="math inline">\(Typically p = n^{1+ \Omega(1)}\)</span>.</p>
+<p>Typical <span class="math inline">\(p = n^{1+ \Omega(1)}\)</span>.</p>
 </div>
 </div>
 </div>
@@ -1719,7 +1719,7 @@ margin-right: 0; }
   &quot;cols&quot;: 8,
   &quot;colLabels&quot;: [&quot;$S_1$&quot;, &quot;$S_2$&quot;, &quot; $\\cdots$ &quot;, &quot;$S_j$&quot;, &quot;$\\cdots$&quot;, &quot;$S_N$&quot;],
   &quot;rowLabels&quot;: [&quot;$R_1$&quot;, &quot;$R_2$&quot;, &quot;$\\vdots \\\\ $&quot;, &quot;$R_i$&quot;, &quot;$\\vdots \\\\ $&quot;, &quot;$R_M$&quot;],
-  &quot;specialCell&quot;: { &quot;r&quot;: 3, &quot;c&quot;: 3, &quot;label&quot;: &quot;$|S_j \\\\cap R_i|$&quot; }
+  &quot;specialCell&quot;: { &quot;r&quot;: 3, &quot;c&quot;: 3, &quot;label&quot;: &quot;$|S_j \\cap R_i|$&quot; }
 }">
 
 </div>
@@ -1835,7 +1835,7 @@ margin-right: 0; }
 <p>Lower bounds are typically studied in two different space regimes:</p>
 <div class="columns">
 <div class="column" style="width: 50%;">
-<h4 id="m-logc-n"><span class="math inline">\(M = (\log^c N)\)</span></h4>
+<h4 id="m-log-nc"><span class="math inline">\(M = (\log N)^c\)</span></h4>
 <ul>
 <li><span class="math inline">\(S = n \cdot \text{polylog}(n)\)</span> bits.</li>
 <li>Near-linear space.</li>
@@ -1904,7 +1904,7 @@ margin-right: 0; }
 <ol type="1">
 <li># (S,w,t) solutions<br>
 </li>
-<li># Static DS tablles of size <span class="math inline">\(M \times N\)</span></li>
+<li># Static DS tables of size <span class="math inline">\(M \times N\)</span></li>
 </ol>
 <p>Comparing 1 and 2, <span class="math inline">\(t_q \approx \Omega(\frac{\log M}{\log S})\)</span>.</p>
 <ul>
@@ -2007,16 +2007,16 @@ margin-right: 0; }
 <div class="columns" style="align-items: center;">
 <div class="column" style="width: 50%;">
 <ul>
-<li>Sample memory cells with prob. <span class="math inline">\(p\)</span>. <span class="math inline">\(L\)</span></li>
+<li>Sample memory cells with prob. <span class="math inline">\(p\)</span>. <span class="math inline">\(|L|\)</span></li>
 <li>Let <span class="math inline">\(S(q)\)</span> := cells probed by the query <span class="math inline">\(q\)</span> on data <span class="math inline">\(d\)</span>.</li>
 <li><span class="math inline">\(\text{Prob}(S(q) \subseteq L) = p^t\)</span>.</li>
-<li><span class="math inline">\(E[|L|] = pS\)</span></li>
+<li><span class="math inline">\(E[|L|] = p \cdot |S(q)|\)</span></li>
 <li>Expected number of queries answered by <span class="math inline">\(L\)</span>: <span class="math inline">\(p^t \cdot |\mathcal{Q}|\)</span></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p><strong>Observation</strong>: Each <span class="math inline">\(d \in \mathcal{D}\)</span> has <span class="math inline">\(pS\)</span> “Special” cells which can answer <span class="math inline">\(p^t |Q|\)</span> queries.</p>
+<p><strong>Observation</strong>: Each <span class="math inline">\(d \in \mathcal{D}\)</span> has <span class="math inline">\(p \cdot |S(q)|\)</span> “Special” cells which can answer <span class="math inline">\(p^t \cdot |\mathcal{Q}|\)</span> queries.</p>
 </div>
 </div>
 </div>
@@ -2046,7 +2046,7 @@ margin-right: 0; }
   </div>
 </div>
 <ul>
-<li><strong>Encoding</strong>: Store the loccations and contents of these cells.</li>
+<li><strong>Encoding</strong>: Store the locations and contents of these cells.</li>
 </ul>
 </div></div>
 </section>
@@ -2418,17 +2418,22 @@ Steven Rudich
 </ul>
 </section>
 <section id="prior-work-kpi25" class="slide level2">
-<h2>Prior work; [KPI’25]</h2>
+<h2>Prior work: [KPI’25]</h2>
+<div class="columns">
+<div class="column" style="width: 48%; font-size: 0.82em;">
+<h3 id="kpi25-focus">[KPI’25] Focus</h3>
 <ul>
-<li>Study Natural Proofs in the <strong>Static setting</strong>, specifically for the regime <span class="math inline">\(M = (\log N)^c\)</span>.</li>
-<li>They use <span class="math inline">\(NC^0\)</span> PRGs to construct <strong>Local PRGs</strong>.</li>
-<li><strong>Limitations</strong>:
-<ul>
-<li>Do not cover the <strong>Dynamic</strong> setting.</li>
-<li>Miss other regimes of parameters.</li>
-<li>Provide a sparse survey of lower bound techniques compared to this work.</li>
-</ul></li>
+<li><strong>Static Setting</strong>: Natural-proofs barrier in the constant-query regime (<span class="math inline">\(M = \text{polylog}(N)\)</span>).</li>
+<li><strong>Motivation</strong>: Highly relevant for efficiently storing and evaluating hash functions.</li>
 </ul>
+</div><div class="column" style="width: 52%; font-size: 0.82em;">
+<h3 id="our-extensions">Our Extensions</h3>
+<ul>
+<li><strong>All Regimes</strong>: Works across all parameter regimes (e.g., range counting, VMV).</li>
+<li><strong>Dynamic Setting</strong>: Establishes first natural-proofs barrier for dynamic data structures.</li>
+<li><strong>Unified Survey</strong>: Shows all known techniques are natural except lifting.</li>
+</ul>
+</div></div>
 </section>
 <section id="local-and-llu-prfs" class="slide level2">
 <h2>Local and LLU PRFs</h2>
