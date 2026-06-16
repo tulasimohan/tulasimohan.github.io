@@ -23,7 +23,8 @@
     "listing": "/teaching.html",
     "items": [
       "/teaching/advanced-algorithms.html",
-      "/teaching/daa.html"
+      "/teaching/daa.html",
+      "/teaching/DSA_2026/dsa-solutions.html"
     ]
   }
 ]
