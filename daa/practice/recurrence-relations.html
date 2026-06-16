@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -103,29 +68,50 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="bits-theme.css">
 </head>
 
 <body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
-  <li><a href="#problem-4" id="toc-problem-4" class="nav-link" data-scroll-target="#problem-4">Problem 4</a></li>
-  <li><a href="#problem-5" id="toc-problem-5" class="nav-link" data-scroll-target="#problem-5">Problem 5</a></li>
-  </ul>
-</nav>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+  
 </div>
 <main class="content" id="quarto-document-content">
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <div class="navbar-brand-container mx-auto">
+      <a class="navbar-brand" href="https://tulasimohan.github.io/index.html">
+        <span class="navbar-title">Tulasimohan Molli</span>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav navbar-nav-scroll ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/index.html"><span class="menu-text">Home</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="https://tulasimohan.github.io/teaching.html" aria-current="page"><span class="menu-text">Teaching</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/research.html"><span class="menu-text">Research</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/about.html"><span class="menu-text">About</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Recurrence Relations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">Recurrence Relations</h1>
+<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
 <div>
@@ -167,47 +153,19 @@ window.Quarto = {
 
 
 <p><a href="index.html">← Practice</a></p>
-<section id="problem-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p>Solve the recurrence relation of the <strong>Tower of Hanoi</strong> problem using the iterative method.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Problem 1
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(T(n)\)</span> be the number of moves required to transfer <span class="math inline">\(n\)</span> disks from source to destination using an auxiliary peg.</p>
-<p>Recurrence: <span class="math inline">\(T(n) = 2T(n-1) + 1\)</span>, with <span class="math inline">\(T(0) = 0\)</span>.</p>
-Iterative expansion: [
-<span class="math display">\[\begin{aligned}
-T(n) &amp;= 2T(n-1) + 1 \\
-     &amp;= 2[2T(n-2) + 1] + 1 = 2^2 T(n-2) + 2 + 1 \\
-     &amp;= 2^2[2T(n-3) + 1] + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 \\
-     &amp;\;\;\vdots \\
-     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) \\
-     &amp;= 0 + (2^n - 1).
-\end{aligned}\]</span>
-<p>]</p>
-<p>Thus <span class="math inline">\(T(n) = 2^n - 1 = \Theta(2^n)\)</span>.</p>
+<p>Solve the recurrence relation of the <strong>Tower of Hanoi</strong> problem using the iterative method.</p>
 </div>
 </div>
-</div>
-</section>
-<section id="problem-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p>How many ones does the following procedure print when run with input <span class="math inline">\(n\)</span>? Compute the best bounds you can: the exact value if possible, a <span class="math inline">\(\Theta\)</span> expression if you can’t find the exact value, or <span class="math inline">\(O\)</span> and <span class="math inline">\(\Omega\)</span> bounds if you can’t find a <span class="math inline">\(\Theta\)</span> expression.</p>
-<pre><code>Ones(n):
-    if n = 0:
-        print 1
-    else:
-        for i = 1 to 2^n:
-            Ones(n-1)</code></pre>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -220,59 +178,40 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(T(n)\)</span> be the number of ones printed on input <span class="math inline">\(n\)</span>.</p>
-<p>From the code: [ T(0) = 1,T(n) = 2^n T(n-1) n . ]</p>
-Iterating: [
-<span class="math display">\[\begin{aligned}
-T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
-     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 \\
-     &amp;= 2^{n(n+1)/2}.
-\end{aligned}\]</span>
-<p>]</p>
-<p>Hence <span class="math inline">\(T(n) = 2^{n(n+1)/2}\)</span>. This is <span class="math inline">\(\Theta\!\left(2^{n(n+1)/2}\right)\)</span>, which is <span class="math inline">\(2^{\Theta(n^2)}\)</span> but <strong>not</strong> <span class="math inline">\(\Theta(2^{n^2})\)</span>.</p>
+<p>Let <span class="math inline">\(T(n)\)</span> be the number of moves required to transfer <span class="math inline">\(n\)</span> disks from source to destination using an auxiliary peg.</p>
+<p>Recurrence: <span class="math inline">\(T(n) = 2T(n-1) + 1\)</span>, with <span class="math inline">\(T(0) = 0\)</span>.</p>
+<p>Iterative expansion: <span class="math display">\[
+\begin{aligned}
+T(n) &amp;= 2T(n-1) + 1 \\
+     &amp;= 2[2T(n-2) + 1] + 1 = 2^2 T(n-2) + 2 + 1 \\
+     &amp;= 2^2[2T(n-3) + 1] + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 \\
+     &amp;\;\;\vdots \\
+     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) \\
+     &amp;= 0 + (2^n - 1).
+\end{aligned}
+\]</span> Thus <span class="math inline">\(T(n) = 2^n - 1 = \Theta(2^n)\)</span>.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
-<p>Solve the following recurrence using the <strong>substitution method</strong>:</p>
-<p><span class="math inline">\(T(n) = 2T(\lfloor n/2 \rfloor + 17) + n\)</span></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Problem 2
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We guess <span class="math inline">\(T(n) = O(n\log n)\)</span>, i.e., <span class="math inline">\(T(n) \le cn\log_2 n\)</span> for <span class="math inline">\(n \ge n_0\)</span>.</p>
-<p>Assume the inequality holds for all <span class="math inline">\(k &lt; n\)</span>. For <span class="math inline">\(n\)</span> large enough (<span class="math inline">\(n \ge 68\)</span>), <span class="math inline">\(\lfloor n/2 \rfloor + 17 \le 3n/4\)</span>.</p>
-Then: [
-<span class="math display">\[\begin{aligned}
-T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) + n \\
-     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n \\
-     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.
-\end{aligned}\]</span>
-<p>]</p>
-<p>For this to be <span class="math inline">\(\le cn\log_2 n\)</span>, we need: [ ,n_2 n + ,n,(_2 3 - 2) + n cn_2 n. ]</p>
-<p>Simplifying: <span class="math inline">\(\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n\)</span>.</p>
-<p>Choosing <span class="math inline">\(c\)</span> and <span class="math inline">\(n_0\)</span> appropriately (e.g., <span class="math inline">\(c \ge 2\)</span>, <span class="math inline">\(n_0 = 2^{c+1}\)</span>) satisfies the inequality. Thus <span class="math inline">\(T(n) = O(n\log n)\)</span>. A matching lower bound <span class="math inline">\(\Omega(n\log n)\)</span> follows similarly, so <span class="math inline">\(T(n) = \Theta(n\log n)\)</span>.</p>
+<p>How many ones does the following procedure print when run with input <span class="math inline">\(n\)</span>? Compute the best bounds you can: the exact value if possible, a <span class="math inline">\(\Theta\)</span> expression if you can’t find the exact value, or <span class="math inline">\(O\)</span> and <span class="math inline">\(\Omega\)</span> bounds if you can’t find a <span class="math inline">\(\Theta\)</span> expression.</p>
+<pre><code>Ones(n):
+    if n = 0:
+        print 1
+    else:
+        for i = 1 to 2^n:
+            Ones(n-1)</code></pre>
 </div>
 </div>
-</div>
-</section>
-<section id="problem-4" class="level2">
-<h2 class="anchored" data-anchor-id="problem-4">Problem 4</h2>
-<p>Solve each recurrence to get the best asymptotic bounds on <span class="math inline">\(T(n)\)</span>:</p>
-<ol type="i">
-<li><p><span class="math inline">\(T(n) = T\!\left(\dfrac{n}{4\log_2 n}\right) + 2n\)</span> for <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(T(1) = 1\)</span> (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</p></li>
-<li><p><span class="math inline">\(T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n\)</span> for <span class="math inline">\(n \ge 4\)</span>, <span class="math inline">\(T(2) = 2\)</span>. Do <strong>not</strong> use the Master theorem.</p></li>
-</ol>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -285,13 +224,97 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(T(n)\)</span> be the number of ones printed on input <span class="math inline">\(n\)</span>.</p>
+<p>From the code: <span class="math display">\[
+T(0) = 1,\qquad T(n) = 2^n \cdot T(n-1) \quad \text{for } n \ge 1.
+\]</span> Iterating: <span class="math display">\[
+\begin{aligned}
+T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
+     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 \\
+     &amp;= 2^{n(n+1)/2}.
+\end{aligned}
+\]</span> Hence <span class="math inline">\(T(n) = 2^{n(n+1)/2}\)</span>. This is <span class="math inline">\(\Theta\!\left(2^{n(n+1)/2}\right)\)</span>, which is <span class="math inline">\(2^{\Theta(n^2)}\)</span> but <strong>not</strong> <span class="math inline">\(\Theta(2^{n^2})\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Solve the following recurrence using the <strong>substitution method</strong>:</p>
+<p><span class="math inline">\(T(n) = 2T(\lfloor n/2 \rfloor + 17) + n\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We guess <span class="math inline">\(T(n) = O(n\log n)\)</span>, i.e., <span class="math inline">\(T(n) \le cn\log_2 n\)</span> for <span class="math inline">\(n \ge n_0\)</span>.</p>
+<p>Assume the inequality holds for all <span class="math inline">\(k &lt; n\)</span>. For <span class="math inline">\(n\)</span> large enough (<span class="math inline">\(n \ge 68\)</span>), <span class="math inline">\(\lfloor n/2 \rfloor + 17 \le 3n/4\)</span>.</p>
+<p>Then: <span class="math display">\[
+\begin{aligned}
+T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) + n \\
+     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n \\
+     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.
+\end{aligned}
+\]</span> For this to be <span class="math inline">\(\le cn\log_2 n\)</span>, we need: <span class="math display">\[
+\frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n \le cn\log_2 n.
+\]</span> Simplifying: <span class="math inline">\(\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n\)</span>.</p>
+<p>Choosing <span class="math inline">\(c\)</span> and <span class="math inline">\(n_0\)</span> appropriately (e.g., <span class="math inline">\(c \ge 2\)</span>, <span class="math inline">\(n_0 = 2^{c+1}\)</span>) satisfies the inequality. Thus <span class="math inline">\(T(n) = O(n\log n)\)</span>. A matching lower bound <span class="math inline">\(\Omega(n\log n)\)</span> follows similarly, so <span class="math inline">\(T(n) = \Theta(n\log n)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem 4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Solve each recurrence to get the best asymptotic bounds on <span class="math inline">\(T(n)\)</span>:</p>
+<ol type="i">
+<li><p><span class="math inline">\(T(n) = T\!\left(\dfrac{n}{4\log_2 n}\right) + 2n\)</span> for <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(T(1) = 1\)</span> (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</p></li>
+<li><p><span class="math inline">\(T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n\)</span> for <span class="math inline">\(n \ge 4\)</span>, <span class="math inline">\(T(2) = 2\)</span>. Do <strong>not</strong> use the Master theorem.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>(i)</strong> Lower bound: The <span class="math inline">\(2n\)</span> term alone gives <span class="math inline">\(T(n) = \Omega(n)\)</span>.</p>
-<p>Upper bound: For <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(4\log_2 n &gt; 4\)</span>, so <span class="math inline">\(\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}\)</span>. Hence: [ T(n) T!() + 2n. ]</p>
-<p>By the Master theorem with <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=4\)</span>, <span class="math inline">\(f(n)=2n\)</span>: <span class="math inline">\(\log_b a = \log_4 1 = 0\)</span>. Since <span class="math inline">\(f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})\)</span> for <span class="math inline">\(\epsilon = 1\)</span>, case 3 applies: <span class="math inline">\(T(n) = O(n)\)</span>. Together with the lower bound, <span class="math inline">\(T(n) = \Theta(n)\)</span>.</p>
+<p>Upper bound: For <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(4\log_2 n &gt; 4\)</span>, so <span class="math inline">\(\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}\)</span>. Hence: <span class="math display">\[
+T(n) \le T\!\left(\frac{n}{4}\right) + 2n.
+\]</span> By the Master theorem with <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=4\)</span>, <span class="math inline">\(f(n)=2n\)</span>: <span class="math inline">\(\log_b a = \log_4 1 = 0\)</span>. Since <span class="math inline">\(f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})\)</span> for <span class="math inline">\(\epsilon = 1\)</span>, case 3 applies: <span class="math inline">\(T(n) = O(n)\)</span>. Together with the lower bound, <span class="math inline">\(T(n) = \Theta(n)\)</span>.</p>
 <p><strong>(ii)</strong> We prove <span class="math inline">\(T(n) \le cn\log^2 n\)</span> by induction.</p>
 <p><strong>Base:</strong> <span class="math inline">\(T(2) = 2 \le c\cdot 2\log^2 2 = 2c\)</span>, true for <span class="math inline">\(c \ge 1\)</span>.</p>
-<strong>Inductive step:</strong> For <span class="math inline">\(n \ge 4\)</span>, [
-<span class="math display">\[\begin{aligned}
+<p><strong>Inductive step:</strong> For <span class="math inline">\(n \ge 4\)</span>, <span class="math display">\[
+\begin{aligned}
 T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
      &amp;\le c\lceil n/2\rceil \log^2\!\left(\lceil n/2\rceil\right) + c\lfloor n/2\rfloor \log^2\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
      &amp;\le cn\log^2\!\left(n/2\right) + cn\log n \quad\text{(since both halves $\le n/2$)} \\
@@ -299,15 +322,21 @@ T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\rig
      &amp;= cn(\log^2 n - 2\log n + 1) + cn\log n \\
      &amp;= cn\log^2 n - cn\log n + cn \\
      &amp;\le cn\log^2 n \quad\text{for $n \ge 2$}.
-\end{aligned}\]</span>
-<p>]</p>
-<p>Thus <span class="math inline">\(T(n) = O(n\log^2 n)\)</span>. One can similarly show <span class="math inline">\(\Omega(n\log^2 n)\)</span>, so <span class="math inline">\(T(n) = \Theta(n\log^2 n)\)</span>.</p>
+\end{aligned}
+\]</span> Thus <span class="math inline">\(T(n) = O(n\log^2 n)\)</span>. One can similarly show <span class="math inline">\(\Omega(n\log^2 n)\)</span>, so <span class="math inline">\(T(n) = \Theta(n\log^2 n)\)</span>.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="problem-5" class="level2">
-<h2 class="anchored" data-anchor-id="problem-5">Problem 5</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem 5
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Prove the asymptotic complexity for each two-variable recurrence, where <span class="math inline">\(T(n,n)\)</span> is the runtime:</p>
 <ol type="i">
 <li>Prove <span class="math inline">\(T(n,n) = \Theta(n)\)</span>:</li>
@@ -321,8 +350,10 @@ T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\rig
 <p><span class="math inline">\(T(x,y) = \Theta(x)\)</span> if <span class="math inline">\(y \le 2\)</span></p>
 <p><span class="math inline">\(T(x,y) = \Theta(y)\)</span> if <span class="math inline">\(x \le 2\)</span></p>
 <p><span class="math inline">\(T(x,y) = \Theta(x) + T(x,\,y/2)\)</span> otherwise</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -331,36 +362,48 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<strong>(i)</strong> Unrolling the recurrence: [
-<span class="math display">\[\begin{aligned}
+<p><strong>(i)</strong> Unrolling the recurrence: <span class="math display">\[
+\begin{aligned}
 T(x,y) &amp;= c(x+y) + T\!\left(\frac{x}{2},\frac{y}{2}\right) \\
        &amp;= c(x+y) + c\!\left(\frac{x+y}{2}\right) + T\!\left(\frac{x}{4},\frac{y}{4}\right) \\
        &amp;\;\;\vdots \\
        &amp;= c(x+y)\!\left(1 + \frac12 + \frac14 + \dots\right) \\
        &amp;\le 2c(x+y).
-\end{aligned}\]</span>
-<p>]</p>
-<p>The lower bound is <span class="math inline">\(T(x,y) \ge c(x+y)\)</span> from the first term. Hence <span class="math inline">\(T(x,y) = \Theta(x+y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n)\)</span>.</p>
-<strong>(ii)</strong> Unrolling: [
-<span class="math display">\[\begin{aligned}
+\end{aligned}
+\]</span> The lower bound is <span class="math inline">\(T(x,y) \ge c(x+y)\)</span> from the first term. Hence <span class="math inline">\(T(x,y) = \Theta(x+y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n)\)</span>.</p>
+<p><strong>(ii)</strong> Unrolling: <span class="math display">\[
+\begin{aligned}
 T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
        &amp;= cx + cx + T\!\left(x,\frac{y}{4}\right) \\
        &amp;\;\;\vdots \\
        &amp;= cx \cdot (\log_2 y) + \Theta(x) \quad\text{(base case when $y \le 2$)}.
-\end{aligned}\]</span>
-<p>]</p>
-<p>Thus <span class="math inline">\(T(x,y) = \Theta(x\log y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n\log n)\)</span>.</p>
+\end{aligned}
+\]</span> Thus <span class="math inline">\(T(x,y) = \Theta(x\log y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n\log n)\)</span>.</p>
 </div>
 </div>
 </div>
-<!-- -->
-
-</section>
 
 </main>
 <!-- /main column -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <p>© 2026 Tulasimohan Molli</p>
+    </div>
+    <div class="nav-footer-center">
+      <p>Powered by <a href="https://quarto.org">Quarto</a></p>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/sitemap.html">Sitemap</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -430,57 +473,6 @@ T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
-        } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -810,204 +802,7 @@ T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Recurrence Relations"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "Substitution method, Master theorem, two-variable recurrences"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    html-math-method: mathjax</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: false</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">← Practice</span><span class="co">](index.html)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 1</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Solve the recurrence relation of the **Tower of Hanoi** problem using the iterative method.</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>Let $T(n)$ be the number of moves required to transfer $n$ disks from source to destination using an auxiliary peg.</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>Recurrence: $T(n) = 2T(n-1) + 1$, with $T(0) = 0$.</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>Iterative expansion:</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>T(n) &amp;= 2T(n-1) + 1 <span class="sc">\\</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>     &amp;= 2<span class="co">[</span><span class="ot">2T(n-2) + 1</span><span class="co">]</span> + 1 = 2^2 T(n-2) + 2 + 1 <span class="sc">\\</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>     &amp;= 2^2<span class="co">[</span><span class="ot">2T(n-3) + 1</span><span class="co">]</span> + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 <span class="sc">\\</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>     &amp;\;\;\vdots <span class="sc">\\</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) <span class="sc">\\</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>     &amp;= 0 + (2^n - 1).</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>Thus $T(n) = 2^n - 1 = \Theta(2^n)$.</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 2</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>How many ones does the following procedure print when run with input $n$? Compute the best bounds you can: the exact value if possible, a $\Theta$ expression if you can't find the exact value, or $O$ and $\Omega$ bounds if you can't find a $\Theta$ expression.</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="in">Ones(n):</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">    if n = 0:</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">        print 1</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">    else:</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">        for i = 1 to 2^n:</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">            Ones(n-1)</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>Let $T(n)$ be the number of ones printed on input $n$.</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>From the code:</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>T(0) = 1,\qquad T(n) = 2^n \cdot T(n-1) \quad \text{for } n \ge 1.</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>Iterating:</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) <span class="sc">\\</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 <span class="sc">\\</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>     &amp;= 2^{n(n+1)/2}.</span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>Hence $T(n) = 2^{n(n+1)/2}$. This is $\Theta<span class="sc">\!</span>\left(2^{n(n+1)/2}\right)$, which is $2^{\Theta(n^2)}$ but **not** $\Theta(2^{n^2})$.</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 3</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>Solve the following recurrence using the **substitution method**:</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>$T(n) = 2T(\lfloor n/2 \rfloor + 17) + n$</span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>We guess $T(n) = O(n\log n)$, i.e., $T(n) \le cn\log_2 n$ for $n \ge n_0$.</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>Assume the inequality holds for all $k &lt; n$. For $n$ large enough ($n \ge 68$), $\lfloor n/2 \rfloor + 17 \le 3n/4$.</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>Then:</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>T(n) &amp;\le 2c<span class="sc">\!</span>\left(\frac{3n}{4}\right)<span class="sc">\!</span>\log_2<span class="sc">\!</span>\left(\frac{3n}{4}\right) + n <span class="sc">\\</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n <span class="sc">\\</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.</span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>For this to be $\le cn\log_2 n$, we need:</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>\frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n \le cn\log_2 n.</span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>Simplifying: $\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n$.</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>Choosing $c$ and $n_0$ appropriately (e.g., $c \ge 2$, $n_0 = 2^{c+1}$) satisfies the inequality. Thus $T(n) = O(n\log n)$. A matching lower bound $\Omega(n\log n)$ follows similarly, so $T(n) = \Theta(n\log n)$.</span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 4</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>Solve each recurrence to get the best asymptotic bounds on $T(n)$:</span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>(i) $T(n) = T<span class="sc">\!</span>\left(\dfrac{n}{4\log_2 n}\right) + 2n$ for $n &gt; 1$, $T(1) = 1$ (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>(ii) $T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n$ for $n \ge 4$, $T(2) = 2$. Do **not** use the Master theorem.</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>**(i)** Lower bound: The $2n$ term alone gives $T(n) = \Omega(n)$.</span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>Upper bound: For $n &gt; 1$, $4\log_2 n &gt; 4$, so $\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}$. Hence:</span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>T(n) \le T<span class="sc">\!</span>\left(\frac{n}{4}\right) + 2n.</span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>By the Master theorem with $a=1$, $b=4$, $f(n)=2n$: $\log_b a = \log_4 1 = 0$. Since $f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})$ for $\epsilon = 1$, case 3 applies: $T(n) = O(n)$. Together with the lower bound, $T(n) = \Theta(n)$.</span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>**(ii)** We prove $T(n) \le cn\log^2 n$ by induction.</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>**Base:** $T(2) = 2 \le c\cdot 2\log^2 2 = 2c$, true for $c \ge 1$.</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>**Inductive step:** For $n \ge 4$,</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>T(n) &amp;\le T<span class="sc">\!</span>\left(\lceil n/2\rceil\right) + T<span class="sc">\!</span>\left(\lfloor n/2\rfloor\right) + cn\log n <span class="sc">\\</span></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>     &amp;\le c\lceil n/2\rceil \log^2<span class="sc">\!</span>\left(\lceil n/2\rceil\right) + c\lfloor n/2\rfloor \log^2<span class="sc">\!</span>\left(\lfloor n/2\rfloor\right) + cn\log n <span class="sc">\\</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>     &amp;\le cn\log^2<span class="sc">\!</span>\left(n/2\right) + cn\log n \quad\text{(since both halves $\le n/2$)} <span class="sc">\\</span></span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>     &amp;= cn(\log n - 1)^2 + cn\log n <span class="sc">\\</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>     &amp;= cn(\log^2 n - 2\log n + 1) + cn\log n <span class="sc">\\</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>     &amp;= cn\log^2 n - cn\log n + cn <span class="sc">\\</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>     &amp;\le cn\log^2 n \quad\text{for $n \ge 2$}.</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>Thus $T(n) = O(n\log^2 n)$. One can similarly show $\Omega(n\log^2 n)$, so $T(n) = \Theta(n\log^2 n)$.</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 5</span></span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>Prove the asymptotic complexity for each two-variable recurrence, where $T(n,n)$ is the runtime:</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>(i) Prove $T(n,n) = \Theta(n)$:</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(x)$ if $y \le 2$</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(y)$ if $x \le 2$</span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(x+y) + T(x/2,\,y/2)$ otherwise</span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>(ii) Prove $T(n,n) = \Theta(n\log n)$:</span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(x)$ if $y \le 2$</span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(y)$ if $x \le 2$</span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>$T(x,y) = \Theta(x) + T(x,\,y/2)$ otherwise</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>**(i)** Unrolling the recurrence:</span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>T(x,y) &amp;= c(x+y) + T<span class="sc">\!</span>\left(\frac{x}{2},\frac{y}{2}\right) <span class="sc">\\</span></span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>       &amp;= c(x+y) + c<span class="sc">\!</span>\left(\frac{x+y}{2}\right) + T<span class="sc">\!</span>\left(\frac{x}{4},\frac{y}{4}\right) <span class="sc">\\</span></span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>       &amp;\;\;\vdots <span class="sc">\\</span></span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>       &amp;= c(x+y)<span class="sc">\!</span>\left(1 + \frac12 + \frac14 + \dots\right) <span class="sc">\\</span></span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>       &amp;\le 2c(x+y).</span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>The lower bound is $T(x,y) \ge c(x+y)$ from the first term. Hence $T(x,y) = \Theta(x+y)$, and $T(n,n) = \Theta(n)$.</span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>**(ii)** Unrolling:</span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>T(x,y) &amp;= cx + T<span class="sc">\!</span>\left(x,\frac{y}{2}\right) <span class="sc">\\</span></span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>       &amp;= cx + cx + T<span class="sc">\!</span>\left(x,\frac{y}{4}\right) <span class="sc">\\</span></span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>       &amp;\;\;\vdots <span class="sc">\\</span></span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>       &amp;= cx \cdot (\log_2 y) + \Theta(x) \quad\text{(base case when $y \le 2$)}.</span>
-<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>Thus $T(x,y) = \Theta(x\log y)$, and $T(n,n) = \Theta(n\log n)$.</span>
-<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+  </script>
 </div> <!-- /content -->
 
 

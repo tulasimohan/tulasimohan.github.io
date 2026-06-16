@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -103,27 +68,50 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="bits-theme.css">
 </head>
 
 <body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a></li>
-  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a></li>
-  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a></li>
-  </ul>
-</nav>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+  
 </div>
 <main class="content" id="quarto-document-content">
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <div class="navbar-brand-container mx-auto">
+      <a class="navbar-brand" href="https://tulasimohan.github.io/index.html">
+        <span class="navbar-title">Tulasimohan Molli</span>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav navbar-nav-scroll ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/index.html"><span class="menu-text">Home</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="https://tulasimohan.github.io/teaching.html" aria-current="page"><span class="menu-text">Teaching</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/research.html"><span class="menu-text">Research</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/about.html"><span class="menu-text">About</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Dynamic Programming</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">Dynamic Programming</h1>
+<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
 <div>
@@ -165,50 +153,24 @@ window.Quarto = {
 
 
 <p><a href="index.html">← Practice</a></p>
-<section id="problem-1" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1">Problem 1</h2>
-<p><strong>String interleaving.</strong> For bit strings <span class="math inline">\(X = x_1\dots x_m\)</span>, <span class="math inline">\(Y = y_1\dots y_n\)</span>, and <span class="math inline">\(Z = z_1\dots z_{m+n}\)</span>, we say <span class="math inline">\(Z\)</span> is an <em>interleaving</em> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if it can be obtained by interleaving the bits of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> while preserving left-to-right order. Example: <span class="math inline">\(X=101\)</span>, <span class="math inline">\(Y=01\)</span>; then <span class="math inline">\(10011\)</span> is an interleaving (<span class="math inline">\(x_1 x_2 y_1 x_3 y_2\)</span>), but <span class="math inline">\(11010\)</span> is not.</p>
-<ol type="i">
-<li><p>Give an efficient DP algorithm to determine if <span class="math inline">\(Z\)</span> is an interleaving of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
-<li><p>Analyze its time complexity as a function of <span class="math inline">\(m = |X|\)</span> and <span class="math inline">\(n = |Y|\)</span>.</p></li>
-</ol>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+Problem 1
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i) DP recurrence:</strong></p>
-<p>Define <span class="math inline">\(c[i][j] = \text{true}\)</span> iff <span class="math inline">\(Z[1..i+j]\)</span> is an interleaving of <span class="math inline">\(X[1..i]\)</span> and <span class="math inline">\(Y[1..j]\)</span>.</p>
-<p><strong>Base:</strong> <span class="math inline">\(c[0][0] = \text{true}\)</span> (empty strings interleave to empty).</p>
-<strong>Recurrence:</strong> [ c[i][j] =
-<span class="math display">\[\begin{cases}
-c[i-1][j] &amp; \text{if } X[i] = Z[i+j] \text{ and } Y[j] \ne Z[i+j] \\[4pt]
-c[i][j-1] &amp; \text{if } X[i] \ne Z[i+j] \text{ and } Y[j] = Z[i+j] \\[4pt]
-c[i-1][j] \lor c[i][j-1] &amp; \text{if } X[i] = Y[j] = Z[i+j] \\[4pt]
-\text{false} &amp; \text{otherwise}
-\end{cases}\]</span>
-<p>]</p>
-<p><strong>Algorithm:</strong> Fill the <span class="math inline">\((m+1)\times(n+1)\)</span> table <span class="math inline">\(c\)</span> row-by-row. Return <span class="math inline">\(c[m][n]\)</span>.</p>
-<p><strong>(ii) Complexity:</strong> Each cell takes <span class="math inline">\(O(1)\)</span> time. There are <span class="math inline">\((m+1)(n+1) = O(mn)\)</span> cells. Hence <span class="math inline">\(O(mn)\)</span> time and space.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="problem-2" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2">Problem 2</h2>
-<p><strong>Petrol pump stops.</strong> You drive from Kanyakumari to Hyderabad with petrol pumps at distances <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> from Kanyakumari. Filling up at pump <span class="math inline">\(i\)</span> takes <span class="math inline">\(c_i\)</span> minutes (petrol costs the same everywhere). Your car holds enough petrol for 100 km and you start with a full tank. If you stop at a pump, you must fill the tank completely. Give a DP that minimizes total fill-up time.</p>
+<p><strong>String interleaving.</strong> For bit strings <span class="math inline">\(X = x_1\dots x_m\)</span>, <span class="math inline">\(Y = y_1\dots y_n\)</span>, and <span class="math inline">\(Z = z_1\dots z_{m+n}\)</span>, we say <span class="math inline">\(Z\)</span> is an <em>interleaving</em> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if it can be obtained by interleaving the bits of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> while preserving left-to-right order.</p>
+<p>Example: <span class="math inline">\(X=101\)</span>, <span class="math inline">\(Y=01\)</span>; then <span class="math inline">\(10011\)</span> is an interleaving (<span class="math inline">\(x_1 x_2 y_1 x_3 y_2\)</span>), but <span class="math inline">\(11010\)</span> is not.</p>
 <ol type="i">
-<li><p>Write the recurrence relation, defining every symbol.</p></li>
-<li><p>Explain how you derived it.</p></li>
-<li><p>Give memoized non-recursive pseudocode returning the minimum cost.</p></li>
+<li><p>Give an efficient DP algorithm to determine if <span class="math inline">\(Z\)</span> is an interleaving of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Analyze its time complexity as a function of <span class="math inline">\(m = |X|\)</span> and <span class="math inline">\(n = |Y|\)</span>.</p></li>
 </ol>
+</div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -221,11 +183,60 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><strong>(i) DP recurrence:</strong></p>
+<p>Define <span class="math inline">\(c[i][j] = \text{true}\)</span> iff <span class="math inline">\(Z[1..i+j]\)</span> is an interleaving of <span class="math inline">\(X[1..i]\)</span> and <span class="math inline">\(Y[1..j]\)</span>.</p>
+<p><strong>Base:</strong> <span class="math inline">\(c[0][0] = \text{true}\)</span> (empty strings interleave to empty).</p>
+<p><strong>Recurrence:</strong> <span class="math display">\[
+c[i][j] =
+\begin{cases}
+c[i-1][j] &amp; \text{if } X[i] = Z[i+j] \text{ and } Y[j] \ne Z[i+j] \\[4pt]
+c[i][j-1] &amp; \text{if } X[i] \ne Z[i+j] \text{ and } Y[j] = Z[i+j] \\[4pt]
+c[i-1][j] \lor c[i][j-1] &amp; \text{if } X[i] = Y[j] = Z[i+j] \\[4pt]
+\text{false} &amp; \text{otherwise}
+\end{cases}
+\]</span> <strong>Algorithm:</strong> Fill the <span class="math inline">\((m+1)\times(n+1)\)</span> table <span class="math inline">\(c\)</span> row-by-row. Return <span class="math inline">\(c[m][n]\)</span>.</p>
+<p><strong>(ii) Complexity:</strong> Each cell takes <span class="math inline">\(O(1)\)</span> time. There are <span class="math inline">\((m+1)(n+1) = O(mn)\)</span> cells. Hence <span class="math inline">\(O(mn)\)</span> time and space.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Petrol pump stops.</strong> You drive from Kanyakumari to Hyderabad with petrol pumps at distances <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> from Kanyakumari. Filling up at pump <span class="math inline">\(i\)</span> takes <span class="math inline">\(c_i\)</span> minutes (petrol costs the same everywhere). Your car holds enough petrol for 100 km and you start with a full tank. If you stop at a pump, you must fill the tank completely. Give a DP that minimizes total fill-up time.</p>
+<ol type="i">
+<li><p>Write the recurrence relation, defining every symbol.</p></li>
+<li><p>Explain how you derived it.</p></li>
+<li><p>Give memoized non-recursive pseudocode returning the minimum cost.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p><strong>(i) Recurrence:</strong></p>
 <p>Let <span class="math inline">\(x_0 = 0\)</span> denote Kanyakumari (start) and <span class="math inline">\(x_{n+1} = D\)</span> denote Hyderabad (destination). Let <span class="math inline">\(c_0 = 0\)</span> (no cost to start with a full tank).</p>
 <p>Define <span class="math inline">\(\text{OPT}[i]\)</span> = minimum total fill-up time to reach pump <span class="math inline">\(i\)</span> (or the destination, for <span class="math inline">\(i = n+1\)</span>).</p>
-<p>[ [0] = 0 ] [ [i] = _{} ( [j] + c_j ) i = 1, , n+1 ]</p>
-<p>where <span class="math inline">\(c_{n+1} = 0\)</span> (no fill-up at destination).</p>
+<p><span class="math display">\[
+\text{OPT}[0] = 0
+\]</span> <span class="math display">\[
+\text{OPT}[i] = \min_{\substack{j &lt; i \\ x_i - x_j \le 100}} \bigl( \text{OPT}[j] + c_j \bigr) \quad \text{for } i = 1, \dots, n+1
+\]</span> where <span class="math inline">\(c_{n+1} = 0\)</span> (no fill-up at destination).</p>
 <p><strong>(ii) Derivation:</strong> To reach pump <span class="math inline">\(i\)</span>, we must have stopped at some earlier pump <span class="math inline">\(j\)</span> such that the distance <span class="math inline">\(x_i - x_j\)</span> is within the tank’s range (100 km). The total time is the optimal time to reach <span class="math inline">\(j\)</span> plus the fill-up time at <span class="math inline">\(j\)</span>. We minimize over all such <span class="math inline">\(j\)</span>. The base case <span class="math inline">\(\text{OPT}[0] = 0\)</span> says we start with zero cost.</p>
 <p><strong>(iii) Pseudocode (bottom-up DP):</strong></p>
 <pre><code>// Input: distances x[0..n], costs c[0..n], destination D
@@ -247,44 +258,41 @@ return OPT[n+1]</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="problem-3" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3">Problem 3</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><strong>Subset sum.</strong> Given an array <span class="math inline">\(X[1..n]\)</span> of positive numbers and a target <span class="math inline">\(t\)</span>, determine whether <strong>any</strong> subset of <span class="math inline">\(X\)</span> sums to exactly <span class="math inline">\(t\)</span>.</p>
-<p>Example: <span class="math inline">\(X = \{8,6,7,5,3,10,9\}\)</span> and <span class="math inline">\(t=15\)</span> → <strong>True</strong> (subset <span class="math inline">\(\{10,5\}\)</span>).</p>
-<p><span class="math inline">\(X = \{11,6,5,1,7,13,12\}\)</span> and <span class="math inline">\(t=15\)</span> → <strong>False</strong>.</p>
 <ol type="i">
 <li><p>Give the DP recurrence.</p></li>
 <li><p>What is the time complexity? Is it a polynomial-time algorithm?</p></li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Example">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample Input
+Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<pre><code>X = [8,6,7,5,3,10,9], t = 15</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Sample Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<pre><code>True  (subset {10,5})</code></pre>
+<p><strong>Input:</strong> <span class="math inline">\(X = \{8,6,7,5,3,10,9\}\)</span>, <span class="math inline">\(t = 15\)</span><br>
+<strong>Output:</strong> True (subset <span class="math inline">\(\{10,5\}\)</span>)</p>
+<p><strong>Input:</strong> <span class="math inline">\(X = \{11,6,5,1,7,13,12\}\)</span>, <span class="math inline">\(t = 15\)</span><br>
+<strong>Output:</strong> False</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -293,29 +301,42 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>(i) DP recurrence:</strong></p>
 <p>Define <span class="math inline">\(S(i, s) = \text{true}\)</span> iff some subset of <span class="math inline">\(X[i..n]\)</span> sums to exactly <span class="math inline">\(s\)</span>.</p>
-[
-<span class="math display">\[\begin{aligned}
+<p><span class="math display">\[
+\begin{aligned}
 S(i, 0) &amp;= \text{true} \quad \text{(empty subset sums to 0)} \\
 S(i, s) &amp;= \text{false} \quad \text{if } i &gt; n \text{ and } s &gt; 0 \\
 S(i, s) &amp;= S(i+1, s) \quad \text{if } s &lt; X[i] \\
 S(i, s) &amp;= S(i+1, s) \lor S(i+1, s - X[i]) \quad \text{otherwise}
-\end{aligned}\]</span>
-<p>]</p>
-<p>The answer is <span class="math inline">\(S(1, t)\)</span>. Equivalently, we can fill a 2D boolean table of size <span class="math inline">\((n+1) \times (t+1)\)</span> bottom-up or use a 1D array for space efficiency.</p>
+\end{aligned}
+\]</span> The answer is <span class="math inline">\(S(1, t)\)</span>. Equivalently, we can fill a 2D boolean table of size <span class="math inline">\((n+1) \times (t+1)\)</span> bottom-up or use a 1D array for space efficiency.</p>
 <p><strong>(ii) Complexity:</strong> The table has <span class="math inline">\(O(n \cdot t)\)</span> entries, each <span class="math inline">\(O(1)\)</span>. Time: <span class="math inline">\(O(nt)\)</span>. This is <strong>pseudo-polynomial</strong> — it is polynomial in <span class="math inline">\(n\)</span> and <span class="math inline">\(t\)</span>, but <span class="math inline">\(t\)</span> can be exponential in the input size (which is <span class="math inline">\(n \log t\)</span> bits). Hence subset sum is NP-complete, and this DP is not a polynomial-time algorithm in the usual sense (it is exponential when <span class="math inline">\(t\)</span> is large).</p>
 </div>
 </div>
 </div>
-<!-- -->
-
-</section>
 
 </main>
 <!-- /main column -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <p>© 2026 Tulasimohan Molli</p>
+    </div>
+    <div class="nav-footer-center">
+      <p>Powered by <a href="https://quarto.org">Quarto</a></p>
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+        <li class="nav-item">
+          <a class="nav-link" href="https://tulasimohan.github.io/sitemap.html">Sitemap</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -385,57 +406,6 @@ S(i, s) &amp;= S(i+1, s) \lor S(i+1, s - X[i]) \quad \text{otherwise}
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
-        } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -765,153 +735,7 @@ S(i, s) &amp;= S(i+1, s) \lor S(i+1, s - X[i]) \quad \text{otherwise}
       }
     }
   });
-  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Dynamic Programming"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> "String interleaving, petrol pump stops, subset sum"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    html-math-method: mathjax</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 3</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: false</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">← Practice</span><span class="co">](index.html)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 1</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>**String interleaving.** For bit strings $X = x_1\dots x_m$, $Y = y_1\dots y_n$, and $Z = z_1\dots z_{m+n}$, we say $Z$ is an *interleaving* of $X$ and $Y$ if it can be obtained by interleaving the bits of $X$ and $Y$ while preserving left-to-right order. Example: $X=101$, $Y=01$; then $10011$ is an interleaving ($x_1 x_2 y_1 x_3 y_2$), but $11010$ is not.</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>(i) Give an efficient DP algorithm to determine if $Z$ is an interleaving of $X$ and $Y$.</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>(ii) Analyze its time complexity as a function of $m = |X|$ and $n = |Y|$.</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>**(i) DP recurrence:**</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>Define $c<span class="co">[</span><span class="ot">i</span><span class="co">][j]</span> = \text{true}$ iff $Z<span class="co">[</span><span class="ot">1..i+j</span><span class="co">]</span>$ is an interleaving of $X<span class="co">[</span><span class="ot">1..i</span><span class="co">]</span>$ and $Y<span class="co">[</span><span class="ot">1..j</span><span class="co">]</span>$.</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>**Base:** $c<span class="co">[</span><span class="ot">0</span><span class="co">][0]</span> = \text{true}$ (empty strings interleave to empty).</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>**Recurrence:**</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>c<span class="co">[</span><span class="ot">i</span><span class="co">][j]</span> =</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>\begin{cases}</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>c<span class="co">[</span><span class="ot">i-1</span><span class="co">][j]</span> &amp; \text{if } X<span class="co">[</span><span class="ot">i</span><span class="co">]</span> = Z<span class="co">[</span><span class="ot">i+j</span><span class="co">]</span> \text{ and } Y<span class="co">[</span><span class="ot">j</span><span class="co">]</span> \ne Z<span class="co">[</span><span class="ot">i+j</span><span class="co">]</span> <span class="sc">\\</span><span class="co">[</span><span class="ot">4pt</span><span class="co">]</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>c<span class="co">[</span><span class="ot">i</span><span class="co">][j-1]</span> &amp; \text{if } X<span class="co">[</span><span class="ot">i</span><span class="co">]</span> \ne Z<span class="co">[</span><span class="ot">i+j</span><span class="co">]</span> \text{ and } Y<span class="co">[</span><span class="ot">j</span><span class="co">]</span> = Z<span class="co">[</span><span class="ot">i+j</span><span class="co">]</span> <span class="sc">\\</span><span class="co">[</span><span class="ot">4pt</span><span class="co">]</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>c<span class="co">[</span><span class="ot">i-1</span><span class="co">][j]</span> \lor c<span class="co">[</span><span class="ot">i</span><span class="co">][j-1]</span> &amp; \text{if } X<span class="co">[</span><span class="ot">i</span><span class="co">]</span> = Y<span class="co">[</span><span class="ot">j</span><span class="co">]</span> = Z<span class="co">[</span><span class="ot">i+j</span><span class="co">]</span> <span class="sc">\\</span><span class="co">[</span><span class="ot">4pt</span><span class="co">]</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>\text{false} &amp; \text{otherwise}</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>\end{cases}</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>**Algorithm:** Fill the $(m+1)\times(n+1)$ table $c$ row-by-row. Return $c<span class="co">[</span><span class="ot">m</span><span class="co">][n]</span>$.</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>**(ii) Complexity:** Each cell takes $O(1)$ time. There are $(m+1)(n+1) = O(mn)$ cells. Hence $O(mn)$ time and space.</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 2</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>**Petrol pump stops.** You drive from Kanyakumari to Hyderabad with petrol pumps at distances $x_1, x_2, \dots, x_n$ from Kanyakumari. Filling up at pump $i$ takes $c_i$ minutes (petrol costs the same everywhere). Your car holds enough petrol for 100 km and you start with a full tank. If you stop at a pump, you must fill the tank completely. Give a DP that minimizes total fill-up time.</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>(i) Write the recurrence relation, defining every symbol.</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>(ii) Explain how you derived it.</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>(iii) Give memoized non-recursive pseudocode returning the minimum cost.</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>**(i) Recurrence:**</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>Let $x_0 = 0$ denote Kanyakumari (start) and $x_{n+1} = D$ denote Hyderabad (destination). Let $c_0 = 0$ (no cost to start with a full tank).</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>Define $\text{OPT}<span class="co">[</span><span class="ot">i</span><span class="co">]</span>$ = minimum total fill-up time to reach pump $i$ (or the destination, for $i = n+1$).</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>\text{OPT}<span class="co">[</span><span class="ot">0</span><span class="co">]</span> = 0</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>\text{OPT}<span class="co">[</span><span class="ot">i</span><span class="co">]</span> = \min_{\substack{j &lt; i <span class="sc">\\</span> x_i - x_j \le 100}} \bigl( \text{OPT}<span class="co">[</span><span class="ot">j</span><span class="co">]</span> + c_j \bigr) \quad \text{for } i = 1, \dots, n+1</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>where $c_{n+1} = 0$ (no fill-up at destination).</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>**(ii) Derivation:** To reach pump $i$, we must have stopped at some earlier pump $j$ such that the distance $x_i - x_j$ is within the tank's range (100 km). The total time is the optimal time to reach $j$ plus the fill-up time at $j$. We minimize over all such $j$. The base case $\text{OPT}<span class="co">[</span><span class="ot">0</span><span class="co">]</span> = 0$ says we start with zero cost.</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>**(iii) Pseudocode (bottom-up DP):**</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="in">// Input: distances x[0..n], costs c[0..n], destination D</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="in">// Output: minimum total fill-up time</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="in">x[n+1] = D</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="in">c[n+1] = 0</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="in">OPT[0] = 0</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="in">for i = 1 to n+1:</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="in">    OPT[i] = INF</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="in">    for j = i-1 down to 0:</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">        if x[i] - x[j] &gt; 100:</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="in">            break  // further j are even farther</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">        OPT[i] = min(OPT[i], OPT[j] + c[j])</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="in">return OPT[n+1]</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>**Time:** $O(n^2)$ worst-case, since each $i$ checks at most $O(n)$ earlier pumps. Space: $O(n)$.</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Problem 3</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>**Subset sum.** Given an array $X[1..n]$ of positive numbers and a target $t$, determine whether **any** subset of $X$ sums to exactly $t$.</span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>Example: $X = <span class="sc">\{</span>8,6,7,5,3,10,9<span class="sc">\}</span>$ and $t=15$ → **True** (subset $<span class="sc">\{</span>10,5<span class="sc">\}</span>$).</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>$X = <span class="sc">\{</span>11,6,5,1,7,13,12<span class="sc">\}</span>$ and $t=15$ → **False**.</span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>(i) Give the DP recurrence.</span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>(ii) What is the time complexity? Is it a polynomial-time algorithm?</span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Sample Input"}</span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="in">X = [8,6,7,5,3,10,9], t = 15</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>::: {.callout-note title="Sample Output"}</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="in">True  (subset {10,5})</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip collapse="true" title="Solution"}</span>
-<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>**(i) DP recurrence:**</span>
-<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>Define $S(i, s) = \text{true}$ iff some subset of $X<span class="co">[</span><span class="ot">i..n</span><span class="co">]</span>$ sums to exactly $s$.</span>
-<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>S(i, 0) &amp;= \text{true} \quad \text{(empty subset sums to 0)} <span class="sc">\\</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>S(i, s) &amp;= \text{false} \quad \text{if } i &gt; n \text{ and } s &gt; 0 <span class="sc">\\</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>S(i, s) &amp;= S(i+1, s) \quad \text{if } s &lt; X<span class="co">[</span><span class="ot">i</span><span class="co">]</span> <span class="sc">\\</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>S(i, s) &amp;= S(i+1, s) \lor S(i+1, s - X<span class="co">[</span><span class="ot">i</span><span class="co">]</span>) \quad \text{otherwise}</span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a><span class="sc">\]</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>The answer is $S(1, t)$. Equivalently, we can fill a 2D boolean table of size $(n+1) \times (t+1)$ bottom-up or use a 1D array for space efficiency.</span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>**(ii) Complexity:** The table has $O(n \cdot t)$ entries, each $O(1)$. Time: $O(nt)$. This is **pseudo-polynomial** — it is polynomial in $n$ and $t$, but $t$ can be exponential in the input size (which is $n \log t$ bits). Hence subset sum is NP-complete, and this DP is not a polynomial-time algorithm in the usual sense (it is exponential when $t$ is large).</span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+  </script>
 </div> <!-- /content -->
 
 
