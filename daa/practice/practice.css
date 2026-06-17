@@ -1,78 +1,125 @@
-/* Practice pages styling — matches tulasimohan.github.io palette */
-:root {
-  --bits-blue-dark: #2b2b88;
-  --bits-blue-light: #5ccae8;
-  --bits-gold: #fecc0b;
-  --bits-red: #d71920;
-  --body-color: #333;
+/* Fonts — paths relative to practice HTML at /daa/practice/ */
+@font-face {
+  font-family: "Amsterdam";
+  src: url("../fonts/amsterdam-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-a { color: var(--bits-blue-dark); text-decoration: none; transition: color 0.2s ease; }
-a:hover { color: var(--bits-red); }
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-h1, h2, h3, h4 { color: var(--bits-blue-dark); font-weight: 700; }
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-/* Breadcrumb back-link */
-.back-link { font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 
-/* Callout styling — matches Assignment 1 */
-.callout {
-  margin: 0.5rem 0 !important;
-  padding: 0.35rem 0.6rem 0.35rem 0.8rem !important;
-  border-radius: 0 4px 4px 0 !important;
-  border-left-width: 3px !important;
-  font-size: 0.9rem !important;
+/* Typography */
+body, h1, h2, h3, h4, h5, h6, p, li {
+  font-family: "Heliotrope", sans-serif;
+  color: #333;
 }
-.callout .callout-header {
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  padding: 0 !important;
-  margin: 0 0 0.1rem 0 !important;
-  background: transparent !important;
-  border: none !important;
-}
-.callout .callout-body { padding: 0 !important; margin: 0 !important; }
-.callout .callout-body p { margin: 0.1rem 0 !important; line-height: 1.5 !important; }
-.callout .callout-icon { display: none !important; }
 
-.callout-note {
-  border-left-color: var(--bits-blue-dark) !important;
-  background: rgba(43, 43, 136, 0.04) !important;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Heliotrope", sans-serif;
+  color: #2b2b88;
+  font-weight: 700;
 }
-.callout-note .callout-header { color: var(--bits-blue-dark) !important; }
-.callout-tip {
-  border-left-color: var(--bits-blue-light) !important;
-  background: rgba(92, 202, 232, 0.06) !important;
-}
-.callout-tip .callout-header { color: #2a8fa8 !important; }
-.callout-important {
-  border-left-color: var(--bits-red) !important;
-  background: rgba(215, 25, 32, 0.04) !important;
-}
-.callout-important .callout-header { color: var(--bits-red) !important; }
 
-/* Tables */
-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.9rem; }
-th, td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid #ddd; }
-th { background: #f5f5f5; font-weight: 600; }
+/* Navbar */
+.navbar {
+  border-bottom: 5px solid transparent;
+  border-image: linear-gradient(to right, #fecc0b 0%, #fecc0b 33%, #5ccae8 33%, #5ccae8 66%, #d71920 66%, #d71920 100%) 1;
+  background-color: #ffffff;
+  background-image: url("../assets/images/gear.svg");
+  background-repeat: no-repeat;
+  background-size: 70vw auto;
+  background-position: left 45vw top -40px;
+}
 
-/* Code blocks */
-pre {
-  background: #f8f9fa;
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 0.6rem 0.8rem;
-  overflow-x: auto;
-  font-size: 0.82rem;
-  line-height: 1.4;
-  margin: 0.25rem 0;
+.navbar-brand {
+  font-family: "Amsterdam", cursive;
+  font-size: 2.8rem;
+  color: #2b2b88 !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: normal;
 }
-code {
-  background: #f0f0f0;
-  padding: 0.1rem 0.35rem;
-  border-radius: 3px;
-  font-size: 0.88em;
+
+/* Footer */
+footer,
+.footer {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #777;
+  position: relative;
+  z-index: 10;
+  background-color: transparent !important;
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(to right, #fecc0b 0%, #fecc0b 33%, #5ccae8 33%, #5ccae8 66%, #d71920 66%, #d71920 100%) 1;
+  background-image: url("../assets/images/network-nodes.png");
+  background-repeat: no-repeat;
+  background-size: 50vw auto;
+  background-position: right -10vw bottom -10vw;
 }
-pre code { background: none; padding: 0; }
+
+.nav-footer,
+.nav-footer-center,
+.nav-footer-left,
+.nav-footer-right {
+  background-color: transparent !important;
+}
+
+footer a,
+.footer a { color: #d71920; }
+
+/* Body background */
+body {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(253, 185, 19, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(207, 32, 39, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(92, 202, 232, 0.04) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Structural fixes */
+html { height: 100%; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+}
+#quarto-content { flex: 1 0 auto; }
+footer { flex-shrink: 0; }
+
+/* Callouts */
+.callout-note { border-left-color: #2b2b88 !important; background-color: transparent !important; }
+.callout-note .callout-header { color: #2b2b88; }
+.callout-note .callout-icon { color: #2b2b88; }
+.callout-tip { border-left-color: #5ccae8 !important; background-color: transparent !important; }
+.callout-tip .callout-header { color: #5ccae8; }
+.callout-tip .callout-icon { color: #5ccae8; }
+
+/* Links */
+a { color: #2b2b88; }
+a:hover { color: #d71920; text-decoration: none; }
