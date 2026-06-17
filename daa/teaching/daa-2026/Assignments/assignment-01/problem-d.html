@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Substitution method, Master theorem, two-variable recurrences">
 
-<title>Recurrence Relations – Tulasimohan Molli</title>
+<title>Problem D: Kruskal’s Minimum Spanning Tree – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -86,12 +85,26 @@ window.KATEX_MACROS = {
     "\\eps": "\\epsilon"
 };
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -120,8 +133,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles/custom.css">
-<link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="../../styles/custom.css">
+<link rel="stylesheet" href="../../bits-theme.css">
+<link rel="stylesheet" href="assignment.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -131,7 +145,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -142,24 +156,20 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#lectures"> 
-<span class="menu-text">Lectures</span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#assignments"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#practice"> 
-<span class="menu-text">Practice</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../#quizzes"> 
-<span class="menu-text">Quizzes</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -181,15 +191,10 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Recurrence Relations</h1>
-<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
+<h1 class="title">Problem D: Kruskal’s Minimum Spanning Tree</h1>
+<p class="subtitle lead">CS F364 — Assignment 1</p>
 </div>
 
-<div>
-  <div class="description">
-    Substitution method, Master theorem, two-variable recurrences
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -204,236 +209,79 @@ window.Quarto = {
 </header>
 
 
-<p><a href="index.html">← Practice</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<p><a href="index.html">← Back to assignment</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem 1
+Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the recurrence relation of the <strong>Tower of Hanoi</strong> problem using the iterative method.</p>
+<p>A <strong>spanning tree</strong> of an undirected graph is a subgraph that is a tree (connected and acyclic) and includes all vertices. A <strong>minimum spanning tree (MST)</strong> is a spanning tree whose total edge weight is minimised.</p>
+<p>You are given an undirected weighted graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. Find its MST. If the graph is disconnected, output <code>DISCONNECTED</code>. Otherwise output the total weight, the number of edges in the MST, and the edges themselves.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(T(n)\)</span> be the number of moves required to transfer <span class="math inline">\(n\)</span> disks from source to destination using an auxiliary peg.</p>
-<p>Recurrence: <span class="math inline">\(T(n) = 2T(n-1) + 1\)</span>, with <span class="math inline">\(T(0) = 0\)</span>.</p>
-<p>Iterative expansion: <span class="math display">\[
-\begin{aligned}
-T(n) &amp;= 2T(n-1) + 1 \\
-     &amp;= 2[2T(n-2) + 1] + 1 = 2^2 T(n-2) + 2 + 1 \\
-     &amp;= 2^2[2T(n-3) + 1] + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 \\
-     &amp;\;\;\vdots \\
-     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) \\
-     &amp;= 0 + (2^n - 1).
-\end{aligned}
-\]</span> Thus <span class="math inline">\(T(n) = 2^n - 1 = \Theta(2^n)\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem 2
+Input Format
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How many ones does the following procedure print when run with input <span class="math inline">\(n\)</span>? Compute the best bounds you can: the exact value if possible, a <span class="math inline">\(\Theta\)</span> expression if you can’t find the exact value, or <span class="math inline">\(O\)</span> and <span class="math inline">\(\Omega\)</span> bounds if you can’t find a <span class="math inline">\(\Theta\)</span> expression.</p>
-<pre><code>Ones(n):
-    if n = 0:
-        print 1
-    else:
-        for i = 1 to 2^n:
-            Ones(n-1)</code></pre>
+<ul>
+<li>Line 1: <code>n m</code> — number of vertices <span class="math inline">(1..n)</span> and edges, with <span class="math inline">1 \le n \le 10^5</span>, <span class="math inline">1 \le m \le 2 \times 10^5</span></li>
+<li>Next <span class="math inline">m</span> lines: <code>u v w</code> — an undirected edge between vertices <span class="math inline">u</span> and <span class="math inline">v</span> with integer weight <span class="math inline">w</span> (<span class="math inline">-10^6 \le w \le 10^6</span>). No self-loops.</li>
+</ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(T(n)\)</span> be the number of ones printed on input <span class="math inline">\(n\)</span>.</p>
-<p>From the code: <span class="math display">\[
-T(0) = 1,\qquad T(n) = 2^n \cdot T(n-1) \quad \text{for } n \ge 1.
-\]</span> Iterating: <span class="math display">\[
-\begin{aligned}
-T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
-     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 \\
-     &amp;= 2^{n(n+1)/2}.
-\end{aligned}
-\]</span> Hence <span class="math inline">\(T(n) = 2^{n(n+1)/2}\)</span>. This is <span class="math inline">\(\Theta\!\left(2^{n(n+1)/2}\right)\)</span>, which is <span class="math inline">\(2^{\Theta(n^2)}\)</span> but <strong>not</strong> <span class="math inline">\(\Theta(2^{n^2})\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout callout-style-default callout-tip callout-titled" title="Output Format">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem 3
+Output Format
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the following recurrence using the <strong>substitution method</strong>:</p>
-<p><span class="math inline">\(T(n) = 2T(\lfloor n/2 \rfloor + 17) + n\)</span></p>
+<ul>
+<li>Line 1: total weight of the MST (integer). If the graph is disconnected, output <code>DISCONNECTED</code> and stop.</li>
+<li>Line 2: integer <span class="math inline">k</span> — number of edges in the MST</li>
+<li>Next <span class="math inline">k</span> lines: <code>u v w</code> — edges in the MST, with <span class="math inline">u &lt; v</span>, sorted lexicographically (by <span class="math inline">u</span> then <span class="math inline">v</span>).</li>
+</ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We guess <span class="math inline">\(T(n) = O(n\log n)\)</span>, i.e., <span class="math inline">\(T(n) \le cn\log_2 n\)</span> for <span class="math inline">\(n \ge n_0\)</span>.</p>
-<p>Assume the inequality holds for all <span class="math inline">\(k &lt; n\)</span>. For <span class="math inline">\(n\)</span> large enough (<span class="math inline">\(n \ge 68\)</span>), <span class="math inline">\(\lfloor n/2 \rfloor + 17 \le 3n/4\)</span>.</p>
-<p>Then: <span class="math display">\[
-\begin{aligned}
-T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) + n \\
-     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n \\
-     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.
-\end{aligned}
-\]</span> For this to be <span class="math inline">\(\le cn\log_2 n\)</span>, we need: <span class="math display">\[
-\frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n \le cn\log_2 n.
-\]</span> Simplifying: <span class="math inline">\(\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n\)</span>.</p>
-<p>Choosing <span class="math inline">\(c\)</span> and <span class="math inline">\(n_0\)</span> appropriately (e.g., <span class="math inline">\(c \ge 2\)</span>, <span class="math inline">\(n_0 = 2^{c+1}\)</span>) satisfies the inequality. Thus <span class="math inline">\(T(n) = O(n\log n)\)</span>. A matching lower bound <span class="math inline">\(\Omega(n\log n)\)</span> follows similarly, so <span class="math inline">\(T(n) = \Theta(n\log n)\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout callout-style-default callout-important callout-titled" title="Sample">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem 4
+Sample
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve each recurrence to get the best asymptotic bounds on <span class="math inline">\(T(n)\)</span>:</p>
-<ol type="i">
-<li><p><span class="math inline">\(T(n) = T\!\left(\dfrac{n}{4\log_2 n}\right) + 2n\)</span> for <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(T(1) = 1\)</span> (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</p></li>
-<li><p><span class="math inline">\(T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n\)</span> for <span class="math inline">\(n \ge 4\)</span>, <span class="math inline">\(T(2) = 2\)</span>. Do <strong>not</strong> use the Master theorem.</p></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Lower bound: The <span class="math inline">\(2n\)</span> term alone gives <span class="math inline">\(T(n) = \Omega(n)\)</span>.</p>
-<p>Upper bound: For <span class="math inline">\(n &gt; 1\)</span>, <span class="math inline">\(4\log_2 n &gt; 4\)</span>, so <span class="math inline">\(\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}\)</span>. Hence: <span class="math display">\[
-T(n) \le T\!\left(\frac{n}{4}\right) + 2n.
-\]</span> By the Master theorem with <span class="math inline">\(a=1\)</span>, <span class="math inline">\(b=4\)</span>, <span class="math inline">\(f(n)=2n\)</span>: <span class="math inline">\(\log_b a = \log_4 1 = 0\)</span>. Since <span class="math inline">\(f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})\)</span> for <span class="math inline">\(\epsilon = 1\)</span>, case 3 applies: <span class="math inline">\(T(n) = O(n)\)</span>. Together with the lower bound, <span class="math inline">\(T(n) = \Theta(n)\)</span>.</p>
-<p><strong>(ii)</strong> We prove <span class="math inline">\(T(n) \le cn\log^2 n\)</span> by induction.</p>
-<p><strong>Base:</strong> <span class="math inline">\(T(2) = 2 \le c\cdot 2\log^2 2 = 2c\)</span>, true for <span class="math inline">\(c \ge 1\)</span>.</p>
-<p><strong>Inductive step:</strong> For <span class="math inline">\(n \ge 4\)</span>, <span class="math display">\[
-\begin{aligned}
-T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le c\lceil n/2\rceil \log^2\!\left(\lceil n/2\rceil\right) + c\lfloor n/2\rfloor \log^2\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le cn\log^2\!\left(n/2\right) + cn\log n \quad\text{(since both halves $\le n/2$)} \\
-     &amp;= cn(\log n - 1)^2 + cn\log n \\
-     &amp;= cn(\log^2 n - 2\log n + 1) + cn\log n \\
-     &amp;= cn\log^2 n - cn\log n + cn \\
-     &amp;\le cn\log^2 n \quad\text{for $n \ge 2$}.
-\end{aligned}
-\]</span> Thus <span class="math inline">\(T(n) = O(n\log^2 n)\)</span>. One can similarly show <span class="math inline">\(\Omega(n\log^2 n)\)</span>, so <span class="math inline">\(T(n) = \Theta(n\log^2 n)\)</span>.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Prove the asymptotic complexity for each two-variable recurrence, where <span class="math inline">\(T(n,n)\)</span> is the runtime:</p>
-<ol type="i">
-<li>Prove <span class="math inline">\(T(n,n) = \Theta(n)\)</span>:</li>
-</ol>
-<p><span class="math inline">\(T(x,y) = \Theta(x)\)</span> if <span class="math inline">\(y \le 2\)</span></p>
-<p><span class="math inline">\(T(x,y) = \Theta(y)\)</span> if <span class="math inline">\(x \le 2\)</span></p>
-<p><span class="math inline">\(T(x,y) = \Theta(x+y) + T(x/2,\,y/2)\)</span> otherwise</p>
-<ol start="2" type="i">
-<li>Prove <span class="math inline">\(T(n,n) = \Theta(n\log n)\)</span>:</li>
-</ol>
-<p><span class="math inline">\(T(x,y) = \Theta(x)\)</span> if <span class="math inline">\(y \le 2\)</span></p>
-<p><span class="math inline">\(T(x,y) = \Theta(y)\)</span> if <span class="math inline">\(x \le 2\)</span></p>
-<p><span class="math inline">\(T(x,y) = \Theta(x) + T(x,\,y/2)\)</span> otherwise</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Unrolling the recurrence: <span class="math display">\[
-\begin{aligned}
-T(x,y) &amp;= c(x+y) + T\!\left(\frac{x}{2},\frac{y}{2}\right) \\
-       &amp;= c(x+y) + c\!\left(\frac{x+y}{2}\right) + T\!\left(\frac{x}{4},\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= c(x+y)\!\left(1 + \frac12 + \frac14 + \dots\right) \\
-       &amp;\le 2c(x+y).
-\end{aligned}
-\]</span> The lower bound is <span class="math inline">\(T(x,y) \ge c(x+y)\)</span> from the first term. Hence <span class="math inline">\(T(x,y) = \Theta(x+y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n)\)</span>.</p>
-<p><strong>(ii)</strong> Unrolling: <span class="math display">\[
-\begin{aligned}
-T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
-       &amp;= cx + cx + T\!\left(x,\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= cx \cdot (\log_2 y) + \Theta(x) \quad\text{(base case when $y \le 2$)}.
-\end{aligned}
-\]</span> Thus <span class="math inline">\(T(x,y) = \Theta(x\log y)\)</span>, and <span class="math inline">\(T(n,n) = \Theta(n\log n)\)</span>.</p>
-</div>
+<p><strong>Input</strong></p>
+<pre><code>4 5
+1 2 1
+1 3 4
+2 3 2
+2 4 3
+3 4 5</code></pre>
+<p><strong>Output</strong></p>
+<pre><code>6
+3
+1 2 1
+2 3 2
+2 4 3</code></pre>
+<p><em>Explanation:</em> Edges in the MST: (1,2,1), (2,3,2), (2,4,3). Total weight 6.</p>
+<p><a href="tests/D-sample.in">Download sample input</a></p>
 </div>
 </div>
 
@@ -844,5 +692,5 @@ T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

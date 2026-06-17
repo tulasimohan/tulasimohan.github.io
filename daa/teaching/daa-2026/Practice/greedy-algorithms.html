@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Merge sort variants, missing integer, MST, convex polygon, matrix search">
+<meta name="description" content="Interval scheduling, interval stabbing, cookie assignment, knapsack">
 
-<title>Divide &amp; Conquer – Tulasimohan Molli</title>
+<title>Greedy Algorithms – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,20 +146,16 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#lectures"> 
-<span class="menu-text">Lectures</span></a>
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#assignments"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../#practice"> 
-<span class="menu-text">Practice</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../#quizzes"> 
-<span class="menu-text">Quizzes</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -181,13 +177,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Divide &amp; Conquer</h1>
+<h1 class="title">Greedy Algorithms</h1>
 <p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
 <div>
   <div class="description">
-    Merge sort variants, missing integer, MST, convex polygon, matrix search
+    Interval scheduling, interval stabbing, cookie assignment, knapsack
   </div>
 </div>
 
@@ -215,12 +211,7 @@ Problem 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Merge sort with insertion sort.</strong> Merge sort runs in <span class="math inline">\(\Theta(n\log n)\)</span> worst-case time, while insertion sort runs in <span class="math inline">\(\Theta(n^2)\)</span>. But insertion sort is faster for small <span class="math inline">\(n\)</span>. Consider a modified merge sort where <span class="math inline">\(n/k\)</span> sublists of length <span class="math inline">\(k\)</span> are sorted using insertion sort, then merged using the standard merging mechanism.</p>
-<ol type="i">
-<li><p>What is the worst-case time to sort the <span class="math inline">\(n/k\)</span> sublists (each of length <span class="math inline">\(k\)</span>)?</p></li>
-<li><p>Show that the sublists can be merged in <span class="math inline">\(\Theta(n\log(n/k))\)</span> worst-case time.</p></li>
-<li><p>What is the largest asymptotic (<span class="math inline">\(\Theta\)</span>) value of <span class="math inline">\(k\)</span> (as a function of <span class="math inline">\(n\)</span>) for which the modified algorithm has the same asymptotic running time as standard merge sort?</p></li>
-</ol>
+<p><strong>Oxen pairing.</strong> We have <span class="math inline">\(n\)</span> oxen, each with strength <span class="math inline">\(S_i\)</span>. We need to pair them into teams of exactly two to pull a plow; a team of oxen <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> can pull the plow only if <span class="math inline">\(S_i + S_j \ge P\)</span>, where <span class="math inline">\(P\)</span> is the plow’s weight. Each ox can be in at most one team. Maximize the number of teams formed.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -235,11 +226,18 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Sorting one sublist of length <span class="math inline">\(k\)</span> with insertion sort takes <span class="math inline">\(\Theta(k^2)\)</span> in the worst case. There are <span class="math inline">\(n/k\)</span> such sublists, so the total is: <span class="math display">\[
-\frac{n}{k} \cdot \Theta(k^2) = \Theta(nk).
-\]</span> <strong>(ii)</strong> Merge <span class="math inline">\(n/k\)</span> sorted lists using a binary merge tree of height <span class="math inline">\(\log_2(n/k)\)</span>. At each level, all <span class="math inline">\(n\)</span> elements are compared and merged, contributing <span class="math inline">\(\Theta(n)\)</span> per level. Hence total merge time: <span class="math display">\[
-\Theta\!\left(n\log\frac{n}{k}\right).
-\]</span> <strong>(iii)</strong> Total time of modified sort: <span class="math inline">\(\Theta\!\left(nk + n\log\frac{n}{k}\right)\)</span>. For this to match <span class="math inline">\(\Theta(n\log n)\)</span>, we need <span class="math inline">\(nk = O(n\log n)\)</span>, i.e., <span class="math inline">\(k = O(\log n)\)</span>. The largest asymptotic value is <span class="math inline">\(k = \Theta(\log n)\)</span>.</p>
+<p><strong>Algorithm (strongest-weakest pairing):</strong></p>
+<ol type="1">
+<li>Sort the strengths in ascending order.</li>
+<li>Maintain two pointers: <span class="math inline">\(i = 1\)</span> (weakest), <span class="math inline">\(j = n\)</span> (strongest).</li>
+<li>While <span class="math inline">\(i &lt; j\)</span>:
+<ul>
+<li>If <span class="math inline">\(S_i + S_j \ge P\)</span>, form a team, increment <span class="math inline">\(i\)</span>, decrement <span class="math inline">\(j\)</span>.</li>
+<li>Otherwise, the weakest ox cannot pair with anyone (since the strongest partner is insufficient); skip it by incrementing <span class="math inline">\(i\)</span>.</li>
+</ul></li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> In any optimal solution, if the weakest ox is paired, it must be with some ox. Replacing that partner with the strongest unpaired ox (which can only be stronger) cannot reduce the number of feasible teams. If the weakest cannot pair even with the strongest, it will never be pairable and can be safely discarded.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the two-pointer scan.</p>
 </div>
 </div>
 </div>
@@ -253,7 +251,7 @@ Problem 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Missing integer.</strong> Given an unsorted array of all integers in the range <span class="math inline">\(0\)</span> to <span class="math inline">\(n = 2^k - 1\)</span> except for one missing integer (every non-missing integer appears exactly once), design an <span class="math inline">\(O(n)\)</span> <strong>divide-and-conquer</strong> algorithm to find the missing integer. Argue informally that your algorithm is correct and analyze its running time.</p>
+<p><strong>Spectrum monitoring.</strong> You want to monitor every frequency in the electromagnetic spectrum between <span class="math inline">\(L\)</span> and <span class="math inline">\(H\)</span>. You have <span class="math inline">\(n\)</span> technologies <span class="math inline">\(T_1,\dots,T_n\)</span>, each with an interval <span class="math inline">\([l_i, h_i]\)</span> of frequencies it can monitor. Pick as few technologies as possible that together cover <span class="math inline">\([L,H]\)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -268,16 +266,15 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm</strong> <span class="math inline">\(\text{MissingInteger}(A, [\ell, r])\)</span>:</p>
+<p><strong>Algorithm (earliest-start-first greedy):</strong></p>
 <ol type="1">
-<li>If <span class="math inline">\(\ell = r\)</span>, return <span class="math inline">\(\ell\)</span> (the single candidate).</li>
-<li>Let <span class="math inline">\(m = \lfloor (\ell+r)/2 \rfloor\)</span>.</li>
-<li>Count how many elements in <span class="math inline">\(A\)</span> are <span class="math inline">\(\le m\)</span>. Call this <span class="math inline">\(c\)</span>.</li>
-<li>If <span class="math inline">\(c &lt; m - \ell + 1\)</span>, the missing integer lies in <span class="math inline">\([\ell, m]\)</span>; recurse on the elements <span class="math inline">\(\le m\)</span>.</li>
-<li>Otherwise, the missing integer lies in <span class="math inline">\([m+1, r]\)</span>; recurse on the elements <span class="math inline">\(&gt; m\)</span>.</li>
+<li>Filter all technologies with <span class="math inline">\(l_i \le L\)</span> (those that can cover the start).</li>
+<li>Among them, select the one with the maximum <span class="math inline">\(h_i\)</span>, say <span class="math inline">\(T_{\max}\)</span>.</li>
+<li>Set <span class="math inline">\(L = h_{\max}\)</span> and repeat until <span class="math inline">\(L \ge H\)</span>.</li>
+<li>If at any step no technology covers <span class="math inline">\(L\)</span>, covering is impossible.</li>
 </ol>
-<p><strong>Analysis:</strong> Each recursive call partitions the array in <span class="math inline">\(O(|A|)\)</span> time (counting and partitioning). Since the range halves each step, the total is <span class="math inline">\(O(n + n/2 + n/4 + \dots) = O(n)\)</span>.</p>
-<p><strong>Correctness:</strong> In a complete set of integers <span class="math inline">\(0\)</span> to <span class="math inline">\(2^k-1\)</span>, exactly <span class="math inline">\(m-\ell+1\)</span> numbers would lie in <span class="math inline">\([\ell, m]\)</span>. If fewer are present, the missing number must be in the left half; otherwise it is in the right half.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> At each step, picking the technology that extends coverage farthest to the right is optimal. Any alternative choice that covers <span class="math inline">\(L\)</span> has end <span class="math inline">\(\le h_{\max}\)</span>, so it cannot cover more of the remaining interval. By induction, the greedy choice leads to a minimum-cardinality cover.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> after sorting by start point.</p>
 </div>
 </div>
 </div>
@@ -291,7 +288,7 @@ Problem 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>D&amp;C for MST — correct or not?</strong> Consider this divide-and-conquer algorithm for MST: Given an undirected weighted graph <span class="math inline">\(G(V,E)\)</span>, partition <span class="math inline">\(V\)</span> into <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> such that <span class="math inline">\(|V_1|\)</span> and <span class="math inline">\(|V_2|\)</span> differ by at most 1. Let <span class="math inline">\(E_1\)</span> be edges incident only on <span class="math inline">\(V_1\)</span>, <span class="math inline">\(E_2\)</span> edges incident only on <span class="math inline">\(V_2\)</span>. Recursively solve MST on <span class="math inline">\(G_1(V_1,E_1)\)</span> and <span class="math inline">\(G_2(V_2,E_2)\)</span>. Finally, select the minimum-weight edge crossing the cut <span class="math inline">\((V_1, V_2)\)</span> and use it to unite the two MSTs. Either prove this algorithm is correct or disprove it with a counterexample.</p>
+<p><strong>Cookie assignment.</strong> You are baby-sitting <span class="math inline">\(n\)</span> children and have <span class="math inline">\(m &gt; n\)</span> cookies. Each child must get exactly one cookie. Child <span class="math inline">\(i\)</span> has a greed factor <span class="math inline">\(g_i\)</span> (the minimum cookie size they will be content with); cookie <span class="math inline">\(j\)</span> has size <span class="math inline">\(s_j\)</span>. Maximize the number of content children (those assigned a cookie with <span class="math inline">\(g_i \le s_j\)</span>). Give a greedy algorithm, prove it optimal, and give an efficient implementation.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -306,13 +303,28 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The algorithm is <strong>incorrect</strong>.</p>
-<p><strong>Counterexample:</strong> Graph <span class="math inline">\(G\)</span> with vertices <span class="math inline">\(V = \{v_1, v_2, v_3, v_4\}\)</span> and edges: <span class="math display">\[
-e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
-\]</span> Partition <span class="math inline">\(V_1 = \{v_1, v_2\}\)</span>, <span class="math inline">\(V_2 = \{v_3, v_4\}\)</span>. - MST of <span class="math inline">\(G_1\)</span>: edge <span class="math inline">\((v_1,v_2)\)</span> of weight 4. - MST of <span class="math inline">\(G_2\)</span>: edge <span class="math inline">\((v_3,v_4)\)</span> of weight 5. - Minimum crossing edge: <span class="math inline">\((v_4,v_1)\)</span> of weight 1.</p>
-<p>Total weight = <span class="math inline">\(4 + 5 + 1 = 10\)</span>.</p>
-<p>But the actual MST cost is <span class="math inline">\(7\)</span>: edges <span class="math inline">\((v_4,v_1,1), (v_2,v_3,2), (v_1,v_2,4)\)</span>.</p>
-<p>The failure occurs because the minimum crossing edge is not necessarily the best way to connect two MSTs — the cut-and-cycle properties of MST require considering all edges, not just a recursive decomposition.</p>
+<p><strong>Algorithm:</strong></p>
+<ol type="1">
+<li>Sort cookies by size ascending.</li>
+<li>Sort children by greed factor ascending.</li>
+<li>For each child (in increasing order of greed):
+<ul>
+<li>Assign the smallest cookie that satisfies <span class="math inline">\(s_j \ge g_i\)</span>.</li>
+<li>If no such cookie remains, leave the child discontent.</li>
+</ul></li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> Consider an optimal assignment. Let <span class="math inline">\(g_1 \le g_2 \le \dots \le g_n\)</span> be the sorted children. For the least greedy child <span class="math inline">\(g_1\)</span>, if the optimal solution gives a larger cookie than necessary, swapping it with the smallest feasible cookie (which our algorithm would assign) frees up a larger cookie for a greedier child without reducing the number of content children. By induction, the greedy choice is optimal at each step.</p>
+<p><strong>Implementation:</strong></p>
+<pre><code>sort(s), sort(g)
+j = 1
+count = 0
+for i = 1 to n:
+    while j &lt;= m and s[j] &lt; g[i]:
+        j++
+    if j &lt;= m:
+        count++, j++
+return count</code></pre>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n + m\log m)\)</span> for sorting, <span class="math inline">\(O(m)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
@@ -326,7 +338,7 @@ Problem 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Convex polygon vertices.</strong> Let <span class="math inline">\(E\)</span> be an unsorted set of <span class="math inline">\(n\)</span> segments that are the edges of a convex polygon. Give an <span class="math inline">\(O(n\log n)\)</span> algorithm that produces a list of all vertices of the polygon sorted in counter-clockwise order. Describe each step in plain English and analyze the running time.</p>
+<p><strong>Interval stabbing.</strong> Given <span class="math inline">\(n &gt; 1\)</span> intervals with start array <span class="math inline">\(S[1..n]\)</span> and end array <span class="math inline">\(E[1..n]\)</span>, find a set of points <span class="math inline">\(X\)</span> of <strong>minimum size</strong> such that every interval contains at least one point in <span class="math inline">\(X\)</span>. Design the algorithm and prove optimality.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -341,16 +353,17 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm:</strong></p>
+<p><strong>Algorithm (earliest-end-first greedy):</strong></p>
 <ol type="1">
-<li>Pick an arbitrary segment <span class="math inline">\(s_1 = \overline{pq}\)</span>. Let <span class="math inline">\(p\)</span> be one endpoint of <span class="math inline">\(s_1\)</span>.</li>
-<li>Find the other segment <span class="math inline">\(s_2\)</span> that shares endpoint <span class="math inline">\(p\)</span> (scan <span class="math inline">\(E\)</span>).</li>
-<li>Walk along <span class="math inline">\(s_1\)</span> to the other endpoint <span class="math inline">\(a\)</span>. Check the orientation of the two segments incident at <span class="math inline">\(p\)</span> to determine the polygon’s interior.</li>
-<li>For each edge endpoint, compute its polar angle with respect to a fixed reference point (e.g., the polygon’s centroid).</li>
-<li>Sort all vertices by angle — <span class="math inline">\(O(n\log n)\)</span>.</li>
-<li>Output in sorted order, skipping duplicate vertex entries.</li>
+<li>Sort intervals by end point <span class="math inline">\(E[i]\)</span>.</li>
+<li>Let <span class="math inline">\(X = \emptyset\)</span>.</li>
+<li>For each interval <span class="math inline">\((S[i], E[i])\)</span> in sorted order:
+<ul>
+<li>If no point in <span class="math inline">\(X\)</span> lies within <span class="math inline">\((S[i], E[i])\)</span>, add <span class="math inline">\(E[i]\)</span> to <span class="math inline">\(X\)</span>.</li>
+</ul></li>
 </ol>
-<p><strong>Analysis:</strong> Steps 1–3 and 6 require <span class="math inline">\(O(n)\)</span> time. Step 5 (sorting) takes <span class="math inline">\(O(n\log n)\)</span>. Hence total <span class="math inline">\(O(n\log n)\)</span>.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G\)</span> be the greedy solution and <span class="math inline">\(OPT\)</span> an optimal solution. Sort both by their chosen points. Let <span class="math inline">\(i\)</span> be the first index where <span class="math inline">\(G[i] \neq OPT[i]\)</span>. The greedy algorithm picks the earliest-ending interval’s end point. Any optimal solution must stab this interval with some point <span class="math inline">\(\le G[i]\)</span>. Replacing <span class="math inline">\(OPT[i]\)</span> with <span class="math inline">\(G[i]\)</span> cannot increase the number of points needed, as <span class="math inline">\(G[i]\)</span> stabs all intervals that <span class="math inline">\(OPT[i]\)</span> stabs (and possibly more, since <span class="math inline">\(G[i]\)</span> is the earliest possible rightmost point). By induction, <span class="math inline">\(|G| \le |OPT|\)</span>.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
@@ -364,7 +377,7 @@ Problem 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong><span class="math inline">\(n\)</span>th smallest of two sorted arrays.</strong> Let <span class="math inline">\(A[1..n]\)</span> and <span class="math inline">\(B[1..n]\)</span> be two sorted arrays of integers (increasing order). Give a divide-and-conquer algorithm that finds the <span class="math inline">\(n\)</span>th smallest element of the combined <span class="math inline">\(2n\)</span> elements in <span class="math inline">\(O(\log n)\)</span> time. All <span class="math inline">\(2n\)</span> elements are distinct.</p>
+<p><strong>Max-cardinality knapsack.</strong> You have <span class="math inline">\(n\)</span> items with weights <span class="math inline">\(w_1,\dots,w_n\)</span> and a bag of capacity <span class="math inline">\(W\)</span>. Select as many items as possible whose total weight <span class="math inline">\(\le W\)</span>. Describe a simple efficient algorithm and prove it gives the optimal output.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -379,90 +392,14 @@ Solution
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm</strong> <span class="math inline">\(\text{Select}(A, B, n)\)</span>:</p>
+<p><strong>Algorithm (Container Loading):</strong></p>
 <ol type="1">
-<li>If <span class="math inline">\(n = 1\)</span>, return <span class="math inline">\(\min(A[1], B[1])\)</span>.</li>
-<li>Compare <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span>.</li>
-<li>If <span class="math inline">\(A[\lfloor n/2\rfloor] &gt; B[\lfloor n/2\rfloor]\)</span>, then the <span class="math inline">\(n\)</span>th smallest is the <span class="math inline">\(\lfloor n/2\rfloor\)</span>th smallest of the union of <span class="math inline">\(A[1..\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lceil n/2\rceil+1..n]\)</span> — discard the larger half of <span class="math inline">\(B\)</span> and the smaller half of <span class="math inline">\(A\)</span>.</li>
-<li>Otherwise, discard symmetrically.</li>
-<li>Recurse.</li>
+<li>Sort items by weight in ascending order.</li>
+<li>Greedily pick the lightest items until the next item would exceed <span class="math inline">\(W\)</span>.</li>
 </ol>
-<p><strong>Analysis:</strong> Each step discards roughly half the elements and does <span class="math inline">\(O(1)\)</span> work. Recurrence <span class="math inline">\(T(n) = T(n/2) + O(1) = O(\log n)\)</span>.</p>
-<p><strong>Correctness:</strong> Since <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span> is smaller than both <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and all <span class="math inline">\(n - \lfloor n/2\rfloor\)</span> elements after it, it cannot be among the <span class="math inline">\(n\)</span> smallest. The discarded elements are safely eliminated.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 6">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem 6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Frequent-value detection.</strong> Given an arbitrary array <span class="math inline">\(A[1..n]\)</span>, determine in <span class="math inline">\(O(n)\)</span> time whether any value appears more than <span class="math inline">\(n/4\)</span> times. You may <strong>not</strong> use hashing, radix sort, or any method that depends on precise input values (as opposed to their order).</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>If an element <span class="math inline">\(x\)</span> appears more than <span class="math inline">\(n/4\)</span> times, it must occupy at least one of the <span class="math inline">\(\lfloor n/4\rfloor\)</span>, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>, or <span class="math inline">\(\lfloor 3n/4\rfloor\)</span> positions in sorted order.</p>
-<p><strong>Algorithm:</strong></p>
-<ol type="1">
-<li>Find the <span class="math inline">\(\lfloor n/4\rfloor\)</span>th, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>th, and <span class="math inline">\(\lfloor 3n/4\rfloor\)</span>th order statistics using deterministic SELECT (linear time each). Call them <span class="math inline">\(x_1, x_2, x_3\)</span>.</li>
-<li>For each <span class="math inline">\(x_i\)</span>, scan the array and count how many times <span class="math inline">\(x_i\)</span> appears.</li>
-<li>If any count <span class="math inline">\(&gt; n/4\)</span>, output <strong>true</strong>; otherwise <strong>false</strong>.</li>
-</ol>
-<p><strong>Analysis:</strong> Three SELECT calls plus three scans = <span class="math inline">\(3\cdot O(n) + 3\cdot O(n) = O(n)\)</span> total.</p>
-<p><strong>Correctness:</strong> A majority-like element with frequency <span class="math inline">\(&gt; n/4\)</span> must cross at least one quartile boundary. Any such element will be picked as one of <span class="math inline">\(x_1, x_2, x_3\)</span> and detected in the scan.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 7">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Problem 7
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Search in a sorted matrix.</strong> The elements of an <span class="math inline">\(n\times n\)</span> array <span class="math inline">\(A\)</span> are arranged in ascending rows <strong>and</strong> columns: <span class="math inline">\(A[i][j] &lt; A[i][j']\)</span> whenever <span class="math inline">\(j &lt; j'\)</span>, and <span class="math inline">\(A[i][j] &lt; A[i'][j]\)</span> whenever <span class="math inline">\(i &lt; i'\)</span>. Give the most efficient algorithm to determine if <span class="math inline">\(A\)</span> contains a target element <span class="math inline">\(x\)</span>, and compute the best upper bound on its asymptotic worst-case running time.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Algorithm:</strong> Start at the top-right corner <span class="math inline">\(A[1][n]\)</span>.</p>
-<ul>
-<li>If <span class="math inline">\(A[1][n] &gt; x\)</span>, eliminate the last column (all elements below are larger) — move left.</li>
-<li>If <span class="math inline">\(A[1][n] &lt; x\)</span>, eliminate the first row (all elements to the left are smaller) — move down.</li>
-<li>If equal, return <strong>true</strong>.</li>
-</ul>
-<p>Repeat until the element is found or we exit the matrix.</p>
-<p><strong>Analysis:</strong> Each step eliminates either one row or one column. There are <span class="math inline">\(n\)</span> rows and <span class="math inline">\(n\)</span> columns, so at most <span class="math inline">\(2n\)</span> steps. Each step is <span class="math inline">\(O(1)\)</span>. Worst-case: <span class="math inline">\(O(n)\)</span>.</p>
-<p>This is optimal because a decision-tree lower bound requires <span class="math inline">\(\Omega(n)\)</span> comparisons in the worst case (the element could be in any of <span class="math inline">\(n\)</span> possible anti-diagonal positions).</p>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G = \{g_1, g_2, \dots, g_k\}\)</span> be the greedy solution (items in sorted order). Let <span class="math inline">\(OPT = \{o_1, o_2, \dots, o_k\}\)</span> be an optimal solution with items sorted. If <span class="math inline">\(G\)</span> and <span class="math inline">\(OPT\)</span> differ, let <span class="math inline">\(i\)</span> be the first position where <span class="math inline">\(g_i \neq o_i\)</span>. By construction <span class="math inline">\(g_i \le o_i\)</span> (greedy always picks the smallest remaining feasible item). Replacing <span class="math inline">\(o_i\)</span> with <span class="math inline">\(g_i\)</span> in <span class="math inline">\(OPT\)</span> yields a solution with <span class="math inline">\(\le\)</span> the same total weight and the same cardinality. By induction, the greedy solution has maximum cardinality.</p>
+<p>Note that this is the classic “Container Loading” problem, not the 0-1 knapsack (which maximizes value). When maximizing count with uniform value, the lightest-first strategy is optimal.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
 </div>
 </div>
 </div>

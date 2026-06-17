@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Problem C: Huffman Coding – Tulasimohan Molli</title>
+<title>Problem A: TITLE – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../../styles/custom.css">
 <link rel="stylesheet" href="../../bits-theme.css">
-<link rel="stylesheet" href="assignment.css">
+<link rel="stylesheet" href="../assignment-01/assignment.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -160,20 +160,16 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#lectures"> 
-<span class="menu-text">Lectures</span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#assignments"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#practice"> 
-<span class="menu-text">Practice</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../#quizzes"> 
-<span class="menu-text">Quizzes</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -195,8 +191,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Problem C: Huffman Coding</h1>
-<p class="subtitle lead">CS F364 — Assignment 1</p>
+<h1 class="title">Problem A: TITLE</h1>
+<p class="subtitle lead">CS F364 — Assignment 02</p>
 </div>
 
 
@@ -224,15 +220,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>prefix-free binary code</strong> assigns a unique binary string (code word) to each character such that no code word is a prefix of another. This guarantees unambiguous decoding. Given a set of characters with known frequencies, the goal is to construct an optimal prefix-free code that minimises the expected number of bits per character.</p>
-<p>You are given <span class="math inline">n</span> distinct characters and their frequencies, followed by a message string <span class="math inline">S</span> composed of these characters. Your program must:</p>
-<ol type="1">
-<li>Build the binary tree representing the optimal prefix-free code.</li>
-<li>Output the tree in <strong>preorder</strong> (internal nodes as <code>*</code>, leaf nodes as the character).</li>
-<li>Generate the code word for each character.</li>
-<li>Encode the message <span class="math inline">S</span> into a bit-string.</li>
-<li>Compute the <strong>total expected encoding length</strong> in bits (sum of frequency <span class="math inline">\times</span> code-word length over all characters).</li>
-</ol>
+<p>A short description of the problem and what the program must do.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
@@ -245,11 +233,7 @@ Input Format
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Line 1: integer <span class="math inline">n</span> (number of distinct characters)</li>
-<li>Lines 2 to <span class="math inline">n+1</span>: <code>char freq</code> — a lowercase letter and its integer frequency (<span class="math inline">\ge 1</span>)</li>
-<li>Line <span class="math inline">n+2</span>: string <span class="math inline">S</span> to encode (composed only of the <span class="math inline">n</span> characters above)</li>
-</ul>
+<p>Describe the input format.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Output Format">
@@ -262,12 +246,20 @@ Output Format
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Line 1: tree in preorder (internal nodes as <code>*</code>, leaf nodes as the character, space-separated)</li>
-<li>Next <span class="math inline">n</span> lines: <code>char code</code> — the Huffman code for each character (sorted alphabetically by char)</li>
-<li>Line <span class="math inline">n+2</span>: the encoded bit-string for <span class="math inline">S</span></li>
-<li>Line <span class="math inline">n+3</span>: integer — total expected encoding length in bits (sum of freq <span class="math inline">\times</span> code-word length)</li>
-</ul>
+<p>Describe the output format.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Constraints">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Constraints
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>List any constraints (e.g.&nbsp;<span class="math inline">n \le 10^5</span>).</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled" title="Sample">
@@ -281,26 +273,11 @@ Sample
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Input</strong></p>
-<pre><code>6
-a 45
-b 13
-c 12
-d 16
-e 9
-f 5
-bad</code></pre>
+<pre><code>sample input here</code></pre>
 <p><strong>Output</strong></p>
-<pre><code>* a * d * b * * c * e f
-a 0
-b 101
-c 100
-d 111
-e 1101
-f 1100
-1010111
-224</code></pre>
-<p><em>Explanation:</em> The tree preorder reads <code>*</code> for internal nodes and the letter for leaves. Code lengths: a=1, b=3, c=3, d=3, e=4, f=4. Total = <span class="math inline">45\times1 + 13\times3 + 12\times3 + 16\times3 + 9\times4 + 5\times4 = 224</span>.</p>
-<p><a href="tests/C-sample.in">Download sample input</a></p>
+<pre><code>sample output here</code></pre>
+<p><em>Explanation:</em> Brief explanation of the sample.</p>
+<p><a href="tests/A-sample.in">Download sample input</a></p>
 </div>
 </div>
 

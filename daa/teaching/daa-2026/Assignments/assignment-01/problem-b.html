@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 1 – Tulasimohan Molli</title>
+<title>Problem B: Longest Common Subsequence – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,13 +89,56 @@ window.KATEX_MACROS = {
 <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles/custom.css">
 <link rel="stylesheet" href="../../bits-theme.css">
 <link rel="stylesheet" href="assignment.css">
 </head>
 
-<body class="nav-fixed index-page quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -117,20 +160,16 @@ window.KATEX_MACROS = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#lectures"> 
-<span class="menu-text">Lectures</span></a>
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#assignments"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#practice"> 
-<span class="menu-text">Practice</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../#quizzes"> 
-<span class="menu-text">Quizzes</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -143,15 +182,8 @@ window.KATEX_MACROS = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works">How it works</a></li>
-  <li><a href="#choose-a-problem" id="toc-choose-a-problem" class="nav-link" data-scroll-target="#choose-a-problem">Choose a Problem</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -159,8 +191,8 @@ window.KATEX_MACROS = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 1</h1>
-<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
+<h1 class="title">Problem B: Longest Common Subsequence</h1>
+<p class="subtitle lead">CS F364 — Assignment 1</p>
 </div>
 
 
@@ -177,126 +209,75 @@ window.KATEX_MACROS = {
 </header>
 
 
-<div class="assignment-hero">
-<div class="assignment-hero-content">
-<h1 class="hero-title">
-Assignment 1
-</h1>
-<p class="hero-subtitle">
-CS F364 — Design &amp; Analysis of Algorithms <span class="hero-term">Summer 2026</span>
-</p>
+<p><a href="index.html">← Back to assignment</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
 </div>
 </div>
-<div class="info-strip">
-<div class="info-item">
-<strong>Due</strong><span>30 Jun 2026, 2:00 PM</span>
-</div>
-<div class="info-item">
-<strong>Weight</strong><span>10%</span>
-</div>
-<div class="info-item">
-<strong>Submission</strong><span>Individual</span>
-</div>
-<div class="info-item tooltip-item">
-<strong>Final mark</strong><span>Score (out of 50) × Viva ÷ 10</span><span class="tooltip-text">The viva score (0–10) acts as a weightage multiplier to verify the work is genuinely your own. High viva = you keep most of your marks. Low viva = proportional reduction.</span>
+<div class="callout-body-container callout-body">
+<p>A <strong>subsequence</strong> is obtained by deleting zero or more characters from a string (not necessarily contiguous) while preserving the relative order of the remaining characters. The <strong>longest common subsequence (LCS)</strong> of two strings <span class="math inline">A</span> and <span class="math inline">B</span> is the longest string that is a subsequence of both.</p>
+<p>Given two strings <span class="math inline">A</span> and <span class="math inline">B</span>, compute the length of their LCS and reconstruct <strong>one</strong> optimal LCS string.</p>
 </div>
 </div>
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How it works</h2>
-<div class="steps-grid">
-<div class="step-card">
-<div class="step-num">
-1
+<div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="step-text">
-Pick <strong>one</strong> of the four problems below.
+<div class="callout-title-container flex-fill">
+Input Format
 </div>
 </div>
-<div class="step-card">
-<div class="step-num">
-2
-</div>
-<div class="step-text">
-Solve it in <strong>Python</strong>, <strong>C</strong>, or <strong>C++</strong>. Discussion allowed, but the code you submit must be entirely your own.
-</div>
-</div>
-<div class="step-card">
-<div class="step-num">
-3
-</div>
-<div class="step-text">
-Upload your single source file as <code>&lt;rollno&gt;_assignment1.&lt;ext&gt;</code> to Google Classroom before the deadline.
+<div class="callout-body-container callout-body">
+<ul>
+<li>Line 1: string <span class="math inline">A</span> (length <span class="math inline">m</span>, <span class="math inline">1 \le m \le 5000</span>, lowercase a–z)</li>
+<li>Line 2: string <span class="math inline">B</span> (length <span class="math inline">n</span>, <span class="math inline">1 \le n \le 5000</span>, lowercase a–z)</li>
+</ul>
 </div>
 </div>
-<div class="step-card">
-<div class="step-num">
-4
+<div class="callout callout-style-default callout-tip callout-titled" title="Output Format">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="step-text">
-Attend a 1-on-1 viva. Your assignment is scored out of 50. The viva (out of 10) decides what fraction of that score you keep: <strong>Final = Score × (Viva ÷ 10)</strong>.
-</div>
-</div>
-</div>
-<div class="note-box">
-<p>Make sure your code compiles and runs before you submit. It will be tested against hidden test cases. The deadline will not be extended for any reason. Plagiarism will result in a zero grade and disciplinary action.</p>
-</div>
-</section>
-<section id="choose-a-problem" class="level2">
-<h2 class="anchored" data-anchor-id="choose-a-problem">Choose a Problem</h2>
-<div class="problem-cards">
-<a href="problem-a.html" class="problem-card">
-<div class="card-label">
-A
-</div>
-<div class="card-body">
-<div class="card-title">
-Closest Pair of Points
-</div>
-<div class="card-desc">
-Find the closest pair among <i>n</i> points in <b>O</b>(<i>n</i> log <i>n</i>) time using the <b>δ</b>-strip optimisation.
+<div class="callout-title-container flex-fill">
+Output Format
 </div>
 </div>
-</a> <a href="problem-b.html" class="problem-card">
-<div class="card-label">
-B
-</div>
-<div class="card-body">
-<div class="card-title">
-Longest Common Subsequence
-</div>
-<div class="card-desc">
-Compute the LCS of two strings and produce an optimal alignment with <b>O</b>(<i>mn</i>) DP.
+<div class="callout-body-container callout-body">
+<ul>
+<li>Line 1: integer — length of the LCS</li>
+<li>Line 2: the LCS string (one optimal solution)</li>
+</ul>
 </div>
 </div>
-</a> <a href="problem-c.html" class="problem-card">
-<div class="card-label">
-C
+<div class="callout callout-style-default callout-important callout-titled" title="Sample">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="card-body">
-<div class="card-title">
-Huffman Coding
-</div>
-<div class="card-desc">
-Build optimal prefix-free codes, encode a message, and decode it back using a min-heap.
+<div class="callout-title-container flex-fill">
+Sample
 </div>
 </div>
-</a> <a href="problem-d.html" class="problem-card">
-<div class="card-label">
-D
+<div class="callout-body-container callout-body">
+<p><strong>Input</strong></p>
+<pre><code>abcde
+acbe</code></pre>
+<p><strong>Output</strong></p>
+<pre><code>3
+ace</code></pre>
+<p><em>Explanation:</em> LCS strings are “ace” and “abe” (both length 3). Either is acceptable.</p>
+<p><a href="tests/B-sample.in">Download sample input</a></p>
 </div>
-<div class="card-body">
-<div class="card-title">
-Kruskal’s Minimum Spanning Tree
-</div>
-<div class="card-desc">
-Find the MST using Kruskal’s algorithm with Union-Find and path compression.
-</div>
-</div>
-</a><p><a href="problem-d.html" class="problem-card"></a></p>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

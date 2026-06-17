@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Big-Oh, Big-Theta, Big-Omega — comparing growth rates">
 
-<title>Problem C: TITLE – Tulasimohan Molli</title>
+<title>Asymptotic Notation – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,26 +86,12 @@ window.KATEX_MACROS = {
     "\\eps": "\\epsilon"
 };
 </script>
-<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -133,9 +120,8 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles/custom.css">
-<link rel="stylesheet" href="../../bits-theme.css">
-<link rel="stylesheet" href="../assignment-01/assignment.css">
+<link rel="stylesheet" href="../styles/custom.css">
+<link rel="stylesheet" href="practice.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -145,7 +131,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -156,24 +142,20 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#lectures"> 
-<span class="menu-text">Lectures</span></a>
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#assignments"> 
-<span class="menu-text">Assignments</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../#practice"> 
-<span class="menu-text">Practice</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../#quizzes"> 
-<span class="menu-text">Quizzes</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -195,10 +177,15 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Problem C: TITLE</h1>
-<p class="subtitle lead">CS F364 — Assignment 02</p>
+<h1 class="title">Asymptotic Notation</h1>
+<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
+<div>
+  <div class="description">
+    Big-Oh, Big-Theta, Big-Omega — comparing growth rates
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -213,75 +200,164 @@ window.Quarto = {
 </header>
 
 
-<p><a href="index.html">← Back to assignment</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem">
+<p><a href="index.html">← Practice</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Problem
+Problem 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A short description of the problem and what the program must do.</p>
+<p>Prove the following function is <span class="math inline">\(\Theta(n^4)\)</span>:</p>
+<p><span class="math inline">\(T(n) = 2n^4 - 20n^3 - 200n^2 + 500n + 5000\)</span></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We need constants <span class="math inline">\(c_1, c_2 &gt; 0\)</span> and <span class="math inline">\(n_0\)</span> such that <span class="math inline">\(c_1 n^4 \le T(n) \le c_2 n^4\)</span> for all <span class="math inline">\(n \ge n_0\)</span>.</p>
+<p><strong>Upper bound (<span class="math inline">\(O(n^4)\)</span>):</strong> For <span class="math inline">\(n \ge 1\)</span>, <span class="math display">\[
+\begin{aligned}
+T(n) &amp;\le 2n^4 + 500n + 5000 \\
+     &amp;\le 2n^4 + 500n^4 + 5000n^4 = 5502\, n^4.
+\end{aligned}
+\]</span> Take <span class="math inline">\(c_2 = 5502\)</span>, <span class="math inline">\(n_0 = 1\)</span>.</p>
+<p><strong>Lower bound (<span class="math inline">\(\Omega(n^4)\)</span>):</strong> For <span class="math inline">\(n \ge 200\)</span>, <span class="math display">\[
+20n^3 \le 0.1 n^4,\quad 200n^2 \le 0.005 n^4,\quad 500n \le 0.0025 n^4,\quad 5000 \le 0.025 n^4.
+\]</span> Hence <span class="math display">\[
+T(n) \ge 2n^4 - 0.1n^4 - 0.005n^4 - 0.0025n^4 - 0.025n^4 = 1.8675\, n^4.
+\]</span> Take <span class="math inline">\(c_1 = 1.8675\)</span>, <span class="math inline">\(n_0 = 200\)</span>.</p>
+<p>Thus <span class="math inline">\(T(n) = \Theta(n^4)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Input Format
+Problem 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Describe the input format.</p>
+<p>For each running time below, select the lowest Big-Oh complexity <span class="math inline">\(O(f(n))\)</span>:</p>
+<p><span class="math inline">\(\text{(a)}\; 500n + 5n^{1.5} + 50n\log_{10} n\)</span></p>
+<p><span class="math inline">\(\text{(b)}\; n^2\log_2 n + n(\log_2 n)^2\)</span></p>
+<p><span class="math inline">\(\text{(c)}\; 3\log_8 n + \log_2\log_2\log_2 n\)</span></p>
+<p><span class="math inline">\(\text{(d)}\; n\log_3 n + n\log_2 n\)</span></p>
+<p><span class="math inline">\(\text{(e)}\; 2n + n^{0.5} + 0.5n^{1.25}\)</span></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Output Format">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p><span class="math inline">\(O(n^{1.5})\)</span> — the <span class="math inline">\(n^{1.5}\)</span> term dominates.</p></li>
+<li><p><span class="math inline">\(O(n^2\log n)\)</span> — <span class="math inline">\(n^2\log n\)</span> dominates <span class="math inline">\(n(\log n)^2\)</span>.</p></li>
+<li><p><span class="math inline">\(O(\log n)\)</span> — <span class="math inline">\(\log_8 n\)</span> dominates the iterated log.</p></li>
+<li><p><span class="math inline">\(O(n\log n)\)</span> — both terms are <span class="math inline">\(\Theta(n\log n)\)</span> (change of base is constant).</p></li>
+<li><p><span class="math inline">\(O(n)\)</span> — the <span class="math inline">\(2n\)</span> term dominates <span class="math inline">\(n^{0.5}\)</span> and <span class="math inline">\(0.5n^{1.25}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Output Format
+Problem 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Describe the output format.</p>
+<p>For each group, sort the functions in <strong>increasing order</strong> of <span class="math inline">\(O\)</span>-complexity:</p>
+<ol type="i">
+<li><p><span class="math inline">\(f_1(n)=n^{0.999999}\log n\)</span>, <span class="math inline">\(f_2(n)=10^7 n\)</span>, <span class="math inline">\(f_3(n)=(1.000001)^n\)</span>, <span class="math inline">\(f_4(n)=n^2\)</span></p></li>
+<li><p><span class="math inline">\(f_1(n)=2^{2^{1000000}}\)</span>, <span class="math inline">\(f_2(n)=2^{100000n}\)</span>, <span class="math inline">\(f_3(n)=\binom{n}{2}\)</span>, <span class="math inline">\(f_4(n)=n\sqrt{n}\)</span></p></li>
+<li><p><span class="math inline">\(f_1(n)=n^{\sqrt{n}}\)</span>, <span class="math inline">\(f_2(n)=2^n\)</span>, <span class="math inline">\(f_3(n)=n^{10}2^{n/2}\)</span>, <span class="math inline">\(f_4(n)=\sum_{i=1}^{n}(i+1)\)</span></p></li>
+</ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Constraints">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>i.</strong> <span class="math inline">\(f_1(n) \prec f_2(n) \prec f_4(n) \prec f_3(n)\)</span></p>
+<p><span class="math inline">\(n^{0.999999}\log n\)</span> grows slower than <span class="math inline">\(n\)</span> (since exponent <span class="math inline">\(&lt;1\)</span>), <span class="math inline">\(10^7 n\)</span> is linear, <span class="math inline">\(n^2\)</span> is quadratic, and <span class="math inline">\((1.000001)^n\)</span> is exponential — the fastest.</p>
+<p><strong>ii.</strong> <span class="math inline">\(f_1(n) \prec f_4(n) \prec f_3(n) \prec f_2(n)\)</span></p>
+<p><span class="math inline">\(f_1(n)=2^{2^{1000000}}\)</span> is a constant (no <span class="math inline">\(n\)</span> in the exponent). <span class="math inline">\(n\sqrt{n}=n^{1.5}\)</span>, <span class="math inline">\(\binom{n}{2}=\Theta(n^2)\)</span>, and <span class="math inline">\(2^{100000n}=\Theta(2^{cn})\)</span> is exponential in <span class="math inline">\(n\)</span>.</p>
+<p><strong>iii.</strong> <span class="math inline">\(f_4(n) \prec f_1(n) \prec f_3(n) \prec f_2(n)\)</span></p>
+<p><span class="math inline">\(\sum_{i=1}^n (i+1) = \Theta(n^2)\)</span>. <span class="math inline">\(n^{\sqrt{n}}\)</span> is larger than any polynomial but smaller than <span class="math inline">\(2^n\)</span>. <span class="math inline">\(n^{10}2^{n/2} = \Theta(2^{n/2})\)</span>, which grows slower than <span class="math inline">\(2^n\)</span> by a square-root factor.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Constraints
+Problem 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>List any constraints (e.g.&nbsp;<span class="math inline">n \le 10^5</span>).</p>
+<p>Let <span class="math inline">\(f(n)\)</span> and <span class="math inline">\(g(n)\)</span> be asymptotically positive functions. Prove or disprove:</p>
+<ol type="i">
+<li><p><span class="math inline">\(o(g(n)) \cap \omega(g(n)) = \emptyset\)</span></p></li>
+<li><p><span class="math inline">\(f(n) = O(g(n)) \implies 2^{f(n)} = O(2^{g(n)})\)</span></p></li>
+<li><p><span class="math inline">\(f(n) + g(n) = \Theta(\min(f(n), g(n)))\)</span></p></li>
+<li><p><span class="math inline">\(f(n) + g(n) = \Theta(\max(f(n), g(n)))\)</span></p></li>
+</ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-important callout-titled" title="Sample">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Sample
+Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Input</strong></p>
-<pre><code>sample input here</code></pre>
-<p><strong>Output</strong></p>
-<pre><code>sample output here</code></pre>
-<p><em>Explanation:</em> Brief explanation of the sample.</p>
-<p><a href="tests/C-sample.in">Download sample input</a></p>
+<p><strong>(i) TRUE.</strong> If <span class="math inline">\(h(n) \in o(g(n))\)</span>, then <span class="math inline">\(\lim_{n\to\infty} h(n)/g(n) = 0\)</span>. If <span class="math inline">\(h(n) \in \omega(g(n))\)</span>, then <span class="math inline">\(\lim_{n\to\infty} h(n)/g(n) = \infty\)</span>. No function can satisfy both simultaneously. Hence the intersection is empty.</p>
+<p><strong>(ii) FALSE.</strong> Counterexample: <span class="math inline">\(f(n) = 2n\)</span>, <span class="math inline">\(g(n) = n\)</span>. Clearly <span class="math inline">\(2n = O(n)\)</span>, but <span class="math inline">\(2^{2n} = 4^n\)</span> is not <span class="math inline">\(O(2^n)\)</span> since <span class="math inline">\(\lim_{n\to\infty} 4^n/2^n = \lim_{n\to\infty} 2^n = \infty\)</span>.</p>
+<p><strong>(iii) FALSE.</strong> Counterexample: <span class="math inline">\(f(n)=n\)</span>, <span class="math inline">\(g(n)=n^2\)</span>. Then <span class="math inline">\(f(n)+g(n)=\Theta(n^2)\)</span> but <span class="math inline">\(\min(f(n),g(n))=n\)</span>, and <span class="math inline">\(\Theta(n^2) \neq \Theta(n)\)</span>.</p>
+<p><strong>(iv) TRUE.</strong> Since <span class="math inline">\(\max(f(n),g(n)) \le f(n)+g(n) \le 2\max(f(n),g(n))\)</span> for all <span class="math inline">\(n\)</span>, we have <span class="math inline">\(c_1=1\)</span>, <span class="math inline">\(c_2=2\)</span>, <span class="math inline">\(n_0=1\)</span>. Thus <span class="math inline">\(f(n)+g(n)=\Theta(\max(f(n),g(n)))\)</span>.</p>
+</div>
 </div>
 </div>
 
@@ -692,5 +768,5 @@ Sample
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
