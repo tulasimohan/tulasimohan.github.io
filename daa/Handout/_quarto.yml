@@ -1,0 +1,57 @@
+project:
+  title: "CS F364: Design and Analysis of Algorithms"
+
+format:
+  html:
+    output-file: "index.html"
+    toc: true
+    toc-depth: 2
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    self-contained: true
+  pdf:
+    output-file: "handout.pdf"
+    pdf-engine: pdflatex
+    documentclass: article
+    geometry: margin=0.7in
+    keep-tex: true
+    include-in-header:
+      text: |
+        \usepackage{graphicx}
+        \usepackage{tabularx}
+        \usepackage{enumitem}
+        \usepackage{fancyhdr}
+        \usepackage{titlesec}
+        \usepackage{microtype}
+        \usepackage{lastpage}
+        \usepackage{mathptmx}
+        
+        \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+        \titlespacing*{\section}{0pt}{10pt}{4pt}
+        \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+        \titlespacing*{\subsection}{0pt}{8pt}{4pt}
+        
+        \setlist[itemize]{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=12pt}
+        \setlist[enumerate]{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=12pt}
+        
+        \pagestyle{fancy}
+        \fancyhf{}
+        \fancyhead[L]{CS F364: Design and Analysis of Algorithms}
+        \fancyhead[R]{Summer Term 2026}
+        \fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0.4pt}
+        
+        % Suppress standard title
+        \let\oldmaketitle\maketitle
+        \renewcommand{\maketitle}{}
+  revealjs:
+    output-file: "slides.html"
+    theme: league
+    slide-number: true
+    preview-links: auto
+    transition: slide
+    css: slide_styles.css
+    self-contained: true

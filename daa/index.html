@@ -1,77 +1,1327 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS F364 — Design &amp; Analysis of Algorithms</title>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Design and Analysis of Algorithms</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #333; line-height: 1.6; }
-  h1 { color: #1a1a2e; border-bottom: 2px solid #d71920; padding-bottom: 0.5rem; }
-  h2 { color: #2b2b88; margin-top: 2rem; }
-  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid #ddd; }
-  th { background: #f5f5f5; font-weight: 600; }
-  tr:hover { background: #fafafa; }
-  a { color: #2b2b88; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .info { background: #f0f7ff; border-left: 4px solid #2b2b88; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
-  .tag { display: inline-block; background: #d71920; color: #fff; font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: middle; }
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-lecture-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-lec_date','listing-title','listing-summary','listing-slides',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-lec_date","listing-title","listing-summary","listing-published","listing-slides"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-lecture-listing'] = new List('listing-lecture-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles/custom.css">
 </head>
-<body>
-<h1>CS F364 — Design &amp; Analysis of Algorithms <span class="tag">Summer 2026</span></h1>
-<div class="info"><strong>Instructor:</strong> Tulasimohan Molli &nbsp;|&nbsp; <strong>Schedule:</strong> Tue/Thu 2–4 PM, Fri 4–6 PM &nbsp;|&nbsp; <strong>Venue:</strong> F-206 (TP-Room)</div>
-<h2>Lectures</h2>
-<table><thead><tr><th>#</th><th>Date</th><th>Topic</th><th>Slides</th></tr></thead><tbody>
-<tr><td>1</td><td>2026-05-21</td><td>Introduction to Algorithms</td><td><a href="Lecture-1/Lecture-1.html">📄</a></td></tr>
-<tr><td>2</td><td>2026-05-21</td><td>Introduction to Sorting & Asymptotic Analysis</td><td><a href="Lecture-2/Lecture-2.html">📄</a></td></tr>
-<tr><td>3</td><td>2026-05-21</td><td>Asymptotic Notation & Merge Sort</td><td><a href="Lecture-3/Lecture-3.html">📄</a></td></tr>
-<tr><td>4</td><td>2026-05-21</td><td>Solving Recurrences</td><td><a href="Lecture-4/Lecture-4.html">📄</a></td></tr>
-<tr><td>5</td><td>2026-05-21</td><td>Divide and Conquer: Maximum Subarray</td><td><a href="Lecture-5/Lecture-5.html">📄</a></td></tr>
-<tr><td>6</td><td>2026-05-21</td><td>Closest Pair of Points in 2D</td><td><a href="Lecture-6/Lecture-6.html">📄</a></td></tr>
-<tr><td>7</td><td>2026-05-21</td><td>Sorting Lower Bounds & Quicksort</td><td><a href="Lecture-7/Lecture-7.html">📄</a></td></tr>
-<tr><td>8</td><td>2026-05-21</td><td>Probability Primer & Randomized Quicksort</td><td><a href="Lecture-8/Lecture-8.html">📄</a></td></tr>
-<tr><td>9</td><td>2026-06-02</td><td>Selection: Randomized & Deterministic</td><td><a href="Lecture-9/Lecture-9.html">📄</a></td></tr>
-<tr><td>10</td><td>2026-06-02</td><td>Dynamic Programming: Fibonacci & LCS</td><td><a href="Lecture-10/Lecture-10.html">📄</a></td></tr>
-<tr><td>11</td><td>2026-06-04</td><td>Matrix Chain Multiplication</td><td><a href="Lecture-11/Lecture-11.html">📄</a></td></tr>
-<tr><td>12</td><td>2026-06-04</td><td>Graphs & Dynamic Programming on Trees</td><td><a href="Lecture-12/Lecture-12.html">📄</a></td></tr>
-<tr><td>13</td><td>2026-06-05</td><td>Greedy: Interval Scheduling</td><td><a href="Lecture-13/Lecture-13.html">📄</a></td></tr>
-<tr><td>14</td><td>2026-06-05</td><td>Huffman Coding</td><td><a href="Lecture-14/Lecture-14.html">📄</a></td></tr>
-<tr><td>15</td><td>2026-06-09</td><td>Minimum Spanning Trees</td><td><a href="Lecture-15/Lecture-15.html">📄</a></td></tr>
-<tr><td>16</td><td>2026-06-09</td><td>MST Algorithms</td><td><a href="Lecture-16/Lecture-16.html">📄</a></td></tr>
-<tr><td>17</td><td>2026-06-11</td><td>Matroids</td><td><a href="Lecture-17/Lecture-17.html">📄</a></td></tr>
-<tr><td>18</td><td>2026-06-11</td><td>Matroids: Greedy Optimization</td><td><a href="Lecture-18/Lecture-18.html">📄</a></td></tr>
-<tr><td>19</td><td>2026-06-12</td><td>Average Case Analysis</td><td><a href="Lecture-19/Lecture-19.html">📄</a></td></tr>
-<tr><td>20</td><td>2026-06-12</td><td>Amortized Analysis</td><td><a href="Lecture-20/Lecture-20.html">📄</a></td></tr>
-<tr><td>21</td><td>2026-06-12</td><td>Further Amortized Analysis</td><td><a href="Lecture-21/Lecture-21.html">📄</a></td></tr>
-</tbody></table>
-<h2>Quizzes</h2>
-<table><thead><tr><th>Quiz</th><th>Topic</th><th>Questions</th><th>Solutions</th></tr></thead><tbody>
-<tr><td>01</td><td>Quiz 01</td><td><a href="quizzes/quiz-01/quiz-01.html">📝</a></td>
-<td>—</td>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Design and Analysis of Algorithms</h1>
+<p class="subtitle lead">CS F364 | May-July 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+About the Course
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Target Audience
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Summer Term course meant for people who want to improve their course grade.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prerequisites
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Data Structures and Algorithms (CS F213) or equivalent. Working knowledge of programming in C/C++ or Python.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+References
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="textbooks" class="level3">
+<h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
+<ol type="1">
+<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
+</ol>
+</section>
+<section id="reference-books" class="level3">
+<h3 class="anchored" data-anchor-id="reference-books">Reference Books</h3>
+<ol type="1">
+<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
+<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
+<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
+<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
+</ol>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Timings and Venue
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Instructor:</strong> Tulasimohan Molli</p>
+<p><strong>Lectures:</strong> Tuesdays, Thursdays 2:00 PM to 3:50 PM, Fridays 4:00 PM to 5:50 PM<br>
+<strong>Venue:</strong> F-206 (TP-Room)</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Office Hours
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Chamber Consultation Hour:</strong> 2 PM on Friday.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evaluation Policy
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Duration / Format</th>
+<th>Weight</th>
+<th>Date &amp; Time</th>
 </tr>
-<tr><td>02</td><td>Quiz 02</td><td><a href="quizzes/quiz-02/quiz-02.html">📝</a></td>
-<td>—</td>
+</thead>
+<tbody>
+<tr class="odd">
+<td>In‑class Evaluation</td>
+<td>10‑15 min surprise quizzes</td>
+<td>10%</td>
+<td>Best 10 of 12‑15 quizzes</td>
 </tr>
-<tr><td>03</td><td>Quiz 03</td><td><a href="quizzes/quiz-03/quiz-03.html">📝</a></td>
-<td><a href="quizzes/quiz-03/quiz-03-key.html">🔑</a></td>
+<tr class="even">
+<td>Assignments (2)</td>
+<td>Take‑home + viva</td>
+<td>20%</td>
+<td>One before mid, one after</td>
 </tr>
-<tr><td>04</td><td>Quiz 04</td><td><a href="quizzes/quiz-04/quiz-04.html">📝</a></td>
-<td><a href="quizzes/quiz-04/quiz-04-key.html">🔑</a></td>
+<tr class="odd">
+<td>Midterm Exam</td>
+<td>90 min (closed book)</td>
+<td>30%</td>
+<td>20/06/2026</td>
 </tr>
-<tr><td>05</td><td>Quiz 05</td><td><a href="quizzes/quiz-05/quiz-05.html">📝</a></td>
-<td><a href="quizzes/quiz-05/quiz-05-key.html">🔑</a></td>
+<tr class="even">
+<td>Comprehensive Exam</td>
+<td>3 h (closed book)</td>
+<td>40%</td>
+<td>15/07/2026</td>
 </tr>
-<tr><td>06</td><td>Quiz 06</td><td><a href="quizzes/quiz-06/quiz-06.html">📝</a></td>
-<td><a href="quizzes/quiz-06/quiz-06-key.html">🔑</a></td>
+</tbody>
+</table>
+<ul>
+<li>Assignments &amp; in‑class: no make‑up.</li>
+<li>Midterm: case‑by‑case with approval.</li>
+<li>Comprehensive: as per university guidelines.</li>
+<li>Strict adherence to Academic Honesty required; violations will be penalised.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Registration &amp; Logistics
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>All announcements via Google Classrom or email.</p>
+</div>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Lectures</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Syllabus</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="listing-lecture-listing" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-lecture-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-lecture-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-lec_date" data-direction="asc">
+        Date
+      </option>
+      <option value="listing-title-sort" data-direction="asc">
+        Lecture
+      </option>
+      <option value="listing-summary" data-direction="asc">
+        Summary
+      </option>
+      <option value="listing-slides" data-direction="asc">
+        Slides
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+
+<th>
+<a class="sort" data-sort="listing-lec_date" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Lecture</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-summary" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Summary</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-slides" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Slides</a>
+</th>
+
 </tr>
-</tbody></table>
-<h2>Practice Problems</h2>
-<p><a href="practice/index.html">📚 Browse all practice problems</a> — categorized by topic with problems from tutorials and exams.</p>
-<h2>Assignments</h2>
-<table><thead><tr><th>#</th><th>Topic</th><th>Link</th></tr></thead><tbody>
-<tr><td>01</td><td>Assignment 1</td><td><a href="assignments/assignment-01/index.html">📝</a></td></tr>
-<tr><td>02</td><td>Assignment 02</td><td><a href="assignments/assignment-02/index.html">📝</a></td></tr>
-</tbody></table>
-<hr><p style="color:#888;font-size:0.85rem;text-align:center">CS F364 — Design &amp; Analysis of Algorithms · BITS Pilani, Hyderabad Campus · Summer 2026</p>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-listing-title-sort="Lec 1">
+<td>
+<span class="listing-lec_date">2026-05-21</span>
+</td>
+<td>
+<span class="listing-title">Lec 1</span>
+</td>
+<td>
+<span class="listing-summary">Introduction to the course goals, importance of mathematical analysis for correctness and efficiency, Interger Multiplication, Karatsuba’s algorithm.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-1/Lecture-1.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-title-sort="Lec 2">
+<td>
+<span class="listing-lec_date">2026-05-21</span>
+</td>
+<td>
+<span class="listing-title">Lec 2</span>
+</td>
+<td>
+<span class="listing-summary">Bubble Sort, Insertion Sort, Merge Sort, Detailed study of Big-Oh, Big-Omega, and Big-Theta notations.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-2/Lecture-2.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-listing-title-sort="Lec 3">
+<td>
+<span class="listing-lec_date">2026-05-23</span>
+</td>
+<td>
+<span class="listing-title">Lec 3</span>
+</td>
+<td>
+<span class="listing-summary">Proof of Correctness and Running time analysis of Sorting algorithms</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-3/Lecture-3.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-listing-title-sort="Lec 4">
+<td>
+<span class="listing-lec_date">2026-05-23</span>
+</td>
+<td>
+<span class="listing-title">Lec 4</span>
+</td>
+<td>
+<span class="listing-summary">Solving recurrences, recursion tree, mathematical induction</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-4/Lecture-4.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-listing-title-sort="Lec 5">
+<td>
+<span class="listing-lec_date">2026-05-26</span>
+</td>
+<td>
+<span class="listing-title">Lec 5</span>
+</td>
+<td>
+<span class="listing-summary">Divide and conquer applications covering the Maximum Subarray problem and introduction to the Closest Pair of Points problem in 1D and 2D.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-5/Lecture-5.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-listing-title-sort="Lec 6">
+<td>
+<span class="listing-lec_date">2026-05-26</span>
+</td>
+<td>
+<span class="listing-title">Lec 6</span>
+</td>
+<td>
+<span class="listing-summary">Detailed algorithm and complexity analysis for solving the Closest Pair of Points problem in 2D using Divide and Conquer with the vertical line approach and δ-strip optimization.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-6/Lecture-6.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-listing-title-sort="Lec 7">
+<td>
+<span class="listing-lec_date">2026-05-28</span>
+</td>
+<td>
+<span class="listing-title">Lec 7</span>
+</td>
+<td>
+<span class="listing-summary">Information-theoretic lower bounds for comparison-based sorting using decision trees, introduction to Quicksort and Randomized Quicksort, and worst-case O(n²) analysis.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-7/Lecture-7.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-listing-title-sort="Lec 8">
+<td>
+<span class="listing-lec_date">2026-05-28</span>
+</td>
+<td>
+<span class="listing-title">Lec 8</span>
+</td>
+<td>
+<span class="listing-summary">Probability primer covering sample spaces, random variables, expectation, and linearity of expectation, followed by average-case O(n log n) analysis of Randomized Quicksort using indicator random variables.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-8/Lecture-8.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-listing-title-sort="Lec 9">
+<td>
+<span class="listing-lec_date">2026-06-02</span>
+</td>
+<td>
+<span class="listing-title">Lec 9</span>
+</td>
+<td>
+<span class="listing-summary">Selection problem, Randomized Quickselect, Deterministic Select algorithm, Median-of-Medians, analysis of worst-case linear time selection.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-9/Lecture-9.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-listing-title-sort="Lec 10">
+<td>
+<span class="listing-lec_date">2026-06-02</span>
+</td>
+<td>
+<span class="listing-title">Lec 10</span>
+</td>
+<td>
+<span class="listing-summary">Foundations of Dynamic Programming: Fibonacci via memoization and bottom-up DP, Longest Common Subsequence (LCS) problem, optimal substructure, and O(mn) DP solution.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-10/Lecture-10.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="10" data-listing-title-sort="Lec 11">
+<td>
+<span class="listing-lec_date">2026-06-04</span>
+</td>
+<td>
+<span class="listing-title">Lec 11</span>
+</td>
+<td>
+<span class="listing-summary">Matrix Chain Multiplication, interval DP formulation, Catalan numbers, RNA Secondary Structure Prediction as interval DP.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-11/Lecture-11.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="11" data-listing-title-sort="Lec 12">
+<td>
+<span class="listing-lec_date">2026-06-04</span>
+</td>
+<td>
+<span class="listing-title">Lec 12</span>
+</td>
+<td>
+<span class="listing-summary">Graph terminology, NP-hard problems (clique, vertex cover, independent set), MWIS on Trees via DP, Corporate Party Problem.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-12/Lecture-12.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="12" data-listing-title-sort="Lec 13">
+<td>
+<span class="listing-lec_date">2026-06-05</span>
+</td>
+<td>
+<span class="listing-title">Lec 13</span>
+</td>
+<td>
+<span class="listing-summary">Greedy algorithm design paradigm, Interval Scheduling problem, Earliest-finish-time-first algorithm, proof of optimality via exchange argument.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-13/Lecture-13.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="13" data-listing-title-sort="Lec 14">
+<td>
+<span class="listing-lec_date">2026-06-05</span>
+</td>
+<td>
+<span class="listing-title">Lec 14</span>
+</td>
+<td>
+<span class="listing-summary">Huffman coding, prefix-free codes, optimal prefix code via greedy tree merging, proof of optimality via exchange argument.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-14/Lecture-14.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="14" data-listing-title-sort="Lec 15">
+<td>
+<span class="listing-lec_date">2026-06-09</span>
+</td>
+<td>
+<span class="listing-title">Lec 15</span>
+</td>
+<td>
+<span class="listing-summary">Minimum Spanning Tree definition, cut and cycle properties, Kruskal’s algorithm with Union-Find, time complexity analysis.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-15/Lecture-15.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="15" data-listing-title-sort="Lec 16">
+<td>
+<span class="listing-lec_date">2026-06-09</span>
+</td>
+<td>
+<span class="listing-title">Lec 16</span>
+</td>
+<td>
+<span class="listing-summary">Prim’s algorithm with priority queue, Boruvka’s algorithm for parallel MST, exchange arguments for greedy correctness.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-16/Lecture-16.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+<tr data-index="16" data-listing-title-sort="Lec 17">
+<td>
+<span class="listing-lec_date">2026-06-11</span>
+</td>
+<td>
+<span class="listing-title">Lec 17</span>
+</td>
+<td>
+<span class="listing-summary">Matroid theory — definition, axioms, examples (graphic, uniform, partition), bases, rank function.</span>
+</td>
+<td>
+<span class="listing-slides"><a href="Lectures/Lecture-17/Lecture-17.html" target="_blank"><i class="bi bi-file-earmark-slides"></i></a></span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Lecture</th>
+<th style="text-align: left;">Learning Objectives</th>
+<th style="text-align: left;">Topics</th>
+<th style="text-align: left;">Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1‑5</strong></td>
+<td style="text-align: left;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
+<td style="text-align: left;">Asymptotic Analysis, Recurrences</td>
+<td style="text-align: left;">T1: Ch 1-3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>6‑9</strong></td>
+<td style="text-align: left;">Sorting lower bounds, randomized algorithms.</td>
+<td style="text-align: left;">D&amp;C, Quicksort, Selection</td>
+<td style="text-align: left;">T1: Ch 4, 7-9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>10‑11</strong></td>
+<td style="text-align: left;">Formulate and solve DP problems.</td>
+<td style="text-align: left;">Dynamic Programming</td>
+<td style="text-align: left;">T1: Ch 15</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>12‑17</strong></td>
+<td style="text-align: left;">Greedy strategies, matroids, MST.</td>
+<td style="text-align: left;">Greedy, Matroids, MST</td>
+<td style="text-align: left;">T1: Ch 16, 23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>18‑21</strong></td>
+<td style="text-align: left;">Average-case and amortized analysis.</td>
+<td style="text-align: left;">Amortized Analysis</td>
+<td style="text-align: left;">T1: Ch 17</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>22‑26</strong></td>
+<td style="text-align: left;">Network flow modelling.</td>
+<td style="text-align: left;">Network Flow</td>
+<td style="text-align: left;">T1: Ch 26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>27‑33</strong></td>
+<td style="text-align: left;">Complexity classes and NP-Completeness.</td>
+<td style="text-align: left;">Randomization, P, NP, NP-C</td>
+<td style="text-align: left;">T1: Ch 5, 34</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>34‑37</strong></td>
+<td style="text-align: left;">Hard problem techniques.</td>
+<td style="text-align: left;">Backtracking, B&amp;B, Approx.</td>
+<td style="text-align: left;">T1: Ch 35, R2, R4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>38‑40</strong></td>
+<td style="text-align: left;">Linear Programming.</td>
+<td style="text-align: left;">Linear Programming</td>
+<td style="text-align: left;">T1: Ch 29</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="assignments" class="level2">
+<h2 class="anchored" data-anchor-id="assignments">Assignments</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Assignments/assignment-01/index.html">Assignment 1</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Due:</strong> 30 Jun 2026, 2:00 PM &nbsp;|&nbsp; <strong>Weight:</strong> 10% &nbsp;|&nbsp; <strong>Submission:</strong> Individual &nbsp;|&nbsp; <strong>Final mark:</strong> Score (out of 50) × Viva ÷ 10</p>
+</div>
+</div>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice Problems</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Practice/asymptotic-notation.html">Asymptotic Notation</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Big-Oh, Big-Theta, Big-Omega — comparing growth rates. 4 problems.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Practice/recurrence-relations.html">Recurrence Relations</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Substitution method, Master theorem, two-variable recurrences. 5 problems.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Practice/divide-and-conquer.html">Divide &amp; Conquer</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Merge sort variants, missing integer, MST, convex polygon, matrix search. 7 problems.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Practice/greedy-algorithms.html">Greedy Algorithms</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Interval scheduling, interval stabbing, cookie assignment, knapsack. 5 problems.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="Practice/dynamic-programming.html">Dynamic Programming</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>String interleaving, petrol pump stops, subset sum. 3 problems.</p>
+</div>
+</div>
+</section>
+<section id="quizzes" class="level2">
+<h2 class="anchored" data-anchor-id="quizzes">Quizzes</h2>
+<ul>
+<li><a href="Quizzes/quiz-01/quiz-01.html">Quiz 01</a> (Question &amp; Solution)</li>
+<li><a href="Quizzes/quiz-02/quiz-02.html">Quiz 02</a> (Question &amp; Solution)</li>
+<li><a href="Quizzes/quiz-03/quiz-03.html">Quiz 03</a> (Question &amp; Solution)</li>
+<li><a href="Quizzes/quiz-04/quiz-04.html">Quiz 04</a> (Question)</li>
+<li><a href="Quizzes/quiz-05/quiz-05.html">Quiz 05</a> (Question &amp; Solution)</li>
+</ul>
+<style>
+/* Lecture listing table */
+div#lecture-listing table {
+  width: 100%;
+  border: none;
+  margin-top: 0.5rem;
+}
+div#lecture-listing table thead {
+  display: none !important;
+}
+div#lecture-listing table td {
+  padding: 0.6rem 0.5rem !important;
+  vertical-align: top;
+  border-bottom: 1px solid #f0f0f0 !important;
+}
+div#lecture-listing table tr:last-child td {
+  border-bottom: none !important;
+}
+div#lecture-listing table tr:hover {
+  background-color: #fcfcfc !important;
+}
+div#lecture-listing table td:first-child {
+  width: 110px;
+  min-width: 110px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.85rem;
+  white-space: nowrap !important;
+}
+div#lecture-listing table td:nth-child(2) {
+  font-weight: 600;
+  color: #2b2b88;
+  font-size: 0.95rem;
+}
+div#lecture-listing table td:nth-child(3) {
+  color: #555;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+div#lecture-listing table td:nth-child(4) {
+  width: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+div#lecture-listing table td:nth-child(4) a {
+  color: #d71920;
+  text-decoration: none;
+}
+div#lecture-listing table td:nth-child(4) a:hover {
+  opacity: 0.7;
+}
+/* Syllabus table */
+.panel-tabset table {
+  font-size: 0.9rem;
+}
+.panel-tabset table td, .panel-tabset table th {
+  padding: 0.5rem 0.75rem;
+}
+</style>
+
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/daa\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
