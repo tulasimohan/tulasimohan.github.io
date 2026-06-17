@@ -67,9 +67,43 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+window.KATEX_MACROS = {
+    "\\AC": "\\mathsf{AC}",
+    "\\bra": "\\left( #1 \\right)",
+    "\\pmone": "\\{-1, 1\\}",
+    "\\seerank": "\\mathrm{rank}",
+    "\\ftwo": "\\mathbb{F}_2",
+    "\\reals": "\\mathbb{R}",
+    "\\zo": "\\{0, 1\\}",
+    "\\lepsinv": "\\log(1/\\epsilon)",
+    "\\bigo": "O\\left( #1 \\right)",
+    "\\ans": "\\log \\binom{n}{\\log(1/\\epsilon)}",
+    "\\distP": "\\mathcal{P}",
+    "\\OR": "\\mathrm{OR}",
+    "\\eps": "\\epsilon"
+};
+</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -147,7 +181,7 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Given <span class="math inline">\(n\)</span> points in a 2D plane, find the pair with the smallest Euclidean distance. A brute-force <span class="math inline">\(O(n^2)\)</span> check of all pairs will not receive full credit.</p>
+<p>Given <span class="math inline">n</span> points in a 2D plane, find the pair with the smallest Euclidean distance. A brute-force <span class="math inline">O(n^2)</span> check of all pairs will not receive full credit.</p>
 <p>Your program must output the minimum Euclidean distance (rounded to 6 decimal places) and the coordinates of the two closest points.</p>
 </div>
 </div>
@@ -162,8 +196,8 @@ Input Format
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Line 1: integer <span class="math inline">\(n\)</span> (<span class="math inline">\(2 \le n \le 10^5\)</span>)</li>
-<li>Lines 2 to <span class="math inline">\(n+1\)</span>: <code>x y</code> — floating-point coordinates. No two points coincide within the same input set.</li>
+<li>Line 1: integer <span class="math inline">n</span> (<span class="math inline">2 \le n \le 10^5</span>)</li>
+<li>Lines 2 to <span class="math inline">n+1</span>: <code>x y</code> — floating-point coordinates. No two points coincide within the same input set.</li>
 </ul>
 </div>
 </div>
@@ -193,7 +227,7 @@ Tie-breaking
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If multiple pairs share the same minimum distance, output the pair with the smallest <span class="math inline">\(x\)</span>-coordinate for the first point (then smallest <span class="math inline">\(y\)</span>), then the same for the second point.</p>
+<p>If multiple pairs share the same minimum distance, output the pair with the smallest <span class="math inline">x</span>-coordinate for the first point (then smallest <span class="math inline">y</span>), then the same for the second point.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled" title="Sample">

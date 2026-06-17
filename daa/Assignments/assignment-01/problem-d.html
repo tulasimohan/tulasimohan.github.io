@@ -67,9 +67,43 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+window.KATEX_MACROS = {
+    "\\AC": "\\mathsf{AC}",
+    "\\bra": "\\left( #1 \\right)",
+    "\\pmone": "\\{-1, 1\\}",
+    "\\seerank": "\\mathrm{rank}",
+    "\\ftwo": "\\mathbb{F}_2",
+    "\\reals": "\\mathbb{R}",
+    "\\zo": "\\{0, 1\\}",
+    "\\lepsinv": "\\log(1/\\epsilon)",
+    "\\bigo": "O\\left( #1 \\right)",
+    "\\ans": "\\log \\binom{n}{\\log(1/\\epsilon)}",
+    "\\distP": "\\mathcal{P}",
+    "\\OR": "\\mathrm{OR}",
+    "\\eps": "\\epsilon"
+};
+</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -148,7 +182,7 @@ Problem
 </div>
 <div class="callout-body-container callout-body">
 <p>A <strong>spanning tree</strong> of an undirected graph is a subgraph that is a tree (connected and acyclic) and includes all vertices. A <strong>minimum spanning tree (MST)</strong> is a spanning tree whose total edge weight is minimised.</p>
-<p>You are given an undirected weighted graph with <span class="math inline">\(n\)</span> vertices and <span class="math inline">\(m\)</span> edges. Find its MST. If the graph is disconnected, output <code>DISCONNECTED</code>. Otherwise output the total weight, the number of edges in the MST, and the edges themselves.</p>
+<p>You are given an undirected weighted graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. Find its MST. If the graph is disconnected, output <code>DISCONNECTED</code>. Otherwise output the total weight, the number of edges in the MST, and the edges themselves.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
@@ -162,8 +196,8 @@ Input Format
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Line 1: <code>n m</code> — number of vertices <span class="math inline">\((1..n)\)</span> and edges, with <span class="math inline">\(1 \le n \le 10^5\)</span>, <span class="math inline">\(1 \le m \le 2 \times 10^5\)</span></li>
-<li>Next <span class="math inline">\(m\)</span> lines: <code>u v w</code> — an undirected edge between vertices <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> with integer weight <span class="math inline">\(w\)</span> (<span class="math inline">\(-10^6 \le w \le 10^6\)</span>). No self-loops.</li>
+<li>Line 1: <code>n m</code> — number of vertices <span class="math inline">(1..n)</span> and edges, with <span class="math inline">1 \le n \le 10^5</span>, <span class="math inline">1 \le m \le 2 \times 10^5</span></li>
+<li>Next <span class="math inline">m</span> lines: <code>u v w</code> — an undirected edge between vertices <span class="math inline">u</span> and <span class="math inline">v</span> with integer weight <span class="math inline">w</span> (<span class="math inline">-10^6 \le w \le 10^6</span>). No self-loops.</li>
 </ul>
 </div>
 </div>
@@ -179,8 +213,8 @@ Output Format
 <div class="callout-body-container callout-body">
 <ul>
 <li>Line 1: total weight of the MST (integer). If the graph is disconnected, output <code>DISCONNECTED</code> and stop.</li>
-<li>Line 2: integer <span class="math inline">\(k\)</span> — number of edges in the MST</li>
-<li>Next <span class="math inline">\(k\)</span> lines: <code>u v w</code> — edges in the MST, with <span class="math inline">\(u &lt; v\)</span>, sorted lexicographically (by <span class="math inline">\(u\)</span> then <span class="math inline">\(v\)</span>).</li>
+<li>Line 2: integer <span class="math inline">k</span> — number of edges in the MST</li>
+<li>Next <span class="math inline">k</span> lines: <code>u v w</code> — edges in the MST, with <span class="math inline">u &lt; v</span>, sorted lexicographically (by <span class="math inline">u</span> then <span class="math inline">v</span>).</li>
 </ul>
 </div>
 </div>

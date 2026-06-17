@@ -67,9 +67,43 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+window.KATEX_MACROS = {
+    "\\AC": "\\mathsf{AC}",
+    "\\bra": "\\left( #1 \\right)",
+    "\\pmone": "\\{-1, 1\\}",
+    "\\seerank": "\\mathrm{rank}",
+    "\\ftwo": "\\mathbb{F}_2",
+    "\\reals": "\\mathbb{R}",
+    "\\zo": "\\{0, 1\\}",
+    "\\lepsinv": "\\log(1/\\epsilon)",
+    "\\bigo": "O\\left( #1 \\right)",
+    "\\ans": "\\log \\binom{n}{\\log(1/\\epsilon)}",
+    "\\distP": "\\mathcal{P}",
+    "\\OR": "\\mathrm{OR}",
+    "\\eps": "\\epsilon"
+};
+</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -147,8 +181,8 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>subsequence</strong> is obtained by deleting zero or more characters from a string (not necessarily contiguous) while preserving the relative order of the remaining characters. The <strong>longest common subsequence (LCS)</strong> of two strings <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is the longest string that is a subsequence of both.</p>
-<p>Given two strings <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, compute the length of their LCS and reconstruct <strong>one</strong> optimal LCS string.</p>
+<p>A <strong>subsequence</strong> is obtained by deleting zero or more characters from a string (not necessarily contiguous) while preserving the relative order of the remaining characters. The <strong>longest common subsequence (LCS)</strong> of two strings <span class="math inline">A</span> and <span class="math inline">B</span> is the longest string that is a subsequence of both.</p>
+<p>Given two strings <span class="math inline">A</span> and <span class="math inline">B</span>, compute the length of their LCS and reconstruct <strong>one</strong> optimal LCS string.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
@@ -162,8 +196,8 @@ Input Format
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Line 1: string <span class="math inline">\(A\)</span> (length <span class="math inline">\(m\)</span>, <span class="math inline">\(1 \le m \le 5000\)</span>, lowercase a–z)</li>
-<li>Line 2: string <span class="math inline">\(B\)</span> (length <span class="math inline">\(n\)</span>, <span class="math inline">\(1 \le n \le 5000\)</span>, lowercase a–z)</li>
+<li>Line 1: string <span class="math inline">A</span> (length <span class="math inline">m</span>, <span class="math inline">1 \le m \le 5000</span>, lowercase a–z)</li>
+<li>Line 2: string <span class="math inline">B</span> (length <span class="math inline">n</span>, <span class="math inline">1 \le n \le 5000</span>, lowercase a–z)</li>
 </ul>
 </div>
 </div>
