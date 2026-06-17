@@ -1,18 +1,6 @@
 [
   {
-    "listing": "/teaching/daa.html",
-    "items": []
-  },
-  {
-    "listing": "/news.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
-    "listing": "/about.html",
+    "listing": "/teaching.html",
     "items": []
   },
   {
@@ -20,11 +8,15 @@
     "items": []
   },
   {
-    "listing": "/teaching.html",
-    "items": [
-      "/teaching/advanced-algorithms.html",
-      "/teaching/daa.html",
-      "/teaching/DSA_2026/dsa-solutions.html"
-    ]
+    "listing": "/about.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/news.html",
+    "items": []
   }
 ]
