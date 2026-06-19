@@ -1,4 +1,5 @@
 ---
+publish: yes
 title: "CS F364: Design and Analysis of Algorithms"
 subtitle: "Course Handout — Summer Term 2026"
 author: "Tulasimohan Molli"
