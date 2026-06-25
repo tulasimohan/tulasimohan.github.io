@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Problem C: Huffman Coding – Tulasimohan Molli</title>
+<title>Problem D: Kruskal’s Minimum Spanning Tree – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ad83056229f73722ee5fcbcf40f749a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4964e8d82315c42bd34ff6dd1e84ceb0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -191,7 +191,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Problem C: Huffman Coding</h1>
+<h1 class="title">Problem D: Kruskal’s Minimum Spanning Tree</h1>
 <p class="subtitle lead">CS F364 — Assignment 1</p>
 </div>
 
@@ -220,15 +220,8 @@ Problem
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>prefix-free binary code</strong> assigns a unique binary string (code word) to each character such that no code word is a prefix of another. This guarantees unambiguous decoding. Given a set of characters with known frequencies, the goal is to construct an optimal prefix-free code that minimises the expected number of bits per character.</p>
-<p>You are given <span class="math inline">n</span> distinct characters and their frequencies, followed by a message string <span class="math inline">S</span> composed of these characters. Your program must:</p>
-<ol type="1">
-<li>Build the binary tree representing the optimal prefix-free code.</li>
-<li>Output the tree in <strong>preorder</strong> (internal nodes as <code>*</code>, leaf nodes as the character).</li>
-<li>Generate the code word for each character.</li>
-<li>Encode the message <span class="math inline">S</span> into a bit-string.</li>
-<li>Compute the <strong>total expected encoding length</strong> in bits (sum of frequency <span class="math inline">\times</span> code-word length over all characters).</li>
-</ol>
+<p>A <strong>spanning tree</strong> of an undirected graph is a subgraph that is a tree (connected and acyclic) and includes all vertices. A <strong>minimum spanning tree (MST)</strong> is a spanning tree whose total edge weight is minimised.</p>
+<p>You are given an undirected weighted graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. Find its MST. If the graph is disconnected, output <code>DISCONNECTED</code>. Otherwise output the total weight, the number of edges in the MST, and the edges themselves.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Input Format">
@@ -242,9 +235,8 @@ Input Format
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Line 1: integer <span class="math inline">n</span> (number of distinct characters)</li>
-<li>Lines 2 to <span class="math inline">n+1</span>: <code>char freq</code> — a lowercase letter and its integer frequency (<span class="math inline">\ge 1</span>)</li>
-<li>Line <span class="math inline">n+2</span>: string <span class="math inline">S</span> to encode (composed only of the <span class="math inline">n</span> characters above)</li>
+<li>Line 1: <code>n m</code> — number of vertices <span class="math inline">(1..n)</span> and edges, with <span class="math inline">1 \le n \le 10^5</span>, <span class="math inline">1 \le m \le 2 \times 10^5</span></li>
+<li>Next <span class="math inline">m</span> lines: <code>u v w</code> — an undirected edge between vertices <span class="math inline">u</span> and <span class="math inline">v</span> with integer weight <span class="math inline">w</span> (<span class="math inline">-10^6 \le w \le 10^6</span>). No self-loops.</li>
 </ul>
 </div>
 </div>
@@ -259,10 +251,9 @@ Output Format
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Line 1: tree in preorder (internal nodes as <code>*</code>, leaf nodes as the character, space-separated)</li>
-<li>Next <span class="math inline">n</span> lines: <code>char code</code> — the Huffman code for each character (sorted alphabetically by char)</li>
-<li>Line <span class="math inline">n+2</span>: the encoded bit-string for <span class="math inline">S</span></li>
-<li>Line <span class="math inline">n+3</span>: integer — total expected encoding length in bits (sum of freq <span class="math inline">\times</span> code-word length)</li>
+<li>Line 1: total weight of the MST (integer). If the graph is disconnected, output <code>DISCONNECTED</code> and stop.</li>
+<li>Line 2: integer <span class="math inline">k</span> — number of edges in the MST</li>
+<li>Next <span class="math inline">k</span> lines: <code>u v w</code> — edges in the MST, with <span class="math inline">u &lt; v</span>, sorted lexicographically (by <span class="math inline">u</span> then <span class="math inline">v</span>).</li>
 </ul>
 </div>
 </div>
@@ -277,26 +268,20 @@ Sample
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Input</strong></p>
-<pre><code>6
-a 45
-b 13
-c 12
-d 16
-e 9
-f 5
-bad</code></pre>
+<pre><code>4 5
+1 2 1
+1 3 4
+2 3 2
+2 4 3
+3 4 5</code></pre>
 <p><strong>Output</strong></p>
-<pre><code>* a * d * b * * c * e f
-a 0
-b 101
-c 100
-d 111
-e 1101
-f 1100
-1010111
-224</code></pre>
-<p><em>Explanation:</em> The tree preorder reads <code>*</code> for internal nodes and the letter for leaves. Code lengths: a=1, b=3, c=3, d=3, e=4, f=4. Total = <span class="math inline">45\times1 + 13\times3 + 12\times3 + 16\times3 + 9\times4 + 5\times4 = 224</span>.</p>
-<p><a href="tests/C-sample.in">Download sample input</a></p>
+<pre><code>6
+3
+1 2 1
+2 3 2
+2 4 3</code></pre>
+<p><em>Explanation:</em> Edges in the MST: (1,2,1), (2,3,2), (2,4,3). Total weight 6.</p>
+<p><a href="tests/D-sample.in">Download sample input</a></p>
 </div>
 </div>
 
