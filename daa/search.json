@@ -1,0 +1,1262 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "",
+    "text": "Instructor: Tulasimohan Molli\nTerm: May–July 2026"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-05-21\nIntroduction to Algorithms\n📊\n\n\nLecture 2\n2026-05-21\nIntroduction to Sorting & Asymptotic Analysis\n📊\n\n\nLecture 3\n2026-05-21\nAsymptotic Notation & Merge Sort\n📊\n\n\nLecture 4\n2026-05-21\nSolving Recurrences\n📊\n\n\nLecture 5\n2026-05-21\nDivide and Conquer: Maximum Subarray\n📊\n\n\nLecture 6\n2026-05-21\nClosest Pair of Points in 2D\n📊\n\n\nLecture 7\n2026-05-21\nSorting Lower Bounds & Quicksort\n📊\n\n\nLecture 8\n2026-05-21\nProbability Primer & Randomized Quicksort\n📊\n\n\nLecture 9\n2026-06-02\nSelection: Randomized & Deterministic\n📊\n\n\nLecture 10\n2026-06-02\nDynamic Programming: Fibonacci & LCS\n📊\n\n\nLecture 11\n2026-06-04\nMatrix Chain Multiplication\n📊\n\n\nLecture 12\n2026-06-04\nGraphs & Dynamic Programming on Trees\n📊\n\n\nLecture 13\n2026-06-05\nGreedy: Interval Scheduling\n📊\n\n\nLecture 14\n2026-06-05\nHuffman Coding\n📊\n\n\nLecture 15\n2026-06-09\nMinimum Spanning Trees\n📊\n\n\nLecture 16\n2026-06-09\nMST Algorithms\n📊\n\n\nLecture 17\n2026-06-11\nMatroids\n📊\n\n\nLecture 18\n2026-06-11\nMatroids: Greedy Optimization\n📊\n\n\nLecture 19\n2026-06-29\nAverage Case Analysis\n📊\n\n\nLecture 20\n2026-06-12\nAmortized Analysis\n📊\n\n\nLecture 21\n2026-06-12\nFurther Amortized Analysis\n📊\n\n\nLecture 22\n\nNetwork Flow\n📊\n\n\nLecture 23\n\nMax-Flow Min-Cut Theorem & Ford-Fulkerson\n📊\n\n\nLecture 24\n\nEdmonds-Karp Algorithm & Bipartite Matching\n📊\n\n\nLecture 25\n\nRandomized Algorithms & Equality Checking\n📊\n\n\nLecture 26\n\nComputational Models & Decision Problems\n📊\n\n\nLecture 27\n\nP, NP, and Reductions\n📊\n\n\nLecture 28\n\nCook-Levin Theorem\n📊\n\n\nLecture 29\n\nTime Complexity Classes\n📊\n\n\nLecture 30\n\nNP-Completeness: CLIQUE and Vertex Cover\n📊\n\n\nLecture 31\n\nApproximation Algorithms\n📊\n\n\nLecture 32\n\nApproximation Algorithms (contd.)\n📊\n\n\nLecture 33\n\nMetric TSP Approximation\n📊\n\n\nLecture 34\n\nBacktracking Principles\n📊\n\n\nLecture 35\n\nBranch and Bound\n📊\n\n\nLecture 36\n\nIntroduction to Linear Programming\n📊"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#overview",
+    "href": "lectures/lec-22-network-flow.html#overview",
+    "title": "Tulasimohan Molli",
+    "section": "Overview",
+    "text": "Overview\n\n\nThe definition of the network flow problem\n\n\n\n\nMaximum Flow and Minimum Cut\n\n\n\n\nThe Ford-Fulkerson algorithm\n\n\n\n\nThe maxflow-mincut theorem\n\n\n\n\nThe bipartite matching problem"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#network-flow-problem",
+    "href": "lectures/lec-22-network-flow.html#network-flow-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Network Flow Problem",
+    "text": "Network Flow Problem\nWe are given a directed graph \\(G = (V, E)\\), a start node \\(s\\), and a sink node \\(t\\). Each edge \\(e\\) in \\(G\\) has an associated non-negative capacity \\(c(e)\\), where for all non-edges it is implicitly assumed that the capacity is \\(0\\).\n\n\n\n\nFlow network example\n\n\n\n\nGoal: Push as much flow as possible from \\(s\\) to \\(t\\) in the graph, respecting:\n\n\n\nCapacity constraint: For any edge, flow \\(f(e) \\le c(e)\\)\n\n\n\n\nFlow conservation: For any vertex \\(v \\notin \\{s, t\\}\\), flow in equals flow out: \\(\\sum_u f(u,v) = \\sum_u f(v,u)\\)"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#flow-formalisms",
+    "href": "lectures/lec-22-network-flow.html#flow-formalisms",
+    "title": "Tulasimohan Molli",
+    "section": "Flow Formalisms",
+    "text": "Flow Formalisms\n\n\nWhen \\((u,v) \\notin E\\), \\(f(u,v) = 0\\).\n\n\n\n\nThe value \\(|f|\\) of a flow \\(f\\) is defined as \\(|f| = \\sum_v f(s,v) - \\sum_v f(v,s)\\).\n\n\n\n\nTypically no edge into the source, so \\(\\sum_v f(v,s) = 0\\).\n\n\n\n\n\\(\\sum_v f(v,s)\\) becomes significant in the residual network (discussed later).\n\n\n\nMaximum-flow Problem: Given a flow network \\(G\\) with source \\(s\\) and sink \\(t\\), find a flow of maximum value."
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#network-flow-example",
+    "href": "lectures/lec-22-network-flow.html#network-flow-example",
+    "title": "Tulasimohan Molli",
+    "section": "Network Flow Example",
+    "text": "Network Flow Example\n\n\n\n\nMax flow example"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#maximum-flow-and-minimum-cut",
+    "href": "lectures/lec-22-network-flow.html#maximum-flow-and-minimum-cut",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum Flow and Minimum Cut",
+    "text": "Maximum Flow and Minimum Cut\n\nMax flow and min cut\n\n\n\nTwo very rich algorithmic problems\n\n\n\n\nCornerstone problems in combinatorial optimization\n\n\n\n\nBeautiful mathematical duality\n\n\n\nNontrivial applications\n\n\nData Mining (dense subgraph mining)\nAirline scheduling\nBipartite matching\nImage segmentation\nNetwork reliability\nDistributed computing\nNetwork intrusion detection\nMany more…"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#minimum-cut-problem",
+    "href": "lectures/lec-22-network-flow.html#minimum-cut-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Minimum Cut Problem",
+    "text": "Minimum Cut Problem\n\n\n\n\nA cut in a flow network"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#cut-definition",
+    "href": "lectures/lec-22-network-flow.html#cut-definition",
+    "title": "Tulasimohan Molli",
+    "section": "Cut Definition",
+    "text": "Cut Definition\n\nAn \\(s-t\\) cut is a partition \\((A, B)\\) such that \\(s \\in A\\) and \\(t \\in B\\).\n\n\nThe capacity of a cut \\((A, B)\\) is \\(cap(A, B) = \\sum_{e \\text{ out of } A} c(e)\\).\n\n\n\n\n\nCut capacity illustration"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#cut-another-view",
+    "href": "lectures/lec-22-network-flow.html#cut-another-view",
+    "title": "Tulasimohan Molli",
+    "section": "Cut: Another View",
+    "text": "Cut: Another View\n\n\n\n\nAnother cut example\n\n\n\nIntuitively: we cut the graph into two parts separating \\(s\\) from \\(t\\), and the cut capacity is the total capacity of edges crossing from the \\(s\\)-side to the \\(t\\)-side."
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#minimum-cut-problem-1",
+    "href": "lectures/lec-22-network-flow.html#minimum-cut-problem-1",
+    "title": "Tulasimohan Molli",
+    "section": "Minimum Cut Problem",
+    "text": "Minimum Cut Problem\n\nFind an \\(s-t\\) cut of minimum capacity.\n\n\n\n\n\nMinimum cut illustration\n\n\n\nThe minimum cut gives a natural upper bound on the maximum flow — we cannot push more flow than the capacity of any cut."
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#flows",
+    "href": "lectures/lec-22-network-flow.html#flows",
+    "title": "Tulasimohan Molli",
+    "section": "Flows",
+    "text": "Flows\n\n\n\n\nFlow example 1\n\n\n\nEach edge shows \\(f(e)/c(e)\\) — flow over capacity."
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#flows-1",
+    "href": "lectures/lec-22-network-flow.html#flows-1",
+    "title": "Tulasimohan Molli",
+    "section": "Flows",
+    "text": "Flows\n\n\n\n\nFlow example 2\n\n\n\nCheck flow conservation at each interior vertex!"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#maximum-flow-problem",
+    "href": "lectures/lec-22-network-flow.html#maximum-flow-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum Flow Problem",
+    "text": "Maximum Flow Problem\n\nFind an \\(s-t\\) flow of maximum value.\n\n\n\n\n\nMaximum flow example"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#flows-and-cuts-key-lemma",
+    "href": "lectures/lec-22-network-flow.html#flows-and-cuts-key-lemma",
+    "title": "Tulasimohan Molli",
+    "section": "Flows and Cuts: Key Lemma",
+    "text": "Flows and Cuts: Key Lemma\n\nLet \\(f\\) be any flow and let \\((A, B)\\) be any \\(s-t\\) cut. Then the net flow sent across the cut equals the amount leaving \\(s\\):\n\n\\(\\displaystyle\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) = |f|\\)\n\n\n\n\n\n\nFlow across cut"
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#flows-and-cuts-lemma-visualization",
+    "href": "lectures/lec-22-network-flow.html#flows-and-cuts-lemma-visualization",
+    "title": "Tulasimohan Molli",
+    "section": "Flows and Cuts: Lemma Visualization",
+    "text": "Flows and Cuts: Lemma Visualization\n\nLet \\(f\\) be any flow and let \\((A, B)\\) be any \\(s-t\\) cut. Then: \\(\\displaystyle\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) = |f|\\)\n\n\n\n\n\nFlow across cut — annotated\n\n\n\nProof intuition: Flow conservation at each node in \\(A \\setminus \\{s\\}\\) cancels everything except flow out of \\(s\\)."
+  },
+  {
+    "objectID": "lectures/lec-22-network-flow.html#summary",
+    "href": "lectures/lec-22-network-flow.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nDefinition\n\n\n\n\nFlow network\nDirected graph \\(G=(V,E)\\) with capacities \\(c(e) \\ge 0\\), source \\(s\\), sink \\(t\\)\n\n\nFlow\n\\(f: E \\to \\mathbb{R}_{\\ge 0}\\) satisfying capacity and conservation\n\n\nFlow value\n\\(|f| = \\sum_v f(s,v) - \\sum_v f(v,s)\\)\n\n\n\\(s\\)-\\(t\\) cut\nPartition \\((A,B)\\) with \\(s \\in A\\), \\(t \\in B\\)\n\n\nCut capacity\n\\(cap(A,B) = \\sum_{e \\text{ out of } A} c(e)\\)\n\n\n\nNext: Max Flow Min Cut Theorem and Ford-Fulkerson algorithm."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#recap-flows-and-cuts",
+    "href": "lectures/lec-23-max-flow-min-cut.html#recap-flows-and-cuts",
+    "title": "Tulasimohan Molli",
+    "section": "Recap: Flows and Cuts",
+    "text": "Recap: Flows and Cuts\n\n\nFlow: Assignment \\(f(e)\\) to edges satisfying capacity and conservation\n\n\n\n\nCut: Partition \\((A,B)\\) separating \\(s\\) and \\(t\\)\n\n\n\n\nNet flow across cut: \\(\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) = |f|\\)\n\n\nWeak Duality: For any flow \\(f\\) and any \\(s\\)-\\(t\\) cut \\((A,B)\\): \\[|f| \\le cap(A,B)\\]"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#flows-and-cuts-lemma-proof",
+    "href": "lectures/lec-23-max-flow-min-cut.html#flows-and-cuts-lemma-proof",
+    "title": "Tulasimohan Molli",
+    "section": "Flows and Cuts: Lemma Proof",
+    "text": "Flows and Cuts: Lemma Proof\n\nLet \\(f\\) be any flow and let \\((A, B)\\) be any \\(s-t\\) cut. Then: \\(\\displaystyle\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) = |f|\\)\n\n\n\n\n\nFlow across cut"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#flows-and-cuts-lemma-another-view",
+    "href": "lectures/lec-23-max-flow-min-cut.html#flows-and-cuts-lemma-another-view",
+    "title": "Tulasimohan Molli",
+    "section": "Flows and Cuts: Lemma (Another View)",
+    "text": "Flows and Cuts: Lemma (Another View)\n\nLet \\(f\\) be any flow and let \\((A, B)\\) be any \\(s-t\\) cut. Then: \\(\\displaystyle\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) = |f|\\)\n\n\n\n\n\nFlow across cut — annotated"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#lemma-proof",
+    "href": "lectures/lec-23-max-flow-min-cut.html#lemma-proof",
+    "title": "Tulasimohan Molli",
+    "section": "Lemma Proof",
+    "text": "Lemma Proof\n\nProof. \\[\n\\begin{aligned}\n|f| &= \\displaystyle\\sum_{e \\text{ out of } s} f(e) \\\\\n    &= \\displaystyle\\sum_{v \\in A} \\left( \\sum_{e \\text{ out of } v} f(e) - \\sum_{e \\text{ in to } v} f(e) \\right) \\\\\n    &= \\displaystyle\\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e).\n\\end{aligned}\n\\]\nThe second equality uses flow conservation at all \\(v \\in A \\setminus \\{s\\}\\), where \\(\\sum_{\\text{out}} f - \\sum_{\\text{in}} f = 0\\). At \\(s\\), it’s exactly \\(|f|\\). All internal edges in \\(A\\) cancel out."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#weak-duality",
+    "href": "lectures/lec-23-max-flow-min-cut.html#weak-duality",
+    "title": "Tulasimohan Molli",
+    "section": "Weak Duality",
+    "text": "Weak Duality\nWeak Duality: Let \\(f\\) be any flow, and let \\((A, B)\\) be any \\(s-t\\) cut. Then the value of the flow is at most the capacity of the cut:\n\n\\(|f| \\le cap(A, B)\\)\n\n\n\n\n\nWeak duality example\n\n\n\nIntuition: All flow from \\(s\\) to \\(t\\) must cross the cut, but total flow crossing cannot exceed total capacity of crossing edges."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#weak-duality-proof",
+    "href": "lectures/lec-23-max-flow-min-cut.html#weak-duality-proof",
+    "title": "Tulasimohan Molli",
+    "section": "Weak Duality: Proof",
+    "text": "Weak Duality: Proof\n\nLet \\(f\\) be any flow, and let \\((A, B)\\) be any \\(s-t\\) cut. Then \\(|f| \\le cap(A, B)\\).\n\n\nProof. \\[\n\\begin{aligned}\n|f| &= \\sum_{e \\text{ out of } A} f(e) - \\sum_{e \\text{ in to } A} f(e) \\\\\n    &\\le \\sum_{e \\text{ out of } A} f(e) \\qquad (\\text{since } \\sum_{e \\text{ in to } A} f(e) \\ge 0) \\\\\n    &\\le \\sum_{e \\text{ out of } A} c(e) \\qquad (\\text{since } f(e) \\le c(e)) \\\\\n    &= cap(A, B).\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#optimality-condition",
+    "href": "lectures/lec-23-max-flow-min-cut.html#optimality-condition",
+    "title": "Tulasimohan Molli",
+    "section": "Optimality Condition",
+    "text": "Optimality Condition\n\nLet \\(f\\) be any flow and \\((A, B)\\) be any cut. If \\(|f| = cap(A, B)\\), then \\(f\\) is a max flow and \\((A, B)\\) is a min cut.\n\n\n\n\n\nMax flow = min cut\n\n\n\nThis gives us a certificate of optimality: if we find a flow and a cut with equal value, both are optimal."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#greedy-max-flow-algorithm",
+    "href": "lectures/lec-23-max-flow-min-cut.html#greedy-max-flow-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Max Flow Algorithm",
+    "text": "Greedy Max Flow Algorithm\nGreedy Algorithm:\n\n\n1. Start with \\(f(e) = 0\\) for all edges\n\n\n\n\n2. Find an \\(s-t\\) path \\(P\\) where each edge has \\(f(e) &lt; c(e)\\)\n\n\n\n\n3. Augment flow along path \\(P\\)\n\n\n\n\n4. Repeat until stuck\n\n\n\n\n\n\nGreedy flow step 1"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#greedy-algorithm-step-2",
+    "href": "lectures/lec-23-max-flow-min-cut.html#greedy-algorithm-step-2",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Algorithm: Step 2",
+    "text": "Greedy Algorithm: Step 2\n\n\n\n\nGreedy flow step 2\n\n\n\nFind another path with available capacity."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#greedy-algorithm-step-3",
+    "href": "lectures/lec-23-max-flow-min-cut.html#greedy-algorithm-step-3",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Algorithm: Step 3",
+    "text": "Greedy Algorithm: Step 3\n\n\n\n\nGreedy flow step 3\n\n\n\nProblem: Greedy may get stuck at a suboptimal flow. We need the residual graph to allow “undoing” bad choices."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#residual-graph",
+    "href": "lectures/lec-23-max-flow-min-cut.html#residual-graph",
+    "title": "Tulasimohan Molli",
+    "section": "Residual Graph",
+    "text": "Residual Graph\n\n\n0.5\nFor an original edge \\(e = (u, v) \\in E\\): - \\(f(e)\\): flow on edge \\(e\\) - \\(c(e)\\): capacity of edge \\(e\\)\n\n0.5 \n\n\n\n0.5\nResidual edge: - Allows “undoing” flow sent - \\(e = (u, v)\\) forward, \\(e^R = (v, u)\\) backward - Residual capacity: \\[c_f(e) = \\begin{cases}\n    c(e) - f(e) & \\text{if } e \\in E \\\\\n    f(e)         & \\text{if } e^R \\in E\n  \\end{cases}\\]\n\n0.5 \n\n\nResidual Graph: \\(G_f = (V, E_f)\\) where \\(E_f = \\{e : f(e) &lt; c(e)\\} \\cup \\{e^R : c(e) &gt; 0\\}\\)"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#max-flow-min-cut-theorem",
+    "href": "lectures/lec-23-max-flow-min-cut.html#max-flow-min-cut-theorem",
+    "title": "Tulasimohan Molli",
+    "section": "Max Flow Min Cut Theorem",
+    "text": "Max Flow Min Cut Theorem\n\nIf \\(f\\) is a flow in a flow network \\(G = (V, E)\\) with source \\(s\\) and sink \\(t\\), then the following conditions are equivalent:\n\n\n\\(f\\) is a maximum flow in \\(G\\)\n\n\n\n\nThe residual network \\(G_f\\) contains no augmenting paths\n\n\n\n\n\\(|f| = cap(S, T)\\) for some cut \\((S, T)\\) with \\(s \\in S,\\ t \\in T\\)"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#proof-1-implies-2",
+    "href": "lectures/lec-23-max-flow-min-cut.html#proof-1-implies-2",
+    "title": "Tulasimohan Molli",
+    "section": "Proof: \\((1) \\implies (2)\\)",
+    "text": "Proof: \\((1) \\implies (2)\\)\n\nProof. Suppose for contradiction that \\(f\\) is a maximum flow but \\(G_f\\) has an augmenting path \\(p\\).\n\n\nLet \\(c_f(p) = \\min\\{c_f(e) : e \\in p\\} &gt; 0\\) be the residual capacity along \\(p\\).\n\n\n\n\nAugment \\(f\\) by \\(c_f(p)\\) units along \\(p\\) to get a new flow \\(f'\\)\n\n\n\n\nThen \\(|f'| = |f| + c_f(p) &gt; |f|\\), contradicting maximality of \\(f\\).\n\n\nThus a maximum flow cannot have any augmenting paths. ◻"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#proof-2-implies-3",
+    "href": "lectures/lec-23-max-flow-min-cut.html#proof-2-implies-3",
+    "title": "Tulasimohan Molli",
+    "section": "Proof: \\((2) \\implies (3)\\)",
+    "text": "Proof: \\((2) \\implies (3)\\)\n\nProof. Suppose \\(G_f\\) has no augmenting path, i.e., no path from \\(s\\) to \\(t\\) in \\(G_f\\).\nDefine \\(S = \\{v \\in V : \\text{there is a path from } s \\text{ to } v \\text{ in } G_f\\}\\) and \\(T = V \\setminus S\\).\n\n\n\\(s \\in S\\), \\(t \\notin S\\) (no \\(s\\)-\\(t\\) path in \\(G_f\\)), so \\((S,T)\\) is an \\(s\\)-\\(t\\) cut.\n\n\n\n\nFor any \\(u \\in S\\), \\(v \\in T\\):\n\nIf \\((u,v) \\in E\\), then \\(f(u,v) = c(u,v)\\) (otherwise \\((u,v) \\in E_f\\), placing \\(v\\) in \\(S\\))\nIf \\((v,u) \\in E\\), then \\(f(v,u) = 0\\) (otherwise \\(c_f(u,v) &gt; 0\\), placing \\(v\\) in \\(S\\))\n\n\n\n\n\nTherefore: \\(f(S,T) = \\sum_{u\\in S}\\sum_{v\\in T} c(u,v) = c(S,T)\\), so \\(|f| = cap(S,T)\\). ◻"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#proof-3-implies-1",
+    "href": "lectures/lec-23-max-flow-min-cut.html#proof-3-implies-1",
+    "title": "Tulasimohan Molli",
+    "section": "Proof: \\((3) \\implies (1)\\)",
+    "text": "Proof: \\((3) \\implies (1)\\)\n\nProof. If \\(|f| = cap(S,T)\\) for some cut, then by weak duality:\n\\[|f| = cap(S,T) \\ge \\text{value of any flow}\\]\nSo \\(f\\) must be a maximum flow. ◻\n\nThe three equivalences together form the Max Flow Min Cut Theorem — one of the most beautiful duality results in combinatorial optimization."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#ford-fulkerson-algorithm",
+    "href": "lectures/lec-23-max-flow-min-cut.html#ford-fulkerson-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Ford-Fulkerson Algorithm",
+    "text": "Ford-Fulkerson Algorithm\n\n\n\n\nFord-Fulkerson pseudocode\n\n\n\nFord-Fulkerson Method: 1. Initialize \\(f(e) = 0\\) for all \\(e\\) 2. While there exists an augmenting path \\(p\\) in \\(G_f\\): - Augment \\(f\\) by \\(c_f(p)\\) along \\(p\\) 3. Return \\(f\\)"
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#ford-fulkerson-example",
+    "href": "lectures/lec-23-max-flow-min-cut.html#ford-fulkerson-example",
+    "title": "Tulasimohan Molli",
+    "section": "Ford-Fulkerson Example",
+    "text": "Ford-Fulkerson Example\n\n\n\n\nFord-Fulkerson example trace\n\n\n\nThe algorithm repeatedly finds augmenting paths and increases flow until no path remains."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#flow-augmentation",
+    "href": "lectures/lec-23-max-flow-min-cut.html#flow-augmentation",
+    "title": "Tulasimohan Molli",
+    "section": "Flow Augmentation",
+    "text": "Flow Augmentation\nSuppose \\(f\\) is a flow in \\(G\\) and \\(f'\\) is a flow in the residual network \\(G_f\\).\n\\[\n(f \\uparrow f')(u, v) = \\begin{cases}\n    f(u, v) + f'(u, v) - f'(v, u) & \\text{if } (u, v) \\in E \\\\\n    0                              & \\text{otherwise}\n\\end{cases}\n\\]\n\n\\(|f \\uparrow f'| = |f| + |f'|\\).\n\nThis shows augmentation adds the residual flow value to the original flow."
+  },
+  {
+    "objectID": "lectures/lec-23-max-flow-min-cut.html#summary",
+    "href": "lectures/lec-23-max-flow-min-cut.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nKey Result\n\n\n\n\nWeak duality\n\\(|f| \\le cap(A,B)\\) for any flow \\(f\\) and cut \\((A,B)\\)\n\n\nMax Flow Min Cut Theorem\nMax flow value = min cut capacity\n\n\nAugmenting path\nPath in \\(G_f\\) with positive residual capacity\n\n\nFord-Fulkerson\nRepeatedly find and augment along augmenting paths\n\n\n\nNext: Improving Ford-Fulkerson’s running time with Edmonds-Karp, and applications to bipartite matching."
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#running-time-of-ford-fulkerson",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#running-time-of-ford-fulkerson",
+    "title": "Tulasimohan Molli",
+    "section": "Running Time of Ford-Fulkerson",
+    "text": "Running Time of Ford-Fulkerson\nLet \\(n\\) be the number of nodes and \\(m\\) be the number of edges in \\(G\\).\n\nSince \\(m \\ge n/2\\), we simplify \\(O(m+n) = O(m)\\).{.fragment}\nThe while loop runs at most \\(f^*\\) iterations where \\(f^*\\) is the max flow value.{.fragment}\nIn each iteration, a path is found in the residual graph (\\(\\le 2m\\) edges).{.fragment}\nUsing DFS/BFS: finding path \\(P\\) takes \\(O(m)\\) time.{.fragment}\nAugmenting takes \\(O(n)\\) time (at most \\(n-1\\) edges).{.fragment}\nNew residual graph can be constructed in \\(O(m)\\) time.{.fragment}\n\n\nTotal time complexity of Ford-Fulkerson: \\(O(m f^*)\\)\n\nProblem: \\(f^*\\) could be very large — algorithm is pseudo-polynomial!{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#the-edmonds-karp-insight",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#the-edmonds-karp-insight",
+    "title": "Tulasimohan Molli",
+    "section": "The Edmonds-Karp Insight",
+    "text": "The Edmonds-Karp Insight\n\nPublished by Jack Edmonds and Richard Karp in 1972 (independently discovered by Yefim Dinitz in 1970){.fragment}\nIt specifies exactly how to find the augmenting path{.fragment}\n\n\nThe Rule: Always choose the augmenting path with the fewest number of edges — i.e., use BFS instead of DFS.\n\n\n\n\n\n\n\nNote\n\n\nKey idea: By always picking the shortest augmenting path, we guarantee that the number of augmentations is polynomial (\\(O(VE)\\))."
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#residual-networks-review",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#residual-networks-review",
+    "title": "Tulasimohan Molli",
+    "section": "Residual Networks Review",
+    "text": "Residual Networks Review\nThe residual network \\(G_f\\) tells us where we can push more flow:\n\nForward edges: \\(c_f(u, v) = c(u, v) - f(u, v)\\) (remaining capacity){.fragment}\nBackward edges: \\(c_f(v, u) = f(u, v)\\) (allows “undoing” flow){.fragment}\nBFS runs on \\(G_f\\), looking for any path from \\(s\\) to \\(t\\) where every edge has \\(c_f &gt; 0\\){.fragment}\n\nThe distance from \\(s\\) to any node in \\(G_f\\) is measured in number of edges (unweighted BFS)."
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#algorithm-pseudocode",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#algorithm-pseudocode",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm Pseudocode",
+    "text": "Algorithm Pseudocode\n\nEdmonds-Karp\\((G, s, t)\\)\nInitialize \\(f(u, v) \\gets 0\\) for all edges\nWhile there exists a path \\(p\\) from \\(s\\) to \\(t\\) in \\(G_f\\): - \\(p \\gets\\) BFS\\((G_f, s, t)\\) — shortest path in \\(G_f\\) - \\(c_f(p) \\gets \\min\\{c_f(u, v) : (u, v) \\in p\\}\\) - For each \\((u, v) \\in p\\): - If \\((u, v)\\) is a forward edge: \\(f(u, v) \\gets f(u, v) + c_f(p)\\) - If \\((u, v)\\) is a backward edge: \\(f(v, u) \\gets f(v, u) - c_f(p)\\)\nReturn \\(f\\)"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#time-complexity",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#time-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Time Complexity",
+    "text": "Time Complexity\n\nTotal Time Complexity: \\(\\mathcal{O}(V E^2)\\)\n\nBreakdown: - BFS Cost: Finding a shortest path takes \\(\\mathcal{O}(E)\\) time{.fragment} - Number of Augmentations: The key theorem states the total number of flow augmentations is bounded by \\(\\mathcal{O}(VE)\\){.fragment} - Why? The shortest path distance from \\(s\\) to any node in \\(G_f\\) increases monotonically. Each edge can become a “bottleneck” at most \\(V/2\\) times.{.fragment} - \\(\\mathcal{O}(E)\\) per BFS \\(\\times\\) \\(\\mathcal{O}(VE)\\) augmentations = \\(\\mathcal{O}(V E^2)\\){.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#key-lemma-distance-monotonicity",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#key-lemma-distance-monotonicity",
+    "title": "Tulasimohan Molli",
+    "section": "Key Lemma: Distance Monotonicity",
+    "text": "Key Lemma: Distance Monotonicity\n\nDuring Edmonds-Karp, the distance \\(\\delta_f(v)\\) from \\(s\\) to any node \\(v\\) in the residual graph \\(G_f\\) never decreases — it increases monotonically.\n\nProof sketch: - Suppose a later augmentation decreased \\(\\delta_f(v)\\) to some value \\(d' &lt; d\\){.fragment} - Consider the first such node \\(v\\) and the first time its distance drops{.fragment} - Show a contradiction by analyzing the edge \\((u,v)\\) on the new shortest path{.fragment}\nConsequence: Each edge can be a bottleneck (determine \\(c_f(p)\\)) at most \\(O(V)\\) times. Since there are \\(O(E)\\) edges, total augmentations = \\(O(VE)\\).✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#bipartite-matching-1",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#bipartite-matching-1",
+    "title": "Tulasimohan Molli",
+    "section": "Bipartite Matching",
+    "text": "Bipartite Matching\n\n\n0.5\n\nSuppose we have two sets: \\(L\\) (people) and \\(R\\) (jobs){.fragment}\nA person can do more than one job{.fragment}\nModel this as a bipartite graph{.fragment}\n\n\n0.5"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#matching-definition",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#matching-definition",
+    "title": "Tulasimohan Molli",
+    "section": "Matching Definition",
+    "text": "Matching Definition\n\n\n0.5\n\nA matching gives an assignment of people to tasks such that:\n\nA person can do at most one task{.fragment}\nNo two people share a task{.fragment}\n\nFormally: A matching is a subset of edges \\(M \\subseteq E\\) such that for all \\(v \\in V\\), at most one edge of \\(M\\) is incident on \\(v\\).{.fragment}\n\n\n0.5"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#maximum-bipartite-matching",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#maximum-bipartite-matching",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum Bipartite Matching",
+    "text": "Maximum Bipartite Matching\n\nGiven a bipartite graph \\(G = (L, R, E)\\), find a matching \\(M \\subseteq E\\) such that \\(|M|\\) is the largest possible.\n\nObservations: - \\(M\\) is a perfect matching if every vertex is matched - Maximum \\(\\neq\\) Maximal: A greedy approach only guarantees a maximal matching, not necessarily a maximum one"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#reduction-to-network-flow",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#reduction-to-network-flow",
+    "title": "Tulasimohan Molli",
+    "section": "Reduction to Network Flow",
+    "text": "Reduction to Network Flow\n\n\n0.5\nIdea: Convert bipartite matching to max flow: - Given instance of bipartite matching{.fragment} - Generate an instance of network flow{.fragment} - Solution to max flow gives max matching{.fragment}\n\n0.5"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-1-original-bipartite-graph",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-1-original-bipartite-graph",
+    "title": "Tulasimohan Molli",
+    "section": "Step 1: Original Bipartite Graph",
+    "text": "Step 1: Original Bipartite Graph\n\n\n\n\nOriginal bipartite graph"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-2-direct-edges-l-to-r",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-2-direct-edges-l-to-r",
+    "title": "Tulasimohan Molli",
+    "section": "Step 2: Direct Edges \\(L \\to R\\)",
+    "text": "Step 2: Direct Edges \\(L \\to R\\)\n\n\n\n\nDirected bipartite graph"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-3-add-source-and-sink",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-3-add-source-and-sink",
+    "title": "Tulasimohan Molli",
+    "section": "Step 3: Add Source and Sink",
+    "text": "Step 3: Add Source and Sink\n\n\n\n\nFlow network construction"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-4-all-capacities-1",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#step-4-all-capacities-1",
+    "title": "Tulasimohan Molli",
+    "section": "Step 4: All Capacities = 1",
+    "text": "Step 4: All Capacities = 1\n\n\n\n\nComplete flow network"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#construction-summary",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#construction-summary",
+    "title": "Tulasimohan Molli",
+    "section": "Construction Summary",
+    "text": "Construction Summary\nReduction steps: 1. Direct the edges from \\(L\\) to \\(R\\){.fragment} 2. Add new vertices \\(s\\) and \\(t\\){.fragment} 3. Add edge \\(s \\to v\\) for every \\(v \\in L\\){.fragment} 4. Add edge \\(v \\to t\\) for every \\(v \\in R\\){.fragment} 5. Make all capacities \\(1\\){.fragment}\nResult: Edges used in the maximum flow correspond to the maximum matching.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#correctness",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#correctness",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness",
+    "text": "Correctness\n\nSince capacities are integral, max flow will be integral{.fragment}\nBecause capacities are \\(1\\): either use an edge fully or not at all{.fragment}\n\nWe show: - \\(M\\) is a matching: At most one edge leaves any node in \\(L\\), at most one enters any node in \\(R\\).{.fragment} - \\(M\\) is maximum: If a larger matching \\(M'\\) existed, then \\(f^*\\) (max flow value) would not be maximum — contradiction.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#m-is-a-matching",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#m-is-a-matching",
+    "title": "Tulasimohan Molli",
+    "section": "\\(M\\) is a Matching",
+    "text": "\\(M\\) is a Matching\n\n\n\n\nMatching property\n\n\n\n\nCapacity constraints on \\(s \\to L\\) edges: at most 1 unit leaves each \\(L\\)-node.{.fragment}\nCapacity constraints on \\(R \\to t\\) edges: at most 1 unit enters each \\(R\\)-node.{.fragment}\nThus the flow-carrying edges form a matching.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#m-is-maximum",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#m-is-maximum",
+    "title": "Tulasimohan Molli",
+    "section": "\\(M\\) is Maximum",
+    "text": "\\(M\\) is Maximum\n\nSuppose we find a maximum flow \\(f^* = k\\).{.fragment}\nThis corresponds to a matching \\(M\\) of size \\(k\\).{.fragment}\nSuppose \\(M\\) is not maximum, and there exists another matching \\(M'\\) of size \\(&gt; k\\).{.fragment}\nThen \\(M'\\) would give a flow of value \\(&gt; k\\), contradicting that \\(f^*\\) is a maximum flow.{.fragment}\nTherefore \\(M\\) is maximum. ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#time-complexity-for-bipartite-matching",
+    "href": "lectures/lec-24-edmonds-karp-and-bipartite-matching.html#time-complexity-for-bipartite-matching",
+    "title": "Tulasimohan Molli",
+    "section": "Time Complexity for Bipartite Matching",
+    "text": "Time Complexity for Bipartite Matching\n\nMaximum value of the flow is \\(n\\) where \\(|L| = n\\){.fragment}\nNumber of edges in \\(G'\\) is \\(m + 2n\\) where \\(m\\) is edges in original \\(G\\){.fragment}\nUsing Ford-Fulkerson: \\(O(mn)\\) time{.fragment}\n\n\n\n\n\n\n\nImportant\n\n\nBipartite matching is a beautiful application of network flow — showing how a seemingly unrelated problem can be solved via reduction."
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#why-randomization",
+    "href": "lectures/lec-25-randomized-algorithms.html#why-randomization",
+    "title": "Tulasimohan Molli",
+    "section": "Why Randomization?",
+    "text": "Why Randomization?\nRandomized algorithms use random choices during execution to achieve:\n\nSimplicity: Often simpler than deterministic alternatives{.fragment}\nEfficiency: Can be asymptotically faster{.fragment}\nCorrectness: May err with tiny controlled probability{.fragment}\n\nTwo flavors: - Las Vegas: Always correct, expected runtime small (e.g., Randomized Quicksort){.fragment} - Monte Carlo: Runtime always small, may err with bounded probability{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#communication-protocols-equality-checking",
+    "href": "lectures/lec-25-randomized-algorithms.html#communication-protocols-equality-checking",
+    "title": "Tulasimohan Molli",
+    "section": "Communication Protocols: Equality Checking",
+    "text": "Communication Protocols: Equality Checking\nThe Problem: Alice and Bob each have an \\(n\\)-bit string (\\(x\\) and \\(y\\)). They want to check if \\(x = y\\) by communicating as few bits as possible.\nAlice and Bob communication protocol.\nDeterministic lower bound: Any deterministic protocol must communicate \\(\\Omega(n)\\) bits in the worst case."
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#randomized-protocol-fingerprinting",
+    "href": "lectures/lec-25-randomized-algorithms.html#randomized-protocol-fingerprinting",
+    "title": "Tulasimohan Molli",
+    "section": "Randomized Protocol: Fingerprinting",
+    "text": "Randomized Protocol: Fingerprinting\nIdea: Use random fingerprints of the strings.\nProtocol: 1. Alice picks a random prime \\(p\\) from \\(\\{2, \\dots, P\\}\\) (where \\(P\\) is sufficiently large){.fragment} 2. Alice sends Bob: the prime \\(p\\) and \\(x \\bmod p\\){.fragment} 3. Bob checks if \\(x \\bmod p \\equiv y \\bmod p\\){.fragment}\nCommunication: \\(O(\\log P)\\) bits for the prime + \\(O(\\log p)\\) bits for the fingerprint = \\(O(\\log n)\\) bits.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#analysis-correctness",
+    "href": "lectures/lec-25-randomized-algorithms.html#analysis-correctness",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis: Correctness",
+    "text": "Analysis: Correctness\nIf \\(x = y\\): Alice and Bob always output EQUAL. ✓{.fragment}\nIf \\(x \\neq y\\): Bob might output EQUAL if \\(x \\equiv y \\pmod p\\) — a false positive.{.fragment}\nHow many primes \\(p\\) can cause \\(x \\equiv y \\pmod p\\)?\n\nIf \\(x \\neq y\\), then difference \\(D = |x - y|\\) is some integer of at most \\(n\\) bits{.fragment}\nPrimes dividing \\(D\\) are \\(&lt; n \\log n\\) in count (since \\(D\\) has at most \\(n\\) bits, it has \\(&lt; n \\log n\\) distinct prime factors){.fragment}\nChoose \\(P\\) so the range \\(\\{2, \\dots, P\\}\\) contains \\(t \\gg n \\log n\\) primes{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#error-probability",
+    "href": "lectures/lec-25-randomized-algorithms.html#error-probability",
+    "title": "Tulasimohan Molli",
+    "section": "Error Probability",
+    "text": "Error Probability\n\nBy choosing \\(P\\) such that there are at least \\(t \\ge n^2\\) primes in \\(\\{2, \\dots, P\\}\\), the error probability is at most \\(1/n\\).\n\nProof: - At most \\(n \\log n\\) “bad” primes divide \\(D = |x - y|\\){.fragment} - Total primes in range: \\(\\ge n^2\\){.fragment} - Error probability \\(\\le \\frac{n \\log n}{n^2} = \\frac{\\log n}{n} = O(1/n)\\){.fragment}\nCommunication cost: \\(O(\\log n)\\) bits — exponentially better than deterministic!{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#freivalds-algorithm-matrix-product-verification",
+    "href": "lectures/lec-25-randomized-algorithms.html#freivalds-algorithm-matrix-product-verification",
+    "title": "Tulasimohan Molli",
+    "section": "Freivalds’ Algorithm: Matrix Product Verification",
+    "text": "Freivalds’ Algorithm: Matrix Product Verification\nProblem: Given three \\(n \\times n\\) matrices \\(A\\), \\(B\\), \\(C\\), verify \\(A \\times B = C\\).\nDeterministic: Multiply \\(A \\times B\\) in \\(O(n^{\\omega})\\) time — complicated.\n\nFreivalds’ Algorithm: 1. Pick a random vector \\(\\vec{r} \\in \\{0,1\\}^n\\) 2. Check \\(A \\cdot (B \\vec{r}) = C \\vec{r}\\) 3. Output “CORRECT” or “INCORRECT”\n\nTime: \\(O(n^2)\\) — two matrix-vector products!"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#freivalds-error-analysis",
+    "href": "lectures/lec-25-randomized-algorithms.html#freivalds-error-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Freivalds’: Error Analysis",
+    "text": "Freivalds’: Error Analysis\nIf \\(C = AB\\): Algorithm always outputs CORRECT. ✓{.fragment}\nIf \\(C \\neq AB\\): Let \\(D = AB - C \\neq 0\\). Then \\(D \\vec{r} \\neq 0\\) with probability \\(\\ge 1/2\\).{.fragment}\nWhy? Since \\(D \\neq 0\\), some row \\(d^T\\) is non-zero. For a random \\(\\vec{r} \\in \\{0,1\\}^n\\): - \\(d^T \\vec{r} = 0\\) only if half the entries of \\(d\\) happen to cancel — probability \\(\\le 1/2\\){.fragment}\nError bound: \\(P(\\text{false positive}) \\le 1/2\\) — repeat \\(k\\) times to get error \\(\\le 2^{-k}\\){.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#kargers-global-min-cut-algorithm",
+    "href": "lectures/lec-25-randomized-algorithms.html#kargers-global-min-cut-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Karger’s Global Min-Cut Algorithm",
+    "text": "Karger’s Global Min-Cut Algorithm\nProblem: Find the minimum cut in an undirected graph (minimum number of edges whose removal disconnects the graph).\nRandomized algorithm: 1. While \\(|V| &gt; 2\\):{.fragment} - Pick a random edge \\((u,v)\\){.fragment} - Contract \\(u\\) and \\(v\\) (merge them into a single supernode){.fragment} 2. The remaining two supernodes define a cut{.fragment}\nKey insight: If we never pick an edge from the global minimum cut during contraction, we find it!"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#kargers-probability-analysis",
+    "href": "lectures/lec-25-randomized-algorithms.html#kargers-probability-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Karger’s: Probability Analysis",
+    "text": "Karger’s: Probability Analysis\n\nKarger’s algorithm finds the global min cut with probability at least \\(\\frac{1}{\\binom{n}{2}}\\).\n\nProof sketch: - Let \\(k\\) be global min cut size, so min degree \\(\\ge k\\) - Probability a specific min-cut edge is NOT picked in step \\(i\\): \\(\\ge 1 - \\frac{2}{n - i + 1}\\) - Product over all steps: \\(\\ge \\frac{1}{\\binom{n}{2}}\\) - Repeat \\(O(n^2)\\) times: constant success probability\nTotal time: \\(O(n^4 \\log n)\\) — improved by Karger-Stein to \\(O(n^2 \\log^3 n)\\)"
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#comparing-randomized-algorithms",
+    "href": "lectures/lec-25-randomized-algorithms.html#comparing-randomized-algorithms",
+    "title": "Tulasimohan Molli",
+    "section": "Comparing Randomized Algorithms",
+    "text": "Comparing Randomized Algorithms\n\n\n\n\n\n\n\n\n\nAlgorithm\nType\nRuntime\nError\n\n\n\n\nRandomized Quicksort\nLas Vegas\n\\(O(n \\log n)\\) expected\nAlways correct\n\n\nEquality (fingerprinting)\nMonte Carlo\n\\(O(\\log n)\\) comm.\n\\(\\le 1/n\\)\n\n\nFreivalds’ check\nMonte Carlo\n\\(O(n^2)\\)\n\\(\\le 2^{-k}\\)\n\n\nKarger’s min-cut\nMonte Carlo\n\\(O(n^4 \\log n)\\)\n\\(\\le 1/e\\)\n\n\n\nTakeaway: Randomization is a powerful tool for simplicity, speed, and beating lower bounds."
+  },
+  {
+    "objectID": "lectures/lec-25-randomized-algorithms.html#summary",
+    "href": "lectures/lec-25-randomized-algorithms.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\nRandomized algorithms use random bits to achieve efficiency or simplicity{.fragment}\nLas Vegas vs. Monte Carlo: distinguish by whether errors occur{.fragment}\nFingerprinting: A general technique for testing equality with small communication{.fragment}\nFreivalds’ check: Matrix product verification in \\(O(n^2)\\) via random vectors{.fragment}\nKarger’s min-cut: Elegant edge-contraction algorithm for global min cut{.fragment}\n\nRandomization is a central theme in modern algorithm design — we will see more applications in later lectures!"
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#introduction",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#introduction",
+    "title": "Tulasimohan Molli",
+    "section": "Introduction",
+    "text": "Introduction\nGiven a problem \\(X\\) and a machine model \\(M\\), how long does it take to solve \\(X\\) using a machine from \\(M\\)?{.fragment}\nInstead of answering this difficult question directly, we ask:{.fragment}\n\nHow can we classify problems into complexity classes based on their apparent difficulty?{.fragment}\nWhat relationships can we establish between these classes?{.fragment}\n\nThe most famous of these questions: P vs. NP.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#models-of-computation",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#models-of-computation",
+    "title": "Tulasimohan Molli",
+    "section": "Models of Computation",
+    "text": "Models of Computation\nDifferent models capture different aspects of computation:\n\nLogic Circuit: Consists of logic gates realizing Boolean functions — basic building blocks of all digital computers{.fragment}\nFinite-State Machine (FSM): A machine with memory. Executes steps taking current state and external input to produce output.{.fragment}\nRandom-Access Machine (RAM): A CPU with random-access memory — holds data and programs (instructions for the CPU).{.fragment}\nOther models: Push-down automata, Turing machines{.fragment}\n\n\n\n\n\n\n\nNote\n\n\nAll reasonable models are polynomially equivalent — a problem solvable in polynomial time on one is solvable in polynomial time on another."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#decision-vs.-optimization-problems",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#decision-vs.-optimization-problems",
+    "title": "Tulasimohan Molli",
+    "section": "Decision vs. Optimization Problems",
+    "text": "Decision vs. Optimization Problems\nFor a problem \\(X\\):\n\nSearch Problem: Find a solution that satisfies \\(X\\){.fragment}\nOptimization Problem: Find a solution that satisfies \\(X\\) and minimizes (maximizes) an objective function{.fragment}\nDecision Problem: Determine if there exists any solution for \\(X\\){.fragment}\n\nExample: SHORTEST PATH (Optimization) vs. PATH (Decision): - SHORTEST PATH: Find a path from \\(u\\) to \\(v\\) using the fewest edges - PATH: Does a path exist from \\(u\\) to \\(v\\) consisting of at most \\(k\\) edges?\n\n\n\n\n\n\nImportant\n\n\nDecision problems are easier to reason about mathematically and capture the essential difficulty of most problems."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#problems-and-languages",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#problems-and-languages",
+    "title": "Tulasimohan Molli",
+    "section": "Problems and Languages",
+    "text": "Problems and Languages\nMost problems studied in complexity theory are decision problems.\n\nGiven an input \\(x\\), answer “yes” or “no” based on whether \\(x\\) satisfies some predicate \\(P\\){.fragment}\nExample: GRAPH 3-COLORABILITY: Given a graph \\(G\\), can we assign three colors to vertices so no edge has two endpoints of the same color?{.fragment}\n\nFormal definition: Inputs are encoded over alphabet \\(\\Sigma\\) (typically \\(\\{0,1\\}\\)). A language \\(L\\) is a set of finite strings over \\(\\Sigma\\). If \\(x \\in L\\), output “yes”; otherwise “no”.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#the-class-p",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#the-class-p",
+    "title": "Tulasimohan Molli",
+    "section": "The Class P",
+    "text": "The Class P\n\nP = All decision problems that can be solved in polynomial time on a deterministic Turing machine (or RAM).\n\nExamples of problems in P: - PATH: Does there exist a path from \\(u\\) to \\(v\\) of length \\(\\le k\\)? - CONNECTIVITY: Is graph \\(G\\) connected? - PRIMALITY: Is integer \\(n\\) prime? (AKS algorithm, 2002) - MATCHING: Does bipartite graph \\(G\\) have a perfect matching? - LINEAR PROGRAMMING\nImportance: Polynomial time = “efficiently solvable” (Cobham-Edmonds thesis)."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#the-class-np",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#the-class-np",
+    "title": "Tulasimohan Molli",
+    "section": "The Class NP",
+    "text": "The Class NP\n\nNP (Non-deterministic Polynomial) = All decision problems that can be verified in polynomial time.\n\nA problem \\(D\\) is in NP if there exists a verifier \\(V\\) taking two inputs \\(x\\) (instance) and \\(c\\) (certificate) such that:\n\nFor all yes-instances \\(x\\), there exists \\(c\\) such that \\(V(x, c)\\) outputs yes{.fragment}\nFor all no-instances \\(x\\), for all \\(c\\), \\(V(x, c)\\) outputs no{.fragment}\n\\(V\\) runs in time polynomial in \\(|x|\\){.fragment}\n\nKey intuition: NP = problems where solutions are easy to check, even if hard to find."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#np-examples",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#np-examples",
+    "title": "Tulasimohan Molli",
+    "section": "NP Examples",
+    "text": "NP Examples\nCOMPOSITE: Given positive integer \\(x\\), does \\(x\\) have factors? - Certificate: a factor \\(c\\) - Verifier: Check \\(1 &lt; c &lt; x\\) and \\(c\\) divides \\(x\\)\nVERTEX COVER: Given graph \\(G\\) and integer \\(k\\), does \\(G\\) contain a vertex cover of size \\(\\le k\\)? - Certificate: subset \\(S\\) of vertices - Verifier: Check \\(|S| \\le k\\) and every edge is incident to some \\(v \\in S\\)\nSAT: Given a Boolean formula \\(\\phi\\), is it satisfiable? - Certificate: a truth assignment - Verifier: Evaluate \\(\\phi\\) under the assignment"
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#p-vs.-np",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#p-vs.-np",
+    "title": "Tulasimohan Molli",
+    "section": "P vs. NP",
+    "text": "P vs. NP\nThe central open question in computer science:\n\n\n\n\n\n\nImportant\n\n\nP vs. NP: Is P = NP?\n\n\n\n\nP ⊆ NP trivially: if we can solve a problem in polynomial time, we can verify solutions in polynomial time (just solve and compare).{.fragment}\nDoes NP ⊆ P? Are there problems whose solutions are easy to check but inherently hard to find?{.fragment}\nIf \\(P = NP\\), many hard problems (TSP, scheduling, protein folding) would have efficient solutions.{.fragment}\nMost researchers believe \\(P \\neq NP\\), but no proof exists.{.fragment}\n\n$1,000,000 question: One of the seven Millenium Prize Problems."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#other-complexity-classes",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#other-complexity-classes",
+    "title": "Tulasimohan Molli",
+    "section": "Other Complexity Classes",
+    "text": "Other Complexity Classes\n\n\n\n\n\n\n\n\nClass\nDescription\nExample\n\n\n\n\nL\nSolvable using \\(O(\\log n)\\) space\nGraph connectivity\n\n\nNL\nNon-deterministic log space\n\\(s\\)-\\(t\\) connectivity\n\n\nPSPACE\nSolvable using polynomial space\nQuantified Boolean formulas\n\n\nEXP\nSolvable in \\(O(2^{\\text{poly}(n)})\\) time\nGeneralized Chess\n\n\nBPP\nRandomized polynomial time (bounded error)\nPrimality testing\n\n\nR\nComputable (halts eventually)\nAny decidable problem\n\n\n\nRelationships: \\(L \\subseteq NL \\subseteq P \\subseteq NP \\subseteq PSPACE \\subseteq EXP \\subseteq R\\) — but which inclusions are strict?"
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#reductions",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#reductions",
+    "title": "Tulasimohan Molli",
+    "section": "Reductions",
+    "text": "Reductions\nA technique to formalize that one problem is not “harder” than another.\n\n\\(D_1 \\le_p D_2\\) if there is a function \\(f\\) computable in polynomial time such that for all inputs \\(x\\): \\[x \\in D_1 \\iff f(x) \\in D_2\\]\n\nKey property: If \\(D_1 \\le_p D_2\\) and \\(D_2\\) is in P, then \\(D_1\\) is in P.\nReductions allow us to order problems by difficulty — the hardest problems in NP are called NP-complete."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#np-completeness",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#np-completeness",
+    "title": "Tulasimohan Molli",
+    "section": "NP-Completeness",
+    "text": "NP-Completeness\n\nDecision problem \\(D\\) is NP-Complete if: 1. \\(D\\) is in NP 2. \\(D\\) is NP-hard: for all \\(D'\\) in NP, \\(D' \\le_p D\\)\n\n\nIf any NP-complete problem is in P, then P = NP.\n\nCook’s Theorem (1971): SAT (Boolean satisfiability) is NP-complete — the first problem proven NP-complete.\nKarp’s 21 NP-complete problems (1972): Showed many natural problems (Clique, Vertex Cover, Hamiltonian Cycle, etc.) are NP-complete via reductions."
+  },
+  {
+    "objectID": "lectures/lec-26-computational-models-and-decision-problems.html#summary",
+    "href": "lectures/lec-26-computational-models-and-decision-problems.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nConcept\nDefinition\n\n\n\n\nP\nProblems solvable in polynomial time\n\n\nNP\nProblems verifiable in polynomial time\n\n\nReduction\nTransform one problem to another\n\n\nNP-Complete\nHardest problems in NP\n\n\nCook’s Theorem\nSAT is NP-complete\n\n\nP vs NP\n$$$1M question: Is P = NP?\n\n\n\nNext: Proving NP-Completeness — Step-by-step reduction technique and examples."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#recap-the-big-picture",
+    "href": "lectures/lec-27-p-np-and-reductions.html#recap-the-big-picture",
+    "title": "Tulasimohan Molli",
+    "section": "Recap: The Big Picture",
+    "text": "Recap: The Big Picture\n\nP: Problems solvable in polynomial time (efficient){.fragment}\nNP: Problems whose solutions can be verified in polynomial time{.fragment}\nNP-Complete: The hardest problems in NP — if any one is in P, then P = NP{.fragment}\n\nOur goal: Learn how to prove a problem is NP-complete using reductions.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#proving-np-completeness-recipe",
+    "href": "lectures/lec-27-p-np-and-reductions.html#proving-np-completeness-recipe",
+    "title": "Tulasimohan Molli",
+    "section": "Proving NP-Completeness: Recipe",
+    "text": "Proving NP-Completeness: Recipe\nTo show \\(X\\) is NP-complete:\n\nStep 1: Show \\(X\\) is in NP — design a polynomial-time verifier{.fragment}\nStep 2: Pick a known NP-complete problem \\(Y\\){.fragment}\nStep 3: Construct a polynomial-time reduction from \\(Y\\) to \\(X\\): \\(Y \\le_p X\\){.fragment}\n\nTransform any instance of \\(Y\\) into an instance of \\(X\\)\nEnsure YES-instances map to YES-instances, NO to NO\n\nStep 4: Prove correctness of the reduction{.fragment}\n\n\n\n\n\n\n\nImportant\n\n\nDirection matters: Reduce FROM a known hard problem TO your problem to show your problem is hard."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#reduction-diagram",
+    "href": "lectures/lec-27-p-np-and-reductions.html#reduction-diagram",
+    "title": "Tulasimohan Molli",
+    "section": "Reduction Diagram",
+    "text": "Reduction Diagram\nReduction: Y to X.\nKey idea: If we had an algorithm for \\(X\\), we could solve \\(Y\\) by: 1. Transform input \\(y\\) (instance of \\(Y\\)) to input \\(x\\) (instance of \\(X\\)) 2. Run the algorithm for \\(X\\) on \\(x\\) 3. Output the answer\nThus \\(X\\) is at least as hard as \\(Y\\)."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#first-np-complete-problem-circuit-sat",
+    "href": "lectures/lec-27-p-np-and-reductions.html#first-np-complete-problem-circuit-sat",
+    "title": "Tulasimohan Molli",
+    "section": "First NP-Complete Problem: CIRCUIT-SAT",
+    "text": "First NP-Complete Problem: CIRCUIT-SAT\n\nCIRCUIT-SAT - Input: An acyclic circuit \\(C\\) of logic gates with a single output - Answer: YES if there is a setting of the inputs that causes \\(C\\) to output 1; NO otherwise\n\n\nCook-Levin Theorem. CIRCUIT-SAT is NP-complete.\n\nAll other NP-completeness proofs ultimately reduce from CIRCUIT-SAT or SAT. We’ll use 3-SAT as our starting point for most reductions."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#sat",
+    "href": "lectures/lec-27-p-np-and-reductions.html#sat",
+    "title": "Tulasimohan Molli",
+    "section": "3-SAT",
+    "text": "3-SAT\n\n3-SAT - Input: A CNF formula (AND of ORs) over \\(n\\) variables, where each clause has at most 3 literals - Example: \\((x_1 \\lor \\overline{x_2} \\lor x_3) \\land (\\overline{x_1} \\lor x_2 \\lor x_4) \\land (x_2 \\lor \\overline{x_3} \\lor \\overline{x_4})\\) - Answer: YES if there is a satisfying assignment; NO otherwise\n\n\n3-SAT is NP-complete (reduction from CIRCUIT-SAT).\n\n3-SAT is the most common starting point for NP-completeness reductions."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#the-reduction-template",
+    "href": "lectures/lec-27-p-np-and-reductions.html#the-reduction-template",
+    "title": "Tulasimohan Molli",
+    "section": "The Reduction Template",
+    "text": "The Reduction Template\nFor most 3-SAT reductions, we follow this pattern:\n\nFor each clause \\((\\ell_1 \\lor \\ell_2 \\lor \\ell_3)\\), create a gadget in your problem{.fragment}\nEncode the “one literal per clause must be true” constraint in the gadget{.fragment}\nEncode consistency constraints (a variable and its negation can’t both be true){.fragment}\nSet a parameter \\(k\\) equal to the number of clauses{.fragment}\n\nThe reduction is correct if: - (\\(\\Rightarrow\\)) A satisfying assignment \\(\\implies\\) a solution of size \\(k\\) - (\\(\\Leftarrow\\)) A solution of size \\(k\\) \\(\\implies\\) a satisfying assignment"
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#example-independent-set",
+    "href": "lectures/lec-27-p-np-and-reductions.html#example-independent-set",
+    "title": "Tulasimohan Molli",
+    "section": "Example: INDEPENDENT SET",
+    "text": "Example: INDEPENDENT SET\n\nINDEPENDENT SET (IND-SET) - Input: Graph \\(G = (V,E)\\) and integer \\(k\\) - Answer: YES if \\(G\\) has an independent set of size \\(\\ge k\\) (no edges within the set)\n\nStep 1: IND-SET is in NP - Certificate: a set \\(S\\) of vertices - Verifier: Check \\(|S| \\ge k\\), and for all \\(u,v \\in S\\), \\((u,v) \\notin E\\)"
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#ind-set-is-np-hard-reduction-from-3-sat",
+    "href": "lectures/lec-27-p-np-and-reductions.html#ind-set-is-np-hard-reduction-from-3-sat",
+    "title": "Tulasimohan Molli",
+    "section": "IND-SET is NP-hard: Reduction from 3-SAT",
+    "text": "IND-SET is NP-hard: Reduction from 3-SAT\nGiven a 3-CNF formula \\(\\phi\\) with \\(k\\) clauses, construct graph \\(G\\):\n\nFor each clause, create a triangle of 3 vertices (one per literal){.fragment}\nFor each pair of opposite literals (e.g., \\(x_i\\) and \\(\\overline{x_i}\\)), add an edge between them{.fragment}\n\nClaim: \\(\\phi\\) is satisfiable \\(\\iff\\) \\(G\\) has an independent set of size \\(k\\).\n3-SAT to IND-SET reduction."
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#ind-set-proof-of-correctness",
+    "href": "lectures/lec-27-p-np-and-reductions.html#ind-set-proof-of-correctness",
+    "title": "Tulasimohan Molli",
+    "section": "IND-SET: Proof of Correctness",
+    "text": "IND-SET: Proof of Correctness\n(\\(\\Rightarrow\\)) If \\(\\phi\\) is satisfiable: - In each clause, at least one literal is true{.fragment} - Pick one true literal per clause — this gives \\(k\\) vertices{.fragment} - No edge within a triangle (only one per triangle picked) ✓{.fragment} - No edge between opposite literals (both can’t be true) ✓{.fragment} - So these \\(k\\) vertices form an independent set ✓{.fragment}\n(\\(\\Leftarrow\\)) If \\(G\\) has an independent set \\(S\\) of size \\(k\\): - \\(S\\) must contain exactly one vertex from each triangle (since triangles have 3 vertices but edges prevent picking more){.fragment} - No two opposite literals are in \\(S\\){.fragment} - Set each literal in \\(S\\) to true → each clause satisfied → \\(\\phi\\) is satisfiable ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#proving-np-completeness-key-tips",
+    "href": "lectures/lec-27-p-np-and-reductions.html#proving-np-completeness-key-tips",
+    "title": "Tulasimohan Molli",
+    "section": "Proving NP-Completeness: Key Tips",
+    "text": "Proving NP-Completeness: Key Tips\n\nPick the right source problem. 3-SAT is most versatile, but sometimes VERTEX COVER or IND-SET are more natural match\nBuild gadgets carefully. Each gadget should enforce one constraint\nVerify both directions. Many reductions fail in one direction\nKeep it polynomial. The reduction must run in polynomial time\n\nCommon source problems for reductions: - 3-SAT → many problems - IND-SET → VERTEX COVER, CLIQUE, etc. - VERTEX COVER → SET COVER, etc. - HAMILTONIAN CYCLE → TSP - SUBSET SUM → PARTITION, KNAPSACK"
+  },
+  {
+    "objectID": "lectures/lec-27-p-np-and-reductions.html#summary-reduction-library",
+    "href": "lectures/lec-27-p-np-and-reductions.html#summary-reduction-library",
+    "title": "Tulasimohan Molli",
+    "section": "Summary: Reduction Library",
+    "text": "Summary: Reduction Library\n\n\n\nProblem\nDefinition\nTypically reduces from\n\n\n\n\nCIRCUIT-SAT\nCircuit outputs 1?\nFirst NP-complete (Cook)\n\n\n3-SAT\nCNF formula with 3 literals/clause\nCIRCUIT-SAT\n\n\nIND-SET\n\\(k\\) vertices with no edges?\n3-SAT\n\n\nCLIQUE\n\\(k\\) vertices all pairwise adjacent?\n3-SAT or IND-SET\n\n\nVERTEX COVER\n\\(k\\) vertices covering all edges?\nIND-SET\n\n\nHAM-CYCLE\nCycle visiting all vertices?\n3-SAT\n\n\nSUBSET SUM\nSubset summing to target?\n3-SAT or VERTEX COVER\n\n\n\nNext: Proving specific problems NP-complete with detailed proofs."
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#overview",
+    "href": "lectures/lec-28-cook-levin-theorem.html#overview",
+    "title": "Tulasimohan Molli",
+    "section": "Overview",
+    "text": "Overview\nThe Cook-Levin Theorem (1971) established the first NP-complete problem.\n\nCook-Levin Theorem. SAT (Boolean formula satisfiability) is NP-complete.\n\nIndependent discovery by Stephen Cook (USA) and Leonid Levin (USSR). This theorem launched the field of NP-completeness.\nSignificance: It gives us a starting point for all other NP-completeness proofs."
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#what-we-need-to-prove",
+    "href": "lectures/lec-28-cook-levin-theorem.html#what-we-need-to-prove",
+    "title": "Tulasimohan Molli",
+    "section": "What We Need to Prove",
+    "text": "What We Need to Prove\nTo show SAT is NP-complete, we need:\n\nSAT is in NP: Given a satisfying assignment, verify it in polynomial time ✓ (trivial — just evaluate the formula){.fragment}\nSAT is NP-hard: For every problem \\(D\\) in NP, \\(D \\le_p\\) SAT{.fragment}\n\nThe hard part: Show that any NP problem can be reduced to SAT."
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#proof-strategy",
+    "href": "lectures/lec-28-cook-levin-theorem.html#proof-strategy",
+    "title": "Tulasimohan Molli",
+    "section": "Proof Strategy",
+    "text": "Proof Strategy\nKey insight: Any NP problem can be solved by a non-deterministic Turing Machine (NDTM) in polynomial time.\nWe will encode the entire computation of the NDTM as a Boolean formula that is satisfiable iff the NDTM accepts.\nIngredients: - A description of the NDTM for problem \\(D\\): \\((Q, \\Sigma, \\Gamma, \\delta, q_0, q_{accept})\\) where: - \\(Q\\) = states, \\(\\Sigma\\) = input alphabet, \\(\\Gamma\\) = tape alphabet - \\(\\delta\\) = transition relation (non-deterministic) - \\(q_0\\) = start state, \\(q_{accept}\\) = accepting state"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#encoding-the-computation",
+    "href": "lectures/lec-28-cook-levin-theorem.html#encoding-the-computation",
+    "title": "Tulasimohan Molli",
+    "section": "Encoding the Computation",
+    "text": "Encoding the Computation\nGiven input \\(x\\) of length \\(n\\), the NDTM runs in time \\(p(n)\\) (polynomial).\nWe create Boolean variables to encode the computation:\n\n\n\nVariable\nMeaning\n\n\n\n\n\\(T[i,j,k]\\)\nCell \\(i\\) of tape contains symbol \\(k\\) at time \\(j\\)\n\n\n\\(H[i,j]\\)\nRead/write head is at position \\(i\\) at time \\(j\\)\n\n\n\\(Q[q,j]\\)\nMachine is in state \\(q\\) at time \\(j\\)\n\n\n\nDimensions: - Tape cells: \\(0\\) to \\(p(n)\\) (the TM never uses more) - Time steps: \\(0\\) to \\(p(n)\\) - Symbols: finite alphabet \\(\\Gamma\\) - States: finite set \\(Q\\)"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#building-the-formula",
+    "href": "lectures/lec-28-cook-levin-theorem.html#building-the-formula",
+    "title": "Tulasimohan Molli",
+    "section": "Building the Formula",
+    "text": "Building the Formula\nThe formula \\(\\phi\\) is the AND of several constraint clauses:\n\nInitial condition: Tape starts with input \\(x\\), head at position 0, state \\(q_0\\){.fragment}\nFinal condition: Machine reaches \\(q_{accept}\\) at some time \\(\\le p(n)\\){.fragment}\nExactly one: At each time, the machine is in exactly one state, head is at exactly one position, each cell has exactly one symbol{.fragment}\nTransition: Each configuration follows from the previous via a valid transition of the NDTM{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#transition-constraints",
+    "href": "lectures/lec-28-cook-levin-theorem.html#transition-constraints",
+    "title": "Tulasimohan Molli",
+    "section": "Transition Constraints",
+    "text": "Transition Constraints\nThe transition constraint is the core of the proof.\nFor each time \\(t\\), position \\(i\\), each combination of state \\(q\\) and tape symbol \\(s\\):\n\nLook at the NDTM’s transition relation \\(\\delta(q, s)\\)\nFor each possible next move \\((q', s', d)\\) (where \\(d \\in \\{L, R\\}\\)):\n\nNew state: \\(Q[q', t+1]\\)\nNew symbol: \\(T[i, t+1, s']\\)\nHead moved: \\(H[i + d, t+1]\\)\n\n\nThis creates a CNF clause saying: if at time \\(t\\), the head is at \\(i\\), state is \\(q\\), and symbol is \\(s\\), then at time \\(t+1\\), the configuration must be consistent with some valid transition."
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#formula-size",
+    "href": "lectures/lec-28-cook-levin-theorem.html#formula-size",
+    "title": "Tulasimohan Molli",
+    "section": "Formula Size",
+    "text": "Formula Size\nThe resulting formula \\(\\phi\\) has size \\(O(p(n)^3)\\):\n\n\\(O(p(n)^2)\\) cells \\(\\times\\) \\(O(p(n))\\) time steps = \\(O(p(n)^3)\\) variables\nEach constraint is localized (involving nearby cells and adjacent time steps)\nTotal formula size is polynomial in \\(n\\) ✓\n\nCorrectness: - (\\(\\Rightarrow\\)) If the NDTM accepts \\(x\\), the accepting computation gives a satisfying assignment - (\\(\\Leftarrow\\)) If \\(\\phi\\) is satisfiable, the assignment encodes a valid accepting computation of the NDTM"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#implications",
+    "href": "lectures/lec-28-cook-levin-theorem.html#implications",
+    "title": "Tulasimohan Molli",
+    "section": "Implications",
+    "text": "Implications\nThe Cook-Levin theorem has profound implications:\n\nSAT is the “hardest” problem in NP — every NP problem can be reduced to SAT{.fragment}\nStart of NP-completeness theory — by reducing SAT to other problems, we proved many problems NP-complete (Karp’s 21 problems){.fragment}\nIf SAT ∈ P, then P = NP — one of the biggest open questions{.fragment}\nPractical impact: SAT solvers are now incredibly efficient, solving industrial instances with millions of variables{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#from-sat-to-3-sat",
+    "href": "lectures/lec-28-cook-levin-theorem.html#from-sat-to-3-sat",
+    "title": "Tulasimohan Molli",
+    "section": "From SAT to 3-SAT",
+    "text": "From SAT to 3-SAT\nSAT can be reduced to 3-SAT (each clause has \\(\\le 3\\) literals):\n\nAny clause with \\(k &gt; 3\\) literals can be broken into \\(k-2\\) clauses of 3 literals using auxiliary variables{.fragment}\n\nExample: \\((a \\lor b \\lor c \\lor d \\lor e)\\) becomes: \\[(a \\lor b \\lor z_1) \\land (\\overline{z_1} \\lor c \\lor z_2) \\land (\\overline{z_2} \\lor d \\lor e)\\] {.fragment}\n\nEach clause of size 1 or 2 can be padded to size 3{.fragment}\n\nResult: 3-SAT is also NP-complete, and is more convenient for reductions{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-28-cook-levin-theorem.html#summary",
+    "href": "lectures/lec-28-cook-levin-theorem.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nKey Point\n\n\n\n\nCook-Levin Theorem\nSAT is NP-complete — the first NP-complete problem\n\n\nProof approach\nEncode NDTM computation as a Boolean formula\n\n\nVariables\nTape cells, head positions, states over time\n\n\nConstraints\nInitial, final, uniqueness, transition\n\n\nImplication\nFoundation for all NP-completeness proofs\n\n\n3-SAT\nSAT with \\(\\le 3\\) literals per clause — also NP-complete\n\n\n\nNext: Proving specific problems (CLIQUE, VERTEX COVER) NP-complete via reductions from 3-SAT."
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#overview",
+    "href": "lectures/lec-29-time-complexity-classes.html#overview",
+    "title": "Tulasimohan Molli",
+    "section": "Overview",
+    "text": "Overview\n\nTime complexity classes categorize problems by the resources needed to solve them{.fragment}\nP: Problems solvable in polynomial time{.fragment}\nNP: Decision problems solvable in polynomial time via a “lucky” algorithm (verifiable in polynomial time){.fragment}\nEXP: Problems solvable in exponential time{.fragment}\nR: Problems solvable in finite time (“recursive” language){.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#the-halting-problem",
+    "href": "lectures/lec-29-time-complexity-classes.html#the-halting-problem",
+    "title": "Tulasimohan Molli",
+    "section": "The Halting Problem",
+    "text": "The Halting Problem\n\nThe Halting Problem: Given a computer program \\(P\\) and input \\(I\\), does \\(P\\) ever halt when run on \\(I\\)?\n\n\nUncomputable (not in R): There is no algorithm for solving this{.fragment}\nIt is a decision problem — the answer is either YES or NO{.fragment}\nProved by Alan Turing (and Alonzo Church) in 1936{.fragment}\nThis is the canonical example of an undecidable problem{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#halting-problem-is-undecidable",
+    "href": "lectures/lec-29-time-complexity-classes.html#halting-problem-is-undecidable",
+    "title": "Tulasimohan Molli",
+    "section": "Halting Problem is Undecidable",
+    "text": "Halting Problem is Undecidable\nProof by contradiction: Assume algorithm \\(H(P,I)\\) solves the halting problem.\nConstruct a program \\(X(P)\\) that: - If \\(H(X, X)\\) returns YES, then \\(X\\) loops forever on \\(X\\) (contradiction){.fragment} - If \\(H(X, X)\\) returns NO, then \\(X\\) halts on \\(X\\) (contradiction){.fragment}\nTuring’s diagonalization.\nTherefore, \\(H\\) cannot exist — the halting problem is undecidable. ◻"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#proving-np-completeness-recipe",
+    "href": "lectures/lec-29-time-complexity-classes.html#proving-np-completeness-recipe",
+    "title": "Tulasimohan Molli",
+    "section": "Proving NP-Completeness: Recipe",
+    "text": "Proving NP-Completeness: Recipe\nTo show \\(X\\) is NP-complete:\n\nStep 1: Show \\(X\\) is in NP — design a polynomial-time verifier{.fragment}\nStep 2: Pick a known NP-complete problem \\(Y\\){.fragment}\nStep 3: Construct a polynomial-time reduction from \\(Y\\) to \\(X\\): \\(Y \\le_p X\\){.fragment}\nStep 4: Prove correctness (both directions){.fragment}\n\nKey source problems: - CIRCUIT-SAT — the first NP-complete problem - 3-SAT — most common starting point for reductions - IND-SET, VERTEX COVER, CLIQUE — problems useful as intermediate steps"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#circuit-sat",
+    "href": "lectures/lec-29-time-complexity-classes.html#circuit-sat",
+    "title": "Tulasimohan Molli",
+    "section": "CIRCUIT-SAT",
+    "text": "CIRCUIT-SAT\n\nCIRCUIT-SAT - Input: An acyclic circuit \\(C\\) of logic gates with a single output - Answer: YES if there is a setting of the inputs that causes \\(C\\) to output 1; NO otherwise\n\n\nFirst problem proven NP-complete (Cook-Levin Theorem){.fragment}\nBy reducing CIRCUIT-SAT to other problems, we chain the NP-completeness{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#sat",
+    "href": "lectures/lec-29-time-complexity-classes.html#sat",
+    "title": "Tulasimohan Molli",
+    "section": "3-SAT",
+    "text": "3-SAT\n\n3-SAT - Input: A CNF formula (AND of ORs) over \\(n\\) variables where each clause has at most 3 literals - Answer: YES if there is a satisfying assignment; NO otherwise\n\n\n3-SAT is NP-complete (reduction from CIRCUIT-SAT via clause splitting){.fragment}\nMost common starting point for NP-completeness proofs{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#independent-set",
+    "href": "lectures/lec-29-time-complexity-classes.html#independent-set",
+    "title": "Tulasimohan Molli",
+    "section": "INDEPENDENT SET",
+    "text": "INDEPENDENT SET\n\nINDEPENDENT SET (IND-SET) - Input: Given a graph \\(G\\) and an integer \\(k\\) - Answer: YES if there is an independent set of size at least \\(k\\); NO otherwise\n\nIND-SET is in NP: Given a set \\(S\\) of vertices, verify no two are adjacent and \\(|S| \\ge k\\).\nIND-SET is NP-hard: Reduction from 3-SAT — each clause becomes a triangle, opposite literals get edges."
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#ind-set-np-hardness-reduction-details",
+    "href": "lectures/lec-29-time-complexity-classes.html#ind-set-np-hardness-reduction-details",
+    "title": "Tulasimohan Molli",
+    "section": "IND-SET NP-hardness: Reduction Details",
+    "text": "IND-SET NP-hardness: Reduction Details\nGiven a 3-CNF formula \\(\\phi\\) with \\(k\\) clauses, build \\(G\\):\n\n\\(3k\\) vertices (one per literal occurrence){.fragment}\nEach clause contributes 3 edges connecting its literals (forming a triangle){.fragment}\nFor each pair of opposite literals (e.g., \\(x_i\\) and \\(\\overline{x_i}\\)), add an edge{.fragment}\n\nClaim: \\(\\phi\\) satisfiable \\(\\iff\\) \\(G\\) has independent set of size \\(k\\) - (\\(\\Rightarrow\\)) Pick one true literal per clause → \\(k\\) vertices, no conflicts{.fragment} - (\\(\\Leftarrow\\)) \\(k\\)-independent set picks one vertex per triangle → set those literals true → \\(\\phi\\) satisfied{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-29-time-complexity-classes.html#summary",
+    "href": "lectures/lec-29-time-complexity-classes.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nKey Point\n\n\n\n\nP, NP, EXP, R\nTime complexity classes — increasing difficulty\n\n\nHalting Problem\nUndecidable — not even in R\n\n\nNP-completeness recipe\nIn NP + reduction from known NP-complete\n\n\nCIRCUIT-SAT\nFirst NP-complete (Cook-Levin)\n\n\n3-SAT\nMost convenient starting point\n\n\nIND-SET\nExample reduction from 3-SAT\n\n\n\nNext: Proving CLIQUE and VERTEX COVER are NP-complete."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#today-two-classic-np-completeness-proofs",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#today-two-classic-np-completeness-proofs",
+    "title": "Tulasimohan Molli",
+    "section": "Today: Two Classic NP-Completeness Proofs",
+    "text": "Today: Two Classic NP-Completeness Proofs\n\nCLIQUE — reduction from 3-SAT{.fragment}\nVERTEX COVER (VC) — reduction from IND-SET{.fragment}\n\n\n\n\n\n\n\nNote\n\n\nWe’ll see two different reduction patterns: 3-SAT to a graph problem, and a simple direct reduction between graph problems."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-np-complete",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-np-complete",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE is NP-Complete",
+    "text": "CLIQUE is NP-Complete\n\nA clique is a complete subgraph — every pair of vertices is connected by an edge.\n\nCLIQUE Decision Problem: Given an undirected graph \\(G = (V, E)\\) and a parameter \\(k\\), does \\(G\\) contain a clique of size at least \\(k\\)?"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-in-np",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-in-np",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE is in NP",
+    "text": "CLIQUE is in NP\nGiven a graph \\(G = (V, E)\\), a parameter \\(k\\), and a vertex subset \\(C\\) (certificate):\n\nCheck if \\(|C| \\ge k\\) — \\(O(|V|)\\) time{.fragment}\nCheck that \\(C\\) forms a clique — verify every pair of vertices in \\(C\\) is adjacent: \\(O(|C|^2) = O(|V|^2)\\) time{.fragment}\n\nThus CLIQUE is in NP. ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-np-hard-reduction-from-3-sat",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-is-np-hard-reduction-from-3-sat",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE is NP-hard: Reduction from 3-SAT",
+    "text": "CLIQUE is NP-hard: Reduction from 3-SAT\nGiven a 3-CNF formula \\(F\\) with \\(k\\) clauses and variables \\(x_1, \\dots, x_n\\):\nConstruct graph \\(G\\): - \\(3k\\) vertices — one triple \\(T_c\\) per clause \\(c = (\\ell_1 \\lor \\ell_2 \\lor \\ell_3)\\){.fragment} - Label vertices in each triple by the literals of the corresponding clause{.fragment} - Add edges between every pair of vertices except:{.fragment} - Nodes in the same triple (no edges within a clause) - Nodes that are complementary (e.g., \\(x_i\\) and \\(\\overline{x_i}\\))\nSet \\(k\\) (clique size) = number of clauses.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-reduction-example",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-reduction-example",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE Reduction: Example",
+    "text": "CLIQUE Reduction: Example\nFormula: \\((x_1 \\lor \\overline{x_2} \\lor x_3) \\land (\\overline{x_1} \\lor x_2 \\lor x_4)\\)\n3-SAT to CLIQUE reduction.\nKey observation: Edges exist between literals from different clauses that are not contradictory."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-np-hardness-proof-rightarrow",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-np-hardness-proof-rightarrow",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE NP-hardness: Proof (\\(\\Rightarrow\\))",
+    "text": "CLIQUE NP-hardness: Proof (\\(\\Rightarrow\\))\nSuppose formula \\(F\\) is satisfiable.\n\nIn the satisfying assignment, at least one literal is true in every clause{.fragment}\nIn each triple \\(T_c\\) of \\(G\\), select one node corresponding to a true literal{.fragment}\nThese \\(k\\) nodes form a \\(k\\)-clique:{.fragment}\n\nOnly one node per triple (no same-triple conflict) ✓\nNo complementary labels (both literals can’t be true) ✓\nAll selected nodes are connected (edges exist between any two compatible literals){.fragment}\n\n\nThus a satisfying assignment gives a clique of size \\(k\\). ✓"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-np-hardness-proof-leftarrow",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#clique-np-hardness-proof-leftarrow",
+    "title": "Tulasimohan Molli",
+    "section": "CLIQUE NP-hardness: Proof (\\(\\Leftarrow\\))",
+    "text": "CLIQUE NP-hardness: Proof (\\(\\Leftarrow\\))\nSuppose \\(G\\) has a \\(k\\)-clique.\n\nNo two clique nodes occur in the same triple (no internal edges within a triple){.fragment}\nSince there are \\(k\\) triples and \\(k\\) clique nodes, each triple contributes exactly one{.fragment}\nNo two clique nodes are labeled with complementary literals (no edge between them){.fragment}\nAssign truth values: set each literal labeling a clique node to true{.fragment}\nSince each triple contains a clique node, each clause has a true literal → \\(F\\) is satisfiable ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vertex-cover-problem",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vertex-cover-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: Problem",
+    "text": "Vertex Cover: Problem\n\nA vertex cover of a graph \\(G = (V, E)\\) is a subset \\(S \\subseteq V\\) such that every edge \\((u,v) \\in E\\) is incident to at least one vertex in \\(S\\).\n\nVERTEX COVER (VC) Decision Problem: Does \\(G\\) have a vertex cover of size \\(\\le k\\)?\nExample: In a star graph, the center vertex alone covers all edges — size 1."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-is-in-np",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-is-in-np",
+    "title": "Tulasimohan Molli",
+    "section": "VC is in NP",
+    "text": "VC is in NP\nGiven \\(G = (V, E)\\), integer \\(k\\), and a set \\(S\\) (certificate):\n\nCheck \\(|S| \\le k\\) — \\(O(|V|)\\) time{.fragment}\nVerify \\(S\\) covers all edges: for each \\((u,v) \\in E\\), check \\(u \\in S\\) or \\(v \\in S\\) — \\(O(|E|)\\) time{.fragment}\n\nThus VERTEX COVER is in NP. ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-is-np-hard-reduction-from-ind-set",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-is-np-hard-reduction-from-ind-set",
+    "title": "Tulasimohan Molli",
+    "section": "VC is NP-hard: Reduction from IND-SET",
+    "text": "VC is NP-hard: Reduction from IND-SET\nGiven an IND-SET instance \\(G = (V, E)\\) and integer \\(k\\): - Construct \\(G' = G\\) (identical graph) - Set \\(k' = |V| - k\\)\nRunning time: \\(O(|V| + |E|)\\) — trivial! {.fragment}\n\nClaim: \\(G\\) has an independent set of size \\(k\\) iff \\(G'\\) has a vertex cover of size \\(k' = |V| - k\\)."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-np-hardness-proof",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#vc-np-hardness-proof",
+    "title": "Tulasimohan Molli",
+    "section": "VC NP-hardness: Proof",
+    "text": "VC NP-hardness: Proof\n\nProof. (\\(\\Rightarrow\\)) Suppose \\(S\\) is an independent set of size \\(k\\) in \\(G\\).\n\nSince \\(S\\) has no internal edges, every edge must have at least one endpoint in \\(V \\setminus S\\){.fragment}\nThus \\(V \\setminus S\\) is a vertex cover of size \\(|V| - k\\) ✓{.fragment}\n\n(\\(\\Leftarrow\\)) Suppose \\(S\\) is a vertex cover of size \\(k'\\) in \\(G'\\).\n\nEvery edge has an endpoint in \\(S\\), so no edge has both endpoints in \\(V \\setminus S\\){.fragment}\nThus \\(V \\setminus S\\) is an independent set of size \\(|V| - k' = k\\) ✓{.fragment}\n\n\n\n\n\n\n\n\nImportant\n\n\nThis is a beautiful example of a complementary relation: \\(S\\) is an independent set iff \\(V \\setminus S\\) is a vertex cover."
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#more-np-complete-problems",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#more-np-complete-problems",
+    "title": "Tulasimohan Molli",
+    "section": "More NP-complete Problems",
+    "text": "More NP-complete Problems\nThese can also be proven NP-complete via reductions:\n\n\n\n\n\n\n\n\nProblem\nDescription\nReduces from\n\n\n\n\nHamiltonian Path\nSimple path containing all nodes?\n3-SAT\n\n\nHamiltonian Cycle\nCycle visiting each vertex exactly once?\n3-SAT\n\n\nTravelling Salesman\nCycle of length \\(\\le L\\) visiting all cities?\nHamiltonian Cycle\n\n\nSubgraph Isomorphism\nDoes \\(G\\) contain a subgraph isomorphic to \\(H\\)?\nCLIQUE\n\n\nKnapsack\nSelect items with weight \\(\\le W\\), value \\(\\ge V\\)?\nSUBSET SUM\n\n\nSet Cover\n\\(k\\) subsets covering all elements?\nVERTEX COVER\n\n\n3-COLOR\nCan vertices be colored with 3 colors?\n3-SAT"
+  },
+  {
+    "objectID": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#summary",
+    "href": "lectures/lec-30-np-completeness-clique-and-vertex-cover.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\nProblem\nIn NP\nNP-hard via\n\n\n\n\nCLIQUE\nCheck \\(k\\) vertices all pairwise adjacent\n3-SAT: triples + complementary edges\n\n\nVERTEX COVER\nCheck \\(k\\) vertices cover all edges\nIND-SET: complement relation\n\n\nIND-SET\nCheck \\(k\\) vertices have no edges\n3-SAT: clause triangles + opposite edges\n\n\n\nKey technique for most reductions: 1. Show in NP (easy — just check the certificate) 2. Reduce from a known NP-complete problem using gadgets that encode constraints\nNext: Approximation algorithms for NP-hard optimization problems."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#what-to-do-when-problems-are-np-hard",
+    "href": "lectures/lec-31-approximation-algorithms.html#what-to-do-when-problems-are-np-hard",
+    "title": "Tulasimohan Molli",
+    "section": "What to Do When Problems Are NP-Hard?",
+    "text": "What to Do When Problems Are NP-Hard?\nWhen we face an NP-hard optimization problem, we have options:\n\nExact Algorithm: Guarantees optimal solution. Runtime may not be polynomial, but works for instances of moderate size.{.fragment}\nHeuristic: Fast algorithm with no formal guarantees on solution quality.{.fragment}\nApproximation Algorithm: Polynomial-time algorithm that guarantees a solution within a known factor of optimal.{.fragment}\n\nWe focus on option 3 — the best of both worlds!{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#terminology-minimization-problems",
+    "href": "lectures/lec-31-approximation-algorithms.html#terminology-minimization-problems",
+    "title": "Tulasimohan Molli",
+    "section": "Terminology: Minimization Problems",
+    "text": "Terminology: Minimization Problems\nFor a minimization problem: - OPT\\((I)\\) = value of optimal solution for instance \\(I\\) - ALG\\((I)\\) = value computed by algorithm ALG for instance \\(I\\)\n\nALG is a \\(\\rho\\)-approximation algorithm if: \\[\\text{ALG}(I) \\le \\rho \\cdot \\text{OPT}(I) \\quad \\text{for all inputs } I\\]\n\\(\\rho\\) is called the approximation factor.\n\nExample: If ALG computes a vertex cover with at most twice the minimum vertices, then ALG is a 2-approximation."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#terminology-maximization-problems",
+    "href": "lectures/lec-31-approximation-algorithms.html#terminology-maximization-problems",
+    "title": "Tulasimohan Molli",
+    "section": "Terminology: Maximization Problems",
+    "text": "Terminology: Maximization Problems\nFor a maximization problem:\n\nALG is a \\(\\rho\\)-approximation algorithm if: \\[\\text{ALG}(I) \\ge \\frac{1}{\\rho} \\cdot \\text{OPT}(I) \\quad \\text{for all inputs } I\\]\n\nExample: If ALG finds a clique with at least half the maximum size, then ALG is a 2-approximation.\nNote: \\(\\rho \\ge 1\\) always — smaller \\(\\rho\\) means better approximation."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#proving-approximation-guarantees",
+    "href": "lectures/lec-31-approximation-algorithms.html#proving-approximation-guarantees",
+    "title": "Tulasimohan Molli",
+    "section": "Proving Approximation Guarantees",
+    "text": "Proving Approximation Guarantees\nFor a \\(\\rho\\)-approximation algorithm ALG we must:\n\nDescribe the algorithm clearly{.fragment}\nAnalyze its running time (should be polynomial){.fragment}\nProve that \\(\\text{ALG}(I) \\le \\rho \\cdot \\text{OPT}(I)\\) for all inputs \\(I\\){.fragment}\n\nThe Challenge: How to bound \\(\\text{ALG}(I)\\) in terms of \\(\\text{OPT}(I)\\) when we don’t know OPT?\nSolution: Find a lower bound on OPT that we can compute easily.{.fragment}\nExample: If we can prove \\(\\text{OPT} \\ge 100\\) and \\(\\text{ALG} \\le 200\\), then \\(\\text{ALG} \\le 2 \\cdot \\text{OPT}\\)."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#approximation-schemes",
+    "href": "lectures/lec-31-approximation-algorithms.html#approximation-schemes",
+    "title": "Tulasimohan Molli",
+    "section": "Approximation Schemes",
+    "text": "Approximation Schemes\nAn approximation scheme takes two inputs: - An instance of the problem - A value \\(\\epsilon &gt; 0\\)\nGoal: Design a \\((1+\\epsilon)\\)-approximation algorithm.\n\n\n\n\n\n\n\n\nType\nRuntime\nTypical example\n\n\n\n\nPTAS\n\\(O(n^{f(1/\\epsilon)})\\) — polynomial in \\(n\\) for fixed \\(\\epsilon\\)\n\\(O(n^{2/\\epsilon})\\)\n\n\nFPTAS\n\\(O((1/\\epsilon)^c n^d)\\) — polynomial in both \\(1/\\epsilon\\) and \\(n\\)\n\\(O((1/\\epsilon)^2 n^3)\\)\n\n\n\nFPTAS is better — runtime degrades gracefully as \\(\\epsilon \\to 0\\)."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#vertex-cover-the-problem",
+    "href": "lectures/lec-31-approximation-algorithms.html#vertex-cover-the-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: The Problem",
+    "text": "Vertex Cover: The Problem\n\nGiven a graph \\(G = (V, E)\\), find a subset \\(C \\subseteq V\\) such that for each edge \\((u,v) \\in E\\), at least \\(u\\) or \\(v\\) is in \\(C\\).\n\nOptimization problem: Find a vertex cover with minimum number of vertices.\nStatus: Vertex Cover is NP-hard (we proved the decision version is NP-complete).\nWe will design a 2-approximation algorithm."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#vertex-cover-naive-greedy",
+    "href": "lectures/lec-31-approximation-algorithms.html#vertex-cover-naive-greedy",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: Naive Greedy",
+    "text": "Vertex Cover: Naive Greedy\nGreedy strategy: Repeatedly pick a vertex of highest degree and remove all incident edges.\nProblem: Might select wrong vertices, leading to bad approximation.\nExample: A star graph + many isolated edges. Greedy might pick the center (good) but in other cases picks poorly.\n\n\n\n\n\n\nWarning\n\n\nThe approximation ratio of this simple greedy can be as bad as \\(\\Theta(\\log n)\\) — or even \\(|V| - 1\\) in constructed worst cases."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#vertex-cover-2-approximation",
+    "href": "lectures/lec-31-approximation-algorithms.html#vertex-cover-2-approximation",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: 2-Approximation",
+    "text": "Vertex Cover: 2-Approximation\nAPPROX-VERTEX-COVER algorithm: - While there are edges in \\(G\\): 1. Pick any edge \\((u,v)\\) from \\(G\\) 2. Add both \\(u\\) and \\(v\\) to the cover 3. Remove all edges incident to \\(u\\) or \\(v\\) from \\(G\\)\n\nAPPROX-VERTEX-COVER is a polynomial-time 2-approximation algorithm."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#set-cover-problem",
+    "href": "lectures/lec-31-approximation-algorithms.html#set-cover-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Set Cover Problem",
+    "text": "Set Cover Problem\n\nSet Cover: - Input: A finite set \\(X\\) (universe) and a family \\(F\\) of subsets of \\(X\\), such that every element of \\(X\\) belongs to at least one subset in \\(F\\) - Goal: Find a minimum-size subfamily \\(S \\subseteq F\\) that covers all elements of \\(X\\)\n\nStatus: Set Cover is NP-hard — it is a generalization of Vertex Cover.\nApplications: - Network discovery - Hitting set problems - Emergency facility location"
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#set-cover-greedy-approximation",
+    "href": "lectures/lec-31-approximation-algorithms.html#set-cover-greedy-approximation",
+    "title": "Tulasimohan Molli",
+    "section": "Set Cover: Greedy Approximation",
+    "text": "Set Cover: Greedy Approximation\nGreedy choice: At each stage, pick the set that covers the most uncovered elements.\n\nThe greedy heuristic achieves an approximation factor of \\(\\ln m\\), where \\(m = |X|\\) is the total number of elements.\n\nProof idea (pigeonhole principle): - Let \\(c\\) be the optimal cover size - At each step, some set in the optimal cover covers at least \\(1/c\\) of the remaining uncovered elements - Greedy picks a set covering at least as many - After \\(g\\) rounds: uncovered \\(\\le m \\cdot (1 - 1/c)^g \\le m \\cdot e^{-g/c}\\) - When \\(m \\cdot e^{-g/c} &lt; 1\\), all covered → \\(g \\ge c \\ln m\\)"
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#applications-of-set-cover",
+    "href": "lectures/lec-31-approximation-algorithms.html#applications-of-set-cover",
+    "title": "Tulasimohan Molli",
+    "section": "Applications of Set Cover",
+    "text": "Applications of Set Cover\nNetwork Discovery Problem: Find the topology of a network using a minimal number of queries about edges connected to a vertex.\nHitting Set Problem: Given a set of unit rectangles (representing coverage areas), hit all rectangles with minimum number of points.\nVariant: Weighted Set Cover — each set has a cost, goal is to minimize total cost of selected sets."
+  },
+  {
+    "objectID": "lectures/lec-31-approximation-algorithms.html#summary",
+    "href": "lectures/lec-31-approximation-algorithms.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\nProblem\nApproximation\nMethod\n\n\n\n\nVertex Cover\n2-approximation\nPick matching edges, add both endpoints\n\n\nSet Cover\n\\(\\ln m\\)-approximation\nGreedy: pick set covering most uncovered\n\n\nGreedy Set Cover bound\nTight\nMatches hardness lower bound\n\n\n\nKey insights: - Simple strategies can give provable guarantees - Lower bounds on OPT are essential for analysis - Greedy algorithms often work well for covering problems\nNext: Approximation algorithms for Metric TSP."
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#recap",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#recap",
+    "title": "Tulasimohan Molli",
+    "section": "Recap",
+    "text": "Recap\n\nApproximation algorithms provide quality guarantees for NP-hard optimization problems{.fragment}\n\\(\\rho\\)-approximation: solution is within factor \\(\\rho\\) of optimal{.fragment}\nPTAS vs FPTAS: trade-off between runtime and approximation quality{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#vertex-cover-detailed-analysis",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#vertex-cover-detailed-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: Detailed Analysis",
+    "text": "Vertex Cover: Detailed Analysis\nAPPROX-VERTEX-COVER (review): - Pick any edge \\((u,v)\\), add both \\(u\\) and \\(v\\) to cover{.fragment} - Remove all incident edges{.fragment} - Repeat until no edges remain{.fragment}\nWhy is this a 2-approximation?{.fragment} - The set of picked edges forms a matching \\(M\\) — no two share a vertex{.fragment} - Any vertex cover must include at least one endpoint of each edge in \\(M\\) (otherwise that edge is uncovered){.fragment} - So \\(|\\text{OPT}| \\ge |M|\\){.fragment} - Our algorithm picks both endpoints: \\(|\\text{ALG}| = 2|M| \\le 2|\\text{OPT}|\\) ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#vertex-cover-example",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#vertex-cover-example",
+    "title": "Tulasimohan Molli",
+    "section": "Vertex Cover: Example",
+    "text": "Vertex Cover: Example\nStar graph: Center \\(c\\) and leaves \\(l_1, \\dots, l_n\\) - Optimal cover: \\(\\{c\\}\\) with size 1 - Greedy (max degree) picks \\(c\\) first — optimal!\nStar graph: center covers all edges.\nBad case for naive greedy: A graph consisting of a perfect matching - Greedy by max degree might pick both endpoints of each edge (degree 1 each) - Optimal: one endpoint per edge"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-analysis",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Set Cover: Analysis",
+    "text": "Greedy Set Cover: Analysis\nLet: - \\(c\\) be the size of the optimal set cover (OPT) - \\(g\\) be the size of the greedy set cover (ALG)\nLet \\(m_0 = m\\) be the initial number of uncovered elements. Let \\(m_i\\) be the number remaining after \\(i\\) iterations.\nAfter \\(i-1\\) rounds, \\(m_{i-1}\\) elements remain. Since there is a cover of size \\(c\\), by the pigeonhole principle, some set covers at least \\(m_{i-1} / c\\) elements."
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-recurrence",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-recurrence",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Set Cover: Recurrence",
+    "text": "Greedy Set Cover: Recurrence\nGreedy picks the largest set, so it covers at least \\(m_{i-1} / c\\) elements in iteration \\(i\\):\n\\[m_i \\le m_{i-1} - \\frac{m_{i-1}}{c} = m_{i-1}\\left(1 - \\frac{1}{c}\\right)\\]\nUnrolling the recurrence:\n\\[m_i \\le m \\left(1 - \\frac{1}{c}\\right)^i\\]"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-final-bound",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#greedy-set-cover-final-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Set Cover: Final Bound",
+    "text": "Greedy Set Cover: Final Bound\nUsing \\(1 - x \\le e^{-x}\\):\n\\[m_i \\le m \\cdot e^{-i/c}\\]\nAfter \\(g\\) iterations (the greedy cover size), all elements are covered (\\(m_g &lt; 1\\)):\n\\[m \\cdot e^{-g/c} &lt; 1\\]\nSolving for \\(g\\): \\[e^{-g/c} &lt; 1/m \\quad\\Rightarrow\\quad -g/c &lt; -\\ln m \\quad\\Rightarrow\\quad g &gt; c \\ln m\\]\n\n\\[|\\text{GREEDY}| \\le |\\text{OPT}| \\cdot \\ln m\\]"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#is-the-greedy-set-cover-bound-tight",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#is-the-greedy-set-cover-bound-tight",
+    "title": "Tulasimohan Molli",
+    "section": "Is the Greedy Set Cover Bound Tight?",
+    "text": "Is the Greedy Set Cover Bound Tight?\nYes! There exist instances where the greedy ratio is \\(\\Omega(\\log n)\\).\nExample: Construct a bipartite-like set system where: - OPT = 2 - Greedy picks \\(\\Theta(\\log n)\\) sets\nHardness: For every \\(\\epsilon &gt; 0\\), Set Cover cannot be approximated within \\((1-\\epsilon)\\ln m\\) unless P = NP.\nSo the greedy bound is essentially optimal for this problem!"
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#weighted-set-cover",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#weighted-set-cover",
+    "title": "Tulasimohan Molli",
+    "section": "Weighted Set Cover",
+    "text": "Weighted Set Cover\nExtension: Each set \\(S\\) has a cost \\(w(S)\\). Goal: minimize total cost of selected sets.\nGreedy variant: Pick the set that minimizes cost per newly covered element: \\[\\frac{w(S)}{|S \\cap \\text{uncovered}|}\\]\nAnalysis: Same approximation factor \\(\\ln m\\).\nApplication: Facility location — each potential facility has a cost, each facility covers a region. Minimize cost to cover all demand points."
+  },
+  {
+    "objectID": "lectures/lec-32-approximation-algorithms-contd.html#summary",
+    "href": "lectures/lec-32-approximation-algorithms-contd.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nAlgorithm\nProblem\nRatio\nKey Technique\n\n\n\n\nAPPROX-VC\nVertex Cover\n2\nPick matching edges\n\n\nGreedy SC\nSet Cover\n\\(\\ln m\\)\nPigeonhole principle\n\n\nWeighted Greedy\nWeighted Set Cover\n\\(\\ln m\\)\nCost per element\n\n\n\nGeneral lessons: - Simple greedy/iterative algorithms often give good approximations for covering problems - Lower bounding OPT is the key analytical challenge - Matching-based arguments give tight bounds for Vertex Cover\nNext: Metric TSP — a 2-approximation using MST."
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#travelling-salesman-problem-tsp",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#travelling-salesman-problem-tsp",
+    "title": "Tulasimohan Molli",
+    "section": "Travelling Salesman Problem (TSP)",
+    "text": "Travelling Salesman Problem (TSP)\nProblem: Given a set of cities along with the cost of travel between them, find the cheapest route visiting all cities and returning to the starting point.\n\nFormal Definition: Given a complete undirected graph \\(G = (V, E)\\) with nonnegative integer cost \\(c(u,v)\\) for each edge \\((u,v) \\in E\\), find a Hamiltonian cycle of \\(G\\) with minimum cost."
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#tsp-variants",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#tsp-variants",
+    "title": "Tulasimohan Molli",
+    "section": "TSP Variants",
+    "text": "TSP Variants\nMetric TSP: Costs satisfy the triangle inequality: \\[c(u,w) \\le c(u,v) + c(v,w) \\quad \\text{for all } u,v,w \\in V\\]\nEuclidean TSP: Cities are points in Euclidean space, costs equal to Euclidean distance.\nGeneral TSP: No restriction on costs — can be arbitrarily assigned.\n\n\n\n\n\n\nImportant\n\n\nGeneral TSP is much harder to approximate than Metric TSP!"
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#hardness-of-approximation-general-tsp",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#hardness-of-approximation-general-tsp",
+    "title": "Tulasimohan Molli",
+    "section": "Hardness of Approximation: General TSP",
+    "text": "Hardness of Approximation: General TSP\n\nGeneral TSP cannot be approximated within any polynomial factor (unless P = NP).\n\nProof Idea: Reduction from Hamiltonian Cycle:\n\nGiven a graph \\(G = (V, E)\\) (Hamiltonian Cycle instance), construct a complete graph \\(G'\\) with costs:{.fragment}\n\nIf \\((u,v) \\in E\\): \\(c(u,v) = 1\\){.fragment}\nIf \\((u,v) \\notin E\\): \\(c(u,v) = \\text{(large)}\\), say \\(L = n \\cdot \\rho\\){.fragment}\n\n\nIf \\(G\\) has a Hamiltonian cycle: optimal tour cost = \\(n\\){.fragment} If \\(G\\) has no Hamiltonian cycle: any tour uses a non-edge, cost \\(\\ge (n-1) + L &gt; \\rho n\\){.fragment}\nThus \\(\\rho\\)-approximation could distinguish the two — impossible unless P = NP.{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#metric-tsp-approximation-algorithm",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#metric-tsp-approximation-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Metric TSP: Approximation Algorithm",
+    "text": "Metric TSP: Approximation Algorithm\nIdea: First compute an MST, then create a tour based on the tree.\nAPPROX-TSP-TOUR: 1. Compute a minimum spanning tree \\(T_{\\min}\\) of \\(G\\){.fragment} 2. Let \\(W\\) be a full walk of \\(T_{\\min}\\) (traverses each edge twice){.fragment} 3. Remove duplicate vertices from \\(W\\) to obtain a Hamiltonian cycle \\(H\\){.fragment}\nRuntime: Dominated by MST-PRIM — \\(\\Theta(V^2)\\)."
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#full-walk-vs.-hamiltonian-cycle",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#full-walk-vs.-hamiltonian-cycle",
+    "title": "Tulasimohan Molli",
+    "section": "Full Walk vs. Hamiltonian Cycle",
+    "text": "Full Walk vs. Hamiltonian Cycle\nFull walk: Starting from root, do a DFS, listing each vertex when visited (including on backtrack). Each edge traversed twice.\nShortcutting: Remove duplicates (keeping only the first occurrence) to get a Hamiltonian cycle. By triangle inequality, this only reduces cost.\n\nWalk: \\(a \\to b \\to c \\to b \\to d \\to b \\to a \\to e \\to a\\) Ham cycle: \\(a \\to b \\to c \\to d \\to e \\to a\\)"
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#approximation-proof",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#approximation-proof",
+    "title": "Tulasimohan Molli",
+    "section": "2-Approximation Proof",
+    "text": "2-Approximation Proof\n\nAPPROX-TSP-TOUR is a polynomial-time 2-approximation algorithm for Metric TSP.\n\nProof: - Let \\(H^*\\) be the optimal tour. - Remove an arbitrary edge from \\(H^*\\) — this yields a spanning tree \\(T\\) with \\(c(T) \\le c(H^*)\\) (non-negative costs){.fragment} - Since \\(T_{\\min}\\) is an MST: \\(c(T_{\\min}) \\le c(T) \\le c(H^*)\\){.fragment} - The full walk \\(W\\) traverses each edge twice: \\(c(W) = 2c(T_{\\min}) \\le 2c(H^*)\\){.fragment} - Shortcutting duplicates from \\(W\\) gives tour \\(H\\) with \\(c(H) \\le c(W)\\) (by triangle inequality){.fragment} - Therefore: \\(c(H) \\le c(W) \\le 2c(H^*)\\) ✓{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#visual-proof-sketch",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#visual-proof-sketch",
+    "title": "Tulasimohan Molli",
+    "section": "Visual Proof Sketch",
+    "text": "Visual Proof Sketch\n\nOptimal tour \\(H^*\\) (cost = OPT)\nRemove one edge from \\(H^*\\) → spanning tree \\(T\\) (cost \\(\\le\\) OPT)\nMinimum spanning tree \\(T_{\\min}\\) (cost \\(\\le\\) cost of \\(T\\))\nFull walk \\(W\\) of \\(T_{\\min}\\) (traverses each edge twice: cost \\(= 2c(T_{\\min}) \\le 2\\cdot\\) OPT)\nShortcut duplicates from \\(W\\) to get tour \\(H\\) (cost \\(\\le\\) cost of \\(W\\) by triangle inequality)\n\nThus \\(c(H) \\le 2 \\cdot \\text{OPT}\\). ◻"
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#improving-the-bound",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#improving-the-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Improving the Bound",
+    "text": "Improving the Bound\nThe MST-based 2-approximation can be improved:\nChristofides’ Algorithm (1976): 1. Compute MST \\(T_{\\min}\\) 2. Find minimum-weight perfect matching \\(M\\) on odd-degree vertices of \\(T_{\\min}\\) 3. Eulerian tour on \\(T_{\\min} \\cup M\\) 4. Shortcut to get Hamiltonian cycle\nResult: 1.5-approximation for Metric TSP — best known polynomial-time guarantee."
+  },
+  {
+    "objectID": "lectures/lec-33-metric-tsp-approximation.html#summary",
+    "href": "lectures/lec-33-metric-tsp-approximation.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\n\nVariant\nApproximability\nBest Known\n\n\n\n\nGeneral TSP\nNot approximable (unless P = NP)\n—\n\n\nMetric TSP\n2-approx (MST), 1.5-approx (Christofides)\n\\(O(\\log n / \\log \\log n)\\) for special cases\n\n\nEuclidean TSP\nPTAS exists\n\\((1+\\epsilon)\\)-approx\n\n\n\nKey takeaways: - Metric TSP has a simple 2-approximation using MST - Algorithm: MST \\(\\to\\) full walk \\(\\to\\) shortcut duplicates - Proof uses triangle inequality and MST optimality - Runtime: \\(O(V^2)\\) (dominated by MST computation) - Christofides gives 1.5-approximation"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#what-is-backtracking",
+    "href": "lectures/lec-34-backtracking-principles.html#what-is-backtracking",
+    "title": "Tulasimohan Molli",
+    "section": "What is Backtracking?",
+    "text": "What is Backtracking?\nBacktracking is a systematic method for exploring all possible solutions to a problem by incrementally building candidates and abandoning (“backtracking” from) partial candidates that cannot be completed to a valid solution.\nKey idea: Prune the search space as early as possible.\nApplications: - Constraint satisfaction problems (n-Queens, Sudoku) - Combinatorial optimization (Knapsack, TSP) - Graph problems (Hamiltonian Cycle, Graph Coloring) - Puzzles (crosswords, maze solving)"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#backtracking-general-framework",
+    "href": "lectures/lec-34-backtracking-principles.html#backtracking-general-framework",
+    "title": "Tulasimohan Molli",
+    "section": "Backtracking: General Framework",
+    "text": "Backtracking: General Framework\nBACKTRACK(solution, constraints):\n    if solution is complete:\n        return solution  # Found a valid solution\n    \n    for each candidate in feasible extensions:\n        if candidate satisfies constraints:\n            add candidate to solution\n            result = BACKTRACK(solution, constraints)\n            if result is valid:\n                return result\n            remove candidate from solution  # BACKTRACK!\n    \n    return failure\nThree key components:{.fragment} 1. State: Partial solution being built{.fragment} 2. Constraints: Rules to prune infeasible partial solutions{.fragment} 3. Pruning: Detect dead ends early to avoid wasted exploration{.fragment}"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#example-n-queens-problem",
+    "href": "lectures/lec-34-backtracking-principles.html#example-n-queens-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Example: n-Queens Problem",
+    "text": "Example: n-Queens Problem\nProblem: Place \\(n\\) queens on an \\(n \\times n\\) chessboard so that no two queens attack each other.\nConstraints: - No two queens share the same row - No two queens share the same column - No two queens share the same diagonal\nState: Queens placed in first \\(k\\) rows Extensions: Which column to place the \\((k+1)\\)-th queen?"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#n-queens-pruning",
+    "href": "lectures/lec-34-backtracking-principles.html#n-queens-pruning",
+    "title": "Tulasimohan Molli",
+    "section": "n-Queens: Pruning",
+    "text": "n-Queens: Pruning\nBasic backtracking: Try placing a queen in each column, check if valid, and backtrack if stuck.\nForward checking: Before placing, compute which positions are still available.\nConstraint propagation: Use arc consistency to deduce forced placements.\n4-Queens backtracking tree.\nThe pruning is so effective that the 8-Queens problem has only 92 solutions out of \\(\\binom{64}{8} \\approx 4.4 \\times 10^9\\) possible placements."
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#backtracking-worst-case-analysis",
+    "href": "lectures/lec-34-backtracking-principles.html#backtracking-worst-case-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Backtracking: Worst-Case Analysis",
+    "text": "Backtracking: Worst-Case Analysis\nWithout pruning: Backtracking explores the entire search tree — potentially exponential.\n\nn-Queens naive: \\(\\binom{n^2}{n}\\) possibilities\nn-Queens with row/column constraints: \\(n!\\) possibilities\n\nWith pruning: Often much faster in practice, but worst case remains exponential.\nWhen is backtracking useful? - Problem is NP-hard (no polynomial algorithm known) - Instance sizes are moderate (\\(n \\le 20-100\\)) - Good pruning rules are available"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#hamiltonian-cycle-via-backtracking",
+    "href": "lectures/lec-34-backtracking-principles.html#hamiltonian-cycle-via-backtracking",
+    "title": "Tulasimohan Molli",
+    "section": "Hamiltonian Cycle via Backtracking",
+    "text": "Hamiltonian Cycle via Backtracking\nProblem: Given a graph \\(G = (V, E)\\), find a cycle visiting all vertices exactly once.\nBacktracking approach: 1. Start with vertex \\(v_0\\), mark it visited{.fragment} 2. Try to extend the path to an unvisited neighbor{.fragment} 3. If path has \\(|V|\\) vertices and the last vertex connects to \\(v_0\\), a Hamiltonian cycle is found{.fragment} 4. If no unvisited neighbor exists, backtrack{.fragment}\nPruning heuristics: - Degree-1 vertices: if a vertex has degree \\(&lt; 2\\), no cycle possible - Connected components: if removing a visited vertex disconnects unvisited vertices, prune"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#subset-sum-knapsack-via-backtracking",
+    "href": "lectures/lec-34-backtracking-principles.html#subset-sum-knapsack-via-backtracking",
+    "title": "Tulasimohan Molli",
+    "section": "Subset Sum / Knapsack via Backtracking",
+    "text": "Subset Sum / Knapsack via Backtracking\nProblem: Given items with weights \\(w_i\\) and values \\(v_i\\), find a subset of maximum total value with total weight \\(\\le W\\).\nBacktracking tree: - At each level \\(i\\), decide whether to include item \\(i\\) - State: current weight \\(w\\), current value \\(v\\), item index \\(i\\)\nPruning: - If \\(w + w_i &gt; W\\), skip (infeasible) - If \\(v + \\text{optimistic\\_future} &lt; \\text{best\\_so\\_far}\\), prune (bound)\nThis is the Branch and Bound approach — covered in the next lecture!"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#comparison-backtracking-vs.-other-methods",
+    "href": "lectures/lec-34-backtracking-principles.html#comparison-backtracking-vs.-other-methods",
+    "title": "Tulasimohan Molli",
+    "section": "Comparison: Backtracking vs. Other Methods",
+    "text": "Comparison: Backtracking vs. Other Methods\n\n\n\n\n\n\n\n\n\nMethod\nStrategy\nGuarantee\nUse Case\n\n\n\n\nBacktracking\nDepth-first + pruning\nFinds all/exact solution\nSmall to moderate instances\n\n\nBranch and Bound\nBacktracking + bounds\nExact with pruning\nOptimization problems\n\n\nDynamic Programming\nTable filling\nExact\nOptimal substructure\n\n\nGreedy\nLocal optimal choice\nFast, no guarantee\nApproximation acceptable\n\n\nBeam Search\nPruned BFS\nHeuristic\nLarge state spaces\n\n\n\nBacktracking excels when: - Constraints prune most of the search space - Problem requires exact solution - Instance size is manageable"
+  },
+  {
+    "objectID": "lectures/lec-34-backtracking-principles.html#summary",
+    "href": "lectures/lec-34-backtracking-principles.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nKey Point\n\n\n\n\nBacktracking\nSystematic search with pruning by constraint violation\n\n\nState\nPartial solution being constructed\n\n\nPruning\nAbandon paths that cannot lead to a valid solution\n\n\nn-Queens\nClassic example — row/column/diagonal constraints\n\n\nHamiltonian Cycle\nBacktracking with degree and connectivity pruning\n\n\nComplexity\nExponential worst-case, often practical for moderate \\(n\\)\n\n\n\nNext: Branch and Bound — adding bound-based pruning for optimization problems."
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#what-is-branch-and-bound",
+    "href": "lectures/lec-35-branch-and-bound.html#what-is-branch-and-bound",
+    "title": "Tulasimohan Molli",
+    "section": "What is Branch and Bound?",
+    "text": "What is Branch and Bound?\nBranch and Bound (B&B) is an algorithmic paradigm for solving optimization problems exactly by combining:\n\nBranching: Partition the search space into subproblems (like backtracking){.fragment}\nBounding: Compute upper/lower bounds on the optimal solution value for each subproblem{.fragment}\nPruning: Eliminate subproblems that cannot contain a solution better than the current best{.fragment}\n\nKey difference from backtracking: Backtracking prunes by constraint violation; B&B prunes using bounds on the objective function."
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#the-general-algorithm",
+    "href": "lectures/lec-35-branch-and-bound.html#the-general-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "The General Algorithm",
+    "text": "The General Algorithm\nBRANCH_AND_BOUND(problem):\n    best = -∞  (or +∞ for minimization)\n    queue = {initial problem}\n    \n    while queue is not empty:\n        select and remove a subproblem from queue\n        compute lower bound LB (for minimization)\n        if LB &gt;= best:\n            prune (cannot improve)\n        else:\n            if subproblem is a complete solution:\n                best = LB\n            else:\n                branch into smaller subproblems\n                add to queue\n    return best"
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#bounding-functions",
+    "href": "lectures/lec-35-branch-and-bound.html#bounding-functions",
+    "title": "Tulasimohan Molli",
+    "section": "Bounding Functions",
+    "text": "Bounding Functions\nThe quality of B&B depends on tight bounds:\nFor minimization problems: - Lower bound: An optimistic estimate of the minimum solution within the subproblem (must be \\(\\le\\) true optimum) - Upper bound: The best solution found so far (prunes subproblems whose LB exceeds this)\nFor maximization problems: - Upper bound: An optimistic estimate of the maximum solution (must be \\(\\ge\\) true optimum) - Lower bound: The best solution found so far\n\n\n\n\n\n\nImportant\n\n\nTighter bounds = more pruning = faster search. Design of good bounds is both an art and a science."
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#example-0-1-knapsack",
+    "href": "lectures/lec-35-branch-and-bound.html#example-0-1-knapsack",
+    "title": "Tulasimohan Molli",
+    "section": "Example: 0-1 Knapsack",
+    "text": "Example: 0-1 Knapsack\nProblem: Maximize \\(\\sum v_i x_i\\) subject to \\(\\sum w_i x_i \\le W\\), \\(x_i \\in \\{0,1\\}\\).\nBranching: At each level, decide to include or exclude an item.\nUpper bound (optimistic): Relax integrality — allow fractional items (greedy by \\(v_i/w_i\\)): - Sort items by \\(v_i/w_i\\) descending - Take items fully while possible, then take a fraction of the next - This gives an upper bound on the optimal integer solution\nPruning: If the upper bound \\(\\le\\) best found so far, prune."
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#knapsack-bb-example",
+    "href": "lectures/lec-35-branch-and-bound.html#knapsack-bb-example",
+    "title": "Tulasimohan Molli",
+    "section": "Knapsack B&B: Example",
+    "text": "Knapsack B&B: Example\nItems: \\((v_i, w_i)\\): A=(40,2), B=(30,3), C=(50,5), D=(10,1), \\(W=7\\)\nGreedy order: D (10), A (20), B (10), C (10) — by \\(v_i/w_i\\)\nStep 1: Root: take all = 130, but over weight. Fractional: D+A+B + \\(\\frac{1}{5}\\)C = 90. Upper bound = 90.\nBranch on D: - Take D: weight=1, value=10. Remaining capacity=6. Upper bound on children: 10 + fractional of A,B,C = 10+40+30+0 = 80 - Skip D: weight=0, value=0. Upper bound: 0 + fractional of A,B,C = 40+30+50 = 120 (but wait — A+B+\\(\\frac{2}{5}\\)C with \\(W=7\\): A(40) + B(30) + \\(\\frac{2}{5}\\)C(20) = 90)"
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#knapsack-bb-search-tree",
+    "href": "lectures/lec-35-branch-and-bound.html#knapsack-bb-search-tree",
+    "title": "Tulasimohan Molli",
+    "section": "Knapsack B&B: Search Tree",
+    "text": "Knapsack B&B: Search Tree\nKnapsack B&B search tree.\nPruning rules: - UB \\(\\le\\) best integer solution found → prune - Infeasible (weight \\(&gt; W\\)) → prune - All items considered → leaf (update best)"
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#traveling-salesman-via-bb",
+    "href": "lectures/lec-35-branch-and-bound.html#traveling-salesman-via-bb",
+    "title": "Tulasimohan Molli",
+    "section": "Traveling Salesman via B&B",
+    "text": "Traveling Salesman via B&B\nProblem: Minimize tour cost visiting all cities.\nLower bound (assignment relaxation): - A tour consists of \\(n\\) edges, one entering and one leaving each city - Relax the “single cycle” requirement — we get a minimum weight assignment problem (a set of cycles covering all cities) - Solve in \\(O(n^3)\\) via Hungarian algorithm - This is a lower bound on the optimal TSP tour\nBranching: Pick a subtour (cycle of length \\(&lt; n\\)) and branch by excluding an edge from that cycle."
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#tsp-bb-lower-bound-example",
+    "href": "lectures/lec-35-branch-and-bound.html#tsp-bb-lower-bound-example",
+    "title": "Tulasimohan Molli",
+    "section": "TSP B&B: Lower Bound Example",
+    "text": "TSP B&B: Lower Bound Example\nTSP assignment relaxation.\nLower bound calculation: 1. Subtract row minima from each row 2. Subtract column minima from each column 3. Sum of all subtracted values = lower bound\nBranching: On a subtour \\((a,b,c,a)\\), create branches: - Exclude \\((a,b)\\) - Exclude \\((b,c)\\) - Exclude \\((c,a)\\)"
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#advantages-and-limitations",
+    "href": "lectures/lec-35-branch-and-bound.html#advantages-and-limitations",
+    "title": "Tulasimohan Molli",
+    "section": "Advantages and Limitations",
+    "text": "Advantages and Limitations\nAdvantages: - Finds optimal solution{.fragment} - Can be stopped early to get a feasible solution with a quality guarantee (gap = current UB - LB){.fragment} - Memory efficient (DFS variant uses linear space){.fragment}\nLimitations: - Worst-case exponential time{.fragment} - Performance depends critically on the bound quality{.fragment} - May explore exponentially many nodes for hard instances{.fragment}\nWhen B&B works well: - Tight bounds available - Problem has a natural branching structure - Moderate-sized instances"
+  },
+  {
+    "objectID": "lectures/lec-35-branch-and-bound.html#summary",
+    "href": "lectures/lec-35-branch-and-bound.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nConcept\nDescription\n\n\n\n\nBranching\nPartition search space into subproblems\n\n\nBounding\nCompute optimistic estimates of optimal value\n\n\nPruning\nDiscard subproblems that cannot improve on best\n\n\nKnapsack B&B\nUpper bound via fractional relaxation\n\n\nTSP B&B\nLower bound via assignment relaxation\n\n\nOptimality\nB&B finds exact solutions (for small to moderate instances)\n\n\n\nNext: Introduction to Linear Programming — a powerful tool for modeling and solving optimization problems."
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#what-is-linear-programming",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#what-is-linear-programming",
+    "title": "Tulasimohan Molli",
+    "section": "What is Linear Programming?",
+    "text": "What is Linear Programming?\nLinear Programming (LP) is a powerful optimization framework for problems where both the objective and constraints are linear functions.\n\nA linear program is an optimization problem of the form:\n\\[\\begin{aligned}\n\\text{maximize} \\quad & c^T x \\\\\n\\text{subject to} \\quad & Ax \\le b \\\\\n& x \\ge 0\n\\end{aligned}\\]\nwhere \\(x \\in \\mathbb{R}^n\\) is the vector of decision variables, \\(c \\in \\mathbb{R}^n\\), \\(A \\in \\mathbb{R}^{m \\times n}\\), \\(b \\in \\mathbb{R}^m\\)."
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#lp-example-product-mix",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#lp-example-product-mix",
+    "title": "Tulasimohan Molli",
+    "section": "LP Example: Product Mix",
+    "text": "LP Example: Product Mix\nProblem: A factory produces two products \\(P_1\\) and \\(P_2\\).\n\n\n\nProduct\nProfit/unit\nMachine time\nLabor time\n\n\n\n\n\\(P_1\\)\n40\n2 hrs\n1 hr\n\n\n\\(P_2\\)\n30\n1 hr\n2 hrs\n\n\n\nAvailability: 100 machine hours, 80 labor hours.\nLP Formulation: \\[\\begin{aligned}\n\\text{maximize} \\quad & 40x_1 + 30x_2 \\\\\n\\text{subject to} \\quad & 2x_1 + x_2 \\le 100 \\quad (\\text{machine}) \\\\\n& x_1 + 2x_2 \\le 80 \\quad (\\text{labor}) \\\\\n& x_1, x_2 \\ge 0\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#graphical-solution",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#graphical-solution",
+    "title": "Tulasimohan Molli",
+    "section": "Graphical Solution",
+    "text": "Graphical Solution\nLP graphical solution.\nOptimal solution: Intersection of constraints — at a vertex of the feasible region.\nFor 2 variables: feasible region is a polygon, optimum at a corner."
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#standard-vs.-canonical-forms",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#standard-vs.-canonical-forms",
+    "title": "Tulasimohan Molli",
+    "section": "Standard vs. Canonical Forms",
+    "text": "Standard vs. Canonical Forms\nStandard form: \\[\\begin{aligned}\n\\text{maximize} \\quad & c^T x \\\\\n\\text{subject to} \\quad & Ax \\le b \\\\\n& x \\ge 0\n\\end{aligned}\\]\nCanonical form (for simplex): \\[\\begin{aligned}\n\\text{maximize} \\quad & c^T x \\\\\n\\text{subject to} \\quad & Ax = b \\\\\n& x \\ge 0\n\\end{aligned}\\]\nConversion: Add slack variables \\(s_i \\ge 0\\) to turn \\(\\le\\) into \\(=\\): \\[a_i^T x \\le b_i \\quad\\Longrightarrow\\quad a_i^T x + s_i = b_i\\]"
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#the-simplex-algorithm",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#the-simplex-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "The Simplex Algorithm",
+    "text": "The Simplex Algorithm\nGeometric idea: Walk along edges of the feasible polytope from vertex to vertex, always improving the objective.\nSimplex Algorithm: 1. Start at a basic feasible solution (a vertex) 2. Check if current vertex is optimal: - If all reduced costs \\(\\le 0\\), stop (optimal found) 3. Move to a neighboring vertex with higher objective value 4. Repeat\nPerformance: Exponential worst-case (Klee-Minty), but polynomial on average and extremely fast in practice."
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#duality",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#duality",
+    "title": "Tulasimohan Molli",
+    "section": "Duality",
+    "text": "Duality\nEvery LP has a dual LP that provides upper bounds on the primal optimum.\nPrimal (maximization): \\[\\begin{aligned}\n\\max \\quad & c^T x \\\\\n\\text{s.t.} \\quad & Ax \\le b, \\; x \\ge 0\n\\end{aligned}\\]\nDual (minimization): \\[\\begin{aligned}\n\\min \\quad & b^T y \\\\\n\\text{s.t.} \\quad & A^T y \\ge c, \\; y \\ge 0\n\\end{aligned}\\]\n\nWeak Duality. For any feasible \\(x\\) (primal) and \\(y\\) (dual): \\(c^T x \\le b^T y\\).\n\n\nStrong Duality. If both primal and dual are feasible, their optimal values are equal: \\(c^T x^* = b^T y^*\\)."
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#duality-economic-interpretation",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#duality-economic-interpretation",
+    "title": "Tulasimohan Molli",
+    "section": "Duality: Economic Interpretation",
+    "text": "Duality: Economic Interpretation\nPrimal variables \\(x_j\\): Activity levels Dual variables \\(y_i\\): Shadow prices of resources\nIf a resource constraint is tight (slack = 0), its shadow price tells us how much the objective would improve if we had one more unit of that resource.\nComplementary slackness: At optimality: - If \\(x_j &gt; 0\\), then the \\(j\\)-th dual constraint is tight: \\(a_j^T y = c_j\\) - If \\(y_i &gt; 0\\), then the \\(i\\)-th primal constraint is tight: \\(a_i^T x = b_i\\)"
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#lp-applications-in-algorithms",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#lp-applications-in-algorithms",
+    "title": "Tulasimohan Molli",
+    "section": "LP Applications in Algorithms",
+    "text": "LP Applications in Algorithms\nNetwork Flow as LP: \\[\\begin{aligned}\n\\text{maximize} \\quad & \\sum_v f(s,v) \\\\\n\\text{subject to} \\quad & 0 \\le f(u,v) \\le c(u,v) \\\\\n& \\sum_u f(u,v) - \\sum_u f(v,u) = 0 \\quad \\forall v \\ne s,t\n\\end{aligned}\\]\nMax flow is a linear program! The max flow = min cut theorem is a special case of LP strong duality.\nOther algorithmic applications: - Minimum cost flow - Shortest path (LP formulation) - Bipartite matching - Multicommodity flow - Approximation algorithms via LP rounding"
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#lp-based-approximation-algorithms",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#lp-based-approximation-algorithms",
+    "title": "Tulasimohan Molli",
+    "section": "LP-Based Approximation Algorithms",
+    "text": "LP-Based Approximation Algorithms\nLP is a powerful tool for designing approximation algorithms:\nGeneral approach: 1. Formulate the problem as an integer linear program (ILP) 2. Relax integrality to get an LP (polynomial-time solvable) 3. Solve the LP to get an optimal fractional solution 4. Round the fractional solution to an integer solution\nExample: Vertex Cover ILP: \\[\\begin{aligned}\n\\min \\quad & \\sum_{v \\in V} x_v \\\\\n\\text{s.t.} \\quad & x_u + x_v \\ge 1 \\quad \\forall (u,v) \\in E \\\\\n& x_v \\in \\{0,1\\}\n\\end{aligned}\\]\nLP relaxation: \\(0 \\le x_v \\le 1\\). Rounding: if \\(x_v \\ge 1/2\\), set to 1 → 2-approximation!"
+  },
+  {
+    "objectID": "lectures/lec-36-introduction-to-linear-programming.html#summary",
+    "href": "lectures/lec-36-introduction-to-linear-programming.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\n\n\nConcept\nKey Point\n\n\n\n\nLP\nOptimize linear objective under linear constraints\n\n\nSimplex\nWalk along polytope vertices to find optimum\n\n\nDuality\nPrimal max = dual min at optimality\n\n\nDual variables\nShadow prices of resources\n\n\nLP in algorithms\nMax flow, min cost flow, shortest path\n\n\nLP rounding\nPowerful technique for approximation algorithms\n\n\n\nFurther topics: Interior-point methods (Karmarkar), totally unimodular matrices, integer linear programming, ellipsoid method."
+  }
+]
