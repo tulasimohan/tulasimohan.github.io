@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "",
+    "text": "Instructor: Tulasimohan Molli\nTerm: May–July 2026"
+  },
+  {
+    "objectID": "index.html#lectures",
+    "href": "index.html#lectures",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "Lectures",
+    "text": "Lectures\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-05-21\nIntroduction to Algorithms\n📊\n\n\nLecture 2\n2026-05-21\nIntroduction to Sorting & Asymptotic Analysis\n📊\n\n\nLecture 3\n2026-05-21\nAsymptotic Notation & Merge Sort\n📊\n\n\nLecture 4\n2026-05-21\nSolving Recurrences\n📊\n\n\nLecture 5\n2026-05-21\nDivide and Conquer: Maximum Subarray\n📊\n\n\nLecture 6\n2026-05-21\nClosest Pair of Points in 2D\n📊\n\n\nLecture 7\n2026-05-21\nSorting Lower Bounds & Quicksort\n📊\n\n\nLecture 8\n2026-05-21\nProbability Primer & Randomized Quicksort\n📊\n\n\nLecture 9\n2026-06-02\nSelection: Randomized & Deterministic\n📊\n\n\nLecture 10\n2026-06-02\nDynamic Programming: Fibonacci & LCS\n📊\n\n\nLecture 11\n2026-06-04\nMatrix Chain Multiplication\n📊\n\n\nLecture 12\n2026-06-04\nGraphs & Dynamic Programming on Trees\n📊\n\n\nLecture 13\n2026-06-05\nGreedy: Interval Scheduling\n📊\n\n\nLecture 14\n2026-06-05\nHuffman Coding\n📊\n\n\nLecture 15\n2026-06-09\nMinimum Spanning Trees\n📊\n\n\nLecture 16\n2026-06-09\nMST Algorithms\n📊\n\n\nLecture 17\n2026-06-11\nMatroids\n📊\n\n\nLecture 18\n2026-06-11\nMatroids: Greedy Optimization\n📊\n\n\nLecture 19\n2026-06-29\nAverage Case Analysis\n📊\n\n\nLecture 20\n2026-06-12\nAmortized Analysis\n📊\n\n\nLecture 21\n2026-06-12\nFurther Amortized Analysis\n📊\n\n\nLecture 22\n\nNetwork Flow\n📊\n\n\nLecture 23\n\nMax-Flow Min-Cut Theorem & Ford-Fulkerson\n📊\n\n\nLecture 24\n\nEdmonds-Karp Algorithm & Bipartite Matching\n📊\n\n\nLecture 25\n\nRandomized Algorithms & Equality Checking\n📊\n\n\nLecture 26\n\nComputational Models & Decision Problems\n📊\n\n\nLecture 27\n\nP, NP, and Reductions\n📊\n\n\nLecture 28\n\nCook-Levin Theorem\n📊\n\n\nLecture 29\n\nTime Complexity Classes\n📊\n\n\nLecture 30\n\nNP-Completeness: CLIQUE and Vertex Cover\n📊\n\n\nLecture 31\n\nApproximation Algorithms\n📊\n\n\nLecture 32\n\nApproximation Algorithms (contd.)\n📊\n\n\nLecture 33\n\nMetric TSP Approximation\n📊\n\n\nLecture 34\n\nBacktracking Principles\n📊\n\n\nLecture 35\n\nBranch and Bound\n📊\n\n\nLecture 36\n\nIntroduction to Linear Programming\n📊"
+  },
+  {
+    "objectID": "index.html#assignments",
+    "href": "index.html#assignments",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "Assignments",
+    "text": "Assignments\n\nAssignment 1: Instructions | Problems: A, B, C, D\nAssignment 2: Instructions | Problems: A, B, C, D"
+  },
+  {
+    "objectID": "index.html#quizzes",
+    "href": "index.html#quizzes",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "Quizzes",
+    "text": "Quizzes\n\nQuiz 1: Question & Solution\nQuiz 2: Question & Solution\nQuiz 3: Question | Solutions\nQuiz 4: Question | Solutions\nQuiz 5: Question | Solutions\nQuiz 6: Question | Solutions"
+  },
+  {
+    "objectID": "index.html#midterm-exam",
+    "href": "index.html#midterm-exam",
+    "title": "CS F364 — Design & Analysis of Algorithms",
+    "section": "Midterm Exam",
+    "text": "Midterm Exam\n\nQuestions: PDF | TeX Source\nSolutions: PDF | TeX Source"
+  }
+]

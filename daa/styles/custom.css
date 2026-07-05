@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap");
+
+/* Force Heliotrope for headings and body across the site */
+body,
+h1, h2, h3, h4, h5, h6,
+.about-timeline, .timeline-year, .timeline-role, .timeline-inst,
+p, li {
+  font-family: "Heliotrope", sans-serif !important;
+}
+
+/* Lecture table styling */
+table.lecture-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+table.lecture-table th,
+table.lecture-table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+table.lecture-table th {
+  font-weight: 700;
+  color: #2b2b88;
+  border-bottom: 2px solid #2b2b88;
+}
+
+table.lecture-table tr:hover td {
+  background-color: #fcfcfc;
+}
