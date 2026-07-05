@@ -2,174 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-05T17:27:34.545Z</lastmod>
+    <lastmod>2026-07-05T17:33:58.056Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-01-introduction-to-algorithms.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-22-network-flow.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-23-max-flow-min-cut.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-03-asymptotic-notation-and-merge-sort.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-24-edmonds-karp-and-bipartite-matching.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-04-solving-recurrences.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-25-randomized-algorithms.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-05-divide-and-conquer-maximum-subarray.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-26-computational-models-and-decision-problems.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-06-closest-pair-of-points-in-2d.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-27-p-np-and-reductions.html</loc>
+    <lastmod>2026-07-05T17:33:58.058Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-07-sorting-lower-bounds-and-quicksort.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-28-cook-levin-theorem.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-08-probability-primer-and-randomized-quicksort.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-29-time-complexity-classes.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-09-selection-randomized-and-deterministic.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-30-np-completeness-clique-and-vertex-cover.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-31-approximation-algorithms.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-11-matrix-chain-multiplication.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-32-approximation-algorithms-contd.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
   <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-12-graphs-and-dynamic-programming-on-trees.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-13-greedy-interval-scheduling.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-14-huffman-coding.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-15-minimum-spanning-trees.html</loc>
-    <lastmod>2026-07-05T17:27:34.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-16-mst-algorithms.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-17-matroids.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-18-matroids-greedy-optimization.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-19-average-case-analysis.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-20-amortized-analysis.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-21-further-amortized-analysis.html</loc>
-    <lastmod>2026-07-05T17:27:34.547Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-01.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-02.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-03-key.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-03.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-04-key.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-04.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-05-key.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-05.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-06-key.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/quizzes/quiz-06.html</loc>
-    <lastmod>2026-07-05T17:27:34.681Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/assignments/assignment-01/index.html</loc>
-    <lastmod>2026-07-05T17:27:34.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/assignments/assignment-01/problem-a.html</loc>
-    <lastmod>2026-07-05T17:27:34.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/assignments/assignment-01/problem-b.html</loc>
-    <lastmod>2026-07-05T17:27:34.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/assignments/assignment-01/problem-c.html</loc>
-    <lastmod>2026-07-05T17:27:34.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/assignments/assignment-01/problem-d.html</loc>
-    <lastmod>2026-07-05T17:27:34.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/asymptotic-notation.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/divide-and-conquer.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/dynamic-programming.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/greedy-algorithms.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/index.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/Practice/recurrence-relations.html</loc>
-    <lastmod>2026-07-05T17:27:34.507Z</lastmod>
+    <loc>https://tulasimohan.github.io/daa/lectures/lec-33-metric-tsp-approximation.html</loc>
+    <lastmod>2026-07-05T17:33:58.059Z</lastmod>
   </url>
 </urlset>
