@@ -101,6 +101,9 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
+document.addEventListener('DOMContentLoaded',function(){var l=document.querySelector('.nav-footer a[href*="lite"],footer a[href$="lite/index.html"]');if(l){var p=location.pathname.split('/').pop()||'index.html';l.href='lite/'+p}});
+</script>
+<script>
 window.KATEX_MACROS = {
     "\\AC": "\\mathsf{AC}",
     "\\bra": "\\left( #1 \\right)",
@@ -169,8 +172,12 @@ window.Quarto = {
 <meta property="og:title" content="News &amp; Archive – Tulasimohan Molli">
 <meta property="og:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="News &amp; Archive – Tulasimohan Molli">
 <meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -765,6 +772,11 @@ description
     <li class="nav-item">
     <a class="nav-link" href="./sitemap.html">
 <p>Sitemap</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./lite/index.html">
+<p>Lite</p>
 </a>
   </li>  
 </ul>

@@ -102,6 +102,9 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script>
+document.addEventListener('DOMContentLoaded',function(){var l=document.querySelector('.nav-footer a[href*="lite"],footer a[href$="lite/index.html"]');if(l){var p=location.pathname.split('/').pop()||'index.html';l.href='lite/'+p}});
+</script>
+<script>
 window.KATEX_MACROS = {
     "\\AC": "\\mathsf{AC}",
     "\\bra": "\\left( #1 \\right)",
@@ -734,6 +737,11 @@ Jan 29, 2026
     <li class="nav-item">
     <a class="nav-link" href="./sitemap.html">
 <p>Sitemap</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./lite/index.html">
+<p>Lite</p>
 </a>
   </li>  
 </ul>

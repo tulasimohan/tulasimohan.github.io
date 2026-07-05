@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type','listing-role','listing-instructor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-date"],
+      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-role","listing-date","listing-links"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -108,9 +108,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type','listing-role','listing-instructor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-date"],
+      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-role","listing-instructor","listing-instructor_link","listing-date"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -136,9 +136,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      valueNames: ['listing-title','listing-path','listing-date','listing-code','listing-year','listing-term','listing-status','listing-course_type','listing-role','listing-instructor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
       
-      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-date"],
+      searchColumns: ["listing-title","listing-code","listing-year","listing-term","listing-status","listing-course_type","listing-role","listing-instructor","listing-date"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -156,6 +156,9 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var l=document.querySelector('.nav-footer a[href*="lite"],footer a[href$="lite/index.html"]');if(l){var p=location.pathname.split('/').pop()||'index.html';l.href='lite/'+p}});
+</script>
 <script>
 window.KATEX_MACROS = {
     "\\AC": "\\mathsf{AC}",
@@ -225,8 +228,12 @@ window.Quarto = {
 <meta property="og:title" content="Teaching – Tulasimohan Molli">
 <meta property="og:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
 <meta property="og:site_name" content="Tulasimohan Molli">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="Teaching – Tulasimohan Molli">
 <meta name="twitter:image" content="https://tulasimohan.github.io/assets/images/social-preview.png">
+<meta name="twitter:image-height" content="630">
+<meta name="twitter:image-width" content="1200">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -298,37 +305,87 @@ window.Quarto = {
 
 
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">BPHC</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Other</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">BPHC</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">IISER BPR and CMI</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div id="listing-bits-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="table-responsive">
 
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
+<table class="quarto-listing-table table table-borderless caption-top" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1785542400000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./aac/" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS G526</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./aac/" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Advanced Algorithms and Complexity</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Aug - Dec" style="background-color: #198754; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+CS G526
+</div>
+<div class="teaching-year" style="background-color: #198754;" title="Aug - Dec">
+2026
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+<a href="./aac/">Advanced Algorithms and Complexity <span class="bi bi-link-45deg"></span></a>
+</div>
+<div class="teaching-role-line">
+Course Instructor
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Monsoon Semester
+</div>
+<div class="teaching-term-dates">
+Aug - Dec
+</div></td>
 </tr>
-<tr class="even" data-index="1" data-listing-date-sort="1777593600000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./daa/" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS F364</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./daa/" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Design and Analysis of Algorithms (DAA)</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="May - July" style="background-color: #fd7e14; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
 </tr>
-<tr class="odd" data-index="2" data-listing-date-sort="1767225600000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="./dsa/" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS F211</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="./dsa/" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Data Structures and Algorithms (DSA)</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2026</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+CS F364
+</div>
+<div class="teaching-year" style="background-color: #fd7e14;" title="May - July">
+2026
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+<a href="./daa/">Design and Analysis of Algorithms (DAA) <span class="bi bi-link-45deg"></span></a>
+</div>
+<div class="teaching-role-line">
+Course Instructor
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Summer Semester
+</div>
+<div class="teaching-term-dates">
+May - July
+</div></td>
+</tr>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
+</tr>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+CS F211
+</div>
+<div class="teaching-year" style="background-color: #0d6efd;" title="Jan - May">
+2026
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+<a href="./dsa/">Data Structures and Algorithms (DSA) <span class="bi bi-link-45deg"></span></a>
+</div>
+<div class="teaching-role-line">
+Instructor (Tutorials &amp; Lab)
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Spring Semester
+</div>
+<div class="teaching-term-dates">
+Jan - May
+</div></td>
+</tr>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
 </tr>
 </tbody>
 </table>
@@ -341,15 +398,35 @@ window.Quarto = {
 <div id="listing-iiser-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="table-responsive">
 
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
+<table class="quarto-listing-table table table-borderless caption-top" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1640995200000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"><a href="https://sites.google.com/view/cs304" style="color: #198754;" title="View Course Page"><em></em></a></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap">CS304</td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><a href="https://sites.google.com/view/cs304" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Discrete Structures and Computation</a></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2022</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+CS304
+</div>
+<div class="teaching-year" style="background-color: #0d6efd;" title="Jan - May">
+2022
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+<a href="https://sites.google.com/view/cs304">Discrete Structures and Computation <span class="bi bi-link-45deg"></span></a>
+</div>
+<div class="teaching-role-line">
+Course Instructor — <a href="https://www.iiserbpr.ac.in/">IISER Berhampur</a>
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Spring Semester
+</div>
+<div class="teaching-term-dates">
+Jan - May
+</div></td>
+</tr>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
 </tr>
 </tbody>
 </table>
@@ -360,23 +437,58 @@ window.Quarto = {
 <div id="listing-cmi-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="table-responsive">
 
-<table class="quarto-listing-table table table-borderless table-hover caption-top" data-quarto-postprocess="true">
+<table class="quarto-listing-table table table-borderless caption-top" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <tbody class="list">
-<tr class="odd" data-index="0" data-listing-date-sort="1343779200000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap"></td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><span style="color: #212529;">Theory of Computation</span></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Aug - Dec" style="background-color: #198754; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2012</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+&nbsp;
+</div>
+<div class="teaching-year" style="background-color: #198754;" title="Aug - Dec">
+2012
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+Theory of Computation
+</div>
+<div class="teaching-role-line">
+Teaching Assistant — Sourav Chakraborty
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Monsoon Semester
+</div>
+<div class="teaching-term-dates">
+Aug - Dec
+</div></td>
 </tr>
-<tr class="even" data-index="1" data-listing-date-sort="1325376000000" style="border-bottom: 1px solid #e9ecef; transition: none;">
-<td class="listing-link-icon" style="text-align: center; width: 30px; vertical-align: middle; padding: 0.7rem 0 0.7rem 15px;"></td>
-<td class="listing-code" style="width: 80px; font-weight: 600; color: #2c3e50; vertical-align: middle; padding: 0.7rem 15px 0.7rem 10px; white-space: nowrap"></td>
-<td class="listing-title" style="width: 100%; vertical-align: middle; padding: 0.7rem 15px"><span style="color: #212529;">Discrete Mathematics</span></td>
-<td class="listing-year" style="text-align: center; vertical-align: middle; padding: 0.5rem 1.5rem 0.5rem 0; white-space: nowrap;"><span data-bs-toggle="tooltip" data-bs-placement="top" title="Jan - May" style="background-color: #0d6efd; color: white; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; font-size: 0.85rem; cursor: help; font-family: 'Heliotrope', sans-serif;">2012</span></td>
-<td class="listing-status" style="text-align: center; vertical-align: middle; padding: 0.5rem 0.75rem 0.5rem 0;"><em></em></td>
-<td class="listing-type" style="text-align: center; vertical-align: middle; padding: 0.5rem 0;"><em></em></td>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
+</tr>
+<tr class="odd">
+<td class="teaching-col1"><div class="teaching-code">
+&nbsp;
+</div>
+<div class="teaching-year" style="background-color: #0d6efd;" title="Jan - May">
+2012
+</div></td>
+<td class="teaching-col2"><div class="teaching-title">
+Discrete Mathematics
+</div>
+<div class="teaching-role-line">
+Teaching Assistant — Sourav Chakraborty
+</div></td>
+<td class="teaching-col3"><div class="teaching-term-name">
+Spring Semester
+</div>
+<div class="teaching-term-dates">
+Jan - May
+</div></td>
+</tr>
+<tr class="teaching-spacer even">
+<td colspan="3"></td>
 </tr>
 </tbody>
 </table>
@@ -387,73 +499,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<style>
-/* Neeldhara-style minimalist ledger table */
-table.quarto-listing-table {
-  margin-top: 1rem;
-  border: none;
-  width: 100%;
-}
-table.quarto-listing-table thead {
-  display: none !important; /* Remove heavy headers */
-}
-table.quarto-listing-table td {
-  padding: 0.75rem 0.5rem !important; /* Compact padding */
-  vertical-align: top;
-  border-bottom: 1px solid #f0f0f0 !important;
-}
-table.quarto-listing-table tr:last-child td {
-  border-bottom: none !important;
-}
-table.quarto-listing-table tr:hover {
-  background-color: #fcfcfc !important;
-}
-
-/* Typography & Layout Alignments */
-table.quarto-listing-table .listing-year_display {
-  width: 60px;
-  font-weight: 700;
-  color: #333;
-  font-family: 'Heliotrope', sans-serif;
-  font-size: 1.1rem;
-}
-table.quarto-listing-table .listing-term_display {
-  width: 90px;
-  color: #777;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding-top: 0.85rem !important; /* Align with title */
-}
-table.quarto-listing-table .listing-title {
-  font-weight: 600 !important;
-  color: #2b2b88 !important;
-  font-size: 1rem;
-  width: 38%;
-}
-table.quarto-listing-table .listing-description {
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-table.quarto-listing-table .listing-description p {
-  margin-bottom: 0;
-}
-table.quarto-listing-table .listing-description a {
-  font-weight: 600;
-  text-decoration: none;
-  color: #d71920;
-  border-bottom: 1px solid rgba(215, 25, 32, 0.2);
-  padding-bottom: 1px;
-}
-table.quarto-listing-table .listing-description a:hover {
-  border-bottom-color: #d71920;
-}
-table.quarto-listing-table .listing-description i {
-  color: #888;
-  margin-right: 4px;
-}
-</style>
 
 
 
@@ -872,6 +917,11 @@ table.quarto-listing-table .listing-description i {
     <li class="nav-item">
     <a class="nav-link" href="./sitemap.html">
 <p>Sitemap</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./lite/index.html">
+<p>Lite</p>
 </a>
   </li>  
 </ul>
