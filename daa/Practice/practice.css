@@ -1,0 +1,134 @@
+/* Fonts — paths relative to practice HTML at /daa/practice/ */
+@font-face {
+  font-family: "Amsterdam";
+  src: url("../fonts/amsterdam-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Heliotrope";
+  src: url("../fonts/heliotrope_3_italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Typography */
+body, h1, h2, h3, h4, h5, h6, p, li {
+  font-family: "Heliotrope", sans-serif;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Heliotrope", sans-serif;
+  color: #2b2b88;
+  font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 5px solid transparent;
+  border-image: linear-gradient(to right, #fecc0b 0%, #fecc0b 33%, #5ccae8 33%, #5ccae8 66%, #d71920 66%, #d71920 100%) 1;
+  background-color: #ffffff;
+  background-image: url("../assets/images/gear.svg");
+  background-repeat: no-repeat;
+  background-size: 70vw auto;
+  background-position: left 45vw top -40px;
+}
+
+.navbar-brand {
+  font-family: "Amsterdam", cursive;
+  font-size: 2.8rem;
+  color: #2b2b88 !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-weight: normal;
+}
+
+.navbar .nav-link {
+  color: #2b2b88 !important;
+  font-family: "Heliotrope", sans-serif;
+  font-size: 1.1rem;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus { color: #d71920 !important; }
+.navbar .nav-link.active { color: #d71920 !important; }
+
+/* Footer */
+footer,
+.footer {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #777;
+  position: relative;
+  z-index: 10;
+  background-color: transparent !important;
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(to right, #fecc0b 0%, #fecc0b 33%, #5ccae8 33%, #5ccae8 66%, #d71920 66%, #d71920 100%) 1;
+  background-image: url("../assets/images/network-nodes.png");
+  background-repeat: no-repeat;
+  background-size: 50vw auto;
+  background-position: right -10vw bottom -10vw;
+}
+
+.nav-footer,
+.nav-footer-center,
+.nav-footer-left,
+.nav-footer-right {
+  background-color: transparent !important;
+}
+
+footer a,
+.footer a { color: #d71920; }
+
+/* Body background */
+body {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(253, 185, 19, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(207, 32, 39, 0.04) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(92, 202, 232, 0.04) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Structural fixes */
+html { height: 100%; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+}
+#quarto-content { flex: 1 0 auto; }
+footer { flex-shrink: 0; }
+
+/* Callouts */
+.callout-note { border-left-color: #2b2b88 !important; background-color: transparent !important; }
+.callout-note .callout-header { color: #2b2b88; }
+.callout-note .callout-icon { color: #2b2b88; }
+.callout-tip { border-left-color: #5ccae8 !important; background-color: transparent !important; }
+.callout-tip .callout-header { color: #5ccae8; }
+.callout-tip .callout-icon { color: #5ccae8; }
+
+/* Links */
+a { color: #2b2b88; }
+a:hover { color: #d71920; text-decoration: none; }

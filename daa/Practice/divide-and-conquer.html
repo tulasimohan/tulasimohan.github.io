@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Merge sort variants, missing integer, MST, convex polygon, matrix search">
 
-<title>Design and Analysis of Algorithms – Tulasimohan Molli</title>
+<title>Divide &amp; Conquer – Tulasimohan Molli</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,23 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,8 +73,38 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles/custom.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles/custom.css">
+<link rel="stylesheet" href="practice.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -83,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -117,22 +148,29 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Design and Analysis of Algorithms</h1>
-<p class="subtitle lead">CS F364 | May-July 2026</p>
+<h1 class="title">Divide &amp; Conquer</h1>
+<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
+</div>
+
+<div>
+  <div class="description">
+    Merge sort variants, missing integer, MST, convex polygon, matrix search
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -144,541 +182,268 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="text-align: left; margin: 0 0 1.5rem 0;">
-<p><a href="Handout/handout.pdf" class="btn btn-primary btn-sm">Download Course Handout (PDF)</a></p>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<p><a href="index.html">← Practice</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>About the Course
+<span class="screen-reader-only">Note</span>Problem 1
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
+<p><strong>Merge sort with insertion sort.</strong> Merge sort runs in <span class="math inline">\(\Theta(n\log n)\)</span> worst-case time, while insertion sort runs in <span class="math inline">\(\Theta(n^2)\)</span>. But insertion sort is faster for small <span class="math inline">\(n\)</span>. Consider a modified merge sort where <span class="math inline">\(n/k\)</span> sublists of length <span class="math inline">\(k\)</span> are sorted using insertion sort, then merged using the standard merging mechanism.</p>
+<ol type="i">
+<li><p>What is the worst-case time to sort the <span class="math inline">\(n/k\)</span> sublists (each of length <span class="math inline">\(k\)</span>)?</p></li>
+<li><p>Show that the sublists can be merged in <span class="math inline">\(\Theta(n\log(n/k))\)</span> worst-case time.</p></li>
+<li><p>What is the largest asymptotic (<span class="math inline">\(\Theta\)</span>) value of <span class="math inline">\(k\)</span> (as a function of <span class="math inline">\(n\)</span>) for which the modified algorithm has the same asymptotic running time as standard merge sort?</p></li>
+</ol>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Target Audience
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Summer Term course meant for people who want to improve their course grade.</p>
+<p><strong>(i)</strong> Sorting one sublist of length <span class="math inline">\(k\)</span> with insertion sort takes <span class="math inline">\(\Theta(k^2)\)</span> in the worst case. There are <span class="math inline">\(n/k\)</span> such sublists, so the total is: <span class="math display">\[
+\frac{n}{k} \cdot \Theta(k^2) = \Theta(nk).
+\]</span> <strong>(ii)</strong> Merge <span class="math inline">\(n/k\)</span> sorted lists using a binary merge tree of height <span class="math inline">\(\log_2(n/k)\)</span>. At each level, all <span class="math inline">\(n\)</span> elements are compared and merged, contributing <span class="math inline">\(\Theta(n)\)</span> per level. Hence total merge time: <span class="math display">\[
+\Theta\!\left(n\log\frac{n}{k}\right).
+\]</span> <strong>(iii)</strong> Total time of modified sort: <span class="math inline">\(\Theta\!\left(nk + n\log\frac{n}{k}\right)\)</span>. For this to match <span class="math inline">\(\Theta(n\log n)\)</span>, we need <span class="math inline">\(nk = O(n\log n)\)</span>, i.e., <span class="math inline">\(k = O(\log n)\)</span>. The largest asymptotic value is <span class="math inline">\(k = \Theta(\log n)\)</span>.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Prerequisites
+<span class="screen-reader-only">Note</span>Problem 2
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Data Structures and Algorithms (CS F213) or equivalent. Working knowledge of programming in C/C++ or Python.</p>
+<p><strong>Missing integer.</strong> Given an unsorted array of all integers in the range <span class="math inline">\(0\)</span> to <span class="math inline">\(n = 2^k - 1\)</span> except for one missing integer (every non-missing integer appears exactly once), design an <span class="math inline">\(O(n)\)</span> <strong>divide-and-conquer</strong> algorithm to find the missing integer. Argue informally that your algorithm is correct and analyze its running time.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>References
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="textbooks" class="level3">
-<h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
+<p><strong>Algorithm</strong> <span class="math inline">\(\text{MissingInteger}(A, [\ell, r])\)</span>:</p>
 <ol type="1">
-<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
+<li>If <span class="math inline">\(\ell = r\)</span>, return <span class="math inline">\(\ell\)</span> (the single candidate).</li>
+<li>Let <span class="math inline">\(m = \lfloor (\ell+r)/2 \rfloor\)</span>.</li>
+<li>Count how many elements in <span class="math inline">\(A\)</span> are <span class="math inline">\(\le m\)</span>. Call this <span class="math inline">\(c\)</span>.</li>
+<li>If <span class="math inline">\(c &lt; m - \ell + 1\)</span>, the missing integer lies in <span class="math inline">\([\ell, m]\)</span>; recurse on the elements <span class="math inline">\(\le m\)</span>.</li>
+<li>Otherwise, the missing integer lies in <span class="math inline">\([m+1, r]\)</span>; recurse on the elements <span class="math inline">\(&gt; m\)</span>.</li>
 </ol>
-</section>
-<section id="reference-books" class="level3">
-<h3 class="anchored" data-anchor-id="reference-books">Reference Books</h3>
-<ol type="1">
-<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
-<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
-<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
-<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
-</ol>
-</section>
+<p><strong>Analysis:</strong> Each recursive call partitions the array in <span class="math inline">\(O(|A|)\)</span> time (counting and partitioning). Since the range halves each step, the total is <span class="math inline">\(O(n + n/2 + n/4 + \dots) = O(n)\)</span>.</p>
+<p><strong>Correctness:</strong> In a complete set of integers <span class="math inline">\(0\)</span> to <span class="math inline">\(2^k-1\)</span>, exactly <span class="math inline">\(m-\ell+1\)</span> numbers would lie in <span class="math inline">\([\ell, m]\)</span>. If fewer are present, the missing number must be in the left half; otherwise it is in the right half.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Timings and Venue
+<span class="screen-reader-only">Note</span>Problem 3
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Instructor:</strong> Tulasimohan Molli</p>
-<p><strong>Lectures:</strong> Tuesdays, Thursdays 2:00 PM to 3:50 PM, Fridays 4:00 PM to 5:50 PM<br>
-<strong>Venue:</strong> F-206 (TP-Room)</p>
+<p><strong>D&amp;C for MST — correct or not?</strong> Consider this divide-and-conquer algorithm for MST: Given an undirected weighted graph <span class="math inline">\(G(V,E)\)</span>, partition <span class="math inline">\(V\)</span> into <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> such that <span class="math inline">\(|V_1|\)</span> and <span class="math inline">\(|V_2|\)</span> differ by at most 1. Let <span class="math inline">\(E_1\)</span> be edges incident only on <span class="math inline">\(V_1\)</span>, <span class="math inline">\(E_2\)</span> edges incident only on <span class="math inline">\(V_2\)</span>. Recursively solve MST on <span class="math inline">\(G_1(V_1,E_1)\)</span> and <span class="math inline">\(G_2(V_2,E_2)\)</span>. Finally, select the minimum-weight edge crossing the cut <span class="math inline">\((V_1, V_2)\)</span> and use it to unite the two MSTs. Either prove this algorithm is correct or disprove it with a counterexample.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Office Hours
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Chamber Consultation Hour:</strong> 2 PM on Friday.</p>
+<p>The algorithm is <strong>incorrect</strong>.</p>
+<p><strong>Counterexample:</strong> Graph <span class="math inline">\(G\)</span> with vertices <span class="math inline">\(V = \{v_1, v_2, v_3, v_4\}\)</span> and edges: <span class="math display">\[
+e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
+\]</span> Partition <span class="math inline">\(V_1 = \{v_1, v_2\}\)</span>, <span class="math inline">\(V_2 = \{v_3, v_4\}\)</span>. - MST of <span class="math inline">\(G_1\)</span>: edge <span class="math inline">\((v_1,v_2)\)</span> of weight 4. - MST of <span class="math inline">\(G_2\)</span>: edge <span class="math inline">\((v_3,v_4)\)</span> of weight 5. - Minimum crossing edge: <span class="math inline">\((v_4,v_1)\)</span> of weight 1.</p>
+<p>Total weight = <span class="math inline">\(4 + 5 + 1 = 10\)</span>.</p>
+<p>But the actual MST cost is <span class="math inline">\(7\)</span>: edges <span class="math inline">\((v_4,v_1,1), (v_2,v_3,2), (v_1,v_2,4)\)</span>.</p>
+<p>The failure occurs because the minimum crossing edge is not necessarily the best way to connect two MSTs — the cut-and-cycle properties of MST require considering all edges, not just a recursive decomposition.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Evaluation Policy
+<span class="screen-reader-only">Note</span>Problem 4
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Duration / Format</th>
-<th>Weight</th>
-<th>Date &amp; Time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>In‑class Evaluation</td>
-<td>10‑15 min surprise quizzes</td>
-<td>10%</td>
-<td>Best 10 of 12‑15 quizzes</td>
-</tr>
-<tr class="even">
-<td>Assignments (2)</td>
-<td>Take‑home + viva</td>
-<td>20%</td>
-<td>One before mid, one after</td>
-</tr>
-<tr class="odd">
-<td>Midterm Exam</td>
-<td>90 min (closed book)</td>
-<td>30%</td>
-<td>20/06/2026</td>
-</tr>
-<tr class="even">
-<td>Comprehensive Exam</td>
-<td>3 h (closed book)</td>
-<td>40%</td>
-<td>15/07/2026</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Assignments &amp; in‑class: no make‑up.</li>
-<li>Midterm: case‑by‑case with approval.</li>
-<li>Comprehensive: as per university guidelines.</li>
-<li>Strict adherence to Academic Honesty required; violations will be penalised.</li>
-</ul>
+<p><strong>Convex polygon vertices.</strong> Let <span class="math inline">\(E\)</span> be an unsorted set of <span class="math inline">\(n\)</span> segments that are the edges of a convex polygon. Give an <span class="math inline">\(O(n\log n)\)</span> algorithm that produces a list of all vertices of the polygon sorted in counter-clockwise order. Describe each step in plain English and analyze the running time.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Registration &amp; Logistics
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>All announcements via Google Classroom or email.</p>
+<p><strong>Algorithm:</strong></p>
+<ol type="1">
+<li>Pick an arbitrary segment <span class="math inline">\(s_1 = \overline{pq}\)</span>. Let <span class="math inline">\(p\)</span> be one endpoint of <span class="math inline">\(s_1\)</span>.</li>
+<li>Find the other segment <span class="math inline">\(s_2\)</span> that shares endpoint <span class="math inline">\(p\)</span> (scan <span class="math inline">\(E\)</span>).</li>
+<li>Walk along <span class="math inline">\(s_1\)</span> to the other endpoint <span class="math inline">\(a\)</span>. Check the orientation of the two segments incident at <span class="math inline">\(p\)</span> to determine the polygon’s interior.</li>
+<li>For each edge endpoint, compute its polar angle with respect to a fixed reference point (e.g., the polygon’s centroid).</li>
+<li>Sort all vertices by angle — <span class="math inline">\(O(n\log n)\)</span>.</li>
+<li>Output in sorted order, skipping duplicate vertex entries.</li>
+</ol>
+<p><strong>Analysis:</strong> Steps 1–3 and 6 require <span class="math inline">\(O(n)\)</span> time. Step 5 (sorting) takes <span class="math inline">\(O(n\log n)\)</span>. Hence total <span class="math inline">\(O(n\log n)\)</span>.</p>
 </div>
 </div>
 </div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Lectures</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Syllabus</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Assignments</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Practice Problems</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Quizzes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Exams</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>#</th>
-<th>Date</th>
-<th>Topic</th>
-<th>Slides</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 1</td>
-<td>2026-05-21</td>
-<td>Introduction to Algorithms</td>
-<td><a href="lectures/lec-01-introduction-to-algorithms.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 2</td>
-<td>2026-05-21</td>
-<td>Introduction to Sorting &amp; Asymptotic Analysis</td>
-<td><a href="lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 3</td>
-<td>2026-05-21</td>
-<td>Asymptotic Notation &amp; Merge Sort</td>
-<td><a href="lectures/lec-03-asymptotic-notation-and-merge-sort.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 4</td>
-<td>2026-05-21</td>
-<td>Solving Recurrences</td>
-<td><a href="lectures/lec-04-solving-recurrences.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 5</td>
-<td>2026-05-21</td>
-<td>Divide and Conquer: Maximum Subarray</td>
-<td><a href="lectures/lec-05-divide-and-conquer-maximum-subarray.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 6</td>
-<td>2026-05-21</td>
-<td>Closest Pair of Points in 2D</td>
-<td><a href="lectures/lec-06-closest-pair-of-points-in-2d.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 7</td>
-<td>2026-05-21</td>
-<td>Sorting Lower Bounds &amp; Quicksort</td>
-<td><a href="lectures/lec-07-sorting-lower-bounds-and-quicksort.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 8</td>
-<td>2026-05-21</td>
-<td>Probability Primer &amp; Randomized Quicksort</td>
-<td><a href="lectures/lec-08-probability-primer-and-randomized-quicksort.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 9</td>
-<td>2026-06-02</td>
-<td>Selection: Randomized &amp; Deterministic</td>
-<td><a href="lectures/lec-09-selection-randomized-and-deterministic.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 10</td>
-<td>2026-06-02</td>
-<td>Dynamic Programming: Fibonacci &amp; LCS</td>
-<td><a href="lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 11</td>
-<td>2026-06-04</td>
-<td>Matrix Chain Multiplication</td>
-<td><a href="lectures/lec-11-matrix-chain-multiplication.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 12</td>
-<td>2026-06-04</td>
-<td>Graphs &amp; Dynamic Programming on Trees</td>
-<td><a href="lectures/lec-12-graphs-and-dynamic-programming-on-trees.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 13</td>
-<td>2026-06-05</td>
-<td>Greedy: Interval Scheduling</td>
-<td><a href="lectures/lec-13-greedy-interval-scheduling.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 14</td>
-<td>2026-06-05</td>
-<td>Huffman Coding</td>
-<td><a href="lectures/lec-14-huffman-coding.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 15</td>
-<td>2026-06-09</td>
-<td>Minimum Spanning Trees</td>
-<td><a href="lectures/lec-15-minimum-spanning-trees.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 16</td>
-<td>2026-06-09</td>
-<td>MST Algorithms</td>
-<td><a href="lectures/lec-16-mst-algorithms.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 17</td>
-<td>2026-06-11</td>
-<td>Matroids</td>
-<td><a href="lectures/lec-17-matroids.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 18</td>
-<td>2026-06-11</td>
-<td>Matroids: Greedy Optimization</td>
-<td><a href="lectures/lec-18-matroids-greedy-optimization.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 19</td>
-<td>2026-06-29</td>
-<td>Average Case Analysis</td>
-<td><a href="lectures/lec-19-average-case-analysis.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 20</td>
-<td>2026-06-12</td>
-<td>Amortized Analysis</td>
-<td><a href="lectures/lec-20-amortized-analysis.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 21</td>
-<td>2026-06-12</td>
-<td>Further Amortized Analysis</td>
-<td><a href="lectures/lec-21-further-amortized-analysis.html">📊</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 29%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Lecture</th>
-<th style="text-align: left;">Learning Objectives</th>
-<th style="text-align: left;">Topics</th>
-<th style="text-align: left;">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>1‑5</strong></td>
-<td style="text-align: left;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
-<td style="text-align: left;">Asymptotic Analysis, Recurrences</td>
-<td style="text-align: left;">T1: Ch 1-3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>6‑9</strong></td>
-<td style="text-align: left;">Sorting lower bounds, randomized algorithms.</td>
-<td style="text-align: left;">D&amp;C, Quicksort, Selection</td>
-<td style="text-align: left;">T1: Ch 4, 7-9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>10‑11</strong></td>
-<td style="text-align: left;">Formulate and solve DP problems.</td>
-<td style="text-align: left;">Dynamic Programming</td>
-<td style="text-align: left;">T1: Ch 15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>12‑17</strong></td>
-<td style="text-align: left;">Greedy strategies, matroids, MST.</td>
-<td style="text-align: left;">Greedy, Matroids, MST</td>
-<td style="text-align: left;">T1: Ch 16, 23</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>18‑21</strong></td>
-<td style="text-align: left;">Average-case and amortized analysis.</td>
-<td style="text-align: left;">Amortized Analysis</td>
-<td style="text-align: left;">T1: Ch 17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>22‑26</strong></td>
-<td style="text-align: left;">Network flow modelling.</td>
-<td style="text-align: left;">Network Flow</td>
-<td style="text-align: left;">T1: Ch 26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>27‑33</strong></td>
-<td style="text-align: left;">Complexity classes and NP-Completeness.</td>
-<td style="text-align: left;">Randomization, P, NP, NP-C</td>
-<td style="text-align: left;">T1: Ch 5, 34</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>34‑37</strong></td>
-<td style="text-align: left;">Hard problem techniques.</td>
-<td style="text-align: left;">Backtracking, B&amp;B, Approx.</td>
-<td style="text-align: left;">T1: Ch 35, R2, R4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>38‑40</strong></td>
-<td style="text-align: left;">Linear Programming.</td>
-<td style="text-align: left;">Linear Programming</td>
-<td style="text-align: left;">T1: Ch 29</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="assignments/assignment-01/index.html">Assignment 1</a>
+<span class="screen-reader-only">Note</span>Problem 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Problems:</strong> <a href="assignments/assignment-01/problem-a.html">Problem A</a> | <a href="assignments/assignment-01/problem-b.html">Problem B</a> | <a href="assignments/assignment-01/problem-c.html">Problem C</a> | <a href="assignments/assignment-01/problem-d.html">Problem D</a></p>
-<p><strong>Due:</strong> 30 Jun 2026, 2:00 PM &nbsp;|&nbsp; <strong>Weight:</strong> 10% &nbsp;|&nbsp; <strong>Submission:</strong> Individual &nbsp;|&nbsp; <strong>Final mark:</strong> Score (out of 50) × Viva ÷ 10</p>
+<p><strong><span class="math inline">\(n\)</span>th smallest of two sorted arrays.</strong> Let <span class="math inline">\(A[1..n]\)</span> and <span class="math inline">\(B[1..n]\)</span> be two sorted arrays of integers (increasing order). Give a divide-and-conquer algorithm that finds the <span class="math inline">\(n\)</span>th smallest element of the combined <span class="math inline">\(2n\)</span> elements in <span class="math inline">\(O(\log n)\)</span> time. All <span class="math inline">\(2n\)</span> elements are distinct.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="assignments/assignment-02/index.html">Assignment 2</a>
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Algorithm</strong> <span class="math inline">\(\text{Select}(A, B, n)\)</span>:</p>
+<ol type="1">
+<li>If <span class="math inline">\(n = 1\)</span>, return <span class="math inline">\(\min(A[1], B[1])\)</span>.</li>
+<li>Compare <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span>.</li>
+<li>If <span class="math inline">\(A[\lfloor n/2\rfloor] &gt; B[\lfloor n/2\rfloor]\)</span>, then the <span class="math inline">\(n\)</span>th smallest is the <span class="math inline">\(\lfloor n/2\rfloor\)</span>th smallest of the union of <span class="math inline">\(A[1..\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lceil n/2\rceil+1..n]\)</span> — discard the larger half of <span class="math inline">\(B\)</span> and the smaller half of <span class="math inline">\(A\)</span>.</li>
+<li>Otherwise, discard symmetrically.</li>
+<li>Recurse.</li>
+</ol>
+<p><strong>Analysis:</strong> Each step discards roughly half the elements and does <span class="math inline">\(O(1)\)</span> work. Recurrence <span class="math inline">\(T(n) = T(n/2) + O(1) = O(\log n)\)</span>.</p>
+<p><strong>Correctness:</strong> Since <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span> is smaller than both <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and all <span class="math inline">\(n - \lfloor n/2\rfloor\)</span> elements after it, it cannot be among the <span class="math inline">\(n\)</span> smallest. The discarded elements are safely eliminated.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 6">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 6
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Problems:</strong> <a href="assignments/assignment-02/problem-a.html">Problem A</a> | <a href="assignments/assignment-02/problem-b.html">Problem B</a> | <a href="assignments/assignment-02/problem-c.html">Problem C</a> | <a href="assignments/assignment-02/problem-d.html">Problem D</a></p>
-<p><strong>Due:</strong> TBA &nbsp;|&nbsp; <strong>Weight:</strong> 10% &nbsp;|&nbsp; <strong>Submission:</strong> Individual</p>
+<p><strong>Frequent-value detection.</strong> Given an arbitrary array <span class="math inline">\(A[1..n]\)</span>, determine in <span class="math inline">\(O(n)\)</span> time whether any value appears more than <span class="math inline">\(n/4\)</span> times. You may <strong>not</strong> use hashing, radix sort, or any method that depends on precise input values (as opposed to their order).</p>
 </div>
 </div>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/asymptotic-notation.html">Asymptotic Notation</a>
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If an element <span class="math inline">\(x\)</span> appears more than <span class="math inline">\(n/4\)</span> times, it must occupy at least one of the <span class="math inline">\(\lfloor n/4\rfloor\)</span>, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>, or <span class="math inline">\(\lfloor 3n/4\rfloor\)</span> positions in sorted order.</p>
+<p><strong>Algorithm:</strong></p>
+<ol type="1">
+<li>Find the <span class="math inline">\(\lfloor n/4\rfloor\)</span>th, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>th, and <span class="math inline">\(\lfloor 3n/4\rfloor\)</span>th order statistics using deterministic SELECT (linear time each). Call them <span class="math inline">\(x_1, x_2, x_3\)</span>.</li>
+<li>For each <span class="math inline">\(x_i\)</span>, scan the array and count how many times <span class="math inline">\(x_i\)</span> appears.</li>
+<li>If any count <span class="math inline">\(&gt; n/4\)</span>, output <strong>true</strong>; otherwise <strong>false</strong>.</li>
+</ol>
+<p><strong>Analysis:</strong> Three SELECT calls plus three scans = <span class="math inline">\(3\cdot O(n) + 3\cdot O(n) = O(n)\)</span> total.</p>
+<p><strong>Correctness:</strong> A majority-like element with frequency <span class="math inline">\(&gt; n/4\)</span> must cross at least one quartile boundary. Any such element will be picked as one of <span class="math inline">\(x_1, x_2, x_3\)</span> and detected in the scan.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 7">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 7
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Big-Oh, Big-Theta, Big-Omega — comparing growth rates. 4 problems.</p>
+<p><strong>Search in a sorted matrix.</strong> The elements of an <span class="math inline">\(n\times n\)</span> array <span class="math inline">\(A\)</span> are arranged in ascending rows <strong>and</strong> columns: <span class="math inline">\(A[i][j] &lt; A[i][j']\)</span> whenever <span class="math inline">\(j &lt; j'\)</span>, and <span class="math inline">\(A[i][j] &lt; A[i'][j]\)</span> whenever <span class="math inline">\(i &lt; i'\)</span>. Give the most efficient algorithm to determine if <span class="math inline">\(A\)</span> contains a target element <span class="math inline">\(x\)</span>, and compute the best upper bound on its asymptotic worst-case running time.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/recurrence-relations.html">Recurrence Relations</a>
+<span class="screen-reader-only">Tip</span>Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Substitution method, Master theorem, two-variable recurrences. 5 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/divide-and-conquer.html">Divide &amp; Conquer</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Merge sort variants, missing integer, MST, convex polygon, matrix search. 7 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/greedy-algorithms.html">Greedy Algorithms</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interval scheduling, interval stabbing, cookie assignment, knapsack. 5 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/dynamic-programming.html">Dynamic Programming</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>String interleaving, petrol pump stops, subset sum. 3 problems.</p>
-</div>
-</div>
-</div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p><strong>Algorithm:</strong> Start at the top-right corner <span class="math inline">\(A[1][n]\)</span>.</p>
 <ul>
-<li><a href="quizzes/quiz-01.html">Quiz 01</a> (Question &amp; Solution)</li>
-<li><a href="quizzes/quiz-02.html">Quiz 02</a> (Question &amp; Solution)</li>
-<li><a href="quizzes/quiz-03.html">Quiz 03</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-03-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-04.html">Quiz 04</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-04-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-05.html">Quiz 05</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-05-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-06.html">Quiz 06</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-06-key.html">Solution Key</a></li>
+<li>If <span class="math inline">\(A[1][n] &gt; x\)</span>, eliminate the last column (all elements below are larger) — move left.</li>
+<li>If <span class="math inline">\(A[1][n] &lt; x\)</span>, eliminate the first row (all elements to the left are smaller) — move down.</li>
+<li>If equal, return <strong>true</strong>.</li>
 </ul>
-</div>
-<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
-<ul>
-<li><strong>Midterm Questions:</strong> <a href="midsem/midsem-questions.pdf">PDF</a> &nbsp;|&nbsp; <a href="midsem/midsem-questions.tex">LaTeX Source</a></li>
-<li><strong>Midterm Solutions:</strong> <a href="midsem/midsem-solutions.pdf">PDF</a> &nbsp;|&nbsp; <a href="midsem/midsem-solutions.tex">LaTeX Source</a></li>
-</ul>
+<p>Repeat until the element is found or we exit the matrix.</p>
+<p><strong>Analysis:</strong> Each step eliminates either one row or one column. There are <span class="math inline">\(n\)</span> rows and <span class="math inline">\(n\)</span> columns, so at most <span class="math inline">\(2n\)</span> steps. Each step is <span class="math inline">\(O(1)\)</span>. Worst-case: <span class="math inline">\(O(n)\)</span>.</p>
+<p>This is optimal because a decision-tree lower bound requires <span class="math inline">\(\Omega(n)\)</span> comparisons in the worst case (the element could be in any of <span class="math inline">\(n\)</span> possible anti-diagonal positions).</p>
 </div>
 </div>
 </div>
-<style>
-/* Syllabus table */
-.panel-tabset table {
-  font-size: 0.9rem;
-}
-.panel-tabset table td, .panel-tabset table th {
-  padding: 0.5rem 0.75rem;
-}
-</style>
 
 
 
@@ -1095,7 +860,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./lite/index.html">
+    <a class="nav-link" href="../lite/index.html">
 <p>Lite</p>
 </a>
   </li>  
@@ -1107,5 +872,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

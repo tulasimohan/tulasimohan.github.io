@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Interval scheduling, interval stabbing, cookie assignment, knapsack">
 
-<title>Design and Analysis of Algorithms – Tulasimohan Molli</title>
+<title>Greedy Algorithms – Tulasimohan Molli</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,23 +27,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,8 +73,38 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles/custom.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles/custom.css">
+<link rel="stylesheet" href="practice.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -83,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Tulasimohan Molli</span>
     </a>
   </div>
@@ -117,22 +148,29 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Design and Analysis of Algorithms</h1>
-<p class="subtitle lead">CS F364 | May-July 2026</p>
+<h1 class="title">Greedy Algorithms</h1>
+<p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
+</div>
+
+<div>
+  <div class="description">
+    Interval scheduling, interval stabbing, cookie assignment, knapsack
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
   
@@ -144,541 +182,209 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="text-align: left; margin: 0 0 1.5rem 0;">
-<p><a href="Handout/handout.pdf" class="btn btn-primary btn-sm">Download Course Handout (PDF)</a></p>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<p><a href="index.html">← Practice</a></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>About the Course
+<span class="screen-reader-only">Note</span>Problem 1
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This course is an advanced study that follows Data Structures and Algorithms. It is designed to equip students with a deep understanding of major algorithmic design paradigms and the techniques required for their rigorous analysis. The curriculum covers the formal analysis of algorithm correctness, time complexity, and space complexity, as well as computational complexity theory including NP‑completeness.</p>
+<p><strong>Oxen pairing.</strong> We have <span class="math inline">\(n\)</span> oxen, each with strength <span class="math inline">\(S_i\)</span>. We need to pair them into teams of exactly two to pull a plow; a team of oxen <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> can pull the plow only if <span class="math inline">\(S_i + S_j \ge P\)</span>, where <span class="math inline">\(P\)</span> is the plow’s weight. Each ox can be in at most one team. Maximize the number of teams formed.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Target Audience
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Summer Term course meant for people who want to improve their course grade.</p>
+<p><strong>Algorithm (strongest-weakest pairing):</strong></p>
+<ol type="1">
+<li>Sort the strengths in ascending order.</li>
+<li>Maintain two pointers: <span class="math inline">\(i = 1\)</span> (weakest), <span class="math inline">\(j = n\)</span> (strongest).</li>
+<li>While <span class="math inline">\(i &lt; j\)</span>:
+<ul>
+<li>If <span class="math inline">\(S_i + S_j \ge P\)</span>, form a team, increment <span class="math inline">\(i\)</span>, decrement <span class="math inline">\(j\)</span>.</li>
+<li>Otherwise, the weakest ox cannot pair with anyone (since the strongest partner is insufficient); skip it by incrementing <span class="math inline">\(i\)</span>.</li>
+</ul></li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> In any optimal solution, if the weakest ox is paired, it must be with some ox. Replacing that partner with the strongest unpaired ox (which can only be stronger) cannot reduce the number of feasible teams. If the weakest cannot pair even with the strongest, it will never be pairable and can be safely discarded.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the two-pointer scan.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Prerequisites
+<span class="screen-reader-only">Note</span>Problem 2
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Data Structures and Algorithms (CS F213) or equivalent. Working knowledge of programming in C/C++ or Python.</p>
+<p><strong>Spectrum monitoring.</strong> You want to monitor every frequency in the electromagnetic spectrum between <span class="math inline">\(L\)</span> and <span class="math inline">\(H\)</span>. You have <span class="math inline">\(n\)</span> technologies <span class="math inline">\(T_1,\dots,T_n\)</span>, each with an interval <span class="math inline">\([l_i, h_i]\)</span> of frequencies it can monitor. Pick as few technologies as possible that together cover <span class="math inline">\([L,H]\)</span>.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>References
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="textbooks" class="level3">
-<h3 class="anchored" data-anchor-id="textbooks">Textbooks</h3>
+<p><strong>Algorithm (earliest-start-first greedy):</strong></p>
 <ol type="1">
-<li><strong>(T1)</strong> Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein. <em>Introduction to Algorithms</em>, 3rd Ed., MIT Press (2010).</li>
+<li>Filter all technologies with <span class="math inline">\(l_i \le L\)</span> (those that can cover the start).</li>
+<li>Among them, select the one with the maximum <span class="math inline">\(h_i\)</span>, say <span class="math inline">\(T_{\max}\)</span>.</li>
+<li>Set <span class="math inline">\(L = h_{\max}\)</span> and repeat until <span class="math inline">\(L \ge H\)</span>.</li>
+<li>If at any step no technology covers <span class="math inline">\(L\)</span>, covering is impossible.</li>
 </ol>
-</section>
-<section id="reference-books" class="level3">
-<h3 class="anchored" data-anchor-id="reference-books">Reference Books</h3>
-<ol type="1">
-<li><strong>(R1)</strong> Jon Kleinberg, Eva Tardos. <em>Algorithm Design</em>, Pearson (2012).</li>
-<li><strong>(R2)</strong> E. Horowitz, S. Sahni, S. Rajsekaran. <em>Fundamentals of Computer Algorithms</em>, Universities Press.</li>
-<li><strong>(R3)</strong> R. Motwani, P. Raghavan. <em>Randomized Algorithms</em>, Cambridge University Press (1995).</li>
-<li><strong>(R4)</strong> G. Ausiello et al.&nbsp;<em>Complexity and Approximation</em>, Springer.</li>
-</ol>
-</section>
+<p><strong>Proof of optimality (exchange argument):</strong> At each step, picking the technology that extends coverage farthest to the right is optimal. Any alternative choice that covers <span class="math inline">\(L\)</span> has end <span class="math inline">\(\le h_{\max}\)</span>, so it cannot cover more of the remaining interval. By induction, the greedy choice leads to a minimum-cardinality cover.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> after sorting by start point.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Timings and Venue
+<span class="screen-reader-only">Note</span>Problem 3
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Instructor:</strong> Tulasimohan Molli</p>
-<p><strong>Lectures:</strong> Tuesdays, Thursdays 2:00 PM to 3:50 PM, Fridays 4:00 PM to 5:50 PM<br>
-<strong>Venue:</strong> F-206 (TP-Room)</p>
+<p><strong>Cookie assignment.</strong> You are baby-sitting <span class="math inline">\(n\)</span> children and have <span class="math inline">\(m &gt; n\)</span> cookies. Each child must get exactly one cookie. Child <span class="math inline">\(i\)</span> has a greed factor <span class="math inline">\(g_i\)</span> (the minimum cookie size they will be content with); cookie <span class="math inline">\(j\)</span> has size <span class="math inline">\(s_j\)</span>. Maximize the number of content children (those assigned a cookie with <span class="math inline">\(g_i \le s_j\)</span>). Give a greedy algorithm, prove it optimal, and give an efficient implementation.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Office Hours
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Chamber Consultation Hour:</strong> 2 PM on Friday.</p>
+<p><strong>Algorithm:</strong></p>
+<ol type="1">
+<li>Sort cookies by size ascending.</li>
+<li>Sort children by greed factor ascending.</li>
+<li>For each child (in increasing order of greed):
+<ul>
+<li>Assign the smallest cookie that satisfies <span class="math inline">\(s_j \ge g_i\)</span>.</li>
+<li>If no such cookie remains, leave the child discontent.</li>
+</ul></li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> Consider an optimal assignment. Let <span class="math inline">\(g_1 \le g_2 \le \dots \le g_n\)</span> be the sorted children. For the least greedy child <span class="math inline">\(g_1\)</span>, if the optimal solution gives a larger cookie than necessary, swapping it with the smallest feasible cookie (which our algorithm would assign) frees up a larger cookie for a greedier child without reducing the number of content children. By induction, the greedy choice is optimal at each step.</p>
+<p><strong>Implementation:</strong></p>
+<pre><code>sort(s), sort(g)
+j = 1
+count = 0
+for i = 1 to n:
+    while j &lt;= m and s[j] &lt; g[i]:
+        j++
+    if j &lt;= m:
+        count++, j++
+return count</code></pre>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n + m\log m)\)</span> for sorting, <span class="math inline">\(O(m)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Evaluation Policy
+<span class="screen-reader-only">Note</span>Problem 4
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Component</th>
-<th>Duration / Format</th>
-<th>Weight</th>
-<th>Date &amp; Time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>In‑class Evaluation</td>
-<td>10‑15 min surprise quizzes</td>
-<td>10%</td>
-<td>Best 10 of 12‑15 quizzes</td>
-</tr>
-<tr class="even">
-<td>Assignments (2)</td>
-<td>Take‑home + viva</td>
-<td>20%</td>
-<td>One before mid, one after</td>
-</tr>
-<tr class="odd">
-<td>Midterm Exam</td>
-<td>90 min (closed book)</td>
-<td>30%</td>
-<td>20/06/2026</td>
-</tr>
-<tr class="even">
-<td>Comprehensive Exam</td>
-<td>3 h (closed book)</td>
-<td>40%</td>
-<td>15/07/2026</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Assignments &amp; in‑class: no make‑up.</li>
-<li>Midterm: case‑by‑case with approval.</li>
-<li>Comprehensive: as per university guidelines.</li>
-<li>Strict adherence to Academic Honesty required; violations will be penalised.</li>
-</ul>
+<p><strong>Interval stabbing.</strong> Given <span class="math inline">\(n &gt; 1\)</span> intervals with start array <span class="math inline">\(S[1..n]\)</span> and end array <span class="math inline">\(E[1..n]\)</span>, find a set of points <span class="math inline">\(X\)</span> of <strong>minimum size</strong> such that every interval contains at least one point in <span class="math inline">\(X\)</span>. Design the algorithm and prove optimality.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Registration &amp; Logistics
+<span class="screen-reader-only">Tip</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>All announcements via Google Classroom or email.</p>
-</div>
-</div>
-</div>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Lectures</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Syllabus</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Assignments</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Practice Problems</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Quizzes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href="">Exams</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>#</th>
-<th>Date</th>
-<th>Topic</th>
-<th>Slides</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Lecture 1</td>
-<td>2026-05-21</td>
-<td>Introduction to Algorithms</td>
-<td><a href="lectures/lec-01-introduction-to-algorithms.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 2</td>
-<td>2026-05-21</td>
-<td>Introduction to Sorting &amp; Asymptotic Analysis</td>
-<td><a href="lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 3</td>
-<td>2026-05-21</td>
-<td>Asymptotic Notation &amp; Merge Sort</td>
-<td><a href="lectures/lec-03-asymptotic-notation-and-merge-sort.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 4</td>
-<td>2026-05-21</td>
-<td>Solving Recurrences</td>
-<td><a href="lectures/lec-04-solving-recurrences.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 5</td>
-<td>2026-05-21</td>
-<td>Divide and Conquer: Maximum Subarray</td>
-<td><a href="lectures/lec-05-divide-and-conquer-maximum-subarray.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 6</td>
-<td>2026-05-21</td>
-<td>Closest Pair of Points in 2D</td>
-<td><a href="lectures/lec-06-closest-pair-of-points-in-2d.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 7</td>
-<td>2026-05-21</td>
-<td>Sorting Lower Bounds &amp; Quicksort</td>
-<td><a href="lectures/lec-07-sorting-lower-bounds-and-quicksort.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 8</td>
-<td>2026-05-21</td>
-<td>Probability Primer &amp; Randomized Quicksort</td>
-<td><a href="lectures/lec-08-probability-primer-and-randomized-quicksort.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 9</td>
-<td>2026-06-02</td>
-<td>Selection: Randomized &amp; Deterministic</td>
-<td><a href="lectures/lec-09-selection-randomized-and-deterministic.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 10</td>
-<td>2026-06-02</td>
-<td>Dynamic Programming: Fibonacci &amp; LCS</td>
-<td><a href="lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 11</td>
-<td>2026-06-04</td>
-<td>Matrix Chain Multiplication</td>
-<td><a href="lectures/lec-11-matrix-chain-multiplication.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 12</td>
-<td>2026-06-04</td>
-<td>Graphs &amp; Dynamic Programming on Trees</td>
-<td><a href="lectures/lec-12-graphs-and-dynamic-programming-on-trees.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 13</td>
-<td>2026-06-05</td>
-<td>Greedy: Interval Scheduling</td>
-<td><a href="lectures/lec-13-greedy-interval-scheduling.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 14</td>
-<td>2026-06-05</td>
-<td>Huffman Coding</td>
-<td><a href="lectures/lec-14-huffman-coding.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 15</td>
-<td>2026-06-09</td>
-<td>Minimum Spanning Trees</td>
-<td><a href="lectures/lec-15-minimum-spanning-trees.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 16</td>
-<td>2026-06-09</td>
-<td>MST Algorithms</td>
-<td><a href="lectures/lec-16-mst-algorithms.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 17</td>
-<td>2026-06-11</td>
-<td>Matroids</td>
-<td><a href="lectures/lec-17-matroids.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 18</td>
-<td>2026-06-11</td>
-<td>Matroids: Greedy Optimization</td>
-<td><a href="lectures/lec-18-matroids-greedy-optimization.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 19</td>
-<td>2026-06-29</td>
-<td>Average Case Analysis</td>
-<td><a href="lectures/lec-19-average-case-analysis.html">📊</a></td>
-</tr>
-<tr class="even">
-<td>Lecture 20</td>
-<td>2026-06-12</td>
-<td>Amortized Analysis</td>
-<td><a href="lectures/lec-20-amortized-analysis.html">📊</a></td>
-</tr>
-<tr class="odd">
-<td>Lecture 21</td>
-<td>2026-06-12</td>
-<td>Further Amortized Analysis</td>
-<td><a href="lectures/lec-21-further-amortized-analysis.html">📊</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 29%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Lecture</th>
-<th style="text-align: left;">Learning Objectives</th>
-<th style="text-align: left;">Topics</th>
-<th style="text-align: left;">Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>1‑5</strong></td>
-<td style="text-align: left;">Analyze efficiency via growth‑of‑function and asymptotic notations.</td>
-<td style="text-align: left;">Asymptotic Analysis, Recurrences</td>
-<td style="text-align: left;">T1: Ch 1-3</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>6‑9</strong></td>
-<td style="text-align: left;">Sorting lower bounds, randomized algorithms.</td>
-<td style="text-align: left;">D&amp;C, Quicksort, Selection</td>
-<td style="text-align: left;">T1: Ch 4, 7-9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>10‑11</strong></td>
-<td style="text-align: left;">Formulate and solve DP problems.</td>
-<td style="text-align: left;">Dynamic Programming</td>
-<td style="text-align: left;">T1: Ch 15</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>12‑17</strong></td>
-<td style="text-align: left;">Greedy strategies, matroids, MST.</td>
-<td style="text-align: left;">Greedy, Matroids, MST</td>
-<td style="text-align: left;">T1: Ch 16, 23</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>18‑21</strong></td>
-<td style="text-align: left;">Average-case and amortized analysis.</td>
-<td style="text-align: left;">Amortized Analysis</td>
-<td style="text-align: left;">T1: Ch 17</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>22‑26</strong></td>
-<td style="text-align: left;">Network flow modelling.</td>
-<td style="text-align: left;">Network Flow</td>
-<td style="text-align: left;">T1: Ch 26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>27‑33</strong></td>
-<td style="text-align: left;">Complexity classes and NP-Completeness.</td>
-<td style="text-align: left;">Randomization, P, NP, NP-C</td>
-<td style="text-align: left;">T1: Ch 5, 34</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong>34‑37</strong></td>
-<td style="text-align: left;">Hard problem techniques.</td>
-<td style="text-align: left;">Backtracking, B&amp;B, Approx.</td>
-<td style="text-align: left;">T1: Ch 35, R2, R4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong>38‑40</strong></td>
-<td style="text-align: left;">Linear Programming.</td>
-<td style="text-align: left;">Linear Programming</td>
-<td style="text-align: left;">T1: Ch 29</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="assignments/assignment-01/index.html">Assignment 1</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Problems:</strong> <a href="assignments/assignment-01/problem-a.html">Problem A</a> | <a href="assignments/assignment-01/problem-b.html">Problem B</a> | <a href="assignments/assignment-01/problem-c.html">Problem C</a> | <a href="assignments/assignment-01/problem-d.html">Problem D</a></p>
-<p><strong>Due:</strong> 30 Jun 2026, 2:00 PM &nbsp;|&nbsp; <strong>Weight:</strong> 10% &nbsp;|&nbsp; <strong>Submission:</strong> Individual &nbsp;|&nbsp; <strong>Final mark:</strong> Score (out of 50) × Viva ÷ 10</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="assignments/assignment-02/index.html">Assignment 2</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Problems:</strong> <a href="assignments/assignment-02/problem-a.html">Problem A</a> | <a href="assignments/assignment-02/problem-b.html">Problem B</a> | <a href="assignments/assignment-02/problem-c.html">Problem C</a> | <a href="assignments/assignment-02/problem-d.html">Problem D</a></p>
-<p><strong>Due:</strong> TBA &nbsp;|&nbsp; <strong>Weight:</strong> 10% &nbsp;|&nbsp; <strong>Submission:</strong> Individual</p>
-</div>
-</div>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/asymptotic-notation.html">Asymptotic Notation</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Big-Oh, Big-Theta, Big-Omega — comparing growth rates. 4 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/recurrence-relations.html">Recurrence Relations</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Substitution method, Master theorem, two-variable recurrences. 5 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/divide-and-conquer.html">Divide &amp; Conquer</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Merge sort variants, missing integer, MST, convex polygon, matrix search. 7 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/greedy-algorithms.html">Greedy Algorithms</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Interval scheduling, interval stabbing, cookie assignment, knapsack. 5 problems.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span><a href="Practice/dynamic-programming.html">Dynamic Programming</a>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>String interleaving, petrol pump stops, subset sum. 3 problems.</p>
-</div>
-</div>
-</div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p><strong>Algorithm (earliest-end-first greedy):</strong></p>
+<ol type="1">
+<li>Sort intervals by end point <span class="math inline">\(E[i]\)</span>.</li>
+<li>Let <span class="math inline">\(X = \emptyset\)</span>.</li>
+<li>For each interval <span class="math inline">\((S[i], E[i])\)</span> in sorted order:
 <ul>
-<li><a href="quizzes/quiz-01.html">Quiz 01</a> (Question &amp; Solution)</li>
-<li><a href="quizzes/quiz-02.html">Quiz 02</a> (Question &amp; Solution)</li>
-<li><a href="quizzes/quiz-03.html">Quiz 03</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-03-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-04.html">Quiz 04</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-04-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-05.html">Quiz 05</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-05-key.html">Solution Key</a></li>
-<li><a href="quizzes/quiz-06.html">Quiz 06</a> (Question) &nbsp;|&nbsp; <a href="quizzes/quiz-06-key.html">Solution Key</a></li>
-</ul>
-</div>
-<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
-<ul>
-<li><strong>Midterm Questions:</strong> <a href="midsem/midsem-questions.pdf">PDF</a> &nbsp;|&nbsp; <a href="midsem/midsem-questions.tex">LaTeX Source</a></li>
-<li><strong>Midterm Solutions:</strong> <a href="midsem/midsem-solutions.pdf">PDF</a> &nbsp;|&nbsp; <a href="midsem/midsem-solutions.tex">LaTeX Source</a></li>
-</ul>
+<li>If no point in <span class="math inline">\(X\)</span> lies within <span class="math inline">\((S[i], E[i])\)</span>, add <span class="math inline">\(E[i]\)</span> to <span class="math inline">\(X\)</span>.</li>
+</ul></li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G\)</span> be the greedy solution and <span class="math inline">\(OPT\)</span> an optimal solution. Sort both by their chosen points. Let <span class="math inline">\(i\)</span> be the first index where <span class="math inline">\(G[i] \neq OPT[i]\)</span>. The greedy algorithm picks the earliest-ending interval’s end point. Any optimal solution must stab this interval with some point <span class="math inline">\(\le G[i]\)</span>. Replacing <span class="math inline">\(OPT[i]\)</span> with <span class="math inline">\(G[i]\)</span> cannot increase the number of points needed, as <span class="math inline">\(G[i]\)</span> stabs all intervals that <span class="math inline">\(OPT[i]\)</span> stabs (and possibly more, since <span class="math inline">\(G[i]\)</span> is the earliest possible rightmost point). By induction, <span class="math inline">\(|G| \le |OPT|\)</span>.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
-<style>
-/* Syllabus table */
-.panel-tabset table {
-  font-size: 0.9rem;
-}
-.panel-tabset table td, .panel-tabset table th {
-  padding: 0.5rem 0.75rem;
-}
-</style>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 5
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Max-cardinality knapsack.</strong> You have <span class="math inline">\(n\)</span> items with weights <span class="math inline">\(w_1,\dots,w_n\)</span> and a bag of capacity <span class="math inline">\(W\)</span>. Select as many items as possible whose total weight <span class="math inline">\(\le W\)</span>. Describe a simple efficient algorithm and prove it gives the optimal output.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>Algorithm (Container Loading):</strong></p>
+<ol type="1">
+<li>Sort items by weight in ascending order.</li>
+<li>Greedily pick the lightest items until the next item would exceed <span class="math inline">\(W\)</span>.</li>
+</ol>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G = \{g_1, g_2, \dots, g_k\}\)</span> be the greedy solution (items in sorted order). Let <span class="math inline">\(OPT = \{o_1, o_2, \dots, o_k\}\)</span> be an optimal solution with items sorted. If <span class="math inline">\(G\)</span> and <span class="math inline">\(OPT\)</span> differ, let <span class="math inline">\(i\)</span> be the first position where <span class="math inline">\(g_i \neq o_i\)</span>. By construction <span class="math inline">\(g_i \le o_i\)</span> (greedy always picks the smallest remaining feasible item). Replacing <span class="math inline">\(o_i\)</span> with <span class="math inline">\(g_i\)</span> in <span class="math inline">\(OPT\)</span> yields a solution with <span class="math inline">\(\le\)</span> the same total weight and the same cardinality. By induction, the greedy solution has maximum cardinality.</p>
+<p>Note that this is the classic “Container Loading” problem, not the 0-1 knapsack (which maximizes value). When maximizing count with uniform value, the lightest-first strategy is optimal.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
+</div>
+</div>
+</div>
 
 
 
@@ -1095,7 +801,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./lite/index.html">
+    <a class="nav-link" href="../lite/index.html">
 <p>Lite</p>
 </a>
   </li>  
@@ -1107,5 +813,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
