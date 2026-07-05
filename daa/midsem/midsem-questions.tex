@@ -1,0 +1,128 @@
+\documentclass[11pt]{exam}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{CS F364: Design \& Analysis of Algorithms \\ Mid-Semester Examination}
+\author{BITS Pilani, Hyderabad Campus}
+\date{June 20, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\textbf{Time: 90 minutes \quad | \quad Max Marks: 90} \\
+\vskip 0.5em
+\textit{Instructions: Answer all six questions. Each question carries marks as indicated. Show all steps for full credit. Unsupported answers receive no credit. Closed book. No electronic devices.}
+\end{center}
+
+\vskip 1.5em
+
+\begin{questions}
+
+\question[15] \textbf{Asymptotic Notation}
+\begin{parts}
+\part[5] Arrange the following functions in \textbf{increasing order} of growth rate (slowest-growing first):
+\[
+f_1(n) = n^2, \quad f_2(n) = n!, \quad f_3(n) = n, \quad f_4(n) = \sqrt{n}, \quad f_5(n) = 2^n, \quad f_6(n) = n \log n
+\]
+
+\part[5] For each function below, select the \textbf{tightest} Big-Oh bound $O(f(n))$ from the list:
+\[
+\{O(1), O(\log n), O(n), O(n \log n), O(n^{1.5}), O(n^2), O(2^n), O(n^{105})\}
+\]
+\begin{subparts}
+\subpart $500n + 5n^{1.5} + 50n \log n$
+\subpart $n^2 \log n + n(\log n)^2$
+\subpart $3 \log_8 n + \log_2 \log_2 \log_2 n$
+\subpart $2^n + n^{105} + 0.5n^{1.25}$
+\end{subparts}
+
+\part[5] Prove the following statement \textbf{from the definition} of Big-Oh:
+\[
+2^{n+5} = O(2^n)
+\]
+\end{parts}
+
+\vskip 1em
+
+\question[20] \textbf{Recurrences --- Master Theorem} \\
+Prove the Master Theorem using the recursion tree method by the following steps:
+\begin{parts}
+\part[5] State the three cases of the Master Theorem for recurrences of the form $T(n) = a T(n/b)+f(n)$, where $a \ge 1$ and $b > 1$. For each case, specify the relationship between $f(n)$ and $n^{\log_b a}$ and give the resulting asymptotic bound for $T(n)$.
+
+\part[5] Analyze the recursion tree for $T(n) = a T(n/b) + f(n)$. Determine: (i) the number of subproblems at level $k$ (root = level 0), (ii) the size of each subproblem at level $k$, and (iii) the total cost contributed by level $k$.
+
+\part[5] Determine: (i) the number of levels in the tree, (ii) the number of leaf nodes, and (iii) the total cost contributed by the leaf level.
+
+\part[5] Express the total cost as a summation over all levels (internal + leaf). Assuming the case where $f(n) = \Theta(n^{\log_b a})$, evaluate the sum and derive the asymptotic bound for $T(n)$.
+\end{parts}
+
+\vskip 1em
+
+\question[10] \textbf{Boat Rescue} \\
+You are a rescue coordinator on a sinking island. There are $n$ people, each with weight $w_i$. You have an unlimited number of identical boats, each with a maximum weight capacity of $W$. Each boat can carry \textbf{at most 2 people}. Your goal is to rescue everyone using the \textbf{minimum number of boats}.
+\begin{parts}
+\part[5] Describe an algorithm that solves this problem. Write it in 3--4 clear steps or pseudocode.
+\part[5] Apply your algorithm to the following instance. Show each step.
+\[
+n = 5, \quad \text{weights: } [30, 50, 60, 70, 80], \quad W = 100
+\]
+How many boats does your algorithm use?
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Majority Element} \\
+Given an array $A[1..n]$ of integers, an element $x$ is called a \textbf{majority element} if it appears \textbf{more than} $n/2$ times. Not every array has a majority element.
+\begin{parts}
+\part[8] Design an algorithm that returns a majority element if one exists, and returns \texttt{None} otherwise. Describe your algorithm in 2--3 clear sentences. Then trace your algorithm on the array $A = [2, 3, 3, 2, 3, 3, 3]$, showing the recursive calls and the result at each level.
+\part[7] Write the recurrence relation for your algorithm's worst-case running time. [3 marks] Solve it using the Master Theorem. [4 marks]
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Longest Common Subsequence} \\
+Given two strings $X[1..m]$ and $Y[1..n]$, the Longest Common Subsequence (LCS) problem asks for the length and structure of the maximum length subsequence common to both.
+\begin{parts}
+\part[6] \textbf{Methodology:} Define the subproblems $c[i,j]$ and provide the complete recurrence relation, including base cases. State the time and space complexity of your algorithm.
+\part[5] \textbf{Table Construction:} For strings $X = \text{ABCD}$ and $Y = \text{AXCD}$, complete the DP table below:
+\begin{center}
+\begin{tabular}{c|ccccc}
+$c[i,j]$ & $j=0$ ($\emptyset$) & $j=1$ (\textbf{A}) & $j=2$ (\textbf{X}) & $j=3$ (\textbf{C}) & $j=4$ (\textbf{D}) \\ \hline
+ & $\emptyset$ & \textbf{A} & \textbf{X} & \textbf{C} & \textbf{D} \\ \hline
+$i=0$ ($\emptyset$) & 0 & 0 & 0 & 0 & 0 \\
+$i=1$ (\textbf{A}) & 0 & & & & \\
+$i=2$ (\textbf{B}) & 0 & & & & \\
+$i=3$ (\textbf{C}) & 0 & & & & \\
+$i=4$ (\textbf{D}) & 0 & & & & \\
+\end{tabular}
+\end{center}
+\part[4] \textbf{Traceback:} Perform a traceback on your filled DP table to identify the LCS. Clearly show your path, state the final LCS string, and report the length of the result.
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Data Compression - Huffman Code} \\
+The text below is from a well-known pop culture reference:
+\begin{center}
+\texttt{maytheforcebewithyou}
+\end{center}
+\begin{parts}
+\part[3] Count the frequency of each distinct letter in the text. How many total characters does the string contain and what are their frequencies? Answer your results in the below format:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Letter} & & & & & & & & & & & & & & \\ \hline
+\textbf{Freq} & & & & & & & & & & & & & & \\ \hline
+\end{tabular}
+\end{center}
+\part[7] Construct an optimal prefix-free binary code for these characters using Huffman code. Show the initial sorted frequencies, each merge operation (which two nodes were merged and the resulting parent's frequency), and the final tree structure.
+\part[5] Assign binary codes (left branch = 0, right branch = 1) to each letter and list them in a table. [2 marks] Encode the original string \texttt{"maytheforcebewithyou"} using your code and state the total number of bits. [3 marks]
+\end{parts}
+
+\end{questions}
+\end{document}

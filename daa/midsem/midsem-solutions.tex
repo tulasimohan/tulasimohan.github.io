@@ -1,0 +1,376 @@
+\documentclass[11pt,answers]{exam}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{CS F364: Design \& Analysis of Algorithms \\ Mid-Semester Examination (Solutions)}
+\author{BITS Pilani, Hyderabad Campus}
+\date{June 20, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\textbf{Time: 90 minutes \quad | \quad Max Marks: 90} \\
+\vskip 0.5em
+\textit{Instructions: Answer all six questions. Each question carries marks as indicated. Show all steps for full credit. Unsupported answers receive no credit. Closed book. No electronic devices.}
+\end{center}
+
+\vskip 1.5em
+
+\begin{questions}
+
+\question[15] \textbf{Asymptotic Notation}
+\begin{parts}
+\part[5] Arrange the following functions in \textbf{increasing order} of growth rate (slowest-growing first):
+\[
+f_1(n) = n^2, \quad f_2(n) = n!, \quad f_3(n) = n, \quad f_4(n) = \sqrt{n}, \quad f_5(n) = 2^n, \quad f_6(n) = n \log n
+\]
+\begin{solution}
+The correct increasing order is:
+\[
+f_4(n) \prec f_3(n) \prec f_6(n) \prec f_1(n) \prec f_5(n) \prec f_2(n)
+\]
+Which is:
+\[
+\sqrt{n} \prec n \prec n \log n \prec n^2 \prec 2^n \prec n!
+\]
+\end{solution}
+
+\part[5] For each function below, select the \textbf{tightest} Big-Oh bound $O(f(n))$ from the list:
+\[
+\{O(1), O(\log n), O(n), O(n \log n), O(n^{1.5}), O(n^2), O(2^n), O(n^{105})\}
+\]
+\begin{subparts}
+\subpart $500n + 5n^{1.5} + 50n \log n$
+\subpart $n^2 \log n + n(\log n)^2$
+\subpart $3 \log_8 n + \log_2 \log_2 \log_2 n$
+\subpart $2^n + n^{105} + 0.5n^{1.25}$
+\end{subparts}
+\begin{solution}
+\begin{subparts}
+\subpart $500n + 5n^{1.5} + 50n \log n = O(n^{1.5})$
+\subpart $n^2 \log n + n(\log n)^2 = O(n^{105})$\
+\subpart $3 \log_8 n + \log_2 \log_2 \log_2 n = O(\log n)$
+\subpart $2^n + n^{105} + 0.5n^{1.25} = O(2^n)$
+\end{subparts}
+\end{solution}
+
+\part[5] Prove the following statement \textbf{from the definition} of Big-Oh:
+\[
+2^{n+5} = O(2^n)
+\]
+\begin{solution}
+By definition, $f(n) = O(g(n))$ if there exist positive constants $c$ and $n_0$ such that $0 \le f(n) \le c \cdot g(n)$ for all $n \ge n_0$.
+Here, $f(n) = 2^{n+5}$ and $g(n) = 2^n$.
+We can rewrite $f(n)$ as:
+\[
+2^{n+5} = 2^5 \cdot 2^n = 32 \cdot 2^n
+\]
+Let $c = 32$ and $n_0 = 1$. Then:
+\[
+2^{n+5} \le 32 \cdot 2^n \quad \text{for all } n \ge 1
+\]
+Therefore, $2^{n+5} = O(2^n)$.
+\end{solution}
+\end{parts}
+
+\vskip 1em
+
+\question[20] \textbf{Recurrences --- Master Theorem} \\
+Prove the Master Theorem using the recursion tree method by the following steps:
+\begin{parts}
+\part[5] State the three cases of the Master Theorem for recurrences of the form $T(n) = a T(n/b)+f(n)$, where $a \ge 1$ and $b > 1$. For each case, specify the relationship between $f(n)$ and $n^{\log_b a}$ and give the resulting asymptotic bound for $T(n)$.
+\begin{solution}
+\begin{itemize}
+\item \textbf{Case 1:} If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$, then $T(n) = \Theta(n^{\log_b a})$.
+\item \textbf{Case 2:} If $f(n) = \Theta(n^{\log_b a})$, then $T(n) = \Theta(n^{\log_b a} \log n)$.
+\item \textbf{Case 3:} If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$, and if $a f(n/b) \le c f(n)$ for some constant $c < 1$ and all sufficiently large $n$ (regularity condition), then $T(n) = \Theta(f(n))$.
+\end{itemize}
+\end{solution}
+
+\part[5] Analyze the recursion tree for $T(n) = a T(n/b) + f(n)$. Determine: (i) the number of subproblems at level $k$ (root = level 0), (ii) the size of each subproblem at level $k$, and (iii) the total cost contributed by level $k$.
+\begin{solution}
+At level $k$:
+\begin{itemize}
+\item (i) The number of subproblems is $a^k$.
+\item (ii) The size of each subproblem is $n/b^k$.
+\item (iii) The total cost at level $k$ is $a^k f(n/b^k)$.
+\end{itemize}
+\end{solution}
+
+\part[5] Determine: (i) the number of levels in the tree, (ii) the number of leaf nodes, and (iii) the total cost contributed by the leaf level.
+\begin{solution}
+\begin{itemize}
+\item (i) The number of levels is $\log_b n + 1$ (from level 0 to level $\log_b n$).
+\item (ii) The number of leaf nodes is $a^{\log_b n} = n^{\log_b a}$.
+\item (iii) Since each leaf node costs $T(1) = \Theta(1)$, the total leaf cost is $\Theta(n^{\log_b a})$.
+\end{itemize}
+\end{solution}
+
+\part[5] Express the total cost as a summation over all levels (internal + leaf). Assuming the case where $f(n) = \Theta(n^{\log_b a})$, evaluate the sum and derive the asymptotic bound for $T(n)$.
+\begin{solution}
+The total cost is:
+\[
+T(n) = \sum_{k=0}^{\log_b n - 1} a^k f(n/b^k) + \Theta(n^{\log_b a})
+\]
+Assume $f(n) = \Theta(n^{\log_b a})$, so $f(n) \le c \cdot n^{\log_b a}$ for some constant $c$. Then:
+\[
+a^k f(n/b^k) \le a^k \cdot c \left( \frac{n}{b^k} \right)^{\log_b a} = c \cdot n^{\log_b a} \left( \frac{a}{b^{\log_b a}} \right)^k = c \cdot n^{\log_b a} (1)^k = c \cdot n^{\log_b a}
+\]
+Thus, the sum of internal nodes is:
+\[
+\sum_{k=0}^{\log_b n - 1} a^k f(n/b^k) \le \sum_{k=0}^{\log_b n - 1} c \cdot n^{\log_b a} = c \cdot n^{\log_b a} \log_b n = \Theta(n^{\log_b a} \log n)
+\]
+Adding the leaf cost $\Theta(n^{\log_b a})$, the overall asymptotic bound is:
+\[
+T(n) = \Theta(n^{\log_b a} \log n)
+\]
+\end{solution}
+\end{parts}
+
+\vskip 1em
+
+\question[10] \textbf{Boat Rescue} \\
+You are a rescue coordinator on a sinking island. There are $n$ people, each with weight $w_i$. You have an unlimited number of identical boats, each with a maximum weight capacity of $W$. Each boat can carry \textbf{at most 2 people}. Your goal is to rescue everyone using the \textbf{minimum number of boats}.
+\begin{parts}
+\part[5] Describe an algorithm that solves this problem. Write it in 3--4 clear steps or pseudocode.
+\begin{solution}
+A greedy approach works:
+\begin{enumerate}
+\item Sort the weights of the people in non-decreasing order: $w_1 \le w_2 \le \dots \le w_n$.
+\item Initialize two pointers: \texttt{left = 1} (lightest person) and \texttt{right = n} (heaviest person).
+\item While \texttt{left <= right}:
+\begin{itemize}
+\item If \texttt{left == right}, assign this last person to a boat and terminate.
+\item If $w_{\text{left}} + w_{\text{right}} \le W$, they can share a boat. Increment \texttt{left} and decrement \texttt{right}.
+\item Else, the heaviest person cannot share a boat with anyone (even the lightest person is too heavy). Assign them their own boat. Decrement \texttt{right}.
+\item Increment the boat counter.
+\end{itemize}
+\end{enumerate}
+\end{solution}
+
+\part[5] Apply your algorithm to the following instance. Show each step.
+\[
+n = 5, \quad \text{weights: } [30, 50, 60, 70, 80], \quad W = 100
+\]
+How many boats does your algorithm use?
+\begin{solution}
+The sorted weights are $[30, 50, 60, 70, 80]$.
+\begin{itemize}
+\item \textbf{Step 1:} \texttt{left = 30}, \texttt{right = 80}. $30 + 80 = 110 > 100$. 80 gets its own boat. \texttt{right} moves to 70. (Boat 1)
+\item \textbf{Step 2:} \texttt{left = 30}, \texttt{right = 70}. $30 + 70 = 100 \le 100$. They share a boat. \texttt{left} moves to 50, \texttt{right} moves to 60. (Boat 2)
+\item \textbf{Step 3:} \texttt{left = 50}, \texttt{right = 60}. $50 + 60 = 110 > 100$. 60 gets its own boat. \texttt{right} moves to 50. (Boat 3)
+\item \textbf{Step 4:} \texttt{left = 50}, \texttt{right = 50} (\texttt{left == right}). 50 gets its own boat. (Boat 4)
+\end{itemize}
+The algorithm uses \textbf{4 boats}.
+\end{solution}
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Majority Element} \\
+Given an array $A[1..n]$ of integers, an element $x$ is called a \textbf{majority element} if it appears \textbf{more than} $n/2$ times. Not every array has a majority element.
+\begin{parts}
+\part[8] Design an algorithm that returns a majority element if one exists, and returns \texttt{None} otherwise. Describe your algorithm in 2--3 clear sentences. Then trace your algorithm on the array $A = [2, 3, 3, 2, 3, 3, 3]$, showing the recursive calls and the result at each level.
+\begin{solution}
+We can use a Divide and Conquer strategy.
+\textbf{Algorithm Description:} Split the array into two halves, recursively find the majority candidate for the left and right halves. If the candidates match, return that candidate. If they differ, count the frequency of both candidates in the current array segment and return the one that occurs more than $n/2$ times (or return \texttt{None} if neither does).
+
+\textbf{Trace on $A = [2, 3, 3, 2, 3, 3, 3]$:}
+\begin{itemize}
+\item Level 0: Split into $L = [2, 3, 3, 2]$ and $R = [3, 3, 3]$.
+\item Level 1 ($L$): Split into $L_{L} = [2, 3]$ and $L_{R} = [3, 2]$.
+  \begin{itemize}
+  \item $L_{L}$ returns \texttt{None} (no majority).
+  \item $L_{R}$ returns \texttt{None}.
+  \item Combine: Since both are \texttt{None}, count candidates 2 and 3 in $L$: both appear twice (not $> 4/2$). $L$ returns \texttt{None}.
+  \end{itemize}
+\item Level 1 ($R$): Split into $R_{L} = [3]$ and $R_{R} = [3, 3]$.
+  \begin{itemize}
+  \item $R_{L}$ returns 3.
+  \item $R_{R}$ returns 3.
+  \item Combine: Since they match, $R$ returns 3.
+  \end{itemize}
+\item Level 0 Combine: $L$ returned \texttt{None}, $R$ returned 3. Count occurrences of 3 in the entire array $A$: 3 appears 5 times, which is $> 7/2 = 3.5$.
+\item Final Result: \textbf{3}.
+\end{itemize}
+\end{solution}
+
+\part[7] Write the recurrence relation for your algorithm's worst-case running time. [3 marks] Solve it using the Master Theorem. [4 marks]
+\begin{solution}
+The algorithm divides the problem of size $n$ into two subproblems of size $n/2$ and does linear work $O(n)$ to count the occurrences of the candidates in the combine step.
+Recurrence relation:
+\[
+T(n) = 2 T(n/2) + O(n)
+\]
+\textbf{Master Theorem Solution:}
+Here $a = 2$, $b = 2$, and $f(n) = O(n)$.
+We compare $f(n)$ with $n^{\log_b a} = n^{\log_2 2} = n^1 = n$.
+Since $f(n) = \Theta(n)$, it falls under Case 2 of the Master Theorem.
+Thus, the solution is:
+\[
+T(n) = \Theta(n \log n)
+\]
+\end{solution}
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Longest Common Subsequence} \\
+Given two strings $X[1..m]$ and $Y[1..n]$, the Longest Common Subsequence (LCS) problem asks for the length and structure of the maximum length subsequence common to both.
+\begin{parts}
+\part[6] \textbf{Methodology:} Define the subproblems $c[i,j]$ and provide the complete recurrence relation, including base cases. State the time and space complexity of your algorithm.
+\begin{solution}
+Let $c[i,j]$ be the length of the LCS of the prefix $X[1..i]$ and $Y[1..j]$.
+The recurrence relation is:
+\[
+c[i,j] = \begin{cases}
+0 & \text{if } i=0 \text{ or } j=0 \\
+c[i-1,j-1] + 1 & \text{if } X[i] = Y[j] \\
+\max(c[i-1,j], c[i,j-1]) & \text{if } X[i] \ne Y[j]
+\end{cases}
+\]
+Time Complexity: $O(mn)$ as we fill an $m \times n$ table.
+Space Complexity: $O(mn)$ to store the table.
+\end{solution}
+
+\part[5] \textbf{Table Construction:} For strings $X = \text{ABCD}$ and $Y = \text{AXCD}$, complete the DP table below:
+\begin{solution}
+The completed DP table is:
+\begin{center}
+\begin{tabular}{c|ccccc}
+$c[i,j]$ & $j=0$ ($\emptyset$) & $j=1$ (\textbf{A}) & $j=2$ (\textbf{X}) & $j=3$ (\textbf{C}) & $j=4$ (\textbf{D}) \\ \hline
+ & $\emptyset$ & \textbf{A} & \textbf{X} & \textbf{C} & \textbf{D} \\ \hline
+$i=0$ ($\emptyset$) & 0 & 0 & 0 & 0 & 0 \\
+$i=1$ (\textbf{A}) & 0 & 1 & 1 & 1 & 1 \\
+$i=2$ (\textbf{B}) & 0 & 1 & 1 & 1 & 1 \\
+$i=3$ (\textbf{C}) & 0 & 1 & 1 & 2 & 2 \\
+$i=4$ (\textbf{D}) & 0 & 1 & 1 & 2 & 3 \\
+\end{tabular}
+\end{center}
+\end{solution}
+
+\part[4] \textbf{Traceback:} Perform a traceback on your filled DP table to identify the LCS. Clearly show your path, state the final LCS string, and report the length of the result.
+\begin{solution}
+Start at $c[4,4] = 3$:
+\begin{itemize}
+\item $X[4] = Y[4] = \text{'D'}$, so we add 'D' to the LCS and move diagonally to $c[3,3] = 2$.
+\item $X[3] = Y[3] = \text{'C'}$, so we add 'C' to the LCS and move diagonally to $c[2,2] = 1$.
+\item $X[2] = \text{'B'} \ne Y[2] = \text{'X'}$. We look at $c[1,2] = 1$ and $c[2,1] = 1$. Since they are equal, we can go to either. Let's move to $c[1,2] = 1$.
+\item $X[1] = \text{'A'} \ne Y[2] = \text{'X'}$. Move to $c[1,1] = 1$.
+\item $X[1] = Y[1] = \text{'A'}$, so we add 'A' to the LCS and move diagonally to $c[0,0] = 0$.
+\end{itemize}
+Path of cells: $(4,4) \rightarrow (3,3) \rightarrow (2,2) \rightarrow (1,2) \rightarrow (1,1) \rightarrow (0,0)$.
+LCS: \textbf{ACD}
+Length of LCS: \textbf{3}.
+\end{solution}
+\end{parts}
+
+\vskip 1em
+
+\question[15] \textbf{Data Compression - Huffman Code} \\
+The text below is from a well-known pop culture reference:
+\begin{center}
+\texttt{maytheforcebewithyou}
+\end{center}
+\begin{parts}
+\part[3] Count the frequency of each distinct letter in the text. How many total characters does the string contain and what are their frequencies? Answer your results in the below format:
+\begin{solution}
+The string contains 20 total characters. Frequencies:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Letter} & m & a & y & t & h & e & f & o & r & c & b & w & i & u \\ \hline
+\textbf{Freq} & 1 & 1 & 2 & 2 & 2 & 2 & 1 & 2 & 1 & 1 & 1 & 1 & 1 & 2 \\ \hline
+\end{tabular}
+\end{center}
+\end{solution}
+
+\part[7] Construct an optimal prefix-free binary code for these characters using Huffman code. Show the initial sorted frequencies, each merge operation (which two nodes were merged and the resulting parent's frequency), and the final tree structure.
+\begin{solution}
+Sorted frequencies:
+\[
+a:1, b:1, c:1, f:1, i:1, m:1, r:1, w:1, e:2, h:2, o:2, t:2, u:2, y:2
+\]
+Merge operations (one valid sequence):
+\begin{enumerate}
+\item Merge $a:1, b:1 \rightarrow ab:2$
+\item Merge $c:1, f:1 \rightarrow cf:2$
+\item Merge $i:1, m:1 \rightarrow im:2$
+\item Merge $r:1, w:1 \rightarrow rw:2$
+\item Merge $e:2, h:2 \rightarrow eh:4$
+\item Merge $o:2, t:2 \rightarrow ot:4$
+\item Merge $u:2, y:2 \rightarrow uy:4$
+\item Merge $ab:2, cf:2 \rightarrow abcf:4$
+\item Merge $im:2, rw:2 \rightarrow imrw:4$
+\item Merge $eh:4, ot:4 \rightarrow ehot:8$
+\item Merge $uy:4, abcf:4 \rightarrow uyabcf:8$
+\item Merge $imrw:4, ehot:8 \rightarrow imrwehot:12$
+\item Merge $uyabcf:8, imrwehot:12 \rightarrow \text{Root}:20$
+\end{enumerate}
+\end{solution}
+
+\part[5] Assign binary codes (left branch = 0, right branch = 1) to each letter and list them in a table. [2 marks] Encode the original string \texttt{"maytheforcebewithyou"} using your code and state the total number of bits. [3 marks]
+\begin{solution}
+Assigning codes based on the tree (left=0, right=1):
+\begin{itemize}
+\item \texttt{uyabcf} is left (0), \texttt{imrwehot} is right (1).
+\item Left subtree (0):
+  \begin{itemize}
+  \item \texttt{uy} (00) $\rightarrow$ \texttt{u} (000), \texttt{y} (001)
+  \item \texttt{abcf} (01)
+    \begin{itemize}
+    \item \texttt{ab} (010) $\rightarrow$ \texttt{a} (0100), \texttt{b} (0101)
+    \item \texttt{cf} (011) $\rightarrow$ \texttt{c} (0110), \texttt{f} (0111)
+    \end{itemize}
+  \end{itemize}
+\item Right subtree (1):
+  \begin{itemize}
+  \item \texttt{imrw} (10)
+    \begin{itemize}
+    \item \texttt{im} (100) $\rightarrow$ \texttt{i} (1000), \texttt{m} (1001)
+    \item \texttt{rw} (101) $\rightarrow$ \texttt{r} (1010), \texttt{w} (1011)
+    \end{itemize}
+  \item \texttt{ehot} (11)
+    \begin{itemize}
+    \item \texttt{eh} (110) $\rightarrow$ \texttt{e} (1100), \texttt{h} (1101)
+    \item \texttt{ot} (111) $\rightarrow$ \texttt{o} (1110), \texttt{t} (1111)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+Codes table:
+\begin{center}
+\begin{tabular}{|c|l|c|l|}
+\hline
+\textbf{Letter} & \textbf{Code} & \textbf{Letter} & \textbf{Code} \\ \hline
+m & 1001 & e & 1100 \\ \hline
+a & 0100 & o & 1110 \\ \hline
+y & 001 & r & 1010 \\ \hline
+t & 1111 & c & 0110 \\ \hline
+h & 1101 & b & 0101 \\ \hline
+f & 0111 & w & 1011 \\ \hline
+i & 1000 & u & 000 \\ \hline
+\end{tabular}
+\end{center}
+Encoding of \texttt{"maytheforcebewithyou"}:
+\texttt{1001 0100 001 1111 1101 1100 0111 1110 1010 0110 1100 0101 1100 1011 1000 1111 1101 001 1110 000}
+
+Total bits = $\sum (\text{Frequency} \times \text{Code Length})$:
+\begin{itemize}
+\item 1-freq letters (a, b, c, f, i, m, r, w): $8 \times 4 = 32$ bits
+\item 2-freq letters (e, h, o, t, u, y):
+  \begin{itemize}
+  \item e, h, o, t: 4 bits each $\times 4$ letters $\times 2$ freq = 32 bits
+  \item u, y: 3 bits each $\times 2$ letters $\times 2$ freq = 12 bits
+  \end{itemize}
+\end{itemize}
+Total bits = $32 + 32 + 12 = \mathbf{76\text{ bits}}$.
+\end{solution}
+\end{parts}
+
+\end{questions}
+\end{document}
