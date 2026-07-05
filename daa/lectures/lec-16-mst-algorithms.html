@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1751,15 +1804,15 @@ margin-right: 0; }
 <h2>Prim’s Algorithm — Overview</h2>
 <p><strong>Idea:</strong> Grow a tree from a starting node, always adding the cheapest edge that connects the tree to a new vertex.</p>
 <ol type="1">
-<li>Pick an arbitrary start node <span class="math inline">\(u\)</span>. Initialize <span class="math inline">\(T = \{u\}\)</span>.</li>
-<li>Maintain a <strong>priority queue</strong> of vertices not yet in <span class="math inline">\(T\)</span>, keyed by the minimum-weight edge connecting them to <span class="math inline">\(T\)</span>.</li>
+<li>Pick an arbitrary start node <span class="math inline">u</span>. Initialize <span class="math inline">T = \{u\}</span>.</li>
+<li>Maintain a <strong>priority queue</strong> of vertices not yet in <span class="math inline">T</span>, keyed by the minimum-weight edge connecting them to <span class="math inline">T</span>.</li>
 <li>Repeatedly:
 <ul>
-<li>Extract the vertex <span class="math inline">\(v\)</span> with the smallest key from the PQ.</li>
-<li>Add <span class="math inline">\(v\)</span> and the corresponding edge to <span class="math inline">\(T\)</span>.</li>
-<li>Update keys of <span class="math inline">\(v\)</span>’s neighbors (if they can now reach <span class="math inline">\(T\)</span> via a cheaper edge).</li>
+<li>Extract the vertex <span class="math inline">v</span> with the smallest key from the PQ.</li>
+<li>Add <span class="math inline">v</span> and the corresponding edge to <span class="math inline">T</span>.</li>
+<li>Update keys of <span class="math inline">v</span>’s neighbors (if they can now reach <span class="math inline">T</span> via a cheaper edge).</li>
 </ul></li>
-<li>Stop when <span class="math inline">\(T\)</span> spans all <span class="math inline">\(V\)</span> vertices.</li>
+<li>Stop when <span class="math inline">T</span> spans all <span class="math inline">V</span> vertices.</li>
 </ol>
 </section>
 <section id="prims-algorithm-interactive-example" class="slide level2 frame">
@@ -1768,10 +1821,10 @@ margin-right: 0; }
 <div class="column" style="width:30%;">
 <p><strong>Algorithm:</strong></p>
 <ol type="1">
-<li>Start with any vertex <span class="math inline">\(a\)</span> in tree <span class="math inline">\(T\)</span>.</li>
+<li>Start with any vertex <span class="math inline">a</span> in tree <span class="math inline">T</span>.</li>
 <li>Pick cheapest crossing edge.</li>
 <li>Update keys of neighbors.</li>
-<li>Repeat until all vertices in <span class="math inline">\(T\)</span>.</li>
+<li>Repeat until all vertices in <span class="math inline">T</span>.</li>
 </ol>
 <p id="prim-status" style="font-size:0.75rem; margin-top:0.3rem;">
 Step 0 / 9 — click ▶ to start
@@ -2129,8 +2182,8 @@ Step 0 / 9 — click ▶ to start
                 key[v] = w(u,v)
                 decrease-key(PQ, v, key[v])</code></pre>
 <ul>
-<li><code>extract-min</code>: <span class="math inline">\(O(\log V)\)</span> each (binary heap)</li>
-<li><code>decrease-key</code>: <span class="math inline">\(O(\log V)\)</span> each</li>
+<li><code>extract-min</code>: <span class="math inline">O(\log V)</span> each (binary heap)</li>
+<li><code>decrease-key</code>: <span class="math inline">O(\log V)</span> each</li>
 </ul>
 </section>
 <section id="time-complexity" class="slide level2 frame">
@@ -2153,22 +2206,22 @@ Step 0 / 9 — click ▶ to start
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">Binary heap</td>
-<td style="text-align: center;"><span class="math inline">\(O(\log V)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O(\log V)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O((V+E)\log V) = O(E \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(\log V)</span></td>
+<td style="text-align: center;"><span class="math inline">O(\log V)</span></td>
+<td style="text-align: center;"><span class="math inline">O((V+E)\log V) = O(E \log V)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Fibonacci heap</td>
-<td style="text-align: center;"><span class="math inline">\(O(\log V)\)</span> amortized</td>
-<td style="text-align: center;"><span class="math inline">\(O(1)\)</span> amortized</td>
-<td style="text-align: center;"><span class="math inline">\(O(E + V \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(\log V)</span> amortized</td>
+<td style="text-align: center;"><span class="math inline">O(1)</span> amortized</td>
+<td style="text-align: center;"><span class="math inline">O(E + V \log V)</span></td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>Binary heap is simpler and preferred for typical graphs.</li>
 <li>Fibonacci heap gives better worst-case bound but higher constants.</li>
-<li>For dense graphs (<span class="math inline">\(E \approx V^2\)</span>), <span class="math inline">\(O(E + V \log V)\)</span> from Fibonacci heap is essentially <span class="math inline">\(O(V^2)\)</span>.</li>
+<li>For dense graphs (<span class="math inline">E \approx V^2</span>), <span class="math inline">O(E + V \log V)</span> from Fibonacci heap is essentially <span class="math inline">O(V^2)</span>.</li>
 </ul>
 </section></section>
 <section>
@@ -2188,28 +2241,28 @@ Step 0 / 9 — click ▶ to start
 <div class="theorem">
 <p>Prim’s algorithm correctly computes an MST.</p>
 </div>
-<p><strong>Invariant:</strong> After each iteration, the tree <span class="math inline">\(T\)</span> is a subgraph of some minimum spanning tree <span class="math inline">\(M\)</span>.</p>
+<p><strong>Invariant:</strong> After each iteration, the tree <span class="math inline">T</span> is a subgraph of some minimum spanning tree <span class="math inline">M</span>.</p>
 <ul>
-<li><p><strong>Base case:</strong> <span class="math inline">\(T = \{r\}\)</span> (single node, no edges) — trivially a subgraph of any MST.</p></li>
-<li><p><strong>Inductive step:</strong> Suppose <span class="math inline">\(T \subseteq M\)</span> for some MST <span class="math inline">\(M\)</span>, and Prim’s adds edge <span class="math inline">\(e = (u, v)\)</span> where <span class="math inline">\(u \in T\)</span>, <span class="math inline">\(v \notin T\)</span>.</p></li>
+<li><p><strong>Base case:</strong> <span class="math inline">T = \{r\}</span> (single node, no edges) — trivially a subgraph of any MST.</p></li>
+<li><p><strong>Inductive step:</strong> Suppose <span class="math inline">T \subseteq M</span> for some MST <span class="math inline">M</span>, and Prim’s adds edge <span class="math inline">e = (u, v)</span> where <span class="math inline">u \in T</span>, <span class="math inline">v \notin T</span>.</p></li>
 </ul>
 </section>
 <section id="correctness-exchange" class="slide level2 frame">
 <h2>Correctness — Exchange</h2>
-<p>We need to show <span class="math inline">\(T \cup \{e\}\)</span> is a subgraph of some MST.</p>
-<p><strong>Case 1:</strong> <span class="math inline">\(e \in M\)</span>. Then <span class="math inline">\(T \cup \{e\} \subseteq M\)</span>. Done.</p>
-<p><strong>Case 2:</strong> <span class="math inline">\(e \notin M\)</span>. Consider <span class="math inline">\(M \cup \{e\}\)</span> — it contains a cycle <span class="math inline">\(C\)</span>.</p>
+<p>We need to show <span class="math inline">T \cup \{e\}</span> is a subgraph of some MST.</p>
+<p><strong>Case 1:</strong> <span class="math inline">e \in M</span>. Then <span class="math inline">T \cup \{e\} \subseteq M</span>. Done.</p>
+<p><strong>Case 2:</strong> <span class="math inline">e \notin M</span>. Consider <span class="math inline">M \cup \{e\}</span> — it contains a cycle <span class="math inline">C</span>.</p>
 <ul>
-<li>Let <span class="math inline">\(S\)</span> be the set of vertices already in <span class="math inline">\(T\)</span> when <span class="math inline">\(e\)</span> is added.</li>
-<li>The cut <span class="math inline">\((S, V-S)\)</span> has <span class="math inline">\(e\)</span> as its cheapest crossing edge (by Prim’s — it was extracted from the PQ with minimum key).</li>
-<li>Cycle <span class="math inline">\(C\)</span> must cross <span class="math inline">\((S, V-S)\)</span> at some other edge <span class="math inline">\(f \neq e\)</span>.</li>
-<li>By the <strong>cut property</strong>, <span class="math inline">\(c_e \le c_f\)</span>.</li>
+<li>Let <span class="math inline">S</span> be the set of vertices already in <span class="math inline">T</span> when <span class="math inline">e</span> is added.</li>
+<li>The cut <span class="math inline">(S, V-S)</span> has <span class="math inline">e</span> as its cheapest crossing edge (by Prim’s — it was extracted from the PQ with minimum key).</li>
+<li>Cycle <span class="math inline">C</span> must cross <span class="math inline">(S, V-S)</span> at some other edge <span class="math inline">f \neq e</span>.</li>
+<li>By the <strong>cut property</strong>, <span class="math inline">c_e \le c_f</span>.</li>
 </ul>
-<p>Construct <span class="math inline">\(M&#39; = M \cup \{e\} - \{f\}\)</span>:</p>
+<p>Construct <span class="math inline">M&#39; = M \cup \{e\} - \{f\}</span>:</p>
 <ul>
-<li><span class="math inline">\(M&#39;\)</span> is a spanning tree.</li>
-<li><span class="math inline">\(\text{cost}(M&#39;) \le \text{cost}(M)\)</span> (since <span class="math inline">\(c_e \le c_f\)</span>).</li>
-<li>So <span class="math inline">\(M&#39;\)</span> is an MST and <span class="math inline">\(T \cup \{e\} \subseteq M&#39;\)</span>. <span class="math inline">\(\square\)</span></li>
+<li><span class="math inline">M&#39;</span> is a spanning tree.</li>
+<li><span class="math inline">\text{cost}(M&#39;) \le \text{cost}(M)</span> (since <span class="math inline">c_e \le c_f</span>).</li>
+<li>So <span class="math inline">M&#39;</span> is an MST and <span class="math inline">T \cup \{e\} \subseteq M&#39;</span>. <span class="math inline">\square</span></li>
 </ul>
 </section></section>
 <section>
@@ -2237,15 +2290,15 @@ Step 0 / 9 — click ▶ to start
 <section id="boruvkas-algorithm-1" class="slide level2 frame">
 <h2>Boruvka’s Algorithm</h2>
 <ol type="1">
-<li>Start with each vertex as its own component <span class="math inline">\(S(v) = \{v\}\)</span>, and <span class="math inline">\(T = \emptyset\)</span>.</li>
+<li>Start with each vertex as its own component <span class="math inline">S(v) = \{v\}</span>, and <span class="math inline">T = \emptyset</span>.</li>
 <li><strong>In each round:</strong>
 <ol type="1">
-<li>For each component <span class="math inline">\(S\)</span>, find the minimum-weight edge <span class="math inline">\(e_S\)</span> that has exactly one endpoint in <span class="math inline">\(S\)</span> (the <em>cheapest outgoing edge</em>).</li>
-<li>Add all such edges <span class="math inline">\(e_S\)</span> to <span class="math inline">\(T\)</span>.</li>
+<li>For each component <span class="math inline">S</span>, find the minimum-weight edge <span class="math inline">e_S</span> that has exactly one endpoint in <span class="math inline">S</span> (the <em>cheapest outgoing edge</em>).</li>
+<li>Add all such edges <span class="math inline">e_S</span> to <span class="math inline">T</span>.</li>
 <li>Merge components connected by the added edges.</li>
 </ol></li>
 <li>Repeat rounds until only one component remains.</li>
-<li>Return <span class="math inline">\(T\)</span>.</li>
+<li>Return <span class="math inline">T</span>.</li>
 </ol>
 </section>
 <section id="boruvkas-algorithm-correctness" class="slide level2 frame">
@@ -2253,8 +2306,8 @@ Step 0 / 9 — click ▶ to start
 <ul>
 <li>Every edge added in a round is the <strong>minimum-weight edge crossing some cut</strong> (the component boundary).</li>
 <li>By the <strong>cut property</strong>, each such edge belongs to some MST.</li>
-<li><strong>Cycle concern:</strong> Could edges added in the same round form a cycle? No — because if edges <span class="math inline">\((a,b), (b,c), (c,a)\)</span> were all cheapest-out for their respective components, then the weights would have to satisfy <span class="math inline">\(w(a,b) &lt; w(b,c) &lt; w(c,a) &lt; w(a,b)\)</span>, an impossibility.</li>
-<li>Thus <span class="math inline">\(T\)</span> remains acyclic throughout.</li>
+<li><strong>Cycle concern:</strong> Could edges added in the same round form a cycle? No — because if edges <span class="math inline">(a,b), (b,c), (c,a)</span> were all cheapest-out for their respective components, then the weights would have to satisfy <span class="math inline">w(a,b) &lt; w(b,c) &lt; w(c,a) &lt; w(a,b)</span>, an impossibility.</li>
+<li>Thus <span class="math inline">T</span> remains acyclic throughout.</li>
 </ul>
 <div class="center">
 <p><strong>Result:</strong> Boruvka’s algorithm correctly computes an MST.</p>
@@ -2263,14 +2316,14 @@ Step 0 / 9 — click ▶ to start
 <section id="boruvkas-algorithm-time-complexity" class="slide level2 frame">
 <h2>Boruvka’s Algorithm — Time Complexity</h2>
 <ul>
-<li>Each round takes <span class="math inline">\(O(E)\)</span> time (scan all edges once from each endpoint).</li>
+<li>Each round takes <span class="math inline">O(E)</span> time (scan all edges once from each endpoint).</li>
 <li>In each round, every component merges with at least one other component.</li>
 <li>The number of components at least <strong>halves</strong> each round.</li>
-<li>After at most <span class="math inline">\(\log_2 V\)</span> rounds, only one component remains.</li>
+<li>After at most <span class="math inline">\log_2 V</span> rounds, only one component remains.</li>
 </ul>
-<p><span class="math display">\[T(V,E) = O(E \log V)\]</span></p>
+<p><span class="math display">T(V,E) = O(E \log V)</span></p>
 <ul>
-<li><strong>Parallel version:</strong> Each component finds its cheapest edge independently in <span class="math inline">\(O(1)\)</span> parallel rounds — excellent for distributed computing (MapReduce, Pregel).</li>
+<li><strong>Parallel version:</strong> Each component finds its cheapest edge independently in <span class="math inline">O(1)</span> parallel rounds — excellent for distributed computing (MapReduce, Pregel).</li>
 </ul>
 </section></section>
 <section>
@@ -2289,9 +2342,9 @@ Step 0 / 9 — click ▶ to start
 <h2>Exchange Arguments</h2>
 <p>A general technique for proving greedy algorithms are optimal:</p>
 <ol type="1">
-<li>Let <span class="math inline">\(A\)</span> be the greedy solution and <span class="math inline">\(OPT\)</span> be any optimal solution.</li>
-<li>Find the first “difference” between <span class="math inline">\(A\)</span> and <span class="math inline">\(OPT\)</span>.</li>
-<li><strong>Exchange:</strong> Modify <span class="math inline">\(OPT\)</span> by replacing the differing element with the corresponding greedy choice, without making <span class="math inline">\(OPT\)</span> worse.</li>
+<li>Let <span class="math inline">A</span> be the greedy solution and <span class="math inline">OPT</span> be any optimal solution.</li>
+<li>Find the first “difference” between <span class="math inline">A</span> and <span class="math inline">OPT</span>.</li>
+<li><strong>Exchange:</strong> Modify <span class="math inline">OPT</span> by replacing the differing element with the corresponding greedy choice, without making <span class="math inline">OPT</span> worse.</li>
 <li>Repeat — the greedy solution is at least as good as any optimal solution.</li>
 </ol>
 <table class="caption-top">
@@ -2310,12 +2363,12 @@ Step 0 / 9 — click ▶ to start
 <tbody>
 <tr class="odd">
 <td>Kruskal’s</td>
-<td>Cheaper edge <span class="math inline">\(e\)</span> replaces heavier <span class="math inline">\(e&#39;\)</span> in cycle</td>
+<td>Cheaper edge <span class="math inline">e</span> replaces heavier <span class="math inline">e&#39;</span> in cycle</td>
 <td>Cut/cycle property</td>
 </tr>
 <tr class="even">
 <td>Prim’s</td>
-<td>Cheapest crossing edge <span class="math inline">\(e\)</span> replaces heavier <span class="math inline">\(f\)</span></td>
+<td>Cheapest crossing edge <span class="math inline">e</span> replaces heavier <span class="math inline">f</span></td>
 <td>Cut property</td>
 </tr>
 <tr class="odd">
@@ -2381,9 +2434,9 @@ Step 0 / 9 — click ▶ to start
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Time Complexity</strong></td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><strong>Best For</strong></td>
@@ -2403,8 +2456,8 @@ Step 0 / 9 — click ▶ to start
 <section id="choosing-the-right-algorithm" class="slide level2 frame">
 <h2>Choosing the Right Algorithm</h2>
 <ul>
-<li><p><strong>Sparse graphs</strong> (<span class="math inline">\(E \approx V\)</span>): All three run in <span class="math inline">\(O(V \log V)\)</span>. Kruskal’s is simplest to implement.</p></li>
-<li><p><strong>Dense graphs</strong> (<span class="math inline">\(E \approx V^2\)</span>): Prim’s with Fibonacci heap gives <span class="math inline">\(O(V^2)\)</span>, which beats <span class="math inline">\(O(V^2 \log V)\)</span>.</p></li>
+<li><p><strong>Sparse graphs</strong> (<span class="math inline">E \approx V</span>): All three run in <span class="math inline">O(V \log V)</span>. Kruskal’s is simplest to implement.</p></li>
+<li><p><strong>Dense graphs</strong> (<span class="math inline">E \approx V^2</span>): Prim’s with Fibonacci heap gives <span class="math inline">O(V^2)</span>, which beats <span class="math inline">O(V^2 \log V)</span>.</p></li>
 <li><p><strong>Parallel/distributed environment:</strong> Boruvka’s is the natural choice — each round is embarrassingly parallel.</p></li>
 <li><p><strong>Educational value:</strong></p>
 <ul>
@@ -2429,9 +2482,9 @@ Step 0 / 9 — click ▶ to start
 <section id="what-we-learned-today" class="slide level2 frame">
 <h2>What We Learned Today</h2>
 <ul>
-<li><strong>Prim’s Algorithm</strong> — grow a tree from a root using a priority queue, <span class="math inline">\(O(E \log V)\)</span></li>
+<li><strong>Prim’s Algorithm</strong> — grow a tree from a root using a priority queue, <span class="math inline">O(E \log V)</span></li>
 <li><strong>Prim’s Correctness</strong> — invariant + exchange argument via cut property</li>
-<li><strong>Boruvka’s Algorithm</strong> — parallel component-based approach, <span class="math inline">\(O(E \log V)\)</span></li>
+<li><strong>Boruvka’s Algorithm</strong> — parallel component-based approach, <span class="math inline">O(E \log V)</span></li>
 <li><strong>Exchange Arguments</strong> — a general technique for proving greedy optimality</li>
 <li><strong>Data Structure Comparison</strong> — Union-Find vs. Priority Queue vs. component lists</li>
 </ul>
@@ -2454,19 +2507,19 @@ Step 0 / 9 — click ▶ to start
 <tr class="odd">
 <td style="text-align: center;">Kruskal’s</td>
 <td style="text-align: center;">Union-Find</td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
 <td style="text-align: center;">Sort edges, Union-Find for cycles</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Prim’s</td>
 <td style="text-align: center;">Priority Queue</td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
 <td style="text-align: center;">Grow from root, extract-min</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Boruvka’s</td>
 <td style="text-align: center;">Component lists</td>
-<td style="text-align: center;"><span class="math inline">\(O(E \log V)\)</span></td>
+<td style="text-align: center;"><span class="math inline">O(E \log V)</span></td>
 <td style="text-align: center;">Parallel component merging</td>
 </tr>
 </tbody>
@@ -3454,8 +3507,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3623,27 +3674,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

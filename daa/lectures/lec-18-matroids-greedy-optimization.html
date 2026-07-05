@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1748,10 +1801,10 @@ margin-right: 0; }
 </section>
 <section id="weighted-matroid-optimization" class="slide level2 frame">
 <h2>Weighted Matroid Optimization</h2>
-<p>Given a matroid <span class="math inline">\(M = (E, \mathcal{I})\)</span> with a weight function <span class="math inline">\(w: E \to \mathbb{R}^+\)</span>, find a basis <span class="math inline">\(B \in \mathcal{I}\)</span> of <strong>maximum total weight</strong>:</p>
-<p><span class="math display">\[
+<p>Given a matroid <span class="math inline">M = (E, \mathcal{I})</span> with a weight function <span class="math inline">w: E \to \mathbb{R}^+</span>, find a basis <span class="math inline">B \in \mathcal{I}</span> of <strong>maximum total weight</strong>:</p>
+<p><span class="math display">
 \max_{B \in \mathcal{I},\; |B| = \text{rank}(M)} \sum_{e \in B} w(e)
-\]</span></p>
+</span></p>
 <ul>
 <li>Since all bases have the same size, maximizing is equivalent to minimizing with negated weights.</li>
 <li>The greedy algorithm for this problem is remarkably simple.</li>
@@ -1759,33 +1812,33 @@ margin-right: 0; }
 </section>
 <section id="greedy-algorithm-on-a-matroid" class="slide level2 frame">
 <h2>Greedy Algorithm on a Matroid</h2>
-<p><strong>Input:</strong> Matroid <span class="math inline">\(M = (E, \mathcal{I})\)</span>, weight function <span class="math inline">\(w: E \to \mathbb{R}^+\)</span></p>
+<p><strong>Input:</strong> Matroid <span class="math inline">M = (E, \mathcal{I})</span>, weight function <span class="math inline">w: E \to \mathbb{R}^+</span></p>
 <ol type="1">
-<li>Sort <span class="math inline">\(E\)</span> by decreasing weight: <span class="math inline">\(w(e_1) \ge w(e_2) \ge \dots \ge w(e_m)\)</span>.</li>
-<li>Initialize <span class="math inline">\(B = \emptyset\)</span>.</li>
-<li><strong>For</strong> each <span class="math inline">\(e \in E\)</span> in this order:
+<li>Sort <span class="math inline">E</span> by decreasing weight: <span class="math inline">w(e_1) \ge w(e_2) \ge \dots \ge w(e_m)</span>.</li>
+<li>Initialize <span class="math inline">B = \emptyset</span>.</li>
+<li><strong>For</strong> each <span class="math inline">e \in E</span> in this order:
 <ul>
-<li><strong>If</strong> <span class="math inline">\(B \cup \{e\} \in \mathcal{I}\)</span>, add <span class="math inline">\(e\)</span> to <span class="math inline">\(B\)</span>.</li>
+<li><strong>If</strong> <span class="math inline">B \cup \{e\} \in \mathcal{I}</span>, add <span class="math inline">e</span> to <span class="math inline">B</span>.</li>
 </ul></li>
-<li><strong>Return</strong> <span class="math inline">\(B\)</span>.</li>
+<li><strong>Return</strong> <span class="math inline">B</span>.</li>
 </ol>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>This is exactly <strong>Kruskal’s algorithm</strong> when <span class="math inline">\(M\)</span> is the graphic matroid — add the heaviest edge that doesn’t create a cycle. (For MST, negate weights or sort ascending.)</p>
+<p>This is exactly <strong>Kruskal’s algorithm</strong> when <span class="math inline">M</span> is the graphic matroid — add the heaviest edge that doesn’t create a cycle. (For MST, negate weights or sort ascending.)</p>
 </div>
 </div>
 </div>
 </section>
 <section id="example-greedy-on-a-graphic-matroid" class="slide level2 frame">
 <h2>Example: Greedy on a Graphic Matroid</h2>
-<p>Consider a graph <span class="math inline">\(G = (V,E)\)</span> with <span class="math inline">\(V = \{a,b,c,d\}\)</span> and edges sorted by <strong>decreasing</strong> weight:</p>
+<p>Consider a graph <span class="math inline">G = (V,E)</span> with <span class="math inline">V = \{a,b,c,d\}</span> and edges sorted by <strong>decreasing</strong> weight:</p>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img role="img" data-src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDE0LjEuMiAoMjAyNjAxMjQuMDQ1MikKIC0tPgo8IS0tIFRpdGxlOiBHIFBhZ2VzOiAxIC0tPgo8c3ZnIHdpZHRoPSIyODRwdCIgaGVpZ2h0PSIyODRwdCIKIHZpZXdCb3g9IjAuMDAgMC4wMCAyODQuMDAgMjg0LjAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KPGcgaWQ9ImdyYXBoMCIgY2xhc3M9ImdyYXBoIiB0cmFuc2Zvcm09InNjYWxlKDEgMSkgcm90YXRlKDApIHRyYW5zbGF0ZSg0IDI4MC4yOCkiPgo8dGl0bGU+RzwvdGl0bGU+Cjxwb2x5Z29uIGZpbGw9IndoaXRlIiBzdHJva2U9Im5vbmUiIHBvaW50cz0iLTQsNCAtNCwtMjgwLjI4IDI4MC4yOCwtMjgwLjI4IDI4MC4yOCw0IC00LDQiLz4KPCEtLSBhIC0tPgo8ZyBpZD0ibm9kZTEiIGNsYXNzPSJub2RlIj4KPHRpdGxlPmE8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSIjMWExYTY2IiBzdHJva2U9ImJsYWNrIiBjeD0iMTM4LjE0IiBjeT0iLTI1OC45NSIgcng9IjE3LjMyIiByeT0iMTcuMzIiLz4KPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTM4LjE0IiB5PSItMjUzLjkiIGZvbnQtZmFtaWx5PSJUaW1lcyxzZXJpZiIgZm9udC1zaXplPSIxNC4wMCIgZmlsbD0id2hpdGUiPmE8L3RleHQ+CjwvZz4KPCEtLSBiIC0tPgo8ZyBpZD0ibm9kZTIiIGNsYXNzPSJub2RlIj4KPHRpdGxlPmI8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSIjMWExYTY2IiBzdHJva2U9ImJsYWNrIiBjeD0iMTcuMzIiIGN5PSItMTM4LjE0IiByeD0iMTcuMzIiIHJ5PSIxNy4zMiIvPgo8dGV4dCB4bWw6c3BhY2U9InByZXNlcnZlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxNy4zMiIgeT0iLTEzMy4wOSIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjE0LjAwIiBmaWxsPSJ3aGl0ZSI+YjwvdGV4dD4KPC9nPgo8IS0tIGEmIzQ1OyYjNDU7YiAtLT4KPGcgaWQ9ImVkZ2UxIiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5hJiM0NTsmIzQ1O2I8L3RpdGxlPgo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41IiBkPSJNMTI1LjY2LC0yNDYuNDhDMTAyLjUxLC0yMjMuMzMgNTMuMTUsLTE3My45NiAyOS45MSwtMTUwLjczIi8+Cjx0ZXh0IHhtbDpzcGFjZT0icHJlc2VydmUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijc1LjE5IiB5PSItMjAxLjY4IiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTEuMDAiIGZpbGw9IiMzMzMzMzMiPjU8L3RleHQ+CjwvZz4KPCEtLSBjIC0tPgo8ZyBpZD0ibm9kZTMiIGNsYXNzPSJub2RlIj4KPHRpdGxlPmM8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSIjMWExYTY2IiBzdHJva2U9ImJsYWNrIiBjeD0iMjU4Ljk1IiBjeT0iLTEzOC4xNCIgcng9IjE3LjMyIiByeT0iMTcuMzIiLz4KPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjU4Ljk1IiB5PSItMTMzLjA5IiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiIGZpbGw9IndoaXRlIj5jPC90ZXh0Pgo8L2c+CjwhLS0gYSYjNDU7JiM0NTtjIC0tPgo8ZyBpZD0iZWRnZTIiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPmEmIzQ1OyYjNDU7YzwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xNTAuNjEsLTI0Ni40OEMxNzMuNzYsLTIyMy4zMyAyMjMuMTMsLTE3My45NiAyNDYuMzcsLTE1MC43MyIvPgo8dGV4dCB4bWw6c3BhY2U9InByZXNlcnZlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxOTUuODMiIHk9Ii0yMDEuNjgiIGZvbnQtZmFtaWx5PSJUaW1lcyxzZXJpZiIgZm9udC1zaXplPSIxMS4wMCIgZmlsbD0iIzMzMzMzMyI+NzwvdGV4dD4KPC9nPgo8IS0tIGQgLS0+CjxnIGlkPSJub2RlNCIgY2xhc3M9Im5vZGUiPgo8dGl0bGU+ZDwvdGl0bGU+CjxlbGxpcHNlIGZpbGw9IiMxYTFhNjYiIHN0cm9rZT0iYmxhY2siIGN4PSIxMzguMTQiIGN5PSItMTcuMzIiIHJ4PSIxNy4zMiIgcnk9IjE3LjMyIi8+Cjx0ZXh0IHhtbDpzcGFjZT0icHJlc2VydmUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEzOC4xNCIgeT0iLTEyLjI3IiBmb250LWZhbWlseT0iVGltZXMsc2VyaWYiIGZvbnQtc2l6ZT0iMTQuMDAiIGZpbGw9IndoaXRlIj5kPC90ZXh0Pgo8L2c+CjwhLS0gYSYjNDU7JiM0NTtkIC0tPgo8ZyBpZD0iZWRnZTMiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPmEmIzQ1OyYjNDU7ZDwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0xMzguMTQsLTI0MS4xOUMxMzguMTQsLTE5Ni41IDEzOC4xNCwtNzkuODMgMTM4LjE0LC0zNS4xMiIvPgo8dGV4dCB4bWw6c3BhY2U9InByZXNlcnZlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxMzUuNTEiIHk9Ii0xNDEuMjEiIGZvbnQtZmFtaWx5PSJUaW1lcyxzZXJpZiIgZm9udC1zaXplPSIxMS4wMCIgZmlsbD0iIzMzMzMzMyI+MTwvdGV4dD4KPC9nPgo8IS0tIGImIzQ1OyYjNDU7YyAtLT4KPGcgaWQ9ImVkZ2U0IiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5iJiM0NTsmIzQ1O2M8L3RpdGxlPgo8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41IiBkPSJNMzUuMDksLTEzOC4xNEM3OS43OCwtMTM4LjE0IDE5Ni40NSwtMTM4LjE0IDI0MS4xNiwtMTM4LjE0Ii8+Cjx0ZXh0IHhtbDpzcGFjZT0icHJlc2VydmUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEzNS40OSIgeT0iLTEyNy42OSIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjExLjAwIiBmaWxsPSIjMzMzMzMzIj45PC90ZXh0Pgo8L2c+CjwhLS0gYiYjNDU7JiM0NTtkIC0tPgo8ZyBpZD0iZWRnZTUiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPmImIzQ1OyYjNDU7ZDwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0yOS44LC0xMjUuNjZDNTIuOTUsLTEwMi41MSAxMDIuMzIsLTUzLjE1IDEyNS41NSwtMjkuOTEiLz4KPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iNzUuMDIiIHk9Ii04MC44NyIgZm9udC1mYW1pbHk9IlRpbWVzLHNlcmlmIiBmb250LXNpemU9IjExLjAwIiBmaWxsPSIjMzMzMzMzIj4yPC90ZXh0Pgo8L2c+CjwhLS0gYyYjNDU7JiM0NTtkIC0tPgo8ZyBpZD0iZWRnZTYiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPmMmIzQ1OyYjNDU7ZDwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiIGQ9Ik0yNDYuNDgsLTEyNS42NkMyMjMuMzMsLTEwMi41MSAxNzMuOTYsLTUzLjE1IDE1MC43MywtMjkuOTEiLz4KPHRleHQgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMTk2LjAxIiB5PSItODAuODciIGZvbnQtZmFtaWx5PSJUaW1lcyxzZXJpZiIgZm9udC1zaXplPSIxMS4wMCIgZmlsbD0iIzMzMzMzMyI+NDwvdGV4dD4KPC9nPgo8L2c+Cjwvc3ZnPgo=" style="width:100.0%"></p>
-<figcaption>Graph <span class="math inline">\(G\)</span></figcaption>
+<figcaption>Graph <span class="math inline">G</span></figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:65%;">
@@ -1794,8 +1847,8 @@ margin-right: 0; }
 <tr class="header">
 <th style="text-align: center;">Step</th>
 <th style="text-align: center;">Edge</th>
-<th style="text-align: center;"><span class="math inline">\(w\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(B \cup \{e\}\)</span> acyclic?</th>
+<th style="text-align: center;"><span class="math inline">w</span></th>
+<th style="text-align: center;"><span class="math inline">B \cup \{e\}</span> acyclic?</th>
 <th style="text-align: center;">Action</th>
 </tr>
 </thead>
@@ -1845,7 +1898,7 @@ margin-right: 0; }
 </tbody>
 </table>
 </div></div>
-<p>Result: <span class="math inline">\(B = \{(b,c), (a,c), (c,d)\}\)</span>, weight <span class="math inline">\(= 20\)</span> — the <strong>maximum spanning tree</strong>.</p>
+<p>Result: <span class="math inline">B = \{(b,c), (a,c), (c,d)\}</span>, weight <span class="math inline">= 20</span> — the <strong>maximum spanning tree</strong>.</p>
 </section></section>
 <section>
 <section id="the-equivalence-theorem" class="title-slide slide level1">
@@ -1866,7 +1919,7 @@ margin-right: 0; }
 <p><strong><strong>Theorem (Rado 1957, Gale 1968).</strong></strong></p>
 </div>
 <div class="callout-content">
-<p>The greedy algorithm produces a maximum-weight basis for <strong>every</strong> weight function <span class="math inline">\(w: E \to \mathbb{R}^+\)</span> <strong>if and only if</strong> <span class="math inline">\(M = (E, \mathcal{I})\)</span> is a matroid.</p>
+<p>The greedy algorithm produces a maximum-weight basis for <strong>every</strong> weight function <span class="math inline">w: E \to \mathbb{R}^+</span> <strong>if and only if</strong> <span class="math inline">M = (E, \mathcal{I})</span> is a matroid.</p>
 </div>
 </div>
 </div>
@@ -1874,8 +1927,8 @@ margin-right: 0; }
 <div class="fragment">
 <p>We prove both directions:</p>
 <ul>
-<li><strong>(<span class="math inline">\(\Leftarrow\)</span>)</strong> If <span class="math inline">\(M\)</span> is a matroid, greedy always finds an optimal basis.</li>
-<li><strong>(<span class="math inline">\(\Rightarrow\)</span>)</strong> If greedy works for all weight functions, <span class="math inline">\(M\)</span> must be a matroid.</li>
+<li><strong>(<span class="math inline">\Leftarrow</span>)</strong> If <span class="math inline">M</span> is a matroid, greedy always finds an optimal basis.</li>
+<li><strong>(<span class="math inline">\Rightarrow</span>)</strong> If greedy works for all weight functions, <span class="math inline">M</span> must be a matroid.</li>
 </ul>
 </div>
 </section></section>
@@ -1891,12 +1944,12 @@ margin-right: 0; }
 </ul>
 </section>
 <section id="leftarrow-key-lemma" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Leftarrow\)</span>) Key Lemma</h2>
+<h2>(<span class="math inline">\Leftarrow</span>) Key Lemma</h2>
 <ul>
 <li><p>The key insight: greedy stays “ahead” of any optimal solution at every prefix.</p></li>
-<li><p>Sort edges by decreasing weight: <span class="math inline">\(w(e_1) \ge w(e_2) \ge \dots \ge w(e_m)\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(B\)</span> = greedy basis, <span class="math inline">\(B^*\)</span> = optimal basis.</p></li>
-<li><p>Define <span class="math inline">\(B_k = \{e_1,\dots,e_k\} \cap B\)</span> and <span class="math inline">\(B^*_k = \{e_1,\dots,e_k\} \cap B^*\)</span>.</p></li>
+<li><p>Sort edges by decreasing weight: <span class="math inline">w(e_1) \ge w(e_2) \ge \dots \ge w(e_m)</span>.</p></li>
+<li><p>Let <span class="math inline">B</span> = greedy basis, <span class="math inline">B^*</span> = optimal basis.</p></li>
+<li><p>Define <span class="math inline">B_k = \{e_1,\dots,e_k\} \cap B</span> and <span class="math inline">B^*_k = \{e_1,\dots,e_k\} \cap B^*</span>.</p></li>
 </ul>
 <div title="Lemma">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -1905,40 +1958,40 @@ margin-right: 0; }
 <p><strong>Lemma</strong></p>
 </div>
 <div class="callout-content">
-<p>For every <span class="math inline">\(k\)</span>, <span class="math inline">\(|B_k| \ge |B^*_k|\)</span>.</p>
+<p>For every <span class="math inline">k</span>, <span class="math inline">|B_k| \ge |B^*_k|</span>.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <section id="leftarrow-proof-of-key-lemma" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Leftarrow\)</span>) Proof of Key Lemma</h2>
+<h2>(<span class="math inline">\Leftarrow</span>) Proof of Key Lemma</h2>
 <p><strong>Proof:</strong></p>
 <ul>
-<li><p>Suppose <span class="math inline">\(|B^*_k| &gt; |B_k|\)</span> for some <span class="math inline">\(k\)</span>. Then <span class="math inline">\(B_k\)</span> and <span class="math inline">\(B^*_k\)</span> are both independent, with <span class="math inline">\(|B^*_k| &gt; |B_k|\)</span>.</p></li>
-<li><p>By (I2), <span class="math inline">\(\exists e \in B^*_k \setminus B_k\)</span> such that <span class="math inline">\(B_k \cup \{e\} \in \mathcal{I}\)</span>.</p></li>
-<li><p>But <span class="math inline">\(e = e_j\)</span> for some <span class="math inline">\(j \le k\)</span> (it’s among the first <span class="math inline">\(k\)</span> elements).</p></li>
-<li><p>When greedy considered <span class="math inline">\(e_j\)</span>, <span class="math inline">\(B_{j-1} \subseteq B_k\)</span>, so <span class="math inline">\(B_{j-1} \cup \{e_j\} \in \mathcal{I}\)</span> (by heredity). Greedy would have added it — contradiction. ✓</p></li>
+<li><p>Suppose <span class="math inline">|B^*_k| &gt; |B_k|</span> for some <span class="math inline">k</span>. Then <span class="math inline">B_k</span> and <span class="math inline">B^*_k</span> are both independent, with <span class="math inline">|B^*_k| &gt; |B_k|</span>.</p></li>
+<li><p>By (I2), <span class="math inline">\exists e \in B^*_k \setminus B_k</span> such that <span class="math inline">B_k \cup \{e\} \in \mathcal{I}</span>.</p></li>
+<li><p>But <span class="math inline">e = e_j</span> for some <span class="math inline">j \le k</span> (it’s among the first <span class="math inline">k</span> elements).</p></li>
+<li><p>When greedy considered <span class="math inline">e_j</span>, <span class="math inline">B_{j-1} \subseteq B_k</span>, so <span class="math inline">B_{j-1} \cup \{e_j\} \in \mathcal{I}</span> (by heredity). Greedy would have added it — contradiction. ✓</p></li>
 </ul>
 </section>
 <section id="leftarrow-from-lemma-to-optimality" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Leftarrow\)</span>) From Lemma to Optimality</h2>
+<h2>(<span class="math inline">\Leftarrow</span>) From Lemma to Optimality</h2>
 <ul>
-<li>Since <span class="math inline">\(|B_k| \ge |B^*_k|\)</span> for all <span class="math inline">\(k\)</span>, and both are bases at the end (<span class="math inline">\(|B| = |B^*| = r\)</span>):</li>
+<li>Since <span class="math inline">|B_k| \ge |B^*_k|</span> for all <span class="math inline">k</span>, and both are bases at the end (<span class="math inline">|B| = |B^*| = r</span>):</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 w(B) - w(B^*) = \sum_{i=1}^m w(e_i) \big( [e_i \in B] - [e_i \in B^*] \big)
-\]</span></p>
+</span></p>
 <ul>
-<li>The partial sum up to <span class="math inline">\(k\)</span> counts how many heavy elements greedy has “extra” vs optimal:</li>
+<li>The partial sum up to <span class="math inline">k</span> counts how many heavy elements greedy has “extra” vs optimal:</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 \sum_{i=1}^k w(e_i) \big( [e_i \in B] - [e_i \in B^*] \big) = w(B_k) - w(B^*_k)
-\]</span></p>
-<p>Since <span class="math inline">\(|B_k| \ge |B^*_k|\)</span> and weights are decreasing, this partial sum is non-negative for every <span class="math inline">\(k\)</span>. Therefore the total <span class="math inline">\(w(B) - w(B^*) \ge 0\)</span>, i.e., <span class="math inline">\(w(B) \ge w(B^*)\)</span>. ◻</p>
+</span></p>
+<p>Since <span class="math inline">|B_k| \ge |B^*_k|</span> and weights are decreasing, this partial sum is non-negative for every <span class="math inline">k</span>. Therefore the total <span class="math inline">w(B) - w(B^*) \ge 0</span>, i.e., <span class="math inline">w(B) \ge w(B^*)</span>. ◻</p>
 </section>
 <section id="leftarrow-intuition" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Leftarrow\)</span>) Intuition</h2>
+<h2>(<span class="math inline">\Leftarrow</span>) Intuition</h2>
 <p>At every prefix, greedy has at least as many elements as optimal. Since heavier elements come first and greedy picks at least as many of them, its total weight cannot be less.</p>
 </section></section>
 <section>
@@ -1953,38 +2006,38 @@ w(B) - w(B^*) = \sum_{i=1}^m w(e_i) \big( [e_i \in B] - [e_i \in B^*] \big)
 </ul>
 </section>
 <section id="rightarrow-proving-hereditary-i1" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Rightarrow\)</span>) Proving Hereditary (I1)</h2>
+<h2>(<span class="math inline">\Rightarrow</span>) Proving Hereditary (I1)</h2>
 <p>We show that if either matroid axiom fails, we can construct a weight function where greedy gives a suboptimal result.</p>
-<p><strong>Hereditary (I1):</strong> Suppose <span class="math inline">\(X \in \mathcal{I}\)</span> but <span class="math inline">\(Y \subseteq X\)</span> is <strong>not</strong> in <span class="math inline">\(\mathcal{I}\)</span>.</p>
+<p><strong>Hereditary (I1):</strong> Suppose <span class="math inline">X \in \mathcal{I}</span> but <span class="math inline">Y \subseteq X</span> is <strong>not</strong> in <span class="math inline">\mathcal{I}</span>.</p>
 <ul>
-<li>Assign <span class="math inline">\(w(e) = 1\)</span> for <span class="math inline">\(e \in Y\)</span>, <span class="math inline">\(w(e) = 0\)</span> otherwise.</li>
-<li>Greedy considers all <span class="math inline">\(e \in Y\)</span> first (highest weight). Since <span class="math inline">\(Y \notin \mathcal{I}\)</span>, greedy must reject some <span class="math inline">\(e \in Y\)</span> when adding it would create a dependency.</li>
-<li>But <span class="math inline">\(Y\)</span> is a subset of <span class="math inline">\(X \in \mathcal{I}\)</span>, so <span class="math inline">\(Y\)</span> should be independent by (I1). This is a contradiction. ✓</li>
+<li>Assign <span class="math inline">w(e) = 1</span> for <span class="math inline">e \in Y</span>, <span class="math inline">w(e) = 0</span> otherwise.</li>
+<li>Greedy considers all <span class="math inline">e \in Y</span> first (highest weight). Since <span class="math inline">Y \notin \mathcal{I}</span>, greedy must reject some <span class="math inline">e \in Y</span> when adding it would create a dependency.</li>
+<li>But <span class="math inline">Y</span> is a subset of <span class="math inline">X \in \mathcal{I}</span>, so <span class="math inline">Y</span> should be independent by (I1). This is a contradiction. ✓</li>
 </ul>
 </section>
 <section id="rightarrow-proving-exchange-i2" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Rightarrow\)</span>) Proving Exchange (I2)</h2>
-<p>Suppose <span class="math inline">\(X, Y \in \mathcal{I}\)</span> with <span class="math inline">\(|Y| &gt; |X|\)</span>, but no <span class="math inline">\(e \in Y \setminus X\)</span> can extend <span class="math inline">\(X\)</span>. Construct weights:</p>
-<p><span class="math display">\[
+<h2>(<span class="math inline">\Rightarrow</span>) Proving Exchange (I2)</h2>
+<p>Suppose <span class="math inline">X, Y \in \mathcal{I}</span> with <span class="math inline">|Y| &gt; |X|</span>, but no <span class="math inline">e \in Y \setminus X</span> can extend <span class="math inline">X</span>. Construct weights:</p>
+<p><span class="math display">
 w(e) =
 \begin{cases}
 1 + \epsilon &amp; e \in X \\
 1 &amp; e \in Y \setminus X \\
 0 &amp; \text{otherwise}
 \end{cases}
-\]</span></p>
+</span></p>
 </section>
 <section id="rightarrow-exchange-contradiction" class="slide level2 frame">
-<h2>(<span class="math inline">\(\Rightarrow\)</span>) Exchange — Contradiction</h2>
+<h2>(<span class="math inline">\Rightarrow</span>) Exchange — Contradiction</h2>
 <p>Greedy behavior:</p>
 <ul>
-<li>First picks all of <span class="math inline">\(X\)</span> (weight <span class="math inline">\(1+\epsilon\)</span>, highest).</li>
-<li>Then considers elements of <span class="math inline">\(Y \setminus X\)</span> (weight <span class="math inline">\(1\)</span>). By assumption, <strong>none</strong> can extend <span class="math inline">\(X\)</span>.</li>
-<li>Greedy stops with <span class="math inline">\(B = X\)</span>, total weight <span class="math inline">\(|X|(1+\epsilon)\)</span>.</li>
+<li>First picks all of <span class="math inline">X</span> (weight <span class="math inline">1+\epsilon</span>, highest).</li>
+<li>Then considers elements of <span class="math inline">Y \setminus X</span> (weight <span class="math inline">1</span>). By assumption, <strong>none</strong> can extend <span class="math inline">X</span>.</li>
+<li>Greedy stops with <span class="math inline">B = X</span>, total weight <span class="math inline">|X|(1+\epsilon)</span>.</li>
 </ul>
-<p>An optimal basis can pick <span class="math inline">\(Y\)</span>, with weight at least <span class="math inline">\(|Y| \cdot 1\)</span>.</p>
-<p>For sufficiently small <span class="math inline">\(\epsilon\)</span> (say <span class="math inline">\(\epsilon &lt; 1/|X|\)</span>), <span class="math inline">\(|Y| \cdot 1 &gt; |X|(1+\epsilon)\)</span>, contradicting greedy optimality. ✓</p>
-<p>Thus <span class="math inline">\(M\)</span> satisfies both (I1) and (I2), so <span class="math inline">\(M\)</span> is a matroid. ◻</p>
+<p>An optimal basis can pick <span class="math inline">Y</span>, with weight at least <span class="math inline">|Y| \cdot 1</span>.</p>
+<p>For sufficiently small <span class="math inline">\epsilon</span> (say <span class="math inline">\epsilon &lt; 1/|X|</span>), <span class="math inline">|Y| \cdot 1 &gt; |X|(1+\epsilon)</span>, contradicting greedy optimality. ✓</p>
+<p>Thus <span class="math inline">M</span> satisfies both (I1) and (I2), so <span class="math inline">M</span> is a matroid. ◻</p>
 </section></section>
 <section>
 <section id="summary" class="title-slide slide level1">
@@ -2040,7 +2093,7 @@ w(e) =
 <section id="examples" class="slide level2 frame">
 <h2>Examples</h2>
 <ul>
-<li><strong>MST</strong> (graphic matroid) → greedy works → Kruskal’s / Prim’s <span class="math inline">\(O(E \log V)\)</span></li>
+<li><strong>MST</strong> (graphic matroid) → greedy works → Kruskal’s / Prim’s <span class="math inline">O(E \log V)</span></li>
 <li><strong>Maximum bipartite matching</strong> → intersection of 2 partition matroids → not greedy, needs augmenting paths</li>
 <li><strong>TSP</strong> → no matroid structure → NP-hard, needs approximation</li>
 </ul>
@@ -3043,8 +3096,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3212,27 +3263,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

@@ -1274,6 +1274,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1811,12 +1864,12 @@ margin-right: 0; }
 </section>
 <section id="what-is-a-graph" class="slide level2">
 <h2>What is a Graph?</h2>
-<p>A <strong>graph</strong> <span class="math inline">\(G = (V, E)\)</span> consists of:</p>
+<p>A <strong>graph</strong> <span class="math inline">G = (V, E)</span> consists of:</p>
 <ul>
-<li>A set <span class="math inline">\(V\)</span> of <strong>vertices</strong> (nodes)</li>
-<li>A set <span class="math inline">\(E\)</span> of <strong>edges</strong> (connections between vertices)</li>
+<li>A set <span class="math inline">V</span> of <strong>vertices</strong> (nodes)</li>
+<li>A set <span class="math inline">E</span> of <strong>edges</strong> (connections between vertices)</li>
 </ul>
-<p><strong>Example:</strong> <span class="math inline">\(V = \{1,2,3,4,5\}\)</span>, <span class="math inline">\(E = \{(1,2), (1,3), (2,3), (2,4), (3,5), (4,5)\}\)</span></p>
+<p><strong>Example:</strong> <span class="math inline">V = \{1,2,3,4,5\}</span>, <span class="math inline">E = \{(1,2), (1,3), (2,3), (2,4), (3,5), (4,5)\}</span></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>    1 --- 2</span>
 <span id="cb1-2"><a></a>    | \   |</span>
 <span id="cb1-3"><a></a>    |  \  |</span>
@@ -1827,8 +1880,8 @@ margin-right: 0; }
 <section id="graph-terminology" class="slide level2">
 <h2>Graph Terminology</h2>
 <ul>
-<li><strong>Undirected graph:</strong> edges have no direction — <span class="math inline">\((u,v) = (v,u)\)</span></li>
-<li><strong>Directed graph (digraph):</strong> edges have direction — <span class="math inline">\(u \to v\)</span></li>
+<li><strong>Undirected graph:</strong> edges have no direction — <span class="math inline">(u,v) = (v,u)</span></li>
+<li><strong>Directed graph (digraph):</strong> edges have direction — <span class="math inline">u \to v</span></li>
 <li><strong>Path:</strong> sequence of vertices where consecutive vertices are connected by edges</li>
 <li><strong>Cycle:</strong> a path that starts and ends at the same vertex</li>
 <li><strong>Connected graph:</strong> there is a path between every pair of vertices</li>
@@ -1841,8 +1894,8 @@ margin-right: 0; }
 <div class="column" style="width:50%;">
 <p><strong>Path:</strong> vertices in a line</p>
 <p><strong>Cycle:</strong> vertices in a ring</p>
-<p><strong>Tree:</strong> connected, no cycles — <span class="math inline">\(|E| = |V| - 1\)</span></p>
-<p><strong>Complete graph <span class="math inline">\(K_n\)</span>:</strong> every pair of vertices is connected</p>
+<p><strong>Tree:</strong> connected, no cycles — <span class="math inline">|E| = |V| - 1</span></p>
+<p><strong>Complete graph <span class="math inline">K_n</span>:</strong> every pair of vertices is connected</p>
 </div><div class="column" style="width:50%;">
 <p>In this lecture, we focus on <strong>Trees</strong> — the simplest non-trivial graph structure that still captures many real-world problems.</p>
 <p>Trees have a natural <strong>hierarchical structure</strong>: pick any node as root, and every node has a parent (except root) and children.</p>
@@ -1869,14 +1922,14 @@ margin-right: 0; }
 <h2>Independent Set</h2>
 <div class="block">
 <p><strong>Independent Set (IS)</strong></p>
-<p>Given an undirected graph <span class="math inline">\(G = (V, E)\)</span>, an <strong>Independent Set</strong> is a set <span class="math inline">\(S \subseteq V\)</span> such that no two vertices in <span class="math inline">\(S\)</span> are adjacent:</p>
-<p><span class="math display">\[
+<p>Given an undirected graph <span class="math inline">G = (V, E)</span>, an <strong>Independent Set</strong> is a set <span class="math inline">S \subseteq V</span> such that no two vertices in <span class="math inline">S</span> are adjacent:</p>
+<p><span class="math display">
 \forall u, v \in S,\quad (u,v) \notin E
-\]</span></p>
+</span></p>
 </div>
 <div class="block">
 <p><strong>Maximum Weight Independent Set (MWIS)</strong></p>
-<p>Given <span class="math inline">\(G = (V, E)\)</span> and weights <span class="math inline">\(w: V \to \mathbb{R}^+\)</span>, find an independent set <span class="math inline">\(S\)</span> that maximizes <span class="math inline">\(\sum_{v \in S} w(v)\)</span>.</p>
+<p>Given <span class="math inline">G = (V, E)</span> and weights <span class="math inline">w: V \to \mathbb{R}^+</span>, find an independent set <span class="math inline">S</span> that maximizes <span class="math inline">\sum_{v \in S} w(v)</span>.</p>
 </div>
 </section>
 <section id="mwis-is-np-hard" class="slide level2">
@@ -1887,7 +1940,7 @@ margin-right: 0; }
 <li>No polynomial-time algorithm is known (and likely none exists).</li>
 </ul>
 <div class="obs">
-<p><strong>But</strong> — if we restrict the graph to a <strong>tree</strong>, we can solve MWIS in <strong>linear time</strong> <span class="math inline">\(O(|V|)\)</span> using Dynamic Programming!</p>
+<p><strong>But</strong> — if we restrict the graph to a <strong>tree</strong>, we can solve MWIS in <strong>linear time</strong> <span class="math inline">O(|V|)</span> using Dynamic Programming!</p>
 </div>
 <p>This is a recurring theme in algorithms: special graph classes admit efficient solutions for otherwise hard problems.</p>
 </section></section>
@@ -1902,7 +1955,7 @@ margin-right: 0; }
 <section id="the-corporate-party-problem" class="slide level2">
 <h2>The Corporate Party Problem</h2>
 <p>Your company has a <strong>hierarchy</strong> shaped like a tree — CEO at the root, managers below, employees at the leaves.</p>
-<p>You are planning a party and each employee <span class="math inline">\(u\)</span> has a <strong>fun factor</strong> <span class="math inline">\(w(u)\)</span>.</p>
+<p>You are planning a party and each employee <span class="math inline">u</span> has a <strong>fun factor</strong> <span class="math inline">w(u)</span>.</p>
 <div class="block">
 <p><strong>Rule:</strong> If an employee attends the party, their <strong>direct manager cannot attend</strong>.</p>
 <p>(No two adjacent people in the tree can both attend.)</p>
@@ -1911,54 +1964,54 @@ margin-right: 0; }
 </section>
 <section class="slide level2">
 
-<p>This is exactly the <strong>Maximum Weight Independent Set</strong> problem — on a tree. We’ll solve it in <span class="math inline">\(O(n)\)</span> using DP.</p>
+<p>This is exactly the <strong>Maximum Weight Independent Set</strong> problem — on a tree. We’ll solve it in <span class="math inline">O(n)</span> using DP.</p>
 </section>
 <section id="tree-structure-enables-dp" class="slide level2">
 <h2>Tree Structure Enables DP</h2>
 <p>Trees have a key property that makes DP possible:</p>
 <ul>
-<li>Pick an arbitrary vertex <span class="math inline">\(r\)</span> as the <strong>root</strong>.</li>
+<li>Pick an arbitrary vertex <span class="math inline">r</span> as the <strong>root</strong>.</li>
 <li>This defines a <strong>parent-child</strong> relationship throughout the tree.</li>
-<li>Every node <span class="math inline">\(u\)</span> has a set of <strong>children</strong> <span class="math inline">\(C(u)\)</span>.</li>
-<li>The <strong>subtree</strong> <span class="math inline">\(T_u\)</span> rooted at <span class="math inline">\(u\)</span> is independent of other subtrees.</li>
+<li>Every node <span class="math inline">u</span> has a set of <strong>children</strong> <span class="math inline">C(u)</span>.</li>
+<li>The <strong>subtree</strong> <span class="math inline">T_u</span> rooted at <span class="math inline">u</span> is independent of other subtrees.</li>
 </ul>
-<p><strong>Optimal substructure:</strong> The optimal solution for <span class="math inline">\(T_u\)</span> depends only on the optimal solutions of its children’s subtrees.</p>
+<p><strong>Optimal substructure:</strong> The optimal solution for <span class="math inline">T_u</span> depends only on the optimal solutions of its children’s subtrees.</p>
 </section>
 <section id="dp-states" class="slide level2">
 <h2>DP States</h2>
-<p>For each node <span class="math inline">\(u\)</span>, we define two values:</p>
+<p>For each node <span class="math inline">u</span>, we define two values:</p>
 <ol type="1">
-<li><p><strong><span class="math inline">\(MWIS_{in}(u)\)</span></strong>: maximum weight of an independent set of <span class="math inline">\(T_u\)</span> that <strong>includes</strong> <span class="math inline">\(u\)</span>.</p></li>
-<li><p><strong><span class="math inline">\(MWIS_{out}(u)\)</span></strong>: maximum weight of an independent set of <span class="math inline">\(T_u\)</span> that <strong>excludes</strong> <span class="math inline">\(u\)</span>.</p></li>
+<li><p><strong><span class="math inline">MWIS_{in}(u)</span></strong>: maximum weight of an independent set of <span class="math inline">T_u</span> that <strong>includes</strong> <span class="math inline">u</span>.</p></li>
+<li><p><strong><span class="math inline">MWIS_{out}(u)</span></strong>: maximum weight of an independent set of <span class="math inline">T_u</span> that <strong>excludes</strong> <span class="math inline">u</span>.</p></li>
 </ol>
-<p>The answer for the whole tree is: <span class="math display">\[
+<p>The answer for the whole tree is: <span class="math display">
 \text{Optimal} = \max\big(MWIS_{in}(r),\; MWIS_{out}(r)\big)
-\]</span></p>
+</span></p>
 </section>
 <section id="recurrences" class="slide level2">
 <h2>Recurrences</h2>
-<p><strong>Case 1 — Node <span class="math inline">\(u\)</span> is IN the set:</strong></p>
+<p><strong>Case 1 — Node <span class="math inline">u</span> is IN the set:</strong></p>
 <ul>
-<li>None of its children can be in the set. <span class="math display">\[
+<li>None of its children can be in the set. <span class="math display">
 MWIS_{in}(u) = w(u) + \sum_{v \in C(u)} MWIS_{out}(v)
-\]</span></li>
+</span></li>
 </ul>
-<p><strong>Case 2 — Node <span class="math inline">\(u\)</span> is OUT of the set:</strong></p>
+<p><strong>Case 2 — Node <span class="math inline">u</span> is OUT of the set:</strong></p>
 <ul>
-<li>Each child may be either in or out — choose the better option. <span class="math display">\[
+<li>Each child may be either in or out — choose the better option. <span class="math display">
 MWIS_{out}(u) = \sum_{v \in C(u)} \max\big(MWIS_{in}(v),\; MWIS_{out}(v)\big)
-\]</span></li>
+</span></li>
 </ul>
 </section>
 <section id="base-case-and-traversal" class="slide level2">
 <h2>Base Case and Traversal</h2>
-<p><strong>Base case (leaf node):</strong> <span class="math display">\[
+<p><strong>Base case (leaf node):</strong> <span class="math display">
 MWIS_{in}(u) = w(u),\qquad MWIS_{out}(u) = 0
-\]</span></p>
+</span></p>
 <p><strong>Traversal order:</strong> We must process children <em>before</em> the parent → <strong>Post-order traversal</strong> (bottom-up).</p>
 <ol type="1">
-<li>Recursively compute DP values for all children of <span class="math inline">\(u\)</span>.</li>
-<li>Compute <span class="math inline">\(MWIS_{in}(u)\)</span> and <span class="math inline">\(MWIS_{out}(u)\)</span> using the children’s values.</li>
+<li>Recursively compute DP values for all children of <span class="math inline">u</span>.</li>
+<li>Compute <span class="math inline">MWIS_{in}(u)</span> and <span class="math inline">MWIS_{out}(u)</span> using the children’s values.</li>
 <li>Return to parent.</li>
 </ol>
 </section>
@@ -1976,12 +2029,12 @@ MWIS_{in}(u) = w(u),\qquad MWIS_{out}(u) = 0
 <span id="cb3-10"><a></a>    for each child v in C(u):</span>
 <span id="cb3-11"><a></a>        MWIS_in[u]  += MWIS_out[v]</span>
 <span id="cb3-12"><a></a>        MWIS_out[u] += max(MWIS_in[v], MWIS_out[v])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Initial call:</strong> <code>MWIS-Tree(r)</code> where <span class="math inline">\(r\)</span> is the chosen root.</p>
-<p><strong>Answer:</strong> <span class="math inline">\(\max(MWIS_{in}[r],\; MWIS_{out}[r])\)</span></p>
+<p><strong>Initial call:</strong> <code>MWIS-Tree(r)</code> where <span class="math inline">r</span> is the chosen root.</p>
+<p><strong>Answer:</strong> <span class="math inline">\max(MWIS_{in}[r],\; MWIS_{out}[r])</span></p>
 </section>
 <section id="trace-example" class="slide level2">
 <h2>Trace Example</h2>
-<p><strong>Tree:</strong> Root <span class="math inline">\(A\)</span> (weight 5) has children <span class="math inline">\(B\)</span> (weight 4) and <span class="math inline">\(C\)</span> (weight 6). <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> are leaves.</p>
+<p><strong>Tree:</strong> Root <span class="math inline">A</span> (weight 5) has children <span class="math inline">B</span> (weight 4) and <span class="math inline">C</span> (weight 6). <span class="math inline">B</span> and <span class="math inline">C</span> are leaves.</p>
 <pre><code>    A (5)
    / \
   B   C
@@ -1997,39 +2050,39 @@ MWIS_{in}(u) = w(u),\qquad MWIS_{out}(u) = 0
 <thead>
 <tr class="header">
 <th>Node</th>
-<th><span class="math inline">\(MWIS_{in}\)</span></th>
-<th><span class="math inline">\(MWIS_{out}\)</span></th>
+<th><span class="math inline">MWIS_{in}</span></th>
+<th><span class="math inline">MWIS_{out}</span></th>
 <th>Explanation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(B\)</span></td>
+<td><span class="math inline">B</span></td>
 <td>4</td>
 <td>0</td>
-<td>Leaf: <span class="math inline">\(w(B)\)</span>, 0</td>
+<td>Leaf: <span class="math inline">w(B)</span>, 0</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(C\)</span></td>
+<td><span class="math inline">C</span></td>
 <td>6</td>
 <td>0</td>
-<td>Leaf: <span class="math inline">\(w(C)\)</span>, 0</td>
+<td>Leaf: <span class="math inline">w(C)</span>, 0</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(A\)</span></td>
-<td><span class="math inline">\(5 + 0 + 0 = 5\)</span></td>
-<td><span class="math inline">\(\max(4,0) + \max(6,0) = 10\)</span></td>
+<td><span class="math inline">A</span></td>
+<td><span class="math inline">5 + 0 + 0 = 5</span></td>
+<td><span class="math inline">\max(4,0) + \max(6,0) = 10</span></td>
 <td>Root uses children</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Answer:</strong> <span class="math inline">\(\max(5, 10) = 10\)</span> — Independent set <span class="math inline">\(\{B, C\}\)</span> with weight <span class="math inline">\(4+6=10\)</span>.</p>
+<p><strong>Answer:</strong> <span class="math inline">\max(5, 10) = 10</span> — Independent set <span class="math inline">\{B, C\}</span> with weight <span class="math inline">4+6=10</span>.</p>
 </section>
 <section id="complexity-analysis" class="slide level2">
 <h2>Complexity Analysis</h2>
 <ul>
-<li><strong>Time:</strong> Each node visited once. At each node, work is proportional to the number of its children. Sum of children over all nodes = <span class="math inline">\(|V| - 1\)</span>. Total: <strong><span class="math inline">\(\Theta(|V|)\)</span></strong>.</li>
-<li><strong>Space:</strong> <span class="math inline">\(O(|V|)\)</span> for storing DP values and recursion stack.</li>
+<li><strong>Time:</strong> Each node visited once. At each node, work is proportional to the number of its children. Sum of children over all nodes = <span class="math inline">|V| - 1</span>. Total: <strong><span class="math inline">\Theta(|V|)</span></strong>.</li>
+<li><strong>Space:</strong> <span class="math inline">O(|V|)</span> for storing DP values and recursion stack.</li>
 </ul>
 <p><strong>Key insight:</strong> The tree structure allows us to solve an NP-hard problem in linear time by exploiting the natural hierarchical decomposition.</p>
 </section>
@@ -2039,7 +2092,7 @@ MWIS_{in}(u) = w(u),\qquad MWIS_{out}(u) = 0
 <li><strong>Graphs</strong> model relationships and many problems on them are NP-hard.</li>
 <li><strong>Trees</strong> are a special class of graphs with no cycles, which makes DP possible.</li>
 <li><strong>DP on Trees</strong> generalizes sequence DP: propagate solutions from children to parents.</li>
-<li>MWIS on Trees is solvable in <strong><span class="math inline">\(O(n)\)</span></strong> using two DP states per node.</li>
+<li>MWIS on Trees is solvable in <strong><span class="math inline">O(n)</span></strong> using two DP states per node.</li>
 <li>This pattern extends to many other tree problems (tree vertex cover, tree coloring, etc.).</li>
 </ul>
 
@@ -3025,8 +3078,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3194,27 +3245,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

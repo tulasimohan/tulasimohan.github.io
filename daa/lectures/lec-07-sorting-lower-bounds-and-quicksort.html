@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1746,10 +1799,10 @@ margin-right: 0; }
 </section>
 <section id="can-we-sort-faster" class="slide level2">
 <h2>Can we sort faster?</h2>
-<p><strong>Lower bound:</strong> Can we sort faster than <span class="math inline">\(\Omega(n \log n)\)</span> time?</p>
+<p><strong>Lower bound:</strong> Can we sort faster than <span class="math inline">\Omega(n \log n)</span> time?</p>
 <div class="fragment">
 <ul>
-<li><strong>Task:</strong> Show that no algorithm can sort in less than <span class="math inline">\(\Omega(n \log n)\)</span> time in the worst case.</li>
+<li><strong>Task:</strong> Show that no algorithm can sort in less than <span class="math inline">\Omega(n \log n)</span> time in the worst case.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1759,7 +1812,7 @@ margin-right: 0; }
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Model of Computation:</strong> We restrict our analysis to the <strong>Comparison Model</strong>, where the only way to gain information about the input is by comparing pairs (e.g., <span class="math inline">\(a_i \leq a_j\)</span>).</li>
+<li><strong>Model of Computation:</strong> We restrict our analysis to the <strong>Comparison Model</strong>, where the only way to gain information about the input is by comparing pairs (e.g., <span class="math inline">a_i \leq a_j</span>).</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-important no-icon callout-titled callout-style-default">
@@ -1768,7 +1821,7 @@ margin-right: 0; }
 <p><strong>Theorem</strong></p>
 </div>
 <div class="callout-content">
-<p>Any comparison-based sorting algorithm for sorting <span class="math inline">\(n\)</span> elements must make at least <span class="math inline">\(\Omega(n \log n)\)</span> comparisons in the worst case.</p>
+<p>Any comparison-based sorting algorithm for sorting <span class="math inline">n</span> elements must make at least <span class="math inline">\Omega(n \log n)</span> comparisons in the worst case.</p>
 </div>
 </div>
 </div>
@@ -1787,26 +1840,26 @@ margin-right: 0; }
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>A <strong>decision tree</strong> is a mathematical representation of a sorting algorithm for a fixed value of <span class="math inline">\(n\)</span>.</li>
-<li>Each node represents a comparison (e.g. <span class="math inline">\(a_1 : a_2\)</span>).</li>
-<li>The two branches represent the possible results (<span class="math inline">\(a_1 \leq a_2\)</span> and <span class="math inline">\(a_1 &gt; a_2\)</span>).</li>
-<li>The leaves are the permutations of the <span class="math inline">\(n\)</span> numbers, reached through a unique path.</li>
+<li>A <strong>decision tree</strong> is a mathematical representation of a sorting algorithm for a fixed value of <span class="math inline">n</span>.</li>
+<li>Each node represents a comparison (e.g. <span class="math inline">a_1 : a_2</span>).</li>
+<li>The two branches represent the possible results (<span class="math inline">a_1 \leq a_2</span> and <span class="math inline">a_1 &gt; a_2</span>).</li>
+<li>The leaves are the permutations of the <span class="math inline">n</span> numbers, reached through a unique path.</li>
 </ul>
 </div></div>
 </section>
 <section id="analysis" class="slide level2">
 <h2>Analysis</h2>
 <ul>
-<li>Consider any sorting algorithm <span class="math inline">\(\mathcal{A}\)</span>. Let <span class="math inline">\(T(n)\)</span> be the maximum number of comparisons on any input of size <span class="math inline">\(n\)</span> by <span class="math inline">\(\mathcal{A}\)</span>.</li>
+<li>Consider any sorting algorithm <span class="math inline">\mathcal{A}</span>. Let <span class="math inline">T(n)</span> be the maximum number of comparisons on any input of size <span class="math inline">n</span> by <span class="math inline">\mathcal{A}</span>.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li>The worst-case running time of <span class="math inline">\(\mathcal{A}\)</span> is at least as large as <span class="math inline">\(T(n)\)</span>.</li>
+<li>The worst-case running time of <span class="math inline">\mathcal{A}</span> is at least as large as <span class="math inline">T(n)</span>.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>The height of the decision tree is <span class="math inline">\(T(n)\)</span>.</li>
+<li>The height of the decision tree is <span class="math inline">T(n)</span>.</li>
 </ul>
 <div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
@@ -1815,7 +1868,7 @@ margin-right: 0; }
 <p><strong>Observation</strong></p>
 </div>
 <div class="callout-content">
-<p>Any binary tree of height <span class="math inline">\(T(n)\)</span> has at most <span class="math inline">\(2^{T(n)}\)</span> leaves.</p>
+<p>Any binary tree of height <span class="math inline">T(n)</span> has at most <span class="math inline">2^{T(n)}</span> leaves.</p>
 </div>
 </div>
 </div>
@@ -1825,25 +1878,25 @@ margin-right: 0; }
 <section id="analysis-continued" class="slide level2">
 <h2>Analysis (Continued)</h2>
 <ul>
-<li>Each unique permutation of the <span class="math inline">\(n\)</span> input elements ends up in a distinct leaf.</li>
-<li>The number of possible permutations with <span class="math inline">\(n\)</span> distinct numbers is <span class="math inline">\(n!\)</span>.</li>
-<li>Therefore, the number of leaves <span class="math inline">\(2^{T(n)}\)</span> must be at least <span class="math inline">\(n!\)</span>.</li>
+<li>Each unique permutation of the <span class="math inline">n</span> input elements ends up in a distinct leaf.</li>
+<li>The number of possible permutations with <span class="math inline">n</span> distinct numbers is <span class="math inline">n!</span>.</li>
+<li>Therefore, the number of leaves <span class="math inline">2^{T(n)}</span> must be at least <span class="math inline">n!</span>.</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 2^{T(n)} \geq n!
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \implies T(n) \geq \log_2(n!)
-\]</span></p>
+</span></p>
 </section>
 <section id="approximating-log_2n" class="slide level2">
-<h2>Approximating <span class="math inline">\(\log_2(n!)\)</span></h2>
-<p>Using <strong>Stirling’s approximation</strong>: <span class="math display">\[
+<h2>Approximating <span class="math inline">\log_2(n!)</span></h2>
+<p>Using <strong>Stirling’s approximation</strong>: <span class="math display">
 n! \approx \sqrt{2\pi n}(\frac{n}{e})^n
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 T(n) \geq \log_2\left(\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\right)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 = \log_2(\sqrt{2\pi n}) + n\log_2 n - n\log_2 e \in \Omega(n\log_2 n)
-\]</span></p>
+</span></p>
 </section></section>
 <section>
 <section id="quicksort" class="title-slide slide level1">
@@ -1863,21 +1916,21 @@ T(n) \geq \log_2\left(\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\right)
 </div>
 <div class="callout-content">
 <ul>
-<li><strong>Input:</strong> A sequence of <span class="math inline">\(n\)</span> numbers <span class="math inline">\(\langle a_1, a_2, \dots, a_n \rangle\)</span>.</li>
-<li><strong>Output:</strong> A permutation <span class="math inline">\(\langle a&#39;_1, a&#39;_2, \dots, a&#39;_n \rangle\)</span> of the input sequence such that <span class="math inline">\(a&#39;_1 \leq a&#39;_2 \leq \dots \leq a&#39;_n\)</span>.</li>
+<li><strong>Input:</strong> A sequence of <span class="math inline">n</span> numbers <span class="math inline">\langle a_1, a_2, \dots, a_n \rangle</span>.</li>
+<li><strong>Output:</strong> A permutation <span class="math inline">\langle a&#39;_1, a&#39;_2, \dots, a&#39;_n \rangle</span> of the input sequence such that <span class="math inline">a&#39;_1 \leq a&#39;_2 \leq \dots \leq a&#39;_n</span>.</li>
 </ul>
 </div>
 </div>
 </div>
 <p><strong>Quicksort Algorithm:</strong></p>
 <ol type="1">
-<li><strong>Divide</strong>: Choose some element <span class="math inline">\(p\)</span> from <span class="math inline">\(a\)</span>, called the <strong>pivot</strong>.</li>
-<li><strong>Partition</strong>: Divide <span class="math inline">\(a\)</span> into two subsequences <span class="math inline">\(l\)</span> and <span class="math inline">\(r\)</span>:
+<li><strong>Divide</strong>: Choose some element <span class="math inline">p</span> from <span class="math inline">a</span>, called the <strong>pivot</strong>.</li>
+<li><strong>Partition</strong>: Divide <span class="math inline">a</span> into two subsequences <span class="math inline">l</span> and <span class="math inline">r</span>:
 <ul>
-<li><span class="math inline">\(l\)</span> contains elements <span class="math inline">\(\leq p\)</span>.</li>
-<li><span class="math inline">\(r\)</span> contains elements <span class="math inline">\(&gt; p\)</span>.</li>
+<li><span class="math inline">l</span> contains elements <span class="math inline">\leq p</span>.</li>
+<li><span class="math inline">r</span> contains elements <span class="math inline">&gt; p</span>.</li>
 </ul></li>
-<li><strong>Conquer</strong>: Recursively call QUICKSORT on <span class="math inline">\(l\)</span> and <span class="math inline">\(r\)</span>.</li>
+<li><strong>Conquer</strong>: Recursively call QUICKSORT on <span class="math inline">l</span> and <span class="math inline">r</span>.</li>
 </ol>
 </section>
 <section id="quicksort-algorithm" class="slide level2">
@@ -1910,29 +1963,29 @@ T(n) \geq \log_2\left(\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\right)
 </section>
 <section id="worst-case-analysis" class="slide level2">
 <h2>Worst-case Analysis</h2>
-<p>Let <span class="math inline">\(T(n)\)</span> be the worst-case time for QUICKSORT on an input of size <span class="math inline">\(n\)</span>.</p>
-<p>We have the recurrence: <span class="math display">\[
+<p>Let <span class="math inline">T(n)</span> be the worst-case time for QUICKSORT on an input of size <span class="math inline">n</span>.</p>
+<p>We have the recurrence: <span class="math display">
 T(n) = \max_{0 \leq q \leq n-1} (T(q) + T(n-q-1)) + \Theta(n)
-\]</span></p>
-<p>Q: How bad can <span class="math inline">\(T(n)\)</span> be?</p>
+</span></p>
+<p>Q: How bad can <span class="math inline">T(n)</span> be?</p>
 <div class="fragment">
-<p>A: <span class="math inline">\(\Omega(n^2)\)</span>.</p>
+<p>A: <span class="math inline">\Omega(n^2)</span>.</p>
 </div>
 </section>
 <section id="worst-case-lower-bound" class="slide level2">
 <h2>Worst-case Lower Bound</h2>
 <p>Let’s assume the input is sorted in increasing order.</p>
-<p>Choosing the highly unbalanced split (<span class="math inline">\(q = 0\)</span>): <span class="math display">\[
+<p>Choosing the highly unbalanced split (<span class="math inline">q = 0</span>): <span class="math display">
 T(n) \geq T(0) + T(n-1) + dn \quad (\text{for some constant } d &gt; 0)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \geq T(n-1) + dn \quad (\text{since } T(0) \geq 0)
-\]</span></p>
-<p>Unrolling this recurrence: <span class="math display">\[
+</span></p>
+<p>Unrolling this recurrence: <span class="math display">
 T(n) \geq \sum_{i=1}^n di = d \frac{n(n+1)}{2} \in \Omega(n^2)
-\]</span></p>
-<p>Thus, worst-case complexity of Quicksort is: <span class="math display">\[
+</span></p>
+<p>Thus, worst-case complexity of Quicksort is: <span class="math display">
 T(n) = \Omega(n^2)
-\]</span></p>
+</span></p>
 
 
 </section></section>
@@ -2916,8 +2969,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3085,27 +3136,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

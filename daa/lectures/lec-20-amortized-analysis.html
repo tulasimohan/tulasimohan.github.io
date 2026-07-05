@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1739,20 +1792,20 @@ margin-right: 0; }
 <h2>Amortized Analysis</h2>
 <div class="fragment">
 <ul>
-<li><strong>Worst-case analysis:</strong> Determine worst-case running time of a single operation as a function of input size <span class="math inline">\(n\)</span>.</li>
+<li><strong>Worst-case analysis:</strong> Determine worst-case running time of a single operation as a function of input size <span class="math inline">n</span>.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Amortized analysis:</strong> Determine worst-case running time of a <strong>sequence</strong> of <span class="math inline">\(n\)</span> operations.</li>
+<li><strong>Amortized analysis:</strong> Determine worst-case running time of a <strong>sequence</strong> of <span class="math inline">n</span> operations.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
 <li><p><strong>Example:</strong> Resizing a Dynamic Array</p></li>
 <li><p>A dynamic array starts at size 1 and <strong>doubles</strong> when full.</p></li>
-<li><p>Most insertions cost <span class="math inline">\(1\)</span>, but an insertion into a full array costs <span class="math inline">\(\Theta(k)\)</span> to copy <span class="math inline">\(k\)</span> elements into a new array of size <span class="math inline">\(2k\)</span>.</p></li>
-<li><p>Yet <span class="math inline">\(n\)</span> insertions cost <span class="math inline">\(O(n)\)</span> total — copies are rare (<span class="math inline">\(\log_2 n\)</span> times), so the <strong>average</strong> cost per operation is <span class="math inline">\(O(1)\)</span>.</p></li>
+<li><p>Most insertions cost <span class="math inline">1</span>, but an insertion into a full array costs <span class="math inline">\Theta(k)</span> to copy <span class="math inline">k</span> elements into a new array of size <span class="math inline">2k</span>.</p></li>
+<li><p>Yet <span class="math inline">n</span> insertions cost <span class="math inline">O(n)</span> total — copies are rare (<span class="math inline">\log_2 n</span> times), so the <strong>average</strong> cost per operation is <span class="math inline">O(1)</span>.</p></li>
 </ul>
 </div>
 </section>
@@ -1760,7 +1813,7 @@ margin-right: 0; }
 <h2>Three Methods</h2>
 <p>Three techniques for amortized analysis:</p>
 <ol type="1">
-<li><strong>Aggregate method</strong> — sum total cost of all operations, divide by <span class="math inline">\(n\)</span>.</li>
+<li><strong>Aggregate method</strong> — sum total cost of all operations, divide by <span class="math inline">n</span>.</li>
 <li><strong>Accounting method</strong> — overcharge cheap ops, store credits to pay for expensive ones.</li>
 <li><strong>Potential method</strong> — define a potential function; amortized cost = actual cost + change in potential.</li>
 </ol>
@@ -1770,14 +1823,14 @@ margin-right: 0; }
 <h2>Binary Counter</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p><strong>Goal:</strong> Increment a <span class="math inline">\(k\)</span>-bit binary counter</p>
-<p>(mod <span class="math inline">\(2^k\)</span>).</p>
+<p><strong>Goal:</strong> Increment a <span class="math inline">k</span>-bit binary counter</p>
+<p>(mod <span class="math inline">2^k</span>).</p>
 <p><strong>Cost model:</strong> Number of bits flipped per INCREMENT.</p>
 <div class="fragment">
-<p><strong>Worst-case:</strong> <span class="math inline">\(\le k\)</span> flips per increment <span class="math inline">\(\Rightarrow O(nk)\)</span> for <span class="math inline">\(n\)</span> ops.</p>
+<p><strong>Worst-case:</strong> <span class="math inline">\le k</span> flips per increment <span class="math inline">\Rightarrow O(nk)</span> for <span class="math inline">n</span> ops.</p>
 </div>
 <div class="fragment">
-<p>But not all increments flip <span class="math inline">\(k\)</span> bits — can we do better?</p>
+<p>But not all increments flip <span class="math inline">k</span> bits — can we do better?</p>
 </div>
 </div><div class="column" style="width:40%;">
 <p><img role="img" data-src="data:image/png;base64,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" height="220"></p>
@@ -1785,46 +1838,46 @@ margin-right: 0; }
 </section>
 <section id="binary-counter-aggregate-method" class="slide level2 frame">
 <h2>Binary Counter: Aggregate Method</h2>
-<p><strong>Aggregate Method:</strong> Sum up total cost of sequence, divide by <span class="math inline">\(n\)</span>.</p>
-<p>Starting from zero, in <span class="math inline">\(n\)</span> INCREMENT operations:</p>
+<p><strong>Aggregate Method:</strong> Sum up total cost of sequence, divide by <span class="math inline">n</span>.</p>
+<p>Starting from zero, in <span class="math inline">n</span> INCREMENT operations:</p>
 <div class="fragment">
 <ul>
-<li>Bit <span class="math inline">\(0\)</span> flips <strong>every</strong> time: <span class="math inline">\(n\)</span> flips.</li>
+<li>Bit <span class="math inline">0</span> flips <strong>every</strong> time: <span class="math inline">n</span> flips.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Bit <span class="math inline">\(1\)</span> flips every <span class="math inline">\(2^{\text{nd}}\)</span> time: <span class="math inline">\(\lfloor n/2 \rfloor\)</span> flips.</li>
+<li>Bit <span class="math inline">1</span> flips every <span class="math inline">2^{\text{nd}}</span> time: <span class="math inline">\lfloor n/2 \rfloor</span> flips.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Bit <span class="math inline">\(2\)</span> flips every <span class="math inline">\(4^{\text{th}}\)</span> time: <span class="math inline">\(\lfloor n/4 \rfloor\)</span> flips.</li>
+<li>Bit <span class="math inline">2</span> flips every <span class="math inline">4^{\text{th}}</span> time: <span class="math inline">\lfloor n/4 \rfloor</span> flips.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\dots\)</span></li>
+<li><span class="math inline">\dots</span></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Bit <span class="math inline">\(j\)</span> flips every <span class="math inline">\(2^j\)</span> time: <span class="math inline">\(\lfloor n/2^j \rfloor\)</span> flips.</li>
+<li>Bit <span class="math inline">j</span> flips every <span class="math inline">2^j</span> time: <span class="math inline">\lfloor n/2^j \rfloor</span> flips.</li>
 </ul>
 </div>
 <div class="theorem">
-<p>Total flips in <span class="math inline">\(n\)</span> INCREMENTs = <span class="math inline">\(\displaystyle\sum_{j=0}^{k-1} \left\lfloor \frac{n}{2^j} \right\rfloor &lt; 2n = O(n)\)</span>.</p>
+<p>Total flips in <span class="math inline">n</span> INCREMENTs = <span class="math inline">\displaystyle\sum_{j=0}^{k-1} \left\lfloor \frac{n}{2^j} \right\rfloor &lt; 2n = O(n)</span>.</p>
 </div>
 </section>
 <section id="binary-counter-aggregate-method-1" class="slide level2 frame">
 <h2>Binary Counter: Aggregate Method</h2>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span><span class="math display">\[
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math display">
 \sum_{j=0}^{k-1} \left\lfloor \frac{n}{2^j} \right\rfloor
 &lt; n \sum_{j=0}^{\infty} \frac{1}{2^j}
 = 2n
-\]</span></p>
-<p>So the amortized cost per operation is <span class="math inline">\(O(1)\)</span> — much better than the worst-case <span class="math inline">\(O(k)\)</span> per operation!</p>
+</span></p>
+<p>So the amortized cost per operation is <span class="math inline">O(1)</span> — much better than the worst-case <span class="math inline">O(k)</span> per operation!</p>
 </div>
 </section>
 <section id="accounting-method-bankers-method" class="slide level2 frame">
@@ -1836,28 +1889,28 @@ margin-right: 0; }
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(c_i\)</span> = actual cost of <span class="math inline">\(i^{\text{th}}\)</span> operation.</li>
+<li><span class="math inline">c_i</span> = actual cost of <span class="math inline">i^{\text{th}}</span> operation.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\hat{c}_i\)</span> = amortized cost (what we charge).</li>
+<li><span class="math inline">\hat{c}_i</span> = amortized cost (what we charge).</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>When <span class="math inline">\(\hat{c}_i &gt; c_i\)</span>, we store <strong>credits</strong> in the data structure.</li>
+<li>When <span class="math inline">\hat{c}_i &gt; c_i</span>, we store <strong>credits</strong> in the data structure.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>When <span class="math inline">\(\hat{c}_i &lt; c_i\)</span>, we consume credits.</li>
+<li>When <span class="math inline">\hat{c}_i &lt; c_i</span>, we consume credits.</li>
 </ul>
 </div>
-<p><strong>Credit invariant:</strong> Total credits in the data structure at any point <span class="math inline">\(\ge 0\)</span>.</p>
-<p><span class="math display">\[
+<p><strong>Credit invariant:</strong> Total credits in the data structure at any point <span class="math inline">\ge 0</span>.</p>
+<p><span class="math display">
 \sum_{i=1}^{t} \hat{c}_i - \sum_{i=1}^{t} c_i \ge 0 \quad \forall t
-\]</span></p>
+</span></p>
 </section>
 <section id="binary-counter-accounting-method" class="slide level2 frame">
 <h2>Binary Counter: Accounting Method</h2>
@@ -1867,7 +1920,7 @@ margin-right: 0; }
 </div>
 <div class="fragment">
 <ul>
-<li>Flipping a bit from <span class="math inline">\(0 \to 1\)</span>: charge <strong>2 credits</strong>.
+<li>Flipping a bit from <span class="math inline">0 \to 1</span>: charge <strong>2 credits</strong>.
 <ul>
 <li>Use 1 credit to pay for this flip.</li>
 <li>Store 1 credit <strong>in the bit</strong> for future.</li>
@@ -1876,67 +1929,67 @@ margin-right: 0; }
 </div>
 <div class="fragment">
 <ul>
-<li>Flipping a bit from <span class="math inline">\(1 \to 0\)</span>: pay with the credit stored in that bit.</li>
+<li>Flipping a bit from <span class="math inline">1 \to 0</span>: pay with the credit stored in that bit.</li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Analysis:</strong> Each INCREMENT flips at most one bit from <span class="math inline">\(0 \to 1\)</span>. So amortized cost per INCREMENT <span class="math inline">\(\le 2\)</span>.</p>
+<p><strong>Analysis:</strong> Each INCREMENT flips at most one bit from <span class="math inline">0 \to 1</span>. So amortized cost per INCREMENT <span class="math inline">\le 2</span>.</p>
 </div>
 <div class="fragment">
-<p>Total actual cost of <span class="math inline">\(n\)</span> operations <span class="math inline">\(\le\)</span> total amortized cost <span class="math inline">\(\le 2n = O(n)\)</span>. ✓</p>
+<p>Total actual cost of <span class="math inline">n</span> operations <span class="math inline">\le</span> total amortized cost <span class="math inline">\le 2n = O(n)</span>. ✓</p>
 </div>
 </section>
 <section id="potential-method-physicists-method" class="slide level2 frame">
 <h2>Potential Method (Physicist’s Method)</h2>
 <div class="fragment">
 <ul>
-<li>Define a <strong>potential function</strong> <span class="math inline">\(\Phi(D_i)\)</span> mapping data structure <span class="math inline">\(D_i\)</span> to a real number.</li>
+<li>Define a <strong>potential function</strong> <span class="math inline">\Phi(D_i)</span> mapping data structure <span class="math inline">D_i</span> to a real number.</li>
 </ul>
 </div>
 <div class="fragment">
 <p><strong>Requirements:</strong></p>
 <ul>
-<li><span class="math inline">\(\Phi(D_0) = 0\)</span>.</li>
-<li><span class="math inline">\(\Phi(D_i) \ge 0\)</span> for all <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\Phi(D_0) = 0</span>.</li>
+<li><span class="math inline">\Phi(D_i) \ge 0</span> for all <span class="math inline">i</span>.</li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Amortized cost:</strong> <span class="math display">\[
+<p><strong>Amortized cost:</strong> <span class="math display">
 \hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1})
-\]</span> The amortized cost = actual cost + change in potential.</p>
+</span> The amortized cost = actual cost + change in potential.</p>
 </div>
 <div class="fragment">
-<p><strong>Total amortized cost:</strong> <span class="math display">\[
+<p><strong>Total amortized cost:</strong> <span class="math display">
 \sum_{i=1}^{n} \hat{c}_i = \sum_{i=1}^{n} c_i + \Phi(D_n) - \Phi(D_0)
-\]</span></p>
+</span></p>
 </div>
 </section>
 <section id="binary-counter-potential-method" class="slide level2 frame">
 <h2>Binary Counter: Potential Method</h2>
-<p><strong>Potential:</strong> <span class="math inline">\(\Phi(D_i) = b_i\)</span>, the number of <span class="math inline">\(1\)</span>’s in the counter after <span class="math inline">\(i^{\text{th}}\)</span> increment.</p>
+<p><strong>Potential:</strong> <span class="math inline">\Phi(D_i) = b_i</span>, the number of <span class="math inline">1</span>’s in the counter after <span class="math inline">i^{\text{th}}</span> increment.</p>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\Phi(D_0) = 0\)</span> (zero counter), and <span class="math inline">\(\Phi(D_i) \ge 0\)</span> for all <span class="math inline">\(i\)</span>. ✓</li>
+<li><span class="math inline">\Phi(D_0) = 0</span> (zero counter), and <span class="math inline">\Phi(D_i) \ge 0</span> for all <span class="math inline">i</span>. ✓</li>
 </ul>
 </div>
-<p><strong>Analysis:</strong> Suppose <span class="math inline">\(i^{\text{th}}\)</span> INCREMENT resets <span class="math inline">\(t_i\)</span> bits (from <span class="math inline">\(1 \to 0\)</span>) and sets one bit <span class="math inline">\(0 \to 1\)</span>.</p>
+<p><strong>Analysis:</strong> Suppose <span class="math inline">i^{\text{th}}</span> INCREMENT resets <span class="math inline">t_i</span> bits (from <span class="math inline">1 \to 0</span>) and sets one bit <span class="math inline">0 \to 1</span>.</p>
 <div class="fragment">
 <ul>
-<li>Actual cost: <span class="math inline">\(c_i \le t_i + 1\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Potential change: <span class="math inline">\(\Phi(D_i) - \Phi(D_{i-1}) \le 1 - t_i\)</span> (one new <span class="math inline">\(1\)</span>, <span class="math inline">\(t_i\)</span> fewer <span class="math inline">\(1\)</span>’s)</li>
+<li>Actual cost: <span class="math inline">c_i \le t_i + 1</span></li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Amortized cost:</strong> <span class="math display">\[
+<ul>
+<li>Potential change: <span class="math inline">\Phi(D_i) - \Phi(D_{i-1}) \le 1 - t_i</span> (one new <span class="math inline">1</span>, <span class="math inline">t_i</span> fewer <span class="math inline">1</span>’s)</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Amortized cost:</strong> <span class="math display">
 \hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1}) \le (t_i + 1) + (1 - t_i) = 2
-\]</span></p>
+</span></p>
 </div>
 <div class="fragment">
-<p>Thus total amortized cost of <span class="math inline">\(n\)</span> INCREMENTs is <span class="math inline">\(O(n)\)</span>. ✓</p>
+<p>Thus total amortized cost of <span class="math inline">n</span> INCREMENTs is <span class="math inline">O(n)</span>. ✓</p>
 </div>
 </section>
 <section id="summary" class="slide level2 frame">
@@ -1957,22 +2010,22 @@ margin-right: 0; }
 <tbody>
 <tr class="odd">
 <td><strong>Aggregate</strong></td>
-<td><span class="math inline">\(\frac{1}{n}\sum c_i\)</span></td>
-<td><span class="math inline">\(2n\)</span> total, <span class="math inline">\(O(1)\)</span> per op</td>
+<td><span class="math inline">\frac{1}{n}\sum c_i</span></td>
+<td><span class="math inline">2n</span> total, <span class="math inline">O(1)</span> per op</td>
 </tr>
 <tr class="even">
 <td><strong>Accounting</strong></td>
 <td>Overcharge cheap ops, save credits</td>
-<td><span class="math inline">\(2\)</span> per INCREMENT</td>
+<td><span class="math inline">2</span> per INCREMENT</td>
 </tr>
 <tr class="odd">
 <td><strong>Potential</strong></td>
-<td><span class="math inline">\(\hat{c}_i = c_i + \Delta\Phi\)</span></td>
-<td><span class="math inline">\(\Phi = \#\text{ones}\)</span>, <span class="math inline">\(\hat{c} \le 2\)</span></td>
+<td><span class="math inline">\hat{c}_i = c_i + \Delta\Phi</span></td>
+<td><span class="math inline">\Phi = \#\text{ones}</span>, <span class="math inline">\hat{c} \le 2</span></td>
 </tr>
 </tbody>
 </table>
-<p>All three methods show: <span class="math inline">\(n\)</span> INCREMENT operations on a binary counter cost <span class="math inline">\(O(n)\)</span> total — <span class="math inline">\(O(1)\)</span> amortized per operation.</p>
+<p>All three methods show: <span class="math inline">n</span> INCREMENT operations on a binary counter cost <span class="math inline">O(n)</span> total — <span class="math inline">O(1)</span> amortized per operation.</p>
 </section>
 
 
@@ -2956,8 +3009,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3125,27 +3176,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

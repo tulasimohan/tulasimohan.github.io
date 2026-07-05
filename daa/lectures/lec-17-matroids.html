@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1747,25 +1800,25 @@ margin-right: 0; }
 </section>
 <section id="vector-spaces-a-quick-refresher" class="slide level2 frame">
 <h2>Vector Spaces — A Quick Refresher</h2>
-<p>A <strong>vector space</strong> <span class="math inline">\(V\)</span> has a notion of <strong>linear independence</strong>:</p>
+<p>A <strong>vector space</strong> <span class="math inline">V</span> has a notion of <strong>linear independence</strong>:</p>
 <ul>
-<li>A set of vectors <span class="math inline">\(\{v_1, \dots, v_k\}\)</span> is <strong>linearly independent</strong> if no non-trivial linear combination gives <span class="math inline">\(\mathbf{0}\)</span>.</li>
+<li>A set of vectors <span class="math inline">\{v_1, \dots, v_k\}</span> is <strong>linearly independent</strong> if no non-trivial linear combination gives <span class="math inline">\mathbf{0}</span>.</li>
 <li>A set is <strong>linearly dependent</strong> if one vector can be expressed as a combination of others.</li>
 </ul>
-<p><strong>Example:</strong> In <span class="math inline">\(\mathbb{R}^3\)</span>, the vectors <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((0,1,0)\)</span> are independent. Adding <span class="math inline">\((1,1,0)\)</span> makes the set dependent.</p>
+<p><strong>Example:</strong> In <span class="math inline">\mathbb{R}^3</span>, the vectors <span class="math inline">(1,0,0)</span>, <span class="math inline">(0,1,0)</span> are independent. Adding <span class="math inline">(1,1,0)</span> makes the set dependent.</p>
 </section>
 <section id="basis-of-a-vector-space" class="slide level2 frame">
 <h2>Basis of a Vector Space</h2>
-<p>A <strong>basis</strong> <span class="math inline">\(B\)</span> of a vector space <span class="math inline">\(V\)</span> is a maximal linearly independent set — equivalently, a minimal spanning set.</p>
+<p>A <strong>basis</strong> <span class="math inline">B</span> of a vector space <span class="math inline">V</span> is a maximal linearly independent set — equivalently, a minimal spanning set.</p>
 <p><strong>Key properties of bases:</strong></p>
 <ul>
-<li>All bases of <span class="math inline">\(V\)</span> have the <strong>same cardinality</strong> — called the <strong>dimension</strong> of <span class="math inline">\(V\)</span>.</li>
-<li>Every vector in <span class="math inline">\(V\)</span> can be written <strong>uniquely</strong> as a linear combination of basis vectors.</li>
+<li>All bases of <span class="math inline">V</span> have the <strong>same cardinality</strong> — called the <strong>dimension</strong> of <span class="math inline">V</span>.</li>
+<li>Every vector in <span class="math inline">V</span> can be written <strong>uniquely</strong> as a linear combination of basis vectors.</li>
 </ul>
 <p><strong>Examples:</strong></p>
 <ul>
-<li><span class="math inline">\(\mathbb{R}^n\)</span>: standard basis <span class="math inline">\(\{e_1, \dots, e_n\}\)</span> has <span class="math inline">\(n\)</span> vectors.</li>
-<li><span class="math inline">\(\mathbb{R}^2\)</span>: both <span class="math inline">\(\{(1,0), (0,1)\}\)</span> and <span class="math inline">\(\{(1,2), (3,5)\}\)</span> are bases — same size.</li>
+<li><span class="math inline">\mathbb{R}^n</span>: standard basis <span class="math inline">\{e_1, \dots, e_n\}</span> has <span class="math inline">n</span> vectors.</li>
+<li><span class="math inline">\mathbb{R}^2</span>: both <span class="math inline">\{(1,0), (0,1)\}</span> and <span class="math inline">\{(1,2), (3,5)\}</span> are bases — same size.</li>
 </ul>
 </section>
 <section id="exchange-property-of-bases" class="slide level2 frame">
@@ -1781,7 +1834,7 @@ margin-right: 0; }
 <p><strong>Lemma</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two bases of <span class="math inline">\(V\)</span>. For any <span class="math inline">\(a \in A \setminus B\)</span>, there exists <span class="math inline">\(b \in B \setminus A\)</span> such that <span class="math inline">\((A \setminus \{a\}) \cup \{b\}\)</span> is also a basis.</p>
+<p>Let <span class="math inline">A</span> and <span class="math inline">B</span> be two bases of <span class="math inline">V</span>. For any <span class="math inline">a \in A \setminus B</span>, there exists <span class="math inline">b \in B \setminus A</span> such that <span class="math inline">(A \setminus \{a\}) \cup \{b\}</span> is also a basis.</p>
 </div>
 </div>
 </div>
@@ -1794,15 +1847,15 @@ margin-right: 0; }
 <h2>Matroids</h2>
 <ul>
 <li>Matroids are combinatorial structures that generalize the notion of linear independence in vector spaces.</li>
-<li>A <strong>matroid</strong> <span class="math inline">\(M = (E, \mathcal{I})\)</span> consists of:
+<li>A <strong>matroid</strong> <span class="math inline">M = (E, \mathcal{I})</span> consists of:
 <ul>
-<li>A finite <strong>ground set</strong> <span class="math inline">\(E\)</span>.</li>
-<li>A family <span class="math inline">\(\mathcal{I}\)</span> of subsets of <span class="math inline">\(E\)</span> called <strong>independent sets</strong>.</li>
+<li>A finite <strong>ground set</strong> <span class="math inline">E</span>.</li>
+<li>A family <span class="math inline">\mathcal{I}</span> of subsets of <span class="math inline">E</span> called <strong>independent sets</strong>.</li>
 </ul></li>
-<li>Two axioms define <span class="math inline">\(\mathcal{I}\)</span>:
+<li>Two axioms define <span class="math inline">\mathcal{I}</span>:
 <ul>
-<li><strong>(I1) Hereditary property</strong>: If <span class="math inline">\(X \in \mathcal{I}\)</span> and <span class="math inline">\(Y \subseteq X\)</span>, then <span class="math inline">\(Y \in \mathcal{I}\)</span>.</li>
-<li><strong>(I2) Exchange property</strong>: If <span class="math inline">\(X, Y \in \mathcal{I}\)</span> and <span class="math inline">\(|Y| &gt; |X|\)</span>, then <span class="math inline">\(\exists e \in Y \setminus X\)</span> such that <span class="math inline">\(X \cup \{e\} \in \mathcal{I}\)</span>.</li>
+<li><strong>(I1) Hereditary property</strong>: If <span class="math inline">X \in \mathcal{I}</span> and <span class="math inline">Y \subseteq X</span>, then <span class="math inline">Y \in \mathcal{I}</span>.</li>
+<li><strong>(I2) Exchange property</strong>: If <span class="math inline">X, Y \in \mathcal{I}</span> and <span class="math inline">|Y| &gt; |X|</span>, then <span class="math inline">\exists e \in Y \setminus X</span> such that <span class="math inline">X \cup \{e\} \in \mathcal{I}</span>.</li>
 </ul></li>
 </ul>
 </section>
@@ -1814,7 +1867,7 @@ margin-right: 0; }
 <li>Examples — all satisfy the same exchange property we saw for vector spaces:
 <ul>
 <li><strong>Graphic matroid</strong>: Independent sets = acyclic edge sets (forests)</li>
-<li><strong>Uniform matroid</strong>: All subsets of size <span class="math inline">\(\le k\)</span></li>
+<li><strong>Uniform matroid</strong>: All subsets of size <span class="math inline">\le k</span></li>
 <li><strong>Linear/Vector matroid</strong>: Linearly independent vectors</li>
 <li><strong>Partition matroid</strong>: At most one element from each partition block</li>
 </ul></li>
@@ -1833,79 +1886,79 @@ margin-right: 0; }
 </section>
 <section id="graphic-matroid-definition" class="slide level2 frame">
 <h2>Graphic Matroid — Definition</h2>
-<p>Let <span class="math inline">\(G = (V, E)\)</span> be an undirected graph. Define <span class="math inline">\(M_G = (S_G, \mathcal{I}_G)\)</span>:</p>
+<p>Let <span class="math inline">G = (V, E)</span> be an undirected graph. Define <span class="math inline">M_G = (S_G, \mathcal{I}_G)</span>:</p>
 <ul>
-<li><span class="math inline">\(S_G = E\)</span> (the edges of <span class="math inline">\(G\)</span>)</li>
-<li><span class="math inline">\(A \subseteq E\)</span> is independent (<span class="math inline">\(A \in \mathcal{I}_G\)</span>) iff <span class="math inline">\(G_A = (V, A)\)</span> is a <strong>forest</strong> (acyclic).</li>
+<li><span class="math inline">S_G = E</span> (the edges of <span class="math inline">G</span>)</li>
+<li><span class="math inline">A \subseteq E</span> is independent (<span class="math inline">A \in \mathcal{I}_G</span>) iff <span class="math inline">G_A = (V, A)</span> is a <strong>forest</strong> (acyclic).</li>
 </ul>
-<p><strong>Claim:</strong> <span class="math inline">\(M_G\)</span> is a matroid.</p>
+<p><strong>Claim:</strong> <span class="math inline">M_G</span> is a matroid.</p>
 <p><strong>Proof of (I1):</strong> Any subset of a forest is a forest. ✓</p>
-<p><strong>Proof of (I2):</strong> Let <span class="math inline">\(A, B \in \mathcal{I}_G\)</span> with <span class="math inline">\(|B| &gt; |A|\)</span>. Both <span class="math inline">\(G_A\)</span> and <span class="math inline">\(G_B\)</span> are forests on the same vertex set <span class="math inline">\(V\)</span>.</p>
-<p>Recall: a forest with <span class="math inline">\(t\)</span> trees and <span class="math inline">\(|V|\)</span> vertices has exactly <span class="math inline">\(|V| - t\)</span> edges.</p>
+<p><strong>Proof of (I2):</strong> Let <span class="math inline">A, B \in \mathcal{I}_G</span> with <span class="math inline">|B| &gt; |A|</span>. Both <span class="math inline">G_A</span> and <span class="math inline">G_B</span> are forests on the same vertex set <span class="math inline">V</span>.</p>
+<p>Recall: a forest with <span class="math inline">t</span> trees and <span class="math inline">|V|</span> vertices has exactly <span class="math inline">|V| - t</span> edges.</p>
 </section>
 <section id="graphic-matroid-exchange-1" class="slide level2 frame">
 <h2>Graphic Matroid — Exchange (1)</h2>
 <ul>
-<li><span class="math inline">\(G_A\)</span>: <span class="math inline">\(|A| = |V| - t_A \;\Rightarrow\; t_A = |V| - |A|\)</span></li>
-<li><span class="math inline">\(G_B\)</span>: <span class="math inline">\(|B| = |V| - t_B \;\Rightarrow\; t_B = |V| - |B|\)</span></li>
-<li>Since <span class="math inline">\(|B| &gt; |A|\)</span>, we have <span class="math inline">\(t_B &lt; t_A\)</span>. So <span class="math inline">\(G_B\)</span> has <strong>fewer</strong> trees.</li>
+<li><span class="math inline">G_A</span>: <span class="math inline">|A| = |V| - t_A \;\Rightarrow\; t_A = |V| - |A|</span></li>
+<li><span class="math inline">G_B</span>: <span class="math inline">|B| = |V| - t_B \;\Rightarrow\; t_B = |V| - |B|</span></li>
+<li>Since <span class="math inline">|B| &gt; |A|</span>, we have <span class="math inline">t_B &lt; t_A</span>. So <span class="math inline">G_B</span> has <strong>fewer</strong> trees.</li>
 </ul>
-<p>Thus <span class="math inline">\(G_B\)</span> contains a tree <span class="math inline">\(T\)</span> whose vertices lie in at least two different trees of <span class="math inline">\(G_A\)</span>.</p>
-<p>Since <span class="math inline">\(T\)</span> is connected, it contains an edge <span class="math inline">\((u, v)\)</span> with <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> in different trees of <span class="math inline">\(G_A\)</span>.</p>
+<p>Thus <span class="math inline">G_B</span> contains a tree <span class="math inline">T</span> whose vertices lie in at least two different trees of <span class="math inline">G_A</span>.</p>
+<p>Since <span class="math inline">T</span> is connected, it contains an edge <span class="math inline">(u, v)</span> with <span class="math inline">u</span> and <span class="math inline">v</span> in different trees of <span class="math inline">G_A</span>.</p>
 </section>
 <section id="graphic-matroid-exchange-2" class="slide level2 frame">
 <h2>Graphic Matroid — Exchange (2)</h2>
 <ul>
-<li>Adding <span class="math inline">\((u, v)\)</span> to <span class="math inline">\(A\)</span> connects two different trees, creating <strong>no cycle</strong>.</li>
-<li>Therefore <span class="math inline">\(A \cup \{(u,v)\} \in \mathcal{I}_G\)</span>, satisfying the exchange property. ✓</li>
+<li>Adding <span class="math inline">(u, v)</span> to <span class="math inline">A</span> connects two different trees, creating <strong>no cycle</strong>.</li>
+<li>Therefore <span class="math inline">A \cup \{(u,v)\} \in \mathcal{I}_G</span>, satisfying the exchange property. ✓</li>
 </ul>
-<p>Hence <span class="math inline">\(M_G = (E, \mathcal{I}_G)\)</span> is a matroid. ◻</p>
-<p>This is called the <strong>graphic matroid</strong> of <span class="math inline">\(G\)</span>.</p>
+<p>Hence <span class="math inline">M_G = (E, \mathcal{I}_G)</span> is a matroid. ◻</p>
+<p>This is called the <strong>graphic matroid</strong> of <span class="math inline">G</span>.</p>
 </section>
 <section id="intuition-exchange-property" class="slide level2 frame">
 <h2>Intuition: Exchange Property</h2>
-<p>The exchange property says: if <span class="math inline">\(B\)</span> is “more independent” than <span class="math inline">\(A\)</span> (larger), then <span class="math inline">\(B\)</span> has an element that can safely extend <span class="math inline">\(A\)</span>.</p>
+<p>The exchange property says: if <span class="math inline">B</span> is “more independent” than <span class="math inline">A</span> (larger), then <span class="math inline">B</span> has an element that can safely extend <span class="math inline">A</span>.</p>
 <p><strong>Graphic matroid intuition:</strong></p>
 <ul>
 <li>Independent sets = forests (acyclic edge sets).</li>
-<li>A larger forest <span class="math inline">\(B\)</span> has fewer connected components than a smaller forest <span class="math inline">\(A\)</span>.</li>
-<li>Since <span class="math inline">\(B\)</span> spans more vertices per component, it must have an edge connecting two different components of <span class="math inline">\(A\)</span> — which cannot create a cycle when added to <span class="math inline">\(A\)</span>.</li>
+<li>A larger forest <span class="math inline">B</span> has fewer connected components than a smaller forest <span class="math inline">A</span>.</li>
+<li>Since <span class="math inline">B</span> spans more vertices per component, it must have an edge connecting two different components of <span class="math inline">A</span> — which cannot create a cycle when added to <span class="math inline">A</span>.</li>
 </ul>
 <p>This is exactly why Kruskal’s algorithm can keep adding edges without forming cycles: any heavier edge that would create a cycle can be skipped.</p>
 </section>
 <section id="example-uniform-matroid" class="slide level2 frame">
 <h2>Example: Uniform Matroid</h2>
-<p>For a set <span class="math inline">\(E\)</span> and integer <span class="math inline">\(k \ge 0\)</span>, define:</p>
-<p><span class="math display">\[
+<p>For a set <span class="math inline">E</span> and integer <span class="math inline">k \ge 0</span>, define:</p>
+<p><span class="math display">
 \mathcal{I} = \{ X \subseteq E : |X| \le k \}
-\]</span></p>
-<p>This is the <strong>uniform matroid</strong> <span class="math inline">\(U_{n,k}\)</span> where <span class="math inline">\(n = |E|\)</span>.</p>
+</span></p>
+<p>This is the <strong>uniform matroid</strong> <span class="math inline">U_{n,k}</span> where <span class="math inline">n = |E|</span>.</p>
 <ul>
-<li><strong>(I1):</strong> Any subset of a set of size <span class="math inline">\(\le k\)</span> also has size <span class="math inline">\(\le k\)</span>. ✓</li>
-<li><strong>(I2):</strong> If <span class="math inline">\(|X| &lt; |Y| \le k\)</span>, pick any <span class="math inline">\(e \in Y \setminus X\)</span>. Then <span class="math inline">\(|X \cup \{e\}| \le |X| + 1 \le |Y| \le k\)</span>. ✓</li>
+<li><strong>(I1):</strong> Any subset of a set of size <span class="math inline">\le k</span> also has size <span class="math inline">\le k</span>. ✓</li>
+<li><strong>(I2):</strong> If <span class="math inline">|X| &lt; |Y| \le k</span>, pick any <span class="math inline">e \in Y \setminus X</span>. Then <span class="math inline">|X \cup \{e\}| \le |X| + 1 \le |Y| \le k</span>. ✓</li>
 </ul>
-<p><strong>Example:</strong> <span class="math inline">\(U_{n,1}\)</span> means we can pick at most one element — “select the best single item.”</p>
+<p><strong>Example:</strong> <span class="math inline">U_{n,1}</span> means we can pick at most one element — “select the best single item.”</p>
 </section>
 <section id="example-partition-matroid" class="slide level2 frame">
 <h2>Example: Partition Matroid</h2>
-<p><strong>Scenario:</strong> A company has <span class="math inline">\(m\)</span> departments. From each department <span class="math inline">\(E_i\)</span>, you can select at most <span class="math inline">\(c_i\)</span> representatives for a committee.</p>
+<p><strong>Scenario:</strong> A company has <span class="math inline">m</span> departments. From each department <span class="math inline">E_i</span>, you can select at most <span class="math inline">c_i</span> representatives for a committee.</p>
 <ul>
-<li>Ground set <span class="math inline">\(E = E_1 \cup E_2 \cup \dots \cup E_m\)</span> (all employees, partitioned by department).</li>
-<li><span class="math inline">\(X \subseteq E\)</span> is <strong>independent</strong> if it respects every department’s quota: <span class="math inline">\(|X \cap E_i| \le c_i\)</span> for each <span class="math inline">\(i\)</span>.</li>
+<li>Ground set <span class="math inline">E = E_1 \cup E_2 \cup \dots \cup E_m</span> (all employees, partitioned by department).</li>
+<li><span class="math inline">X \subseteq E</span> is <strong>independent</strong> if it respects every department’s quota: <span class="math inline">|X \cap E_i| \le c_i</span> for each <span class="math inline">i</span>.</li>
 </ul>
 <p><strong>Example:</strong></p>
 <ul>
-<li>Dept A has 5 employees (<span class="math inline">\(E_1\)</span>), quota <span class="math inline">\(c_1 = 2\)</span>.</li>
-<li>Dept B has 3 employees (<span class="math inline">\(E_2\)</span>), quota <span class="math inline">\(c_2 = 1\)</span>.</li>
-<li><span class="math inline">\(X = \{\text{Alice},\,\text{Bob}\}\)</span> from Dept A is independent (<span class="math inline">\(2 \le 2\)</span> ✓).</li>
-<li>Adding Charlie from Dept A gives <span class="math inline">\(|X \cap E_1| = 3 &gt; 2\)</span>, violating the quota → <strong>not independent</strong>.</li>
+<li>Dept A has 5 employees (<span class="math inline">E_1</span>), quota <span class="math inline">c_1 = 2</span>.</li>
+<li>Dept B has 3 employees (<span class="math inline">E_2</span>), quota <span class="math inline">c_2 = 1</span>.</li>
+<li><span class="math inline">X = \{\text{Alice},\,\text{Bob}\}</span> from Dept A is independent (<span class="math inline">2 \le 2</span> ✓).</li>
+<li>Adding Charlie from Dept A gives <span class="math inline">|X \cap E_1| = 3 &gt; 2</span>, violating the quota → <strong>not independent</strong>.</li>
 </ul>
 <p><strong>Why it’s a matroid:</strong></p>
 <ul>
 <li><strong>(I1):</strong> Removing people from a committee never violates a quota. ✓</li>
-<li><strong>(I2):</strong> If committee <span class="math inline">\(Y\)</span> has more people than <span class="math inline">\(X\)</span> from some department <span class="math inline">\(E_i\)</span>, then <span class="math inline">\(Y\)</span> has someone from <span class="math inline">\(E_i\)</span> not in <span class="math inline">\(X\)</span> who can safely join <span class="math inline">\(X\)</span> without exceeding <span class="math inline">\(c_i\)</span>. ✓</li>
+<li><strong>(I2):</strong> If committee <span class="math inline">Y</span> has more people than <span class="math inline">X</span> from some department <span class="math inline">E_i</span>, then <span class="math inline">Y</span> has someone from <span class="math inline">E_i</span> not in <span class="math inline">X</span> who can safely join <span class="math inline">X</span> without exceeding <span class="math inline">c_i</span>. ✓</li>
 </ul>
-<p><strong>Application:</strong> Selecting the <span class="math inline">\(c_i\)</span> best candidates from each department — greedy works because this is a matroid.</p>
+<p><strong>Application:</strong> Selecting the <span class="math inline">c_i</span> best candidates from each department — greedy works because this is a matroid.</p>
 </section></section>
 <section>
 <section id="matroid-properties" class="title-slide slide level1">
@@ -1920,7 +1973,7 @@ margin-right: 0; }
 <section id="bases-maximal-independent-sets" class="slide level2 frame">
 <h2>Bases (Maximal Independent Sets)</h2>
 <ul>
-<li><strong>Extension:</strong> Given <span class="math inline">\(A \in \mathcal{I}\)</span>, an element <span class="math inline">\(x \notin A\)</span> is an <strong>extension</strong> if <span class="math inline">\(A \cup \{x\} \in \mathcal{I}\)</span>.</li>
+<li><strong>Extension:</strong> Given <span class="math inline">A \in \mathcal{I}</span>, an element <span class="math inline">x \notin A</span> is an <strong>extension</strong> if <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>.</li>
 <li>A <strong>basis</strong> (or maximal independent set) is an independent set with no extensions.</li>
 </ul>
 <div title="Lemma">
@@ -1948,7 +2001,7 @@ margin-right: 0; }
 <p><strong>Proof</strong></p>
 </div>
 <div class="callout-content">
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be bases with <span class="math inline">\(|B| &gt; |A|\)</span>. By (I2), <span class="math inline">\(\exists e \in B \setminus A\)</span> such that <span class="math inline">\(A \cup \{e\} \in \mathcal{I}\)</span>, contradicting maximality of <span class="math inline">\(A\)</span>. Thus <span class="math inline">\(|A| = |B|\)</span>. ◻</p>
+<p>Let <span class="math inline">A</span> and <span class="math inline">B</span> be bases with <span class="math inline">|B| &gt; |A|</span>. By (I2), <span class="math inline">\exists e \in B \setminus A</span> such that <span class="math inline">A \cup \{e\} \in \mathcal{I}</span>, contradicting maximality of <span class="math inline">A</span>. Thus <span class="math inline">|A| = |B|</span>. ◻</p>
 </div>
 </div>
 </div>
@@ -1958,20 +2011,20 @@ margin-right: 0; }
 <section id="rank-of-a-matroid" class="slide level2 frame">
 <h2>Rank of a Matroid</h2>
 <ul>
-<li>The <strong>rank</strong> of <span class="math inline">\(M = (E, \mathcal{I})\)</span> is:</li>
+<li>The <strong>rank</strong> of <span class="math inline">M = (E, \mathcal{I})</span> is:</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 \text{rank}(M) = \max \{ |X| : X \in \mathcal{I} \}
-\]</span></p>
+</span></p>
 <ul>
-<li>More generally, for <span class="math inline">\(S \subseteq E\)</span>, the <strong>rank function</strong> is:</li>
+<li>More generally, for <span class="math inline">S \subseteq E</span>, the <strong>rank function</strong> is:</li>
 </ul>
-<p><span class="math display">\[
+<p><span class="math display">
 \rho(S) = \max \{ |X| : X \subseteq S,\; X \in \mathcal{I} \}
-\]</span></p>
+</span></p>
 <ul>
-<li><strong>Graphic matroid</strong>: <span class="math inline">\(\rho(S) = |V| - \kappa(S)\)</span> where <span class="math inline">\(\kappa(S)\)</span> is the number of connected components in <span class="math inline">\((V, S)\)</span>.</li>
-<li><strong>Uniform matroid</strong> <span class="math inline">\(U_{n,k}\)</span>: <span class="math inline">\(\rho(S) = \min(|S|, k)\)</span>.</li>
+<li><strong>Graphic matroid</strong>: <span class="math inline">\rho(S) = |V| - \kappa(S)</span> where <span class="math inline">\kappa(S)</span> is the number of connected components in <span class="math inline">(V, S)</span>.</li>
+<li><strong>Uniform matroid</strong> <span class="math inline">U_{n,k}</span>: <span class="math inline">\rho(S) = \min(|S|, k)</span>.</li>
 </ul>
 </section></section>
 <section>
@@ -1996,7 +2049,7 @@ margin-right: 0; }
 <thead>
 <tr class="header">
 <th>Matroid</th>
-<th>Ground Set <span class="math inline">\(E\)</span></th>
+<th>Ground Set <span class="math inline">E</span></th>
 <th>Independent Sets</th>
 <th>Rank</th>
 </tr>
@@ -2004,27 +2057,27 @@ margin-right: 0; }
 <tbody>
 <tr class="odd">
 <td><strong>Graphic</strong></td>
-<td>Edges of <span class="math inline">\(G\)</span></td>
+<td>Edges of <span class="math inline">G</span></td>
 <td>Acyclic edge sets (forests)</td>
-<td><span class="math inline">\(|V| - \kappa(S)\)</span></td>
+<td><span class="math inline">|V| - \kappa(S)</span></td>
 </tr>
 <tr class="even">
-<td><strong>Uniform</strong> <span class="math inline">\(U_{n,k}\)</span></td>
-<td>Any <span class="math inline">\(n\)</span> elements</td>
-<td>Subsets of size <span class="math inline">\(\le k\)</span></td>
-<td><span class="math inline">\(k\)</span></td>
+<td><strong>Uniform</strong> <span class="math inline">U_{n,k}</span></td>
+<td>Any <span class="math inline">n</span> elements</td>
+<td>Subsets of size <span class="math inline">\le k</span></td>
+<td><span class="math inline">k</span></td>
 </tr>
 <tr class="odd">
 <td><strong>Partition</strong></td>
-<td>Disjoint blocks <span class="math inline">\(E_i\)</span></td>
-<td>At most <span class="math inline">\(c_i\)</span> per block</td>
-<td><span class="math inline">\(\sum c_i\)</span></td>
+<td>Disjoint blocks <span class="math inline">E_i</span></td>
+<td>At most <span class="math inline">c_i</span> per block</td>
+<td><span class="math inline">\sum c_i</span></td>
 </tr>
 <tr class="even">
 <td><strong>Linear</strong></td>
-<td>Vectors in <span class="math inline">\(\mathbb{R}^d\)</span></td>
+<td>Vectors in <span class="math inline">\mathbb{R}^d</span></td>
 <td>Linearly independent sets</td>
-<td><span class="math inline">\(\dim(\text{span})\)</span></td>
+<td><span class="math inline">\dim(\text{span})</span></td>
 </tr>
 </tbody>
 </table>
@@ -3012,8 +3065,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3181,27 +3232,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

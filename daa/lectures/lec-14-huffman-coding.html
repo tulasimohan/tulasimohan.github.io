@@ -1274,6 +1274,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1876,7 +1929,7 @@ margin-right: 0; }
 </tr>
 </tbody>
 </table>
-<p>Variable code uses <span class="math inline">\(0.60 \times 1 + 0.25 \times 2 + 0.10 \times 3 + 0.05 \times 3 = 1.55\)</span> bits/char on average vs 2 bits/char fixed.</p>
+<p>Variable code uses <span class="math inline">0.60 \times 1 + 0.25 \times 2 + 0.10 \times 3 + 0.05 \times 3 = 1.55</span> bits/char on average vs 2 bits/char fixed.</p>
 </section>
 <section id="binary-tree-representation" class="slide level2">
 <h2>Binary Tree Representation</h2>
@@ -1893,16 +1946,16 @@ margin-right: 0; }
 <span id="cb1-5"><a></a>    N1 --&gt;|&quot;1&quot;| N2[&quot;0.15&quot;]</span>
 <span id="cb1-6"><a></a>    N2 --&gt;|&quot;0&quot;| C[&quot;0.10&lt;br/&gt;C: 110&quot;]</span>
 <span id="cb1-7"><a></a>    N2 --&gt;|&quot;1&quot;| D[&quot;0.05&lt;br/&gt;D: 111&quot;]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Optimal prefix code:</strong> the tree that minimizes <span class="math inline">\(\sum f(c) \cdot \text{depth}(c)\)</span>.</p>
+<p><strong>Optimal prefix code:</strong> the tree that minimizes <span class="math inline">\sum f(c) \cdot \text{depth}(c)</span>.</p>
 </section>
 <section id="problem-formulation" class="slide level2">
 <h2>Problem Formulation</h2>
-<p><strong>Input:</strong> A set of characters <span class="math inline">\(C\)</span>, each with frequency <span class="math inline">\(f(c)\)</span>.</p>
+<p><strong>Input:</strong> A set of characters <span class="math inline">C</span>, each with frequency <span class="math inline">f(c)</span>.</p>
 <p><strong>Output:</strong> A prefix code (binary tree) that minimizes the total cost:</p>
-<p><span class="math display">\[
+<p><span class="math display">
 B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
-\]</span></p>
-<p>where <span class="math inline">\(d_T(c)\)</span> is the depth of character <span class="math inline">\(c\)</span> in the tree <span class="math inline">\(T\)</span>.</p>
+</span></p>
+<p>where <span class="math inline">d_T(c)</span> is the depth of character <span class="math inline">c</span> in the tree <span class="math inline">T</span>.</p>
 <p>This is exactly the <strong>optimal prefix code</strong> or <strong>minimum-cost binary tree</strong> problem.</p>
 </section>
 <section id="key-insight" class="slide level2">
@@ -1948,11 +2001,11 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 </section>
 <section id="worked-example" class="slide level2">
 <h2>Worked Example</h2>
-<p>Characters: <span class="math inline">\(a\)</span>: 45, <span class="math inline">\(b\)</span>: 13, <span class="math inline">\(c\)</span>: 12, <span class="math inline">\(d\)</span>: 16, <span class="math inline">\(e\)</span>: 9, <span class="math inline">\(f\)</span>: 5</p>
+<p>Characters: <span class="math inline">a</span>: 45, <span class="math inline">b</span>: 13, <span class="math inline">c</span>: 12, <span class="math inline">d</span>: 16, <span class="math inline">e</span>: 9, <span class="math inline">f</span>: 5</p>
 </section>
 <section id="step-1" class="slide level2">
 <h2>Step 1</h2>
-<p>Merge <span class="math inline">\(e\)</span> (9) and <span class="math inline">\(f\)</span> (5) → internal node with frequency 14.</p>
+<p>Merge <span class="math inline">e</span> (9) and <span class="math inline">f</span> (5) → internal node with frequency 14.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>graph TD</span>
 <span id="cb3-2"><a></a>    A[&quot;a: 45&quot;]</span>
 <span id="cb3-3"><a></a>    B[&quot;b: 13&quot;]</span>
@@ -1964,7 +2017,7 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 </section>
 <section id="step-2" class="slide level2">
 <h2>Step 2</h2>
-<p>Merge <span class="math inline">\(c\)</span> (12) and <span class="math inline">\(b\)</span> (13) → node (25).</p>
+<p>Merge <span class="math inline">c</span> (12) and <span class="math inline">b</span> (13) → node (25).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>graph TD</span>
 <span id="cb4-2"><a></a>    A[&quot;a: 45&quot;]</span>
 <span id="cb4-3"><a></a>    D[&quot;d: 16&quot;]</span>
@@ -1976,7 +2029,7 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 </section>
 <section id="step-3" class="slide level2">
 <h2>Step 3</h2>
-<p>Merge node (14) and <span class="math inline">\(d\)</span> (16) → node (30).</p>
+<p>Merge node (14) and <span class="math inline">d</span> (16) → node (30).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>graph TD</span>
 <span id="cb5-2"><a></a>    A[&quot;a: 45&quot;]</span>
 <span id="cb5-3"><a></a>    N25[&quot;25&quot;] --&gt; c[&quot;c: 12&quot;]</span>
@@ -2004,7 +2057,7 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 </section>
 <section id="step-5" class="slide level2">
 <h2>Step 5</h2>
-<p>Merge <span class="math inline">\(a\)</span> (45) and node (55) → root (100).</p>
+<p>Merge <span class="math inline">a</span> (45) and node (55) → root (100).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource mermaid number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>graph TD</span>
 <span id="cb7-2"><a></a>    Root[&quot;100&quot;] --&gt; a[&quot;a: 45&quot;]</span>
 <span id="cb7-3"><a></a>    Root --&gt; N55[&quot;55&quot;]</span>
@@ -2072,17 +2125,17 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 </tr>
 </tbody>
 </table>
-<p>Total: <span class="math inline">\(45\!\times\!1 + 13\!\times\!3 + 12\!\times\!3 + 16\!\times\!3 + 9\!\times\!4 + 5\!\times\!4 = 224\)</span> bits.</p>
+<p>Total: <span class="math inline">45\!\times\!1 + 13\!\times\!3 + 12\!\times\!3 + 16\!\times\!3 + 9\!\times\!4 + 5\!\times\!4 = 224</span> bits.</p>
 <p>Fixed-length (3 bits × 100 chars) = 300 bits. <strong>25% savings.</strong></p>
 </section>
 <section id="complexity" class="slide level2">
 <h2>Complexity</h2>
 <ul>
-<li>Building initial heap: <span class="math inline">\(O(n)\)</span></li>
-<li>Each iteration performs two <code>Extract-Min</code> + one <code>Insert</code>: <span class="math inline">\(O(\log n)\)</span></li>
-<li><span class="math inline">\(n - 1\)</span> iterations total: <span class="math inline">\(O(n \log n)\)</span></li>
+<li>Building initial heap: <span class="math inline">O(n)</span></li>
+<li>Each iteration performs two <code>Extract-Min</code> + one <code>Insert</code>: <span class="math inline">O(\log n)</span></li>
+<li><span class="math inline">n - 1</span> iterations total: <span class="math inline">O(n \log n)</span></li>
 </ul>
-<p><strong>Overall:</strong> <span class="math inline">\(\Theta(n \log n)\)</span> time, <span class="math inline">\(O(n)\)</span> space.</p>
+<p><strong>Overall:</strong> <span class="math inline">\Theta(n \log n)</span> time, <span class="math inline">O(n)</span> space.</p>
 </section></section>
 <section>
 <section id="correctness" class="title-slide slide level1">
@@ -2106,12 +2159,12 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Lemma:</strong> Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> be the two characters with the smallest frequencies. There exists an optimal prefix code where <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are siblings at the maximum depth.</p>
+<p><strong>Lemma:</strong> Let <span class="math inline">x</span> and <span class="math inline">y</span> be the two characters with the smallest frequencies. There exists an optimal prefix code where <span class="math inline">x</span> and <span class="math inline">y</span> are siblings at the maximum depth.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Proof.</strong> Take any optimal tree <span class="math inline">\(T\)</span>. If <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are not siblings at max depth, swap each into that position. Since <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have the smallest frequencies, the cost does not increase. Repeating gives an optimal tree where <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are siblings at max depth. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proof.</strong> Take any optimal tree <span class="math inline">T</span>. If <span class="math inline">x</span> and <span class="math inline">y</span> are not siblings at max depth, swap each into that position. Since <span class="math inline">x</span> and <span class="math inline">y</span> have the smallest frequencies, the cost does not increase. Repeating gives an optimal tree where <span class="math inline">x</span> and <span class="math inline">y</span> are siblings at max depth. <span class="math inline">\square</span></p>
 </div>
 </section>
 <section id="optimal-substructure" class="slide level2">
@@ -2125,14 +2178,14 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Lemma:</strong> Let <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> be siblings in an optimal tree <span class="math inline">\(T\)</span> for <span class="math inline">\(C\)</span>. Then <span class="math inline">\(T&#39;\)</span> (replace <span class="math inline">\(x,y\)</span> with <span class="math inline">\(z\)</span>, <span class="math inline">\(f(z)=f(x)+f(y)\)</span>) is optimal for <span class="math inline">\(C&#39; = (C \setminus \{x,y\}) \cup \{z\}\)</span>.</p>
+<p><strong>Lemma:</strong> Let <span class="math inline">x</span> and <span class="math inline">y</span> be siblings in an optimal tree <span class="math inline">T</span> for <span class="math inline">C</span>. Then <span class="math inline">T&#39;</span> (replace <span class="math inline">x,y</span> with <span class="math inline">z</span>, <span class="math inline">f(z)=f(x)+f(y)</span>) is optimal for <span class="math inline">C&#39; = (C \setminus \{x,y\}) \cup \{z\}</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Proof.</strong> For any tree, <span class="math inline">\(B(T) = B(T&#39;) + f(x) + f(y)\)</span>, since the depth of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is one more than <span class="math inline">\(z\)</span>.</p>
-<p>Thus minimizing <span class="math inline">\(B(T)\)</span> ⟺ minimizing <span class="math inline">\(B(T&#39;)\)</span>. If <span class="math inline">\(T&#39;\)</span> were not optimal, we could improve <span class="math inline">\(T\)</span> — contradiction. <span class="math inline">\(\square\)</span></p>
-<p>Huffman’s merge preserves optimality at every step (induction on <span class="math inline">\(n\)</span>).</p>
+<p><strong>Proof.</strong> For any tree, <span class="math inline">B(T) = B(T&#39;) + f(x) + f(y)</span>, since the depth of <span class="math inline">x</span> and <span class="math inline">y</span> is one more than <span class="math inline">z</span>.</p>
+<p>Thus minimizing <span class="math inline">B(T)</span> ⟺ minimizing <span class="math inline">B(T&#39;)</span>. If <span class="math inline">T&#39;</span> were not optimal, we could improve <span class="math inline">T</span> — contradiction. <span class="math inline">\square</span></p>
+<p>Huffman’s merge preserves optimality at every step (induction on <span class="math inline">n</span>).</p>
 </div>
 </section></section>
 <section id="summary" class="title-slide slide level1">
@@ -2147,7 +2200,7 @@ B(T) = \sum_{c \in C} f(c) \cdot d_T(c)
 <ul>
 <li><strong>Huffman Coding</strong> is a greedy algorithm for constructing optimal prefix codes.</li>
 <li><strong>Key idea:</strong> Repeatedly merge the two least frequent characters.</li>
-<li><strong>Complexity:</strong> <span class="math inline">\(O(n \log n)\)</span> using a min-heap.</li>
+<li><strong>Complexity:</strong> <span class="math inline">O(n \log n)</span> using a min-heap.</li>
 <li><strong>Correctness</strong> follows from the greedy choice and optimal substructure properties.</li>
 <li>Widely used in compression formats (JPEG, MP3, DEFLATE/ZIP).</li>
 </ul>
@@ -3134,8 +3187,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3303,27 +3354,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1745,46 +1798,46 @@ margin-right: 0; }
 </ul>
 </section>
 <section id="small-oh-little-o" class="slide level2 frame">
-<h2>Small Oh (Little-<span class="math inline">\(o\)</span>)</h2>
+<h2>Small Oh (Little-<span class="math inline">o</span>)</h2>
 <div class="block">
-<p><span class="math inline">\(o\)</span>-notation For a given Function <span class="math inline">\(g(n)\)</span>, we denote by <span class="math inline">\(o(g(n))\)</span> the set of functions <span class="math inline">\(o(g(n)) = \{f(n)|\mbox{for any positive constant } c, \mbox{ there exists a constant } n_0
-\mbox{ such that } 0\leq f(n) &lt; cg(n) \mbox{ for all } n\geq n_0\}\)</span>.</p>
+<p><span class="math inline">o</span>-notation For a given Function <span class="math inline">g(n)</span>, we denote by <span class="math inline">o(g(n))</span> the set of functions <span class="math inline">o(g(n)) = \{f(n)|\mbox{for any positive constant } c, \mbox{ there exists a constant } n_0
+\mbox{ such that } 0\leq f(n) &lt; cg(n) \mbox{ for all } n\geq n_0\}</span>.</p>
 </div>
 <ul>
-<li><p>This indicates a loose bound: <span class="math inline">\(f(n) = o(g(n))\)</span> means <span class="math inline">\(f(n)\)</span> grows strictly slower than <span class="math inline">\(g(n)\)</span>.</p></li>
-<li><p><strong>Example:</strong> <span class="math inline">\(2n=o(n^2)\)</span> but <span class="math inline">\(2n^2\neq o(n^2)\)</span>.</p></li>
+<li><p>This indicates a loose bound: <span class="math inline">f(n) = o(g(n))</span> means <span class="math inline">f(n)</span> grows strictly slower than <span class="math inline">g(n)</span>.</p></li>
+<li><p><strong>Example:</strong> <span class="math inline">2n=o(n^2)</span> but <span class="math inline">2n^2\neq o(n^2)</span>.</p></li>
 </ul>
 </section>
 <section id="small-omega-little-omega" class="slide level2 frame">
-<h2>Small Omega (Little-<span class="math inline">\(\omega\)</span>)</h2>
+<h2>Small Omega (Little-<span class="math inline">\omega</span>)</h2>
 <div class="block">
-<p><span class="math inline">\(\omega\)</span>-notation For a given function <span class="math inline">\(g(n)\)</span>, we denote by <span class="math inline">\(\omega(g(n))\)</span> the set of functions <span class="math inline">\(\omega(g(n)) = \{f(n)| \mbox{ for any positive constant } c, \mbox{ there exists a constant } n_0 \mbox{ such that } 0\leq cg(n) &lt; f(n) \mbox{ for all } n\geq n_0\}\)</span>.</p>
+<p><span class="math inline">\omega</span>-notation For a given function <span class="math inline">g(n)</span>, we denote by <span class="math inline">\omega(g(n))</span> the set of functions <span class="math inline">\omega(g(n)) = \{f(n)| \mbox{ for any positive constant } c, \mbox{ there exists a constant } n_0 \mbox{ such that } 0\leq cg(n) &lt; f(n) \mbox{ for all } n\geq n_0\}</span>.</p>
 </div>
 <ul>
-<li><p>This indicates a loose bound: <span class="math inline">\(f(n)=\omega(g(n))\)</span> means <span class="math inline">\(f(n)\)</span> grows strictly faster than <span class="math inline">\(g(n)\)</span>.</p></li>
-<li><p><strong>Example:</strong> <span class="math inline">\(\frac{n^2}{2} = \omega(n)\)</span> but <span class="math inline">\(\frac{n^2}{2}\neq\omega(n^2)\)</span>.</p></li>
+<li><p>This indicates a loose bound: <span class="math inline">f(n)=\omega(g(n))</span> means <span class="math inline">f(n)</span> grows strictly faster than <span class="math inline">g(n)</span>.</p></li>
+<li><p><strong>Example:</strong> <span class="math inline">\frac{n^2}{2} = \omega(n)</span> but <span class="math inline">\frac{n^2}{2}\neq\omega(n^2)</span>.</p></li>
 </ul>
 </section>
 <section id="time-complexity-of-an-algorithm" class="slide level2 frame">
 <h2>Time Complexity of an Algorithm</h2>
 <ul>
-<li><p><strong>Worst-Case Complexity:</strong> The worst case complexity of an algorithm is the function defined by the maximum number of steps taken on any instance of size <span class="math inline">\(n\)</span>.</p></li>
-<li><p><strong>Best-Case Complexity:</strong> The best case complexity of an algorithm is the function defined by the minimum number of steps taken on any instance of size <span class="math inline">\(n\)</span>.</p></li>
-<li><p><strong>Average-Case Complexity:</strong> The average case complexity of an algorithm is the function defined by an average number of steps taken on any instance of size <span class="math inline">\(n\)</span>.</p></li>
+<li><p><strong>Worst-Case Complexity:</strong> The worst case complexity of an algorithm is the function defined by the maximum number of steps taken on any instance of size <span class="math inline">n</span>.</p></li>
+<li><p><strong>Best-Case Complexity:</strong> The best case complexity of an algorithm is the function defined by the minimum number of steps taken on any instance of size <span class="math inline">n</span>.</p></li>
+<li><p><strong>Average-Case Complexity:</strong> The average case complexity of an algorithm is the function defined by an average number of steps taken on any instance of size <span class="math inline">n</span>.</p></li>
 </ul>
 </section>
 <section id="recurrence-for-divide-and-conquer" class="slide level2 frame">
 <h2>Recurrence for Divide and Conquer</h2>
-<p>A recurrence for the running time of a divide-and-conquer algorithm falls out from the three steps of the basic paradigm. Suppose <span class="math inline">\(\mathbf{T(n)}\)</span> be the running time on a problem of size <span class="math inline">\(n\)</span>.</p>
+<p>A recurrence for the running time of a divide-and-conquer algorithm falls out from the three steps of the basic paradigm. Suppose <span class="math inline">\mathbf{T(n)}</span> be the running time on a problem of size <span class="math inline">n</span>.</p>
 <ul>
-<li><p>Suppose that our division of the problem yields <span class="math inline">\(\mathbf{a}\)</span> subproblems, each of which is <span class="math inline">\(\mathbf{1/b}\)</span> the size of the original.</p>
+<li><p>Suppose that our division of the problem yields <span class="math inline">\mathbf{a}</span> subproblems, each of which is <span class="math inline">\mathbf{1/b}</span> the size of the original.</p>
 <ul>
-<li>It takes time <span class="math inline">\(\mathbf{T(n/b)}\)</span> to solve one subproblem of size <span class="math inline">\(\mathbf{n/b}\)</span>, and so it takes time <span class="math inline">\(\mathbf{aT(n/b)}\)</span> to solve <span class="math inline">\(\mathbf{a}\)</span> of them.</li>
+<li>It takes time <span class="math inline">\mathbf{T(n/b)}</span> to solve one subproblem of size <span class="math inline">\mathbf{n/b}</span>, and so it takes time <span class="math inline">\mathbf{aT(n/b)}</span> to solve <span class="math inline">\mathbf{a}</span> of them.</li>
 </ul></li>
-<li><p>If we take <span class="math inline">\(\mathbf{D(n)}\)</span> time to divide the problem into subproblems, and <span class="math inline">\(\mathbf{C(n)}\)</span> time to combine the solutions to the subproblems into the solution to the original problem, we get the recurrence: <span class="math display">\[T(n) = \begin{cases}
+<li><p>If we take <span class="math inline">\mathbf{D(n)}</span> time to divide the problem into subproblems, and <span class="math inline">\mathbf{C(n)}</span> time to combine the solutions to the subproblems into the solution to the original problem, we get the recurrence: <span class="math display">T(n) = \begin{cases}
             \Theta(1) &amp; \mbox{ if } n\leq c \\
             aT(n/b) + D(n) + C(n) &amp; \mbox{ otherwise }
-    \end{cases}\]</span></p></li>
+    \end{cases}</span></p></li>
 </ul>
 </section></section>
 <section>
@@ -1807,23 +1860,23 @@ margin-right: 0; }
 </section>
 <section id="analysis-of-merge-sort-2" class="slide level2 frame">
 <h2>Analysis of merge sort</h2>
-<p>We reason as follows to set up the recurrence for <span class="math inline">\(T(n)\)</span>:</p>
+<p>We reason as follows to set up the recurrence for <span class="math inline">T(n)</span>:</p>
 <ul>
-<li><p><strong>Divide:</strong> The divide step just computes the middle of the subarray, which takes constant time. Thus, <span class="math inline">\(D(n)=\Theta(1)\)</span>.</p></li>
-<li><p><strong>Conquer:</strong> We recursively solve two subproblems, each of size <span class="math inline">\(n/2\)</span>, which contributes <span class="math inline">\(2T(n/2)\)</span> to the running time.</p></li>
-<li><p><strong>Combine:</strong> MERGE procedure on an <span class="math inline">\(n\)</span>-element subarray takes time <span class="math inline">\(\Theta(n)\)</span>, and so <span class="math inline">\(C(n)=\Theta(n)\)</span>.</p></li>
+<li><p><strong>Divide:</strong> The divide step just computes the middle of the subarray, which takes constant time. Thus, <span class="math inline">D(n)=\Theta(1)</span>.</p></li>
+<li><p><strong>Conquer:</strong> We recursively solve two subproblems, each of size <span class="math inline">n/2</span>, which contributes <span class="math inline">2T(n/2)</span> to the running time.</p></li>
+<li><p><strong>Combine:</strong> MERGE procedure on an <span class="math inline">n</span>-element subarray takes time <span class="math inline">\Theta(n)</span>, and so <span class="math inline">C(n)=\Theta(n)</span>.</p></li>
 </ul>
-<p>Thus, we get the following recurrence relation of merge sort: <span class="math display">\[T(n) = \begin{cases}
+<p>Thus, we get the following recurrence relation of merge sort: <span class="math display">T(n) = \begin{cases}
         \Theta(1) &amp; \mbox{ if } n=1, \\
         2T(n/2) + \Theta(n) &amp; \mbox{ if } n&gt;1,
-    \end{cases}\]</span></p>
+    \end{cases}</span></p>
 </section>
 <section id="analysis-of-merge-sort-3" class="slide level2 frame">
 <h2>Analysis of merge sort</h2>
-<p>We can rewrite the recurrence as follows: <span class="math display">\[T(n) = \begin{cases}
+<p>We can rewrite the recurrence as follows: <span class="math display">T(n) = \begin{cases}
         c &amp; \mbox{ if } n=1, \\
         2T(n/2) + cn &amp; \mbox{ if } n&gt;1,
-    \end{cases}\]</span> where the constant <span class="math inline">\(c\)</span> represents the time required to solve problems of size <span class="math inline">\(1\)</span> as well as the time per array element of the divide and combine step.</p>
+    \end{cases}</span> where the constant <span class="math inline">c</span> represents the time required to solve problems of size <span class="math inline">1</span> as well as the time per array element of the divide and combine step.</p>
 <p>We can solve this recurrence using a recursion tree.</p>
 </section>
 <section id="analysis-of-merge-sort-4" class="slide level2 frame">
@@ -1837,21 +1890,21 @@ margin-right: 0; }
 </div>
 </div>
 <ul>
-<li>The total number of levels of the recursion tree is <span class="math inline">\(\log_2{n}+1\)</span>, where <span class="math inline">\(n\)</span> is the number of leaves, corresponding to the input size.</li>
+<li>The total number of levels of the recursion tree is <span class="math inline">\log_2{n}+1</span>, where <span class="math inline">n</span> is the number of leaves, corresponding to the input size.</li>
 </ul>
 </section>
 <section id="analysis-of-merge-sort-5" class="slide level2 frame">
 <h2>Analysis of merge sort</h2>
 <div class="lemma">
-<p>The number of levels of the recursion tree is <span class="math inline">\(\log_2{n}+1\)</span> where <span class="math inline">\(n\)</span> is the number of leaves.</p>
+<p>The number of levels of the recursion tree is <span class="math inline">\log_2{n}+1</span> where <span class="math inline">n</span> is the number of leaves.</p>
 </div>
 <div class="Proof">
 <p>We can prove this by using induction on the number of leaf nodes.<br>
-<strong>Base Case:</strong> When <span class="math inline">\(n=1\)</span>, the number of levels is <span class="math inline">\(\log_2{1}+1 = 1\)</span> which is true.<br>
-<strong>Inductive Hypothesis:</strong> Assume that the number of levels of a recursion tree with <span class="math inline">\(2^n\)</span> leaves is <span class="math inline">\(\log_2(2^n)+1 = n+1\)</span>.<br>
-<strong>Inductive Step:</strong> Because we are assuming that the input size is a power of <span class="math inline">\(2\)</span>, the next input size to consider is <span class="math inline">\(2^{n+1}\)</span>. A tree with <span class="math inline">\(l=2^{n+1}\)</span> leaves has one more level than a tree with <span class="math inline">\(2^n\)</span> leaves, and so the total number of levels is <span class="math inline">\((n+1)+1 = \log_2{2^{n+1}}+1\)</span>.</p>
+<strong>Base Case:</strong> When <span class="math inline">n=1</span>, the number of levels is <span class="math inline">\log_2{1}+1 = 1</span> which is true.<br>
+<strong>Inductive Hypothesis:</strong> Assume that the number of levels of a recursion tree with <span class="math inline">2^n</span> leaves is <span class="math inline">\log_2(2^n)+1 = n+1</span>.<br>
+<strong>Inductive Step:</strong> Because we are assuming that the input size is a power of <span class="math inline">2</span>, the next input size to consider is <span class="math inline">2^{n+1}</span>. A tree with <span class="math inline">l=2^{n+1}</span> leaves has one more level than a tree with <span class="math inline">2^n</span> leaves, and so the total number of levels is <span class="math inline">(n+1)+1 = \log_2{2^{n+1}}+1</span>.</p>
 </div>
-<p><strong>Following the above result, <span class="math inline">\(T(n) = cn\log_2{n}+cn\)</span>. Ignoring the low order term and the constant <span class="math inline">\(c\)</span> gives us <span class="math inline">\(T(n) = \Theta(n\log{n})\)</span>.</strong></p>
+<p><strong>Following the above result, <span class="math inline">T(n) = cn\log_2{n}+cn</span>. Ignoring the low order term and the constant <span class="math inline">c</span> gives us <span class="math inline">T(n) = \Theta(n\log{n})</span>.</strong></p>
 </section></section>
 <section>
 <section id="proof-of-correctness" class="title-slide slide level1">
@@ -1875,19 +1928,19 @@ margin-right: 0; }
 <ul>
 <li><p>Maintain a loop invariant.</p>
 <ul>
-<li>At the start of the <span class="math inline">\(i^{th}\)</span> iteration, the first <span class="math inline">\(i\)</span> elements of the array are sorted.</li>
+<li>At the start of the <span class="math inline">i^{th}</span> iteration, the first <span class="math inline">i</span> elements of the array are sorted.</li>
 </ul></li>
 <li><p><strong>Initialization:</strong> The loop invariant holds before the first iteration.</p>
 <ul>
 <li>At the start of the first iteration, the first element of the array is sorted.</li>
 </ul></li>
-<li><p><strong>Maintenance:</strong> If it is true before <span class="math inline">\(i^{th}\)</span> iteration, it will be true before <span class="math inline">\((i+1)^{th}\)</span> iteration.</p>
+<li><p><strong>Maintenance:</strong> If it is true before <span class="math inline">i^{th}</span> iteration, it will be true before <span class="math inline">(i+1)^{th}</span> iteration.</p>
 <ul>
-<li>by construction, the objective of <span class="math inline">\(i^{th}\)</span> iteration is to put the <span class="math inline">\(i^{th}\)</span> element at the right position of the sorted array.</li>
+<li>by construction, the objective of <span class="math inline">i^{th}</span> iteration is to put the <span class="math inline">i^{th}</span> element at the right position of the sorted array.</li>
 </ul></li>
 <li><p><strong>Termination:</strong> It is useful to know that the loop invariant is true at the end of the last iteration.</p>
 <ul>
-<li>At the start of the <span class="math inline">\(n^{th}\)</span> iteration, <span class="math inline">\(n^{th}\)</span> element is placed at the right position. So , all <span class="math inline">\(n\)</span> elements are sorted.</li>
+<li>At the start of the <span class="math inline">n^{th}</span> iteration, <span class="math inline">n^{th}</span> element is placed at the right position. So , all <span class="math inline">n</span> elements are sorted.</li>
 </ul></li>
 </ul>
 </section>
@@ -2885,8 +2938,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3054,27 +3105,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

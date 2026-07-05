@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1760,19 +1813,19 @@ margin-right: 0; }
 <section id="sample-space-and-outcomes" class="slide level2">
 <h2>Sample Space and Outcomes</h2>
 <ul>
-<li><strong>Sample Space (<span class="math inline">\(\Omega\)</span>):</strong> The set of all possible <em>results</em> of a random experiment.</li>
+<li><strong>Sample Space (<span class="math inline">\Omega</span>):</strong> The set of all possible <em>results</em> of a random experiment.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li><p>Coin toss: <span class="math inline">\(\Omega = \{H, T\}\)</span></p></li>
-<li><p>Roll of a die: <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span></p></li>
-<li><p><strong>Outcome (<span class="math inline">\(\omega\)</span>):</strong> A single <em>result</em> of the experiment (an element of the sample space, <span class="math inline">\(\omega \in \Omega\)</span>).</p></li>
+<li><p>Coin toss: <span class="math inline">\Omega = \{H, T\}</span></p></li>
+<li><p>Roll of a die: <span class="math inline">\Omega = \{1, 2, 3, 4, 5, 6\}</span></p></li>
+<li><p><strong>Outcome (<span class="math inline">\omega</span>):</strong> A single <em>result</em> of the experiment (an element of the sample space, <span class="math inline">\omega \in \Omega</span>).</p></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
 <li><p><strong>Event:</strong> A subset of the sample space.</p></li>
-<li><p>Example: “Rolling an even number” <span class="math inline">\(= \{2, 4, 6\}\)</span></p></li>
+<li><p>Example: “Rolling an even number” <span class="math inline">= \{2, 4, 6\}</span></p></li>
 </ul>
 </div>
 <div class="fragment">
@@ -1791,51 +1844,51 @@ margin-right: 0; }
 <section id="random-variables" class="slide level2">
 <h2>Random Variables</h2>
 <ul>
-<li><p>A <strong>Random Variable (RV)</strong> is a function <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span> that assigns a real number to each outcome.</p></li>
+<li><p>A <strong>Random Variable (RV)</strong> is a function <span class="math inline">X: \Omega \to \mathbb{R}</span> that assigns a real number to each outcome.</p></li>
 <li><p><strong>Examples:</strong></p>
 <ul>
-<li>Number of heads in 3 coin tosses: <span class="math inline">\(X \in \{0, 1, 2, 3\}\)</span></li>
-<li>Value shown on a die roll: <span class="math inline">\(X \in \{1, 2, 3, 4, 5, 6\}\)</span></li>
-<li>In Quicksort: “number of comparisons between elements <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>”</li>
+<li>Number of heads in 3 coin tosses: <span class="math inline">X \in \{0, 1, 2, 3\}</span></li>
+<li>Value shown on a die roll: <span class="math inline">X \in \{1, 2, 3, 4, 5, 6\}</span></li>
+<li>In Quicksort: “number of comparisons between elements <span class="math inline">i</span> and <span class="math inline">j</span>”</li>
 </ul></li>
 <li><p>Random variables can be <strong>discrete</strong> (countable values) or <strong>continuous</strong>.</p></li>
 </ul>
 </section>
 <section id="expectation" class="slide level2">
 <h2>Expectation</h2>
-<p>The <strong>expected value</strong> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> is: <span class="math display">\[
+<p>The <strong>expected value</strong> (or mean) of a discrete random variable <span class="math inline">X</span> is: <span class="math display">
 E[X] = \sum_{x} x \cdot \Pr(X = x)
-\]</span></p>
-<p><strong>Example:</strong> Expected value of a fair die roll: <span class="math display">\[
+</span></p>
+<p><strong>Example:</strong> Expected value of a fair die roll: <span class="math display">
 E[X] = 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} = 3.5
-\]</span></p>
+</span></p>
 </section>
 <section id="linearity-of-expectation" class="slide level2">
 <h2>Linearity of Expectation</h2>
-<p>For <strong>any</strong> random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math display">\[
+<p>For <strong>any</strong> random variables <span class="math inline">X</span> and <span class="math inline">Y</span>: <span class="math display">
 E[X + Y] = E[X] + E[Y]
-\]</span></p>
-<p>This holds <strong>even if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are dependent!</strong></p>
-<p><strong>Example:</strong> Expected sum of two dice rolls: - <span class="math inline">\(E[X_1 + X_2] = E[X_1] + E[X_2] = 3.5 + 3.5 = 7\)</span></p>
+</span></p>
+<p>This holds <strong>even if <span class="math inline">X</span> and <span class="math inline">Y</span> are dependent!</strong></p>
+<p><strong>Example:</strong> Expected sum of two dice rolls: - <span class="math inline">E[X_1 + X_2] = E[X_1] + E[X_2] = 3.5 + 3.5 = 7</span></p>
 <p>This property is what makes analyzing randomized algorithms tractable.</p>
 </section>
 <section id="indicator-random-variables" class="slide level2">
 <h2>Indicator Random Variables</h2>
-<p>An <strong>Indicator Random Variable</strong> <span class="math inline">\(I_A\)</span> for an event <span class="math inline">\(A\)</span> is defined as: <span class="math display">\[
+<p>An <strong>Indicator Random Variable</strong> <span class="math inline">I_A</span> for an event <span class="math inline">A</span> is defined as: <span class="math display">
 I_A =
 \begin{cases}
 1 &amp; \text{if event } A \text{ occurs} \\
 0 &amp; \text{otherwise}
 \end{cases}
-\]</span></p>
-<p>The expected value of an indicator variable is simply the probability of the event: <span class="math display">\[
+</span></p>
+<p>The expected value of an indicator variable is simply the probability of the event: <span class="math display">
 E[I_A] = 1 \cdot \Pr(A) + 0 \cdot \Pr(\text{not } A) = \Pr(A)
-\]</span></p>
-<p><strong>Classic Example:</strong> Expected number of heads in <span class="math inline">\(n\)</span> coin flips:</p>
+</span></p>
+<p><strong>Classic Example:</strong> Expected number of heads in <span class="math inline">n</span> coin flips:</p>
 <ul>
-<li>Let <span class="math inline">\(I_k\)</span> be indicator that <span class="math inline">\(k^{th}\)</span> flip is heads.</li>
-<li><span class="math inline">\(E[I_k] = \Pr(\text{heads}) = 1/2\)</span>.</li>
-<li><span class="math inline">\(E[\text{total heads}] = E[\sum I_k] = \sum E[I_k] = n \cdot 1/2 = n/2\)</span>.</li>
+<li>Let <span class="math inline">I_k</span> be indicator that <span class="math inline">k^{th}</span> flip is heads.</li>
+<li><span class="math inline">E[I_k] = \Pr(\text{heads}) = 1/2</span>.</li>
+<li><span class="math inline">E[\text{total heads}] = E[\sum I_k] = \sum E[I_k] = n \cdot 1/2 = n/2</span>.</li>
 </ul>
 <p>We’ll use this to count the expected number of comparisons in Quicksort!</p>
 </section></section>
@@ -1877,68 +1930,68 @@ E[I_A] = 1 \cdot \Pr(A) + 0 \cdot \Pr(\text{not } A) = \Pr(A)
 <li>Each pair of elements is compared <strong>at most once</strong>.</li>
 <li>Let’s use <strong>Indicator Random Variables</strong>.</li>
 </ul>
-<p>Let <span class="math inline">\(X_{ij}\)</span> be the random variable: <span class="math display">\[
+<p>Let <span class="math inline">X_{ij}</span> be the random variable: <span class="math display">
 X_{ij} =
 \begin{cases}
 1, &amp; \text{if elements } i \text{ and } j \text{ are compared} \\
 0, &amp; \text{otherwise}
 \end{cases}
-\]</span></p>
-<p>Total comparisons: <span class="math inline">\(X = \sum_{i &lt; j} X_{ij}\)</span></p>
+</span></p>
+<p>Total comparisons: <span class="math inline">X = \sum_{i &lt; j} X_{ij}</span></p>
 </section>
 <section id="probability-of-comparison" class="slide level2">
 <h2>Probability of Comparison</h2>
-<p>Assume the elements are sorted: <span class="math inline">\(z_1 &lt; z_2 &lt; \cdots &lt; z_n\)</span>.</p>
-<p>Elements <span class="math inline">\(z_i\)</span> and <span class="math inline">\(z_j\)</span> (where <span class="math inline">\(i &lt; j\)</span>) are compared <strong>only if</strong>:</p>
+<p>Assume the elements are sorted: <span class="math inline">z_1 &lt; z_2 &lt; \cdots &lt; z_n</span>.</p>
+<p>Elements <span class="math inline">z_i</span> and <span class="math inline">z_j</span> (where <span class="math inline">i &lt; j</span>) are compared <strong>only if</strong>:</p>
 <ul>
-<li>One of them is chosen as the pivot <strong>first</strong> among <span class="math inline">\(\{z_i, z_{i+1}, \dots, z_j\}\)</span>.</li>
+<li>One of them is chosen as the pivot <strong>first</strong> among <span class="math inline">\{z_i, z_{i+1}, \dots, z_j\}</span>.</li>
 <li>If any element between them is chosen first, they are never compared!</li>
 </ul>
-<p>The number of elements in this set is <span class="math inline">\(j - i + 1\)</span>. Since each is equally likely: <span class="math display">\[
+<p>The number of elements in this set is <span class="math inline">j - i + 1</span>. Since each is equally likely: <span class="math display">
 \Pr(X_{ij} = 1) = \frac{2}{j - i + 1}
-\]</span></p>
+</span></p>
 </section>
 <section id="expected-number-of-comparisons" class="slide level2">
 <h2>Expected Number of Comparisons</h2>
-<p>By <strong>Linearity of Expectation</strong>: <span class="math display">\[
+<p>By <strong>Linearity of Expectation</strong>: <span class="math display">
 \mathbb{E}[X] = \sum_{i &lt; j} \mathbb{E}[X_{ij}] = \sum_{i &lt; j} \Pr(X_{ij} = 1)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \mathbb{E}[X] = \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \frac{2}{j - i + 1}
-\]</span></p>
+</span></p>
 </section>
 <section id="expected-number-of-comparisons-continued" class="slide level2">
 <h2>Expected Number of Comparisons (Continued)</h2>
-<p>Let <span class="math inline">\(k = j - i\)</span>: <span class="math display">\[
+<p>Let <span class="math inline">k = j - i</span>: <span class="math display">
 \mathbb{E}[X] = \sum_{i=1}^{n-1} \sum_{k=1}^{n-i} \frac{2}{k + 1}
-\]</span></p>
-<p>Now swap the order of summation: <span class="math display">\[
+</span></p>
+<p>Now swap the order of summation: <span class="math display">
 \mathbb{E}[X] = \sum_{k=1}^{n-1} \sum_{i=1}^{n-k} \frac{2}{k + 1}
-\]</span></p>
+</span></p>
 </section>
 <section id="expected-number-of-comparisons-continued-1" class="slide level2">
 <h2>Expected Number of Comparisons (Continued)</h2>
-<p>Simplifying: <span class="math display">\[
+<p>Simplifying: <span class="math display">
 \mathbb{E}[X] = \sum_{k=1}^{n-1} \frac{2(n-k)}{k + 1}
-\]</span></p>
-<p>Bounding: <span class="math display">\[
+</span></p>
+<p>Bounding: <span class="math display">
 \mathbb{E}[X] \leq 2n \sum_{k=1}^{n-1} \frac{1}{k + 1}
-\]</span></p>
+</span></p>
 </section>
 <section id="final-bound" class="slide level2">
 <h2>Final Bound</h2>
-<p>Using the bound for the Harmonic series <span class="math inline">\(H_n = \sum_{k=1}^n \frac{1}{k} = O(\log n)\)</span>: <span class="math display">\[
+<p>Using the bound for the Harmonic series <span class="math inline">H_n = \sum_{k=1}^n \frac{1}{k} = O(\log n)</span>: <span class="math display">
 \mathbb{E}[X] = O(n \log n)
-\]</span></p>
-<p><strong>Expected running time of Randomized Quicksort:</strong> <span class="math display">\[
+</span></p>
+<p><strong>Expected running time of Randomized Quicksort:</strong> <span class="math display">
 \boxed{O(n \log n)}
-\]</span></p>
-<p><strong>Exercise:</strong> Show that <span class="math inline">\(\mathbb{E}[X] = \Theta(n \log n)\)</span>.</p>
+</span></p>
+<p><strong>Exercise:</strong> Show that <span class="math inline">\mathbb{E}[X] = \Theta(n \log n)</span>.</p>
 </section>
 <section id="conclusion" class="slide level2">
 <h2>Conclusion</h2>
 <ul>
 <li>Randomization eliminates bad input cases.</li>
-<li>Expected performance is <span class="math inline">\(O(n \log n)\)</span>, which is asymptotically optimal for comparison-based sorting.</li>
+<li>Expected performance is <span class="math inline">O(n \log n)</span>, which is asymptotically optimal for comparison-based sorting.</li>
 <li>The analysis uses <strong>indicator random variables</strong> and <strong>linearity of expectation</strong> — powerful tools for analyzing randomized algorithms.</li>
 <li>Randomized Quicksort is widely used in practice due to its simplicity, in-place nature, and excellent practical performance.</li>
 </ul>
@@ -2925,8 +2978,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -3094,27 +3145,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom

@@ -1208,6 +1208,59 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var head = document.getElementsByTagName("head")[0];
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css";
+      head.appendChild(link);
+      
+      function renderMathElements() {
+        var mathElements = document.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            if (window.katex) {
+              window.katex.render(texText.data, mathElements[i], {
+                displayMode: mathElements[i].classList.contains('display'),
+                throwOnError: false,
+                macros: macros,
+                fleqn: false
+              });
+            } else {
+              console.error("KaTeX has not been loaded correctly, as not found globally.");
+            }
+          }
+        }
+      }
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js";
+      script.onload = renderMathElements;
+      
+      // Check for RequireJS and AMD detection as it conflicts with KaTeX loading.
+      if (typeof require === 'function' && typeof define === 'function' && define.amd) {
+        // Disable require.js AMD detection temporarily, as it conflicts with KaTeX loading using CommonJS
+        var disableAmdScript = document.createElement("script");
+        disableAmdScript.textContent = 'window._amd_backup = window.define.amd; window.define.amd = false;';
+        head.appendChild(disableAmdScript);
+        
+        // overwrite onload to restore Require.js AMD detection
+        script.onload = function() {
+          // Restore Require.js AMD detection
+          window.define.amd = window._amd_backup;
+          delete window._amd_backup;
+          renderMathElements();
+        };
+      }
+
+      head.appendChild(script);
+    });
+  </script>
+  
   <style type="text/css">.reveal
 div.sourceCode
 pre
@@ -1745,7 +1798,7 @@ margin-right: 0; }
 <section id="recurrences" class="slide level2 frame">
 <h2>Recurrences</h2>
 <ul>
-<li><p>We will be learning two techniques for solving recurrences of the form <span class="math inline">\(T(n) = aT(n/b)+f(n)\)</span>.</p>
+<li><p>We will be learning two techniques for solving recurrences of the form <span class="math inline">T(n) = aT(n/b)+f(n)</span>.</p>
 <ul>
 <li><p>Substitution method</p></li>
 <li><p>Recursion Tree method</p></li>
@@ -1765,10 +1818,10 @@ margin-right: 0; }
 </section>
 <section id="example-1" class="slide level2 frame">
 <h2>Example-1</h2>
-<p><strong>Recurrence:</strong> <span class="math inline">\(T(1)=1\)</span> and <span class="math inline">\(T(n) = 2T(\lfloor\frac{n}{2}\rfloor)+n\)</span> for <span class="math inline">\(n&gt;1\)</span>.</p>
+<p><strong>Recurrence:</strong> <span class="math inline">T(1)=1</span> and <span class="math inline">T(n) = 2T(\lfloor\frac{n}{2}\rfloor)+n</span> for <span class="math inline">n&gt;1</span>.</p>
 <ul>
-<li><p>We guess that <span class="math inline">\(T(n) = O(n\log{n})\)</span>.</p></li>
-<li><p>Now we need to prove that <span class="math inline">\(T(n)\leq cn\log{n}\)</span> for some constant <span class="math inline">\(c\)</span>.</p></li>
+<li><p>We guess that <span class="math inline">T(n) = O(n\log{n})</span>.</p></li>
+<li><p>Now we need to prove that <span class="math inline">T(n)\leq cn\log{n}</span> for some constant <span class="math inline">c</span>.</p></li>
 </ul>
 </section>
 <section id="proof-by-induction" class="slide level2 frame">
@@ -1780,8 +1833,8 @@ margin-right: 0; }
 <section id="points-to-remember" class="slide level2 frame">
 <h2>Points to remember</h2>
 <ul>
-<li><p><strong>Warning-1:</strong> It is easier to prove a weaker bound than the one you are supposed to prove. For instance, if the runtime is <span class="math inline">\(O(n)\)</span>, you might still be able to substitute <span class="math inline">\(cn^2\)</span> into the recurrence and prove that the bound is <span class="math inline">\(O(n^2)\)</span>. Although it is technically correct, don’t let it mislead you into thinking it’s the best bound!</p></li>
-<li><p><strong>Warning-2:</strong> You must prove the exact form of the induction hypothesis. For example, in the recurrence <span class="math inline">\(T(n) = 2T(\lfloor\frac{n}{2}\rfloor)+n\)</span>, we could falsely prove <span class="math inline">\(T(n) = O(n)\)</span> by guessing <span class="math inline">\(T(n)\leq cn\)</span> and then arguing <span class="math inline">\(T(n)\leq 2(c\lfloor\frac{n}{2}\rfloor)+n\leq cn+n = O(n)\)</span>. Here we need to prove <span class="math inline">\(T(n)\leq cn\)</span>, not <span class="math inline">\(T(n)\leq (c+1)n\)</span>.</p></li>
+<li><p><strong>Warning-1:</strong> It is easier to prove a weaker bound than the one you are supposed to prove. For instance, if the runtime is <span class="math inline">O(n)</span>, you might still be able to substitute <span class="math inline">cn^2</span> into the recurrence and prove that the bound is <span class="math inline">O(n^2)</span>. Although it is technically correct, don’t let it mislead you into thinking it’s the best bound!</p></li>
+<li><p><strong>Warning-2:</strong> You must prove the exact form of the induction hypothesis. For example, in the recurrence <span class="math inline">T(n) = 2T(\lfloor\frac{n}{2}\rfloor)+n</span>, we could falsely prove <span class="math inline">T(n) = O(n)</span> by guessing <span class="math inline">T(n)\leq cn</span> and then arguing <span class="math inline">T(n)\leq 2(c\lfloor\frac{n}{2}\rfloor)+n\leq cn+n = O(n)</span>. Here we need to prove <span class="math inline">T(n)\leq cn</span>, not <span class="math inline">T(n)\leq (c+1)n</span>.</p></li>
 </ul>
 </section>
 <section id="recursion-tree-method" class="slide level2">
@@ -1799,11 +1852,11 @@ margin-right: 0; }
 <p><strong>Consider the following recurrence:</strong><br>
 </p>
 <div class="center">
-<p><span class="math inline">\(T(n)=3T(\lfloor\frac{n}{4}\rfloor)+\Theta(n^2)\)</span></p>
+<p><span class="math inline">T(n)=3T(\lfloor\frac{n}{4}\rfloor)+\Theta(n^2)</span></p>
 </div>
 <p><strong>Let us drop the floors and write the recurrence:</strong></p>
 <div class="center">
-<p><span class="math inline">\(T(n)=3T(\frac{n}{4})+cn^2\)</span></p>
+<p><span class="math inline">T(n)=3T(\frac{n}{4})+cn^2</span></p>
 </div>
 </section>
 <section id="recursion-tree-1" class="slide level2 frame">
@@ -1813,29 +1866,29 @@ margin-right: 0; }
 <section id="recursion-tree-2" class="slide level2 frame">
 <h2>Recursion Tree</h2>
 <ul>
-<li><p>Suppose the number of levels in this tree is <span class="math inline">\(l\)</span>.</p></li>
-<li><p><span class="math inline">\(\frac{n}{4^l} = 1\)</span>. This implies <span class="math inline">\(l = \log_4{n}\)</span>.</p></li>
-<li><p>Number of leaf nodes: <span class="math inline">\(3^{\log_4{n}} = n^{\log_4{3}}\)</span>.</p></li>
+<li><p>Suppose the number of levels in this tree is <span class="math inline">l</span>.</p></li>
+<li><p><span class="math inline">\frac{n}{4^l} = 1</span>. This implies <span class="math inline">l = \log_4{n}</span>.</p></li>
+<li><p>Number of leaf nodes: <span class="math inline">3^{\log_4{n}} = n^{\log_4{3}}</span>.</p></li>
 </ul>
-<p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\begin{aligned}
     T(n)    &amp;= cn^2+\frac{3}{16}cn^2+(\frac{3}{16})^2cn^2+\cdots+(\frac{3}{16})^{\log_4{n}-1}cn^2 + \Theta(n^{\log_4{3}}) \\
         &amp;= \displaystyle\sum_{i=0}^{\log_4{n}-1}(\frac{3}{16})^icn^2 + \Theta(n^{\log_4{3}}) \\
     &amp;\leq \displaystyle\sum_{i=0}^{\infty}(\frac{3}{16})^icn^2 + \Theta(n^{\log_4{3}}) \\
     &amp;= (1-3/16)^{-1}cn^2 + \Theta(n^{\log_4{3}})
-\end{aligned}\]</span></p>
-<p>Since the functions in <span class="math inline">\(\Theta(n^{\log_4{3}})\)</span> are also in <span class="math inline">\(O(n^2)\)</span>, This whole expression is <span class="math inline">\(O(n^2)\)</span>. Therefore we can guess that <span class="math inline">\(T(n) = O(n^2)\)</span>.</p>
+\end{aligned}</span></p>
+<p>Since the functions in <span class="math inline">\Theta(n^{\log_4{3}})</span> are also in <span class="math inline">O(n^2)</span>, This whole expression is <span class="math inline">O(n^2)</span>. Therefore we can guess that <span class="math inline">T(n) = O(n^2)</span>.</p>
 </section>
 <section id="back-to-the-substitution-to-prove-the-bound" class="slide level2 frame">
 <h2>Back to the substitution to prove the bound</h2>
-We want to show that <span class="math inline">\(T(n)\leq dn^2\)</span> for some constant <span class="math inline">\(d &gt; 0\)</span>. $$
-<span class="math display">\[\begin{aligned}
+We want to show that <span class="math inline">T(n)\leq dn^2</span> for some constant <span class="math inline">d &gt; 0</span>. $$
+<span class="math display">\begin{aligned}
         T(n)    &amp;\leq 3T(\lfloor\frac{n}{4}\rfloor) + cn^2 \\
             &amp;\leq 3d\lfloor\frac{n}{4}\rfloor^2 + cn^2 \\
             &amp;\leq 3d(\frac{n}{4})^2 + cn^2 \\
             &amp;= \frac{3}{16}dn^2 + cn^2 \\
             &amp;\leq dn^2 (\text{ when } c\leq \frac{13}{16}d)
     
-\end{aligned}\]</span>
+\end{aligned}</span>
 <p>$$</p>
 </section>
 
@@ -2820,8 +2873,6 @@ window.QuartoSupport = function () {
 	 * Copyright (C) 2011-2014 Hakim El Hattab, http://hakim.se
 	 */return()=>e}));
 </script>
-  <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):(t="undefined"!=typeof globalThis?globalThis:t||self).RevealMath=e()}(this,(function(){"use strict";const t=()=>{let t,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(n){t=n;let a=t.getConfig().mathjax2||t.getConfig().math||{},i={...e,...a},s=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...a.tex2jax},i.mathjax=i.config=null,function(t,e){let n=document.querySelector("head"),a=document.createElement("script");a.type="text/javascript",a.src=t;let i=()=>{"function"==typeof e&&(e.call(),e=null)};a.onload=i,a.onreadystatechange=()=>{"loaded"===this.readyState&&i()},n.appendChild(a)}(s,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.getRevealElement()]),MathJax.Hub.Queue(t.layout),t.on("slidechanged",(function(t){MathJax.Hub.Queue(["Typeset",MathJax.Hub,t.currentSlide])}))}))}}},e=t;return Plugin=Object.assign(e(),{KaTeX:()=>{let t,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre"]};const n=t=>new Promise(((e,n)=>{const a=document.createElement("script");a.type="text/javascript",a.onload=e,a.onerror=n,a.src=t,document.head.append(a)}));return{id:"katex",init:function(a){t=a;let i=t.getConfig().katex||{},s={...e,...i};const{local:o,version:l,extensions:r,...c}=s;let d=s.local||"https://cdn.jsdelivr.net/npm/katex",u=s.local?"":"@"+s.version,p=d+u+"/dist/katex.min.css",h=d+u+"/dist/contrib/mhchem.min.js",x=d+u+"/dist/contrib/auto-render.min.js",m=[d+u+"/dist/katex.min.js"];s.extensions&&s.extensions.includes("mhchem")&&m.push(h),m.push(x);const f=()=>{renderMathInElement(a.getSlidesElement(),c),t.layout()};(t=>{let e=document.createElement("link");e.rel="stylesheet",e.href=t,document.head.appendChild(e)})(p),async function(t){for(const e of t)await n(e)}(m).then((()=>{t.isReady()?f():t.on("ready",f.bind(this))}))}}},MathJax2:t,MathJax3:()=>{let t,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{t.layout()}))}}};return{id:"mathjax3",init:function(n){t=n;let a=t.getConfig().mathjax3||{},i={...e,...a};i.tex={...e.tex,...a.tex},i.options={...e.options,...a.options},i.startup={...e.startup,...a.startup};let s=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,function(t,e){let n=document.createElement("script");n.type="text/javascript",n.id="MathJax-script",n.src=t,n.async=!0,n.onload=()=>{"function"==typeof e&&(e.call(),e=null)},document.head.appendChild(n)}(s,(function(){t.addEventListener("slidechanged",(function(t){MathJax.typeset()}))}))}}}})}));
-</script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -2989,27 +3040,9 @@ window.QuartoSupport = function () {
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
