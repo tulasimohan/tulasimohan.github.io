@@ -1,0 +1,522 @@
+/* --- Research Page Listing Refinements --- */
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap"); /* Removed Inter */
+
+/* Force Heliotrope for consistency across the site (especially About page) */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.about-timeline,
+.timeline-year,
+.timeline-role,
+.timeline-inst,
+p,
+li {
+  font-family: "Heliotrope", sans-serif !important;
+}
+
+/* 1. Remove Timeline from 'By Paper' (Cards) */
+#listing-listing-cards .quarto-listing-default {
+  padding-left: 0 !important;
+}
+#listing-listing-cards .quarto-listing-default::before {
+  display: none !important;
+}
+#listing-listing-cards .quarto-post {
+  margin-left: 0 !important;
+  padding-left: 1rem !important;
+}
+#listing-listing-cards .quarto-post::before {
+  display: none !important;
+}
+
+/* 2. Timeline Removed from 'By Venue' (Table) as per request */
+
+/* 3. Category Hierarchy and Ordering (CSS Flexbox) */
+.quarto-listing-category {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Default Order for unknown items */
+.quarto-listing-category .category {
+  order: 99;
+}
+
+/* Specific Order */
+/* All (usually first) */
+.quarto-listing-category .category:first-child {
+  order: 1;
+}
+
+/* arXiv */
+.quarto-listing-category .category[data-category="YXJYaXY="] {
+  order: 2;
+}
+
+/* Conference Section */
+.quarto-listing-category .category[data-category="Q29uZmVyZW5jZQ=="] {
+  order: 10;
+  font-weight: 600;
+} /* Conference */
+.quarto-listing-category .category[data-category="Q0ND"] {
+  order: 11;
+  margin-left: 20px;
+} /* CCC */
+.quarto-listing-category .category[data-category="U1RPQw=="] {
+  order: 12;
+  margin-left: 20px;
+} /* STOC */
+.quarto-listing-category .category[data-category="RlNUVENT"] {
+  order: 13;
+  margin-left: 20px;
+} /* FSTTCS */
+.quarto-listing-category .category[data-category="U09EQQ=="] {
+  order: 14;
+  margin-left: 20px;
+} /* SODA (if exists) */
+
+/* Other Venues */
+.quarto-listing-category .category[data-category="RUNDQw=="] {
+  order: 15;
+} /* ECCC */
+
+/* Journal Section */
+.quarto-listing-category .category[data-category="Sm91cm5hbA=="] {
+  order: 20;
+  font-weight: 600;
+} /* Journal */
+.quarto-listing-category .category[data-category="UlNB"] {
+  order: 21;
+  margin-left: 20px;
+} /* RSA */
+.quarto-listing-category .category[data-category="SkFDTQ=="] {
+  order: 22;
+  margin-left: 20px;
+} /* JACM (if exists) */
+.quarto-listing-category .category[data-category="U0lDT01Q"] {
+  order: 23;
+  margin-left: 20px;
+} /* SICOMP (if exists) */
+
+/* --- BibTeX Popover Styling --- */
+details.bibtex-toggle {
+  display: inline-block;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+details.bibtex-toggle > summary {
+  list-style: none; /* Hide default arrow */
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #6c757d; /* Bootstrap secondary */
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+details.bibtex-toggle > summary:hover {
+  background-color: #5a6268;
+}
+
+details.bibtex-toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* The Popup Box */
+details.bibtex-toggle[open] > pre {
+  position: absolute;
+  top: 100%; /* Below the button */
+  left: 0;
+  z-index: 1000;
+  min-width: 400px;
+  max-width: 600px;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
+  white-space: pre-wrap; /* Wrap long lines */
+  font-size: 0.85rem;
+}
+
+/* --- Scrolly News Ticker --- */
+#listing-news {
+  overflow: hidden; /* Hide scrollbar */
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  ); /* Fade edges */
+}
+
+#listing-news .list.grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important; /* Removed gap, we'll use margin on items instead */
+  width: max-content; /* Ensure container is wide enough */
+  animation: scrollNews 20s linear infinite;
+}
+
+#listing-news .quarto-grid-item {
+  width: 280px; /* Fixed width for ticker items */
+  flex: 0 0 auto;
+  margin-right: 1.5rem !important; /* Fixed margin for consistent spacing */
+}
+
+/* Pause on hover */
+#listing-news:hover .list.grid {
+  animation-play-state: paused;
+}
+
+/* Ticker Animation */
+@keyframes scrollNews {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* Scroll halfway if content is doubled, or -100% if not seamlessly looping yet. For now -100% but it snaps back. Ideal is duplication. */
+}
+
+/* Removed fixed width from here as it's now in the item selector above */
+
+#listing-news .quarto-grid-item .card-body {
+  padding: 0.5rem 0.75rem !important;
+}
+
+#listing-news .card-title {
+  font-size: 1rem !important;
+  margin-bottom: 0.25rem !important;
+  line-height: 1.2;
+}
+
+#listing-news .listing-description {
+  font-size: 0.85rem !important;
+  margin-bottom: 0.25rem !important;
+  line-height: 1.3;
+}
+
+#listing-news .card-attribution {
+  font-size: 0.75rem !important;
+  padding-bottom: 0 !important;
+}
+
+/* --- About Page Revamp (Moved from theme.scss) --- */
+
+.about-profile-img {
+  display: none; /* Hidden as requested */
+}
+
+/* Timeline Styling */
+.about-timeline {
+  margin-top: 2rem !important;
+  border-right: 2px solid #5ccae8 !important; /* Line on the RIGHT */
+  padding-right: 1.5rem !important; /* Space between text and line */
+  margin-right: 8rem !important; /* Shrink margin to push line right */
+  border-left: none !important;
+  padding-left: 0 !important;
+  text-align: right !important;
+  position: relative !important; /* Context */
+}
+
+/* Arrow at top of timeline */
+.about-timeline::after {
+  content: "" !important;
+  position: absolute !important;
+  top: -8px !important;
+  right: -5px !important; /* Center the 8px wide arrow over the 2px border */
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 4px solid transparent !important;
+  border-right: 4px solid transparent !important;
+  border-bottom: 6px solid #5ccae8 !important;
+}
+
+.about-timeline h3 {
+  text-align: left !important;
+  margin-right: -1.5rem !important; /* Reset padding offset so line doesn't cut it visually if long */
+  padding-right: 2rem !important;
+  margin-bottom: 2rem !important;
+  color: #2b2b88 !important; /* Match year color */
+}
+
+.about-timeline .timeline-item {
+  margin-bottom: 2rem !important;
+  position: relative !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.about-timeline .timeline-item::before {
+  content: "" !important;
+  position: absolute !important;
+  right: -1.92rem !important; /* Calculated: -1.5rem (padding) - 0.35rem (half dot) - 1px (half border) */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: auto !important; /* Reset Left */
+  width: 0.7rem !important;
+  height: 0.7rem !important;
+  background: #5ccae8 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 5px #fff !important; /* Break line visual */
+  display: block !important;
+  z-index: 10 !important;
+}
+
+.about-timeline .timeline-year {
+  position: absolute !important;
+  left: calc(
+    100% + 3.5rem
+  ) !important; /* Anchor past the dot into the margin */
+  right: auto !important;
+  top: 50% !important;
+  transform: translateY(15px) !important;
+  width: max-content !important; /* Allow spelling into margin */
+  white-space: nowrap !important;
+  text-align: left !important;
+
+  font-weight: normal !important;
+  font-style: italic !important;
+  color: #666 !important; /* Color matched exactly to timeline-inst location text */
+  font-size: 0.9rem !important;
+  line-height: 1.2 !important;
+}
+
+.about-timeline .logo-dash-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.about-timeline .timeline-role {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 0.25rem !important;
+  line-height: 1.3 !important;
+}
+
+.about-timeline .timeline-inst {
+  font-size: 0.9rem !important;
+  color: #666 !important;
+  font-style: italic !important;
+  line-height: 1.3 !important;
+}
+
+.about-timeline .timeline-logo {
+  position: absolute;
+  bottom: 100%; /* Float above the dash */
+  left: 50%;
+  transform: translateX(-50%); /* Centered exactly above the dash */
+  height: 44px; /* Unify height so wide logos look appropriately large */
+  width: auto; /* Let rectangles (CMI, Sri Chaitanya) expand natively */
+  max-width: 150px;
+  object-fit: contain;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease-in-out; /* Smooth hover transition */
+}
+
+/* Link interactability */
+.hover-scale {
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy pop */
+}
+.hover-scale:hover {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) brightness(1.1);
+  transform: translateX(-50%) scale(1.1) !important; /* Base Logos */
+  z-index: 10;
+}
+
+/* Individual Logo Fine-Tuning Scale Overrides */
+#logo-phd_tifr {
+  transform: translateX(-50%) scale(0.8) !important; /* Decrease TIFR to 80% */
+}
+#logo-phd_tifr:hover {
+  transform: translateX(-50%) scale(0.9) !important;
+}
+
+#logo-postdoc_lasige {
+  transform: translateX(-50%) scale(0.81) !important; /* Decrease FCUL to 90% of its previously scaled 0.9 size */
+}
+#logo-postdoc_lasige:hover {
+  transform: translateX(-50%) scale(0.91) !important;
+}
+
+#logo-msc_cmi,
+#logo-bsc_cmi {
+  transform: translateX(-50%) scale(0.7) !important; /* Decrease CMI to 70% */
+}
+#logo-msc_cmi:hover,
+#logo-bsc_cmi:hover {
+  transform: translateX(-50%) scale(0.8) !important;
+}
+
+#logo-pri_priyadarsini {
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.1); /* Ensure pure white becomes transparent */
+}
+
+/* About Page Text Justification */
+.about-text-justified {
+  text-align: justify;
+  text-justify: inter-word;
+  padding-right: 2rem; /* Add some right margin to the text block for breathing room next to timeline */
+}
+
+/* --- Collapsibles / Expandable Abstracts (from Neeldhara) --- */
+.collapsible {
+  background-color: transparent;
+  width: 100%;
+  color: #1d90e2; /* Modern blue link color */
+  border: none;
+  outline: none;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.collactive,
+.collapsible:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.collcontent {
+  padding: 0 10px;
+  max-height: 0;
+  overflow: hidden;
+  background-color: transparent;
+  transition: max-height 0.2s ease-out;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Fix for Homepage Social Links interactability */
+.about-links {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto !important;
+}
+
+.about-link {
+  pointer-events: auto !important;
+}
+
+/* Email Popup Tooltip */
+.email-popup {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000;
+  font-family: 'Heliotrope', sans-serif;
+  font-size: 0.9rem;
+  color: #333;
+  animation: fadeIn 0.2s ease-out;
+  pointer-events: auto !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.email-popup .popup-email-text {
+  font-weight: 500;
+}
+
+.email-popup .popup-btn {
+  background: #f0f0f0;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #2b2b88;
+  transition: all 0.2s;
+}
+
+.email-popup .popup-btn:hover {
+  background: #e0e0e0;
+}
+
+.email-popup .popup-btn.copied {
+  color: #28a745;
+}
+
+/* Network Lite Prompt */
+.network-lite-prompt {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b2b88;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  z-index: 2000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Heliotrope', sans-serif;
+  font-size: 0.9rem;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from { top: -50px; opacity: 0; }
+  to { top: 1rem; opacity: 1; }
+}
+
+.lite-prompt-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.network-lite-prompt a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.lite-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.lite-close-btn:hover {
+  color: white;
+}
+
+/* Visitor Counter Styling */
+.visitor-counter {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
