@@ -443,9 +443,9 @@
   {
     "objectID": "misc/credits.html",
     "href": "misc/credits.html",
-    "title": "Credits & Inspirations",
+    "title": "Credits",
     "section": "",
-    "text": "Powered by Quarto — the idea to use it was inspired by Neeldhara Misra’s webpage and blogs.\nAesthetics & UI — the minimal design, colourful horizontal lines, and some backend approaches were inspired by my PhD advisor, Prahladh Harsha.\nColor Palette — adapted from the official BITS branding.\nTypography — the fonts Amsterdam and Heliotrope were discovered via Neeldhara Misra.\nTheme — overarching design choices pull from various open-source academic portfolios."
+    "text": "Built with Quarto — inspired by Neeldhara Misra.\nDesign & UI — inspired by my PhD advisor Prahladh Harsha. Structural elements, especially the lite version, were inspired by Prahladh Harsha and Oded Goldreich.\nTypography — Amsterdam and Heliotrope fonts via Neeldhara Misra.\nColor palette — adapted from official BITS branding."
   },
   {
     "objectID": "news.html",
