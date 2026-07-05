@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<title>prfs</title>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>body{max-width:40em;margin:2em auto;padding:0 1em;font-family:sans-serif;line-height:1.6}a{color:#00e}</style><main class="content" id="quarto-document-content">
+
+<section id="candidate-1-local-prfs-goldreich" class="level2">
+<h2 class="anchored" data-anchor-id="candidate-1-local-prfs-goldreich">Candidate 1: Local PRFs (Goldreich)</h2>
+<p>A PRF is <strong><span class="math inline">\(d\)</span>-local</strong> if every output bit depends on exactly <span class="math inline">\(d\)</span> bits of the seed.</p>
+<div class="columns" style="align-items: center;">
+<div class="column" style="width: 50%;">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="10" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10">{</span>
+<span id="cb1-11">  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">450</span><span class="op">;</span></span>
+<span id="cb1-12">  <span class="kw">const</span> height <span class="op">=</span> <span class="dv">350</span><span class="op">;</span></span>
+<span id="cb1-13">  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(DOM<span class="op">.</span><span class="fu">svg</span>(width<span class="op">,</span> height))<span class="op">;</span></span>
+<span id="cb1-14">  </span>
+<span id="cb1-15">  <span class="co">// Seed Nodes (Left) - n bits</span></span>
+<span id="cb1-16">  <span class="kw">const</span> seed <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">;</span></span>
+<span id="cb1-17">  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">".seed"</span>)<span class="op">.</span><span class="fu">data</span>(seed)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-18">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> <span class="dv">60</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> <span class="dv">60</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">12</span>)</span>
+<span id="cb1-19">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"#1a1a66"</span>)<span class="op">;</span></span>
+<span id="cb1-20">  </span>
+<span id="cb1-21">  <span class="co">// Output Nodes (Right) - m bits</span></span>
+<span id="cb1-22">  <span class="kw">const</span> out <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">,</span> <span class="dv">7</span>]<span class="op">;</span></span>
+<span id="cb1-23">  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">".out"</span>)<span class="op">.</span><span class="fu">data</span>(out)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"circle"</span>)</span>
+<span id="cb1-24">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"cx"</span><span class="op">,</span> <span class="dv">340</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"cy"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d <span class="op">*</span> <span class="dv">40</span> <span class="op">+</span> <span class="dv">35</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"r"</span><span class="op">,</span> <span class="dv">12</span>)</span>
+<span id="cb1-25">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"#4bb8d6"</span>)<span class="op">;</span></span>
+<span id="cb1-26"></span>
+<span id="cb1-27">  <span class="co">// Edges (d=3 locality)</span></span>
+<span id="cb1-28">  <span class="kw">const</span> links <span class="op">=</span> [</span>
+<span id="cb1-29">    {<span class="dt">s</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">0</span>}<span class="op">,</span></span>
+<span id="cb1-30">    {<span class="dt">s</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">1</span>}<span class="op">,</span></span>
+<span id="cb1-31">    {<span class="dt">s</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">2</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">2</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">2</span>}<span class="op">,</span></span>
+<span id="cb1-32">    {<span class="dt">s</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">4</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">4</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">4</span>}<span class="op">,</span></span>
+<span id="cb1-33">    {<span class="dt">s</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">7</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">7</span>}<span class="op">,</span> {<span class="dt">s</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">t</span><span class="op">:</span> <span class="dv">7</span>}</span>
+<span id="cb1-34">  ]<span class="op">;</span></span>
+<span id="cb1-35">  </span>
+<span id="cb1-36">  svg<span class="op">.</span><span class="fu">selectAll</span>(<span class="st">".link"</span>)<span class="op">.</span><span class="fu">data</span>(links)<span class="op">.</span><span class="fu">enter</span>()<span class="op">.</span><span class="fu">append</span>(<span class="st">"line"</span>)</span>
+<span id="cb1-37">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x1"</span><span class="op">,</span> <span class="dv">72</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y1"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">s</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-38">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"x2"</span><span class="op">,</span> <span class="dv">328</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y2"</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">t</span> <span class="op">*</span> <span class="dv">40</span> <span class="op">+</span> <span class="dv">35</span>)</span>
+<span id="cb1-39">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke"</span><span class="op">,</span> <span class="st">"#cbd5e0"</span>)</span>
+<span id="cb1-40">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"stroke-width"</span><span class="op">,</span> <span class="fl">1.5</span>)</span>
+<span id="cb1-41">    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"opacity"</span><span class="op">,</span> <span class="fl">0.6</span>)<span class="op">;</span></span>
+<span id="cb1-42">    </span>
+<span id="cb1-43">  <span class="co">// Labels</span></span>
+<span id="cb1-44">  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">60</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">25</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-45">    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-weight"</span><span class="op">,</span> <span class="st">"bold"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"#1a1a66"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"Seed ($n$)"</span>)<span class="op">;</span></span>
+<span id="cb1-46">  svg<span class="op">.</span><span class="fu">append</span>(<span class="st">"text"</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"x"</span><span class="op">,</span> <span class="dv">340</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"y"</span><span class="op">,</span> <span class="dv">25</span>)<span class="op">.</span><span class="fu">attr</span>(<span class="st">"text-anchor"</span><span class="op">,</span> <span class="st">"middle"</span>)</span>
+<span id="cb1-47">    <span class="op">.</span><span class="fu">style</span>(<span class="st">"font-weight"</span><span class="op">,</span> <span class="st">"bold"</span>)<span class="op">.</span><span class="fu">style</span>(<span class="st">"fill"</span><span class="op">,</span> <span class="st">"#1a1a66"</span>)<span class="op">.</span><span class="fu">text</span>(<span class="st">"Output ($m$)"</span>)<span class="op">;</span></span>
+<span id="cb1-48">  </span>
+<span id="cb1-49">  <span class="cf">return</span> svg<span class="op">.</span><span class="fu">node</span>()<span class="op">;</span></span>
+<span id="cb1-50">}</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+</div>
+</div>
+</div><div class="column" style="width: 50%;">
+<ul>
+<li><strong>Expansion</strong>: Expand a seed of length <span class="math inline">\(n\)</span> to <span class="math inline">\(m \gg n\)</span> bits.</li>
+<li><strong>The Graph</strong>: Based on a highly expanding bipartite graph or combinatorial design.</li>
+<li><strong>The Predicate</strong>: Apply a simple function (like XOR or Majority) to the <span class="math inline">\(d\)</span> incoming edges.</li>
+<li><strong>Why it matters</strong>: Cell sampling properties fail to compress these specific structures.</li>
+</ul>
+</div>
+</div>
+
+<section id="candidate-2-llu-prgs" class="level2">
+<h2 class="anchored" data-anchor-id="candidate-2-llu-prgs">Candidate 2: LLU PRGs</h2>
+<p>LLU PRGs rely on the hardness of low-degree polynomials over finite fields.</p>
+<div class="center">
+
+<div class="llu-container">
+<div class="seed-box">
+<pre><code>&lt;strong style="color: #1a1a66;"&gt;Seed&lt;/strong&gt;&lt;br&gt;&lt;br&gt;
+Coefficients of a&lt;br&gt;low-degree polynomial&lt;br&gt;&lt;strong&gt;$P(x_1, \dots, x_k)$&lt;/strong&gt;</code></pre>
+</div>
+<div class="arrow">
+⟶
+</div>
+<div class="output-box">
+<pre><code>&lt;div style="grid-column: 1 / span 4; font-weight: bold; margin-bottom: 10px; color: #1a1a66;"&gt;Output (Truth Table)&lt;/div&gt;
+&lt;div class="out-cell"&gt;$P(\vec{\alpha_1})$&lt;/div&gt;
+&lt;div class="out-cell"&gt;$P(\vec{\alpha_2})$&lt;/div&gt;
+&lt;div class="out-cell"&gt;$P(\vec{\alpha_3})$&lt;/div&gt;
+&lt;div class="out-cell"&gt;...&lt;/div&gt;
+&lt;div class="out-cell"&gt;$P(\vec{\alpha_i})$&lt;/div&gt;
+&lt;div class="out-cell"&gt;...&lt;/div&gt;
+&lt;div class="out-cell"&gt;...&lt;/div&gt;
+&lt;div class="out-cell"&gt;$P(\vec{\alpha_m})$&lt;/div&gt;</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>The Construction</strong>: The seed determines the coefficients. The output is the evaluation of the polynomial at all points in the field.</li>
+<li><strong>The Trap</strong>: Data structure lower bounds (like KPI ’25) try to find linear dependencies or refutations.</li>
+<li><strong>Resilience</strong>: Low-degree polynomials are mathematically engineered to resist these exact algebraic attacks.</li>
+</ul>
+</section>
+
+</main>
+
+</div>
+<hr>
+<p><a href="../index.html">Full site</a></p>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<title>The Natural Proofs Barrier Against Data-Structure Lower Bounds</title>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<style>body{max-width:40em;margin:2em auto;padding:0 1em;font-family:sans-serif;line-height:1.6}a{color:#00e}</style><div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">The Natural Proofs Barrier Against Data-Structure Lower Bounds</h1>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Tulasi Mohan Molli 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Michal Koucký 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Bruno Loff 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Michael Saks 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-01-01</p>
+</section>
+<section class="slide level2">
+
+<div class="poster-layout" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 1.2em; height: 100%; padding: 0.8em; font-size: 0.7em;">
+<div class="poster-left" style="display: flex; flex-direction: column; gap: 0.8em;">
+<section id="the-barrier" class="poster-section" style="background: #f8faff; border-radius: 12px; padding: 0.6em 1em; border-left: 5px solid #1a1a66;">
+<h3>The Barrier</h3>
+<p>A <strong>Natural Proof</strong> (Razborov–Rudich ’94) is a property <span class="math inline">\(\mathcal{P}\)</span> of functions that is:</p>
+<ul>
+<li><strong>Largeness</strong>: <span class="math inline">\(|\mathcal{P} \cap H_n| / |H_n| \ge 1/2^{O(n)}\)</span></li>
+<li><strong>Constructivity</strong>: <span class="math inline">\(\mathcal{P}(f)\)</span> is efficiently decidable</li>
+<li><strong>Usefulness</strong>: <span class="math inline">\(f \in \mathcal{P} \implies f \notin \text{CircuitClass}\)</span></li>
+</ul>
+<p><strong>Theorem [RR’94]</strong>: A natural proof against <span class="math inline">\(\mathcal{C}\)</span> implies <span class="math inline">\(\mathcal{C}\)</span> lacks strong PRFGs.</p>
+</section>
+<section id="this-work-natural-proofs-for-data-structures" class="poster-section" style="background: #f8faff; border-radius: 12px; padding: 0.6em 1em; border-left: 5px solid #4bb8d6;">
+<h3>This Work: Natural Proofs for Data Structures</h3>
+<p>We port the Natural Proofs framework from circuit complexity to the <strong>cell probe model</strong>. We show that <strong>almost all</strong> major lower bound techniques are natural:</p>
+<p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+
+<thead>
+<tr class="header">
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Techniques Shown Natural</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Static</strong></td>
+<td style="text-align: left;">Cell Sampling, Richness, Round Elimination, Lifting, CNF Refutation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Dynamic</strong></td>
+<td style="text-align: left;">Chronogram, Information Transfer, Chronogram + Cell Sampling, Chronogram + Weak Simulation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consequence</strong>: All natural techniques (encompassing all known methods except one) cannot improve beyond the current state of the art.</p>
+</section>
+<section id="current-state-of-the-art" class="poster-section" style="background: #f8faff; border-radius: 12px; padding: 0.6em 1em; border-left: 5px solid #e53e3e;">
+<h3>Current State of the Art</h3>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+
+<thead>
+<tr class="header">
+
+<th style="text-align: left;">Lower Bound</th>
+<th style="text-align: left;">Upper Bound</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Static</strong></td>
+<td style="text-align: left;"><span class="math inline">\(t = \tilde{\Omega}(\log \log M)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t = O((\log M)^c)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Dynamic</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\max(t_q, t_u) = \tilde{\Omega}(\log^2 n)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(t = O(\text{polylog}(n))\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The gap is exponential</strong> — our framework explains why closing it requires non-natural techniques.</p>
+</section>
+</div>
+<div class="poster-right" style="display: flex; flex-direction: column; gap: 0.8em;">
+<section id="prf-candidates" class="poster-section" style="background: #f8faff; border-radius: 12px; padding: 0.6em 1em; border-left: 5px solid #38a169;">
+<h3>PRF Candidates</h3>
+<p><strong>Local PRFs</strong> (Static): Goldreich-style PRFs where each output bit depends on <span class="math inline">\(d\)</span> seed bits via an expanding bipartite graph. Fool cell-sampling distinguishers.</p>
+<p><strong>LLU PRFs</strong> (Dynamic): Based on low-degree polynomials over finite fields. Resist algebraic attacks from chronogram + weak simulation techniques.</p>
+<blockquote>
+<p><strong>Conjecture</strong>: Both families are <span class="math inline">\((s,\epsilon)\)</span>-secure for parameters just above state-of-the-art lower bounds.</p>
+</blockquote>
+</section>
+<section id="how-to-break-the-barrier" class="poster-section" style="background: #f8faff; border-radius: 12px; padding: 0.6em 1em; border-left: 5px solid #805ad5;">
+<h3>How to Break the Barrier</h3>
+<ul>
+<li><strong>Option 1</strong>: Develop <strong>non-natural</strong> techniques (e.g., lifting, KRW)</li>
+<li><strong>Option 2</strong>: Attack our PRF candidates directly
+<ul>
+<li>The KPI ’25 lower bound itself emerged from attacking local PRGs!</li>
+</ul></li>
+</ul>
+<div style="margin-top: 0.5em; padding: 0.5em; background: #fffbeb; border-radius: 8px; text-align: center;">
+<p><strong>STOC 2026</strong> · Presented on Gather Town</p>
+</div>
+</section>
+</div>
+</div>
+
+</section>
+    </div>
+  
+</div></div>
+<hr>
+<p><a href="../index.html">Full site</a></p>
