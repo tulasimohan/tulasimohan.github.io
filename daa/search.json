@@ -12,5 +12,1993 @@
     "title": "Design and Analysis of Algorithms",
     "section": "Credits",
     "text": "Credits\nSlide icons by Adioma."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#design-and-analysis-of-algorithms",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#design-and-analysis-of-algorithms",
+    "title": "Tulasimohan Molli",
+    "section": "Design and Analysis of Algorithms",
+    "text": "Design and Analysis of Algorithms\n\nAlgorithm: A well-defined procedure that transfers an input to an output.\n\nNot a program: An algorithm can be implemented in several ways.\n\nDesign: We will study methods/ideas/tricks for developing (fast!) algorithms.\nAnalysis: Abstract/mathematical comparison of algorithms (without actually implementing them).\n\nMath is needed in three ways:\n\nFor the formal definition of the problem.\nFor the analysis of correctness of algorithms.\nFor the analysis of efficiency (time, memory, …)."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#algorithms-are-fundamental",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#algorithms-are-fundamental",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithms are fundamental",
+    "text": "Algorithms are fundamental"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#algorithms-are-useful",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#algorithms-are-useful",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithms are useful",
+    "text": "Algorithms are useful\n\nFoundational Knowledge: Algorithms are the backbone of Computer Science.\nEnhances problem solving skills: We learn how to break down complex problems into simpler ones and design efficient solution.\nAdaptability across domains: Algorithmic thinking is applicable beyond coding in the fields like biology (understanding gene), finance (risk modeling), and logistics (route optimization). This adaptability makes it a versatile skill.\nCareer Advancements: Algorithms are indispensable components in technical interviews. Excelling in algorithms can help secure roles in software development, data science, and other technical careers."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#warm-up-problem---integer-multiplication",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#warm-up-problem---integer-multiplication",
+    "title": "Tulasimohan Molli",
+    "section": "Warm-up Problem - Integer multiplication",
+    "text": "Warm-up Problem - Integer multiplication"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#integer-multiplication",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#integer-multiplication",
+    "title": "Tulasimohan Molli",
+    "section": "Integer Multiplication",
+    "text": "Integer Multiplication\n\n\nAbout n^2 one-digit operations.\n\nAt most n^2 multiplications.\nAt most n^2 additions.\nAdd n different 2n digit numbers."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#complexity-of-multiplying-two-n-digit-numbers",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#complexity-of-multiplying-two-n-digit-numbers",
+    "title": "Tulasimohan Molli",
+    "section": "Complexity of multiplying two n digit numbers",
+    "text": "Complexity of multiplying two n digit numbers"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#can-we-improve-the-complexity-using-algorithmic-toolkit",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#can-we-improve-the-complexity-using-algorithmic-toolkit",
+    "title": "Tulasimohan Molli",
+    "section": "Can we improve the complexity using Algorithmic toolkit?",
+    "text": "Can we improve the complexity using Algorithmic toolkit?"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer",
+    "title": "Tulasimohan Molli",
+    "section": "Divide and conquer",
+    "text": "Divide and conquer\nBreak the problem into smaller (simpler) subproblems."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer-for-multiplication",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer-for-multiplication",
+    "title": "Tulasimohan Molli",
+    "section": "Divide and conquer for multiplication",
+    "text": "Divide and conquer for multiplication\nBreak up an integer: 1234 = 12 \\times 100 + 34."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#more-generally..",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#more-generally..",
+    "title": "Tulasimohan Molli",
+    "section": "More generally..",
+    "text": "More generally..\n\n\n\n\nBreak up an n digit integer\n\n\n[x_1x_2\\cdots x_n]  = [x_1x_2\\cdots x_{n/2}]\\times 10^{n/2} + [x_{n/2+1}x_{n/2+2}\\cdots x_n]"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer-algorithm",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#divide-and-conquer-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Divide and conquer algorithm",
+    "text": "Divide and conquer algorithm\n\n\nHow long does this take?"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#an-example",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#an-example",
+    "title": "Tulasimohan Molli",
+    "section": "An Example",
+    "text": "An Example\n\n\nClaim: There are n^2 one-digit problems.\nEvery pair of digits still gets multiplied together separately.\nThe running time is still at least n^2."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#another-way-of-looking-this-example",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#another-way-of-looking-this-example",
+    "title": "Tulasimohan Molli",
+    "section": "Another way of looking this example",
+    "text": "Another way of looking this example\n\n\n\n\n\nIf we cut n in half \\log_2{n} times, we get down to 1.\nSo, we do this \\log_2{n} times and get 4^{\\log_2{n}} = n^2 problems of size 1."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#yet-another-way-to-see-this",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#yet-another-way-to-see-this",
+    "title": "Tulasimohan Molli",
+    "section": "Yet another way to see this",
+    "text": "Yet another way to see this\n\nLet T(n) be the time to multiply two n-digit numbers.\nRecurrence: T(n) = 4T(n/2) + \\text{(time for adding things up)}\n\nLet us solve the recurrence:"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#can-we-improve-the-time-complexity-from-n2",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#can-we-improve-the-time-complexity-from-n2",
+    "title": "Tulasimohan Molli",
+    "section": "Can we improve the time complexity from n^2?",
+    "text": "Can we improve the time complexity from n^2?\n\nKaratsuba figured out the following:\nIf we only recurse three times instead of four!"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#karatsuba-algorithm-for-integer-multiplication",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#karatsuba-algorithm-for-integer-multiplication",
+    "title": "Tulasimohan Molli",
+    "section": "Karatsuba algorithm for integer multiplication",
+    "text": "Karatsuba algorithm for integer multiplication"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#another-way-of-looking-this-example-1",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#another-way-of-looking-this-example-1",
+    "title": "Tulasimohan Molli",
+    "section": "Another way of looking this example",
+    "text": "Another way of looking this example\n\n\n\n\n\nIf we cut n in half \\log_2{n} times, we get down to 1.\nSo, we do this \\log_2{n} times and get 3^{\\log_2{n}} = n^{1.6} problems of size 1."
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#this-is-much-better",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#this-is-much-better",
+    "title": "Tulasimohan Molli",
+    "section": "This is much better",
+    "text": "This is much better"
+  },
+  {
+    "objectID": "lectures/lec-01-introduction-to-algorithms.html#thank-you-slide",
+    "href": "lectures/lec-01-introduction-to-algorithms.html#thank-you-slide",
+    "title": "Tulasimohan Molli",
+    "section": "Discussion Time!",
+    "text": "Discussion Time!\n\n\nThank You!\n\n\nLet’s discuss questions, clarifications, or any topics from today’s lecture."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#takeaway-from-last-class",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#takeaway-from-last-class",
+    "title": "Tulasimohan Molli",
+    "section": "Takeaway from last class…",
+    "text": "Takeaway from last class…\n\nAlgorithms are powerful!\nAlgorithm designer’s question: Can we do better?\ninterplay between rigor and intuition."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#introduction",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#introduction",
+    "title": "Tulasimohan Molli",
+    "section": "Introduction",
+    "text": "Introduction\n\n\n\n\nSorting\n\n\nRe-arranging similar elements in a preferred order:\n\n\n\n\nEither - increasing order or - decreasing order or - Lexicographic order"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-description",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-description",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Description",
+    "text": "Bubble Sort-Description\nSimplest sorting technique to arrange elements in the ascending order:\n\n\n\nStart at the beginning: Compare the first two elements.\nCompare and Swap: If the first element is greater than the second, swap them or leave them as they are.\nMove to the next pair: Move to the next pair of elements and repeat the compare and swap operations.\nContinue to the end of the list: Repeat the above step until you reach the end of the list.\nRepeat: Go back to the beginning of the list and do the above four steps following the sequence.\nStop: Terminate when there is not a single swap operation in the current pass."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-2",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-2",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Pass-2",
+    "text": "Bubble Sort-Pass-2"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-3",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-3",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Pass-3",
+    "text": "Bubble Sort-Pass-3"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-4",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-4",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Pass-4",
+    "text": "Bubble Sort-Pass-4"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-5",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-pass-5",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Pass-5",
+    "text": "Bubble Sort-Pass-5"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-algorithm-implementation",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-algorithm-implementation",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Algorithm-Implementation",
+    "text": "Bubble Sort-Algorithm-Implementation"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-example",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-example",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Example",
+    "text": "Bubble Sort-Example\n\n\nExample: 7, 4, 8, 2, 5, 3, 9\n\n\nPass-1: 4, 7, 2, 5, 3, 8, 9.\nPass-2: 4, 2, 5, 3, 7, 8, 9.\nPass-3: 2, 4, 3, 5, 7, 8, 9.\nPass-4: 2, 3, 4, 5, 7, 8, 9.\nPass-5: 2, 3, 4, 5, 7, 8, 9."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-time-complexity",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#bubble-sort-time-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Bubble Sort-Time complexity",
+    "text": "Bubble Sort-Time complexity\n\nOuter loop iterates n times.\nAt i^{th} iteration of the outer loop, inner loop iterates at most n-i times.\nOverall time complexity in the worst case is 1+2+3+...+(n-1) = O(n^2)."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-description",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-description",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion Sort-Description",
+    "text": "Insertion Sort-Description\n\nStart with the first element: Consider the first element as a sorted sublist.\nSelect the next element: Take the next element in the list.\nFind the correct position: Compare this element with the elements in the sorted sublist from right to left.\nShift elements: Shift all elements in the sorted sublist that are greater than the current element one position to the right.\nInsert the element: Insert the current element into its correct position in the sorted sublist.\nRepeat: Repeat steps 2 to 5 for each of the remaining elements in the list."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort\nExample: 4 3 2 10 12 1 5 6"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-1",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-1",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort\nExample: 4 3 2 10 12 1 5 6"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-algorithm-implementation",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-algorithm-implementation",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion Sort-Algorithm-Implementation",
+    "text": "Insertion Sort-Algorithm-Implementation"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-time-complexity",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#insertion-sort-time-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion sort-time complexity",
+    "text": "Insertion sort-time complexity\n\nn iterations in the outer loop.\naround n iterations in the inner loop.\n\nOverall time complexity is around n^2."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#can-we-do-better",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#can-we-do-better",
+    "title": "Tulasimohan Molli",
+    "section": "Can we do better?",
+    "text": "Can we do better?\n\nMergeSort: A divide-and-conquer approach.\nRecall the following picture from the last time:"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#mergesort",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#mergesort",
+    "title": "Tulasimohan Molli",
+    "section": "Mergesort",
+    "text": "Mergesort"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#mergesort-1",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#mergesort-1",
+    "title": "Tulasimohan Molli",
+    "section": "Mergesort",
+    "text": "Mergesort\n\n\n\n\nMERGE SORT ( A, p, r)\n\nif p&lt;r then\n\nq=\\lfloor(p+r)/2\\rfloor\nMERGE SORT ( A, p, q)\nMERGE SORT ( A, q + 1, r)\ncreate subarrays S_1 and S_2\nMerge (S_1,S_2,A)\n\n\nTime complexity of MergeSort is around n\\log{n}.\nWe will come back to the analysis and correctness proof little later!"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#nlogn-vs-n2",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#nlogn-vs-n2",
+    "title": "Tulasimohan Molli",
+    "section": "n\\log{n} vs n^2",
+    "text": "n\\log{n} vs n^2"
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#introduction---asymptotic-analysis",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#introduction---asymptotic-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Introduction - Asymptotic analysis",
+    "text": "Introduction - Asymptotic analysis\n\nThe order of growth of the running time of an algorithm gives a simple characterization of the algorithm’s efficiency.\nAsymptotic efficiency: We are concerned with how the running time of an algorithm increases with the size of the input in the limit, as the size of the input inreases without bound.\nAn algorithm is asymptotically more efficient will be the best choice for all but very small inputs.\nAsymptotic running time of an algorithm are defined in terms of functions whose domains are the set of natural numbers N=\\{0, 1, 2, \\ldots\\}. Such notations are convenient for describing the worst-case running-time funcion T(n), which is usually defined only on integer input sizes."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-oh",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-oh",
+    "title": "Tulasimohan Molli",
+    "section": "Big Oh",
+    "text": "Big Oh\n\n\n\n\nO-notation\n\n\nFor a given function g(n), we denote by O(g(n)) the set of functions\nO(g(n)) = \\{f(n) : \\text{there exists positive constants } c \\text{ and } n_0 \\text{ such that } 0\\leq f(n)\\leq cg(n) \\text{ for all } n\\geq n_0\\}.\n\n\n\n\n\nWe use O-notation when we have only an asymptotic upper bound."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-oh-examples",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-oh-examples",
+    "title": "Tulasimohan Molli",
+    "section": "Big Oh Examples",
+    "text": "Big Oh Examples\n\n3n^2-100n+10 = O(n^2) because 3n^2 &gt; 3n^2-100n+10.\n3n^2-100n+10 = O(n^3) because 0.01n^3 &gt; 3n^2-100n+10.\n3n^2-100n+10\\neq O(n) because c\\cdot n &lt; 3n^2 when n&gt;c."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-omega",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-omega",
+    "title": "Tulasimohan Molli",
+    "section": "Big Omega",
+    "text": "Big Omega\n\n\n\n\n\\Omega-notation\n\n\nFor a given function g(n), we denote by \\Omega(g(n)) the set of functions\n\\Omega(g(n)) = \\{f(n) : \\text{there exists positive constants } c \\text{ and } n_0 \\text{ such that } 0\\leq cg(n)\\leq f(n) \\text{ for all } n\\geq n_0\\}.\n\n\n\n\n\nWe use \\Omega-notation when we have only an asymptotic lower bound."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-omega-examples",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-omega-examples",
+    "title": "Tulasimohan Molli",
+    "section": "Big Omega Examples",
+    "text": "Big Omega Examples\n\n3n^2-100n+10 = \\Omega(n^2) because 2.99n^2 &lt; 3n^2-100n+10.\n3n^2-100n+10\\neq\\Omega(n^3) because 3n^2-100n+10 &lt; n^3.\n3n^2-100n+10 = \\Omega(n) because 10^{10^{10}}n &lt; 3n^2-100n+10."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-theta",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-theta",
+    "title": "Tulasimohan Molli",
+    "section": "Big Theta",
+    "text": "Big Theta\n\n\n\n\n\\Theta-notation\n\n\nFor a given function g(n), we denote by \\Theta(g(n)) the set of functions\n\\Theta(g(n)) = \\{f(n) : \\text{there exists positive constants } c_1, c_2, \\text{ and } n_0 \\text{ such that } 0\\leq c_1g(n)\\leq f(n)\\leq c_2g(n) \\text{ for all } n\\geq n_0\\}.\n\n\n\n\n\nThe \\Theta-notation asymptotically bounds a function from above and below."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-theta-example",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#big-theta-example",
+    "title": "Tulasimohan Molli",
+    "section": "Big Theta Example",
+    "text": "Big Theta Example\n\n3n^2-100n+10 = \\Theta(n^2) because of O and \\Omega.\n3n^2-100n+10\\neq\\Theta(n^3) because of O only.\n3n^2-100n+10\\neq\\Theta(n) because of \\Omega only."
+  },
+  {
+    "objectID": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#thank-you-slide",
+    "href": "lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html#thank-you-slide",
+    "title": "Tulasimohan Molli",
+    "section": "Discussion Time!",
+    "text": "Discussion Time!\n\n\nThank You!\n\n\nLet’s discuss questions, clarifications, or any topics from today’s lecture."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#small-oh-little-o",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#small-oh-little-o",
+    "title": "Tulasimohan Molli",
+    "section": "Small Oh (Little-o)",
+    "text": "Small Oh (Little-o)\n\no-notation For a given Function g(n), we denote by o(g(n)) the set of functions o(g(n)) = \\{f(n)|\\mbox{for any positive constant } c, \\mbox{ there exists a constant } n_0\n\\mbox{ such that } 0\\leq f(n) &lt; cg(n) \\mbox{ for all } n\\geq n_0\\}.\n\n\nThis indicates a loose bound: f(n) = o(g(n)) means f(n) grows strictly slower than g(n).\nExample: 2n=o(n^2) but 2n^2\\neq o(n^2)."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#small-omega-little-omega",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#small-omega-little-omega",
+    "title": "Tulasimohan Molli",
+    "section": "Small Omega (Little-\\omega)",
+    "text": "Small Omega (Little-\\omega)\n\n\\omega-notation For a given function g(n), we denote by \\omega(g(n)) the set of functions \\omega(g(n)) = \\{f(n)| \\mbox{ for any positive constant } c, \\mbox{ there exists a constant } n_0 \\mbox{ such that } 0\\leq cg(n) &lt; f(n) \\mbox{ for all } n\\geq n_0\\}.\n\n\nThis indicates a loose bound: f(n)=\\omega(g(n)) means f(n) grows strictly faster than g(n).\nExample: \\frac{n^2}{2} = \\omega(n) but \\frac{n^2}{2}\\neq\\omega(n^2)."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#time-complexity-of-an-algorithm",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#time-complexity-of-an-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Time Complexity of an Algorithm",
+    "text": "Time Complexity of an Algorithm\n\nWorst-Case Complexity: The worst case complexity of an algorithm is the function defined by the maximum number of steps taken on any instance of size n.\nBest-Case Complexity: The best case complexity of an algorithm is the function defined by the minimum number of steps taken on any instance of size n.\nAverage-Case Complexity: The average case complexity of an algorithm is the function defined by an average number of steps taken on any instance of size n."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#recurrence-for-divide-and-conquer",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#recurrence-for-divide-and-conquer",
+    "title": "Tulasimohan Molli",
+    "section": "Recurrence for Divide and Conquer",
+    "text": "Recurrence for Divide and Conquer\nA recurrence for the running time of a divide-and-conquer algorithm falls out from the three steps of the basic paradigm. Suppose \\mathbf{T(n)} be the running time on a problem of size n.\n\nSuppose that our division of the problem yields \\mathbf{a} subproblems, each of which is \\mathbf{1/b} the size of the original.\n\nIt takes time \\mathbf{T(n/b)} to solve one subproblem of size \\mathbf{n/b}, and so it takes time \\mathbf{aT(n/b)} to solve \\mathbf{a} of them.\n\nIf we take \\mathbf{D(n)} time to divide the problem into subproblems, and \\mathbf{C(n)} time to combine the solutions to the subproblems into the solution to the original problem, we get the recurrence: T(n) = \\begin{cases}\n            \\Theta(1) & \\mbox{ if } n\\leq c \\\\\n            aT(n/b) + D(n) + C(n) & \\mbox{ otherwise }\n    \\end{cases}"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-1",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-1",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis of merge sort",
+    "text": "Analysis of merge sort\n\n\n0.5  \n\n0.5"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-2",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-2",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis of merge sort",
+    "text": "Analysis of merge sort\nWe reason as follows to set up the recurrence for T(n):\n\nDivide: The divide step just computes the middle of the subarray, which takes constant time. Thus, D(n)=\\Theta(1).\nConquer: We recursively solve two subproblems, each of size n/2, which contributes 2T(n/2) to the running time.\nCombine: MERGE procedure on an n-element subarray takes time \\Theta(n), and so C(n)=\\Theta(n).\n\nThus, we get the following recurrence relation of merge sort: T(n) = \\begin{cases}\n        \\Theta(1) & \\mbox{ if } n=1, \\\\\n        2T(n/2) + \\Theta(n) & \\mbox{ if } n&gt;1,\n    \\end{cases}"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-3",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-3",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis of merge sort",
+    "text": "Analysis of merge sort\nWe can rewrite the recurrence as follows: T(n) = \\begin{cases}\n        c & \\mbox{ if } n=1, \\\\\n        2T(n/2) + cn & \\mbox{ if } n&gt;1,\n    \\end{cases} where the constant c represents the time required to solve problems of size 1 as well as the time per array element of the divide and combine step.\nWe can solve this recurrence using a recursion tree."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-4",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-4",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis of merge sort",
+    "text": "Analysis of merge sort\n\n\n\n\nimage\n\n\n\n\nThe total number of levels of the recursion tree is \\log_2{n}+1, where n is the number of leaves, corresponding to the input size."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-5",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#analysis-of-merge-sort-5",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis of merge sort",
+    "text": "Analysis of merge sort\n\nThe number of levels of the recursion tree is \\log_2{n}+1 where n is the number of leaves.\n\n\nWe can prove this by using induction on the number of leaf nodes.\nBase Case: When n=1, the number of levels is \\log_2{1}+1 = 1 which is true.\nInductive Hypothesis: Assume that the number of levels of a recursion tree with 2^n leaves is \\log_2(2^n)+1 = n+1.\nInductive Step: Because we are assuming that the input size is a power of 2, the next input size to consider is 2^{n+1}. A tree with l=2^{n+1} leaves has one more level than a tree with 2^n leaves, and so the total number of levels is (n+1)+1 = \\log_2{2^{n+1}}+1.\n\nFollowing the above result, T(n) = cn\\log_2{n}+cn. Ignoring the low order term and the constant c gives us T(n) = \\Theta(n\\log{n})."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#insertion-sort",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#insertion-sort",
+    "title": "Tulasimohan Molli",
+    "section": "Insertion Sort",
+    "text": "Insertion Sort"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-insertion-sort",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-insertion-sort",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness of Insertion Sort",
+    "text": "Correctness of Insertion Sort\n\nimage"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-insertion-sort-1",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-insertion-sort-1",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness of Insertion Sort",
+    "text": "Correctness of Insertion Sort\nProof Sketch:\n\nMaintain a loop invariant.\n\nAt the start of the i^{th} iteration, the first i elements of the array are sorted.\n\nInitialization: The loop invariant holds before the first iteration.\n\nAt the start of the first iteration, the first element of the array is sorted.\n\nMaintenance: If it is true before i^{th} iteration, it will be true before (i+1)^{th} iteration.\n\nby construction, the objective of i^{th} iteration is to put the i^{th} element at the right position of the sorted array.\n\nTermination: It is useful to know that the loop invariant is true at the end of the last iteration.\n\nAt the start of the n^{th} iteration, n^{th} element is placed at the right position. So , all n elements are sorted."
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#merge-sort",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#merge-sort",
+    "title": "Tulasimohan Molli",
+    "section": "Merge Sort",
+    "text": "Merge Sort"
+  },
+  {
+    "objectID": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-merge-sort",
+    "href": "lectures/lec-03-asymptotic-notation-and-merge-sort.html#correctness-of-merge-sort",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness of Merge Sort",
+    "text": "Correctness of Merge Sort\n\nLoop Invariant:  (in class)\nInitialization:  (in class)\nMaintenance: (in class)\nTermination: (in class)"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recurrences",
+    "href": "lectures/lec-04-solving-recurrences.html#recurrences",
+    "title": "Tulasimohan Molli",
+    "section": "Recurrences",
+    "text": "Recurrences\n\nWe will be learning two techniques for solving recurrences of the form T(n) = aT(n/b)+f(n).\n\nSubstitution method\nRecursion Tree method"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#substitution-method",
+    "href": "lectures/lec-04-solving-recurrences.html#substitution-method",
+    "title": "Tulasimohan Molli",
+    "section": "Substitution method",
+    "text": "Substitution method"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#substitution-method-1",
+    "href": "lectures/lec-04-solving-recurrences.html#substitution-method-1",
+    "title": "Tulasimohan Molli",
+    "section": "Substitution method",
+    "text": "Substitution method\nIn the substitution method, we\n\nGuess the solution\nUse mathematical induction to find the constants and show that the solution works."
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#example-1",
+    "href": "lectures/lec-04-solving-recurrences.html#example-1",
+    "title": "Tulasimohan Molli",
+    "section": "Example-1",
+    "text": "Example-1\nRecurrence: T(1)=1 and T(n) = 2T(\\lfloor\\frac{n}{2}\\rfloor)+n for n&gt;1.\n\nWe guess that T(n) = O(n\\log{n}).\nNow we need to prove that T(n)\\leq cn\\log{n} for some constant c."
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#proof-by-induction",
+    "href": "lectures/lec-04-solving-recurrences.html#proof-by-induction",
+    "title": "Tulasimohan Molli",
+    "section": "Proof by induction",
+    "text": "Proof by induction\n\n(in class)"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#points-to-remember",
+    "href": "lectures/lec-04-solving-recurrences.html#points-to-remember",
+    "title": "Tulasimohan Molli",
+    "section": "Points to remember",
+    "text": "Points to remember\n\nWarning-1: It is easier to prove a weaker bound than the one you are supposed to prove. For instance, if the runtime is O(n), you might still be able to substitute cn^2 into the recurrence and prove that the bound is O(n^2). Although it is technically correct, don’t let it mislead you into thinking it’s the best bound!\nWarning-2: You must prove the exact form of the induction hypothesis. For example, in the recurrence T(n) = 2T(\\lfloor\\frac{n}{2}\\rfloor)+n, we could falsely prove T(n) = O(n) by guessing T(n)\\leq cn and then arguing T(n)\\leq 2(c\\lfloor\\frac{n}{2}\\rfloor)+n\\leq cn+n = O(n). Here we need to prove T(n)\\leq cn, not T(n)\\leq (c+1)n."
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recursion-tree-method",
+    "href": "lectures/lec-04-solving-recurrences.html#recursion-tree-method",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree method",
+    "text": "Recursion Tree method"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recursion-tree-for-solving-recurrences",
+    "href": "lectures/lec-04-solving-recurrences.html#recursion-tree-for-solving-recurrences",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree for solving recurrences:",
+    "text": "Recursion Tree for solving recurrences:\n\nA recursion tree is a tree where each node represents the cost of certain recursive subproblem. Then we sum up the numbers in each node to get the cost.\nWe will use a recursion tree for to generate possible guesses for the runtime, and then use the substitution method to prove them."
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recursion-tree",
+    "href": "lectures/lec-04-solving-recurrences.html#recursion-tree",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree",
+    "text": "Recursion Tree\nConsider the following recurrence:\n\n\nT(n)=3T(\\lfloor\\frac{n}{4}\\rfloor)+\\Theta(n^2)\n\nLet us drop the floors and write the recurrence:\n\nT(n)=3T(\\frac{n}{4})+cn^2"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recursion-tree-1",
+    "href": "lectures/lec-04-solving-recurrences.html#recursion-tree-1",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree",
+    "text": "Recursion Tree\n\nimage"
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#recursion-tree-2",
+    "href": "lectures/lec-04-solving-recurrences.html#recursion-tree-2",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree",
+    "text": "Recursion Tree\n\nSuppose the number of levels in this tree is l.\n\\frac{n}{4^l} = 1. This implies l = \\log_4{n}.\nNumber of leaf nodes: 3^{\\log_4{n}} = n^{\\log_4{3}}.\n\n\\begin{aligned}\n    T(n)    &= cn^2+\\frac{3}{16}cn^2+(\\frac{3}{16})^2cn^2+\\cdots+(\\frac{3}{16})^{\\log_4{n}-1}cn^2 + \\Theta(n^{\\log_4{3}}) \\\\\n        &= \\displaystyle\\sum_{i=0}^{\\log_4{n}-1}(\\frac{3}{16})^icn^2 + \\Theta(n^{\\log_4{3}}) \\\\\n    &\\leq \\displaystyle\\sum_{i=0}^{\\infty}(\\frac{3}{16})^icn^2 + \\Theta(n^{\\log_4{3}}) \\\\\n    &= (1-3/16)^{-1}cn^2 + \\Theta(n^{\\log_4{3}})\n\\end{aligned}\nSince the functions in \\Theta(n^{\\log_4{3}}) are also in O(n^2), This whole expression is O(n^2). Therefore we can guess that T(n) = O(n^2)."
+  },
+  {
+    "objectID": "lectures/lec-04-solving-recurrences.html#back-to-the-substitution-to-prove-the-bound",
+    "href": "lectures/lec-04-solving-recurrences.html#back-to-the-substitution-to-prove-the-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Back to the substitution to prove the bound",
+    "text": "Back to the substitution to prove the bound\nWe want to show that T(n)\\leq dn^2 for some constant d &gt; 0. $$\n\\begin{aligned}\n        T(n)    &\\leq 3T(\\lfloor\\frac{n}{4}\\rfloor) + cn^2 \\\\\n            &\\leq 3d\\lfloor\\frac{n}{4}\\rfloor^2 + cn^2 \\\\\n            &\\leq 3d(\\frac{n}{4})^2 + cn^2 \\\\\n            &= \\frac{3}{16}dn^2 + cn^2 \\\\\n            &\\leq dn^2 (\\text{ when } c\\leq \\frac{13}{16}d)\n    \n\\end{aligned}\n$$"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum subarray problem",
+    "text": "Maximum subarray problem"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-1",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-1",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum subarray problem",
+    "text": "Maximum subarray problem\nProblem Description: Suppose you are given the price of a stock on each day, and you have to decide when to buy and when to sell to maximize the profit. Note that you cannot sell before you buy.\nNaive strategy: Try all pairs of (buy, sell) dates, where the buy date must be before the sell date. This takes \\Theta(n^2) time.\n\nNaive strategy"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-2",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-2",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum subarray problem",
+    "text": "Maximum subarray problem\nDivide and conquer strategy: Instead of daily price, consider the daily change in price, which can be either positive or negative number. Let array A store these changes. Now we have to find the subarray of A that maximizes the sum of the numbers in that subarray.\nAlgorithm: - Divide the array into two. - Find the max subarray in the first half and second half separately. - Find the max subarray crossing the two halves. - Return the max of three."
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-3",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-3",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum subarray problem",
+    "text": "Maximum subarray problem\n\nMax subarray algorithm"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-4",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#maximum-subarray-problem-4",
+    "title": "Tulasimohan Molli",
+    "section": "Maximum subarray problem",
+    "text": "Maximum subarray problem\n\n\n\n\n\nMax crossing subarray\n\n\n\nSuppose T(n) be the time complexity of the algorithm FIND-MAXIMUM-SUBARRAY. Then we can write the recurrence as follows: [ T(n) = 2T(n/2) + (n) ]"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points",
+    "title": "Tulasimohan Molli",
+    "section": "Closest Pair of Points",
+    "text": "Closest Pair of Points"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-1",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-1",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points",
+    "text": "Closest pair of points\nGiven n points and arbitrary distances between them, find the closest pair. (E.g., think of distance as airfare - This is not Euclidean distance!)\n\nClosest pair exampleMust look at all pairwise distances, else any one you didn’t check might be the shortest.\nIs this true for Euclidean distance in 1-2 dimensions?"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-1-dimensional-version",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-1-dimensional-version",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: 1 dimensional version",
+    "text": "closest pair of points: 1 dimensional version\nGiven n points on the real line, find the closest pair.\n\n1D Closest Pair\nClosest pair is adjacent in the ordered list.\nTime O(n\\log{n}) to sort, if needed.\nPlus O(n) to scan adjacent pairs.\n\nKey point: do not need to calculate distances between all pairs: exploit geometry + ordering."
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2-dimensional-version",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2-dimensional-version",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: 2 dimensional version",
+    "text": "closest pair of points: 2 dimensional version\nClosest pair. Given n points in the plane, find a pair with smallest Euclidean distance between them.\n\nFundamental geometric primitive.\nApplications: Graphics, computer vision, GIS, molecular modeling etc.\n\nBrute force. Check all pairs of points p and q with \\Theta(n^2) comparisons."
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2d-euclidean-distance---1st-try",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2d-euclidean-distance---1st-try",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: 2D, Euclidean distance - 1^{st} try",
+    "text": "closest pair of points: 2D, Euclidean distance - 1^{st} try\nDivide: Sub-divide region into 4 quadrants.\n\n4-quadrant divide"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2d-euclidean-distance---1st-try-1",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#closest-pair-of-points-2d-euclidean-distance---1st-try-1",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: 2D, Euclidean distance - 1^{st} try",
+    "text": "closest pair of points: 2D, Euclidean distance - 1^{st} try\nDivide: Sub-divide region into 4 quadrants.\nObstacle: Difficult to ensure n/4 points in each quadrant. So, “balanced subdivision” may be problematic.\n\n4-quadrant obstacle"
+  },
+  {
+    "objectID": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#references",
+    "href": "lectures/lec-05-divide-and-conquer-maximum-subarray.html#references",
+    "title": "Tulasimohan Molli",
+    "section": "References:",
+    "text": "References:\n\nMichael T. Goodrich and Roberto Tamassia, “Algorithm Design Foundations, Analysis, and Internet Examples”, Wiley Student Edition.\nJon Kleinberg and Eva Tardos, “Algorithm Design”, Pearson Publishers.\nThomas H. Chorman, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein, “Introduction to algorithms”, MIT Press Publishers.\nSanjoy Dasgupta, Umesh Vazirani, Christos Papadimitriou, “Algorithms”, McGraw-Hill Education Publishers."
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points",
+    "title": "Tulasimohan Molli",
+    "section": "Closest Pair of Points",
+    "text": "Closest Pair of Points"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nDivide. Draw vertical line L with \\approx n/2 points on each side.\n\nDivide with vertical line"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-1",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-1",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nDivide. Draw vertical line L with \\approx n/2 points on each side.\nConquer. Find closest pair on each side, recursively.\n\nConquer recursively"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-2",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-2",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nDivide. Draw vertical line L with \\approx n/2 points on each side.\nConquer. Find closest pair on each side, recursively.\nCombine. Find closest pair with one point in each side.\nReturn best of 3 solutions.\n\nCombine step"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-3",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-3",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nFind closest pair with one point in each side, assuming distance &lt; \\delta = \\min\\{d_1, d_2\\}.\nReturn best of 3 solutions.\n\nFinding crossing pair"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-4",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-4",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nFind closest pair with one point in each side, assuming distance &lt; \\delta = \\min\\{d_1, d_2\\}.\nReturn best of 3 solutions.\nObservation: Suffices to consider points within \\delta of line L.\n\nPoints within \\delta of L"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-5",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-5",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nFind closest pair with one point in each side, assuming distance &lt; \\delta = \\min\\{d_1, d_2\\}.\nReturn best of 3 solutions.\nObservation: Suffices to consider points within \\delta of line L.\nAlmost the one dimensional problem: Sort points in 2\\delta-strip by their y coordinate.\nOnly check points within 8 in sorted list!\n\nChecking points in strip"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-6",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-6",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\nDef. Let p_i have the i^{th} smallest y-coordinate among points in the 2\\delta-width-strip.\nClaim. If |i-j| &gt; 8, then the distance between p_i and p_j is &gt; \\delta.\nProof. No two points lie in the same \\delta/2-by-\\delta/2 square!\n\n\\delta/2 box argument"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-7",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-algorithm-7",
+    "title": "Tulasimohan Molli",
+    "section": "Closest pair of points: Algorithm",
+    "text": "Closest pair of points: Algorithm\n\nFull algorithm"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-analysis",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Closest Pair Analysis",
+    "text": "Closest Pair Analysis"
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-analysis",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: Analysis",
+    "text": "closest pair of points: Analysis\nAnalysis-1: Let D(n) be the number of pairwise distance calculations in the Closest-Pair Algorithm when run on n \\geq 1 points.\n\nD(n) \\leq \\begin{cases}\n0, & n=1\\\\\n2D(n/2) + 7n, & n &gt; 1.\n\\end{cases}\n\n\\implies D(n) = O(n\\log{n}).\nThis is the number of distance computations."
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-analysis-1",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#closest-pair-of-points-analysis-1",
+    "title": "Tulasimohan Molli",
+    "section": "closest pair of points: Analysis",
+    "text": "closest pair of points: Analysis\nAnalysis-2: Let C(n) be the number of comparisons in the Closest-Pair Algorithm when run on n \\geq 1 points.\n\nC(n) \\leq \\begin{cases}\n0, & n=1\\\\\n2C(n/2) + O(n\\log{n}), & n &gt; 1.\n\\end{cases}\n\n\\implies C(n) = O(n\\log^2{n}).\nThis is the number of comparisons.\nCan we reduce the time complexity to O(n\\log{n})?\n\nSort all points based on x-coordinate initially (one time only) – O(n\\log{n})\nSort all points based on y-coordinate initially (one time only) – O(n\\log{n})\nCreate the y-sorted list of points in the \\delta-strip by merging two sorted lists – O(n)\n\nThus, total complexity can be reduced to O(n\\log{n})."
+  },
+  {
+    "objectID": "lectures/lec-06-closest-pair-of-points-in-2d.html#references",
+    "href": "lectures/lec-06-closest-pair-of-points-in-2d.html#references",
+    "title": "Tulasimohan Molli",
+    "section": "References:",
+    "text": "References:\n\nMichael T. Goodrich and Roberto Tamassia, “Algorithm Design Foundations, Analysis, and Internet Examples”, Wiley Student Edition.\nJon Kleinberg and Eva Tardos, “Algorithm Design”, Pearson Publishers.\nThomas H. Chorman, Charles E. Leiserson, Ronald L. Rivest and Clifford Stein, “Introduction to algorithms”, MIT Press Publishers.\nSanjoy Dasgupta, Umesh Vazirani, Christos Papadimitriou, “Algorithms”, McGraw-Hill Education Publishers."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#can-we-sort-faster",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#can-we-sort-faster",
+    "title": "Tulasimohan Molli",
+    "section": "Can we sort faster?",
+    "text": "Can we sort faster?\nLower bound: Can we sort faster than \\Omega(n \\log n) time?\n\n\nTask: Show that no algorithm can sort in less than \\Omega(n \\log n) time in the worst case.\n\n\n\n\nInsertion, Selection, and Bubble sort algorithms are comparison based sorting algorithms.\n\n\n\n\nModel of Computation: We restrict our analysis to the Comparison Model, where the only way to gain information about the input is by comparing pairs (e.g., a_i \\leq a_j).\n\n\n\n\n\nTheorem\n\n\nAny comparison-based sorting algorithm for sorting n elements must make at least \\Omega(n \\log n) comparisons in the worst case."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#comparison-based-model-decision-tree",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#comparison-based-model-decision-tree",
+    "title": "Tulasimohan Molli",
+    "section": "Comparison based model: Decision Tree",
+    "text": "Comparison based model: Decision Tree\n\n\n\n\n\nDecision Tree\n\n\n\n\nA decision tree is a mathematical representation of a sorting algorithm for a fixed value of n.\nEach node represents a comparison (e.g. a_1 : a_2).\nThe two branches represent the possible results (a_1 \\leq a_2 and a_1 &gt; a_2).\nThe leaves are the permutations of the n numbers, reached through a unique path."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#analysis",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis",
+    "text": "Analysis\n\nConsider any sorting algorithm \\mathcal{A}. Let T(n) be the maximum number of comparisons on any input of size n by \\mathcal{A}.\n\n\n\nThe worst-case running time of \\mathcal{A} is at least as large as T(n).\n\n\n\n\nThe height of the decision tree is T(n).\n\n\n\n\n\nObservation\n\n\nAny binary tree of height T(n) has at most 2^{T(n)} leaves."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#analysis-continued",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#analysis-continued",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis (Continued)",
+    "text": "Analysis (Continued)\n\nEach unique permutation of the n input elements ends up in a distinct leaf.\nThe number of possible permutations with n distinct numbers is n!.\nTherefore, the number of leaves 2^{T(n)} must be at least n!.\n\n\n2^{T(n)} \\geq n!\n \n\\implies T(n) \\geq \\log_2(n!)"
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#approximating-log_2n",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#approximating-log_2n",
+    "title": "Tulasimohan Molli",
+    "section": "Approximating \\log_2(n!)",
+    "text": "Approximating \\log_2(n!)\nUsing Stirling’s approximation: \nn! \\approx \\sqrt{2\\pi n}(\\frac{n}{e})^n\n \nT(n) \\geq \\log_2\\left(\\sqrt{2\\pi n}\\left(\\frac{n}{e}\\right)^n\\right)\n \n= \\log_2(\\sqrt{2\\pi n}) + n\\log_2 n - n\\log_2 e \\in \\Omega(n\\log_2 n)"
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#the-quicksort-algorithm",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#the-quicksort-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "The Quicksort Algorithm",
+    "text": "The Quicksort Algorithm\n\n\n\nProblem\n\n\n\nInput: A sequence of n numbers \\langle a_1, a_2, \\dots, a_n \\rangle.\nOutput: A permutation \\langle a'_1, a'_2, \\dots, a'_n \\rangle of the input sequence such that a'_1 \\leq a'_2 \\leq \\dots \\leq a'_n.\n\n\n\n\nQuicksort Algorithm:\n\nDivide: Choose some element p from a, called the pivot.\nPartition: Divide a into two subsequences l and r:\n\nl contains elements \\leq p.\nr contains elements &gt; p.\n\nConquer: Recursively call QUICKSORT on l and r."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#quicksort-algorithm",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#quicksort-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Quicksort Algorithm",
+    "text": "Quicksort Algorithm\n\nQuicksort Algorithm"
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#randomized-quicksort-1",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#randomized-quicksort-1",
+    "title": "Tulasimohan Molli",
+    "section": "Randomized Quicksort",
+    "text": "Randomized Quicksort\nInstead of always picking the first or last element as the pivot, we pick a random element from the array.\n\n\n\n\n\nRandomized Quicksort\n\n\n\nRandomized-Partition: - Randomization eliminates dependence on input order. - No single input can guarantee worst-case behavior."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#worst-case-analysis",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#worst-case-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Worst-case Analysis",
+    "text": "Worst-case Analysis\nLet T(n) be the worst-case time for QUICKSORT on an input of size n.\nWe have the recurrence: \nT(n) = \\max_{0 \\leq q \\leq n-1} (T(q) + T(n-q-1)) + \\Theta(n)\n\nQ: How bad can T(n) be?\n\nA: \\Omega(n^2)."
+  },
+  {
+    "objectID": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#worst-case-lower-bound",
+    "href": "lectures/lec-07-sorting-lower-bounds-and-quicksort.html#worst-case-lower-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Worst-case Lower Bound",
+    "text": "Worst-case Lower Bound\nLet’s assume the input is sorted in increasing order.\nChoosing the highly unbalanced split (q = 0): \nT(n) \\geq T(0) + T(n-1) + dn \\quad (\\text{for some constant } d &gt; 0)\n \n\\geq T(n-1) + dn \\quad (\\text{since } T(0) \\geq 0)\n\nUnrolling this recurrence: \nT(n) \\geq \\sum_{i=1}^n di = d \\frac{n(n+1)}{2} \\in \\Omega(n^2)\n\nThus, worst-case complexity of Quicksort is: \nT(n) = \\Omega(n^2)"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#quick-quiz-do-you-know-these",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#quick-quiz-do-you-know-these",
+    "title": "Tulasimohan Molli",
+    "section": "Quick Quiz: Do you know these?",
+    "text": "Quick Quiz: Do you know these?\nBefore we dive in, let’s test your memory of these key terms:\n\nRandom Experiment\nSample Space\nOutcome\nEvent\nRandom Variable\n\n\nLet’s review their formal definitions."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#sample-space-and-outcomes",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#sample-space-and-outcomes",
+    "title": "Tulasimohan Molli",
+    "section": "Sample Space and Outcomes",
+    "text": "Sample Space and Outcomes\n\nSample Space (\\Omega): The set of all possible results of a random experiment.\n\n\n\nCoin toss: \\Omega = \\{H, T\\}\nRoll of a die: \\Omega = \\{1, 2, 3, 4, 5, 6\\}\nOutcome (\\omega): A single result of the experiment (an element of the sample space, \\omega \\in \\Omega).\n\n\n\n\nEvent: A subset of the sample space.\nExample: “Rolling an even number” = \\{2, 4, 6\\}\n\n\n\n\n\n\nNote on Randomness\n\n\nRandomness is a property of the process or experiment, and not of the outcome itself."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#random-variables",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#random-variables",
+    "title": "Tulasimohan Molli",
+    "section": "Random Variables",
+    "text": "Random Variables\n\nA Random Variable (RV) is a function X: \\Omega \\to \\mathbb{R} that assigns a real number to each outcome.\nExamples:\n\nNumber of heads in 3 coin tosses: X \\in \\{0, 1, 2, 3\\}\nValue shown on a die roll: X \\in \\{1, 2, 3, 4, 5, 6\\}\nIn Quicksort: “number of comparisons between elements i and j”\n\nRandom variables can be discrete (countable values) or continuous."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expectation",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expectation",
+    "title": "Tulasimohan Molli",
+    "section": "Expectation",
+    "text": "Expectation\nThe expected value (or mean) of a discrete random variable X is: \nE[X] = \\sum_{x} x \\cdot \\Pr(X = x)\n\nExample: Expected value of a fair die roll: \nE[X] = 1 \\cdot \\frac{1}{6} + 2 \\cdot \\frac{1}{6} + 3 \\cdot \\frac{1}{6} + 4 \\cdot \\frac{1}{6} + 5 \\cdot \\frac{1}{6} + 6 \\cdot \\frac{1}{6} = 3.5"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#linearity-of-expectation",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#linearity-of-expectation",
+    "title": "Tulasimohan Molli",
+    "section": "Linearity of Expectation",
+    "text": "Linearity of Expectation\nFor any random variables X and Y: \nE[X + Y] = E[X] + E[Y]\n\nThis holds even if X and Y are dependent!\nExample: Expected sum of two dice rolls: - E[X_1 + X_2] = E[X_1] + E[X_2] = 3.5 + 3.5 = 7\nThis property is what makes analyzing randomized algorithms tractable."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#indicator-random-variables",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#indicator-random-variables",
+    "title": "Tulasimohan Molli",
+    "section": "Indicator Random Variables",
+    "text": "Indicator Random Variables\nAn Indicator Random Variable I_A for an event A is defined as: \nI_A =\n\\begin{cases}\n1 & \\text{if event } A \\text{ occurs} \\\\\n0 & \\text{otherwise}\n\\end{cases}\n\nThe expected value of an indicator variable is simply the probability of the event: \nE[I_A] = 1 \\cdot \\Pr(A) + 0 \\cdot \\Pr(\\text{not } A) = \\Pr(A)\n\nClassic Example: Expected number of heads in n coin flips:\n\nLet I_k be indicator that k^{th} flip is heads.\nE[I_k] = \\Pr(\\text{heads}) = 1/2.\nE[\\text{total heads}] = E[\\sum I_k] = \\sum E[I_k] = n \\cdot 1/2 = n/2.\n\nWe’ll use this to count the expected number of comparisons in Quicksort!"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#randomized-quicksort",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#randomized-quicksort",
+    "title": "Tulasimohan Molli",
+    "section": "Randomized Quicksort",
+    "text": "Randomized Quicksort\n\n\n\n\n\nRandomized Quicksort\n\n\n\n\n\n\nRandomized Partition\n\n\n\n\nThe pivot is chosen uniformly at random from the array.\nThis makes the algorithm’s performance independent of the input order."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#key-idea-of-analysis",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#key-idea-of-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Key Idea of Analysis",
+    "text": "Key Idea of Analysis\n\nFocus on the number of comparisons made during partitioning.\nEach pair of elements is compared at most once.\nLet’s use Indicator Random Variables.\n\nLet X_{ij} be the random variable: \nX_{ij} =\n\\begin{cases}\n1, & \\text{if elements } i \\text{ and } j \\text{ are compared} \\\\\n0, & \\text{otherwise}\n\\end{cases}\n\nTotal comparisons: X = \\sum_{i &lt; j} X_{ij}"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#probability-of-comparison",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#probability-of-comparison",
+    "title": "Tulasimohan Molli",
+    "section": "Probability of Comparison",
+    "text": "Probability of Comparison\nAssume the elements are sorted: z_1 &lt; z_2 &lt; \\cdots &lt; z_n.\nElements z_i and z_j (where i &lt; j) are compared only if:\n\nOne of them is chosen as the pivot first among \\{z_i, z_{i+1}, \\dots, z_j\\}.\nIf any element between them is chosen first, they are never compared!\n\nThe number of elements in this set is j - i + 1. Since each is equally likely: \n\\Pr(X_{ij} = 1) = \\frac{2}{j - i + 1}"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons",
+    "title": "Tulasimohan Molli",
+    "section": "Expected Number of Comparisons",
+    "text": "Expected Number of Comparisons\nBy Linearity of Expectation: \n\\mathbb{E}[X] = \\sum_{i &lt; j} \\mathbb{E}[X_{ij}] = \\sum_{i &lt; j} \\Pr(X_{ij} = 1)\n \n\\mathbb{E}[X] = \\sum_{i=1}^{n-1} \\sum_{j=i+1}^{n} \\frac{2}{j - i + 1}"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons-continued",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons-continued",
+    "title": "Tulasimohan Molli",
+    "section": "Expected Number of Comparisons (Continued)",
+    "text": "Expected Number of Comparisons (Continued)\nLet k = j - i: \n\\mathbb{E}[X] = \\sum_{i=1}^{n-1} \\sum_{k=1}^{n-i} \\frac{2}{k + 1}\n\nNow swap the order of summation: \n\\mathbb{E}[X] = \\sum_{k=1}^{n-1} \\sum_{i=1}^{n-k} \\frac{2}{k + 1}"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons-continued-1",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#expected-number-of-comparisons-continued-1",
+    "title": "Tulasimohan Molli",
+    "section": "Expected Number of Comparisons (Continued)",
+    "text": "Expected Number of Comparisons (Continued)\nSimplifying: \n\\mathbb{E}[X] = \\sum_{k=1}^{n-1} \\frac{2(n-k)}{k + 1}\n\nBounding: \n\\mathbb{E}[X] \\leq 2n \\sum_{k=1}^{n-1} \\frac{1}{k + 1}"
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#final-bound",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#final-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Final Bound",
+    "text": "Final Bound\nUsing the bound for the Harmonic series H_n = \\sum_{k=1}^n \\frac{1}{k} = O(\\log n): \n\\mathbb{E}[X] = O(n \\log n)\n\nExpected running time of Randomized Quicksort: \n\\boxed{O(n \\log n)}\n\nExercise: Show that \\mathbb{E}[X] = \\Theta(n \\log n)."
+  },
+  {
+    "objectID": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#conclusion",
+    "href": "lectures/lec-08-probability-primer-and-randomized-quicksort.html#conclusion",
+    "title": "Tulasimohan Molli",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nRandomization eliminates bad input cases.\nExpected performance is O(n \\log n), which is asymptotically optimal for comparison-based sorting.\nThe analysis uses indicator random variables and linearity of expectation — powerful tools for analyzing randomized algorithms.\nRandomized Quicksort is widely used in practice due to its simplicity, in-place nature, and excellent practical performance."
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#problem-definition",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#problem-definition",
+    "title": "Tulasimohan Molli",
+    "section": "Problem Definition",
+    "text": "Problem Definition\n\nGiven an unsorted array A of n distinct integers, find the k^{\\text{th}} smallest element.\nCan we do it faster than sorting (O(n \\log n))?\n\n\n\nThis problem was solved in 1972 by Blum, Floyd, Pratt, Rivest, and Tarjan.\nToday, we will study:\n\nA linear-time randomized algorithm.\nA linear-time deterministic algorithm."
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-approach",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-approach",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm Approach",
+    "text": "Algorithm Approach\n\nIn RANDOMIZED-QUICKSORT, after the partition step we can tell which subarray has the item we are looking for, just by looking at their sizes.\nSo, we only need to recursively examine one subarray, not two."
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#quickselect",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#quickselect",
+    "title": "Tulasimohan Molli",
+    "section": "QuickSelect",
+    "text": "QuickSelect\n\nQuickSelect Algorithm"
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-analysis",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm Analysis",
+    "text": "Algorithm Analysis\n\n\n\nTheorem\n\n\nThe expected number of comparisons for QuickSelect is O(n).\n\n\n\nProof:\n\nLet T(n, k) denote the expected time to find the k^{\\text{th}} smallest in an array of size n,\nand let T(n) = \\max_k T(n, k).\nWe will show that T(n) \\leq 4n.\nFirst, it takes n-1 comparisons to split the array into two parts. As with Quicksort, these parts might have size 0 and n-1, or 1 and n-2, and so on. Each of these is equally likely."
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#analysis-continued",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#analysis-continued",
+    "title": "Tulasimohan Molli",
+    "section": "Analysis (Continued)",
+    "text": "Analysis (Continued)\nSince we are giving an upper bound, we consider the worst case and imagine we always recurse on the larger part:\n\nT(n) \\leq (n-1) + \\frac{2}{n} \\sum_{i=n/2}^{n-1} T(i)\n\n\nAssuming T(i) \\leq 4i for i &lt; n:\n\n\\begin{align*}\nT(n) &\\leq (n-1) + \\frac{2}{n} \\sum_{i=n/2}^{n-1} 4i \\\\\n     &= (n-1) + \\frac{8}{n} \\cdot \\frac{3n^2 - 2n}{8} \\\\\n     &\\leq (n-1) + 3n \\\\\n     &&lt; 4n\n\\end{align*}\n\nThus T(n) = O(n). The expected running time of QuickSelect is linear!"
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#deterministic-select-1",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#deterministic-select-1",
+    "title": "Tulasimohan Molli",
+    "section": "Deterministic Select",
+    "text": "Deterministic Select\nProblem: Given an array A of n numbers, and an integer i, find the i^{\\text{th}} smallest element in A.\n\n\n\nDeterministic Partition.\nMedian of median trick.\n\n\n\n\n\nGroup of 5 Medians"
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-select",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#algorithm-select",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm: Select",
+    "text": "Algorithm: Select\n\nDeterministic Select Algorithm"
+  },
+  {
+    "objectID": "lectures/lec-09-selection-randomized-and-deterministic.html#recurrence-analysis",
+    "href": "lectures/lec-09-selection-randomized-and-deterministic.html#recurrence-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Recurrence Analysis",
+    "text": "Recurrence Analysis\n\nT(n) = T(n/5) + T(7n/10 + 6) + O(n)\n\n\nT(n/5): Time to find the median of the \\lceil n/5 \\rceil medians (recursive call).\nT(7n/10 + 6): Recursive call on the larger partition (at most 7n/10 + 6 elements).\nO(n): Partitioning and grouping overhead.\n\nSolving this recurrence gives T(n) = O(n)."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#fibonacci-numbers-a-recursive-approach",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#fibonacci-numbers-a-recursive-approach",
+    "title": "Tulasimohan Molli",
+    "section": "Fibonacci Numbers: A Recursive Approach",
+    "text": "Fibonacci Numbers: A Recursive Approach\nThe Fibonacci sequence is defined by the recurrence: \nF_n =\n\\begin{cases}\n    0 & \\text{if } n=0\\\\\n    1 & \\text{if } n=1\\\\\n    F_{n-1} + F_{n-2} & \\text{otherwise}\n\\end{cases}\n\nA direct recursive translation to compute the n^{\\text{th}} Fibonacci number:\nfunction rFib(n) {\n    if (n &lt;= 1) return n;\n    return rFib(n - 1) + rFib(n - 2);\n}"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#complexity-of-recursion",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#complexity-of-recursion",
+    "title": "Tulasimohan Molli",
+    "section": "Complexity of Recursion",
+    "text": "Complexity of Recursion\nLet T(n) be the number of operations to compute F_n: \nT(n) = T(n-1) + T(n-2) + 1\n \nT(0) = T(1) = 1\n\nThe solution to this recurrence is: \nT(n) = O(\\phi^n) \\quad \\text{where } \\phi = \\frac{\\sqrt{5}+1}{2} \\approx 1.618\n\n\nThe algorithm runs in exponential time!\nThere is a massive amount of redundant computation."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#recursion-tree",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#recursion-tree",
+    "title": "Tulasimohan Molli",
+    "section": "Recursion Tree",
+    "text": "Recursion Tree\n\n\n\n\n\nRecursion Tree for Fibonacci\n\n\n\n\nRedundant Computation: Subproblems like F_{n-2}, F_{n-3}, etc. are solved repeatedly.\nThe Solution: Can we memoize intermediate computation results to avoid recomputation?"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#fibonacci-numbers-an-iterative-approach",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#fibonacci-numbers-an-iterative-approach",
+    "title": "Tulasimohan Molli",
+    "section": "Fibonacci Numbers: An Iterative Approach",
+    "text": "Fibonacci Numbers: An Iterative Approach\nInstead of top-down recursion, we can compute solutions bottom-up and store them in an array:\nfunction iterativeFib(n) {\n    let F = new Array(n + 1);\n    F[0] = 0;\n    F[1] = 1;\n    for (let i = 2; i &lt;= n; i++) {\n        F[i] = F[i - 1] + F[i - 2];\n    }\n    return F[n];\n}\n\nTime Complexity: O(n) – linear time!\nSpace Complexity: O(n) (which can be optimized to O(1))."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#the-core-philosophy-properties-of-dynamic-programming",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#the-core-philosophy-properties-of-dynamic-programming",
+    "title": "Tulasimohan Molli",
+    "section": "The Core Philosophy & Properties of Dynamic Programming",
+    "text": "The Core Philosophy & Properties of Dynamic Programming\nThe Core Philosophy: Solve each subproblem exactly once and store the result to avoid redundant calculations—trading space for time.\nTwo Essential Properties\n\nOptimal Substructure: An optimal solution to the problem can be constructed efficiently from the optimal solutions of its subproblems.\nOverlapping Subproblems: The recursive search space contains the same subproblems repeatedly, rather than generating new independent subproblems at each step."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#text-similarity",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#text-similarity",
+    "title": "Tulasimohan Molli",
+    "section": "Text Similarity",
+    "text": "Text Similarity\n\nBiological applications often need to compare the DNA of two (or more) different organisms.\nEg: The DNA of an organism may be S_1 = \\text{ACCGGTCGAGTGCGCGGAAGCCGGCCGAA}, and the DNA of another organism may be S_2 = \\text{GTCGTTCGGAATGCCGTTGCTCTGTAAA}.\n\n\n\nComparing these two helps a biologist to determine how closely related both organisms are."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#subsequence",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#subsequence",
+    "title": "Tulasimohan Molli",
+    "section": "Subsequence",
+    "text": "Subsequence\nGiven a sequence X = \\langle x_1, x_2, \\ldots, x_m \\rangle, another sequence Z = \\langle z_1, z_2, \\ldots, z_k \\rangle is a subsequence of X if there exists a strictly increasing sequence \\langle i_1, i_2, \\ldots, i_k \\rangle of indices of X such that for all j = 1, 2, \\ldots, k, we have x_{i_j} = z_j.\n\nExample: Z = \\langle B, C, D, B \\rangle is a subsequence of X = \\langle A, B, C, B, D, A, B \\rangle with corresponding index sequence \\langle 2, 3, 5, 7 \\rangle."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#common-subsequence",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#common-subsequence",
+    "title": "Tulasimohan Molli",
+    "section": "Common Subsequence",
+    "text": "Common Subsequence\nGiven two sequences X and Y, we say that Z is a common subsequence of X and Y if Z is a subsequence of both X and Y.\n\nExample: Z = \\langle B, C, B, A \\rangle is a common subsequence of X = \\langle A, B, C, B, D, A, B \\rangle and Y = \\langle B, D, C, A, B, A \\rangle."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#longest-common-subsequence-problem",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#longest-common-subsequence-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Longest Common Subsequence Problem",
+    "text": "Longest Common Subsequence Problem\nGiven two sequences X = \\langle x_1, x_2, \\ldots, x_m \\rangle and Y = \\langle y_1, y_2, \\ldots, y_n \\rangle, the goal is to find a maximum length common subsequence of X and Y.\n\nBrute Force Method:\n\nEnumerate all subsequences of X.\nCheck each subsequence to see whether it is also a subsequence of Y.\nKeep track of the longest subsequence found.\nEach subsequence of X corresponds to a subset of indices \\{1, 2, \\ldots, m\\}.\nNumber of subsequences: 2^m.\nRunning time: exponential!"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-formulation-for-lcs",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-formulation-for-lcs",
+    "title": "Tulasimohan Molli",
+    "section": "DP Formulation for LCS",
+    "text": "DP Formulation for LCS\n\nThe DP formulation is based on pairs of prefixes.\nA prefix of X = \\langle x_1, \\ldots, x_n \\rangle is X_i = \\langle x_1, \\ldots, x_i \\rangle. X_0 is the empty sequence.\nLet \\text{lcs}(i, j) denote the length of the longest common subsequence of X_i and Y_j.\n\n\n\n\nOptimal Substructure\n\n\nLet Z = \\langle z_1, \\ldots, z_k \\rangle be any LCS of X and Y.\n\nIf x_m = y_n, then z_k = x_m = y_n and Z_{k-1} is an LCS of X_{m-1} and Y_{n-1}.\nIf x_m \\neq y_n, then Z is an LCS of X_{m-1} and Y (if z_k \\neq x_m) or of X and Y_{n-1} (if z_k \\neq y_n)."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#observations-case-1",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#observations-case-1",
+    "title": "Tulasimohan Molli",
+    "section": "Observations – Case 1",
+    "text": "Observations – Case 1\n\nIf x_i = y_j, then \\text{lcs}(i, j) = \\text{lcs}(i-1, j-1) + 1."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#observations-case-2",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#observations-case-2",
+    "title": "Tulasimohan Molli",
+    "section": "Observations – Case 2",
+    "text": "Observations – Case 2\n\nIf x_i \\neq y_j, then \\text{lcs}(i, j) = \\max(\\text{lcs}(i-1, j), \\text{lcs}(i, j-1))."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-recurrence",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-recurrence",
+    "title": "Tulasimohan Molli",
+    "section": "DP Recurrence",
+    "text": "DP Recurrence\n\n\\text{lcs}(i, j) =\n\\begin{cases}\n0 & \\text{if } i = 0 \\text{ or } j = 0 \\\\\n\\text{lcs}(i-1, j-1) + 1 & \\text{if } x_i = y_j \\\\\n\\max(\\text{lcs}(i-1, j), \\text{lcs}(i, j-1)) & \\text{if } x_i \\neq y_j\n\\end{cases}"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-algorithm-top-down-memoized-version",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-algorithm-top-down-memoized-version",
+    "title": "Tulasimohan Molli",
+    "section": "DP Algorithm – Top-Down Memoized Version",
+    "text": "DP Algorithm – Top-Down Memoized Version"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-algorithm-bottom-up-tabulation-version",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#dp-algorithm-bottom-up-tabulation-version",
+    "title": "Tulasimohan Molli",
+    "section": "DP Algorithm – Bottom-Up Tabulation Version",
+    "text": "DP Algorithm – Bottom-Up Tabulation Version"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#extracting-the-lcs",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#extracting-the-lcs",
+    "title": "Tulasimohan Molli",
+    "section": "Extracting the LCS",
+    "text": "Extracting the LCS\nThe algorithms above compute only the length of the LCS. We save extra direction flags (hints) in a table b[1..m, 1..n] to recover the actual sequence.\nThree flags maintained during the LCS algorithm:\n\n\\nwarrow : Add x_i (= y_j) to the LCS and continue with \\text{lcs}(i-1, j-1).\n\\uparrow : Skip x_i and continue with \\text{lcs}(i-1, j).\n\\leftarrow : Skip y_j and continue with \\text{lcs}(i, j-1)."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#reconstructing-the-lcs-backtracking",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#reconstructing-the-lcs-backtracking",
+    "title": "Tulasimohan Molli",
+    "section": "Reconstructing the LCS (Backtracking)",
+    "text": "Reconstructing the LCS (Backtracking)\nWe backtrack from the bottom-right corner b[m, n] of the table to the start (i=0 or j=0):\nfunction printLCS(b, X, i, j) {\n    if (i === 0 || j === 0) return;\n    \n    if (b[i][j] === \"↖\") {\n        printLCS(b, X, i - 1, j - 1);\n        print(X[i]); // Output character (part of LCS)\n    } else if (b[i][j] === \"↑\") {\n        printLCS(b, X, i - 1, j);\n    } else {\n        printLCS(b, X, i, j - 1);\n    }\n}\n\nTime Complexity: O(m + n) – we decrement at least one index (i or j) in each step."
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#example",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#example",
+    "title": "Tulasimohan Molli",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#references",
+    "href": "lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html#references",
+    "title": "Tulasimohan Molli",
+    "section": "References",
+    "text": "References\n\nMichael T. Goodrich and Roberto Tamassia, Algorithm Design: Foundations, Analysis, and Internet Examples, Wiley Student Edition.\nJon Kleinberg and Eva Tardos, Algorithm Design, Pearson Publishers.\nThomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein, Introduction to Algorithms, MIT Press.\nSanjoy Dasgupta, Christos Papadimitriou, and Umesh Vazirani, Algorithms, McGraw-Hill."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#recap-dynamic-programming-so-far",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#recap-dynamic-programming-so-far",
+    "title": "Tulasimohan Molli",
+    "section": "Recap: Dynamic Programming so far",
+    "text": "Recap: Dynamic Programming so far\nLecture 10 introduced DP — two key ideas:\n\n\n\n\n\n\n\n\nConcept\nFibonacci\nLCS\n\n\n\n\nSubproblems\nF_1,\\dots,F_n\nC[i,j] for prefixes\n\n\nRecurrence\nF_n = F_{n-1}+F_{n-2}\nC[i,j] = \\dots from substrings\n\n\nTable\n1D array\n2D matrix\n\n\nTime\nO(n)\nO(mn)\n\n\n\nBoth rely on optimal substructure and overlapping subproblems — we’ll see the same pattern in today’s new problems."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#where-does-the-name-come-from",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#where-does-the-name-come-from",
+    "title": "Tulasimohan Molli",
+    "section": "Where does the name come from?",
+    "text": "Where does the name come from?\n\nIn the 1950s, Richard Bellman was developing a theory for multistage decision processes at the RAND Corporation.\nThe Secretary of Defense, Charles Wilson, had “a pathological fear and hatred of the word, research” — he would turn red and get violent if anyone used it in his presence.\nRAND was employed by the Air Force, which Wilson headed. Bellman needed a name that described time-varying, multistage optimization — but wouldn’t trigger Washington.\n\n\n“Thus, I thought dynamic programming was a good name. It was something not even a Congressman could object to. So I used it as an umbrella for my activities.” — Richard Bellman, Eye of the Hurricane (1984)"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#matrix-multiplication-review",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#matrix-multiplication-review",
+    "title": "Tulasimohan Molli",
+    "section": "Matrix Multiplication Review",
+    "text": "Matrix Multiplication Review\nMatrix: An p\\times q array of numbers with p rows and q columns.\n\n\n\nProduct: C = A_{p\\times q} \\times B_{q\\times r} produces a p\\times r matrix where: \nc[i,j] = \\sum_{k=1}^{q} a[i,k]\\cdot b[k,j]\n\nCost: Each of the pr entries needs \\Theta(q) operations → \\Theta(pqr) total."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#parenthesization-matters",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#parenthesization-matters",
+    "title": "Tulasimohan Molli",
+    "section": "Parenthesization Matters",
+    "text": "Parenthesization Matters\nMatrix multiplication is associative: (AB)C = A(BC) — the result is the same regardless of grouping.\nHowever, the cost is not the same!\n\nA(5\\times4),\\; B(4\\times6),\\; C(6\\times2)\n\n(AB)C: (5\\cdot4\\cdot6) + (5\\cdot6\\cdot2) = 120 + 60 = \\mathbf{180}\nA(BC): (4\\cdot6\\cdot2) + (5\\cdot4\\cdot2) = 48 + 40 = \\mathbf{88}\n\nThe cheaper order is 2\\times faster!\n\n\nKey observation: Choosing the right parenthesization can drastically reduce computation cost."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#matrix-chain-multiplication-problem",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#matrix-chain-multiplication-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Matrix Chain Multiplication — Problem",
+    "text": "Matrix Chain Multiplication — Problem\nGiven: n matrices A_1,\\dots,A_n with dimensions p_{i-1}\\times p_i.\nGoal: Find the parenthesization of A_1A_2\\cdots A_n that minimizes the number of scalar multiplications.\n\nExample: A_1(5\\times4), A_2(4\\times6), A_3(6\\times2)\n\n(A_1A_2)A_3: 5\\cdot4\\cdot6 + 5\\cdot6\\cdot2 = 120+60 = 180\nA_1(A_2A_3): 4\\cdot6\\cdot2 + 5\\cdot4\\cdot2 = 48+40 = 88\n\n\nKey insight: Parenthesization matters — costs can differ by 2\\times or more!"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#why-exhaustive-search-fails",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#why-exhaustive-search-fails",
+    "title": "Tulasimohan Molli",
+    "section": "Why Exhaustive Search Fails",
+    "text": "Why Exhaustive Search Fails\nThe number of distinct parenthesizations of n matrices is the Catalan number: \nC_{n-1} = \\frac{1}{n}\\binom{2n-2}{n-1}\n\\;\\sim\\;\n\\frac{4^{n-1}}{(n-1)^{3/2}\\sqrt{\\pi}}\n\n\nn=10: 4,862 — slow but manageable\nn=20: 1.8 \\times 10^9 — brute-force infeasible\nn=30: 3.8 \\times 10^{15} — exceeds CPU speeds\n\nRecurrence: P(1)=1, P(n)=\\sum_{k=1}^{n-1} P(k)\\,P(n-k)\nDP approach: O(n^3) — polynomial instead of exponential!"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#dp-optimal-substructure",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#dp-optimal-substructure",
+    "title": "Tulasimohan Molli",
+    "section": "DP: Optimal Substructure",
+    "text": "DP: Optimal Substructure\nKey idea: In the optimal parenthesization of A_i A_{i+1}\\cdots A_j, the last multiplication splits at some k: \nA_{i\\dots j} = A_{i\\dots k}\\; A_{k+1\\dots j},\\qquad\n\\text{each optimally parenthesized}\n\n\nThe sub-chains A_{i\\dots k} and A_{k+1\\dots j} must themselves be optimally parenthesized (cut-and-paste argument).\nResult A_{i\\dots j} has dimension p_{i-1}\\times p_j.\n\n\nA_{3\\dots6} = (A_3(A_4A_5))(A_6) → split at k=5"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#dp-the-recurrence",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#dp-the-recurrence",
+    "title": "Tulasimohan Molli",
+    "section": "DP: The Recurrence",
+    "text": "DP: The Recurrence\nLet m[i,j] = minimum cost to compute A_{i\\dots j}. We try all possible split points k:\n\nm[i,j] =\n\\begin{cases}\n0 & i=j,\\\\[6pt]\n\\min\\limits_{i\\le k&lt;j}\\big(m[i,k] + m[k+1,j] + p_{i-1}p_kp_j\\big) & i&lt;j\n\\end{cases}\n\n\n\nCost breakdown:\n\nLeft subproblem: m[i,k]\nRight subproblem: m[k+1,j]\nCombine: p_{i-1} \\times p_k \\times p_j\n\n\nBase case: m[i,i] = 0\n— single matrix, no multiplication needed."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#dp-table-structure",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#dp-table-structure",
+    "title": "Tulasimohan Molli",
+    "section": "DP: Table Structure",
+    "text": "DP: Table Structure\nWe fill m[i,j] for increasing chain length l = 2, 3, \\dots, n:\n\n\nl=2:   m[1,2]  m[2,3]  m[3,4]  ...\nl=3:   m[1,3]  m[2,4]  m[3,5]  ...\nl=4:   m[1,4]  m[2,5]  m[3,6]  ...\n...\nl=n:   m[1,n]\n\n\nFor each m[i,j], evaluate all k in [i, j-1]\nStore the optimal split s[i,j] = k for reconstruction\nO(n^2) entries, each taking O(n) time → O(n^3) total"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#complexity-analysis",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#complexity-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\nDP vs. Exhaustive Search:\n\n\n\nApproach\nTime\nSpace\n\n\n\n\nBrute-force (Catalan)\n\\Omega(4^n / n^{3/2})\n—\n\n\nDynamic Programming\n\\Theta(n^3)\n\\Theta(n^2)\n\n\n\nWhy O(n^3)?\n\nOuter loop: chain length l = 2 to n — O(n)\nMiddle loop: start index i — O(n)\nInner loop: split point k — O(n)\nConstant work per (i,k) pair\n\nKey takeaway: Exponential \\to polynomial — DP turns an infeasible problem into a practical one."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#dp-complexity-progression",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#dp-complexity-progression",
+    "title": "Tulasimohan Molli",
+    "section": "DP Complexity Progression",
+    "text": "DP Complexity Progression\nMCM introduces a fundamentally more complex DP structure:\n\n\n\n\n\n\n\n\n\nProblem\nTable Dims\nTime\nWhat’s new\n\n\n\n\nFibonacci\n1D: F[n]\nO(n)\nmemoization\n\n\nLCS\n2D: C[i,j]\nO(mn)\n2D table\n\n\nMCM\n2D m[i,j]\nO(n^3)\ninterval DP, \\min over k\n\n\n\nInterval DP problem: subproblems are contiguous intervals [i,j], and we try all split points k. The extra loop over k adds a third dimension to the computation — this is a powerful pattern for many problems (Optimal BST, polygon triangulation, etc.)."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#reconstructing-parenthesization",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#reconstructing-parenthesization",
+    "title": "Tulasimohan Molli",
+    "section": "Reconstructing Parenthesization",
+    "text": "Reconstructing Parenthesization\nWe store s[i,j] = the optimal split k for A_{i\\dots j}. Recurse to print:\nPrint-Parens(s, i, j):\n    if i == j: print \"A\" + i\n    else:\n        print \"(\"\n        Print-Parens(s, i, s[i,j])\n        Print-Parens(s, s[i,j]+1, j)\n        print \")\""
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#basic-biology",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#basic-biology",
+    "title": "Tulasimohan Molli",
+    "section": "Basic Biology",
+    "text": "Basic Biology\n\n\n\nIn 1953, James Watson and Francis Crick proposed that DNA is shaped like a double helix.\nThe two strands of the DNA double helix are held together by hydrogen bonds between nitrogenous bases on opposite strands.\nBases: \\{A, C, T, G\\}.\nPairing: A-T, G-C.\n\n\n\n\n\nimage\n\n\n\ncourtesy: http://www.chemguide.co.uk/organicprops/aminoacids/dna1.html"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#from-dna-to-rna",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#from-dna-to-rna",
+    "title": "Tulasimohan Molli",
+    "section": "From DNA to RNA",
+    "text": "From DNA to RNA\n\n\n\n\n\nimage\n\n\n\nVarious types of RNA:\n\nmessenger RNA (mRNA)\ntransfer RNA (tRNA)\nRibosomal RNA (rRNA)\nmicro RNA (miRNA)\nso on..."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#basics-of-rna",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#basics-of-rna",
+    "title": "Tulasimohan Molli",
+    "section": "Basics of RNA",
+    "text": "Basics of RNA\n\nRNA is a basic biological molecule. It is single stranded (unlike the double helix of DNA).\nDNA has a fixed, stable double-helix structure — its shape is always the same.\nRNA folds back on itself, forming base pairs between complementary bases on the same strand. This folding produces a secondary structure — and this structure varies depending on the RNA sequence.\nThe secondary structure of an RNA molecule often governs its biological function (e.g., ribozymes, tRNA cloverleaf, regulatory elements).\nGoal: Given an RNA sequence, predict its secondary structure — i.e., determine which bases pair up when it folds."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#rules-for-rna-secondary-structure-formation",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#rules-for-rna-secondary-structure-formation",
+    "title": "Tulasimohan Molli",
+    "section": "Rules for RNA secondary structure formation",
+    "text": "Rules for RNA secondary structure formation\n\n\n\nPairs of bases match up; each base matches with one other base.\nAdenine always matches with Uracil.\nCytosine always matches with Guanine.\nThere are no kinks in the folded molecule.\nStructures are knot-free.\n\n\n\n\n\nimage"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#problem-formulation",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#problem-formulation",
+    "title": "Tulasimohan Molli",
+    "section": "Problem Formulation",
+    "text": "Problem Formulation\n\nProblem Given a single stranded RNA molecule, determine a secondary structure with the maximum possible number of base pairs.\n\n\nNotation: A single stranded RNA molecule is a string B = b_1b_2...b_n where each b_i\\in\\{A, C, G, U\\}.\nA secondary structure on B is a set S of pairs (i, j) where 1\\leq i, j\\leq n, following the rules below."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#rules-for-a-secondary-structure-formation",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#rules-for-a-secondary-structure-formation",
+    "title": "Tulasimohan Molli",
+    "section": "Rules for a secondary structure formation",
+    "text": "Rules for a secondary structure formation\n\n[No sharp turn] The ends of each pair are separated by at least 4 interleaving bases. i.e, if (i,j)\\in S then i&lt; j-4.\nThe elements of each base pair in S consist of either \\{A, U\\} or \\{G, C\\} (in either order).\nS is a matching: no base appears in more than one pair.\n[No knots] If (i, j) and (k, l) are two pairs in S, then we cannot have i&lt;k&lt;j&lt;l."
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#a-different-view-of-secondary-structure",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#a-different-view-of-secondary-structure",
+    "title": "Tulasimohan Molli",
+    "section": "A different view of secondary structure",
+    "text": "A different view of secondary structure\nThe energy of a secondary structure is proportional to the number of base pairs in it.\n\nimage"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-approach-1",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-approach-1",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm: Approach-1",
+    "text": "Algorithm: Approach-1\n\nLet OPT(j) be the maximum number of base pairs in a secondary structure for b_1b_2...b_j. OPT(j) = 0, if j\\leq 5.\nIn the optimal secondary structure on b_1b_2...b_j:\n\nIf j is not a member of any pair, use OPT(j-1).\nIf j makes a pair with some t&lt; j-4, knot condition yields two independent subproblems! One is OPT(t-1), Other ??"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#visualization-of-the-problem",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#visualization-of-the-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Visualization of the problem",
+    "text": "Visualization of the problem\n\nimage"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-correct-approach",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-correct-approach",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm: Correct Approach",
+    "text": "Algorithm: Correct Approach\n\nLet OPT(i,j) be the maximum number of base pairs in a secondary structure for b_ib_{i+1}...b_j. Clearly, OPT(i,j) = 0 if i\\geq j-4.\nIn the optimal secondary structure on b_ib_{i+1}...b_j:\n\nIf j is not a member of any pair, use OPT(i, j-1).\nIf j pairs with some t&lt; j-4, knot condition yields to independent subproblems! One is OPT(i, t-1), and the other is OPT(t+1, j-1).\n\nRecurrence: \nOPT(i,j) = \\max\\begin{cases}\n    OPT(i, j-1) & \\text{$j$ is unpaired},\\\\[4pt]\n    \\max\\limits_{\\substack{t &lt; j-4 \\\\ (b_t,b_j)\\text{ pairs}}} \\big(OPT(i, t-1) + 1 + OPT(t+1, j-1)\\big) & \\text{$j$ pairs with $t$}\n\\end{cases}"
+  },
+  {
+    "objectID": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-complexity",
+    "href": "lectures/lec-11-matrix-chain-multiplication.html#algorithm-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm Complexity",
+    "text": "Algorithm Complexity\n\nNumber of subproblems: O(n^2) — one for each pair (i,j).\nWork per subproblem:\n\nEither skip j (constant time), or try all possible t &lt; j-4 where b_t pairs with b_j.\nIn the worst case, O(n) per subproblem.\n\nTotal time: O(n^3).\nSpace: O(n^2) for the DP table."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#what-is-a-graph",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#what-is-a-graph",
+    "title": "Tulasimohan Molli",
+    "section": "What is a Graph?",
+    "text": "What is a Graph?\nA graph G = (V, E) consists of:\n\nA set V of vertices (nodes)\nA set E of edges (connections between vertices)\n\nExample: V = \\{1,2,3,4,5\\}, E = \\{(1,2), (1,3), (2,3), (2,4), (3,5), (4,5)\\}\n    1 --- 2\n    | \\   |\n    |  \\  |\n    |   \\ |\n    3 --- 4 --- 5\nGraphs model relationships: social networks, road maps, molecules, dependencies, …"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#graph-terminology",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#graph-terminology",
+    "title": "Tulasimohan Molli",
+    "section": "Graph Terminology",
+    "text": "Graph Terminology\n\nUndirected graph: edges have no direction — (u,v) = (v,u)\nDirected graph (digraph): edges have direction — u \\to v\nPath: sequence of vertices where consecutive vertices are connected by edges\nCycle: a path that starts and ends at the same vertex\nConnected graph: there is a path between every pair of vertices\nTree: a connected, acyclic undirected graph"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#special-graphs",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#special-graphs",
+    "title": "Tulasimohan Molli",
+    "section": "Special Graphs",
+    "text": "Special Graphs\n\n\nPath: vertices in a line\nCycle: vertices in a ring\nTree: connected, no cycles — |E| = |V| - 1\nComplete graph K_n: every pair of vertices is connected\n\nIn this lecture, we focus on Trees — the simplest non-trivial graph structure that still captures many real-world problems.\nTrees have a natural hierarchical structure: pick any node as root, and every node has a parent (except root) and children.\n    1\n   / \\\n  2   3\n / \\\n4   5"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#problems-on-graphs",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#problems-on-graphs",
+    "title": "Tulasimohan Molli",
+    "section": "Problems on Graphs",
+    "text": "Problems on Graphs\nMany important optimization problems are defined on graphs:\n\nIndependent Set: subset of vertices with no edges between them\nVertex Cover: subset of vertices that touches every edge\nClique: subset of vertices where every pair is connected\nHamiltonian Path: path visiting every vertex exactly once\nGraph Coloring: assign colors so adjacent vertices differ\n\nAll of these are NP-hard on general graphs — no polynomial-time algorithm is known."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#independent-set",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#independent-set",
+    "title": "Tulasimohan Molli",
+    "section": "Independent Set",
+    "text": "Independent Set\n\nIndependent Set (IS)\nGiven an undirected graph G = (V, E), an Independent Set is a set S \\subseteq V such that no two vertices in S are adjacent:\n\n\\forall u, v \\in S,\\quad (u,v) \\notin E\n\n\n\nMaximum Weight Independent Set (MWIS)\nGiven G = (V, E) and weights w: V \\to \\mathbb{R}^+, find an independent set S that maximizes \\sum_{v \\in S} w(v)."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#mwis-is-np-hard",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#mwis-is-np-hard",
+    "title": "Tulasimohan Molli",
+    "section": "MWIS is NP-hard",
+    "text": "MWIS is NP-hard\n\nFinding the Maximum Independent Set (or MWIS) in a general graph is NP-hard.\nEven approximating it within a constant factor is hard.\nNo polynomial-time algorithm is known (and likely none exists).\n\n\nBut — if we restrict the graph to a tree, we can solve MWIS in linear time O(|V|) using Dynamic Programming!\n\nThis is a recurring theme in algorithms: special graph classes admit efficient solutions for otherwise hard problems."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#the-corporate-party-problem",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#the-corporate-party-problem",
+    "title": "Tulasimohan Molli",
+    "section": "The Corporate Party Problem",
+    "text": "The Corporate Party Problem\nYour company has a hierarchy shaped like a tree — CEO at the root, managers below, employees at the leaves.\nYou are planning a party and each employee u has a fun factor w(u).\n\nRule: If an employee attends the party, their direct manager cannot attend.\n(No two adjacent people in the tree can both attend.)\n\nGoal: Choose a set of invitees that maximizes total fun, respecting the rule."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#tree-structure-enables-dp",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#tree-structure-enables-dp",
+    "title": "Tulasimohan Molli",
+    "section": "Tree Structure Enables DP",
+    "text": "Tree Structure Enables DP\nTrees have a key property that makes DP possible:\n\nPick an arbitrary vertex r as the root.\nThis defines a parent-child relationship throughout the tree.\nEvery node u has a set of children C(u).\nThe subtree T_u rooted at u is independent of other subtrees.\n\nOptimal substructure: The optimal solution for T_u depends only on the optimal solutions of its children’s subtrees."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#dp-states",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#dp-states",
+    "title": "Tulasimohan Molli",
+    "section": "DP States",
+    "text": "DP States\nFor each node u, we define two values:\n\nMWIS_{in}(u): maximum weight of an independent set of T_u that includes u.\nMWIS_{out}(u): maximum weight of an independent set of T_u that excludes u.\n\nThe answer for the whole tree is: \n\\text{Optimal} = \\max\\big(MWIS_{in}(r),\\; MWIS_{out}(r)\\big)"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#recurrences",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#recurrences",
+    "title": "Tulasimohan Molli",
+    "section": "Recurrences",
+    "text": "Recurrences\nCase 1 — Node u is IN the set:\n\nNone of its children can be in the set. \nMWIS_{in}(u) = w(u) + \\sum_{v \\in C(u)} MWIS_{out}(v)\n\n\nCase 2 — Node u is OUT of the set:\n\nEach child may be either in or out — choose the better option. \nMWIS_{out}(u) = \\sum_{v \\in C(u)} \\max\\big(MWIS_{in}(v),\\; MWIS_{out}(v)\\big)"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#base-case-and-traversal",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#base-case-and-traversal",
+    "title": "Tulasimohan Molli",
+    "section": "Base Case and Traversal",
+    "text": "Base Case and Traversal\nBase case (leaf node): \nMWIS_{in}(u) = w(u),\\qquad MWIS_{out}(u) = 0\n\nTraversal order: We must process children before the parent → Post-order traversal (bottom-up).\n\nRecursively compute DP values for all children of u.\nCompute MWIS_{in}(u) and MWIS_{out}(u) using the children’s values.\nReturn to parent."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#algorithm",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm",
+    "text": "Algorithm\nMWIS-Tree(u):\n    // Post-order: compute children first\n    for each child v in C(u):\n        MWIS-Tree(v)\n    \n    // Compute DP values\n    MWIS_in[u] = w(u)\n    MWIS_out[u] = 0\n    \n    for each child v in C(u):\n        MWIS_in[u]  += MWIS_out[v]\n        MWIS_out[u] += max(MWIS_in[v], MWIS_out[v])\nInitial call: MWIS-Tree(r) where r is the chosen root.\nAnswer: \\max(MWIS_{in}[r],\\; MWIS_{out}[r])"
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#trace-example",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#trace-example",
+    "title": "Tulasimohan Molli",
+    "section": "Trace Example",
+    "text": "Trace Example\nTree: Root A (weight 5) has children B (weight 4) and C (weight 6). B and C are leaves.\n    A (5)\n   / \\\n  B   C\n (4) (6)\nBottom-up computation:\n\n\n\n\n\n\n\n\n\nNode\nMWIS_{in}\nMWIS_{out}\nExplanation\n\n\n\n\nB\n4\n0\nLeaf: w(B), 0\n\n\nC\n6\n0\nLeaf: w(C), 0\n\n\nA\n5 + 0 + 0 = 5\n\\max(4,0) + \\max(6,0) = 10\nRoot uses children\n\n\n\nAnswer: \\max(5, 10) = 10 — Independent set \\{B, C\\} with weight 4+6=10."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#complexity-analysis",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#complexity-analysis",
+    "title": "Tulasimohan Molli",
+    "section": "Complexity Analysis",
+    "text": "Complexity Analysis\n\nTime: Each node visited once. At each node, work is proportional to the number of its children. Sum of children over all nodes = |V| - 1. Total: \\Theta(|V|).\nSpace: O(|V|) for storing DP values and recursion stack.\n\nKey insight: The tree structure allows us to solve an NP-hard problem in linear time by exploiting the natural hierarchical decomposition."
+  },
+  {
+    "objectID": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#summary",
+    "href": "lectures/lec-12-graphs-and-dynamic-programming-on-trees.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\nGraphs model relationships and many problems on them are NP-hard.\nTrees are a special class of graphs with no cycles, which makes DP possible.\nDP on Trees generalizes sequence DP: propagate solutions from children to parents.\nMWIS on Trees is solvable in O(n) using two DP states per node.\nThis pattern extends to many other tree problems (tree vertex cover, tree coloring, etc.)."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#greedy-algorithm",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#greedy-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Algorithm",
+    "text": "Greedy Algorithm\n\nA greedy algorithm always makes the choice that looks best at the moment.\n\nEveryday example: playing cards, investing in stocks, choosing a university.\nThe hope: a locally optimal choice will lead to a globally optimal solution.\nFor some problems, it works.\n\nGreedy algorithms tend to be easier to code and more efficient than DP."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#interval-scheduling",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#interval-scheduling",
+    "title": "Tulasimohan Molli",
+    "section": "Interval Scheduling",
+    "text": "Interval Scheduling\n\nInput: A set of intervals I = \\{I_1, I_2, \\dots, I_n\\}. Each interval I_i = [s_i, f_i) with start s_i and finish f_i.\nCompatibility: Two intervals are compatible if they do not overlap (f_i \\le s_j or f_j \\le s_i).\nOutput: A maximum-size subset of mutually compatible intervals.\n\n\n\n\nCLRS (T1) refers to this problem as Activity Selection. The name Interval Scheduling (Kleinberg & Tardos) is more common."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#example",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#example",
+    "title": "Tulasimohan Molli",
+    "section": "Example",
+    "text": "Example\n\n\n\n\nCompatible Subsets:\n\n\\{I_3, I_9, I_{11}\\} (Size 3)\n\\{I_1, I_4, I_8, I_{11}\\} (Size 4 — Optimal)\n\\{I_2, I_4, I_9, I_{11}\\} (Size 4 — Optimal)\n\nGoal: find a subset of maximum size."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#interval-representation",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#interval-representation",
+    "title": "Tulasimohan Molli",
+    "section": "Interval Representation",
+    "text": "Interval Representation\n\n\n\n\n\nEach activity is a half-open interval [s_i, f_i).\nGoal: Select the maximum number of non-overlapping intervals.\nA classic scheduling problem with applications in resource allocation, classroom scheduling, CPU task execution, etc."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#optimal-substructure-dp-view",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#optimal-substructure-dp-view",
+    "title": "Tulasimohan Molli",
+    "section": "Optimal Substructure (DP View)",
+    "text": "Optimal Substructure (DP View)\nSort intervals by finish time: f_1 \\le f_2 \\le \\dots \\le f_n.\nDefine S_{ij} = \\{I_k : f_i \\le s_k &lt; f_k \\le s_j\\}.\nLet c[i,j] be the maximum number of compatible intervals in S_{ij}:\n\nc[i,j] = \\begin{cases}\n0 & \\text{if } S_{ij} = \\emptyset \\\\[4pt]\n\\displaystyle\\max_{i &lt; k &lt; j} \\big(c[i,k] + c[k,j] + 1\\big) & \\text{if } S_{ij} \\ne \\emptyset\n\\end{cases}\n\nA DP solution would be O(n^3) — but a greedy approach is simpler and faster."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#greedy-choice-1",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#greedy-choice-1",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Choice",
+    "text": "Greedy Choice\nIntuition: Choose the interval that leaves the resource available for as many others as possible.\nWhich interval should we pick first?\n\nThe one that starts earliest? ❌ (might be very long)\nThe one that is shortest? ❌ (might overlap many)\nThe one that finishes earliest? ✅\n\nGreedy choice: Always pick the interval with the earliest finish time among the remaining compatible intervals."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#failed-greedy-strategies",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#failed-greedy-strategies",
+    "title": "Tulasimohan Molli",
+    "section": "Failed Greedy Strategies",
+    "text": "Failed Greedy Strategies\n\n\n1. Earliest Start Time\nPick the interval that starts first.\nCounterexample:\nI_1: |-------------------------| (0 to 100)\nI_2:   |---| (1 to 5)\nI_3:         |---| (6 to 10)\n\nGreedy: \\{I_1\\} (size 1)\nOptimal: \\{I_2, I_3\\} (size 2)\n\n\n2. Shortest Interval\nPick the interval with smallest duration f_i - s_i.\nCounterexample:\nI_1: |-------| (0 to 6)\nI_2:      |---| (5 to 7 - shortest)\nI_3:          |-------| (6 to 12)\n\nGreedy: \\{I_2\\} (size 1)\nOptimal: \\{I_1, I_3\\} (size 2)"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#why-earliest-finish",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#why-earliest-finish",
+    "title": "Tulasimohan Molli",
+    "section": "Why Earliest Finish?",
+    "text": "Why Earliest Finish?\nAmong all intervals, one must finish first in any optimal solution.\nPicking the earliest finish leaves the maximum remaining time for other intervals.\nAfter sorting by finish time, the greedy choice picks I_1 first."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#greedy-algorithm-1",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#greedy-algorithm-1",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Algorithm",
+    "text": "Greedy Algorithm\nGreedy-Interval-Scheduler(s, f):\n    // Assumes f[1..n] is sorted in increasing order\n    n = length(s)\n    A = {I_1}\n    k = 1\n    for m = 2 to n:\n        if s[m] &gt;= f[k]:\n            A = A ∪ {I_m}\n            k = m\n    return A\n\nTime: \\Theta(n) after sorting (\\Theta(n \\log n) total with sort).\nSpace: O(1) auxiliary."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-1",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-1",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-2",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-2",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-3",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-3",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-4",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-4",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-5",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-5",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#trace-6",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#trace-6",
+    "title": "Tulasimohan Molli",
+    "section": "Trace",
+    "text": "Trace"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#correctness-proof",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#correctness-proof",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness Proof",
+    "text": "Correctness Proof\nTwo parts:\n\nGreedy Choice Property: There exists an optimal solution that includes the greedy choice.\nOptimal Substructure Property: After making the greedy choice, the remaining problem is a smaller instance of the same type."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#greedy-choice-property",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#greedy-choice-property",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Choice Property",
+    "text": "Greedy Choice Property\n\n\n\nLemma\n\n\nThere exists an optimal solution A such that the greedy choice I_1 (earliest finish) is in A.\n\n\n\n\nProof. Let A be an optimal solution, ordered by finish time. Let k_1 be the first interval in A.\n\nIf k_1 = 1: done — A already includes the greedy choice.\nIf k_1 \\ne 1: construct A' = (A \\setminus \\{k_1\\}) \\cup \\{I_1\\}.\n\n\n\nOriginal A:  |--- k_1 ---|   |--- k_2 ---|   |--- k_3 ---|\nGreedy:      |-- I_1 --|\n\nModified A': |-- I_1 --|   |--- k_2 ---|   |--- k_3 ---|\nSince f_1 \\le f_{k_1}, I_1 cannot overlap with k_2 (as s_{k_2} \\ge f_{k_1} \\ge f_1).\n\\therefore A' is mutually compatible, |A'| = |A|, so A' is also optimal. \\square"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#optimal-substructure-property",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#optimal-substructure-property",
+    "title": "Tulasimohan Molli",
+    "section": "Optimal Substructure Property",
+    "text": "Optimal Substructure Property\n\n\n\n\n\n\nNote\n\n\nLemma: If A is an optimal solution, then A' = A \\setminus \\{I_1\\} is an optimal solution to S' = \\{I_i \\in I : s_i \\ge f_1\\}.\n\n\n\n\nProof (Contradiction).\n\nSuppose \\exists B' for S' with |B'| &gt; |A'|.\nLet B = B' \\cup \\{I_1\\}.\nSince B' only contains intervals starting after f_1, I_1 is compatible with all in B'.\nThen B is a valid solution for I with |B| = |B'| + 1 &gt; |A'| + 1 = |A|, contradicting optimality of A. \\square"
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#properties-of-greedy-algorithms",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#properties-of-greedy-algorithms",
+    "title": "Tulasimohan Molli",
+    "section": "Properties of Greedy Algorithms",
+    "text": "Properties of Greedy Algorithms\n\nGreedy Choice Property\n\nA globally optimal solution can be arrived at by making a locally optimal (greedy) choice.\n\nOptimal Substructure Property\n\nAn optimal solution to the problem contains within it optimal solutions to subproblems.\n\n\nThese two properties must be proved for every greedy algorithm."
+  },
+  {
+    "objectID": "lectures/lec-13-greedy-interval-scheduling.html#summary",
+    "href": "lectures/lec-13-greedy-interval-scheduling.html#summary",
+    "title": "Tulasimohan Molli",
+    "section": "Summary",
+    "text": "Summary\n\nInterval Scheduling is a classic problem solvable by a greedy algorithm.\nGreedy choice: pick the interval with the earliest finish time.\nComplexity: \\Theta(n \\log n) for sorting, \\Theta(n) for selection.\nCorrectness relies on the greedy choice and optimal substructure properties.\nThis pattern extends to many interval scheduling variants."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#data-compression-problem",
+    "href": "lectures/lec-14-huffman-coding.html#data-compression-problem",
+    "title": "Tulasimohan Molli",
+    "section": "Data Compression Problem",
+    "text": "Data Compression Problem\nSuppose we have a text file. We want to represent the same information using fewer bits.\nFixed-length encoding: All characters use the same number of bits.\n\nASCII: 7 bits per character\n8-bit extended ASCII: 8 bits per character\n\nVariable-length encoding: Frequent characters get shorter codes, infrequent characters get longer codes.\n\nLike Morse code: E (most common) = ., Q = --.-"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#what-are-prefix-codes",
+    "href": "lectures/lec-14-huffman-coding.html#what-are-prefix-codes",
+    "title": "Tulasimohan Molli",
+    "section": "What are Prefix codes?",
+    "text": "What are Prefix codes?\nA prefix code is a variable-length code where no codeword is a prefix of any other codeword.\nThis ensures unambiguous decoding — we can parse a bitstream uniquely left-to-right.\n\n\n\nCharacter\nFrequency\nFixed Code\nVariable Code\n\n\n\n\nA\n60%\n00\n0\n\n\nB\n25%\n01\n10\n\n\nC\n10%\n10\n110\n\n\nD\n5%\n11\n111\n\n\n\nVariable code uses 0.60 \\times 1 + 0.25 \\times 2 + 0.10 \\times 3 + 0.05 \\times 3 = 1.55 bits/char on average vs 2 bits/char fixed."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#binary-tree-representation",
+    "href": "lectures/lec-14-huffman-coding.html#binary-tree-representation",
+    "title": "Tulasimohan Molli",
+    "section": "Binary Tree Representation",
+    "text": "Binary Tree Representation\nEvery prefix code corresponds to a binary tree:\n\nLeaves represent characters, labeled with their frequency.\nLeft edge = 0, Right edge = 1.\nCodeword = path from root to leaf.\n\ngraph TD\n    Root[\"1.00\"] --&gt;|\"0\"| A[\"0.60&lt;br/&gt;A: 0\"]\n    Root --&gt;|\"1\"| N1[\"0.40\"]\n    N1 --&gt;|\"0\"| B[\"0.25&lt;br/&gt;B: 10\"]\n    N1 --&gt;|\"1\"| N2[\"0.15\"]\n    N2 --&gt;|\"0\"| C[\"0.10&lt;br/&gt;C: 110\"]\n    N2 --&gt;|\"1\"| D[\"0.05&lt;br/&gt;D: 111\"]\nOptimal prefix code: the tree that minimizes \\sum f(c) \\cdot \\text{depth}(c)."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#problem-formulation",
+    "href": "lectures/lec-14-huffman-coding.html#problem-formulation",
+    "title": "Tulasimohan Molli",
+    "section": "Problem Formulation",
+    "text": "Problem Formulation\nInput: A set of characters C, each with frequency f(c).\nOutput: A prefix code (binary tree) that minimizes the total cost:\n\nB(T) = \\sum_{c \\in C} f(c) \\cdot d_T(c)\n\nwhere d_T(c) is the depth of character c in the tree T.\nThis is exactly the optimal prefix code or minimum-cost binary tree problem."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#key-insight",
+    "href": "lectures/lec-14-huffman-coding.html#key-insight",
+    "title": "Tulasimohan Molli",
+    "section": "Key Insight",
+    "text": "Key Insight\nIn an optimal prefix-code tree:\n\nEvery internal node has exactly two children.\nIf a node has only one child, we can eliminate it and shorten the codes — would not be optimal.\n\nObservation: The two characters with the smallest frequencies should be at the bottom of the tree, as siblings. This is the greedy choice."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#algorithm",
+    "href": "lectures/lec-14-huffman-coding.html#algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Algorithm",
+    "text": "Algorithm\nHuffman(C):\n    // C is a set of n characters with frequencies f(c)\n    n = |C|\n    Q = C    // min-priority queue keyed by f(c)\n    \n    for i = 1 to n - 1:\n        x = Extract-Min(Q)   // smallest frequency\n        y = Extract-Min(Q)   // second smallest\n        z = new node\n        f(z) = f(x) + f(y)\n        z.left = x\n        z.right = y\n        Insert(Q, z)\n    \n    return Extract-Min(Q)    // root of Huffman tree\n\nUses a min-heap (priority queue) to repeatedly merge the two least frequent nodes."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#worked-example",
+    "href": "lectures/lec-14-huffman-coding.html#worked-example",
+    "title": "Tulasimohan Molli",
+    "section": "Worked Example",
+    "text": "Worked Example\nCharacters: a: 45, b: 13, c: 12, d: 16, e: 9, f: 5"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#step-1",
+    "href": "lectures/lec-14-huffman-coding.html#step-1",
+    "title": "Tulasimohan Molli",
+    "section": "Step 1",
+    "text": "Step 1\nMerge e (9) and f (5) → internal node with frequency 14.\ngraph TD\n    A[\"a: 45\"]\n    B[\"b: 13\"]\n    C[\"c: 12\"]\n    D[\"d: 16\"]\n    N14[\"14\"] --&gt; e[\"e: 9\"]\n    N14 --&gt; f[\"f: 5\"]\n    style N14 fill:#e74c3c,color:#fff,stroke-width:2px"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#step-2",
+    "href": "lectures/lec-14-huffman-coding.html#step-2",
+    "title": "Tulasimohan Molli",
+    "section": "Step 2",
+    "text": "Step 2\nMerge c (12) and b (13) → node (25).\ngraph TD\n    A[\"a: 45\"]\n    D[\"d: 16\"]\n    N14[\"14\"] --&gt; e[\"e: 9\"]\n    N14 --&gt; f[\"f: 5\"]\n    N25[\"25\"] --&gt; c[\"c: 12\"]\n    N25 --&gt; b[\"b: 13\"]\n    style N25 fill:#e74c3c,color:#fff,stroke-width:2px"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#step-3",
+    "href": "lectures/lec-14-huffman-coding.html#step-3",
+    "title": "Tulasimohan Molli",
+    "section": "Step 3",
+    "text": "Step 3\nMerge node (14) and d (16) → node (30).\ngraph TD\n    A[\"a: 45\"]\n    N25[\"25\"] --&gt; c[\"c: 12\"]\n    N25 --&gt; b[\"b: 13\"]\n    N30[\"30\"] --&gt; N14[\"14\"]\n    N30 --&gt; d[\"d: 16\"]\n    N14 --&gt; e[\"e: 9\"]\n    N14 --&gt; f[\"f: 5\"]\n    style N30 fill:#e74c3c,color:#fff,stroke-width:2px"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#step-4",
+    "href": "lectures/lec-14-huffman-coding.html#step-4",
+    "title": "Tulasimohan Molli",
+    "section": "Step 4",
+    "text": "Step 4\nMerge node (25) and node (30) → node (55).\ngraph TD\n    A[\"a: 45\"]\n    N55[\"55\"] --&gt; N25[\"25\"]\n    N55 --&gt; N30[\"30\"]\n    N25 --&gt; c[\"c: 12\"]\n    N25 --&gt; b[\"b: 13\"]\n    N30 --&gt; N14[\"14\"]\n    N30 --&gt; d[\"d: 16\"]\n    N14 --&gt; e[\"e: 9\"]\n    N14 --&gt; f[\"f: 5\"]\n    style N55 fill:#e74c3c,color:#fff,stroke-width:2px"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#step-5",
+    "href": "lectures/lec-14-huffman-coding.html#step-5",
+    "title": "Tulasimohan Molli",
+    "section": "Step 5",
+    "text": "Step 5\nMerge a (45) and node (55) → root (100).\ngraph TD\n    Root[\"100\"] --&gt; a[\"a: 45\"]\n    Root --&gt; N55[\"55\"]\n    N55 --&gt; N25[\"25\"]\n    N55 --&gt; N30[\"30\"]\n    N25 --&gt; c[\"c: 12\"]\n    N25 --&gt; b[\"b: 13\"]\n    N30 --&gt; N14[\"14\"]\n    N30 --&gt; d[\"d: 16\"]\n    N14 --&gt; e[\"e: 9\"]\n    N14 --&gt; f[\"f: 5\"]\n    style Root fill:#e74c3c,color:#fff,stroke-width:2px"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#final-tree",
+    "href": "lectures/lec-14-huffman-coding.html#final-tree",
+    "title": "Tulasimohan Molli",
+    "section": "Final Tree",
+    "text": "Final Tree\ngraph TD\n    Root[\"100\"] --&gt;|\"0\"| a[\"a: 45\"]\n    Root --&gt;|\"1\"| N55[\"55\"]\n    N55 --&gt;|\"0\"| N25[\"25\"]\n    N55 --&gt;|\"1\"| N30[\"30\"]\n    N25 --&gt;|\"0\"| c[\"c: 12\"]\n    N25 --&gt;|\"1\"| b[\"b: 13\"]\n    N30 --&gt;|\"0\"| N14[\"14\"]\n    N30 --&gt;|\"1\"| d[\"d: 16\"]\n    N14 --&gt;|\"0\"| e[\"e: 9\"]\n    N14 --&gt;|\"1\"| f[\"f: 5\"]\n\n\n\nChar\nCode\nBits\n\n\n\n\na\n0\n1\n\n\nc\n100\n3\n\n\nb\n101\n3\n\n\ne\n1100\n4\n\n\nf\n1101\n4\n\n\nd\n111\n3\n\n\n\nTotal: 45\\!\\times\\!1 + 13\\!\\times\\!3 + 12\\!\\times\\!3 + 16\\!\\times\\!3 + 9\\!\\times\\!4 + 5\\!\\times\\!4 = 224 bits.\nFixed-length (3 bits × 100 chars) = 300 bits. 25% savings."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#complexity",
+    "href": "lectures/lec-14-huffman-coding.html#complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Complexity",
+    "text": "Complexity\n\nBuilding initial heap: O(n)\nEach iteration performs two Extract-Min + one Insert: O(\\log n)\nn - 1 iterations total: O(n \\log n)\n\nOverall: \\Theta(n \\log n) time, O(n) space."
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#greedy-choice-property",
+    "href": "lectures/lec-14-huffman-coding.html#greedy-choice-property",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Choice Property",
+    "text": "Greedy Choice Property\n\n\n\n\n\n\nNote\n\n\nLemma: Let x and y be the two characters with the smallest frequencies. There exists an optimal prefix code where x and y are siblings at the maximum depth.\n\n\n\n\nProof. Take any optimal tree T. If x and y are not siblings at max depth, swap each into that position. Since x and y have the smallest frequencies, the cost does not increase. Repeating gives an optimal tree where x and y are siblings at max depth. \\square"
+  },
+  {
+    "objectID": "lectures/lec-14-huffman-coding.html#optimal-substructure",
+    "href": "lectures/lec-14-huffman-coding.html#optimal-substructure",
+    "title": "Tulasimohan Molli",
+    "section": "Optimal Substructure",
+    "text": "Optimal Substructure\n\n\n\n\n\n\nNote\n\n\nLemma: Let x and y be siblings in an optimal tree T for C. Then T' (replace x,y with z, f(z)=f(x)+f(y)) is optimal for C' = (C \\setminus \\{x,y\\}) \\cup \\{z\\}.\n\n\n\n\nProof. For any tree, B(T) = B(T') + f(x) + f(y), since the depth of x and y is one more than z.\nThus minimizing B(T) ⟺ minimizing B(T'). If T' were not optimal, we could improve T — contradiction. \\square\nHuffman’s merge preserves optimality at every step (induction on n)."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#what-is-a-spanning-tree",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#what-is-a-spanning-tree",
+    "title": "Tulasimohan Molli",
+    "section": "What is a Spanning Tree?",
+    "text": "What is a Spanning Tree?\nA spanning tree of a connected graph G = (V, E) is a subgraph T \\subseteq G such that:\n\nSpanning: T includes all |V| vertices of G.\nTree: T is connected and acyclic.\n\nKey facts: - Every spanning tree has exactly |V|-1 edges. - There is exactly one path between any two vertices in T. - A connected graph can have many different spanning trees."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#spanning-tree-properties",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#spanning-tree-properties",
+    "title": "Tulasimohan Molli",
+    "section": "Spanning Tree — Properties",
+    "text": "Spanning Tree — Properties\n\nA tree is the minimally connected subgraph — removing any edge disconnects it.\nA tree is the maximally acyclic subgraph — adding any edge creates a cycle.\nEvery spanning tree of a graph on n vertices has exactly n-1 edges — no more, no fewer.\n\n\n\\text{connected} + \\text{acyclic} + |V|-1 \\text{ edges} \\;\\Longleftrightarrow\\; \\text{spanning tree}\n\nAny two of these three properties implies the third."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#minimum-spanning-tree-mst-1",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#minimum-spanning-tree-mst-1",
+    "title": "Tulasimohan Molli",
+    "section": "Minimum Spanning Tree (MST)",
+    "text": "Minimum Spanning Tree (MST)\nGiven a connected graph G=(V, E) with real valued edge weights c_e, an MST is a spanning tree T\\subseteq E whose sum of edge weights is minimized.\n\n\nT must be a spanning tree (connected, acyclic, all V vertices).\nAmong all spanning trees, T has the minimum total weight."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#why-mst",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#why-mst",
+    "title": "Tulasimohan Molli",
+    "section": "Why MST?",
+    "text": "Why MST?\n\nFoundational problem — one of the oldest and most well-studied in graph theory (Boruvka, 1926)\nGreedy paradigm — all three classical algorithms (Kruskal’s, Prim’s, Boruvka’s) are greedy\nBuilding block — used as a subroutine in approximation algorithms for harder problems (TSP, Steiner tree)\nApplications everywhere — networks, clustering, image analysis, error-correcting codes"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#applications-of-mst-1",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#applications-of-mst-1",
+    "title": "Tulasimohan Molli",
+    "section": "Applications of MST",
+    "text": "Applications of MST\n\nNetwork Design (STP) — Ethernet switches use the Spanning Tree Protocol (IEEE 802.1D) to compute an MST of the network topology, preventing broadcast storms while maintaining connectivity.\nClustering — Single-linkage clustering computes an MST of data points; removing the k-1 heaviest edges gives k clusters. Used in phylogenetics, customer segmentation, image segmentation.\nApproximation Algorithms — Metric TSP uses MST for a 2-approximation; Steiner tree uses MST on terminal pairs for a 2-approximation; facility location via MST dual fitting.\nOther uses — LDPC error-correcting codes, medical image registration (Renyi entropy), bioinformatics (protein sequence alignment), RSTP for mesh networks."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#graph-cut",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#graph-cut",
+    "title": "Tulasimohan Molli",
+    "section": "Graph Cut",
+    "text": "Graph Cut\nIn a graph G=(V, E) a cut is a bipartition of V into sets S, V-S for some S\\subseteq V. We show it by (S,V-S).\nAn edge e=\\{u,v\\} crosses the cut (S, V-S) if exactly one of u,v is in S."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#cut-property",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#cut-property",
+    "title": "Tulasimohan Molli",
+    "section": "Cut Property",
+    "text": "Cut Property\n\nLet S be any subset of nodes (called a cut), and let e = \\{u, v\\} be the minimum cost edge crossing (S, V-S). Then every MST contains e.\n\n\nProof. Proof. Suppose e does not belong to some MST T^*.\n\nAdding e to T^* creates a cycle C.\nSince e crosses (S, V-S), C must contain some other edge f that also crosses (S, V-S).\nT = T^* \\cup \\{e\\} - \\{f\\} is also a spanning tree.\nSince c_e &lt; c_f (by assumption, e is the cheapest crossing edge), \\text{cost}(T) &lt; \\text{cost}(T^*).\nThis contradicts T^* being an MST. \\square"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#cycle-property",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#cycle-property",
+    "title": "Tulasimohan Molli",
+    "section": "Cycle Property",
+    "text": "Cycle Property\n\nLet C be any cycle in G, and let f be the maximum cost edge in C. Then the MST T^* does not contain f.\n\n\nProof. Proof. Suppose f belongs to T^*.\n\nDeleting f from T^* disconnects T^* into two components — let S be one side of this cut.\nSince f \\in C, the cycle C must contain some other edge e that also crosses (S, V-S).\nT = T^* \\cup \\{e\\} - \\{f\\} is also a spanning tree.\nSince c_e &lt; c_f (by assumption, f is the most expensive in C), \\text{cost}(T) &lt; \\text{cost}(T^*).\nThis contradicts T^* being an MST. \\square"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#cut-cycle-properties-intuition",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#cut-cycle-properties-intuition",
+    "title": "Tulasimohan Molli",
+    "section": "Cut / Cycle Properties — Intuition",
+    "text": "Cut / Cycle Properties — Intuition\n\n\n\n\nCut property: Heavy edges can’t go in, light edges can’t stay out.\nCycle property: The heaviest edge in any cycle is never needed.\nTogether, these two properties completely characterize the MST: an edge belongs to some MST iff there exists a cut for which it is lightest, and to every MST iff it is the unique lightest edge in some cut."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#kruskals-algorithm",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#kruskals-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Kruskal’s Algorithm",
+    "text": "Kruskal’s Algorithm\n\n\n\nAlgorithm:\n\nSort edges by weight.\nF \\gets \\emptyset.\nFor each (u,v): add if different components, else skip.\n\n\nStep 0 / 9 — click ▶\n\n\n\n\n\n\n◀\n▶\n↺\n\n─ pending  \n─ MST  \n─ skip"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#the-problem-cycle-detection",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#the-problem-cycle-detection",
+    "title": "Tulasimohan Molli",
+    "section": "The Problem: Cycle Detection",
+    "text": "The Problem: Cycle Detection\nKruskal’s algorithm needs to check: are u and v already in the same connected component?\n\nNaively: DFS from u each time \\Rightarrow O(V) per check \\Rightarrow O(EV) total.\nWe need a data structure that supports:\n\nfind(u) — which component does u belong to?\nunion(u, v) — merge the components of u and v.\n\n\nUnion-Find (a.k.a. Disjoint Set Union, DSU) handles both in nearly constant time."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#union-find-basic-operations",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#union-find-basic-operations",
+    "title": "Tulasimohan Molli",
+    "section": "Union-Find: Basic Operations",
+    "text": "Union-Find: Basic Operations\n\nmakeset(x): Create a new set containing just x.\n\nEach element initially points to itself as its set’s representative.\n\nfind(x): Return the representative of the set containing x.\n\nFollow parent pointers until reaching the root.\n\nunion(x, y): Merge the sets containing x and y.\n\nIf \\text{find}(x) \\neq \\text{find}(y), make one root point to the other.\n\n\n\n\n\n\nOperation\nWithout optimization\nWith optimizations\n\n\n\n\nmakeset\nO(1)\nO(1)\n\n\nfind\nO(\\text{depth})\nO(\\alpha(n))\n\n\nunion\nO(\\text{depth})\nO(\\alpha(n))"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#union-find-union-by-rank",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#union-find-union-by-rank",
+    "title": "Tulasimohan Molli",
+    "section": "Union-Find: Union by Rank",
+    "text": "Union-Find: Union by Rank\nProblem: Naively linking roots can create a chain (depth O(n), making find slow).\nSolution (Union by Rank): Keep track of the height (rank) of each tree. Always attach the shorter tree under the taller one.\nunion(x, y):\n    rx = find(x), ry = find(y)\n    if rx == ry: return\n    if rank[rx] &lt; rank[ry]: swap(rx, ry)\n    parent[ry] = rx\n    if rank[rx] == rank[ry]: rank[rx] += 1\n\nResult: Tree depth is O(\\log n) — good, but we can do better."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#union-find-path-compression",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#union-find-path-compression",
+    "title": "Tulasimohan Molli",
+    "section": "Union-Find: Path Compression",
+    "text": "Union-Find: Path Compression\nIdea: During find(x), after finding the root, make every node on the path point directly to the root.\nfind(x):\n    if parent[x] != x:\n        parent[x] = find(parent[x])\n    return parent[x]\n\nEffect: Future find calls on the same chain are O(1).\nAmortized analysis: Any sequence of m operations on n elements runs in O(m\\, \\alpha(n)) time, where \\alpha(n) is the inverse Ackermann function.\n\n\\alpha(n) \\le 4 for all n \\le 2^{2^{2^{2^{16}}}} (essentially constant)."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#kruskals-with-union-find",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#kruskals-with-union-find",
+    "title": "Tulasimohan Molli",
+    "section": "Kruskal’s with Union-Find",
+    "text": "Kruskal’s with Union-Find\nKruskalMST(G, w):\n    for each vertex v in V:            # makeset × |V|\n        makeset(v)\n\n    sort edges E by weight w           # O(E log E)\n\n    F = ∅\n    for each edge (u, v) in E:         # O(E α(V))\n        if find(u) ≠ find(v):\n            union(u, v)\n            F = F ∪ {(u, v)}\n            if |F| == |V| - 1: break\n\n    return F\nTime complexity:\n\nSorting: O(E \\log E) = O(E \\log V)\nV makeset + 2E find + (V-1) union: O((E+V)\\,\\alpha(V)) = O(E\\,\\alpha(V))\nTotal: O(E \\log V) — dominated by sorting."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#correctness-overview",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#correctness-overview",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness — Overview",
+    "text": "Correctness — Overview\n\nKruskal’s algorithm correctly computes an MST.\n\nWe prove this by a greedy exchange argument:\n\nLet F be the set of edges built by Kruskal’s so far.\nInvariant: F is always a subset of some MST M.\nThe invariant holds initially (F = \\emptyset).\nWhen we add e to F, we show there exists an MST M' containing F \\cup \\{e\\}."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#correctness-exchange-step",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#correctness-exchange-step",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness — Exchange Step",
+    "text": "Correctness — Exchange Step\nCase 1: e \\in M. Trivial — set M' = M, invariant preserved.\nCase 2: e \\notin M. Then M \\cup \\{e\\} contains a cycle C.\n\nKruskal’s added e, so the endpoints of e were in different components of F.\nFollowing C around M, there must be some other edge e' \\in C whose endpoints are also in different components of F.\nSince Kruskal’s chose e over e', we have w(e) \\le w(e').\n\nConstruct M' = M \\cup \\{e\\} - \\{e'\\}:\n\nM' is a spanning tree (same size, still connected).\n\\text{cost}(M') = \\text{cost}(M) + w(e) - w(e') \\le \\text{cost}(M).\nSince M is an MST, M' is also an MST.\nAnd F \\cup \\{e\\} \\subseteq M'. \\square"
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#correctness-key-insight",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#correctness-key-insight",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness — Key Insight",
+    "text": "Correctness — Key Insight\nThe exchange argument is the heart of greedy correctness proofs:\n\nCompare your solution to any optimal solution.\nFind the first point where they differ.\nSwap the greedy edge into the optimal solution without making it worse.\nRepeat — the greedy solution is also optimal.\n\nWe will see this pattern again in Prim’s algorithm, Huffman codes, and Matroids."
+  },
+  {
+    "objectID": "lectures/lec-15-minimum-spanning-trees.html#what-we-learned-today",
+    "href": "lectures/lec-15-minimum-spanning-trees.html#what-we-learned-today",
+    "title": "Tulasimohan Molli",
+    "section": "What We Learned Today",
+    "text": "What We Learned Today\n\nMST definition — minimum-weight spanning tree in a graph\nCut and Cycle properties — fundamental characterizations of MST edges\nKruskal’s algorithm — repeatedly add the cheapest non-cycle-creating edge\nUnion-Find — efficient cycle detection via DSU with path compression and union by rank\nCorrectness proof — greedy exchange argument\n\n\n\n\nTechnique\nTime complexity\n\n\n\n\nKruskal’s + Union-Find\nO(E \\log V)\n\n\nKruskal’s + Union-Find (edges pre-sorted)\nO(E\\,\\alpha(V))"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#prims-algorithm-overview",
+    "href": "lectures/lec-16-mst-algorithms.html#prims-algorithm-overview",
+    "title": "Tulasimohan Molli",
+    "section": "Prim’s Algorithm — Overview",
+    "text": "Prim’s Algorithm — Overview\nIdea: Grow a tree from a starting node, always adding the cheapest edge that connects the tree to a new vertex.\n\nPick an arbitrary start node u. Initialize T = \\{u\\}.\nMaintain a priority queue of vertices not yet in T, keyed by the minimum-weight edge connecting them to T.\nRepeatedly:\n\nExtract the vertex v with the smallest key from the PQ.\nAdd v and the corresponding edge to T.\nUpdate keys of v’s neighbors (if they can now reach T via a cheaper edge).\n\nStop when T spans all V vertices."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#prims-algorithm-interactive-example",
+    "href": "lectures/lec-16-mst-algorithms.html#prims-algorithm-interactive-example",
+    "title": "Tulasimohan Molli",
+    "section": "Prim’s Algorithm — Interactive Example",
+    "text": "Prim’s Algorithm — Interactive Example\n\n\nAlgorithm:\n\nStart with any vertex a in tree T.\nPick cheapest crossing edge.\nUpdate keys of neighbors.\nRepeat until all vertices in T.\n\n\nStep 0 / 9 — click ▶ to start\n\n\n\n\n\n\n\n\n\n\n\n◀\n▶\n↺\n\n━ in T  \n━ crossing edge  \n━ not visited"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#priority-queue-implementation",
+    "href": "lectures/lec-16-mst-algorithms.html#priority-queue-implementation",
+    "title": "Tulasimohan Molli",
+    "section": "Priority Queue Implementation",
+    "text": "Priority Queue Implementation\nPrimMST(G, w, r):                    // r = arbitrary root\n    for each v in V:\n        key[v] = ∞                   // cheapest edge-weight from T to v\n        parent[v] = NIL\n        insert v into PQ with key[v]\n\n    key[r] = 0\n    while PQ is not empty:\n        u = extract-min(PQ)          // vertex with smallest key = cheapest to connect to T\n        for each v in adj[u]:        // T just grew by u; update u's neighbours\n            if v in PQ and w(u,v) &lt; key[v]:\n                parent[v] = u\n                key[v] = w(u,v)\n                decrease-key(PQ, v, key[v])\n\nextract-min: O(\\log V) each (binary heap)\ndecrease-key: O(\\log V) each"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#time-complexity",
+    "href": "lectures/lec-16-mst-algorithms.html#time-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Time Complexity",
+    "text": "Time Complexity\n\n\n\n\n\n\n\n\n\nImplementation\nextract-min\ndecrease-key\nTotal\n\n\n\n\nBinary heap\nO(\\log V)\nO(\\log V)\nO((V+E)\\log V) = O(E \\log V)\n\n\nFibonacci heap\nO(\\log V) amortized\nO(1) amortized\nO(E + V \\log V)\n\n\n\n\nBinary heap is simpler and preferred for typical graphs.\nFibonacci heap gives better worst-case bound but higher constants.\nFor dense graphs (E \\approx V^2), O(E + V \\log V) from Fibonacci heap is essentially O(V^2)."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#correctness-invariant",
+    "href": "lectures/lec-16-mst-algorithms.html#correctness-invariant",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness — Invariant",
+    "text": "Correctness — Invariant\n\nPrim’s algorithm correctly computes an MST.\n\nInvariant: After each iteration, the tree T is a subgraph of some minimum spanning tree M.\n\nBase case: T = \\{r\\} (single node, no edges) — trivially a subgraph of any MST.\nInductive step: Suppose T \\subseteq M for some MST M, and Prim’s adds edge e = (u, v) where u \\in T, v \\notin T."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#correctness-exchange",
+    "href": "lectures/lec-16-mst-algorithms.html#correctness-exchange",
+    "title": "Tulasimohan Molli",
+    "section": "Correctness — Exchange",
+    "text": "Correctness — Exchange\nWe need to show T \\cup \\{e\\} is a subgraph of some MST.\nCase 1: e \\in M. Then T \\cup \\{e\\} \\subseteq M. Done.\nCase 2: e \\notin M. Consider M \\cup \\{e\\} — it contains a cycle C.\n\nLet S be the set of vertices already in T when e is added.\nThe cut (S, V-S) has e as its cheapest crossing edge (by Prim’s — it was extracted from the PQ with minimum key).\nCycle C must cross (S, V-S) at some other edge f \\neq e.\nBy the cut property, c_e \\le c_f.\n\nConstruct M' = M \\cup \\{e\\} - \\{f\\}:\n\nM' is a spanning tree.\n\\text{cost}(M') \\le \\text{cost}(M) (since c_e \\le c_f).\nSo M' is an MST and T \\cup \\{e\\} \\subseteq M'. \\square"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-history",
+    "href": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-history",
+    "title": "Tulasimohan Molli",
+    "section": "Boruvka’s Algorithm — History",
+    "text": "Boruvka’s Algorithm — History\n\nInvented in 1926 by Czech mathematician Otakar Boruvka (1899–1995).\nDesigned to find the minimum-cost electrical grid for Moravia.\nRediscovered multiple times (also called Sollin’s algorithm).\nKey advantage: Naturally suited for distributed and parallel computation — each component independently finds its cheapest outgoing edge.\nPlays a pivotal role in Karger, Klein, and Tarjan’s randomized linear-time MST algorithm (1995)."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-1",
+    "href": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-1",
+    "title": "Tulasimohan Molli",
+    "section": "Boruvka’s Algorithm",
+    "text": "Boruvka’s Algorithm\n\nStart with each vertex as its own component S(v) = \\{v\\}, and T = \\emptyset.\nIn each round:\n\nFor each component S, find the minimum-weight edge e_S that has exactly one endpoint in S (the cheapest outgoing edge).\nAdd all such edges e_S to T.\nMerge components connected by the added edges.\n\nRepeat rounds until only one component remains.\nReturn T."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-correctness",
+    "href": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-correctness",
+    "title": "Tulasimohan Molli",
+    "section": "Boruvka’s Algorithm — Correctness",
+    "text": "Boruvka’s Algorithm — Correctness\n\nEvery edge added in a round is the minimum-weight edge crossing some cut (the component boundary).\nBy the cut property, each such edge belongs to some MST.\nCycle concern: Could edges added in the same round form a cycle? No — because if edges (a,b), (b,c), (c,a) were all cheapest-out for their respective components, then the weights would have to satisfy w(a,b) &lt; w(b,c) &lt; w(c,a) &lt; w(a,b), an impossibility.\nThus T remains acyclic throughout.\n\n\nResult: Boruvka’s algorithm correctly computes an MST."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-time-complexity",
+    "href": "lectures/lec-16-mst-algorithms.html#boruvkas-algorithm-time-complexity",
+    "title": "Tulasimohan Molli",
+    "section": "Boruvka’s Algorithm — Time Complexity",
+    "text": "Boruvka’s Algorithm — Time Complexity\n\nEach round takes O(E) time (scan all edges once from each endpoint).\nIn each round, every component merges with at least one other component.\nThe number of components at least halves each round.\nAfter at most \\log_2 V rounds, only one component remains.\n\nT(V,E) = O(E \\log V)\n\nParallel version: Each component finds its cheapest edge independently in O(1) parallel rounds — excellent for distributed computing (MapReduce, Pregel)."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#exchange-arguments-1",
+    "href": "lectures/lec-16-mst-algorithms.html#exchange-arguments-1",
+    "title": "Tulasimohan Molli",
+    "section": "Exchange Arguments",
+    "text": "Exchange Arguments\nA general technique for proving greedy algorithms are optimal:\n\nLet A be the greedy solution and OPT be any optimal solution.\nFind the first “difference” between A and OPT.\nExchange: Modify OPT by replacing the differing element with the corresponding greedy choice, without making OPT worse.\nRepeat — the greedy solution is at least as good as any optimal solution.\n\n\n\n\n\n\n\n\n\nAlgorithm\nWhat is exchanged\nWhy it works\n\n\n\n\nKruskal’s\nCheaper edge e replaces heavier e' in cycle\nCut/cycle property\n\n\nPrim’s\nCheapest crossing edge e replaces heavier f\nCut property\n\n\nInterval Scheduling\nEarlier-finishing job replaces later one\nExchange preserves feasibility\n\n\nHuffman\nLow-frequency characters get deeper codes\nOptimal prefix code property"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#three-algorithms-three-strategies",
+    "href": "lectures/lec-16-mst-algorithms.html#three-algorithms-three-strategies",
+    "title": "Tulasimohan Molli",
+    "section": "Three Algorithms, Three Strategies",
+    "text": "Three Algorithms, Three Strategies\n\n\n\n\n\n\n\n\n\n\nKruskal’s\nPrim’s\nBoruvka’s\n\n\n\n\nStrategy\nGlobal — sort all edges\nLocal — grow from a root\nDistributed — each component acts independently\n\n\nData Structure\nUnion-Find (DSU)\nPriority Queue (min-heap)\nComponent edge lists\n\n\nCore Operation\nCycle detection via find\nExtract cheapest crossing vertex\nFind cheapest outgoing edge per component\n\n\nTime Complexity\nO(E \\log V)\nO(E \\log V)\nO(E \\log V)\n\n\nBest For\nSparse graphs\nDense graphs (with Fibonacci heap)\nParallel / distributed systems\n\n\nParallelism\nDifficult (sequential edge processing)\nDifficult (sequential growth)\nNatural (independent components)"
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#choosing-the-right-algorithm",
+    "href": "lectures/lec-16-mst-algorithms.html#choosing-the-right-algorithm",
+    "title": "Tulasimohan Molli",
+    "section": "Choosing the Right Algorithm",
+    "text": "Choosing the Right Algorithm\n\nSparse graphs (E \\approx V): All three run in O(V \\log V). Kruskal’s is simplest to implement.\nDense graphs (E \\approx V^2): Prim’s with Fibonacci heap gives O(V^2), which beats O(V^2 \\log V).\nParallel/distributed environment: Boruvka’s is the natural choice — each round is embarrassingly parallel.\nEducational value:\n\nKruskal’s teaches Union-Find and the exchange argument.\nPrim’s teaches priority queues and the cut property.\nBoruvka’s teaches parallel thinking and the oldest MST algorithm."
+  },
+  {
+    "objectID": "lectures/lec-16-mst-algorithms.html#what-we-learned-today",
+    "href": "lectures/lec-16-mst-algorithms.html#what-we-learned-today",
+    "title": "Tulasimohan Molli",
+    "section": "What We Learned Today",
+    "text": "What We Learned Today\n\nPrim’s Algorithm — grow a tree from a root using a priority queue, O(E \\log V)\nPrim’s Correctness — invariant + exchange argument via cut property\nBoruvka’s Algorithm — parallel component-based approach, O(E \\log V)\nExchange Arguments — a general technique for proving greedy optimality\nData Structure Comparison — Union-Find vs. Priority Queue vs. component lists\n\n\n\n\n\n\n\n\n\n\nAlgorithm\nDS\nComplexity\nKey Idea\n\n\n\n\nKruskal’s\nUnion-Find\nO(E \\log V)\nSort edges, Union-Find for cycles\n\n\nPrim’s\nPriority Queue\nO(E \\log V)\nGrow from root, extract-min\n\n\nBoruvka’s\nComponent lists\nO(E \\log V)\nParallel component merging"
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#vector-spaces-a-quick-refresher",
+    "href": "lectures/lec-17-matroids.html#vector-spaces-a-quick-refresher",
+    "title": "Tulasimohan Molli",
+    "section": "Vector Spaces — A Quick Refresher",
+    "text": "Vector Spaces — A Quick Refresher\nA vector space V has a notion of linear independence:\n\nA set of vectors \\{v_1, \\dots, v_k\\} is linearly independent if no non-trivial linear combination gives \\mathbf{0}.\nA set is linearly dependent if one vector can be expressed as a combination of others.\n\nExample: In \\mathbb{R}^3, the vectors (1,0,0), (0,1,0) are independent. Adding (1,1,0) makes the set dependent."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#basis-of-a-vector-space",
+    "href": "lectures/lec-17-matroids.html#basis-of-a-vector-space",
+    "title": "Tulasimohan Molli",
+    "section": "Basis of a Vector Space",
+    "text": "Basis of a Vector Space\nA basis B of a vector space V is a maximal linearly independent set — equivalently, a minimal spanning set.\nKey properties of bases:\n\nAll bases of V have the same cardinality — called the dimension of V.\nEvery vector in V can be written uniquely as a linear combination of basis vectors.\n\nExamples:\n\n\\mathbb{R}^n: standard basis \\{e_1, \\dots, e_n\\} has n vectors.\n\\mathbb{R}^2: both \\{(1,0), (0,1)\\} and \\{(1,2), (3,5)\\} are bases — same size."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#exchange-property-of-bases",
+    "href": "lectures/lec-17-matroids.html#exchange-property-of-bases",
+    "title": "Tulasimohan Molli",
+    "section": "Exchange Property of Bases",
+    "text": "Exchange Property of Bases\nThe defining property of bases in vector spaces is the exchange property:\n\n\n\n\n\n\n\nLemma\n\n\nLet A and B be two bases of V. For any a \\in A \\setminus B, there exists b \\in B \\setminus A such that (A \\setminus \\{a\\}) \\cup \\{b\\} is also a basis.\n\n\n\n\n\nThis is not true for arbitrary families of sets — it is a special property of linear independence.\nMatroids abstract exactly this property and apply it to other structures (graphs, partitions, etc.)."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#matroids",
+    "href": "lectures/lec-17-matroids.html#matroids",
+    "title": "Tulasimohan Molli",
+    "section": "Matroids",
+    "text": "Matroids\n\nMatroids are combinatorial structures that generalize the notion of linear independence in vector spaces.\nA matroid M = (E, \\mathcal{I}) consists of:\n\nA finite ground set E.\nA family \\mathcal{I} of subsets of E called independent sets.\n\nTwo axioms define \\mathcal{I}:\n\n(I1) Hereditary property: If X \\in \\mathcal{I} and Y \\subseteq X, then Y \\in \\mathcal{I}.\n(I2) Exchange property: If X, Y \\in \\mathcal{I} and |Y| &gt; |X|, then \\exists e \\in Y \\setminus X such that X \\cup \\{e\\} \\in \\mathcal{I}."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#why-matroids",
+    "href": "lectures/lec-17-matroids.html#why-matroids",
+    "title": "Tulasimohan Molli",
+    "section": "Why Matroids?",
+    "text": "Why Matroids?\n\nMatroids capture exactly the structures where the greedy algorithm finds an optimal solution.\nMany greedy-solvable problems are optimization over matroids.\nExamples — all satisfy the same exchange property we saw for vector spaces:\n\nGraphic matroid: Independent sets = acyclic edge sets (forests)\nUniform matroid: All subsets of size \\le k\nLinear/Vector matroid: Linearly independent vectors\nPartition matroid: At most one element from each partition block\n\nUnderstanding matroids provides a unified theory of greedy optimality."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#graphic-matroid-definition",
+    "href": "lectures/lec-17-matroids.html#graphic-matroid-definition",
+    "title": "Tulasimohan Molli",
+    "section": "Graphic Matroid — Definition",
+    "text": "Graphic Matroid — Definition\nLet G = (V, E) be an undirected graph. Define M_G = (S_G, \\mathcal{I}_G):\n\nS_G = E (the edges of G)\nA \\subseteq E is independent (A \\in \\mathcal{I}_G) iff G_A = (V, A) is a forest (acyclic).\n\nClaim: M_G is a matroid.\nProof of (I1): Any subset of a forest is a forest. ✓\nProof of (I2): Let A, B \\in \\mathcal{I}_G with |B| &gt; |A|. Both G_A and G_B are forests on the same vertex set V.\nRecall: a forest with t trees and |V| vertices has exactly |V| - t edges."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#graphic-matroid-exchange-1",
+    "href": "lectures/lec-17-matroids.html#graphic-matroid-exchange-1",
+    "title": "Tulasimohan Molli",
+    "section": "Graphic Matroid — Exchange (1)",
+    "text": "Graphic Matroid — Exchange (1)\n\nG_A: |A| = |V| - t_A \\;\\Rightarrow\\; t_A = |V| - |A|\nG_B: |B| = |V| - t_B \\;\\Rightarrow\\; t_B = |V| - |B|\nSince |B| &gt; |A|, we have t_B &lt; t_A. So G_B has fewer trees.\n\nThus G_B contains a tree T whose vertices lie in at least two different trees of G_A.\nSince T is connected, it contains an edge (u, v) with u and v in different trees of G_A."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#graphic-matroid-exchange-2",
+    "href": "lectures/lec-17-matroids.html#graphic-matroid-exchange-2",
+    "title": "Tulasimohan Molli",
+    "section": "Graphic Matroid — Exchange (2)",
+    "text": "Graphic Matroid — Exchange (2)\n\nAdding (u, v) to A connects two different trees, creating no cycle.\nTherefore A \\cup \\{(u,v)\\} \\in \\mathcal{I}_G, satisfying the exchange property. ✓\n\nHence M_G = (E, \\mathcal{I}_G) is a matroid. ◻\nThis is called the graphic matroid of G."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#intuition-exchange-property",
+    "href": "lectures/lec-17-matroids.html#intuition-exchange-property",
+    "title": "Tulasimohan Molli",
+    "section": "Intuition: Exchange Property",
+    "text": "Intuition: Exchange Property\nThe exchange property says: if B is “more independent” than A (larger), then B has an element that can safely extend A.\nGraphic matroid intuition:\n\nIndependent sets = forests (acyclic edge sets).\nA larger forest B has fewer connected components than a smaller forest A.\nSince B spans more vertices per component, it must have an edge connecting two different components of A — which cannot create a cycle when added to A.\n\nThis is exactly why Kruskal’s algorithm can keep adding edges without forming cycles: any heavier edge that would create a cycle can be skipped."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#example-uniform-matroid",
+    "href": "lectures/lec-17-matroids.html#example-uniform-matroid",
+    "title": "Tulasimohan Molli",
+    "section": "Example: Uniform Matroid",
+    "text": "Example: Uniform Matroid\nFor a set E and integer k \\ge 0, define:\n\n\\mathcal{I} = \\{ X \\subseteq E : |X| \\le k \\}\n\nThis is the uniform matroid U_{n,k} where n = |E|.\n\n(I1): Any subset of a set of size \\le k also has size \\le k. ✓\n(I2): If |X| &lt; |Y| \\le k, pick any e \\in Y \\setminus X. Then |X \\cup \\{e\\}| \\le |X| + 1 \\le |Y| \\le k. ✓\n\nExample: U_{n,1} means we can pick at most one element — “select the best single item.”"
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#example-partition-matroid",
+    "href": "lectures/lec-17-matroids.html#example-partition-matroid",
+    "title": "Tulasimohan Molli",
+    "section": "Example: Partition Matroid",
+    "text": "Example: Partition Matroid\nScenario: A company has m departments. From each department E_i, you can select at most c_i representatives for a committee.\n\nGround set E = E_1 \\cup E_2 \\cup \\dots \\cup E_m (all employees, partitioned by department).\nX \\subseteq E is independent if it respects every department’s quota: |X \\cap E_i| \\le c_i for each i.\n\nExample:\n\nDept A has 5 employees (E_1), quota c_1 = 2.\nDept B has 3 employees (E_2), quota c_2 = 1.\nX = \\{\\text{Alice},\\,\\text{Bob}\\} from Dept A is independent (2 \\le 2 ✓).\nAdding Charlie from Dept A gives |X \\cap E_1| = 3 &gt; 2, violating the quota → not independent.\n\nWhy it’s a matroid:\n\n(I1): Removing people from a committee never violates a quota. ✓\n(I2): If committee Y has more people than X from some department E_i, then Y has someone from E_i not in X who can safely join X without exceeding c_i. ✓\n\nApplication: Selecting the c_i best candidates from each department — greedy works because this is a matroid."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#bases-maximal-independent-sets",
+    "href": "lectures/lec-17-matroids.html#bases-maximal-independent-sets",
+    "title": "Tulasimohan Molli",
+    "section": "Bases (Maximal Independent Sets)",
+    "text": "Bases (Maximal Independent Sets)\n\nExtension: Given A \\in \\mathcal{I}, an element x \\notin A is an extension if A \\cup \\{x\\} \\in \\mathcal{I}.\nA basis (or maximal independent set) is an independent set with no extensions.\n\n\n\n\n\n\n\n\nLemma\n\n\nAll bases of a matroid have the same cardinality.\n\n\n\n\n\n\n\n\n\n\n\nProof\n\n\nLet A and B be bases with |B| &gt; |A|. By (I2), \\exists e \\in B \\setminus A such that A \\cup \\{e\\} \\in \\mathcal{I}, contradicting maximality of A. Thus |A| = |B|. ◻\n\n\n\n\nThis common size is called the rank of the matroid."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#rank-of-a-matroid",
+    "href": "lectures/lec-17-matroids.html#rank-of-a-matroid",
+    "title": "Tulasimohan Molli",
+    "section": "Rank of a Matroid",
+    "text": "Rank of a Matroid\n\nThe rank of M = (E, \\mathcal{I}) is:\n\n\n\\text{rank}(M) = \\max \\{ |X| : X \\in \\mathcal{I} \\}\n\n\nMore generally, for S \\subseteq E, the rank function is:\n\n\n\\rho(S) = \\max \\{ |X| : X \\subseteq S,\\; X \\in \\mathcal{I} \\}\n\n\nGraphic matroid: \\rho(S) = |V| - \\kappa(S) where \\kappa(S) is the number of connected components in (V, S).\nUniform matroid U_{n,k}: \\rho(S) = \\min(|S|, k)."
+  },
+  {
+    "objectID": "lectures/lec-17-matroids.html#matroid-examples-summary",
+    "href": "lectures/lec-17-matroids.html#matroid-examples-summary",
+    "title": "Tulasimohan Molli",
+    "section": "Matroid Examples Summary",
+    "text": "Matroid Examples Summary\n\n\n\n\n\n\n\n\n\nMatroid\nGround Set E\nIndependent Sets\nRank\n\n\n\n\nGraphic\nEdges of G\nAcyclic edge sets (forests)\n|V| - \\kappa(S)\n\n\nUniform U_{n,k}\nAny n elements\nSubsets of size \\le k\nk\n\n\nPartition\nDisjoint blocks E_i\nAt most c_i per block\n\\sum c_i\n\n\nLinear\nVectors in \\mathbb{R}^d\nLinearly independent sets\n\\dim(\\text{span})\n\n\n\nNext lecture: How matroids characterize problems where the greedy algorithm works optimally."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#weighted-matroid-optimization",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#weighted-matroid-optimization",
+    "title": "Tulasimohan Molli",
+    "section": "Weighted Matroid Optimization",
+    "text": "Weighted Matroid Optimization\nGiven a matroid M = (E, \\mathcal{I}) with a weight function w: E \\to \\mathbb{R}^+, find a basis B \\in \\mathcal{I} of maximum total weight:\n\n\\max_{B \\in \\mathcal{I},\\; |B| = \\text{rank}(M)} \\sum_{e \\in B} w(e)\n\n\nSince all bases have the same size, maximizing is equivalent to minimizing with negated weights.\nThe greedy algorithm for this problem is remarkably simple."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#greedy-algorithm-on-a-matroid",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#greedy-algorithm-on-a-matroid",
+    "title": "Tulasimohan Molli",
+    "section": "Greedy Algorithm on a Matroid",
+    "text": "Greedy Algorithm on a Matroid\nInput: Matroid M = (E, \\mathcal{I}), weight function w: E \\to \\mathbb{R}^+\n\nSort E by decreasing weight: w(e_1) \\ge w(e_2) \\ge \\dots \\ge w(e_m).\nInitialize B = \\emptyset.\nFor each e \\in E in this order:\n\nIf B \\cup \\{e\\} \\in \\mathcal{I}, add e to B.\n\nReturn B.\n\n\n\n\nThis is exactly Kruskal’s algorithm when M is the graphic matroid — add the heaviest edge that doesn’t create a cycle. (For MST, negate weights or sort ascending.)"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#example-greedy-on-a-graphic-matroid",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#example-greedy-on-a-graphic-matroid",
+    "title": "Tulasimohan Molli",
+    "section": "Example: Greedy on a Graphic Matroid",
+    "text": "Example: Greedy on a Graphic Matroid\nConsider a graph G = (V,E) with V = \\{a,b,c,d\\} and edges sorted by decreasing weight:\n\n\n\n\n\nGraph G\n\n\n\n\n\n\nStep\nEdge\nw\nB \\cup \\{e\\} acyclic?\nAction\n\n\n\n\n1\n(b,c)\n9\nYes (empty + edge)\nAdd\n\n\n2\n(a,c)\n7\nYes (still acyclic)\nAdd\n\n\n3\n(a,b)\n5\nNo (cycle a-b-c-a)\nSkip\n\n\n4\n(c,d)\n4\nYes (still acyclic)\nAdd\n\n\n5\n(b,d)\n2\nNo (cycle b-c-d-b)\nSkip\n\n\n6\n(a,d)\n1\nNo (cycle a-c-d-a)\nSkip\n\n\n\n\nResult: B = \\{(b,c), (a,c), (c,d)\\}, weight = 20 — the maximum spanning tree."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#equivalence-theorem",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#equivalence-theorem",
+    "title": "Tulasimohan Molli",
+    "section": "Equivalence Theorem",
+    "text": "Equivalence Theorem\n\n\n\nTheorem (Rado 1957, Gale 1968).\n\n\nThe greedy algorithm produces a maximum-weight basis for every weight function w: E \\to \\mathbb{R}^+ if and only if M = (E, \\mathcal{I}) is a matroid.\n\n\n\nMatroids characterize exactly the structures where greedy is optimal.\n\nWe prove both directions:\n\n(\\Leftarrow) If M is a matroid, greedy always finds an optimal basis.\n(\\Rightarrow) If greedy works for all weight functions, M must be a matroid."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-key-lemma",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-key-lemma",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Leftarrow) Key Lemma",
+    "text": "(\\Leftarrow) Key Lemma\n\nThe key insight: greedy stays “ahead” of any optimal solution at every prefix.\nSort edges by decreasing weight: w(e_1) \\ge w(e_2) \\ge \\dots \\ge w(e_m).\nLet B = greedy basis, B^* = optimal basis.\nDefine B_k = \\{e_1,\\dots,e_k\\} \\cap B and B^*_k = \\{e_1,\\dots,e_k\\} \\cap B^*.\n\n\n\n\n\nLemma\n\n\nFor every k, |B_k| \\ge |B^*_k|."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-proof-of-key-lemma",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-proof-of-key-lemma",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Leftarrow) Proof of Key Lemma",
+    "text": "(\\Leftarrow) Proof of Key Lemma\nProof:\n\nSuppose |B^*_k| &gt; |B_k| for some k. Then B_k and B^*_k are both independent, with |B^*_k| &gt; |B_k|.\nBy (I2), \\exists e \\in B^*_k \\setminus B_k such that B_k \\cup \\{e\\} \\in \\mathcal{I}.\nBut e = e_j for some j \\le k (it’s among the first k elements).\nWhen greedy considered e_j, B_{j-1} \\subseteq B_k, so B_{j-1} \\cup \\{e_j\\} \\in \\mathcal{I} (by heredity). Greedy would have added it — contradiction. ✓"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-from-lemma-to-optimality",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-from-lemma-to-optimality",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Leftarrow) From Lemma to Optimality",
+    "text": "(\\Leftarrow) From Lemma to Optimality\n\nSince |B_k| \\ge |B^*_k| for all k, and both are bases at the end (|B| = |B^*| = r):\n\n\nw(B) - w(B^*) = \\sum_{i=1}^m w(e_i) \\big( [e_i \\in B] - [e_i \\in B^*] \\big)\n\n\nThe partial sum up to k counts how many heavy elements greedy has “extra” vs optimal:\n\n\n\\sum_{i=1}^k w(e_i) \\big( [e_i \\in B] - [e_i \\in B^*] \\big) = w(B_k) - w(B^*_k)\n\nSince |B_k| \\ge |B^*_k| and weights are decreasing, this partial sum is non-negative for every k. Therefore the total w(B) - w(B^*) \\ge 0, i.e., w(B) \\ge w(B^*). ◻"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-intuition",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#leftarrow-intuition",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Leftarrow) Intuition",
+    "text": "(\\Leftarrow) Intuition\nAt every prefix, greedy has at least as many elements as optimal. Since heavier elements come first and greedy picks at least as many of them, its total weight cannot be less."
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-proving-hereditary-i1",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-proving-hereditary-i1",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Rightarrow) Proving Hereditary (I1)",
+    "text": "(\\Rightarrow) Proving Hereditary (I1)\nWe show that if either matroid axiom fails, we can construct a weight function where greedy gives a suboptimal result.\nHereditary (I1): Suppose X \\in \\mathcal{I} but Y \\subseteq X is not in \\mathcal{I}.\n\nAssign w(e) = 1 for e \\in Y, w(e) = 0 otherwise.\nGreedy considers all e \\in Y first (highest weight). Since Y \\notin \\mathcal{I}, greedy must reject some e \\in Y when adding it would create a dependency.\nBut Y is a subset of X \\in \\mathcal{I}, so Y should be independent by (I1). This is a contradiction. ✓"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-proving-exchange-i2",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-proving-exchange-i2",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Rightarrow) Proving Exchange (I2)",
+    "text": "(\\Rightarrow) Proving Exchange (I2)\nSuppose X, Y \\in \\mathcal{I} with |Y| &gt; |X|, but no e \\in Y \\setminus X can extend X. Construct weights:\n\nw(e) =\n\\begin{cases}\n1 + \\epsilon & e \\in X \\\\\n1 & e \\in Y \\setminus X \\\\\n0 & \\text{otherwise}\n\\end{cases}"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-exchange-contradiction",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#rightarrow-exchange-contradiction",
+    "title": "Tulasimohan Molli",
+    "section": "(\\Rightarrow) Exchange — Contradiction",
+    "text": "(\\Rightarrow) Exchange — Contradiction\nGreedy behavior:\n\nFirst picks all of X (weight 1+\\epsilon, highest).\nThen considers elements of Y \\setminus X (weight 1). By assumption, none can extend X.\nGreedy stops with B = X, total weight |X|(1+\\epsilon).\n\nAn optimal basis can pick Y, with weight at least |Y| \\cdot 1.\nFor sufficiently small \\epsilon (say \\epsilon &lt; 1/|X|), |Y| \\cdot 1 &gt; |X|(1+\\epsilon), contradicting greedy optimality. ✓\nThus M satisfies both (I1) and (I2), so M is a matroid. ◻"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#why-matroids-matter-greedy-vs-dp",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#why-matroids-matter-greedy-vs-dp",
+    "title": "Tulasimohan Molli",
+    "section": "Why Matroids Matter: Greedy vs DP",
+    "text": "Why Matroids Matter: Greedy vs DP\nThe matroid theorem tells us exactly when greedy works:\n\n\n\n\n\n\n\n\nIf constraints form a …\nGreedy is …\nUse instead\n\n\n\n\nMatroid\nAlways optimal\nGreedy ✓\n\n\nIntersection of 2 matroids\nNot guaranteed\nMatroid intersection (polynomial)\n\n\nIntersection of 3+ matroids\nNot guaranteed\nNP-hard in general\n\n\nNo matroid structure\nNot guaranteed\nDynamic Programming / other"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#examples",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#examples",
+    "title": "Tulasimohan Molli",
+    "section": "Examples",
+    "text": "Examples\n\nMST (graphic matroid) → greedy works → Kruskal’s / Prim’s O(E \\log V)\nMaximum bipartite matching → intersection of 2 partition matroids → not greedy, needs augmenting paths\nTSP → no matroid structure → NP-hard, needs approximation"
+  },
+  {
+    "objectID": "lectures/lec-18-matroids-greedy-optimization.html#summary-what-we-learned",
+    "href": "lectures/lec-18-matroids-greedy-optimization.html#summary-what-we-learned",
+    "title": "Tulasimohan Molli",
+    "section": "Summary — What We Learned",
+    "text": "Summary — What We Learned\n\nThe greedy algorithm finds a maximum-weight independent set iff the structure is a matroid.\nThis unifies many greedy algorithms:\n\nKruskal’s (graphic matroid) — add cheapest non-cycle edge\nMaximum-weight forest — add heaviest acyclic edge\nSelection with quotas (partition matroid) — pick best from each category\nScheduling with deadlines (certain matroid structures)\n\nWhen constraints form a matroid, greedy is provably optimal.\nWhen they don’t, greedy may fail — use DP or other techniques.\n\nThe beauty: one abstract theorem proves correctness of an entire family of algorithms."
   }
 ]
