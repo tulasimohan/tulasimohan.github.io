@@ -14,6 +14,13 @@
     "text": "Credits\nSlide icons by Adioma."
   },
   {
+    "objectID": "sitemap.html",
+    "href": "sitemap.html",
+    "title": "Sitemap",
+    "section": "",
+    "text": "Here is a textual overview of the website’s structure:\n.\n├── Home\n├── Lectures (1–28)\n├── Assignments\n│   ├── Assignment 1\n│   └── Assignment 2\n├── Practice Problems\n│   ├── Asymptotic Notation\n│   ├── Recurrence Relations\n│   ├── Divide & Conquer\n│   ├── Greedy Algorithms\n│   └── Dynamic Programming\n├── Quizzes (1–6)\n└── Exams"
+  },
+  {
     "objectID": "lectures/lec-01-introduction-to-algorithms.html#design-and-analysis-of-algorithms",
     "href": "lectures/lec-01-introduction-to-algorithms.html#design-and-analysis-of-algorithms",
     "title": "Tulasimohan Molli",
