@@ -2,46 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-11T15:26:48.976Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-19-average-case-analysis.html</loc>
-    <lastmod>2026-07-11T15:26:49.097Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-20-amortized-analysis.html</loc>
-    <lastmod>2026-07-11T15:26:49.100Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-21-further-amortized-analysis.html</loc>
-    <lastmod>2026-07-11T15:26:49.114Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-22-network-flow.html</loc>
-    <lastmod>2026-07-11T15:26:49.121Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-23-max-flow-min-cut.html</loc>
-    <lastmod>2026-07-11T15:26:49.125Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-24-edmonds-karp-and-bipartite-matching.html</loc>
-    <lastmod>2026-07-11T15:26:49.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-25-randomized-algorithms.html</loc>
-    <lastmod>2026-07-11T15:26:49.134Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-26-models-of-computation-and-reductions.html</loc>
-    <lastmod>2026-07-11T15:26:49.138Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-27-np-completeness-reductions.html</loc>
-    <lastmod>2026-07-11T15:26:49.138Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/lectures/lec-28-lp-ip-relaxations-and-lp-rounding.html</loc>
-    <lastmod>2026-07-11T15:26:49.148Z</lastmod>
+    <lastmod>2026-07-11T15:28:16.801Z</lastmod>
   </url>
 </urlset>
