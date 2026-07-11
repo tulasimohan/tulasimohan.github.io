@@ -1,83 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-11T17:27:38.502Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/daa/sitemap.html</loc>
-    <lastmod>2026-07-11T17:27:38.857Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.494Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-01-introduction-to-algorithms.html</loc>
-    <lastmod>2026-07-11T17:27:38.529Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.522Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html</loc>
-    <lastmod>2026-07-11T17:27:38.548Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.540Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-03-asymptotic-notation-and-merge-sort.html</loc>
-    <lastmod>2026-07-11T17:27:38.551Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.543Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-04-solving-recurrences.html</loc>
-    <lastmod>2026-07-11T17:27:38.570Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.561Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-05-divide-and-conquer-maximum-subarray.html</loc>
-    <lastmod>2026-07-11T17:27:38.572Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.564Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-06-closest-pair-of-points-in-2d.html</loc>
-    <lastmod>2026-07-11T17:27:38.575Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.567Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-07-sorting-lower-bounds-and-quicksort.html</loc>
-    <lastmod>2026-07-11T17:27:38.578Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.569Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-08-probability-primer-and-randomized-quicksort.html</loc>
-    <lastmod>2026-07-11T17:27:38.582Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.573Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-09-selection-randomized-and-deterministic.html</loc>
-    <lastmod>2026-07-11T17:27:38.585Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.576Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html</loc>
-    <lastmod>2026-07-11T17:27:38.589Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.579Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-11-matrix-chain-multiplication.html</loc>
-    <lastmod>2026-07-11T17:27:38.592Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.583Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-12-graphs-and-dynamic-programming-on-trees.html</loc>
-    <lastmod>2026-07-11T17:27:38.596Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.586Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-13-greedy-interval-scheduling.html</loc>
-    <lastmod>2026-07-11T17:27:38.602Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.591Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-14-huffman-coding.html</loc>
-    <lastmod>2026-07-11T17:27:38.605Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.595Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-15-minimum-spanning-trees.html</loc>
-    <lastmod>2026-07-11T17:27:38.608Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.597Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-16-mst-algorithms.html</loc>
-    <lastmod>2026-07-11T17:27:38.617Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.606Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-17-matroids.html</loc>
-    <lastmod>2026-07-11T17:27:38.619Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.609Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-18-matroids-greedy-optimization.html</loc>
-    <lastmod>2026-07-11T17:27:38.623Z</lastmod>
+    <lastmod>2026-07-11T17:37:44.616Z</lastmod>
   </url>
 </urlset>
