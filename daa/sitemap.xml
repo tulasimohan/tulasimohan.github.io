@@ -2,78 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-11T17:08:30.378Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.265Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-01-introduction-to-algorithms.html</loc>
-    <lastmod>2026-07-11T17:08:30.408Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.294Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html</loc>
-    <lastmod>2026-07-11T17:08:30.428Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.312Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-03-asymptotic-notation-and-merge-sort.html</loc>
-    <lastmod>2026-07-11T17:08:30.431Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.315Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-04-solving-recurrences.html</loc>
-    <lastmod>2026-07-11T17:08:30.452Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.333Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-05-divide-and-conquer-maximum-subarray.html</loc>
-    <lastmod>2026-07-11T17:08:30.454Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.336Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-06-closest-pair-of-points-in-2d.html</loc>
-    <lastmod>2026-07-11T17:08:30.457Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.338Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-07-sorting-lower-bounds-and-quicksort.html</loc>
-    <lastmod>2026-07-11T17:08:30.460Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.341Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-08-probability-primer-and-randomized-quicksort.html</loc>
-    <lastmod>2026-07-11T17:08:30.465Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.346Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-09-selection-randomized-and-deterministic.html</loc>
-    <lastmod>2026-07-11T17:08:30.468Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.349Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html</loc>
-    <lastmod>2026-07-11T17:08:30.472Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.352Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-11-matrix-chain-multiplication.html</loc>
-    <lastmod>2026-07-11T17:08:30.476Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.356Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-12-graphs-and-dynamic-programming-on-trees.html</loc>
-    <lastmod>2026-07-11T17:08:30.480Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.360Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-13-greedy-interval-scheduling.html</loc>
-    <lastmod>2026-07-11T17:08:30.487Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.365Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-14-huffman-coding.html</loc>
-    <lastmod>2026-07-11T17:08:30.492Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.368Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-15-minimum-spanning-trees.html</loc>
-    <lastmod>2026-07-11T17:08:30.496Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.371Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-16-mst-algorithms.html</loc>
-    <lastmod>2026-07-11T17:08:30.506Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.380Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-17-matroids.html</loc>
-    <lastmod>2026-07-11T17:08:30.508Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.382Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/lectures/lec-18-matroids-greedy-optimization.html</loc>
-    <lastmod>2026-07-11T17:08:30.512Z</lastmod>
+    <lastmod>2026-07-11T17:18:22.386Z</lastmod>
   </url>
 </urlset>
