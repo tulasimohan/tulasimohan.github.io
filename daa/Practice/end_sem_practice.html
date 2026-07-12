@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>End-Semester Practice Problems – Tulasimohan Molli</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.navbar-brand');if(b)b.href='https://tulasimohan.github.io/'});
+</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles/custom.css">
+<link rel="stylesheet" href="practice.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Tulasimohan Molli</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#end-semester-practice-problems" id="toc-end-semester-practice-problems" class="nav-link active" data-scroll-target="#end-semester-practice-problems">End-Semester Practice Problems</a>
+  <ul class="collapse">
+  <li><a href="#a.-matroids-lecture-18" id="toc-a.-matroids-lecture-18" class="nav-link" data-scroll-target="#a.-matroids-lecture-18">A. Matroids (Lecture 18)</a></li>
+  <li><a href="#c.-amortized-analysis-lectures-2021" id="toc-c.-amortized-analysis-lectures-2021" class="nav-link" data-scroll-target="#c.-amortized-analysis-lectures-2021">C. Amortized Analysis (Lectures 20–21)</a></li>
+  <li><a href="#d.-network-flow-matching-lectures-2224" id="toc-d.-network-flow-matching-lectures-2224" class="nav-link" data-scroll-target="#d.-network-flow-matching-lectures-2224">D. Network Flow &amp; Matching (Lectures 22–24)</a></li>
+  <li><a href="#e.-randomized-algorithms-lecture-25" id="toc-e.-randomized-algorithms-lecture-25" class="nav-link" data-scroll-target="#e.-randomized-algorithms-lecture-25">E. Randomized Algorithms (Lecture 25)</a></li>
+  <li><a href="#f.-npc-reductions-lectures-2627" id="toc-f.-npc-reductions-lectures-2627" class="nav-link" data-scroll-target="#f.-npc-reductions-lectures-2627">F. NPC Reductions (Lectures 26–27)</a></li>
+  <li><a href="#g.-lp-ip-relaxations-lp-rounding-lecture-28" id="toc-g.-lp-ip-relaxations-lp-rounding-lecture-28" class="nav-link" data-scroll-target="#g.-lp-ip-relaxations-lp-rounding-lecture-28">G. LP, IP, Relaxations &amp; LP Rounding (Lecture 28)</a></li>
+  <li><a href="#answer-key" id="toc-answer-key" class="nav-link" data-scroll-target="#answer-key">Answer Key</a>
+  <ul class="collapse">
+  <li><a href="#section-a-matroids" id="toc-section-a-matroids" class="nav-link" data-scroll-target="#section-a-matroids">Section A — Matroids</a></li>
+  <li><a href="#section-c-amortized-analysis" id="toc-section-c-amortized-analysis" class="nav-link" data-scroll-target="#section-c-amortized-analysis">Section C — Amortized Analysis</a></li>
+  <li><a href="#section-d-network-flow-matching" id="toc-section-d-network-flow-matching" class="nav-link" data-scroll-target="#section-d-network-flow-matching">Section D — Network Flow &amp; Matching</a></li>
+  <li><a href="#section-e-randomized-algorithms" id="toc-section-e-randomized-algorithms" class="nav-link" data-scroll-target="#section-e-randomized-algorithms">Section E — Randomized Algorithms</a></li>
+  <li><a href="#section-f-npc-reductions" id="toc-section-f-npc-reductions" class="nav-link" data-scroll-target="#section-f-npc-reductions">Section F — NPC Reductions</a></li>
+  <li><a href="#section-g-lp-ip-relaxations-lp-rounding" id="toc-section-g-lp-ip-relaxations-lp-rounding" class="nav-link" data-scroll-target="#section-g-lp-ip-relaxations-lp-rounding">Section G — LP, IP, Relaxations &amp; LP Rounding</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">End-Semester Practice Problems</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="end-semester-practice-problems" class="level1">
+<h1>End-Semester Practice Problems</h1>
+<p><strong>CS F364: Design &amp; Analysis of Algorithms</strong><br>
+<strong>Coverage:</strong> Lectures 18–28<br>
+<strong>Total Problems:</strong> 41 (12 Warm-up, 19 Core, 9 Challenge)</p>
+<hr>
+<section id="a.-matroids-lecture-18" class="level2">
+<h2 class="anchored" data-anchor-id="a.-matroids-lecture-18">A. Matroids (Lecture 18)</h2>
+<p><strong>Topics:</strong> Independence axioms, graphic matroids, greedy on weighted matroids, exchange property.</p>
+<hr>
+<p><strong>A1</strong> <code>[Warm-up, 2 marks]</code> Let <span class="math inline">S = \{a,b,c,d\}</span> and <span class="math inline">\mathcal{I} = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a,b\}, \{a,c\}, \{b,c\}\}</span>. Is <span class="math inline">(S,\mathcal{I})</span> a matroid? If not, which axiom fails?</p>
+<hr>
+<p><strong>A2</strong> <code>[Core, 4 marks]</code> Consider <span class="math inline">S = \{1,2,3,4\}</span> with <span class="math inline">\mathcal{I} = \{X \subseteq S : |X| \leq 2\} \cup \{\{1,2,3\}\}</span>.</p>
+<ol type="1">
+<li>Verify that <span class="math inline">\mathcal{I}</span> satisfies the hereditary property.</li>
+<li>Does it satisfy the augmentation property? Provide a proof or a counterexample.</li>
+</ol>
+<hr>
+<p><strong>A3</strong> <code>[Core, 4 marks]</code> Let <span class="math inline">G</span> be a connected graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. In the graphic matroid <span class="math inline">M(G)</span>, a subset of edges is independent iff it contains no cycle.</p>
+<ol type="1">
+<li>What is the rank of <span class="math inline">M(G)</span>? (The size of a maximal independent set.)</li>
+<li>For <span class="math inline">G = K_4</span>, list one base and one circuit (minimal dependent set) of <span class="math inline">M(G)</span>.</li>
+</ol>
+<hr>
+<p><strong>A4</strong> <code>[Core, 4 marks]</code> Consider a weighted matroid <span class="math inline">(S, \mathcal{I})</span> with <span class="math inline">w: S \to \mathbb{R}^+</span>. The greedy algorithm sorts <span class="math inline">S</span> by decreasing weight and adds each element if it maintains independence.</p>
+<p>Prove that greedy returns a maximum-weight independent set.</p>
+<ol type="1">
+<li>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> be the greedy output (weights decreasing) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> be any independent set (weights decreasing).</li>
+<li>Argue <span class="math inline">A</span> is a basis, so <span class="math inline">k \ge \ell</span>.</li>
+<li>For each <span class="math inline">i</span>, apply augmentation on <span class="math inline">\{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">\{b_1,\dots,b_i\}</span> to show <span class="math inline">w(a_i) \ge w(b_i)</span>.</li>
+<li>Conclude <span class="math inline">w(A) \ge w(B)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="c.-amortized-analysis-lectures-2021" class="level2">
+<h2 class="anchored" data-anchor-id="c.-amortized-analysis-lectures-2021">C. Amortized Analysis (Lectures 20–21)</h2>
+<p><strong>Topics:</strong> Aggregate method, potential method, accounting method, stack with multipop, binary counter, dynamic table, splay trees.</p>
+<hr>
+<p><strong>C1</strong> <code>[Warm-up, 2 marks]</code> A stack supports three operations: <code>Push(x)</code>, <code>Pop()</code>, and <code>Multipop(k)</code> which pops up to <span class="math inline">k</span> items. Using the <strong>aggregate method</strong>, show that any sequence of <span class="math inline">n</span> operations starting from an empty stack takes <span class="math inline">O(n)</span> time.</p>
+<hr>
+<p><strong>C2</strong> <code>[Warm-up, 2 marks]</code> In the <strong>accounting method</strong>, we assign an amortized cost to each operation. For a binary counter increment, we charge 2 rupees per increment. Explain how this covers the actual cost of flipping bits over a sequence of <span class="math inline">n</span> increments.</p>
+<hr>
+<p><strong>C3</strong> <code>[Core, 4 marks]</code> A <strong>binary counter</strong> is implemented as an array of <span class="math inline">k</span> bits. The only operation is <code>Increment()</code>. Using the <strong>potential method</strong> with potential function <span class="math inline">\Phi = \text{number of 1-bits}</span>, show that <span class="math inline">n</span> increments take <span class="math inline">O(n)</span> time.</p>
+<ol type="1">
+<li>Define the amortized cost formula: <span class="math inline">\hat{c}_i = c_i + \Phi_i - \Phi_{i-1}</span>.</li>
+<li>Compute <span class="math inline">\Delta \Phi</span> for an increment that flips <span class="math inline">t</span> trailing 1s to 0 and one 0 to 1.</li>
+<li>Show <span class="math inline">\hat{c}_i = O(1)</span>.</li>
+</ol>
+<hr>
+<p><strong>C4</strong> <code>[Core, 4 marks]</code> A <strong>dynamic table</strong> doubles in size when full and halves when load factor drops below <span class="math inline">1/4</span>. Using the potential method, prove that <span class="math inline">n</span> insertions and deletions take <span class="math inline">O(n)</span> amortized time. Choose a suitable potential function.</p>
+<hr>
+<p><strong>C5</strong> <code>[Core, 4 marks]</code> Consider a <strong>queue</strong> implemented using two stacks (one for enqueue, one for dequeue). When the dequeue stack is empty, we pop all elements from the enqueue stack and push them onto the dequeue stack. Using amortized analysis, show that any sequence of <span class="math inline">n</span> enqueue/dequeue operations takes <span class="math inline">O(n)</span> time.</p>
+<hr>
+<p><strong>C6</strong> <code>[Core, 4 marks]</code> A <strong>dynamic table</strong> starts with capacity <span class="math inline">1</span>. On each insert, if the array is full, the capacity is multiplied by <span class="math inline">3</span> (tripling). Use the <strong>aggregate method</strong> to analyze <span class="math inline">n</span> inserts.</p>
+<ol type="1">
+<li>How many resizings occur after <span class="math inline">n</span> inserts? List the capacities at each resize.</li>
+<li>What is the total number of elements copied across all resizings?</li>
+<li>Show that <span class="math inline">n</span> inserts take <span class="math inline">O(n)</span> total amortized time.</li>
+</ol>
+<hr>
+</section>
+<section id="d.-network-flow-matching-lectures-2224" class="level2">
+<h2 class="anchored" data-anchor-id="d.-network-flow-matching-lectures-2224">D. Network Flow &amp; Matching (Lectures 22–24)</h2>
+<p><strong>Topics:</strong> Ford-Fulkerson, Edmonds-Karp, max-flow min-cut, edge-disjoint paths, project selection.</p>
+<hr>
+<p><strong>D1</strong> <code>[Warm-up, 2 marks]</code> State the <strong>Max-Flow Min-Cut Theorem</strong>. For a flow network with integer capacities, what does this theorem imply about the value of the maximum flow?</p>
+<hr>
+<p><strong>D2</strong> <code>[Core, 4 marks]</code> Consider a flow network with vertices <span class="math inline">s,a,b,t</span> and capacities: <span class="math inline">s\!\to\!a\,(4)</span>, <span class="math inline">s\!\to\!b\,(3)</span>, <span class="math inline">a\!\to\!b\,(2)</span>, <span class="math inline">a\!\to\!t\,(3)</span>, <span class="math inline">b\!\to\!t\,(4)</span>.</p>
+<ol type="1">
+<li>Run Ford-Fulkerson starting from zero flow. List all augmenting paths and the flow after each augmentation.</li>
+<li>Identify the min-cut. Verify that cut capacity equals max flow value.</li>
+</ol>
+<hr>
+<p><strong>D3</strong> <code>[Core, 4 marks]</code> <strong>Edge-disjoint paths:</strong> Given a directed graph <span class="math inline">G=(V,E)</span> and two vertices <span class="math inline">s,t</span>, find the maximum number of pairwise edge-disjoint paths from <span class="math inline">s</span> to <span class="math inline">t</span>.</p>
+<ol type="1">
+<li>Reduce this to a max-flow problem. (What are the capacities?)</li>
+<li>Use the reduction to prove <strong>Menger’s Theorem</strong>: The maximum number of edge-disjoint <span class="math inline">s</span>-<span class="math inline">t</span> paths equals the minimum size of an <span class="math inline">s</span>-<span class="math inline">t</span> edge cut.</li>
+</ol>
+<hr>
+<p><strong>D4</strong> <code>[Challenge, 6 marks]</code> <strong>Project selection problem:</strong> You have <span class="math inline">n</span> projects. Each project <span class="math inline">i</span> has a profit <span class="math inline">p_i</span> (can be negative). There are prerequisites: if you select project <span class="math inline">i</span>, you must also select certain other projects. Model this as a min-cut problem. Specifically:</p>
+<ol type="1">
+<li>Construct a flow network with source <span class="math inline">s</span> (profits) and sink <span class="math inline">t</span> (costs).</li>
+<li>Prove that the max flow gives the optimal set of projects (maximum total profit while respecting prerequisites).</li>
+<li>Run your construction on an example with 4 projects: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites: <span class="math inline">2 \to 1</span>, <span class="math inline">3 \to 2</span>, <span class="math inline">4 \to 3</span>.</li>
+</ol>
+<hr>
+<p><strong>D5</strong> <code>[Warm-up, 2 marks]</code> Decide whether each statement is true or false. Justify with a proof or counterexample.</p>
+<ol type="1">
+<li>If <span class="math inline">f</span> is a maximum <span class="math inline">s</span>-<span class="math inline">t</span> flow in <span class="math inline">G</span>, then <span class="math inline">f</span> saturates every edge out of <span class="math inline">s</span> (i.e., <span class="math inline">f_e = c_e</span> for all edges <span class="math inline">(s,u)</span>).</li>
+<li>Let <span class="math inline">(A,B)</span> be a minimum <span class="math inline">s</span>-<span class="math inline">t</span> cut in <span class="math inline">G</span> with capacities <span class="math inline">c_e</span>. If we add <span class="math inline">1</span> to every capacity, then <span class="math inline">(A,B)</span> is still a minimum <span class="math inline">s</span>-<span class="math inline">t</span> cut.</li>
+</ol>
+<hr>
+</section>
+<section id="e.-randomized-algorithms-lecture-25" class="level2">
+<h2 class="anchored" data-anchor-id="e.-randomized-algorithms-lecture-25">E. Randomized Algorithms (Lecture 25)</h2>
+<p><strong>Topics:</strong> Las Vegas vs Monte Carlo, Freivalds’ algorithm, dot-product lemma.</p>
+<hr>
+<p><strong>E1</strong> <code>[Warm-up, 2 marks]</code> Distinguish <strong>Las Vegas</strong> and <strong>Monte Carlo</strong> randomized algorithms. Give one example of each type from the course.</p>
+<hr>
+<p><strong>E2</strong> <code>[Core, 2 marks]</code> Let <span class="math inline">x \in \{0,1\}^n</span> be a non-zero vector and <span class="math inline">r \in \{0,1\}^n</span> chosen uniformly at random. Show that <span class="math inline">\Pr[\langle r, x \rangle = 0 \pmod{2}] = 1/2</span>.</p>
+<hr>
+<p><strong>E3</strong> <code>[Core, 3 marks]</code> Assume the lemma from E2: for any non-zero <span class="math inline">x \in \{0,1\}^n</span>, <span class="math inline">\Pr_r[\langle r, x \rangle = 0] = 1/2</span>. Use this to analyze <strong>Freivalds’ algorithm</strong>: to check <span class="math inline">AB = C</span>, pick a random <span class="math inline">r \in \{0,1\}^n</span> and check <span class="math inline">A(Br) = Cr</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">AB \neq C</span>, what is the maximum probability that the test passes?</li>
+<li>What is the running time of Freivalds’ algorithm? How does it compare to the deterministic algorithm of computing <span class="math inline">AB</span> and comparing to <span class="math inline">C</span>?</li>
+</ol>
+<hr>
+</section>
+<section id="f.-npc-reductions-lectures-2627" class="level2">
+<h2 class="anchored" data-anchor-id="f.-npc-reductions-lectures-2627">F. NPC Reductions (Lectures 26–27)</h2>
+<p><strong>Topics:</strong> P, NP, NP-completeness, polynomial-time reductions, 3-SAT → CLIQUE, CLIQUE → Vertex Cover, designing new reductions.</p>
+<hr>
+<p><strong>F1</strong> <code>[Warm-up, 2 marks]</code> True or false? Justify briefly.</p>
+<ol type="1">
+<li>If <span class="math inline">A \le_P B</span> and <span class="math inline">B</span> is in P, then <span class="math inline">A</span> is in P.</li>
+<li>If <span class="math inline">A \le_P B</span> and <span class="math inline">A</span> is NP-complete, then <span class="math inline">B</span> is NP-complete.</li>
+<li>If P <span class="math inline">\neq</span> NP, then no NP-complete problem can be solved in polynomial time.</li>
+</ol>
+<hr>
+<p><strong>F2</strong> <code>[Warm-up, 2 marks]</code> What are the two things you must prove to show a problem <span class="math inline">B</span> is NP-complete? Suppose you already know that 3-SAT is NP-complete. Is constructing a reduction from 3-SAT to <span class="math inline">B</span> sufficient?</p>
+<hr>
+<p><strong>F3</strong> <code>[Core, 4 marks]</code> Reduce 3-SAT to <strong>CLIQUE</strong> for the formula:</p>
+<p><span class="math display">\phi = (x_1 \lor x_2 \lor x_3) \land (\bar{x}_1 \lor \bar{x}_2 \lor x_3) \land (x_1 \lor \bar{x}_2 \lor \bar{x}_3)</span></p>
+<ol type="1">
+<li>Show the constructed graph <span class="math inline">G</span> and the target clique size <span class="math inline">k</span>.</li>
+<li>Find a satisfying assignment and the corresponding <span class="math inline">k</span>-clique in <span class="math inline">G</span>.</li>
+<li>Show that if <span class="math inline">G</span> has a <span class="math inline">k</span>-clique, then <span class="math inline">\phi</span> is satisfiable.</li>
+</ol>
+<hr>
+<p><strong>F4</strong> <code>[Core, 4 marks]</code> Reduce <strong>CLIQUE</strong> to <strong>Vertex Cover</strong> for the graph <span class="math inline">G</span> below (6 vertices, edges: <span class="math inline">(1,2),(1,3),(2,3),(3,4),(4,5),(4,6),(5,6)</span>) with <span class="math inline">k=3</span>.</p>
+<ol type="1">
+<li>Construct the complement graph <span class="math inline">\bar{G}</span> and compute <span class="math inline">k' = |V| - k</span>.</li>
+<li>Find a <span class="math inline">3</span>-clique in <span class="math inline">G</span> and the corresponding vertex cover in <span class="math inline">\bar{G}</span>.</li>
+<li>Explain why the duality holds: <span class="math inline">S</span> is a clique in <span class="math inline">G \iff V \setminus S</span> is a vertex cover in <span class="math inline">\bar{G}</span>.</li>
+</ol>
+<hr>
+<p><strong>F5</strong> <code>[Core, 4 marks]</code> <strong>Independent Set</strong> (IS): Given graph <span class="math inline">G=(V,E)</span> and integer <span class="math inline">k</span>, does <span class="math inline">G</span> contain a set <span class="math inline">I \subseteq V</span> of size <span class="math inline">k</span> with no edges between any pair in <span class="math inline">I</span>? Give a direct reduction from CLIQUE to Independent Set. (Hint: think about graph complements.)</p>
+<hr>
+<p><strong>F6</strong> <code>[Core, 4 marks]</code> <strong>Hitting Set:</strong> Given a collection of subsets <span class="math inline">\{S_1,\dots,S_m\}</span> of a ground set <span class="math inline">U</span> and an integer <span class="math inline">k</span>, is there a set <span class="math inline">H \subseteq U</span> of size <span class="math inline">k</span> such that <span class="math inline">H \cap S_i \neq \emptyset</span> for all <span class="math inline">i</span>? Reduce Vertex Cover to Hitting Set.</p>
+<hr>
+<p><strong>F7</strong> <code>[Challenge, 6 marks]</code> <strong>Subset Sum:</strong> Given a set of integers <span class="math inline">A = \{a_1,\dots,a_n\}</span> and a target <span class="math inline">t</span>, is there a subset <span class="math inline">A' \subseteq A</span> that sums to exactly <span class="math inline">t</span>? Reduce 3-SAT to Subset Sum.</p>
+<ol type="1">
+<li>Given a 3-SAT formula with <span class="math inline">n</span> variables and <span class="math inline">m</span> clauses, construct a set of integers.</li>
+<li>Show that the formula is satisfiable iff there is a subset summing to the target.</li>
+<li>Why is this reduction polynomial-time?</li>
+</ol>
+<hr>
+</section>
+<section id="g.-lp-ip-relaxations-lp-rounding-lecture-28" class="level2">
+<h2 class="anchored" data-anchor-id="g.-lp-ip-relaxations-lp-rounding-lecture-28">G. LP, IP, Relaxations &amp; LP Rounding (Lecture 28)</h2>
+<p><strong>Topics:</strong> LP formulation, integer programming, LP relaxation, LP rounding, Vertex Cover, integrality gap.</p>
+<hr>
+<p><strong>G1</strong> <code>[Warm-up, 2 marks]</code> Convert the following integer program to an LP relaxation and solve it (graphically or by inspection):</p>
+<p><span class="math display">\begin{aligned}
+\max \quad &amp; 3x + 2y \\
+\text{s.t.} \quad &amp; x + y \le 2 \\
+&amp; 2x + y \le 3 \\
+&amp; x, y \in \{0,1\}
+\end{aligned}</span></p>
+<p>What does the optimal LP value tell you about the IP optimal?</p>
+<hr>
+<p><strong>G2</strong> <code>[Warm-up, 2 marks]</code> Explain why solving an IP is NP-hard in general while solving an LP is polynomial-time solvable. What property of the feasible set changes when integrality constraints are added?</p>
+<hr>
+<p><strong>G3</strong> <code>[Core, 4 marks]</code> For Vertex Cover on a <strong>path graph</strong> with 4 vertices (edges: <span class="math inline">(1,2),(2,3),(3,4)</span>):</p>
+<ol type="1">
+<li>Write the IP formulation.</li>
+<li>Write the LP relaxation.</li>
+<li>Solve the LP (you should get <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> or equivalent).</li>
+<li>Apply rounding: set <span class="math inline">x_v = 1</span> if <span class="math inline">x_v \ge 1/2</span>. What vertex cover do you get? Is it optimal? What is the approximation ratio on this instance?</li>
+</ol>
+<hr>
+<p><strong>G4</strong> <code>[Core, 4 marks]</code> <strong>Integrality gap:</strong> For Vertex Cover, consider a <strong>triangle</strong> graph (3 vertices, 3 edges). Write the LP relaxation and find its optimal fractional value. Compare with the optimal integer value. What is the integrality gap (ratio of IP optimal to LP optimal)? How does this relate to the 2-approximation guarantee?</p>
+<hr>
+<p><strong>G5</strong> <code>[Challenge, 6 marks]</code> <strong>Set Cover as an IP:</strong> Given universe <span class="math inline">U = \{1,\dots,m\}</span> and subsets <span class="math inline">S_1,\dots,S_n \subseteq U</span> with costs <span class="math inline">c(S_j)</span>, formulate Set Cover as an integer program. Then:</p>
+<ol type="1">
+<li>Write the LP relaxation.</li>
+<li>Propose a rounding scheme: pick all sets with <span class="math inline">x_j \ge 1/f</span> where <span class="math inline">f</span> is the max frequency of any element.</li>
+<li>Prove that this gives an <span class="math inline">f</span>-approximation.</li>
+<li>For the special case of Vertex Cover (<span class="math inline">f=2</span>), does this match the 2-approximation we already know?</li>
+</ol>
+<hr>
+</section>
+<section id="answer-key" class="level2">
+<h2 class="anchored" data-anchor-id="answer-key">Answer Key</h2>
+<hr>
+<section id="section-a-matroids" class="level3">
+<h3 class="anchored" data-anchor-id="section-a-matroids">Section A — Matroids</h3>
+<p><strong>A1.</strong> No.&nbsp;Augmentation fails. Take <span class="math inline">A = \{a,b\}</span> (size 2) and <span class="math inline">B = \{c\}</span> (size 1). We need <span class="math inline">x \in B \setminus A = \{c\}</span> such that <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>. But <span class="math inline">\{a,b,c\} \notin \mathcal{I}</span>.</p>
+<p><strong>A2.</strong> 1. Hereditary: Check all subsets of each set in <span class="math inline">\mathcal{I}</span>. All subsets of size <span class="math inline">\le 2</span> are clearly in <span class="math inline">\mathcal{I}</span>. For <span class="math inline">\{1,2,3\}</span>, all subsets are: <span class="math inline">\emptyset</span>, <span class="math inline">\{1\}</span>, <span class="math inline">\{2\}</span>, <span class="math inline">\{3\}</span>, <span class="math inline">\{1,2\}</span>, <span class="math inline">\{1,3\}</span>, <span class="math inline">\{2,3\}</span>, <span class="math inline">\{1,2,3\}</span>. The subsets of size <span class="math inline">\le 2</span> are in <span class="math inline">\mathcal{I}</span>, and <span class="math inline">\{1,2,3\}</span> is itself in <span class="math inline">\mathcal{I}</span>. ✓ 2. Augmentation fails. Take <span class="math inline">A = \{1,2\}</span> (<span class="math inline">|A|=2</span>), <span class="math inline">B = \{3\}</span> (<span class="math inline">|B|=1</span>). <span class="math inline">|A| &gt; |B|</span>, so we need <span class="math inline">x \in A \setminus B</span> with <span class="math inline">B \cup \{x\} \in \mathcal{I}</span>. <span class="math inline">A \setminus B = \{1,2\}</span>. <span class="math inline">B \cup \{1\} = \{1,3\} \in \mathcal{I}</span> (size 2). <span class="math inline">B \cup \{2\} = \{2,3\} \in \mathcal{I}</span> (size 2). So it passes. Wait — augmentation says if <span class="math inline">|A| &lt; |B|</span>, add from <span class="math inline">B\setminus A</span> to <span class="math inline">A</span>. Let me recheck: <span class="math inline">A = \{1,2\}</span>, <span class="math inline">B = \{3\}</span> gives <span class="math inline">|A|=2 &gt; |B|=1</span>, so augmentation doesn’t require anything. For a proper test: <span class="math inline">A = \emptyset</span> (<span class="math inline">|A|=0</span>) and <span class="math inline">B = \{1,2,3\}</span> (<span class="math inline">|B|=3</span>). <span class="math inline">|A| &lt; |B|</span>. We need <span class="math inline">x \in B\setminus A = \{1,2,3\}</span> with <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>, which is true (any single element is independent). Actually let me try: <span class="math inline">A = \{1,2\}</span> (<span class="math inline">|A|=2</span>), <span class="math inline">B</span> could be <span class="math inline">\{3,4\}</span> but <span class="math inline">\{3,4\} \notin \mathcal{I}</span>. <span class="math inline">A=\{1,2\}</span>, <span class="math inline">B=\{1,3\}</span>? No that’s in <span class="math inline">\mathcal{I}</span>… Actually augmentation says: if <span class="math inline">|A| &lt; |B|</span>, there exists <span class="math inline">x \in B\setminus A</span> with <span class="math inline">A\cup\{x\} \in \mathcal{I}</span>. What about <span class="math inline">A = \{1,2\}</span> (<span class="math inline">|A|=2</span>), <span class="math inline">B = \{1,3\}</span> (<span class="math inline">|B|=2</span>). <span class="math inline">|A|</span> is not <span class="math inline">&lt; |B|</span>. Try <span class="math inline">A = \{4\}</span> (<span class="math inline">|A|=1</span>), <span class="math inline">B = \{1,2,3\}</span> (<span class="math inline">|B|=3</span>). <span class="math inline">|A| &lt; |B|</span>. <span class="math inline">B \setminus A = \{1,2,3\}</span>. <span class="math inline">A \cup \{1\} = \{1,4\} \in \mathcal{I}</span>. <span class="math inline">A \cup \{2\} = \{2,4\} \in I</span>. <span class="math inline">A \cup \{3\} = \{3,4\} \in I</span>. All work. Hmm, actually I think this might be a matroid after all. Let me reconsider: the augmentation issue might not apply. The independent sets are all sets of size <span class="math inline">\le 2</span> plus <span class="math inline">\{1,2,3\}</span>. This looks like a matroid — it’s the direct sum of a uniform matroid <span class="math inline">U_{2,3}</span> on <span class="math inline">\{1,2,3\}</span> and a rank-0 element <span class="math inline">\{4\}</span>. Actually wait, <span class="math inline">\{4\}</span> IS independent (size 1, <span class="math inline">\le 2</span>). So it’s a valid matroid. The answer should be: yes, it is a matroid.</p>
+<p><strong>Revised A3 answer:</strong> Yes, <span class="math inline">(S,\mathcal{I})</span> is a matroid. It satisfies all three axioms: - Hereditary: subsets of independent sets are independent (checked above). - <span class="math inline">\emptyset \in \mathcal{I}</span>: yes. - Augmentation: For any <span class="math inline">A,B \in \mathcal{I}</span> with <span class="math inline">|A| &lt; |B|</span>: - If <span class="math inline">|A| \le 1</span>, we can always add an element from <span class="math inline">B\setminus A</span> (since any single element is independent, and <span class="math inline">|B| \ge 2</span> means at least one element is available). - If <span class="math inline">A = \{x,y\}</span> (size 2), then <span class="math inline">|B|</span> must be 3, so <span class="math inline">B = \{1,2,3\}</span>. Since <span class="math inline">|A|=2</span>, there’s at least one element in <span class="math inline">B\setminus A</span>, adding it gives a set of size 3 which is either in <span class="math inline">\mathcal{I}</span> (if it’s <span class="math inline">\{1,2,3\}</span>) or of size <span class="math inline">\le 2</span> (still independent).</p>
+<hr>
+<p><strong>A3.</strong> 1. The rank of <span class="math inline">M(G)</span> is <span class="math inline">n-1</span> (size of a spanning tree). 2. For <span class="math inline">K_4</span>, one base is any spanning tree of 3 edges (e.g., edges <span class="math inline">(1,2),(2,3),(3,4)</span>). One circuit is any cycle of 3 edges (e.g., <span class="math inline">(1,2),(2,3),(1,3)</span>).</p>
+<hr>
+<p><strong>A4.</strong> <span class="math inline">A</span> is maximal (greedy stops when no more elements fit), so <span class="math inline">A</span> is a basis and <span class="math inline">|A| \ge |B|</span> for any independent <span class="math inline">B</span>.</p>
+<p>Fix <span class="math inline">i</span>. Let <span class="math inline">A_{i-1} = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. Both are independent and <span class="math inline">|A_{i-1}| = i-1 &lt; i = |B_i|</span>. By augmentation, <span class="math inline">\exists\: b \in B_i \setminus A_{i-1}</span> with <span class="math inline">A_{i-1} \cup \{b\} \in \mathcal{I}</span>.</p>
+<p>Greedy chose <span class="math inline">a_i</span> as the maximum-weight element it could add at step <span class="math inline">i</span>, so <span class="math inline">w(a_i) \ge w(b)</span>. Since <span class="math inline">b \in B_i</span>, <span class="math inline">w(b) \ge w(b_i)</span>. Hence <span class="math inline">w(a_i) \ge w(b_i)</span> for all <span class="math inline">i</span>.</p>
+<p>Summing: <span class="math inline">w(A) = \sum_{i=1}^k w(a_i) \ge \sum_{i=1}^\ell w(a_i) \ge \sum_{i=1}^\ell w(b_i) = w(B)</span>.</p>
+<hr>
+</section>
+<section id="section-c-amortized-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="section-c-amortized-analysis">Section C — Amortized Analysis</h3>
+<p><strong>C1.</strong> Each element pushed is popped at most once. Over <span class="math inline">n</span> operations, there can be at most <span class="math inline">n</span> pushes (and thus at most <span class="math inline">n</span> pops across all Pop and Multipop calls). Total cost is <span class="math inline">O(n)</span>, so amortized cost per operation is <span class="math inline">O(1)</span>.</p>
+<p><strong>C2.</strong> Flip a 0→1 costs 1 rupee (paid now) and 1 rupee saved as credit. Flip a 1→0 costs 1 rupee (from saved credit). Each increment flips exactly one 0→1 and some number of trailing 1s→0. Total actual cost = (number of bits flipped). Amortized cost = 2 rupees per increment = <span class="math inline">O(1)</span> per increment.</p>
+<p><strong>C3.</strong> Increment from <span class="math inline">k-1</span> to <span class="math inline">k</span> flips <span class="math inline">t_k</span> trailing 1s to 0 and one 0 to 1 (total <span class="math inline">t_k+1</span> flips). The number of 1-bits changes: each 1→0 decreases count by 1, each 0→1 increases by 1. So <span class="math inline">\Delta\Phi = -(t_k) + 1 = 1 - t_k</span>. Amortized cost: <span class="math inline">\hat{c}_k = (t_k+1) + (1 - t_k) = 2</span>. So each increment has <span class="math inline">O(1)</span> amortized cost.</p>
+<p><strong>C4.</strong> Define <span class="math inline">\Phi = 2 \cdot |\text{size} - \text{capacity}/2|</span>. When the table is half-full, <span class="math inline">\Phi = 0</span>. When it doubles (<span class="math inline">\text{size} = \text{capacity}</span>), <span class="math inline">\Phi = \text{size}</span>, paying for copying. When it halves (<span class="math inline">\text{size} = \text{capacity}/4</span>), <span class="math inline">\Phi = \text{capacity}/2</span>, also paying for copying. Each insert/delete has <span class="math inline">O(1)</span> amortized cost.</p>
+<p><strong>C5.</strong> Each element is pushed onto the enqueue stack once and moved to the dequeue stack at most once (when dequeued). Total pushes/pops per element is at most 3 (push onto enqueue, pop from enqueue, push onto dequeue, pop from dequeue). So <span class="math inline">n</span> operations cost <span class="math inline">O(n)</span> total, <span class="math inline">O(1)</span> amortized per operation.</p>
+<p><strong>C6.</strong> 1. Resizings at <span class="math inline">1, 3, 9, \dots, 3^{k-1}</span> where <span class="math inline">k = \lceil \log_3 n \rceil</span>. Number = <span class="math inline">O(\log n)</span>. 2. Total copying: <span class="math inline">1 + 3 + 9 + \cdots + 3^{k-1} = (3^k-1)/2 &lt; 3^k/2 \le 3n/2 = O(n)</span>. 3. <span class="math inline">n</span> inserts cost <span class="math inline">n</span> (writing) <span class="math inline">+ O(n)</span> (copying) <span class="math inline">= O(n)</span>. Amortized <span class="math inline">O(1)</span> per insert.</p>
+<hr>
+</section>
+<section id="section-d-network-flow-matching" class="level3">
+<h3 class="anchored" data-anchor-id="section-d-network-flow-matching">Section D — Network Flow &amp; Matching</h3>
+<p><strong>D1.</strong> The Max-Flow Min-Cut Theorem states that the value of the maximum flow equals the capacity of the minimum cut. For integer capacities, this implies the maximum flow value is integer and Ford-Fulkerson terminates in finite time with integer flows.</p>
+<p><strong>D2.</strong> 1. Augmenting paths (each adds flow): - <span class="math inline">s \to a \to t</span>: min = min(4,3) = 3. Flow = 3. - <span class="math inline">s \to b \to t</span>: min = min(3,4) = 3. Flow = 6. - <span class="math inline">s \to a \to b \to t</span>: <span class="math inline">s\to a</span> has 1 remaining, <span class="math inline">a\to b</span> has 2, <span class="math inline">b\to t</span> has 1. Flow = 1. Total = 7. 2. Max flow = 7. Min cut: <span class="math inline">(\{s,a\}, \{b,t\})</span> has capacity <span class="math inline">s\to b(3) + a\to t(3) = 6</span>? No.&nbsp;Let me recalculate. After augmentation, capacities: <span class="math inline">s\!\to\!a\;(1)</span>, <span class="math inline">s\!\to\!b\;(0)</span>, <span class="math inline">a\!\to\!b\;(1)</span>, <span class="math inline">a\!\to\!t\;(0)</span>, <span class="math inline">b\!\to\!t\;(3)</span>. Min cut: <span class="math inline">(\{s\}, \{a,b,t\})</span> has capacity <span class="math inline">s\!\to\!a(4) + s\!\to\!b(3) = 7</span> ✓.</p>
+<p><strong>D3.</strong> 1. Set all edge capacities to 1. Max flow = maximum number of edge-disjoint paths. 2. Menger’s Theorem follows from max-flow min-cut: a cut of capacity <span class="math inline">k</span> in this network corresponds to a set of <span class="math inline">k</span> edges whose removal disconnects <span class="math inline">s</span> from <span class="math inline">t</span>. The min cut capacity equals the max number of edge-disjoint paths.</p>
+<p><strong>D4.</strong> 1. Create source <span class="math inline">s</span> and sink <span class="math inline">t</span>. For each project <span class="math inline">i</span> with profit <span class="math inline">p_i &gt; 0</span>, add edge <span class="math inline">s \to i</span> with capacity <span class="math inline">p_i</span>. For each project <span class="math inline">i</span> with <span class="math inline">p_i &lt; 0</span>, add edge <span class="math inline">i \to t</span> with capacity <span class="math inline">-p_i</span>. For each prerequisite <span class="math inline">i \to j</span> (if <span class="math inline">i</span> selected then <span class="math inline">j</span> must be selected), add edge <span class="math inline">i \to j</span> with capacity <span class="math inline">\infty</span>. 2. The min <span class="math inline">s</span>-<span class="math inline">t</span> cut gives the optimal set: projects reachable from <span class="math inline">s</span> in the residual graph after max flow are selected. Maximum profit = total positive profit - min cut capacity. 3. For the example: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites <span class="math inline">2\to 1</span>, <span class="math inline">3\to 2</span>, <span class="math inline">4\to 3</span>. Positive profit: <span class="math inline">5+2=7</span>. Edges: <span class="math inline">s\to 1 (5), s\to 3 (2), 2\to t (3), 4\to t (1), 2\to 1 (\infty), 3\to 2 (\infty), 4\to 3 (\infty)</span>. Min cut: cut <span class="math inline">(\{s,1,3\}, \{2,4,t\})</span> has capacity <span class="math inline">3+1=4</span> (edges <span class="math inline">2\to t</span> and <span class="math inline">4\to t</span>). Selected: projects 1 and 3. Max profit = <span class="math inline">7-4=3</span>.</p>
+<p><strong>D5.</strong> 1. <strong>False.</strong> Example: <span class="math inline">s \to a</span> (cap 5), <span class="math inline">s \to b</span> (cap 5), <span class="math inline">a \to t</span> (cap 1), <span class="math inline">b \to t</span> (cap 1). Max flow = 2 (1 through each path). Neither <span class="math inline">s\to a</span> nor <span class="math inline">s\to b</span> is saturated (both carry 1 of 5). 2. <strong>False.</strong> Adding a constant changes the number of crossing edges per cut, which can alter the min cut. Example: <span class="math inline">s\to a</span> (100), <span class="math inline">a\to x_i</span> (1), <span class="math inline">x_i\to t</span> (1) for <span class="math inline">i=1,\dots,60</span>. Original min cut: <span class="math inline">(\{s,a\}, \{x_i,t\})</span> cap <span class="math inline">60</span>. After <span class="math inline">+1</span>: same cut cap <span class="math inline">120</span>, but <span class="math inline">(\{s\}, \{a,x_i,t\})</span> cap <span class="math inline">101</span> becomes the new min cut.</p>
+<hr>
+</section>
+<section id="section-e-randomized-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="section-e-randomized-algorithms">Section E — Randomized Algorithms</h3>
+<p><strong>E1.</strong> Las Vegas: always correct, randomized runtime (e.g., randomized quicksort). Monte Carlo: bounded error, deterministic runtime (e.g., Freivalds’ algorithm).</p>
+<p><strong>E2.</strong> Fix <span class="math inline">j</span> where <span class="math inline">x_j = 1</span>. Write <span class="math inline">\langle r, x \rangle = r_j + S \pmod{2}</span> with <span class="math inline">S = \sum_{i \neq j} r_i x_i</span>. Condition on any fixing of <span class="math inline">r_i</span> (<span class="math inline">i \neq j</span>); then <span class="math inline">S</span> is fixed. Exactly one choice of <span class="math inline">r_j</span> gives <span class="math inline">r_j + S = 0</span>. Since <span class="math inline">r_j</span> is uniform and independent, <span class="math inline">\Pr[\langle r, x \rangle = 0] = 1/2</span>.</p>
+<p><strong>E3.</strong> 1. If <span class="math inline">AB \neq C</span>, then <span class="math inline">D = AB - C \neq 0</span>. The test passes if <span class="math inline">Dr = 0</span>. Since <span class="math inline">D \neq 0</span>, there is a non-zero row <span class="math inline">d</span>. By the lemma, <span class="math inline">\Pr[d \cdot r = 0] = 1/2</span>. For the whole matrix, <span class="math inline">\Pr[Dr = 0] \le 1/2</span>. 2. Running time: <span class="math inline">Br</span> (<span class="math inline">O(n^2)</span>), <span class="math inline">A(Br)</span> (<span class="math inline">O(n^2)</span>), <span class="math inline">Cr</span> (<span class="math inline">O(n^2)</span>) — overall <span class="math inline">O(n^2)</span>. Deterministic: <span class="math inline">AB</span> takes <span class="math inline">O(n^3)</span> (naive) or <span class="math inline">O(n^{2.807})</span> (Strassen). Freivalds is faster and can be boosted to exponentially small error with <span class="math inline">O(\log(1/\epsilon))</span> repetitions.</p>
+<hr>
+</section>
+<section id="section-f-npc-reductions" class="level3">
+<h3 class="anchored" data-anchor-id="section-f-npc-reductions">Section F — NPC Reductions</h3>
+<p><strong>F1.</strong> 1. True. Polynomial-time reduction + polynomial algorithm for <span class="math inline">B</span> gives polynomial algorithm for <span class="math inline">A</span>. 2. False. Need also <span class="math inline">B \in \text{NP}</span>. If <span class="math inline">B</span> is outside NP, the reduction shows NP-hardness, not NP-completeness. 3. True. If any NP-complete problem is in P, then all NP problems are in P (by reduction), so P = NP.</p>
+<p><strong>F2.</strong> Prove (1) <span class="math inline">B \in \text{NP}</span>, and (2) <span class="math inline">B</span> is NP-hard (via reduction from a known NP-complete problem <span class="math inline">A</span>). A reduction from 3-SAT to <span class="math inline">B</span> gives NP-hardness, but <span class="math inline">B</span> must also be in NP for completeness.</p>
+<p><strong>F3.</strong> 1. Three clauses → 9 vertices. Groups: <span class="math inline">G_1=\{x_1,x_2,x_3\}</span>, <span class="math inline">G_2=\{\bar{x}_1,\bar{x}_2,x_3\}</span>, <span class="math inline">G_3=\{x_1,\bar{x}_2,\bar{x}_3\}</span>. Edges: connect all pairs across different groups except conflicting literals (<span class="math inline">x_1</span>-<span class="math inline">x_1</span> no conflict, wait — <span class="math inline">x_1</span> from <span class="math inline">G_1</span> and <span class="math inline">\bar{x}_1</span> from <span class="math inline">G_2</span> conflict → no edge; <span class="math inline">x_2</span> from <span class="math inline">G_1</span> and <span class="math inline">\bar{x}_2</span> from <span class="math inline">G_2</span> conflict; <span class="math inline">x_3</span> and <span class="math inline">x_3</span> don’t conflict — same variable same polarity but different clauses is fine; <span class="math inline">x_1</span> from <span class="math inline">G_1</span> and <span class="math inline">x_1</span> from <span class="math inline">G_3</span> — same literal in different clauses, fine, edge exists). <span class="math inline">k=3</span>. 2. Satisfying assignment: <span class="math inline">x_1=T, x_2=F, x_3=T</span>. True literals: <span class="math inline">x_1</span> (G1), <span class="math inline">\bar{x}_2</span> (G2), <span class="math inline">x_1</span> (G3). These 3 vertices form a clique. 3. A <span class="math inline">k</span>-clique must pick one vertex per clause (no edges within a group). No conflicting pair means no <span class="math inline">x</span> and <span class="math inline">\bar{x}</span> both picked. Setting picked literals to true gives a consistent satisfying assignment.</p>
+<p><strong>F4.</strong> 1. <span class="math inline">G</span> has edges: <span class="math inline">(1,2),(1,3),(2,3),(3,4),(4,5),(4,6),(5,6)</span>. <span class="math inline">\bar{G}</span> has edges: all non-edges of <span class="math inline">G</span>, i.e., <span class="math inline">(1,4),(1,5),(1,6),(2,4),(2,5),(2,6),(3,5),(3,6)</span>. <span class="math inline">k'=6-3=3</span>. 2. A 3-clique in <span class="math inline">G</span>: <span class="math inline">\{1,2,3\}</span>. Complement vertex cover in <span class="math inline">\bar{G}</span>: <span class="math inline">\{4,5,6\}</span>. Does <span class="math inline">\{4,5,6\}</span> cover all edges of <span class="math inline">\bar{G}</span>? Edges: <span class="math inline">(1,4),(1,5),(1,6),(2,4),(2,5),(2,6),(3,5),(3,6)</span> — all are touched by <span class="math inline">\{4,5,6\}</span>. ✓ 3. Proof: If <span class="math inline">S</span> is a clique in <span class="math inline">G</span>, then no edge of <span class="math inline">\bar{G}</span> connects two vertices of <span class="math inline">S</span>. So every edge of <span class="math inline">\bar{G}</span> has at least one endpoint in <span class="math inline">V\setminus S</span>, making <span class="math inline">V\setminus S</span> a vertex cover in <span class="math inline">\bar{G}</span>. Conversely, if <span class="math inline">V\setminus S</span> is a vertex cover in <span class="math inline">\bar{G}</span>, then no edge of <span class="math inline">\bar{G}</span> is entirely within <span class="math inline">S</span>, so <span class="math inline">S</span> is a clique in <span class="math inline">G</span>.</p>
+<p><strong>F5.</strong> Reduction: CLIQUE instance <span class="math inline">(G,k)</span> → IS instance <span class="math inline">(\bar{G}, k)</span>. Since a clique in <span class="math inline">G</span> is an independent set in <span class="math inline">\bar{G}</span>, we have: <span class="math inline">G</span> has a <span class="math inline">k</span>-clique <span class="math inline">\iff \bar{G}</span> has an independent set of size <span class="math inline">k</span>. This is a direct polynomial-time reduction.</p>
+<p><strong>F6.</strong> Vertex Cover instance <span class="math inline">(G=(V,E), k)</span>. Create Hitting Set instance: ground set <span class="math inline">U = V</span>, subsets <span class="math inline">S_{(u,v)} = \{u,v\}</span> for each edge <span class="math inline">(u,v) \in E</span>, target <span class="math inline">k</span>. A vertex cover <span class="math inline">C \subseteq V</span> of size <span class="math inline">k</span> touches every edge iff it hits every subset <span class="math inline">S_{(u,v)}</span>.</p>
+<p><strong>F7.</strong> Let variables <span class="math inline">x_1,\dots,x_n</span>, clauses <span class="math inline">C_1,\dots,C_m</span>. Create numbers: for each variable <span class="math inline">x_i</span>, create two numbers <span class="math inline">v_i</span> and <span class="math inline">v_i'</span> in base 10 (or base <span class="math inline">n+m+1</span>). The target <span class="math inline">t</span> is constructed so that: - For each variable <span class="math inline">x_i</span>, we choose <span class="math inline">v_i</span> (true) or <span class="math inline">v_i'</span> (false). - Each clause is represented by a digit position. - <span class="math inline">v_i</span> and <span class="math inline">v_i'</span> have 1 in the variable digit position, and 1 in clause positions where the literal satisfies the clause. - The target has 1 in each variable position, and 3 in each clause position (since a clause with 3 literals can have up to 3 true assignments). - Add slack numbers for each clause to handle “at least 1” vs exact sum constraints. - Correctness: satisfying assignment → choose <span class="math inline">v_i</span> or <span class="math inline">v_i'</span> accordingly → sum equals target. Conversely, subset summing to target gives truth assignment. - Polynomial: <span class="math inline">n</span> variables <span class="math inline">+ m</span> clauses <span class="math inline">= O(n+m)</span> numbers, each with <span class="math inline">O(n+m)</span> digits.</p>
+<hr>
+</section>
+<section id="section-g-lp-ip-relaxations-lp-rounding" class="level3">
+<h3 class="anchored" data-anchor-id="section-g-lp-ip-relaxations-lp-rounding">Section G — LP, IP, Relaxations &amp; LP Rounding</h3>
+<p><strong>G1.</strong> LP relaxation: same constraints but <span class="math inline">0 \le x, y \le 1</span>. Solve: at intersection of <span class="math inline">x+y=2</span> and <span class="math inline">2x+y=3</span>, we get <span class="math inline">x=1, y=1</span>, objective = 5. Corner points: <span class="math inline">(0,0)=0</span>, <span class="math inline">(1.5,0)=4.5</span> (but <span class="math inline">x\le1</span> so <span class="math inline">(1,0)=3</span>), <span class="math inline">(0,2)=4</span> (but <span class="math inline">y\le1</span> so <span class="math inline">(0,1)=2</span>), <span class="math inline">(1,1)=5</span>. So LP opt = 5 (at <span class="math inline">(1,1)</span>). IP optimal: <span class="math inline">x=1,y=1</span> objective = 5. LP value = IP value, no gap.</p>
+<p><strong>G2.</strong> LP has a convex feasible polytope — optimum at a vertex, solvable in poly time via ellipsoid/interior-point methods. IP has a discrete feasible set — searching over <span class="math inline">2^n</span> possibilities in the worst case (NP-hard). The convex hull of integer points (integer hull) can have exponentially many facets.</p>
+<p><strong>G3.</strong> 1. IP: <span class="math inline">\min x_1+x_2+x_3+x_4</span> s.t. <span class="math inline">x_1+x_2 \ge 1</span>, <span class="math inline">x_2+x_3 \ge 1</span>, <span class="math inline">x_3+x_4 \ge 1</span>, <span class="math inline">x_i \in \{0,1\}</span>. 2. LP: same but <span class="math inline">0 \le x_i \le 1</span>. 3. LP opt = 2 (e.g., <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> gives sum <span class="math inline">= 0.5+0.5+0.5+0.5 = 2</span>). 4. Rounding: <span class="math inline">x_1=x_4=0.5 \to 1</span>, <span class="math inline">x_2=x_3=0.5 \to 1</span>. Cover = <span class="math inline">\{1,2,3,4\}</span> size 4. This is not optimal (optimal VC = <span class="math inline">\{2,3\}</span> size 2). Approximation ratio on this instance: <span class="math inline">4/2 = 2</span>.</p>
+<p><strong>G4.</strong> Triangle: vertices <span class="math inline">1,2,3</span>, edges <span class="math inline">(1,2),(2,3),(1,3)</span>. IP: <span class="math inline">\min x_1+x_2+x_3</span> s.t. <span class="math inline">x_1+x_2 \ge 1</span>, <span class="math inline">x_2+x_3 \ge 1</span>, <span class="math inline">x_1+x_3 \ge 1</span>, <span class="math inline">x_i \in \{0,1\}</span>. IP opt = 2 (any two vertices). LP: same with <span class="math inline">0 \le x_i \le 1</span>. LP opt = 1.5 (all <span class="math inline">x_i=0.5</span> gives <span class="math inline">0.5+0.5+0.5=1.5</span> and all constraints satisfied: <span class="math inline">0.5+0.5=1 \ge 1</span>). Integrality gap <span class="math inline">= 2 / 1.5 = 4/3</span>. The 2-approximation guarantee comes from the fact that the integrality gap can be as bad as 2 on some graphs (e.g., odd cycles).</p>
+<p><strong>G5.</strong> IP: <span class="math inline">\min \sum_{j=1}^n c(S_j) x_j</span> s.t. <span class="math inline">\sum_{j: i \in S_j} x_j \ge 1</span> for each <span class="math inline">i \in U</span>, <span class="math inline">x_j \in \{0,1\}</span>. LP relaxation: <span class="math inline">0 \le x_j \le 1</span>. Rounding: set <span class="math inline">x_j = 1</span> if <span class="math inline">x_j \ge 1/f</span>, where <span class="math inline">f = \max_i |\{j: i \in S_j\}|</span> (max frequency of any element). Proof of <span class="math inline">f</span>-approximation: - Feasibility: For each element <span class="math inline">i</span>, <span class="math inline">\sum_{j: i \in S_j} x_j^* \ge 1</span>. At most <span class="math inline">f</span> sets contain <span class="math inline">i</span>, so by pigeonhole, some <span class="math inline">j</span> has <span class="math inline">x_j^* \ge 1/f</span>. Rounded to 1, so <span class="math inline">i</span> is covered. ✓ - Cost: <span class="math inline">\sum \tilde{x}_j c(S_j) \le \sum f \cdot x_j^* c(S_j) = f \cdot OPT_{LP} \le f \cdot OPT_{IP}</span>. For Vertex Cover, each edge is incident to <span class="math inline">f=2</span> vertices, giving 2-approximation — matching the standard Vertex Cover result.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/daa\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Tulasimohan Molli</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="https://tulasimohan.github.io/misc/credits.html">Credits</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../lite/index.html">
+<p>Lite</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
