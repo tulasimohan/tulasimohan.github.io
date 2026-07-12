@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="LP formulation, integer programming, LP relaxation, LP rounding, Vertex Cover, integrality gap">
+<meta name="description" content="LP formulation, integer programming, LP relaxation, LP rounding, Vertex Cover, integrality gap.">
 
 <title>LP, IP, Relaxations &amp; LP Rounding – Tulasimohan Molli</title>
 <style>
@@ -182,7 +182,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    LP formulation, integer programming, LP relaxation, LP rounding, Vertex Cover, integrality gap
+    LP formulation, integer programming, LP relaxation, LP rounding, Vertex Cover, integrality gap.
   </div>
 </div>
 
@@ -247,7 +247,13 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Explain why solving an IP is NP-hard in general while solving an LP is polynomial-time solvable. What property of the feasible set changes when integrality constraints are added?</p>
+<p>For Vertex Cover on a <strong>path graph</strong> with 4 vertices (edges: <span class="math inline">(1,2),(2,3),(3,4)</span>):</p>
+<ol type="1">
+<li>Write the IP formulation.</li>
+<li>Write the LP relaxation.</li>
+<li>Solve the LP (you should get <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> or equivalent).</li>
+<li>Apply rounding: set <span class="math inline">x_v = 1</span> if <span class="math inline">x_v \ge 1/2</span>. What vertex cover do you get? Is it optimal? What is the approximation ratio on this instance?</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -262,7 +268,12 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>LP has a convex feasible polytope — optimum at a vertex, solvable in poly time via ellipsoid/interior-point methods. IP has a discrete feasible set — searching over <span class="math inline">2^n</span> possibilities in the worst case (NP-hard). The convex hull of integer points (integer hull) can have exponentially many facets.</p>
+<ol type="1">
+<li>IP: <span class="math inline">\min x_1+x_2+x_3+x_4</span> s.t. <span class="math inline">x_1+x_2 \ge 1</span>, <span class="math inline">x_2+x_3 \ge 1</span>, <span class="math inline">x_3+x_4 \ge 1</span>, <span class="math inline">x_i \in \{0,1\}</span>.</li>
+<li>LP: same but <span class="math inline">0 \le x_i \le 1</span>.</li>
+<li>LP opt = 2 (e.g., <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> gives sum <span class="math inline">= 0.5+0.5+0.5+0.5 = 2</span>).</li>
+<li>Rounding: <span class="math inline">x_1=x_4=0.5 \to 1</span>, <span class="math inline">x_2=x_3=0.5 \to 1</span>. Cover = <span class="math inline">\{1,2,3,4\}</span> size 4. This is not optimal (optimal VC = <span class="math inline">\{2,3\}</span> size 2). Approximation ratio on this instance: <span class="math inline">4/2 = 2</span>.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -276,13 +287,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For Vertex Cover on a <strong>path graph</strong> with 4 vertices (edges: <span class="math inline">(1,2),(2,3),(3,4)</span>):</p>
-<ol type="1">
-<li>Write the IP formulation.</li>
-<li>Write the LP relaxation.</li>
-<li>Solve the LP (you should get <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> or equivalent).</li>
-<li>Apply rounding: set <span class="math inline">x_v = 1</span> if <span class="math inline">x_v \ge 1/2</span>. What vertex cover do you get? Is it optimal? What is the approximation ratio on this instance?</li>
-</ol>
+<p><strong>Integrality gap:</strong> For Vertex Cover, consider a <strong>triangle</strong> graph (3 vertices, 3 edges). Write the LP relaxation and find its optimal fractional value. Compare with the optimal integer value. What is the integrality gap (ratio of IP optimal to LP optimal)? How does this relate to the 2-approximation guarantee?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -297,76 +302,7 @@ window.Quarto = {
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>IP: <span class="math inline">\min x_1+x_2+x_3+x_4</span> s.t. <span class="math inline">x_1+x_2 \ge 1</span>, <span class="math inline">x_2+x_3 \ge 1</span>, <span class="math inline">x_3+x_4 \ge 1</span>, <span class="math inline">x_i \in \{0,1\}</span>.</li>
-<li>LP: same but <span class="math inline">0 \le x_i \le 1</span>.</li>
-<li>LP opt = 2 (e.g., <span class="math inline">x_1=x_4=0.5, x_2=x_3=0.5</span> gives sum <span class="math inline">= 0.5+0.5+0.5+0.5 = 2</span>).</li>
-<li>Rounding: <span class="math inline">x_1=x_4=0.5 \to 1</span>, <span class="math inline">x_2=x_3=0.5 \to 1</span>. Cover = <span class="math inline">\{1,2,3,4\}</span> size 4. This is not optimal (optimal VC = <span class="math inline">\{2,3\}</span> size 2). Approximation ratio on this instance: <span class="math inline">4/2 = 2</span>.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem G4">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem G4
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Integrality gap:</strong> For Vertex Cover, consider a <strong>triangle</strong> graph (3 vertices, 3 edges). Write the LP relaxation and find its optimal fractional value. Compare with the optimal integer value. What is the integrality gap (ratio of IP optimal to LP optimal)? How does this relate to the 2-approximation guarantee?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <p>Triangle: vertices <span class="math inline">1,2,3</span>, edges <span class="math inline">(1,2),(2,3),(1,3)</span>. IP: <span class="math inline">\min x_1+x_2+x_3</span> s.t. <span class="math inline">x_1+x_2 \ge 1</span>, <span class="math inline">x_2+x_3 \ge 1</span>, <span class="math inline">x_1+x_3 \ge 1</span>, <span class="math inline">x_i \in \{0,1\}</span>. IP opt = 2 (any two vertices). LP: same with <span class="math inline">0 \le x_i \le 1</span>. LP opt = 1.5 (all <span class="math inline">x_i=0.5</span> gives <span class="math inline">0.5+0.5+0.5=1.5</span> and all constraints satisfied). Integrality gap <span class="math inline">= 2 / 1.5 = 4/3</span>. The 2-approximation guarantee comes from the fact that the integrality gap can be as bad as 2 on some graphs (e.g., odd cycles).</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem G5">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem G5
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Set Cover as an IP:</strong> Given universe <span class="math inline">U = \{1,\dots,m\}</span> and subsets <span class="math inline">S_1,\dots,S_n \subseteq U</span> with costs <span class="math inline">c(S_j)</span>, formulate Set Cover as an integer program. Then:</p>
-<ol type="1">
-<li>Write the LP relaxation.</li>
-<li>Propose a rounding scheme: pick all sets with <span class="math inline">x_j \ge 1/f</span> where <span class="math inline">f</span> is the max frequency of any element.</li>
-<li>Prove that this gives an <span class="math inline">f</span>-approximation.</li>
-<li>For the special case of Vertex Cover (<span class="math inline">f=2</span>), does this match the 2-approximation we already know?</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>IP: <span class="math inline">\min \sum_{j=1}^n c(S_j) x_j</span> s.t. <span class="math inline">\sum_{j: i \in S_j} x_j \ge 1</span> for each <span class="math inline">i \in U</span>, <span class="math inline">x_j \in \{0,1\}</span>. 1. LP relaxation: <span class="math inline">0 \le x_j \le 1</span>. 2. Rounding: set <span class="math inline">x_j = 1</span> if <span class="math inline">x_j \ge 1/f</span>, where <span class="math inline">f = \max_i |\{j: i \in S_j\}|</span> (max frequency of any element). 3. Proof of <span class="math inline">f</span>-approximation: - Feasibility: For each element <span class="math inline">i</span>, <span class="math inline">\sum_{j: i \in S_j} x_j^* \ge 1</span>. At most <span class="math inline">f</span> sets contain <span class="math inline">i</span>, so by pigeonhole, some <span class="math inline">j</span> has <span class="math inline">x_j^* \ge 1/f</span>. Rounded to 1, so <span class="math inline">i</span> is covered. - Cost: <span class="math inline">\sum \tilde{x}_j c(S_j) \le \sum f \cdot x_j^* c(S_j) = f \cdot OPT_{LP} \le f \cdot OPT_{IP}</span>. 4. For Vertex Cover, each edge is incident to <span class="math inline">f=2</span> vertices, giving 2-approximation — matching the standard Vertex Cover result.</p>
 </div>
 </div>
 </div>
