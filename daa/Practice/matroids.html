@@ -321,8 +321,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <strong>greedy algorithm</strong> on a weighted matroid <span class="math inline">(S,\mathcal{I})</span> with weight function <span class="math inline">w: S \to \mathbb{R}^+</span> sorts elements by decreasing weight and picks each if it maintains independence. Prove that this algorithm returns a maximum-weight independent set.</p>
-<p>Specifically, let <span class="math inline">A</span> be the greedy solution and <span class="math inline">B</span> be any independent set. Use the exchange property to show <span class="math inline">w(A) \ge w(B)</span>.</p>
+<p>Consider a weighted matroid <span class="math inline">(S, \mathcal{I})</span> with <span class="math inline">w: S \to \mathbb{R}^+</span>. The greedy algorithm sorts <span class="math inline">S</span> by decreasing weight and adds each element if it maintains independence.</p>
+<p>Prove that greedy returns a maximum-weight independent set.</p>
+<p>Steps: 1. Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> be the greedy output (weights decreasing) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> be any independent set (weights decreasing). 2. Argue <span class="math inline">A</span> is a basis, so <span class="math inline">k \ge \ell</span>. 3. For each <span class="math inline">i</span>, apply augmentation on <span class="math inline">\{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">\{b_1,\dots,b_i\}</span> to show <span class="math inline">w(a_i) \ge w(b_i)</span>. 4. Conclude <span class="math inline">w(A) \ge w(B)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -337,7 +338,10 @@ window.Quarto = {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> (greedy, sorted decreasing weight) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> (any independent set, sorted decreasing weight). For each <span class="math inline">i</span>, consider <span class="math inline">A_i = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. By augmentation, there exists <span class="math inline">b_j \notin A_i</span> such that <span class="math inline">A_i \cup \{b_j\} \in \mathcal{I}</span>. Greedy picks the maximum-weight such element, so <span class="math inline">w(a_i) \ge w(b_j) \ge w(b_i)</span>. Hence <span class="math inline">A</span> is optimal.</p>
+<p><span class="math inline">A</span> is maximal (greedy stops when no more elements fit), so <span class="math inline">A</span> is a basis and <span class="math inline">|A| \ge |B|</span> for any independent <span class="math inline">B</span>.</p>
+<p>Fix <span class="math inline">i</span>. Let <span class="math inline">A_{i-1} = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. Both are independent and <span class="math inline">|A_{i-1}| = i-1 &lt; i = |B_i|</span>. By augmentation, <span class="math inline">\exists\: b \in B_i \setminus A_{i-1}</span> with <span class="math inline">A_{i-1} \cup \{b\} \in \mathcal{I}</span>.</p>
+<p>Greedy chose <span class="math inline">a_i</span> as the maximum-weight element it could add at step <span class="math inline">i</span>, so <span class="math inline">w(a_i) \ge w(b)</span>. Since <span class="math inline">b \in B_i</span>, <span class="math inline">w(b) \ge w(b_i)</span>. Hence <span class="math inline">w(a_i) \ge w(b_i)</span> for all <span class="math inline">i</span>.</p>
+<p>Summing: <span class="math display">w(A) = \sum_{i=1}^k w(a_i) \ge \sum_{i=1}^\ell w(a_i) \ge \sum_{i=1}^\ell w(b_i) = w(B).</span></p>
 </div>
 </div>
 </div>
