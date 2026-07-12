@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Substitution method, Master theorem, two-variable recurrences">
+<meta name="description" content="Independence axioms, graphic/cographic matroids, greedy on weighted matroids, exchange property">
 
-<title>Recurrence Relations – Tulasimohan Molli</title>
+<title>Matroids – Tulasimohan Molli</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -176,13 +176,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Recurrence Relations</h1>
+<h1 class="title">Matroids</h1>
 <p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
 <div>
   <div class="description">
-    Substitution method, Master theorem, two-variable recurrences
+    Independence axioms, graphic/cographic matroids, greedy on weighted matroids, exchange property
   </div>
 </div>
 
@@ -200,17 +200,17 @@ window.Quarto = {
 
 
 <p><a href="index.html">← Practice</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 1
+<span class="screen-reader-only">Note</span>Problem A1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the recurrence relation of the <strong>Tower of Hanoi</strong> problem using the iterative method.</p>
+<p>Let <span class="math inline">S = \{a,b,c,d\}</span> and <span class="math inline">\mathcal{I} = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a,b\}, \{a,c\}, \{b,c\}\}</span>. Is <span class="math inline">(S,\mathcal{I})</span> a matroid? If not, which axiom fails?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -225,38 +225,21 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">T(n)</span> be the number of moves required to transfer <span class="math inline">n</span> disks from source to destination using an auxiliary peg.</p>
-<p>Recurrence: <span class="math inline">T(n) = 2T(n-1) + 1</span>, with <span class="math inline">T(0) = 0</span>.</p>
-<p>Iterative expansion: <span class="math display">
-\begin{aligned}
-T(n) &amp;= 2T(n-1) + 1 \\
-     &amp;= 2[2T(n-2) + 1] + 1 = 2^2 T(n-2) + 2 + 1 \\
-     &amp;= 2^2[2T(n-3) + 1] + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 \\
-     &amp;\;\;\vdots \\
-     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) \\
-     &amp;= 0 + (2^n - 1).
-\end{aligned}
-</span> Thus <span class="math inline">T(n) = 2^n - 1 = \Theta(2^n)</span>.</p>
+<p>No.&nbsp;Augmentation fails. Take <span class="math inline">A = \{a,b\}</span> (size 2) and <span class="math inline">B = \{c\}</span> (size 1). We need <span class="math inline">x \in B \setminus A = \{c\}</span> such that <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>. But <span class="math inline">\{a,b,c\} \notin \mathcal{I}</span>.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A2">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 2
+<span class="screen-reader-only">Note</span>Problem A2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How many ones does the following procedure print when run with input <span class="math inline">n</span>? Compute the best bounds you can: the exact value if possible, a <span class="math inline">\Theta</span> expression if you can’t find the exact value, or <span class="math inline">O</span> and <span class="math inline">\Omega</span> bounds if you can’t find a <span class="math inline">\Theta</span> expression.</p>
-<pre><code>Ones(n):
-    if n = 0:
-        print 1
-    else:
-        for i = 1 to 2^n:
-            Ones(n-1)</code></pre>
+<p>A <strong>graphic matroid</strong> <span class="math inline">M(G)</span> of a graph <span class="math inline">G = (V,E)</span> has ground set <span class="math inline">E</span> and independent sets = forests (acyclic edge subsets). What are the bases of <span class="math inline">M(G)</span> when <span class="math inline">G</span> is a tree? When <span class="math inline">G</span> is a complete graph <span class="math inline">K_n</span>?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -271,31 +254,25 @@ T(n) &amp;= 2T(n-1) + 1 \\
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">T(n)</span> be the number of ones printed on input <span class="math inline">n</span>.</p>
-<p>From the code: <span class="math display">
-T(0) = 1,\qquad T(n) = 2^n \cdot T(n-1) \quad \text{for } n \ge 1.
-</span> Iterating: <span class="math display">
-\begin{aligned}
-T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
-     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 \\
-     &amp;= 2^{n(n+1)/2}.
-\end{aligned}
-</span> Hence <span class="math inline">T(n) = 2^{n(n+1)/2}</span>. This is <span class="math inline">\Theta\!\left(2^{n(n+1)/2}\right)</span>, which is <span class="math inline">2^{\Theta(n^2)}</span> but <strong>not</strong> <span class="math inline">\Theta(2^{n^2})</span>.</p>
+<p>For a tree, the only base is <span class="math inline">E</span> itself (the entire edge set is acyclic and spanning). For <span class="math inline">K_n</span>, a base is any spanning tree — any set of <span class="math inline">n-1</span> edges that connects all vertices.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A3">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 3
+<span class="screen-reader-only">Note</span>Problem A3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the following recurrence using the <strong>substitution method</strong>:</p>
-<p><span class="math inline">T(n) = 2T(\lfloor n/2 \rfloor + 17) + n</span></p>
+<p>Consider <span class="math inline">S = \{1,2,3,4\}</span> with <span class="math inline">\mathcal{I} = \{X \subseteq S : |X| \leq 2\} \cup \{\{1,2,3\}\}</span>.</p>
+<ol type="1">
+<li>Verify that <span class="math inline">\mathcal{I}</span> satisfies the hereditary property.</li>
+<li>Does it satisfy the augmentation property? Provide a proof or a counterexample.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -310,35 +287,25 @@ T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We guess <span class="math inline">T(n) = O(n\log n)</span>, i.e., <span class="math inline">T(n) \le cn\log_2 n</span> for <span class="math inline">n \ge n_0</span>.</p>
-<p>Assume the inequality holds for all <span class="math inline">k &lt; n</span>. For <span class="math inline">n</span> large enough (<span class="math inline">n \ge 68</span>), <span class="math inline">\lfloor n/2 \rfloor + 17 \le 3n/4</span>.</p>
-<p>Then: <span class="math display">
-\begin{aligned}
-T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) + n \\
-     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n \\
-     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.
-\end{aligned}
-</span> For this to be <span class="math inline">\le cn\log_2 n</span>, we need: <span class="math display">
-\frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n \le cn\log_2 n.
-</span> Simplifying: <span class="math inline">\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n</span>.</p>
-<p>Choosing <span class="math inline">c</span> and <span class="math inline">n_0</span> appropriately (e.g., <span class="math inline">c \ge 2</span>, <span class="math inline">n_0 = 2^{c+1}</span>) satisfies the inequality. Thus <span class="math inline">T(n) = O(n\log n)</span>. A matching lower bound <span class="math inline">\Omega(n\log n)</span> follows similarly, so <span class="math inline">T(n) = \Theta(n\log n)</span>.</p>
+<p>Yes, <span class="math inline">(S,\mathcal{I})</span> is a matroid. It satisfies all three axioms: - Hereditary: All subsets of size <span class="math inline">\le 2</span> are clearly in <span class="math inline">\mathcal{I}</span>. For <span class="math inline">\{1,2,3\}</span>, all subsets are either of size <span class="math inline">\le 2</span> or <span class="math inline">\{1,2,3\}</span> itself, so they are all in <span class="math inline">\mathcal{I}</span>. - <span class="math inline">\emptyset \in \mathcal{I}</span>: yes. - Augmentation: For any <span class="math inline">A,B \in \mathcal{I}</span> with <span class="math inline">|A| &lt; |B|</span>: - If <span class="math inline">|A| \le 1</span>, we can always add an element from <span class="math inline">B\setminus A</span> (since any single element is independent, and <span class="math inline">|B| \ge 2</span> means at least one element is available). - If <span class="math inline">A = \{x,y\}</span> (size 2), then <span class="math inline">|B|</span> must be 3, so <span class="math inline">B = \{1,2,3\}</span>. Since <span class="math inline">|A|=2</span>, there is at least one element in <span class="math inline">B\setminus A</span>; adding it gives a set of size 3 which is either in <span class="math inline">\mathcal{I}</span> (if it is <span class="math inline">\{1,2,3\}</span>) or of size <span class="math inline">\le 2</span> (still independent).</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A4">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 4
+<span class="screen-reader-only">Note</span>Problem A4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve each recurrence to get the best asymptotic bounds on <span class="math inline">T(n)</span>:</p>
-<ol type="i">
-<li><p><span class="math inline">T(n) = T\!\left(\dfrac{n}{4\log_2 n}\right) + 2n</span> for <span class="math inline">n &gt; 1</span>, <span class="math inline">T(1) = 1</span> (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</p></li>
-<li><p><span class="math inline">T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n</span> for <span class="math inline">n \ge 4</span>, <span class="math inline">T(2) = 2</span>. Do <strong>not</strong> use the Master theorem.</p></li>
+<p>Let <span class="math inline">G</span> be a connected graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. In the graphic matroid <span class="math inline">M(G)</span>, a subset of edges is independent iff it contains no cycle.</p>
+<ol type="1">
+<li>What is the rank of <span class="math inline">M(G)</span>? (The size of a maximal independent set.)</li>
+<li>Show that the set of edges not in a spanning tree forms a <strong>cographic matroid</strong> on the dual graph.</li>
+<li>For <span class="math inline">G = K_4</span>, list one base and one circuit (minimal dependent set) of <span class="math inline">M(G)</span>.</li>
 </ol>
 </div>
 </div>
@@ -354,49 +321,26 @@ T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) +
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Lower bound: The <span class="math inline">2n</span> term alone gives <span class="math inline">T(n) = \Omega(n)</span>.</p>
-<p>Upper bound: For <span class="math inline">n &gt; 1</span>, <span class="math inline">4\log_2 n &gt; 4</span>, so <span class="math inline">\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}</span>. Hence: <span class="math display">
-T(n) \le T\!\left(\frac{n}{4}\right) + 2n.
-</span> By the Master theorem with <span class="math inline">a=1</span>, <span class="math inline">b=4</span>, <span class="math inline">f(n)=2n</span>: <span class="math inline">\log_b a = \log_4 1 = 0</span>. Since <span class="math inline">f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})</span> for <span class="math inline">\epsilon = 1</span>, case 3 applies: <span class="math inline">T(n) = O(n)</span>. Together with the lower bound, <span class="math inline">T(n) = \Theta(n)</span>.</p>
-<p><strong>(ii)</strong> We prove <span class="math inline">T(n) \le cn\log^2 n</span> by induction.</p>
-<p><strong>Base:</strong> <span class="math inline">T(2) = 2 \le c\cdot 2\log^2 2 = 2c</span>, true for <span class="math inline">c \ge 1</span>.</p>
-<p><strong>Inductive step:</strong> For <span class="math inline">n \ge 4</span>, <span class="math display">
-\begin{aligned}
-T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le c\lceil n/2\rceil \log^2\!\left(\lceil n/2\rceil\right) + c\lfloor n/2\rfloor \log^2\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le cn\log^2\!\left(n/2\right) + cn\log n \quad\text{(since both halves $\le n/2$)} \\
-     &amp;= cn(\log n - 1)^2 + cn\log n \\
-     &amp;= cn(\log^2 n - 2\log n + 1) + cn\log n \\
-     &amp;= cn\log^2 n - cn\log n + cn \\
-     &amp;\le cn\log^2 n \quad\text{for $n \ge 2$}.
-\end{aligned}
-</span> Thus <span class="math inline">T(n) = O(n\log^2 n)</span>. One can similarly show <span class="math inline">\Omega(n\log^2 n)</span>, so <span class="math inline">T(n) = \Theta(n\log^2 n)</span>.</p>
+<ol type="1">
+<li>The rank of <span class="math inline">M(G)</span> is <span class="math inline">n-1</span> (size of a spanning tree).</li>
+<li>Omitted — standard duality.</li>
+<li>For <span class="math inline">K_4</span>, one base is any spanning tree of 3 edges (e.g., edges <span class="math inline">(1,2),(2,3),(3,4)</span>). One circuit is any cycle of 3 edges (e.g., <span class="math inline">(1,2),(2,3),(1,3)</span>).</li>
+</ol>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A5">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 5
+<span class="screen-reader-only">Note</span>Problem A5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Prove the asymptotic complexity for each two-variable recurrence, where <span class="math inline">T(n,n)</span> is the runtime:</p>
-<ol type="i">
-<li>Prove <span class="math inline">T(n,n) = \Theta(n)</span>:</li>
-</ol>
-<p><span class="math inline">T(x,y) = \Theta(x)</span> if <span class="math inline">y \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(y)</span> if <span class="math inline">x \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(x+y) + T(x/2,\,y/2)</span> otherwise</p>
-<ol start="2" type="i">
-<li>Prove <span class="math inline">T(n,n) = \Theta(n\log n)</span>:</li>
-</ol>
-<p><span class="math inline">T(x,y) = \Theta(x)</span> if <span class="math inline">y \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(y)</span> if <span class="math inline">x \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(x) + T(x,\,y/2)</span> otherwise</p>
+<p>The <strong>greedy algorithm</strong> on a weighted matroid <span class="math inline">(S,\mathcal{I})</span> with weight function <span class="math inline">w: S \to \mathbb{R}^+</span> sorts elements by decreasing weight and picks each if it maintains independence. Prove that this algorithm returns a maximum-weight independent set.</p>
+<p>Specifically, let <span class="math inline">A</span> be the greedy solution and <span class="math inline">B</span> be any independent set. Use the exchange property to show <span class="math inline">w(A) \ge w(B)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -411,23 +355,36 @@ T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\rig
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Unrolling the recurrence: <span class="math display">
-\begin{aligned}
-T(x,y) &amp;= c(x+y) + T\!\left(\frac{x}{2},\frac{y}{2}\right) \\
-       &amp;= c(x+y) + c\!\left(\frac{x+y}{2}\right) + T\!\left(\frac{x}{4},\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= c(x+y)\!\left(1 + \frac12 + \frac14 + \dots\right) \\
-       &amp;\le 2c(x+y).
-\end{aligned}
-</span> The lower bound is <span class="math inline">T(x,y) \ge c(x+y)</span> from the first term. Hence <span class="math inline">T(x,y) = \Theta(x+y)</span>, and <span class="math inline">T(n,n) = \Theta(n)</span>.</p>
-<p><strong>(ii)</strong> Unrolling: <span class="math display">
-\begin{aligned}
-T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
-       &amp;= cx + cx + T\!\left(x,\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= cx \cdot (\log_2 y) + \Theta(x) \quad\text{(base case when $y \le 2$)}.
-\end{aligned}
-</span> Thus <span class="math inline">T(x,y) = \Theta(x\log y)</span>, and <span class="math inline">T(n,n) = \Theta(n\log n)</span>.</p>
+<p>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> (greedy, sorted decreasing weight) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> (any independent set, sorted decreasing weight). For each <span class="math inline">i</span>, consider <span class="math inline">A_i = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. By augmentation, there exists <span class="math inline">b_j \notin A_i</span> such that <span class="math inline">A_i \cup \{b_j\} \in \mathcal{I}</span>. Greedy picks the maximum-weight such element, so <span class="math inline">w(a_i) \ge w(b_j) \ge w(b_i)</span>. Hence <span class="math inline">A</span> is optimal.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem A6">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem A6
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Given a bipartite graph <span class="math inline">G = (U,V,E)</span>, consider <span class="math inline">S = U \cup V</span> and define <span class="math inline">\mathcal{I} = \{X \subseteq S : X \text{ is a matching in } G\}</span>. Is <span class="math inline">(S,\mathcal{I})</span> a matroid? If yes, prove it. If no, explain why and describe how matroid intersection can be used to find a maximum matching.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Not a matroid. Hereditary holds, but augmentation fails. Example: <span class="math inline">U = \{u_1,u_2\}</span>, <span class="math inline">V = \{v_1,v_2\}</span>, edges <span class="math inline">E = \{(u_1,v_1), (u_1,v_2), (u_2,v_1)\}</span>. <span class="math inline">A = \{(u_1,v_1)\}</span> (size 1), <span class="math inline">B = \{(u_1,v_2), (u_2,v_1)\}</span> (size 2). <span class="math inline">|A|=1 &lt; |B|=2</span>. <span class="math inline">B \setminus A = \{(u_1,v_2), (u_2,v_1)\}</span>. Adding <span class="math inline">(u_1,v_2)</span> to <span class="math inline">A</span> gives <span class="math inline">\{(u_1,v_1),(u_1,v_2)\}</span> which shares vertex <span class="math inline">u_1</span> — not a matching. Adding <span class="math inline">(u_2,v_1)</span> to <span class="math inline">A</span> gives <span class="math inline">\{(u_1,v_1),(u_2,v_1)\}</span> which shares <span class="math inline">v_1</span> — not a matching. So augmentation fails. This is why we need <strong>matroid intersection</strong> (two matroids — one for each side of the bipartition) to find maximum matchings.</p>
 </div>
 </div>
 </div>

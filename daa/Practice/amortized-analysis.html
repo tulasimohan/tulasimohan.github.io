@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Substitution method, Master theorem, two-variable recurrences">
+<meta name="description" content="Aggregate method, potential method, accounting method, stack with multipop, binary counter, dynamic table variants, disjoint set union, binary heap">
 
-<title>Recurrence Relations – Tulasimohan Molli</title>
+<title>Amortized Analysis – Tulasimohan Molli</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -176,13 +176,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Recurrence Relations</h1>
+<h1 class="title">Amortized Analysis</h1>
 <p class="subtitle lead">CS F364 — Design &amp; Analysis of Algorithms | Summer 2026</p>
 </div>
 
 <div>
   <div class="description">
-    Substitution method, Master theorem, two-variable recurrences
+    Aggregate method, potential method, accounting method, stack with multipop, binary counter, dynamic table variants, disjoint set union, binary heap
   </div>
 </div>
 
@@ -200,17 +200,17 @@ window.Quarto = {
 
 
 <p><a href="index.html">← Practice</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 1">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 1
+<span class="screen-reader-only">Note</span>Problem C1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the recurrence relation of the <strong>Tower of Hanoi</strong> problem using the iterative method.</p>
+<p>A stack supports three operations: <code>Push(x)</code>, <code>Pop()</code>, and <code>Multipop(k)</code> which pops up to <span class="math inline">k</span> items. Using the <strong>aggregate method</strong>, show that any sequence of <span class="math inline">n</span> operations starting from an empty stack takes <span class="math inline">O(n)</span> time.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -225,38 +225,21 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">T(n)</span> be the number of moves required to transfer <span class="math inline">n</span> disks from source to destination using an auxiliary peg.</p>
-<p>Recurrence: <span class="math inline">T(n) = 2T(n-1) + 1</span>, with <span class="math inline">T(0) = 0</span>.</p>
-<p>Iterative expansion: <span class="math display">
-\begin{aligned}
-T(n) &amp;= 2T(n-1) + 1 \\
-     &amp;= 2[2T(n-2) + 1] + 1 = 2^2 T(n-2) + 2 + 1 \\
-     &amp;= 2^2[2T(n-3) + 1] + 2 + 1 = 2^3 T(n-3) + 4 + 2 + 1 \\
-     &amp;\;\;\vdots \\
-     &amp;= 2^n T(0) + (2^{n-1} + 2^{n-2} + \dots + 2 + 1) \\
-     &amp;= 0 + (2^n - 1).
-\end{aligned}
-</span> Thus <span class="math inline">T(n) = 2^n - 1 = \Theta(2^n)</span>.</p>
+<p>Each element pushed is popped at most once. Over <span class="math inline">n</span> operations, there can be at most <span class="math inline">n</span> pushes (and thus at most <span class="math inline">n</span> pops across all Pop and Multipop calls). Total cost is <span class="math inline">O(n)</span>, so amortized cost per operation is <span class="math inline">O(1)</span>.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 2">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C2">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 2
+<span class="screen-reader-only">Note</span>Problem C2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>How many ones does the following procedure print when run with input <span class="math inline">n</span>? Compute the best bounds you can: the exact value if possible, a <span class="math inline">\Theta</span> expression if you can’t find the exact value, or <span class="math inline">O</span> and <span class="math inline">\Omega</span> bounds if you can’t find a <span class="math inline">\Theta</span> expression.</p>
-<pre><code>Ones(n):
-    if n = 0:
-        print 1
-    else:
-        for i = 1 to 2^n:
-            Ones(n-1)</code></pre>
+<p>In the <strong>accounting method</strong>, we assign an amortized cost to each operation. For a binary counter increment, we charge 2 rupees per increment. Explain how this covers the actual cost of flipping bits over a sequence of <span class="math inline">n</span> increments.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -271,31 +254,26 @@ T(n) &amp;= 2T(n-1) + 1 \\
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">T(n)</span> be the number of ones printed on input <span class="math inline">n</span>.</p>
-<p>From the code: <span class="math display">
-T(0) = 1,\qquad T(n) = 2^n \cdot T(n-1) \quad \text{for } n \ge 1.
-</span> Iterating: <span class="math display">
-\begin{aligned}
-T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
-     &amp;= 2^{n + (n-1) + \dots + 1} \cdot 1 \\
-     &amp;= 2^{n(n+1)/2}.
-\end{aligned}
-</span> Hence <span class="math inline">T(n) = 2^{n(n+1)/2}</span>. This is <span class="math inline">\Theta\!\left(2^{n(n+1)/2}\right)</span>, which is <span class="math inline">2^{\Theta(n^2)}</span> but <strong>not</strong> <span class="math inline">\Theta(2^{n^2})</span>.</p>
+<p>Flip a <span class="math inline">0 \to 1</span> costs 1 rupee (paid now) and 1 rupee saved as credit. Flip a <span class="math inline">1 \to 0</span> costs 1 rupee (from saved credit). Each increment flips exactly one <span class="math inline">0 \to 1</span> and some number of trailing <span class="math inline">1</span>s <span class="math inline">\to 0</span>. Total actual cost = (number of bits flipped). Amortized cost = 2 rupees per increment = <span class="math inline">O(1)</span> per increment.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 3">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C3">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 3
+<span class="screen-reader-only">Note</span>Problem C3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve the following recurrence using the <strong>substitution method</strong>:</p>
-<p><span class="math inline">T(n) = 2T(\lfloor n/2 \rfloor + 17) + n</span></p>
+<p>A <strong>binary counter</strong> is implemented as an array of <span class="math inline">k</span> bits. The only operation is <code>Increment()</code>. Using the <strong>potential method</strong> with potential function <span class="math inline">\Phi = \text{number of 1-bits}</span>, show that <span class="math inline">n</span> increments take <span class="math inline">O(n)</span> time.</p>
+<ol type="1">
+<li>Define the amortized cost formula: <span class="math inline">\hat{c}_i = c_i + \Phi_i - \Phi_{i-1}</span>.</li>
+<li>Compute <span class="math inline">\Delta \Phi</span> for an increment that flips <span class="math inline">t</span> trailing 1s to 0 and one 0 to 1.</li>
+<li>Show <span class="math inline">\hat{c}_i = O(1)</span>.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -310,36 +288,23 @@ T(n) &amp;= 2^n \cdot 2^{n-1} \cdots 2^1 \cdot T(0) \\
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We guess <span class="math inline">T(n) = O(n\log n)</span>, i.e., <span class="math inline">T(n) \le cn\log_2 n</span> for <span class="math inline">n \ge n_0</span>.</p>
-<p>Assume the inequality holds for all <span class="math inline">k &lt; n</span>. For <span class="math inline">n</span> large enough (<span class="math inline">n \ge 68</span>), <span class="math inline">\lfloor n/2 \rfloor + 17 \le 3n/4</span>.</p>
-<p>Then: <span class="math display">
-\begin{aligned}
-T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) + n \\
-     &amp;= \frac{3c}{2}\,n\,(\log_2 n + \log_2 3 - 2) + n \\
-     &amp;= \frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n.
-\end{aligned}
-</span> For this to be <span class="math inline">\le cn\log_2 n</span>, we need: <span class="math display">
-\frac{3c}{2}\,n\log_2 n + \frac{3c}{2}\,n\,(\log_2 3 - 2) + n \le cn\log_2 n.
-</span> Simplifying: <span class="math inline">\dfrac{3c}{2}(\log_2 3 - 2) + 1 \le \dfrac{c}{2}\log_2 n</span>.</p>
-<p>Choosing <span class="math inline">c</span> and <span class="math inline">n_0</span> appropriately (e.g., <span class="math inline">c \ge 2</span>, <span class="math inline">n_0 = 2^{c+1}</span>) satisfies the inequality. Thus <span class="math inline">T(n) = O(n\log n)</span>. A matching lower bound <span class="math inline">\Omega(n\log n)</span> follows similarly, so <span class="math inline">T(n) = \Theta(n\log n)</span>.</p>
+<p>Increment from <span class="math inline">k-1</span> to <span class="math inline">k</span> flips <span class="math inline">t_k</span> trailing 1s to 0 and one 0 to 1 (total <span class="math inline">t_k+1</span> flips). The number of 1-bits changes: each <span class="math inline">1\to 0</span> decreases count by 1, each <span class="math inline">0\to 1</span> increases by 1. So <span class="math inline">\Delta\Phi = -(t_k) + 1 = 1 - t_k</span>. Amortized cost:</p>
+<p><span class="math display">\hat{c}_k = (t_k+1) + (1 - t_k) = 2.</span></p>
+<p>So each increment has <span class="math inline">O(1)</span> amortized cost.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 4">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C4">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 4
+<span class="screen-reader-only">Note</span>Problem C4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Solve each recurrence to get the best asymptotic bounds on <span class="math inline">T(n)</span>:</p>
-<ol type="i">
-<li><p><span class="math inline">T(n) = T\!\left(\dfrac{n}{4\log_2 n}\right) + 2n</span> for <span class="math inline">n &gt; 1</span>, <span class="math inline">T(1) = 1</span> (you may assume all numbers round down to the nearest integer). You may use the Master theorem.</p></li>
-<li><p><span class="math inline">T(n) \le T(\lceil n/2\rceil) + T(\lfloor n/2\rfloor) + cn\log n</span> for <span class="math inline">n \ge 4</span>, <span class="math inline">T(2) = 2</span>. Do <strong>not</strong> use the Master theorem.</p></li>
-</ol>
+<p>A <strong>dynamic table</strong> doubles in size when full and halves when load factor drops below <span class="math inline">1/4</span>. Using the potential method, prove that <span class="math inline">n</span> insertions and deletions take <span class="math inline">O(n)</span> amortized time. Choose a suitable potential function.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -354,49 +319,21 @@ T(n) &amp;\le 2c\!\left(\frac{3n}{4}\right)\!\log_2\!\left(\frac{3n}{4}\right) +
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Lower bound: The <span class="math inline">2n</span> term alone gives <span class="math inline">T(n) = \Omega(n)</span>.</p>
-<p>Upper bound: For <span class="math inline">n &gt; 1</span>, <span class="math inline">4\log_2 n &gt; 4</span>, so <span class="math inline">\dfrac{n}{4\log_2 n} &lt; \dfrac{n}{4}</span>. Hence: <span class="math display">
-T(n) \le T\!\left(\frac{n}{4}\right) + 2n.
-</span> By the Master theorem with <span class="math inline">a=1</span>, <span class="math inline">b=4</span>, <span class="math inline">f(n)=2n</span>: <span class="math inline">\log_b a = \log_4 1 = 0</span>. Since <span class="math inline">f(n) = 2n = \Omega(n^{\log_4 1 + \epsilon})</span> for <span class="math inline">\epsilon = 1</span>, case 3 applies: <span class="math inline">T(n) = O(n)</span>. Together with the lower bound, <span class="math inline">T(n) = \Theta(n)</span>.</p>
-<p><strong>(ii)</strong> We prove <span class="math inline">T(n) \le cn\log^2 n</span> by induction.</p>
-<p><strong>Base:</strong> <span class="math inline">T(2) = 2 \le c\cdot 2\log^2 2 = 2c</span>, true for <span class="math inline">c \ge 1</span>.</p>
-<p><strong>Inductive step:</strong> For <span class="math inline">n \ge 4</span>, <span class="math display">
-\begin{aligned}
-T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le c\lceil n/2\rceil \log^2\!\left(\lceil n/2\rceil\right) + c\lfloor n/2\rfloor \log^2\!\left(\lfloor n/2\rfloor\right) + cn\log n \\
-     &amp;\le cn\log^2\!\left(n/2\right) + cn\log n \quad\text{(since both halves $\le n/2$)} \\
-     &amp;= cn(\log n - 1)^2 + cn\log n \\
-     &amp;= cn(\log^2 n - 2\log n + 1) + cn\log n \\
-     &amp;= cn\log^2 n - cn\log n + cn \\
-     &amp;\le cn\log^2 n \quad\text{for $n \ge 2$}.
-\end{aligned}
-</span> Thus <span class="math inline">T(n) = O(n\log^2 n)</span>. One can similarly show <span class="math inline">\Omega(n\log^2 n)</span>, so <span class="math inline">T(n) = \Theta(n\log^2 n)</span>.</p>
+<p>Define <span class="math inline">\Phi = 2 \cdot |\text{size} - \text{capacity}/2|</span>. When the table is half-full, <span class="math inline">\Phi = 0</span>. When it doubles (<span class="math inline">\text{size} = \text{capacity}</span>), <span class="math inline">\Phi = \text{size}</span>, paying for copying. When it halves (<span class="math inline">\text{size} = \text{capacity}/4</span>), <span class="math inline">\Phi = \text{capacity}/2</span>, also paying for copying. Each insert/delete has <span class="math inline">O(1)</span> amortized cost.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem 5">
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C5">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 5
+<span class="screen-reader-only">Note</span>Problem C5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Prove the asymptotic complexity for each two-variable recurrence, where <span class="math inline">T(n,n)</span> is the runtime:</p>
-<ol type="i">
-<li>Prove <span class="math inline">T(n,n) = \Theta(n)</span>:</li>
-</ol>
-<p><span class="math inline">T(x,y) = \Theta(x)</span> if <span class="math inline">y \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(y)</span> if <span class="math inline">x \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(x+y) + T(x/2,\,y/2)</span> otherwise</p>
-<ol start="2" type="i">
-<li>Prove <span class="math inline">T(n,n) = \Theta(n\log n)</span>:</li>
-</ol>
-<p><span class="math inline">T(x,y) = \Theta(x)</span> if <span class="math inline">y \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(y)</span> if <span class="math inline">x \le 2</span></p>
-<p><span class="math inline">T(x,y) = \Theta(x) + T(x,\,y/2)</span> otherwise</p>
+<p>Consider a <strong>queue</strong> implemented using two stacks (one for enqueue, one for dequeue). When the dequeue stack is empty, we pop all elements from the enqueue stack and push them onto the dequeue stack. Using amortized analysis, show that any sequence of <span class="math inline">n</span> enqueue/dequeue operations takes <span class="math inline">O(n)</span> time.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -411,23 +348,126 @@ T(n) &amp;\le T\!\left(\lceil n/2\rceil\right) + T\!\left(\lfloor n/2\rfloor\rig
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Unrolling the recurrence: <span class="math display">
-\begin{aligned}
-T(x,y) &amp;= c(x+y) + T\!\left(\frac{x}{2},\frac{y}{2}\right) \\
-       &amp;= c(x+y) + c\!\left(\frac{x+y}{2}\right) + T\!\left(\frac{x}{4},\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= c(x+y)\!\left(1 + \frac12 + \frac14 + \dots\right) \\
-       &amp;\le 2c(x+y).
-\end{aligned}
-</span> The lower bound is <span class="math inline">T(x,y) \ge c(x+y)</span> from the first term. Hence <span class="math inline">T(x,y) = \Theta(x+y)</span>, and <span class="math inline">T(n,n) = \Theta(n)</span>.</p>
-<p><strong>(ii)</strong> Unrolling: <span class="math display">
-\begin{aligned}
-T(x,y) &amp;= cx + T\!\left(x,\frac{y}{2}\right) \\
-       &amp;= cx + cx + T\!\left(x,\frac{y}{4}\right) \\
-       &amp;\;\;\vdots \\
-       &amp;= cx \cdot (\log_2 y) + \Theta(x) \quad\text{(base case when $y \le 2$)}.
-\end{aligned}
-</span> Thus <span class="math inline">T(x,y) = \Theta(x\log y)</span>, and <span class="math inline">T(n,n) = \Theta(n\log n)</span>.</p>
+<p>Each element is pushed onto the enqueue stack once and moved to the dequeue stack at most once (when dequeued). Total pushes/pops per element is at most 3 (push onto enqueue, pop from enqueue, push onto dequeue, pop from dequeue). So <span class="math inline">n</span> operations cost <span class="math inline">O(n)</span> total, <span class="math inline">O(1)</span> amortized per operation.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C6">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem C6
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>Disjoint Set Union (Union-Find)</strong> data structure maintains <span class="math inline">n</span> singleton sets using rooted trees. It supports: - <code>MakeSet(x)</code>: create a singleton set — <span class="math inline">O(1)</span> - <code>Find(x)</code>: return the root of <span class="math inline">x</span>’s tree — cost = depth of <span class="math inline">x</span> - <code>Union(x, y)</code>: merge the sets containing <span class="math inline">x</span> and <span class="math inline">y</span> using <strong>union by rank</strong> (the root with smaller rank becomes child of the root with larger rank; rank is an upper bound on height)</p>
+<p>Consider a sequence of <span class="math inline">m</span> operations (MakeSet, Union, Find) on <span class="math inline">n</span> elements.</p>
+<ol type="1">
+<li>Prove that any tree built using union by rank has height <span class="math inline">O(\log n)</span>.</li>
+<li>Define <span class="math inline">\Phi = \sum_{v} \text{rank}(v)</span> as the potential function. Compute <span class="math inline">\Delta \Phi</span> and the amortized cost for a Find operation (assume no path compression).</li>
+<li>Compute <span class="math inline">\Delta \Phi</span> and the amortized cost for a Union operation (including the two Finds needed).</li>
+<li>Conclude that any sequence of <span class="math inline">m</span> operations takes <span class="math inline">O(m \log n)</span> total time.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Height bound:</strong> A node of rank <span class="math inline">k</span> has at least <span class="math inline">2^k</span> nodes in its subtree (proved by induction: rank increases only when merging two trees of equal rank, doubling the size). Since there are only <span class="math inline">n</span> nodes total, the maximum rank is <span class="math inline">\lfloor \log_2 n \rfloor</span>, hence height <span class="math inline">\le \log_2 n</span>.</p></li>
+<li><p><strong>Find:</strong> Actual cost <span class="math inline">c = d</span> where <span class="math inline">d</span> is the depth of <span class="math inline">x</span>. The potential <span class="math inline">\Phi = \sum \text{rank}(v)</span> depends only on ranks, which don’t change during Find (no path compression). So <span class="math inline">\Delta \Phi = 0</span>. Amortized cost <span class="math inline">\hat{c} = d + 0 \le \log_2 n = O(\log n)</span>.</p></li>
+<li><p><strong>Union:</strong> Let <span class="math inline">r_x, r_y</span> be the roots with ranks <span class="math inline">a = \text{rank}(r_x)</span> and <span class="math inline">b = \text{rank}(r_y)</span>.</p>
+<ul>
+<li>Two Finds: each costs <span class="math inline">O(\log n)</span> amortized (no potential change).</li>
+<li>If <span class="math inline">a &lt; b</span>: <span class="math inline">r_x</span> becomes child of <span class="math inline">r_y</span>. Ranks unchanged. <span class="math inline">\Delta \Phi = 0</span>.</li>
+<li>If <span class="math inline">a = b</span>: <span class="math inline">r_x</span> becomes child of <span class="math inline">r_y</span>, and <span class="math inline">\text{rank}(r_y)</span> increases from <span class="math inline">a</span> to <span class="math inline">a+1</span>. <span class="math inline">\Delta \Phi = (a+1) - a = 1</span> (only the new root’s rank changes).</li>
+</ul>
+<p>Actual cost of linking is <span class="math inline">O(1)</span>. Total amortized: <span class="math inline">2 \cdot O(\log n) + O(1) + \Delta\Phi = O(\log n)</span>.</p></li>
+<li><p>Since every operation has <span class="math inline">O(\log n)</span> amortized cost, the total over <span class="math inline">m</span> operations is <span class="math inline">O(m \log n)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C7">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem C7
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>dynamic table</strong> starts with capacity <span class="math inline">1</span>. On each insert, if the array is full, the capacity is multiplied by <span class="math inline">3</span> (tripling). Use the <strong>aggregate method</strong> to analyze <span class="math inline">n</span> inserts.</p>
+<ol type="1">
+<li>How many resizings occur after <span class="math inline">n</span> inserts? List the capacities at each resize.</li>
+<li>What is the total number of elements copied across all resizings?</li>
+<li>Show that <span class="math inline">n</span> inserts take <span class="math inline">O(n)</span> total amortized time.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Resizings occur when capacity reaches <span class="math inline">1, 3, 9, 27, \dots, 3^{k-1}</span> where <span class="math inline">k = \lceil \log_3 n \rceil</span>. Number of resizings = <span class="math inline">O(\log n)</span>.</p></li>
+<li><p>Total copying cost: <span class="math display">1 + 3 + 9 + \cdots + 3^{k-1} = \frac{3^k - 1}{3 - 1} = \frac{3^k - 1}{2} &lt; \frac{3^k}{2}</span> Since <span class="math inline">3^{k-1} &lt; n \le 3^k</span>, we have <span class="math inline">3^k &lt; 3n</span>, so total copying <span class="math inline">\le \frac{3n}{2} = O(n)</span>.</p></li>
+<li><p>Each insert itself costs <span class="math inline">O(1)</span> (adding the element). Total cost = <span class="math inline">n</span> inserts <span class="math inline">+ O(n)</span> copying <span class="math inline">= O(n)</span>. By the aggregate method, amortized cost per insert is <span class="math inline">O(1)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem C8">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem C8
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>binary min-heap</strong> supports two operations: - <code>Insert(x)</code>: add <span class="math inline">x</span> at the end and bubble it up — <span class="math inline">O(\log n)</span> worst case - <code>ExtractMin()</code>: remove the root, move the last element to the root, and bubble it down — <span class="math inline">O(\log n)</span> worst case</p>
+<p>Starting from an empty heap, consider any sequence of <span class="math inline">n</span> Insert and ExtractMin operations. Using the <strong>aggregate method</strong>, show that the total time is <span class="math inline">O(n \log n)</span>.</p>
+<p><em>Hint: An insert into a heap of size <span class="math inline">k</span> costs at most <span class="math inline">\lfloor \log_2 k \rfloor</span> comparisons.</em></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Each element is inserted at most once. When the <span class="math inline">k</span>-th element is inserted, the heap has at most <span class="math inline">k</span> elements, so the bubble-up costs at most <span class="math inline">\lfloor \log_2 k \rfloor</span> comparisons.</p>
+<p>Each element is extracted at most once. When the <span class="math inline">k</span>-th element is extracted, the replacement value sinks from the root, again costing at most <span class="math inline">\lfloor \log_2 k \rfloor</span> comparisons.</p>
+<p>Total cost across <span class="math inline">n</span> operations: <span class="math display">\sum_{k=1}^{n} \lfloor \log_2 k \rfloor + \sum_{k=1}^{n} \lfloor \log_2 k \rfloor \le 2 \sum_{k=1}^{n} \log_2 k = 2 \log_2(n!) \le 2n \log_2 n = O(n \log n).</span></p>
+<p>Thus any sequence of <span class="math inline">n</span> operations takes <span class="math inline">O(n \log n)</span> total time.</p>
 </div>
 </div>
 </div>
