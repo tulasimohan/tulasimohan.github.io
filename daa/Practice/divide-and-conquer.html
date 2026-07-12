@@ -2,17 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Merge sort variants, missing integer, MST, convex polygon, matrix search">
 
-<title>Divide &amp; Conquer – Tulasimohan Molli</title>
+<title>Divide &amp; Conquer</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,71 +24,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<script>
-document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.navbar-brand');if(b)b.href='https://tulasimohan.github.io/'});
-</script>
+<script src="divide-and-conquer_files/libs/clipboard/clipboard.min.js"></script>
+<script src="divide-and-conquer_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="divide-and-conquer_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="divide-and-conquer_files/libs/quarto-html/popper.min.js"></script>
+<script src="divide-and-conquer_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="divide-and-conquer_files/libs/quarto-html/anchor.min.js"></script>
+<link href="divide-and-conquer_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="divide-and-conquer_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="divide-and-conquer_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="divide-and-conquer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="divide-and-conquer_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -104,7 +50,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -120,58 +66,15 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles/custom.css">
 <link rel="stylesheet" href="practice.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Tulasimohan Molli</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/teaching.html"> 
-<span class="menu-text">Teaching</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+  
 </div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -206,35 +109,35 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 1
+Problem 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Merge sort with insertion sort.</strong> Merge sort runs in <span class="math inline">\Theta(n\log n)</span> worst-case time, while insertion sort runs in <span class="math inline">\Theta(n^2)</span>. But insertion sort is faster for small <span class="math inline">n</span>. Consider a modified merge sort where <span class="math inline">n/k</span> sublists of length <span class="math inline">k</span> are sorted using insertion sort, then merged using the standard merging mechanism.</p>
+<p><strong>Merge sort with insertion sort.</strong> Merge sort runs in <span class="math inline">\(\Theta(n\log n)\)</span> worst-case time, while insertion sort runs in <span class="math inline">\(\Theta(n^2)\)</span>. But insertion sort is faster for small <span class="math inline">\(n\)</span>. Consider a modified merge sort where <span class="math inline">\(n/k\)</span> sublists of length <span class="math inline">\(k\)</span> are sorted using insertion sort, then merged using the standard merging mechanism.</p>
 <ol type="i">
-<li><p>What is the worst-case time to sort the <span class="math inline">n/k</span> sublists (each of length <span class="math inline">k</span>)?</p></li>
-<li><p>Show that the sublists can be merged in <span class="math inline">\Theta(n\log(n/k))</span> worst-case time.</p></li>
-<li><p>What is the largest asymptotic (<span class="math inline">\Theta</span>) value of <span class="math inline">k</span> (as a function of <span class="math inline">n</span>) for which the modified algorithm has the same asymptotic running time as standard merge sort?</p></li>
+<li><p>What is the worst-case time to sort the <span class="math inline">\(n/k\)</span> sublists (each of length <span class="math inline">\(k\)</span>)?</p></li>
+<li><p>Show that the sublists can be merged in <span class="math inline">\(\Theta(n\log(n/k))\)</span> worst-case time.</p></li>
+<li><p>What is the largest asymptotic (<span class="math inline">\(\Theta\)</span>) value of <span class="math inline">\(k\)</span> (as a function of <span class="math inline">\(n\)</span>) for which the modified algorithm has the same asymptotic running time as standard merge sort?</p></li>
 </ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>(i)</strong> Sorting one sublist of length <span class="math inline">k</span> with insertion sort takes <span class="math inline">\Theta(k^2)</span> in the worst case. There are <span class="math inline">n/k</span> such sublists, so the total is: <span class="math display">
+<p><strong>(i)</strong> Sorting one sublist of length <span class="math inline">\(k\)</span> with insertion sort takes <span class="math inline">\(\Theta(k^2)\)</span> in the worst case. There are <span class="math inline">\(n/k\)</span> such sublists, so the total is: <span class="math display">\[
 \frac{n}{k} \cdot \Theta(k^2) = \Theta(nk).
-</span> <strong>(ii)</strong> Merge <span class="math inline">n/k</span> sorted lists using a binary merge tree of height <span class="math inline">\log_2(n/k)</span>. At each level, all <span class="math inline">n</span> elements are compared and merged, contributing <span class="math inline">\Theta(n)</span> per level. Hence total merge time: <span class="math display">
+\]</span> <strong>(ii)</strong> Merge <span class="math inline">\(n/k\)</span> sorted lists using a binary merge tree of height <span class="math inline">\(\log_2(n/k)\)</span>. At each level, all <span class="math inline">\(n\)</span> elements are compared and merged, contributing <span class="math inline">\(\Theta(n)\)</span> per level. Hence total merge time: <span class="math display">\[
 \Theta\!\left(n\log\frac{n}{k}\right).
-</span> <strong>(iii)</strong> Total time of modified sort: <span class="math inline">\Theta\!\left(nk + n\log\frac{n}{k}\right)</span>. For this to match <span class="math inline">\Theta(n\log n)</span>, we need <span class="math inline">nk = O(n\log n)</span>, i.e., <span class="math inline">k = O(\log n)</span>. The largest asymptotic value is <span class="math inline">k = \Theta(\log n)</span>.</p>
+\]</span> <strong>(iii)</strong> Total time of modified sort: <span class="math inline">\(\Theta\!\left(nk + n\log\frac{n}{k}\right)\)</span>. For this to match <span class="math inline">\(\Theta(n\log n)\)</span>, we need <span class="math inline">\(nk = O(n\log n)\)</span>, i.e., <span class="math inline">\(k = O(\log n)\)</span>. The largest asymptotic value is <span class="math inline">\(k = \Theta(\log n)\)</span>.</p>
 </div>
 </div>
 </div>
@@ -244,35 +147,35 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 2
+Problem 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Missing integer.</strong> Given an unsorted array of all integers in the range <span class="math inline">0</span> to <span class="math inline">n = 2^k - 1</span> except for one missing integer (every non-missing integer appears exactly once), design an <span class="math inline">O(n)</span> <strong>divide-and-conquer</strong> algorithm to find the missing integer. Argue informally that your algorithm is correct and analyze its running time.</p>
+<p><strong>Missing integer.</strong> Given an unsorted array of all integers in the range <span class="math inline">\(0\)</span> to <span class="math inline">\(n = 2^k - 1\)</span> except for one missing integer (every non-missing integer appears exactly once), design an <span class="math inline">\(O(n)\)</span> <strong>divide-and-conquer</strong> algorithm to find the missing integer. Argue informally that your algorithm is correct and analyze its running time.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm</strong> <span class="math inline">\text{MissingInteger}(A, [\ell, r])</span>:</p>
+<p><strong>Algorithm</strong> <span class="math inline">\(\text{MissingInteger}(A, [\ell, r])\)</span>:</p>
 <ol type="1">
-<li>If <span class="math inline">\ell = r</span>, return <span class="math inline">\ell</span> (the single candidate).</li>
-<li>Let <span class="math inline">m = \lfloor (\ell+r)/2 \rfloor</span>.</li>
-<li>Count how many elements in <span class="math inline">A</span> are <span class="math inline">\le m</span>. Call this <span class="math inline">c</span>.</li>
-<li>If <span class="math inline">c &lt; m - \ell + 1</span>, the missing integer lies in <span class="math inline">[\ell, m]</span>; recurse on the elements <span class="math inline">\le m</span>.</li>
-<li>Otherwise, the missing integer lies in <span class="math inline">[m+1, r]</span>; recurse on the elements <span class="math inline">&gt; m</span>.</li>
+<li>If <span class="math inline">\(\ell = r\)</span>, return <span class="math inline">\(\ell\)</span> (the single candidate).</li>
+<li>Let <span class="math inline">\(m = \lfloor (\ell+r)/2 \rfloor\)</span>.</li>
+<li>Count how many elements in <span class="math inline">\(A\)</span> are <span class="math inline">\(\le m\)</span>. Call this <span class="math inline">\(c\)</span>.</li>
+<li>If <span class="math inline">\(c &lt; m - \ell + 1\)</span>, the missing integer lies in <span class="math inline">\([\ell, m]\)</span>; recurse on the elements <span class="math inline">\(\le m\)</span>.</li>
+<li>Otherwise, the missing integer lies in <span class="math inline">\([m+1, r]\)</span>; recurse on the elements <span class="math inline">\(&gt; m\)</span>.</li>
 </ol>
-<p><strong>Analysis:</strong> Each recursive call partitions the array in <span class="math inline">O(|A|)</span> time (counting and partitioning). Since the range halves each step, the total is <span class="math inline">O(n + n/2 + n/4 + \dots) = O(n)</span>.</p>
-<p><strong>Correctness:</strong> In a complete set of integers <span class="math inline">0</span> to <span class="math inline">2^k-1</span>, exactly <span class="math inline">m-\ell+1</span> numbers would lie in <span class="math inline">[\ell, m]</span>. If fewer are present, the missing number must be in the left half; otherwise it is in the right half.</p>
+<p><strong>Analysis:</strong> Each recursive call partitions the array in <span class="math inline">\(O(|A|)\)</span> time (counting and partitioning). Since the range halves each step, the total is <span class="math inline">\(O(n + n/2 + n/4 + \dots) = O(n)\)</span>.</p>
+<p><strong>Correctness:</strong> In a complete set of integers <span class="math inline">\(0\)</span> to <span class="math inline">\(2^k-1\)</span>, exactly <span class="math inline">\(m-\ell+1\)</span> numbers would lie in <span class="math inline">\([\ell, m]\)</span>. If fewer are present, the missing number must be in the left half; otherwise it is in the right half.</p>
 </div>
 </div>
 </div>
@@ -282,31 +185,31 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 3
+Problem 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>D&amp;C for MST — correct or not?</strong> Consider this divide-and-conquer algorithm for MST: Given an undirected weighted graph <span class="math inline">G(V,E)</span>, partition <span class="math inline">V</span> into <span class="math inline">V_1</span> and <span class="math inline">V_2</span> such that <span class="math inline">|V_1|</span> and <span class="math inline">|V_2|</span> differ by at most 1. Let <span class="math inline">E_1</span> be edges incident only on <span class="math inline">V_1</span>, <span class="math inline">E_2</span> edges incident only on <span class="math inline">V_2</span>. Recursively solve MST on <span class="math inline">G_1(V_1,E_1)</span> and <span class="math inline">G_2(V_2,E_2)</span>. Finally, select the minimum-weight edge crossing the cut <span class="math inline">(V_1, V_2)</span> and use it to unite the two MSTs. Either prove this algorithm is correct or disprove it with a counterexample.</p>
+<p><strong>D&amp;C for MST — correct or not?</strong> Consider this divide-and-conquer algorithm for MST: Given an undirected weighted graph <span class="math inline">\(G(V,E)\)</span>, partition <span class="math inline">\(V\)</span> into <span class="math inline">\(V_1\)</span> and <span class="math inline">\(V_2\)</span> such that <span class="math inline">\(|V_1|\)</span> and <span class="math inline">\(|V_2|\)</span> differ by at most 1. Let <span class="math inline">\(E_1\)</span> be edges incident only on <span class="math inline">\(V_1\)</span>, <span class="math inline">\(E_2\)</span> edges incident only on <span class="math inline">\(V_2\)</span>. Recursively solve MST on <span class="math inline">\(G_1(V_1,E_1)\)</span> and <span class="math inline">\(G_2(V_2,E_2)\)</span>. Finally, select the minimum-weight edge crossing the cut <span class="math inline">\((V_1, V_2)\)</span> and use it to unite the two MSTs. Either prove this algorithm is correct or disprove it with a counterexample.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The algorithm is <strong>incorrect</strong>.</p>
-<p><strong>Counterexample:</strong> Graph <span class="math inline">G</span> with vertices <span class="math inline">V = \{v_1, v_2, v_3, v_4\}</span> and edges: <span class="math display">
+<p><strong>Counterexample:</strong> Graph <span class="math inline">\(G\)</span> with vertices <span class="math inline">\(V = \{v_1, v_2, v_3, v_4\}\)</span> and edges: <span class="math display">\[
 e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
-</span> Partition <span class="math inline">V_1 = \{v_1, v_2\}</span>, <span class="math inline">V_2 = \{v_3, v_4\}</span>. - MST of <span class="math inline">G_1</span>: edge <span class="math inline">(v_1,v_2)</span> of weight 4. - MST of <span class="math inline">G_2</span>: edge <span class="math inline">(v_3,v_4)</span> of weight 5. - Minimum crossing edge: <span class="math inline">(v_4,v_1)</span> of weight 1.</p>
-<p>Total weight = <span class="math inline">4 + 5 + 1 = 10</span>.</p>
-<p>But the actual MST cost is <span class="math inline">7</span>: edges <span class="math inline">(v_4,v_1,1), (v_2,v_3,2), (v_1,v_2,4)</span>.</p>
+\]</span> Partition <span class="math inline">\(V_1 = \{v_1, v_2\}\)</span>, <span class="math inline">\(V_2 = \{v_3, v_4\}\)</span>. - MST of <span class="math inline">\(G_1\)</span>: edge <span class="math inline">\((v_1,v_2)\)</span> of weight 4. - MST of <span class="math inline">\(G_2\)</span>: edge <span class="math inline">\((v_3,v_4)\)</span> of weight 5. - Minimum crossing edge: <span class="math inline">\((v_4,v_1)\)</span> of weight 1.</p>
+<p>Total weight = <span class="math inline">\(4 + 5 + 1 = 10\)</span>.</p>
+<p>But the actual MST cost is <span class="math inline">\(7\)</span>: edges <span class="math inline">\((v_4,v_1,1), (v_2,v_3,2), (v_1,v_2,4)\)</span>.</p>
 <p>The failure occurs because the minimum crossing edge is not necessarily the best way to connect two MSTs — the cut-and-cycle properties of MST require considering all edges, not just a recursive decomposition.</p>
 </div>
 </div>
@@ -317,20 +220,20 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 4
+Problem 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Convex polygon vertices.</strong> Let <span class="math inline">E</span> be an unsorted set of <span class="math inline">n</span> segments that are the edges of a convex polygon. Give an <span class="math inline">O(n\log n)</span> algorithm that produces a list of all vertices of the polygon sorted in counter-clockwise order. Describe each step in plain English and analyze the running time.</p>
+<p><strong>Convex polygon vertices.</strong> Let <span class="math inline">\(E\)</span> be an unsorted set of <span class="math inline">\(n\)</span> segments that are the edges of a convex polygon. Give an <span class="math inline">\(O(n\log n)\)</span> algorithm that produces a list of all vertices of the polygon sorted in counter-clockwise order. Describe each step in plain English and analyze the running time.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -338,14 +241,14 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
 <div class="callout-body-container callout-body">
 <p><strong>Algorithm:</strong></p>
 <ol type="1">
-<li>Pick an arbitrary segment <span class="math inline">s_1 = \overline{pq}</span>. Let <span class="math inline">p</span> be one endpoint of <span class="math inline">s_1</span>.</li>
-<li>Find the other segment <span class="math inline">s_2</span> that shares endpoint <span class="math inline">p</span> (scan <span class="math inline">E</span>).</li>
-<li>Walk along <span class="math inline">s_1</span> to the other endpoint <span class="math inline">a</span>. Check the orientation of the two segments incident at <span class="math inline">p</span> to determine the polygon’s interior.</li>
+<li>Pick an arbitrary segment <span class="math inline">\(s_1 = \overline{pq}\)</span>. Let <span class="math inline">\(p\)</span> be one endpoint of <span class="math inline">\(s_1\)</span>.</li>
+<li>Find the other segment <span class="math inline">\(s_2\)</span> that shares endpoint <span class="math inline">\(p\)</span> (scan <span class="math inline">\(E\)</span>).</li>
+<li>Walk along <span class="math inline">\(s_1\)</span> to the other endpoint <span class="math inline">\(a\)</span>. Check the orientation of the two segments incident at <span class="math inline">\(p\)</span> to determine the polygon’s interior.</li>
 <li>For each edge endpoint, compute its polar angle with respect to a fixed reference point (e.g., the polygon’s centroid).</li>
-<li>Sort all vertices by angle — <span class="math inline">O(n\log n)</span>.</li>
+<li>Sort all vertices by angle — <span class="math inline">\(O(n\log n)\)</span>.</li>
 <li>Output in sorted order, skipping duplicate vertex entries.</li>
 </ol>
-<p><strong>Analysis:</strong> Steps 1–3 and 6 require <span class="math inline">O(n)</span> time. Step 5 (sorting) takes <span class="math inline">O(n\log n)</span>. Hence total <span class="math inline">O(n\log n)</span>.</p>
+<p><strong>Analysis:</strong> Steps 1–3 and 6 require <span class="math inline">\(O(n)\)</span> time. Step 5 (sorting) takes <span class="math inline">\(O(n\log n)\)</span>. Hence total <span class="math inline">\(O(n\log n)\)</span>.</p>
 </div>
 </div>
 </div>
@@ -355,35 +258,35 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 5
+Problem 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong><span class="math inline">n</span>th smallest of two sorted arrays.</strong> Let <span class="math inline">A[1..n]</span> and <span class="math inline">B[1..n]</span> be two sorted arrays of integers (increasing order). Give a divide-and-conquer algorithm that finds the <span class="math inline">n</span>th smallest element of the combined <span class="math inline">2n</span> elements in <span class="math inline">O(\log n)</span> time. All <span class="math inline">2n</span> elements are distinct.</p>
+<p><strong><span class="math inline">\(n\)</span>th smallest of two sorted arrays.</strong> Let <span class="math inline">\(A[1..n]\)</span> and <span class="math inline">\(B[1..n]\)</span> be two sorted arrays of integers (increasing order). Give a divide-and-conquer algorithm that finds the <span class="math inline">\(n\)</span>th smallest element of the combined <span class="math inline">\(2n\)</span> elements in <span class="math inline">\(O(\log n)\)</span> time. All <span class="math inline">\(2n\)</span> elements are distinct.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm</strong> <span class="math inline">\text{Select}(A, B, n)</span>:</p>
+<p><strong>Algorithm</strong> <span class="math inline">\(\text{Select}(A, B, n)\)</span>:</p>
 <ol type="1">
-<li>If <span class="math inline">n = 1</span>, return <span class="math inline">\min(A[1], B[1])</span>.</li>
-<li>Compare <span class="math inline">A[\lfloor n/2\rfloor]</span> and <span class="math inline">B[\lfloor n/2\rfloor]</span>.</li>
-<li>If <span class="math inline">A[\lfloor n/2\rfloor] &gt; B[\lfloor n/2\rfloor]</span>, then the <span class="math inline">n</span>th smallest is the <span class="math inline">\lfloor n/2\rfloor</span>th smallest of the union of <span class="math inline">A[1..\lfloor n/2\rfloor]</span> and <span class="math inline">B[\lceil n/2\rceil+1..n]</span> — discard the larger half of <span class="math inline">B</span> and the smaller half of <span class="math inline">A</span>.</li>
+<li>If <span class="math inline">\(n = 1\)</span>, return <span class="math inline">\(\min(A[1], B[1])\)</span>.</li>
+<li>Compare <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span>.</li>
+<li>If <span class="math inline">\(A[\lfloor n/2\rfloor] &gt; B[\lfloor n/2\rfloor]\)</span>, then the <span class="math inline">\(n\)</span>th smallest is the <span class="math inline">\(\lfloor n/2\rfloor\)</span>th smallest of the union of <span class="math inline">\(A[1..\lfloor n/2\rfloor]\)</span> and <span class="math inline">\(B[\lceil n/2\rceil+1..n]\)</span> — discard the larger half of <span class="math inline">\(B\)</span> and the smaller half of <span class="math inline">\(A\)</span>.</li>
 <li>Otherwise, discard symmetrically.</li>
 <li>Recurse.</li>
 </ol>
-<p><strong>Analysis:</strong> Each step discards roughly half the elements and does <span class="math inline">O(1)</span> work. Recurrence <span class="math inline">T(n) = T(n/2) + O(1) = O(\log n)</span>.</p>
-<p><strong>Correctness:</strong> Since <span class="math inline">B[\lfloor n/2\rfloor]</span> is smaller than both <span class="math inline">A[\lfloor n/2\rfloor]</span> and all <span class="math inline">n - \lfloor n/2\rfloor</span> elements after it, it cannot be among the <span class="math inline">n</span> smallest. The discarded elements are safely eliminated.</p>
+<p><strong>Analysis:</strong> Each step discards roughly half the elements and does <span class="math inline">\(O(1)\)</span> work. Recurrence <span class="math inline">\(T(n) = T(n/2) + O(1) = O(\log n)\)</span>.</p>
+<p><strong>Correctness:</strong> Since <span class="math inline">\(B[\lfloor n/2\rfloor]\)</span> is smaller than both <span class="math inline">\(A[\lfloor n/2\rfloor]\)</span> and all <span class="math inline">\(n - \lfloor n/2\rfloor\)</span> elements after it, it cannot be among the <span class="math inline">\(n\)</span> smallest. The discarded elements are safely eliminated.</p>
 </div>
 </div>
 </div>
@@ -393,34 +296,34 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 6
+Problem 6
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Frequent-value detection.</strong> Given an arbitrary array <span class="math inline">A[1..n]</span>, determine in <span class="math inline">O(n)</span> time whether any value appears more than <span class="math inline">n/4</span> times. You may <strong>not</strong> use hashing, radix sort, or any method that depends on precise input values (as opposed to their order).</p>
+<p><strong>Frequent-value detection.</strong> Given an arbitrary array <span class="math inline">\(A[1..n]\)</span>, determine in <span class="math inline">\(O(n)\)</span> time whether any value appears more than <span class="math inline">\(n/4\)</span> times. You may <strong>not</strong> use hashing, radix sort, or any method that depends on precise input values (as opposed to their order).</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If an element <span class="math inline">x</span> appears more than <span class="math inline">n/4</span> times, it must occupy at least one of the <span class="math inline">\lfloor n/4\rfloor</span>, <span class="math inline">\lfloor 2n/4\rfloor</span>, or <span class="math inline">\lfloor 3n/4\rfloor</span> positions in sorted order.</p>
+<p>If an element <span class="math inline">\(x\)</span> appears more than <span class="math inline">\(n/4\)</span> times, it must occupy at least one of the <span class="math inline">\(\lfloor n/4\rfloor\)</span>, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>, or <span class="math inline">\(\lfloor 3n/4\rfloor\)</span> positions in sorted order.</p>
 <p><strong>Algorithm:</strong></p>
 <ol type="1">
-<li>Find the <span class="math inline">\lfloor n/4\rfloor</span>th, <span class="math inline">\lfloor 2n/4\rfloor</span>th, and <span class="math inline">\lfloor 3n/4\rfloor</span>th order statistics using deterministic SELECT (linear time each). Call them <span class="math inline">x_1, x_2, x_3</span>.</li>
-<li>For each <span class="math inline">x_i</span>, scan the array and count how many times <span class="math inline">x_i</span> appears.</li>
-<li>If any count <span class="math inline">&gt; n/4</span>, output <strong>true</strong>; otherwise <strong>false</strong>.</li>
+<li>Find the <span class="math inline">\(\lfloor n/4\rfloor\)</span>th, <span class="math inline">\(\lfloor 2n/4\rfloor\)</span>th, and <span class="math inline">\(\lfloor 3n/4\rfloor\)</span>th order statistics using deterministic SELECT (linear time each). Call them <span class="math inline">\(x_1, x_2, x_3\)</span>.</li>
+<li>For each <span class="math inline">\(x_i\)</span>, scan the array and count how many times <span class="math inline">\(x_i\)</span> appears.</li>
+<li>If any count <span class="math inline">\(&gt; n/4\)</span>, output <strong>true</strong>; otherwise <strong>false</strong>.</li>
 </ol>
-<p><strong>Analysis:</strong> Three SELECT calls plus three scans = <span class="math inline">3\cdot O(n) + 3\cdot O(n) = O(n)</span> total.</p>
-<p><strong>Correctness:</strong> A majority-like element with frequency <span class="math inline">&gt; n/4</span> must cross at least one quartile boundary. Any such element will be picked as one of <span class="math inline">x_1, x_2, x_3</span> and detected in the scan.</p>
+<p><strong>Analysis:</strong> Three SELECT calls plus three scans = <span class="math inline">\(3\cdot O(n) + 3\cdot O(n) = O(n)\)</span> total.</p>
+<p><strong>Correctness:</strong> A majority-like element with frequency <span class="math inline">\(&gt; n/4\)</span> must cross at least one quartile boundary. Any such element will be picked as one of <span class="math inline">\(x_1, x_2, x_3\)</span> and detected in the scan.</p>
 </div>
 </div>
 </div>
@@ -430,41 +333,40 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 7
+Problem 7
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Search in a sorted matrix.</strong> The elements of an <span class="math inline">n\times n</span> array <span class="math inline">A</span> are arranged in ascending rows <strong>and</strong> columns: <span class="math inline">A[i][j] &lt; A[i][j']</span> whenever <span class="math inline">j &lt; j'</span>, and <span class="math inline">A[i][j] &lt; A[i'][j]</span> whenever <span class="math inline">i &lt; i'</span>. Give the most efficient algorithm to determine if <span class="math inline">A</span> contains a target element <span class="math inline">x</span>, and compute the best upper bound on its asymptotic worst-case running time.</p>
+<p><strong>Search in a sorted matrix.</strong> The elements of an <span class="math inline">\(n\times n\)</span> array <span class="math inline">\(A\)</span> are arranged in ascending rows <strong>and</strong> columns: <span class="math inline">\(A[i][j] &lt; A[i][j']\)</span> whenever <span class="math inline">\(j &lt; j'\)</span>, and <span class="math inline">\(A[i][j] &lt; A[i'][j]\)</span> whenever <span class="math inline">\(i &lt; i'\)</span>. Give the most efficient algorithm to determine if <span class="math inline">\(A\)</span> contains a target element <span class="math inline">\(x\)</span>, and compute the best upper bound on its asymptotic worst-case running time.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Algorithm:</strong> Start at the top-right corner <span class="math inline">A[1][n]</span>.</p>
+<p><strong>Algorithm:</strong> Start at the top-right corner <span class="math inline">\(A[1][n]\)</span>.</p>
 <ul>
-<li>If <span class="math inline">A[1][n] &gt; x</span>, eliminate the last column (all elements below are larger) — move left.</li>
-<li>If <span class="math inline">A[1][n] &lt; x</span>, eliminate the first row (all elements to the left are smaller) — move down.</li>
+<li>If <span class="math inline">\(A[1][n] &gt; x\)</span>, eliminate the last column (all elements below are larger) — move left.</li>
+<li>If <span class="math inline">\(A[1][n] &lt; x\)</span>, eliminate the first row (all elements to the left are smaller) — move down.</li>
 <li>If equal, return <strong>true</strong>.</li>
 </ul>
 <p>Repeat until the element is found or we exit the matrix.</p>
-<p><strong>Analysis:</strong> Each step eliminates either one row or one column. There are <span class="math inline">n</span> rows and <span class="math inline">n</span> columns, so at most <span class="math inline">2n</span> steps. Each step is <span class="math inline">O(1)</span>. Worst-case: <span class="math inline">O(n)</span>.</p>
-<p>This is optimal because a decision-tree lower bound requires <span class="math inline">\Omega(n)</span> comparisons in the worst case (the element could be in any of <span class="math inline">n</span> possible anti-diagonal positions).</p>
+<p><strong>Analysis:</strong> Each step eliminates either one row or one column. There are <span class="math inline">\(n\)</span> rows and <span class="math inline">\(n\)</span> columns, so at most <span class="math inline">\(2n\)</span> steps. Each step is <span class="math inline">\(O(1)\)</span>. Worst-case: <span class="math inline">\(O(n)\)</span>.</p>
+<p>This is optimal because a decision-tree lower bound requires <span class="math inline">\(\Omega(n)\)</span> comparisons in the worst case (the element could be in any of <span class="math inline">\(n\)</span> possible anti-diagonal positions).</p>
 </div>
 </div>
 </div>
 
-
-
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -516,14 +418,13 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -538,7 +439,7 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/daa\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -866,28 +767,8 @@ e(v_1,v_2)=4,\; e(v_2,v_3)=2,\; e(v_3,v_4)=5,\; e(v_4,v_1)=1.
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>© 2026 Tulasimohan Molli</p>
-</div>   
-    <div class="nav-footer-center">
-<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="https://tulasimohan.github.io/misc/credits.html">Credits</a></p>
-</div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="../lite/index.html">
-<p>Lite</p>
-</a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

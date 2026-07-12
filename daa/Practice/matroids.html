@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Independence axioms, graphic/cographic matroids, greedy on weighted matroids, exchange property">
+<meta name="description" content="Independence axioms, matroid properties, greedy on weighted matroids, exchange property">
 
 <title>Matroids – Tulasimohan Molli</title>
 <style>
@@ -182,7 +182,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Independence axioms, graphic/cographic matroids, greedy on weighted matroids, exchange property
+    Independence axioms, matroid properties, greedy on weighted matroids, exchange property
   </div>
 </div>
 
@@ -225,7 +225,11 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>No.&nbsp;Augmentation fails. Take <span class="math inline">A = \{a,b\}</span> (size 2) and <span class="math inline">B = \{c\}</span> (size 1). We need <span class="math inline">x \in B \setminus A = \{c\}</span> such that <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>. But <span class="math inline">\{a,b,c\} \notin \mathcal{I}</span>.</p>
+<p>No, this is not a matroid. The augmentation property fails.</p>
+<ul>
+<li>Take <span class="math inline">A = \{a,b\}</span> (size 2) and <span class="math inline">B = \{c\}</span> (size 1).</li>
+<li>We need <span class="math inline">x \in B \setminus A = \{c\}</span> such that <span class="math inline">A \cup \{x\} \in \mathcal{I}</span>. But <span class="math inline">\{a,b,c\} \notin \mathcal{I}</span>.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -239,7 +243,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>graphic matroid</strong> <span class="math inline">M(G)</span> of a graph <span class="math inline">G = (V,E)</span> has ground set <span class="math inline">E</span> and independent sets = forests (acyclic edge subsets). What are the bases of <span class="math inline">M(G)</span> when <span class="math inline">G</span> is a tree? When <span class="math inline">G</span> is a complete graph <span class="math inline">K_n</span>?</p>
+<p>Consider <span class="math inline">S = \{1,2,3,4\}</span> with <span class="math inline">\mathcal{I} = \{X \subseteq S : |X| \leq 2\} \cup \{\{1,2,3\}\}</span>.</p>
+<ol type="1">
+<li>Verify that <span class="math inline">\mathcal{I}</span> satisfies the hereditary property.</li>
+<li>Does it satisfy the augmentation property? Provide a proof or a counterexample.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -254,7 +262,16 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>For a tree, the only base is <span class="math inline">E</span> itself (the entire edge set is acyclic and spanning). For <span class="math inline">K_n</span>, a base is any spanning tree — any set of <span class="math inline">n-1</span> edges that connects all vertices.</p>
+<p>Yes, <span class="math inline">(S,\mathcal{I})</span> is a matroid. It satisfies all three axioms:</p>
+<ul>
+<li>Hereditary: All subsets of size <span class="math inline">\le 2</span> are clearly in <span class="math inline">\mathcal{I}</span>. For <span class="math inline">\{1,2,3\}</span>, all subsets are either of size <span class="math inline">\le 2</span> or <span class="math inline">\{1,2,3\}</span> itself, so they are all in <span class="math inline">\mathcal{I}</span>.</li>
+<li><span class="math inline">\emptyset \in \mathcal{I}</span>: yes.</li>
+<li>Augmentation: For any <span class="math inline">A,B \in \mathcal{I}</span> with <span class="math inline">|A| &lt; |B|</span>:
+<ul>
+<li>If <span class="math inline">|A| \le 1</span>, we can always add an element from <span class="math inline">B\setminus A</span> (since any single element is independent, and <span class="math inline">|B| \ge 2</span> means at least one element is available).</li>
+<li>If <span class="math inline">A = \{x,y\}</span> (size 2), then <span class="math inline">|B|</span> must be 3, so <span class="math inline">B = \{1,2,3\}</span>. Since <span class="math inline">|A|=2</span>, there is at least one element in <span class="math inline">B\setminus A</span>; adding it gives a set of size 3 which is either in <span class="math inline">\mathcal{I}</span> (if it is <span class="math inline">\{1,2,3\}</span>) or of size <span class="math inline">\le 2</span> (still independent).</li>
+</ul></li>
+</ul>
 </div>
 </div>
 </div>
@@ -268,10 +285,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider <span class="math inline">S = \{1,2,3,4\}</span> with <span class="math inline">\mathcal{I} = \{X \subseteq S : |X| \leq 2\} \cup \{\{1,2,3\}\}</span>.</p>
+<p>Let <span class="math inline">G</span> be a connected graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. In the graphic matroid <span class="math inline">M(G)</span>, a subset of edges is independent iff it contains no cycle.</p>
 <ol type="1">
-<li>Verify that <span class="math inline">\mathcal{I}</span> satisfies the hereditary property.</li>
-<li>Does it satisfy the augmentation property? Provide a proof or a counterexample.</li>
+<li>What is the rank of <span class="math inline">M(G)</span>? (The size of a maximal independent set.)</li>
+<li>Show that the set of edges not in a spanning tree forms a <strong>cographic matroid</strong> on the dual graph.</li>
+<li>For <span class="math inline">G = K_4</span>, list one base and one circuit (minimal dependent set) of <span class="math inline">M(G)</span>.</li>
 </ol>
 </div>
 </div>
@@ -287,7 +305,11 @@ window.Quarto = {
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Yes, <span class="math inline">(S,\mathcal{I})</span> is a matroid. It satisfies all three axioms: - Hereditary: All subsets of size <span class="math inline">\le 2</span> are clearly in <span class="math inline">\mathcal{I}</span>. For <span class="math inline">\{1,2,3\}</span>, all subsets are either of size <span class="math inline">\le 2</span> or <span class="math inline">\{1,2,3\}</span> itself, so they are all in <span class="math inline">\mathcal{I}</span>. - <span class="math inline">\emptyset \in \mathcal{I}</span>: yes. - Augmentation: For any <span class="math inline">A,B \in \mathcal{I}</span> with <span class="math inline">|A| &lt; |B|</span>: - If <span class="math inline">|A| \le 1</span>, we can always add an element from <span class="math inline">B\setminus A</span> (since any single element is independent, and <span class="math inline">|B| \ge 2</span> means at least one element is available). - If <span class="math inline">A = \{x,y\}</span> (size 2), then <span class="math inline">|B|</span> must be 3, so <span class="math inline">B = \{1,2,3\}</span>. Since <span class="math inline">|A|=2</span>, there is at least one element in <span class="math inline">B\setminus A</span>; adding it gives a set of size 3 which is either in <span class="math inline">\mathcal{I}</span> (if it is <span class="math inline">\{1,2,3\}</span>) or of size <span class="math inline">\le 2</span> (still independent).</p>
+<ol type="1">
+<li>The rank of <span class="math inline">M(G)</span> is <span class="math inline">n-1</span> (size of a spanning tree).</li>
+<li>Omitted — standard duality.</li>
+<li>For <span class="math inline">K_4</span>, one base is any spanning tree of 3 edges (e.g., edges <span class="math inline">(1,2),(2,3),(3,4)</span>). One circuit is any cycle of 3 edges (e.g., <span class="math inline">(1,2),(2,3),(1,3)</span>).</li>
+</ol>
 </div>
 </div>
 </div>
@@ -301,12 +323,8 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">G</span> be a connected graph with <span class="math inline">n</span> vertices and <span class="math inline">m</span> edges. In the graphic matroid <span class="math inline">M(G)</span>, a subset of edges is independent iff it contains no cycle.</p>
-<ol type="1">
-<li>What is the rank of <span class="math inline">M(G)</span>? (The size of a maximal independent set.)</li>
-<li>Show that the set of edges not in a spanning tree forms a <strong>cographic matroid</strong> on the dual graph.</li>
-<li>For <span class="math inline">G = K_4</span>, list one base and one circuit (minimal dependent set) of <span class="math inline">M(G)</span>.</li>
-</ol>
+<p>The <strong>greedy algorithm</strong> on a weighted matroid <span class="math inline">(S,\mathcal{I})</span> with weight function <span class="math inline">w: S \to \mathbb{R}^+</span> sorts elements by decreasing weight and picks each if it maintains independence. Prove that this algorithm returns a maximum-weight independent set.</p>
+<p>Specifically, let <span class="math inline">A</span> be the greedy solution and <span class="math inline">B</span> be any independent set. Use the exchange property to show <span class="math inline">w(A) \ge w(B)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -321,11 +339,7 @@ window.Quarto = {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>The rank of <span class="math inline">M(G)</span> is <span class="math inline">n-1</span> (size of a spanning tree).</li>
-<li>Omitted — standard duality.</li>
-<li>For <span class="math inline">K_4</span>, one base is any spanning tree of 3 edges (e.g., edges <span class="math inline">(1,2),(2,3),(3,4)</span>). One circuit is any cycle of 3 edges (e.g., <span class="math inline">(1,2),(2,3),(1,3)</span>).</li>
-</ol>
+<p>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> (greedy, sorted decreasing weight) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> (any independent set, sorted decreasing weight). For each <span class="math inline">i</span>, consider <span class="math inline">A_i = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. By augmentation, there exists <span class="math inline">b_j \notin A_i</span> such that <span class="math inline">A_i \cup \{b_j\} \in \mathcal{I}</span>. Greedy picks the maximum-weight such element, so <span class="math inline">w(a_i) \ge w(b_j) \ge w(b_i)</span>. Hence <span class="math inline">A</span> is optimal.</p>
 </div>
 </div>
 </div>
@@ -339,8 +353,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The <strong>greedy algorithm</strong> on a weighted matroid <span class="math inline">(S,\mathcal{I})</span> with weight function <span class="math inline">w: S \to \mathbb{R}^+</span> sorts elements by decreasing weight and picks each if it maintains independence. Prove that this algorithm returns a maximum-weight independent set.</p>
-<p>Specifically, let <span class="math inline">A</span> be the greedy solution and <span class="math inline">B</span> be any independent set. Use the exchange property to show <span class="math inline">w(A) \ge w(B)</span>.</p>
+<p>Given a bipartite graph <span class="math inline">G = (U,V,E)</span>, consider <span class="math inline">S = U \cup V</span> and define <span class="math inline">\mathcal{I} = \{X \subseteq S : X \text{ is a matching in } G\}</span>. Is <span class="math inline">(S,\mathcal{I})</span> a matroid? If yes, prove it. If no, explain why and describe how matroid intersection can be used to find a maximum matching.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -354,35 +367,6 @@ window.Quarto = {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> (greedy, sorted decreasing weight) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> (any independent set, sorted decreasing weight). For each <span class="math inline">i</span>, consider <span class="math inline">A_i = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. By augmentation, there exists <span class="math inline">b_j \notin A_i</span> such that <span class="math inline">A_i \cup \{b_j\} \in \mathcal{I}</span>. Greedy picks the maximum-weight such element, so <span class="math inline">w(a_i) \ge w(b_j) \ge w(b_i)</span>. Hence <span class="math inline">A</span> is optimal.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem A6">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem A6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Given a bipartite graph <span class="math inline">G = (U,V,E)</span>, consider <span class="math inline">S = U \cup V</span> and define <span class="math inline">\mathcal{I} = \{X \subseteq S : X \text{ is a matching in } G\}</span>. Is <span class="math inline">(S,\mathcal{I})</span> a matroid? If yes, prove it. If no, explain why and describe how matroid intersection can be used to find a maximum matching.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Not a matroid. Hereditary holds, but augmentation fails. Example: <span class="math inline">U = \{u_1,u_2\}</span>, <span class="math inline">V = \{v_1,v_2\}</span>, edges <span class="math inline">E = \{(u_1,v_1), (u_1,v_2), (u_2,v_1)\}</span>. <span class="math inline">A = \{(u_1,v_1)\}</span> (size 1), <span class="math inline">B = \{(u_1,v_2), (u_2,v_1)\}</span> (size 2). <span class="math inline">|A|=1 &lt; |B|=2</span>. <span class="math inline">B \setminus A = \{(u_1,v_2), (u_2,v_1)\}</span>. Adding <span class="math inline">(u_1,v_2)</span> to <span class="math inline">A</span> gives <span class="math inline">\{(u_1,v_1),(u_1,v_2)\}</span> which shares vertex <span class="math inline">u_1</span> — not a matching. Adding <span class="math inline">(u_2,v_1)</span> to <span class="math inline">A</span> gives <span class="math inline">\{(u_1,v_1),(u_2,v_1)\}</span> which shares <span class="math inline">v_1</span> — not a matching. So augmentation fails. This is why we need <strong>matroid intersection</strong> (two matroids — one for each side of the bipartition) to find maximum matchings.</p>
 </div>

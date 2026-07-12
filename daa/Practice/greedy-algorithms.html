@@ -2,17 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Interval scheduling, interval stabbing, cookie assignment, knapsack">
 
-<title>Greedy Algorithms – Tulasimohan Molli</title>
+<title>Greedy Algorithms</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,71 +24,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41befb1d5c06bde60f2c7cdc093db64a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<script>
-document.addEventListener('DOMContentLoaded',function(){var b=document.querySelector('.navbar-brand');if(b)b.href='https://tulasimohan.github.io/'});
-</script>
+<script src="greedy-algorithms_files/libs/clipboard/clipboard.min.js"></script>
+<script src="greedy-algorithms_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="greedy-algorithms_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="greedy-algorithms_files/libs/quarto-html/popper.min.js"></script>
+<script src="greedy-algorithms_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="greedy-algorithms_files/libs/quarto-html/anchor.min.js"></script>
+<link href="greedy-algorithms_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="greedy-algorithms_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="greedy-algorithms_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="greedy-algorithms_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="greedy-algorithms_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -104,7 +50,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -120,58 +66,15 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles/custom.css">
 <link rel="stylesheet" href="practice.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="quarto-light">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Tulasimohan Molli</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/teaching.html"> 
-<span class="menu-text">Teaching</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/research.html"> 
-<span class="menu-text">Research</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://tulasimohan.github.io/about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+  
 </div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -206,20 +109,20 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 1
+Problem 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Oxen pairing.</strong> We have <span class="math inline">n</span> oxen, each with strength <span class="math inline">S_i</span>. We need to pair them into teams of exactly two to pull a plow; a team of oxen <span class="math inline">i</span> and <span class="math inline">j</span> can pull the plow only if <span class="math inline">S_i + S_j \ge P</span>, where <span class="math inline">P</span> is the plow’s weight. Each ox can be in at most one team. Maximize the number of teams formed.</p>
+<p><strong>Oxen pairing.</strong> We have <span class="math inline">\(n\)</span> oxen, each with strength <span class="math inline">\(S_i\)</span>. We need to pair them into teams of exactly two to pull a plow; a team of oxen <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> can pull the plow only if <span class="math inline">\(S_i + S_j \ge P\)</span>, where <span class="math inline">\(P\)</span> is the plow’s weight. Each ox can be in at most one team. Maximize the number of teams formed.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -228,15 +131,15 @@ window.Quarto = {
 <p><strong>Algorithm (strongest-weakest pairing):</strong></p>
 <ol type="1">
 <li>Sort the strengths in ascending order.</li>
-<li>Maintain two pointers: <span class="math inline">i = 1</span> (weakest), <span class="math inline">j = n</span> (strongest).</li>
-<li>While <span class="math inline">i &lt; j</span>:
+<li>Maintain two pointers: <span class="math inline">\(i = 1\)</span> (weakest), <span class="math inline">\(j = n\)</span> (strongest).</li>
+<li>While <span class="math inline">\(i &lt; j\)</span>:
 <ul>
-<li>If <span class="math inline">S_i + S_j \ge P</span>, form a team, increment <span class="math inline">i</span>, decrement <span class="math inline">j</span>.</li>
-<li>Otherwise, the weakest ox cannot pair with anyone (since the strongest partner is insufficient); skip it by incrementing <span class="math inline">i</span>.</li>
+<li>If <span class="math inline">\(S_i + S_j \ge P\)</span>, form a team, increment <span class="math inline">\(i\)</span>, decrement <span class="math inline">\(j\)</span>.</li>
+<li>Otherwise, the weakest ox cannot pair with anyone (since the strongest partner is insufficient); skip it by incrementing <span class="math inline">\(i\)</span>.</li>
 </ul></li>
 </ol>
 <p><strong>Proof of optimality (exchange argument):</strong> In any optimal solution, if the weakest ox is paired, it must be with some ox. Replacing that partner with the strongest unpaired ox (which can only be stronger) cannot reduce the number of feasible teams. If the weakest cannot pair even with the strongest, it will never be pairable and can be safely discarded.</p>
-<p><strong>Time:</strong> <span class="math inline">O(n\log n)</span> for sorting, <span class="math inline">O(n)</span> for the two-pointer scan.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the two-pointer scan.</p>
 </div>
 </div>
 </div>
@@ -246,20 +149,20 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 2
+Problem 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Spectrum monitoring.</strong> You want to monitor every frequency in the electromagnetic spectrum between <span class="math inline">L</span> and <span class="math inline">H</span>. You have <span class="math inline">n</span> technologies <span class="math inline">T_1,\dots,T_n</span>, each with an interval <span class="math inline">[l_i, h_i]</span> of frequencies it can monitor. Pick as few technologies as possible that together cover <span class="math inline">[L,H]</span>.</p>
+<p><strong>Spectrum monitoring.</strong> You want to monitor every frequency in the electromagnetic spectrum between <span class="math inline">\(L\)</span> and <span class="math inline">\(H\)</span>. You have <span class="math inline">\(n\)</span> technologies <span class="math inline">\(T_1,\dots,T_n\)</span>, each with an interval <span class="math inline">\([l_i, h_i]\)</span> of frequencies it can monitor. Pick as few technologies as possible that together cover <span class="math inline">\([L,H]\)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -267,13 +170,13 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p><strong>Algorithm (earliest-start-first greedy):</strong></p>
 <ol type="1">
-<li>Filter all technologies with <span class="math inline">l_i \le L</span> (those that can cover the start).</li>
-<li>Among them, select the one with the maximum <span class="math inline">h_i</span>, say <span class="math inline">T_{\max}</span>.</li>
-<li>Set <span class="math inline">L = h_{\max}</span> and repeat until <span class="math inline">L \ge H</span>.</li>
-<li>If at any step no technology covers <span class="math inline">L</span>, covering is impossible.</li>
+<li>Filter all technologies with <span class="math inline">\(l_i \le L\)</span> (those that can cover the start).</li>
+<li>Among them, select the one with the maximum <span class="math inline">\(h_i\)</span>, say <span class="math inline">\(T_{\max}\)</span>.</li>
+<li>Set <span class="math inline">\(L = h_{\max}\)</span> and repeat until <span class="math inline">\(L \ge H\)</span>.</li>
+<li>If at any step no technology covers <span class="math inline">\(L\)</span>, covering is impossible.</li>
 </ol>
-<p><strong>Proof of optimality (exchange argument):</strong> At each step, picking the technology that extends coverage farthest to the right is optimal. Any alternative choice that covers <span class="math inline">L</span> has end <span class="math inline">\le h_{\max}</span>, so it cannot cover more of the remaining interval. By induction, the greedy choice leads to a minimum-cardinality cover.</p>
-<p><strong>Time:</strong> <span class="math inline">O(n\log n)</span> after sorting by start point.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> At each step, picking the technology that extends coverage farthest to the right is optimal. Any alternative choice that covers <span class="math inline">\(L\)</span> has end <span class="math inline">\(\le h_{\max}\)</span>, so it cannot cover more of the remaining interval. By induction, the greedy choice leads to a minimum-cardinality cover.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> after sorting by start point.</p>
 </div>
 </div>
 </div>
@@ -283,20 +186,20 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 3
+Problem 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Cookie assignment.</strong> You are baby-sitting <span class="math inline">n</span> children and have <span class="math inline">m &gt; n</span> cookies. Each child must get exactly one cookie. Child <span class="math inline">i</span> has a greed factor <span class="math inline">g_i</span> (the minimum cookie size they will be content with); cookie <span class="math inline">j</span> has size <span class="math inline">s_j</span>. Maximize the number of content children (those assigned a cookie with <span class="math inline">g_i \le s_j</span>). Give a greedy algorithm, prove it optimal, and give an efficient implementation.</p>
+<p><strong>Cookie assignment.</strong> You are baby-sitting <span class="math inline">\(n\)</span> children and have <span class="math inline">\(m &gt; n\)</span> cookies. Each child must get exactly one cookie. Child <span class="math inline">\(i\)</span> has a greed factor <span class="math inline">\(g_i\)</span> (the minimum cookie size they will be content with); cookie <span class="math inline">\(j\)</span> has size <span class="math inline">\(s_j\)</span>. Maximize the number of content children (those assigned a cookie with <span class="math inline">\(g_i \le s_j\)</span>). Give a greedy algorithm, prove it optimal, and give an efficient implementation.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -308,11 +211,11 @@ window.Quarto = {
 <li>Sort children by greed factor ascending.</li>
 <li>For each child (in increasing order of greed):
 <ul>
-<li>Assign the smallest cookie that satisfies <span class="math inline">s_j \ge g_i</span>.</li>
+<li>Assign the smallest cookie that satisfies <span class="math inline">\(s_j \ge g_i\)</span>.</li>
 <li>If no such cookie remains, leave the child discontent.</li>
 </ul></li>
 </ol>
-<p><strong>Proof of optimality (exchange argument):</strong> Consider an optimal assignment. Let <span class="math inline">g_1 \le g_2 \le \dots \le g_n</span> be the sorted children. For the least greedy child <span class="math inline">g_1</span>, if the optimal solution gives a larger cookie than necessary, swapping it with the smallest feasible cookie (which our algorithm would assign) frees up a larger cookie for a greedier child without reducing the number of content children. By induction, the greedy choice is optimal at each step.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> Consider an optimal assignment. Let <span class="math inline">\(g_1 \le g_2 \le \dots \le g_n\)</span> be the sorted children. For the least greedy child <span class="math inline">\(g_1\)</span>, if the optimal solution gives a larger cookie than necessary, swapping it with the smallest feasible cookie (which our algorithm would assign) frees up a larger cookie for a greedier child without reducing the number of content children. By induction, the greedy choice is optimal at each step.</p>
 <p><strong>Implementation:</strong></p>
 <pre><code>sort(s), sort(g)
 j = 1
@@ -323,7 +226,7 @@ for i = 1 to n:
     if j &lt;= m:
         count++, j++
 return count</code></pre>
-<p><strong>Time:</strong> <span class="math inline">O(n\log n + m\log m)</span> for sorting, <span class="math inline">O(m)</span> for the scan.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n + m\log m)\)</span> for sorting, <span class="math inline">\(O(m)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
@@ -333,20 +236,20 @@ return count</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 4
+Problem 4
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Interval stabbing.</strong> Given <span class="math inline">n &gt; 1</span> intervals with start array <span class="math inline">S[1..n]</span> and end array <span class="math inline">E[1..n]</span>, find a set of points <span class="math inline">X</span> of <strong>minimum size</strong> such that every interval contains at least one point in <span class="math inline">X</span>. Design the algorithm and prove optimality.</p>
+<p><strong>Interval stabbing.</strong> Given <span class="math inline">\(n &gt; 1\)</span> intervals with start array <span class="math inline">\(S[1..n]\)</span> and end array <span class="math inline">\(E[1..n]\)</span>, find a set of points <span class="math inline">\(X\)</span> of <strong>minimum size</strong> such that every interval contains at least one point in <span class="math inline">\(X\)</span>. Design the algorithm and prove optimality.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -354,15 +257,15 @@ return count</code></pre>
 <div class="callout-body-container callout-body">
 <p><strong>Algorithm (earliest-end-first greedy):</strong></p>
 <ol type="1">
-<li>Sort intervals by end point <span class="math inline">E[i]</span>.</li>
-<li>Let <span class="math inline">X = \emptyset</span>.</li>
-<li>For each interval <span class="math inline">(S[i], E[i])</span> in sorted order:
+<li>Sort intervals by end point <span class="math inline">\(E[i]\)</span>.</li>
+<li>Let <span class="math inline">\(X = \emptyset\)</span>.</li>
+<li>For each interval <span class="math inline">\((S[i], E[i])\)</span> in sorted order:
 <ul>
-<li>If no point in <span class="math inline">X</span> lies within <span class="math inline">(S[i], E[i])</span>, add <span class="math inline">E[i]</span> to <span class="math inline">X</span>.</li>
+<li>If no point in <span class="math inline">\(X\)</span> lies within <span class="math inline">\((S[i], E[i])\)</span>, add <span class="math inline">\(E[i]\)</span> to <span class="math inline">\(X\)</span>.</li>
 </ul></li>
 </ol>
-<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">G</span> be the greedy solution and <span class="math inline">OPT</span> an optimal solution. Sort both by their chosen points. Let <span class="math inline">i</span> be the first index where <span class="math inline">G[i] \neq OPT[i]</span>. The greedy algorithm picks the earliest-ending interval’s end point. Any optimal solution must stab this interval with some point <span class="math inline">\le G[i]</span>. Replacing <span class="math inline">OPT[i]</span> with <span class="math inline">G[i]</span> cannot increase the number of points needed, as <span class="math inline">G[i]</span> stabs all intervals that <span class="math inline">OPT[i]</span> stabs (and possibly more, since <span class="math inline">G[i]</span> is the earliest possible rightmost point). By induction, <span class="math inline">|G| \le |OPT|</span>.</p>
-<p><strong>Time:</strong> <span class="math inline">O(n\log n)</span> for sorting, <span class="math inline">O(n)</span> for the scan.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G\)</span> be the greedy solution and <span class="math inline">\(OPT\)</span> an optimal solution. Sort both by their chosen points. Let <span class="math inline">\(i\)</span> be the first index where <span class="math inline">\(G[i] \neq OPT[i]\)</span>. The greedy algorithm picks the earliest-ending interval’s end point. Any optimal solution must stab this interval with some point <span class="math inline">\(\le G[i]\)</span>. Replacing <span class="math inline">\(OPT[i]\)</span> with <span class="math inline">\(G[i]\)</span> cannot increase the number of points needed, as <span class="math inline">\(G[i]\)</span> stabs all intervals that <span class="math inline">\(OPT[i]\)</span> stabs (and possibly more, since <span class="math inline">\(G[i]\)</span> is the earliest possible rightmost point). By induction, <span class="math inline">\(|G| \le |OPT|\)</span>.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
@@ -372,20 +275,20 @@ return count</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem 5
+Problem 5
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Max-cardinality knapsack.</strong> You have <span class="math inline">n</span> items with weights <span class="math inline">w_1,\dots,w_n</span> and a bag of capacity <span class="math inline">W</span>. Select as many items as possible whose total weight <span class="math inline">\le W</span>. Describe a simple efficient algorithm and prove it gives the optimal output.</p>
+<p><strong>Max-cardinality knapsack.</strong> You have <span class="math inline">\(n\)</span> items with weights <span class="math inline">\(w_1,\dots,w_n\)</span> and a bag of capacity <span class="math inline">\(W\)</span>. Select as many items as possible whose total weight <span class="math inline">\(\le W\)</span>. Describe a simple efficient algorithm and prove it gives the optimal output.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
+Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -394,18 +297,17 @@ return count</code></pre>
 <p><strong>Algorithm (Container Loading):</strong></p>
 <ol type="1">
 <li>Sort items by weight in ascending order.</li>
-<li>Greedily pick the lightest items until the next item would exceed <span class="math inline">W</span>.</li>
+<li>Greedily pick the lightest items until the next item would exceed <span class="math inline">\(W\)</span>.</li>
 </ol>
-<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">G = \{g_1, g_2, \dots, g_k\}</span> be the greedy solution (items in sorted order). Let <span class="math inline">OPT = \{o_1, o_2, \dots, o_k\}</span> be an optimal solution with items sorted. If <span class="math inline">G</span> and <span class="math inline">OPT</span> differ, let <span class="math inline">i</span> be the first position where <span class="math inline">g_i \neq o_i</span>. By construction <span class="math inline">g_i \le o_i</span> (greedy always picks the smallest remaining feasible item). Replacing <span class="math inline">o_i</span> with <span class="math inline">g_i</span> in <span class="math inline">OPT</span> yields a solution with <span class="math inline">\le</span> the same total weight and the same cardinality. By induction, the greedy solution has maximum cardinality.</p>
+<p><strong>Proof of optimality (exchange argument):</strong> Let <span class="math inline">\(G = \{g_1, g_2, \dots, g_k\}\)</span> be the greedy solution (items in sorted order). Let <span class="math inline">\(OPT = \{o_1, o_2, \dots, o_k\}\)</span> be an optimal solution with items sorted. If <span class="math inline">\(G\)</span> and <span class="math inline">\(OPT\)</span> differ, let <span class="math inline">\(i\)</span> be the first position where <span class="math inline">\(g_i \neq o_i\)</span>. By construction <span class="math inline">\(g_i \le o_i\)</span> (greedy always picks the smallest remaining feasible item). Replacing <span class="math inline">\(o_i\)</span> with <span class="math inline">\(g_i\)</span> in <span class="math inline">\(OPT\)</span> yields a solution with <span class="math inline">\(\le\)</span> the same total weight and the same cardinality. By induction, the greedy solution has maximum cardinality.</p>
 <p>Note that this is the classic “Container Loading” problem, not the 0-1 knapsack (which maximizes value). When maximizing count with uniform value, the lightest-first strategy is optimal.</p>
-<p><strong>Time:</strong> <span class="math inline">O(n\log n)</span> for sorting, <span class="math inline">O(n)</span> for the scan.</p>
+<p><strong>Time:</strong> <span class="math inline">\(O(n\log n)\)</span> for sorting, <span class="math inline">\(O(n)\)</span> for the scan.</p>
 </div>
 </div>
 </div>
 
-
-
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -457,14 +359,13 @@ return count</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -479,7 +380,7 @@ return count</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/daa\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -807,28 +708,8 @@ return count</code></pre>
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>© 2026 Tulasimohan Molli</p>
-</div>   
-    <div class="nav-footer-center">
-<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="https://tulasimohan.github.io/misc/credits.html">Credits</a></p>
-</div>
-    <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item">
-    <a class="nav-link" href="../lite/index.html">
-<p>Lite</p>
-</a>
-  </li>  
-</ul>
-    </div>
-  </div>
-</footer>
 
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
