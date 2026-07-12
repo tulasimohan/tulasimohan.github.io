@@ -239,7 +239,8 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Freivalds’ algorithm for checking <span class="math inline">AB = C</span> picks <span class="math inline">r \in \{0,1\}^n</span> uniformly and checks <span class="math inline">A(Br) = Cr</span>. If <span class="math inline">AB \neq C</span>, what is the maximum probability that the test passes (false positive)? Assume all arithmetic is mod a prime <span class="math inline">p &gt; 2</span>.</p>
+<p>Let <span class="math inline">x \in \{0,1\}^n</span> be a non-zero vector and let <span class="math inline">r \in \{0,1\}^n</span> be chosen uniformly at random. Show that <span class="math inline">\Pr[\langle r, x \rangle = 0 \pmod{2}] \le 1/2</span>.</p>
+<p>Now use this to analyze <strong>Freivalds’ algorithm</strong>: to check <span class="math inline">AB = C</span>, pick <span class="math inline">r \in \{0,1\}^n</span> uniformly and check <span class="math inline">A(Br) = Cr</span>. If <span class="math inline">AB \neq C</span>, what is the maximum probability that the test passes (false positive)?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -254,7 +255,8 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">AB \neq C</span>, then <span class="math inline">D = AB - C \neq 0</span> is a non-zero matrix. The test passes if <span class="math inline">Dr = 0</span> for random <span class="math inline">r \in \{0,1\}^n</span>. Since <span class="math inline">D \neq 0</span>, there is at least one non-zero row. For a non-zero row vector <span class="math inline">d \neq 0</span>, <span class="math inline">\Pr[d \cdot r = 0] \le 1/2</span>. So overall <span class="math inline">\Pr[Dr=0] \le 1/2</span>.</p>
+<p>For <span class="math inline">\langle r, x \rangle = \sum_{i=1}^n r_i x_i \pmod{2}</span> to be <span class="math inline">0</span>, an even number of positions where <span class="math inline">x_i = 1</span> must have <span class="math inline">r_i = 1</span>. Pick any <span class="math inline">j</span> with <span class="math inline">x_j = 1</span>. Condition on all <span class="math inline">r_i</span> for <span class="math inline">i \neq j</span>. Then <span class="math inline">\langle r, x \rangle</span> flips with <span class="math inline">r_j</span>: exactly one choice of <span class="math inline">r_j \in \{0,1\}</span> makes the sum <span class="math inline">0</span>. So <span class="math inline">\Pr[\langle r, x \rangle = 0] = 1/2</span>.</p>
+<p>For Freivalds: if <span class="math inline">AB \neq C</span>, then <span class="math inline">D = AB - C \neq 0</span> is a non-zero matrix. The test passes if <span class="math inline">Dr = 0</span>. Since <span class="math inline">D \neq 0</span>, there is at least one non-zero row. For a non-zero row <span class="math inline">d \neq 0</span>, <span class="math inline">\Pr[d \cdot r = 0] \le 1/2</span> by the lemma, so <span class="math inline">\Pr[Dr = 0] \le 1/2</span>.</p>
 </div>
 </div>
 </div>
@@ -411,7 +413,13 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose we have a randomized algorithm that solves a decision problem with error probability <span class="math inline">1/3</span> (i.e., it is correct with probability at least <span class="math inline">2/3</span>). How many independent runs are needed to boost the success probability to at least <span class="math inline">1 - \delta</span>? Use the union bound to give a simple bound, then use Chernoff/Hoeffding for a tighter bound.</p>
+<p>A Monte Carlo algorithm for a decision problem has one-sided error: it is always correct when it says “yes”, but may err when it says “no” (false negatives). Suppose on a “no” instance, it incorrectly says “yes” with probability at most <span class="math inline">1/2</span>.</p>
+<ol type="1">
+<li>If the algorithm says “no” once, what can you conclude?</li>
+<li>If it says “yes” once, what can you conclude?</li>
+<li>How many independent runs (all saying “yes”) are needed to guarantee error <span class="math inline">&lt; \epsilon</span>?</li>
+<li>Generalize: if the one-sided error probability is at most <span class="math inline">p</span>, how many runs are needed?</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -426,8 +434,12 @@ window.Quarto = {
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Union bound: run <span class="math inline">k</span> times and take majority. Error occurs if more than <span class="math inline">k/2</span> runs err. Each run errs with prob <span class="math inline">\le 1/3</span>. By union bound, <span class="math inline">\Pr[\text{majority errs}] \le k \cdot (1/3)^{k/2}</span> (bounding each pattern of <span class="math inline">\ge k/2</span> errors). Set this <span class="math inline">\le \delta</span> and solve.</p>
-<p>Hoeffding bound: Let <span class="math inline">X_i = 1</span> if run <span class="math inline">i</span> errs, <span class="math inline">0</span> otherwise. <span class="math inline">\mathbb{E}[\bar{X}] \le 1/3</span>. By Hoeffding, <span class="math inline">\Pr[\bar{X} \ge 1/2] \le e^{-2k(1/2-1/3)^2} = e^{-2k/36} = e^{-k/18}</span>. Set <span class="math inline">\le \delta \implies k \ge 18 \ln(1/\delta)</span>.</p>
+<ol type="1">
+<li>If “no”, then the answer is definitely “no” (no false negatives).</li>
+<li>If “yes”, then it could be correct or a false positive — the answer is “yes” with confidence at least <span class="math inline">1/2</span>.</li>
+<li>After <span class="math inline">k</span> independent runs all saying “yes”, error <span class="math inline">\le (1/2)^k</span>. Need <span class="math inline">k &gt; \log_2(1/\epsilon)</span>.</li>
+<li>With error <span class="math inline">\le p</span> per run, after <span class="math inline">k</span> runs all saying “yes”, error <span class="math inline">\le p^k</span>. Need <span class="math inline">k &gt; \log_{1/p}(1/\epsilon)</span>.</li>
+</ol>
 </div>
 </div>
 </div>
