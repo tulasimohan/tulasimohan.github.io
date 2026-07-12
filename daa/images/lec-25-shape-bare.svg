@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect x="0" y="0" width="400" height="400" fill="#ffffff" />
+  <path d="M 200 60 
+           C 260 50, 320 80, 340 150 
+           C 360 220, 330 280, 290 310 
+           C 250 340, 180 350, 130 320 
+           C 80 290, 50 240, 60 180 
+           C 70 120, 120 70, 200 60 Z" 
+        fill="rgba(52, 152, 219, 0.2)" stroke="#3498db" stroke-width="3"/>
+  <text x="200" y="210" text-anchor="middle" font-size="18" font-family="sans-serif" fill="#3498db">$S$</text>
+</svg>

@@ -462,6 +462,16 @@
   align-items: center !important;
   height: 700px !important; /* Matches Reveal.js configured slide height */
 }
+
+/* Main title slide also gets explicit height so absolute-positioned elements
+   (logo strip, presenter info) position relative to the full 700px slide */
+.reveal section#main-title-slide {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 700px !important;
+}
 .reveal section.title-slide:not(#main-title-slide) h1 {
   display: none !important;
 }

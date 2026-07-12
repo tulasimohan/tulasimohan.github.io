@@ -2,10 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-12T15:15:07.013Z</lastmod>
+    <lastmod>2026-07-12T15:17:28.825Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/amortized-analysis.html</loc>
+    <lastmod>2026-07-12T15:17:28.752Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/asymptotic-notation.html</loc>
+    <lastmod>2026-07-12T15:17:28.754Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/divide-and-conquer.html</loc>
+    <lastmod>2026-07-12T15:17:28.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/dynamic-programming.html</loc>
+    <lastmod>2026-07-12T15:17:28.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/greedy-algorithms.html</loc>
+    <lastmod>2026-07-12T15:17:28.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/index.html</loc>
+    <lastmod>2026-07-12T15:17:28.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/lp-ip-rounding.html</loc>
+    <lastmod>2026-07-12T15:17:28.768Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/matroids.html</loc>
+    <lastmod>2026-07-12T15:17:28.770Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/network-flow.html</loc>
+    <lastmod>2026-07-12T15:17:28.772Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/npc-reductions.html</loc>
+    <lastmod>2026-07-12T15:17:28.774Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/Practice/randomized-algorithms.html</loc>
-    <lastmod>2026-07-12T15:15:06.959Z</lastmod>
+    <lastmod>2026-07-12T15:17:28.777Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/recurrence-relations.html</loc>
+    <lastmod>2026-07-12T15:17:28.779Z</lastmod>
   </url>
 </urlset>

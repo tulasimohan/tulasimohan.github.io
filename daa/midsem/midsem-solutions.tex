@@ -285,7 +285,7 @@ The string contains 20 total characters. Frequencies:
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
 \textbf{Letter} & m & a & y & t & h & e & f & o & r & c & b & w & i & u \\ \hline
-\textbf{Freq} & 1 & 1 & 2 & 2 & 2 & 2 & 1 & 2 & 1 & 1 & 1 & 1 & 1 & 2 \\ \hline
+\textbf{Freq} & 1 & 1 & 2 & 2 & 2 & 3 & 1 & 2 & 1 & 1 & 1 & 1 & 1 & 1 \\ \hline
 \end{tabular}
 \end{center}
 \end{solution}
@@ -294,23 +294,23 @@ The string contains 20 total characters. Frequencies:
 \begin{solution}
 Sorted frequencies:
 \[
-a:1, b:1, c:1, f:1, i:1, m:1, r:1, w:1, e:2, h:2, o:2, t:2, u:2, y:2
+a:1, b:1, c:1, f:1, i:1, m:1, r:1, u:1, w:1, h:2, o:2, t:2, y:2, e:3
 \]
 Merge operations (one valid sequence):
 \begin{enumerate}
 \item Merge $a:1, b:1 \rightarrow ab:2$
 \item Merge $c:1, f:1 \rightarrow cf:2$
 \item Merge $i:1, m:1 \rightarrow im:2$
-\item Merge $r:1, w:1 \rightarrow rw:2$
-\item Merge $e:2, h:2 \rightarrow eh:4$
+\item Merge $r:1, u:1 \rightarrow ru:2$
+\item Merge $w:1, ab:2 \rightarrow wab:3$
+\item Merge $cf:2, im:2 \rightarrow cfim:4$
+\item Merge $ru:2, h:2 \rightarrow ruh:4$
 \item Merge $o:2, t:2 \rightarrow ot:4$
-\item Merge $u:2, y:2 \rightarrow uy:4$
-\item Merge $ab:2, cf:2 \rightarrow abcf:4$
-\item Merge $im:2, rw:2 \rightarrow imrw:4$
-\item Merge $eh:4, ot:4 \rightarrow ehot:8$
-\item Merge $uy:4, abcf:4 \rightarrow uyabcf:8$
-\item Merge $imrw:4, ehot:8 \rightarrow imrwehot:12$
-\item Merge $uyabcf:8, imrwehot:12 \rightarrow \text{Root}:20$
+\item Merge $y:2, e:3 \rightarrow ye:5$
+\item Merge $wab:3, cfim:4 \rightarrow wabcfim:7$
+\item Merge $ruh:4, ot:4 \rightarrow ruhot:8$
+\item Merge $ye:5, wabcfim:7 \rightarrow yewabcfim:12$
+\item Merge $ruhot:8, yewabcfim:12 \rightarrow \text{Root}:20$
 \end{enumerate}
 \end{solution}
 
@@ -318,27 +318,30 @@ Merge operations (one valid sequence):
 \begin{solution}
 Assigning codes based on the tree (left=0, right=1):
 \begin{itemize}
-\item \texttt{uyabcf} is left (0), \texttt{imrwehot} is right (1).
+\item \texttt{ruhot} is left (0), \texttt{yewabcfim} is right (1).
 \item Left subtree (0):
   \begin{itemize}
-  \item \texttt{uy} (00) $\rightarrow$ \texttt{u} (000), \texttt{y} (001)
-  \item \texttt{abcf} (01)
+  \item \texttt{ruh} (00)
     \begin{itemize}
-    \item \texttt{ab} (010) $\rightarrow$ \texttt{a} (0100), \texttt{b} (0101)
-    \item \texttt{cf} (011) $\rightarrow$ \texttt{c} (0110), \texttt{f} (0111)
+    \item \texttt{ru} (000) $\rightarrow$ \texttt{r} (0000), \texttt{u} (0001)
+    \item \texttt{h} (001)
     \end{itemize}
+  \item \texttt{ot} (01) $\rightarrow$ \texttt{o} (010), \texttt{t} (011)
   \end{itemize}
 \item Right subtree (1):
   \begin{itemize}
-  \item \texttt{imrw} (10)
+  \item \texttt{ye} (10) $\rightarrow$ \texttt{y} (100), \texttt{e} (101)
+  \item \texttt{wabcfim} (11)
     \begin{itemize}
-    \item \texttt{im} (100) $\rightarrow$ \texttt{i} (1000), \texttt{m} (1001)
-    \item \texttt{rw} (101) $\rightarrow$ \texttt{r} (1010), \texttt{w} (1011)
-    \end{itemize}
-  \item \texttt{ehot} (11)
-    \begin{itemize}
-    \item \texttt{eh} (110) $\rightarrow$ \texttt{e} (1100), \texttt{h} (1101)
-    \item \texttt{ot} (111) $\rightarrow$ \texttt{o} (1110), \texttt{t} (1111)
+    \item \texttt{wab} (110) $\rightarrow$ \texttt{w} (1100)
+      \begin{itemize}
+      \item \texttt{ab} (1101) $\rightarrow$ \texttt{a} (11010), \texttt{b} (11011)
+      \end{itemize}
+    \item \texttt{cfim} (111)
+      \begin{itemize}
+      \item \texttt{cf} (1110) $\rightarrow$ \texttt{c} (11100), \texttt{f} (11101)
+      \item \texttt{im} (1111) $\rightarrow$ \texttt{i} (11110), \texttt{m} (11111)
+      \end{itemize}
     \end{itemize}
   \end{itemize}
 \end{itemize}
@@ -347,28 +350,26 @@ Codes table:
 \begin{tabular}{|c|l|c|l|}
 \hline
 \textbf{Letter} & \textbf{Code} & \textbf{Letter} & \textbf{Code} \\ \hline
-m & 1001 & e & 1100 \\ \hline
-a & 0100 & o & 1110 \\ \hline
-y & 001 & r & 1010 \\ \hline
-t & 1111 & c & 0110 \\ \hline
-h & 1101 & b & 0101 \\ \hline
-f & 0111 & w & 1011 \\ \hline
-i & 1000 & u & 000 \\ \hline
+m & 11111 & e & 101 \\ \hline
+a & 11010 & o & 010 \\ \hline
+y & 100 & r & 0000 \\ \hline
+t & 011 & c & 11100 \\ \hline
+h & 001 & b & 11011 \\ \hline
+f & 11101 & w & 1100 \\ \hline
+i & 11110 & u & 0001 \\ \hline
 \end{tabular}
 \end{center}
 Encoding of \texttt{"maytheforcebewithyou"}:
-\texttt{1001 0100 001 1111 1101 1100 0111 1110 1010 0110 1100 0101 1100 1011 1000 1111 1101 001 1110 000}
+\texttt{11111 11010 100 011 001 101 11101 010 0000 11100 101 11011 101 1100 11110 011 001 100 010 0001}
 
 Total bits = $\sum (\text{Frequency} \times \text{Code Length})$:
 \begin{itemize}
-\item 1-freq letters (a, b, c, f, i, m, r, w): $8 \times 4 = 32$ bits
-\item 2-freq letters (e, h, o, t, u, y):
-  \begin{itemize}
-  \item e, h, o, t: 4 bits each $\times 4$ letters $\times 2$ freq = 32 bits
-  \item u, y: 3 bits each $\times 2$ letters $\times 2$ freq = 12 bits
-  \end{itemize}
+\item 5-bit letters (a, b, c, f, i, m): $6 \times 1 \times 5 = 30$ bits
+\item 4-bit letters (r, u, w): $3 \times 1 \times 4 = 12$ bits
+\item 3-bit letters (h, o, t, y): $4 \times 2 \times 3 = 24$ bits
+\item 3-bit letter (e): $1 \times 3 \times 3 = 9$ bits
 \end{itemize}
-Total bits = $32 + 32 + 12 = \mathbf{76\text{ bits}}$.
+Total bits = $30 + 12 + 24 + 9 = \mathbf{75\text{ bits}}$.
 \end{solution}
 \end{parts}
 

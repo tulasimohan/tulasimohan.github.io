@@ -321,14 +321,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider a weighted matroid <span class="math inline">(S, \mathcal{I})</span> with <span class="math inline">w: S \to \mathbb{R}^+</span>. The greedy algorithm sorts <span class="math inline">S</span> by decreasing weight and adds each element if it maintains independence.</p>
-<p>Prove that greedy returns a maximum-weight independent set.</p>
-<p>Steps:</p>
+<p>Let <span class="math inline">S = \{e_1, e_2, e_3, e_4, e_5\}</span> with weights <span class="math inline">w(e_1)=10</span>, <span class="math inline">w(e_2)=8</span>, <span class="math inline">w(e_3)=6</span>, <span class="math inline">w(e_4)=4</span>, <span class="math inline">w(e_5)=2</span>. Let <span class="math inline">\mathcal{I} = \{X \subseteq S : |X| \le 2\}</span> (a uniform matroid of rank 2).</p>
 <ol type="1">
-<li>Let <span class="math inline">A = \{a_1,\dots,a_k\}</span> be the greedy output (weights decreasing) and <span class="math inline">B = \{b_1,\dots,b_\ell\}</span> be any independent set (weights decreasing).</li>
-<li>Argue <span class="math inline">A</span> is a basis, so <span class="math inline">k \ge \ell</span>.</li>
-<li>For each <span class="math inline">i</span>, apply augmentation on <span class="math inline">\{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">\{b_1,\dots,b_i\}</span> to show <span class="math inline">w(a_i) \ge w(b_i)</span>.</li>
-<li>Conclude <span class="math inline">w(A) \ge w(B)</span>.</li>
+<li>Run the greedy algorithm on this weighted matroid. What set does it return?</li>
+<li>List all independent sets. Which one has maximum total weight? Does greedy return it?</li>
+<li>Suppose we instead used a <strong>minimum-weight</strong> greedy (pick smallest weight first, add if independent). What set would it return?</li>
 </ol>
 </div>
 </div>
@@ -344,10 +341,12 @@ window.Quarto = {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math inline">A</span> is maximal (greedy stops when no more elements fit), so <span class="math inline">A</span> is a basis and <span class="math inline">|A| \ge |B|</span> for any independent <span class="math inline">B</span>.</p>
-<p>Fix <span class="math inline">i</span>. Let <span class="math inline">A_{i-1} = \{a_1,\dots,a_{i-1}\}</span> and <span class="math inline">B_i = \{b_1,\dots,b_i\}</span>. Both are independent and <span class="math inline">|A_{i-1}| = i-1 &lt; i = |B_i|</span>. By augmentation, <span class="math inline">\exists\: b \in B_i \setminus A_{i-1}</span> with <span class="math inline">A_{i-1} \cup \{b\} \in \mathcal{I}</span>.</p>
-<p>Greedy chose <span class="math inline">a_i</span> as the maximum-weight element it could add at step <span class="math inline">i</span>, so <span class="math inline">w(a_i) \ge w(b)</span>. Since <span class="math inline">b \in B_i</span>, <span class="math inline">w(b) \ge w(b_i)</span>. Hence <span class="math inline">w(a_i) \ge w(b_i)</span> for all <span class="math inline">i</span>.</p>
-<p>Summing: <span class="math display">w(A) = \sum_{i=1}^k w(a_i) \ge \sum_{i=1}^\ell w(a_i) \ge \sum_{i=1}^\ell w(b_i) = w(B).</span></p>
+<ol type="1">
+<li><p>Greedy sorts by decreasing weight: <span class="math inline">e_1(10), e_2(8), e_3(6), e_4(4), e_5(2)</span>. It adds <span class="math inline">e_1</span> (weight 10), then <span class="math inline">e_2</span> (weight 8) since <span class="math inline">\{e_1,e_2\}</span> has size <span class="math inline">2 \le 2</span> and is independent. It then skips <span class="math inline">e_3, e_4, e_5</span> because <span class="math inline">\{e_1,e_2,e_3\}</span> has size <span class="math inline">3 &gt; 2</span>. Output: <span class="math inline">\{e_1, e_2\}</span> (total weight 18).</p></li>
+<li><p>Independent sets: all subsets of size <span class="math inline">\le 2</span>. The maximum-weight size-2 set is <span class="math inline">\{e_1, e_2\}</span> (weight 18). Yes, greedy returns the maximum-weight independent set.</p></li>
+<li><p>Minimum-weight greedy sorts by increasing weight: <span class="math inline">e_5(2), e_4(4), e_3(6), e_2(8), e_1(10)</span>. It adds <span class="math inline">e_5</span> (independent), then <span class="math inline">e_4</span> (<span class="math inline">\{e_5,e_4\}</span> has size <span class="math inline">2 \le 2</span>, independent), then skips the rest. Output: <span class="math inline">\{e_4, e_5\}</span> (total weight 6).</p></li>
+</ol>
+<p>However, this is <strong>not</strong> the minimum-weight independent set overall — <span class="math inline">\emptyset</span> (weight 0) and <span class="math inline">\{e_5\}</span> (weight 2) are independent with smaller weight. The greedy algorithm (whether max or min) always returns a <strong>basis</strong> (size = rank). Max-weight greedy gives the max-weight basis; min-weight greedy gives the min-weight basis. It cannot return a non-maximal set like <span class="math inline">\{e_5\}</span> because it keeps adding elements as long as independence allows.</p>
 </div>
 </div>
 </div>
