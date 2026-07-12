@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Las Vegas vs Monte Carlo, Freivalds’ algorithm, dot-product lemma">
+<meta name="description" content="Las Vegas vs Monte Carlo, dot-product lemma, Freivalds’ algorithm">
 
 <title>Randomized Algorithms – Tulasimohan Molli</title>
 <style>
@@ -182,7 +182,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Las Vegas vs Monte Carlo, Freivalds’ algorithm, dot-product lemma
+    Las Vegas vs Monte Carlo, dot-product lemma, Freivalds’ algorithm
   </div>
 </div>
 
@@ -240,11 +240,6 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Let <span class="math inline">x \in \{0,1\}^n</span> be a non-zero vector and let <span class="math inline">r \in \{0,1\}^n</span> be chosen uniformly at random. Show that <span class="math inline">\Pr[\langle r, x \rangle = 0 \pmod{2}] = 1/2</span>.</p>
-<p>Now use this to analyze <strong>Freivalds’ algorithm</strong>: to check <span class="math inline">AB = C</span>, pick <span class="math inline">r \in \{0,1\}^n</span> uniformly and check <span class="math inline">A(Br) = Cr</span>.</p>
-<ol type="1">
-<li>If <span class="math inline">AB \neq C</span>, what is the maximum probability that the test passes (false positive)?</li>
-<li>What is the running time of Freivalds’ algorithm? How does it compare to the deterministic algorithm of computing <span class="math inline">AB</span> and comparing to <span class="math inline">C</span>?</li>
-</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -259,9 +254,44 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Fix any index <span class="math inline">j</span> where <span class="math inline">x_j = 1</span>. Write <span class="math inline">\langle r, x \rangle = r_j x_j + \sum_{i \neq j} r_i x_i = r_j + S \pmod{2}</span>, where <span class="math inline">S = \sum_{i \neq j} r_i x_i</span> is determined by the other coordinates. Condition on any fixing of <span class="math inline">r_i</span> for <span class="math inline">i \neq j</span>; then <span class="math inline">S</span> is fixed. Exactly one choice of <span class="math inline">r_j \in \{0,1\}</span> makes <span class="math inline">r_j + S = 0 \pmod{2}</span>. Since <span class="math inline">r_j</span> is independent and uniform, <span class="math inline">\Pr[\langle r, x \rangle = 0] = 1/2</span> regardless of <span class="math inline">S</span>. So the probability is exactly <span class="math inline">1/2</span>.</p>
-<p>For Freivalds: if <span class="math inline">AB \neq C</span>, then <span class="math inline">D = AB - C \neq 0</span> is a non-zero matrix. The test passes if <span class="math inline">Dr = 0</span>. Since <span class="math inline">D \neq 0</span>, there is at least one non-zero row. For a non-zero row <span class="math inline">d \neq 0</span>, <span class="math inline">\Pr[d \cdot r = 0] \le 1/2</span> by the lemma, so <span class="math inline">\Pr[Dr = 0] \le 1/2</span>.</p>
-<p>Running time: compute <span class="math inline">Br</span> (<span class="math inline">O(n^2)</span>), then <span class="math inline">A(Br)</span> (<span class="math inline">O(n^2)</span>), then <span class="math inline">Cr</span> (<span class="math inline">O(n^2)</span>) — overall <span class="math inline">O(n^2)</span>. Deterministic: <span class="math inline">AB</span> takes <span class="math inline">O(n^3)</span> (naive) or <span class="math inline">O(n^{2.807})</span> (Strassen). Freivalds is an order of magnitude faster and can be boosted to exponentially small error with <span class="math inline">O(\log(1/\epsilon))</span> repetitions.</p>
+<p>Fix any index <span class="math inline">j</span> where <span class="math inline">x_j = 1</span>. Write <span class="math inline">\langle r, x \rangle = r_j + S \pmod{2}</span> where <span class="math inline">S = \sum_{i \neq j} r_i x_i</span>. Condition on any fixing of <span class="math inline">r_i</span> for <span class="math inline">i \neq j</span>; then <span class="math inline">S</span> is fixed. Exactly one choice of <span class="math inline">r_j \in \{0,1\}</span> makes <span class="math inline">r_j + S = 0</span>. Since <span class="math inline">r_j</span> is independent and uniform, <span class="math inline">\Pr[\langle r, x \rangle = 0] = 1/2</span> regardless of <span class="math inline">S</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem E3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem E3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume the lemma from E2: for any non-zero <span class="math inline">x \in \{0,1\}^n</span>, <span class="math inline">\Pr_r[\langle r, x \rangle = 0] = 1/2</span>.</p>
+<p>Use this to analyze <strong>Freivalds’ algorithm</strong>: to check <span class="math inline">AB = C</span>, pick a random <span class="math inline">r \in \{0,1\}^n</span> and check <span class="math inline">A(Br) = Cr</span>.</p>
+<ol type="1">
+<li>If <span class="math inline">AB \neq C</span>, what is the maximum probability that the test passes (false positive)?</li>
+<li>What is the running time of Freivalds’ algorithm? How does it compare to the deterministic algorithm of computing <span class="math inline">AB</span> and comparing to <span class="math inline">C</span>?</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>If <span class="math inline">AB \neq C</span>, then <span class="math inline">D = AB - C \neq 0</span>. The test passes if <span class="math inline">Dr = 0</span>. Since <span class="math inline">D \neq 0</span>, there is at least one non-zero row <span class="math inline">d</span>. By the lemma, <span class="math inline">\Pr[d \cdot r = 0] = 1/2</span>. For the whole matrix, <span class="math inline">\Pr[Dr = 0] \le 1/2</span> (the product is zero only if every row dot product is zero, which is no more likely than any single row being zero).</p></li>
+<li><p>Running time: compute <span class="math inline">Br</span> (<span class="math inline">O(n^2)</span>), then <span class="math inline">A(Br)</span> (<span class="math inline">O(n^2)</span>), then <span class="math inline">Cr</span> (<span class="math inline">O(n^2)</span>) — overall <span class="math inline">O(n^2)</span>. Deterministic: <span class="math inline">AB</span> takes <span class="math inline">O(n^3)</span> (naive) or <span class="math inline">O(n^{2.807})</span> (Strassen). Freivalds is an order of magnitude faster and can be boosted to exponentially small error with <span class="math inline">O(\log(1/\epsilon))</span> repetitions.</p></li>
+</ol>
 </div>
 </div>
 </div>
