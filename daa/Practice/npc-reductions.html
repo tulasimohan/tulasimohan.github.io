@@ -379,40 +379,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem F6">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem F6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Subset Sum:</strong> Given a set of integers <span class="math inline">A = \{a_1,\dots,a_n\}</span> and a target <span class="math inline">t</span>, is there a subset <span class="math inline">A' \subseteq A</span> that sums to exactly <span class="math inline">t</span>? Reduce 3-SAT to Subset Sum.</p>
-<ol type="1">
-<li>Given a 3-SAT formula with <span class="math inline">n</span> variables and <span class="math inline">m</span> clauses, construct a set of integers.</li>
-<li>Show that the formula is satisfiable iff there is a subset summing to the target.</li>
-<li>Why is this reduction polynomial-time?</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Let variables <span class="math inline">x_1,\dots,x_n</span>, clauses <span class="math inline">C_1,\dots,C_m</span>. Create numbers: for each variable <span class="math inline">x_i</span>, create two numbers <span class="math inline">v_i</span> and <span class="math inline">v_i'</span> in base 10 (or base <span class="math inline">n+m+1</span>). The target <span class="math inline">t</span> is constructed so that: - For each variable <span class="math inline">x_i</span>, we choose <span class="math inline">v_i</span> (true) or <span class="math inline">v_i'</span> (false). - Each clause is represented by a digit position. - <span class="math inline">v_i</span> and <span class="math inline">v_i'</span> have 1 in the variable digit position, and 1 in clause positions where the literal satisfies the clause. - The target has 1 in each variable position, and 3 in each clause position (since a clause with 3 literals can have up to 3 true assignments). - Add slack numbers for each clause to handle “at least 1” vs exact sum constraints. - Correctness: satisfying assignment <span class="math inline">\to</span> choose <span class="math inline">v_i</span> or <span class="math inline">v_i'</span> accordingly <span class="math inline">\to</span> sum equals target. Conversely, subset summing to target gives truth assignment. - Polynomial: <span class="math inline">n</span> variables <span class="math inline">+ m</span> clauses <span class="math inline">= O(n+m)</span> numbers, each with <span class="math inline">O(n+m)</span> digits.</p>
-</div>
-</div>
-</div>
 
 
 
