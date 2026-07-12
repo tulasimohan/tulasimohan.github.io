@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Ford-Fulkerson, Edmonds-Karp, max-flow min-cut, circulation with demands, bipartite matching, edge-disjoint paths">
+<meta name="description" content="Ford-Fulkerson, Edmonds-Karp, max-flow min-cut, edge-disjoint paths, project selection, flow properties">
 
 <title>Network Flow &amp; Matching – Tulasimohan Molli</title>
 <style>
@@ -182,7 +182,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Ford-Fulkerson, Edmonds-Karp, max-flow min-cut, circulation with demands, bipartite matching, edge-disjoint paths
+    Ford-Fulkerson, Edmonds-Karp, max-flow min-cut, edge-disjoint paths, project selection, flow properties
   </div>
 </div>
 
@@ -210,7 +210,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the Ford-Fulkerson algorithm, what happens if capacities are irrational? Why does Edmonds-Karp (BFS-based augmenting path) fix this issue?</p>
+<p>State the <strong>Max-Flow Min-Cut Theorem</strong>. For a flow network with integer capacities, what does this theorem imply about the value of the maximum flow?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -225,7 +225,7 @@ window.Quarto = {
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Irrational capacities can cause infinite loops (Ford-Fulkerson may never terminate, with flow converging to a non-maximal value). Edmonds-Karp uses BFS to pick the shortest augmenting path, guaranteeing termination regardless of capacities, with <span class="math inline">O(VE^2)</span> bound even for irrationals.</p>
+<p>The Max-Flow Min-Cut Theorem states that the value of the maximum flow equals the capacity of the minimum cut. For integer capacities, this implies the maximum flow value is integer and Ford-Fulkerson terminates in finite time with integer flows.</p>
 </div>
 </div>
 </div>
@@ -239,7 +239,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>State the <strong>Max-Flow Min-Cut Theorem</strong>. For a flow network with integer capacities, what does this theorem imply about the value of the maximum flow?</p>
+<p>Consider a flow network with vertices <span class="math inline">s,a,b,t</span> and capacities: <span class="math inline">s\!\to\!a\,(4)</span>, <span class="math inline">s\!\to\!b\,(3)</span>, <span class="math inline">a\!\to\!b\,(2)</span>, <span class="math inline">a\!\to\!t\,(3)</span>, <span class="math inline">b\!\to\!t\,(4)</span>.</p>
+<ol type="1">
+<li>Run Ford-Fulkerson starting from zero flow. List all augmenting paths and the flow after each augmentation.</li>
+<li>Identify the min-cut. Verify that cut capacity equals max flow value.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -254,7 +258,15 @@ window.Quarto = {
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The Max-Flow Min-Cut Theorem states that the value of the maximum flow equals the capacity of the minimum cut. For integer capacities, this implies the maximum flow value is integer and Ford-Fulkerson terminates in finite time with integer flows.</p>
+<ol type="1">
+<li>Augmenting paths (each adds flow):
+<ul>
+<li><span class="math inline">s \to a \to t</span>: min = min(4,3) = 3. Flow = 3.</li>
+<li><span class="math inline">s \to b \to t</span>: min = min(3,4) = 3. Flow = 6.</li>
+<li><span class="math inline">s \to a \to b \to t</span>: <span class="math inline">s\to a</span> has 1 remaining, <span class="math inline">a\to b</span> has 2, <span class="math inline">b\to t</span> has 1. Flow = 1. Total = 7.</li>
+</ul></li>
+<li>Max flow = 7. Min cut: <span class="math inline">(\{s\}, \{a,b,t\})</span> has capacity <span class="math inline">s\!\to\!a(4) + s\!\to\!b(3) = 7</span> ✓.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -268,10 +280,10 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider a flow network with vertices <span class="math inline">s,a,b,t</span> and capacities: <span class="math inline">s\!\to\!a\,(4)</span>, <span class="math inline">s\!\to\!b\,(3)</span>, <span class="math inline">a\!\to\!b\,(2)</span>, <span class="math inline">a\!\to\!t\,(3)</span>, <span class="math inline">b\!\to\!t\,(4)</span>.</p>
+<p><strong>Edge-disjoint paths:</strong> Given a directed graph <span class="math inline">G=(V,E)</span> and two vertices <span class="math inline">s,t</span>, find the maximum number of pairwise edge-disjoint paths from <span class="math inline">s</span> to <span class="math inline">t</span>.</p>
 <ol type="1">
-<li>Run Ford-Fulkerson starting from zero flow. List all augmenting paths and the flow after each augmentation.</li>
-<li>Identify the min-cut. Verify that cut capacity equals max flow value.</li>
+<li>Reduce this to a max-flow problem. (What are the capacities?)</li>
+<li>Use the reduction to prove <strong>Menger’s Theorem</strong>: The maximum number of edge-disjoint <span class="math inline">s</span>-<span class="math inline">t</span> paths equals the minimum size of an <span class="math inline">s</span>-<span class="math inline">t</span> edge cut.</li>
 </ol>
 </div>
 </div>
@@ -288,13 +300,8 @@ window.Quarto = {
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Augmenting paths (each adds flow):
-<ul>
-<li><span class="math inline">s \to a \to t</span>: min = min(4,3) = 3. Flow = 3.</li>
-<li><span class="math inline">s \to b \to t</span>: min = min(3,4) = 3. Flow = 6.</li>
-<li><span class="math inline">s \to a \to b \to t</span>: <span class="math inline">s\to a</span> has 1 remaining, <span class="math inline">a\to b</span> has 2, <span class="math inline">b\to t</span> has 1. Flow = 1. Total = 7.</li>
-</ul></li>
-<li>Max flow = 7. Min cut: <span class="math inline">(\{s\}, \{a,b,t\})</span> has capacity <span class="math inline">s\!\to\!a(4) + s\!\to\!b(3) = 7</span> ✓.</li>
+<li>Set all edge capacities to 1. Max flow = maximum number of edge-disjoint paths.</li>
+<li>Menger’s Theorem follows from max-flow min-cut: a cut of capacity <span class="math inline">k</span> in this network corresponds to a set of <span class="math inline">k</span> edges whose removal disconnects <span class="math inline">s</span> from <span class="math inline">t</span>. The min cut capacity equals the max number of edge-disjoint paths.</li>
 </ol>
 </div>
 </div>
@@ -309,10 +316,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Edge-disjoint paths:</strong> Given a directed graph <span class="math inline">G=(V,E)</span> and two vertices <span class="math inline">s,t</span>, find the maximum number of pairwise edge-disjoint paths from <span class="math inline">s</span> to <span class="math inline">t</span>.</p>
+<p><strong>Project selection problem:</strong> You have <span class="math inline">n</span> projects. Each project <span class="math inline">i</span> has a profit <span class="math inline">p_i</span> (can be negative). There are prerequisites: if you select project <span class="math inline">i</span>, you must also select certain other projects. Model this as a min-cut problem. Specifically:</p>
 <ol type="1">
-<li>Reduce this to a max-flow problem. (What are the capacities?)</li>
-<li>Use the reduction to prove <strong>Menger’s Theorem</strong>: The maximum number of edge-disjoint <span class="math inline">s</span>-<span class="math inline">t</span> paths equals the minimum size of an <span class="math inline">s</span>-<span class="math inline">t</span> edge cut.</li>
+<li>Construct a flow network with source <span class="math inline">s</span> (profits) and sink <span class="math inline">t</span> (costs).</li>
+<li>Prove that the max flow gives the optimal set of projects (maximum total profit while respecting prerequisites).</li>
+<li>Run your construction on an example with 4 projects: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites: <span class="math inline">2 \to 1</span>, <span class="math inline">3 \to 2</span>, <span class="math inline">4 \to 3</span>.</li>
 </ol>
 </div>
 </div>
@@ -329,8 +337,9 @@ window.Quarto = {
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Set all edge capacities to 1. Max flow = maximum number of edge-disjoint paths.</li>
-<li>Menger’s Theorem follows from max-flow min-cut: a cut of capacity <span class="math inline">k</span> in this network corresponds to a set of <span class="math inline">k</span> edges whose removal disconnects <span class="math inline">s</span> from <span class="math inline">t</span>. The min cut capacity equals the max number of edge-disjoint paths.</li>
+<li>Create source <span class="math inline">s</span> and sink <span class="math inline">t</span>. For each project <span class="math inline">i</span> with profit <span class="math inline">p_i &gt; 0</span>, add edge <span class="math inline">s \to i</span> with capacity <span class="math inline">p_i</span>. For each project <span class="math inline">i</span> with <span class="math inline">p_i &lt; 0</span>, add edge <span class="math inline">i \to t</span> with capacity <span class="math inline">-p_i</span>. For each prerequisite <span class="math inline">i \to j</span> (if <span class="math inline">i</span> selected then <span class="math inline">j</span> must be selected), add edge <span class="math inline">i \to j</span> with capacity <span class="math inline">\infty</span>.</li>
+<li>The min <span class="math inline">s</span>-<span class="math inline">t</span> cut gives the optimal set: projects reachable from <span class="math inline">s</span> in the residual graph after max flow are selected. Maximum profit = total positive profit - min cut capacity.</li>
+<li>For the example: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites <span class="math inline">2\to 1</span>, <span class="math inline">3\to 2</span>, <span class="math inline">4\to 3</span>. Positive profit: <span class="math inline">5+2=7</span>. Edges: <span class="math inline">s\to 1 (5), s\to 3 (2), 2\to t (3), 4\to t (1), 2\to 1 (\infty), 3\to 2 (\infty), 4\to 3 (\infty)</span>. Min cut: <span class="math inline">(\{s,1,3\}, \{2,4,t\})</span> has capacity <span class="math inline">3+1=4</span> (edges <span class="math inline">2\to t</span> and <span class="math inline">4\to t</span>). Selected: projects 1 and 3. Total profit: <span class="math inline">7-4=3</span>.</li>
 </ol>
 </div>
 </div>
@@ -345,7 +354,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>circulation with demands</strong> is a flow where each vertex <span class="math inline">v</span> has a demand <span class="math inline">d(v)</span> (supply if <span class="math inline">d(v) &gt; 0</span>, demand if <span class="math inline">d(v) &lt; 0</span>), and flow must satisfy <span class="math inline">\sum_{v} d(v) = 0</span> and flow conservation with net outflow = <span class="math inline">d(v)</span>. Reduce the feasibility of circulation with demands and lower/upper bounds on edges to a standard max-flow problem.</p>
+<p>Decide whether each statement is true or false. Justify with a proof or counterexample.</p>
+<ol type="1">
+<li>If <span class="math inline">f</span> is a maximum <span class="math inline">s</span>-<span class="math inline">t</span> flow in <span class="math inline">G</span>, then <span class="math inline">f</span> saturates every edge out of <span class="math inline">s</span> (i.e., <span class="math inline">f_e = c_e</span> for all edges <span class="math inline">(s,u)</span>).</li>
+<li>Let <span class="math inline">(A,B)</span> be a minimum <span class="math inline">s</span>-<span class="math inline">t</span> cut in <span class="math inline">G</span> with capacities <span class="math inline">c_e</span>. If we add <span class="math inline">1</span> to every capacity, then <span class="math inline">(A,B)</span> is still a minimum <span class="math inline">s</span>-<span class="math inline">t</span> cut.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -360,83 +373,9 @@ window.Quarto = {
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Standard reduction: add a super-source <span class="math inline">s^*</span> connected to vertices with <span class="math inline">d(v) &gt; 0</span> (supply) with capacity <span class="math inline">d(v)</span>, and a super-sink <span class="math inline">t^*</span> from vertices with <span class="math inline">d(v) &lt; 0</span> (demand) with capacity <span class="math inline">-d(v)</span>. For lower bounds <span class="math inline">\ell(e)</span> on edge <span class="math inline">e</span>, set capacity <span class="math inline">u(e) - \ell(e)</span> and pre-assign <span class="math inline">\ell(e)</span> flow, adjusting demands accordingly. Feasible iff max flow saturates all supply edges.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem D6">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem D6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Given a bipartite graph <span class="math inline">G=(U,V,E)</span>, recall: - A <strong>matching</strong> <span class="math inline">M \subseteq E</span> has no shared vertices. - A <strong>vertex cover</strong> <span class="math inline">C \subseteq U \cup V</span> touches every edge.</p>
-<p>Prove <strong>Kőnig’s Theorem</strong>: In bipartite graphs, <span class="math inline">\max|M| = \min|C|</span>.</p>
 <ol type="1">
-<li>Formulate maximum matching as a flow problem.</li>
-<li>Apply the Max-Flow Min-Cut Theorem.</li>
-<li>Show that the min cut corresponds to a vertex cover of the same size.</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Construct flow network: source <span class="math inline">s \to</span> each <span class="math inline">u \in U</span> (capacity 1), each <span class="math inline">u \to v</span> if <span class="math inline">(u,v) \in E</span> (capacity 1), each <span class="math inline">v \in V \to</span> sink <span class="math inline">t</span> (capacity 1). Max flow = max matching size.</li>
-<li>Min cut <span class="math inline">(S,T)</span> in this network: let <span class="math inline">U_1 = U \cap S</span>, <span class="math inline">U_2 = U \cap T</span>, <span class="math inline">V_1 = V \cap S</span>, <span class="math inline">V_2 = V \cap T</span>. Cut capacity <span class="math inline">= |U_2| + |V_1| + |\text{edges from }U_1\text{ to }V_2|</span>. For the min cut, no edge crosses <span class="math inline">U_1</span> to <span class="math inline">V_2</span> (otherwise cut capacity could be reduced), so every edge goes <span class="math inline">U_1\!\to\!V_1</span> or <span class="math inline">U_2\!\to\!V_1</span> or <span class="math inline">U_2\!\to\!V_2</span>. Then <span class="math inline">C = U_2 \cup V_1</span> is a vertex cover of size = cut capacity.</li>
-<li>By max-flow min-cut: max matching = max flow = min cut = min vertex cover.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Problem D7">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Problem D7
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Project selection problem:</strong> You have <span class="math inline">n</span> projects. Each project <span class="math inline">i</span> has a profit <span class="math inline">p_i</span> (can be negative). There are prerequisites: if you select project <span class="math inline">i</span>, you must also select certain other projects. Model this as a min-cut problem. Specifically:</p>
-<ol type="1">
-<li>Construct a flow network with source <span class="math inline">s</span> (profits) and sink <span class="math inline">t</span> (costs).</li>
-<li>Prove that the max flow gives the optimal set of projects (maximum total profit while respecting prerequisites).</li>
-<li>Run your construction on an example with 4 projects: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites: <span class="math inline">2 \to 1</span>, <span class="math inline">3 \to 2</span>, <span class="math inline">4 \to 3</span>.</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Create source <span class="math inline">s</span> and sink <span class="math inline">t</span>. For each project <span class="math inline">i</span> with profit <span class="math inline">p_i &gt; 0</span>, add edge <span class="math inline">s \to i</span> with capacity <span class="math inline">p_i</span>. For each project <span class="math inline">i</span> with <span class="math inline">p_i &lt; 0</span>, add edge <span class="math inline">i \to t</span> with capacity <span class="math inline">-p_i</span>. For each prerequisite <span class="math inline">i \to j</span> (if <span class="math inline">i</span> selected then <span class="math inline">j</span> must be selected), add edge <span class="math inline">i \to j</span> with capacity <span class="math inline">\infty</span>.</li>
-<li>The min <span class="math inline">s</span>-<span class="math inline">t</span> cut gives the optimal set: projects reachable from <span class="math inline">s</span> in the residual graph after max flow are selected. Maximum profit = total positive profit - min cut capacity.</li>
-<li>For the example: <span class="math inline">p = [5, -3, 2, -1]</span>, prerequisites <span class="math inline">2\to 1</span>, <span class="math inline">3\to 2</span>, <span class="math inline">4\to 3</span>. Positive profit: <span class="math inline">5+2=7</span>. Edges: <span class="math inline">s\to 1 (5), s\to 3 (2), 2\to t (3), 4\to t (1), 2\to 1 (\infty), 3\to 2 (\infty), 4\to 3 (\infty)</span>. Min cut: <span class="math inline">(\{s,1,3\}, \{2,4,t\})</span> has capacity <span class="math inline">3+1=4</span> (edges <span class="math inline">2\to t</span> and <span class="math inline">4\to t</span>). Selected: projects 1 and 3. Total profit: <span class="math inline">7-4=3</span>.</li>
+<li><p><strong>False.</strong> A max flow need not saturate all edges leaving <span class="math inline">s</span>. Example: <span class="math inline">s \to a</span> (cap 5), <span class="math inline">s \to b</span> (cap 5), <span class="math inline">a \to t</span> (cap 1), <span class="math inline">b \to t</span> (cap 1). Max flow = 2 (1 unit through each path). Neither <span class="math inline">s\to a</span> nor <span class="math inline">s\to b</span> is saturated — both carry only 1 of their 5-unit capacity.</p></li>
+<li><p><strong>False.</strong> Adding a constant to every capacity changes the number of crossing edges per cut, which can alter which cut is minimal. Example: <span class="math inline">s \to a</span> (cap 100), and <span class="math inline">a \to x_i</span> (cap 1), <span class="math inline">x_i \to t</span> (cap 1) for <span class="math inline">i=1,\dots,60</span>. Original min cut = <span class="math inline">(\{s,a\}, \{x_1,\dots,x_{60},t\})</span> with capacity <span class="math inline">60</span> (60 edges <span class="math inline">a\to x_i</span>). Cut <span class="math inline">(\{s\}, \{a,x_1,\dots,x_{60},t\})</span> has capacity <span class="math inline">100</span>. After adding 1 to all edges: <span class="math inline">s\to a</span> becomes 101; each <span class="math inline">a\to x_i, x_i\to t</span> becomes 2. Now <span class="math inline">(\{s,a\}, \dots)</span> has capacity <span class="math inline">60 \times 2 = 120</span>, while <span class="math inline">(\{s\}, \dots)</span> has capacity <span class="math inline">101</span> — so the min cut changes!</p></li>
 </ol>
 </div>
 </div>
