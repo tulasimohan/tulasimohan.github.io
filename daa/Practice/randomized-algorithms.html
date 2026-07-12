@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Las Vegas vs Monte Carlo, Freivalds’ algorithm, fingerprinting, Schwartz-Zippel, Karger’s min-cut, boosting">
+<meta name="description" content="Las Vegas vs Monte Carlo, Freivalds’ algorithm, error reduction, probability basics, expected runtime">
 
 <title>Randomized Algorithms – Tulasimohan Molli</title>
 <style>
@@ -182,7 +182,7 @@ window.Quarto = {
 
 <div>
   <div class="description">
-    Las Vegas vs Monte Carlo, Freivalds’ algorithm, fingerprinting, Schwartz-Zippel, Karger’s min-cut, boosting
+    Las Vegas vs Monte Carlo, Freivalds’ algorithm, error reduction, probability basics, expected runtime
   </div>
 </div>
 
@@ -268,12 +268,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Alice and Bob have strings <span class="math inline">x, y \in \{0,1\}^n</span>. They want to check equality using <span class="math inline">O(\log n)</span> communication. Describe a randomized protocol using <strong>fingerprinting</strong> with a random prime. Analyze:</p>
-<ol type="1">
-<li>The communication cost.</li>
-<li>The probability of error.</li>
-<li>How to reduce error to <span class="math inline">&lt; 2^{-30}</span>.</li>
-</ol>
+<p>You run <strong>Freivalds’ algorithm</strong> once and it says <span class="math inline">AB = C</span>. What can you conclude? If it says <span class="math inline">AB \neq C</span>, what can you conclude? Now suppose you run the test <span class="math inline">k</span> times independently and it passes every time. What is the probability of error after <span class="math inline">k</span> runs? How many runs are needed to achieve error <span class="math inline">&lt; \epsilon</span>?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -288,7 +283,7 @@ window.Quarto = {
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Choose a random prime <span class="math inline">p</span> in range <span class="math inline">[2, M]</span>. The fingerprint is <span class="math inline">x \bmod p</span>. Send <span class="math inline">p</span> and <span class="math inline">(x \bmod p)</span>. Cost: <span class="math inline">O(\log M + \log p) = O(\log n)</span> bits. Error: probability <span class="math inline">p</span> divides <span class="math inline">x-y</span> which is at most <span class="math inline">n/\pi(M) \approx n \log \log M / \log M</span>. For <span class="math inline">M = n^2</span>, error <span class="math inline">\approx 1/n</span>. To get <span class="math inline">&lt; 2^{-30}</span>, use <span class="math inline">k = 30/\log n</span> independent primes or repeat.</p>
+<p>If the test passes, <span class="math inline">AB = C</span> with probability at least <span class="math inline">1/2</span> (one-sided error: false positives possible). If it fails, <span class="math inline">AB \neq C</span> with certainty (no false negatives). After <span class="math inline">k</span> independent passes, error <span class="math inline">\le (1/2)^k</span>. For error <span class="math inline">&lt; \epsilon</span>, need <span class="math inline">k &gt; \log_2(1/\epsilon)</span>.</p>
 </div>
 </div>
 </div>
@@ -302,9 +297,12 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">p(x_1,\dots,x_n)</span> be a non-zero polynomial of degree <span class="math inline">d</span> over a field <span class="math inline">\mathbb{F}</span>. The <strong>Schwartz-Zippel Lemma</strong> states that for <span class="math inline">r_1,\dots,r_n</span> chosen uniformly from a finite set <span class="math inline">S \subseteq \mathbb{F}</span>:</p>
-<p><span class="math display">\Pr[p(r_1,\dots,r_n) = 0] \le \frac{d}{|S|}</span></p>
-<p>Use this to design a randomized algorithm for checking if a given bipartite graph <span class="math inline">G</span> has a <strong>perfect matching</strong> via the Tutte matrix. What is the error probability?</p>
+<p>Consider the following Monte Carlo algorithm: to check if an array <span class="math inline">A[1..n]</span> has a majority element, pick a random index <span class="math inline">i</span> and check whether <span class="math inline">A[i]</span> appears more than <span class="math inline">n/2</span> times in <span class="math inline">A</span>.</p>
+<ol type="1">
+<li>If a majority element exists, what is the probability that one random pick finds it?</li>
+<li>How many independent picks are needed to find a majority element with probability at least <span class="math inline">1 - \delta</span>?</li>
+<li>Is this a Las Vegas or Monte Carlo algorithm? Justify.</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -319,7 +317,11 @@ window.Quarto = {
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Tutte matrix <span class="math inline">T</span>: entry <span class="math inline">T_{ij} = x_{ij}</span> if <span class="math inline">(i,j) \in E</span> (with <span class="math inline">i &lt; j</span>) and <span class="math inline">T_{ij} = -x_{ji}</span>, else 0. For bipartite graph, assign variable <span class="math inline">x_{ij}</span> to each edge. <span class="math inline">\det(T)</span> is a non-zero polynomial iff the graph has a perfect matching. By Schwartz-Zippel, evaluate at random points in a field of size <span class="math inline">q</span>, error <span class="math inline">\le d/q</span> where <span class="math inline">d \le n</span> is degree of determinant.</p>
+<ol type="1">
+<li>If a majority element exists, it occupies <span class="math inline">&gt; n/2</span> positions. Probability a random pick hits it: <span class="math inline">&gt; (n/2)/n = 1/2</span>.</li>
+<li>With <span class="math inline">k</span> independent picks, failure probability (never picking the majority) <span class="math inline">&lt; (1/2)^k</span>. To get failure <span class="math inline">&lt; \delta</span>, need <span class="math inline">k &gt; \log_2(1/\delta)</span>.</li>
+<li>Monte Carlo — the algorithm has one-sided error: if it returns an element, that element is guaranteed majority (after verification), but it may fail to find one even if it exists.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -333,7 +335,12 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You are given three <span class="math inline">n \times n</span> matrices <span class="math inline">A, B, C</span>. You want to verify <span class="math inline">AB = C</span>. Describe <strong>Freivalds’ algorithm</strong>. Now suppose you run the test <span class="math inline">k</span> times independently. What is the error probability after <span class="math inline">k</span> runs? How many runs are needed to achieve error <span class="math inline">&lt; \epsilon</span>?</p>
+<p>Let <span class="math inline">A[1..n]</span> be an array of <span class="math inline">n</span> distinct numbers. Consider <strong>randomized quickselect</strong>: pick a uniformly random pivot, partition, and recurse on the side containing the <span class="math inline">k</span>-th smallest element.</p>
+<ol type="1">
+<li>What is the probability that a random pivot gives a “good split” (splits the array into two parts each of size at most <span class="math inline">3n/4</span>)?</li>
+<li>Using this, bound the expected number of recursive calls.</li>
+<li>How does the expected runtime compare to the worst-case runtime?</li>
+</ol>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -348,7 +355,11 @@ window.Quarto = {
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Freivalds: pick <span class="math inline">r \in \{0,1\}^n</span>, check <span class="math inline">A(Br) = Cr</span>. Error per test <span class="math inline">\le 1/2</span>. After <span class="math inline">k</span> independent tests, error <span class="math inline">\le (1/2)^k</span>. For error <span class="math inline">&lt; \epsilon</span>, need <span class="math inline">k &gt; \log_2(1/\epsilon)</span>.</p>
+<ol type="1">
+<li>A good split occurs when the pivot is not in the smallest <span class="math inline">n/4</span> nor the largest <span class="math inline">n/4</span> elements. Probability <span class="math inline">= 1/2</span>.</li>
+<li>Each good split reduces the problem to at most <span class="math inline">3n/4</span> size. Expected number of picks until a good split <span class="math inline">= 2</span> (geometric with <span class="math inline">p=1/2</span>). So expected calls before size reduces: <span class="math inline">2</span>. Total expected depth: <span class="math inline">O(\log n)</span>.</li>
+<li>Expected runtime <span class="math inline">O(n)</span> (each level processes <span class="math inline">O(n)</span> elements across all calls). Worst-case runtime <span class="math inline">O(n^2)</span> (adversarial pivot choices).</li>
+</ol>
 </div>
 </div>
 </div>
@@ -362,11 +373,11 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Karger’s randomized min-cut algorithm</strong> repeatedly contracts a uniformly random edge until two vertices remain. The number of edges between them is a candidate min-cut value.</p>
+<p>You flip a fair coin repeatedly. Let <span class="math inline">X</span> be the number of flips until you see heads for the first time.</p>
 <ol type="1">
-<li>Show that the probability that a specific min-cut survives one contraction is at least <span class="math inline">1 - 2/n</span>.</li>
-<li>Show that the probability that it survives all <span class="math inline">n-2</span> contractions is at least <span class="math inline">\binom{n}{2}^{-1}</span>.</li>
-<li>How many repetitions are needed to find the min-cut with high probability?</li>
+<li>What is the distribution of <span class="math inline">X</span>? Compute <span class="math inline">\Pr[X = k]</span> for <span class="math inline">k \ge 1</span>.</li>
+<li>Compute <span class="math inline">\mathbb{E}[X]</span> using linearity of expectation or the tail-sum formula.</li>
+<li>Now let <span class="math inline">Y</span> be the number of heads in <span class="math inline">n</span> independent flips. What is <span class="math inline">\mathbb{E}[Y]</span>? How does this illustrate linearity of expectation?</li>
 </ol>
 </div>
 </div>
@@ -383,9 +394,9 @@ window.Quarto = {
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>A specific min-cut has <span class="math inline">c</span> edges. Probability a randomly chosen edge is in the cut: <span class="math inline">c/|E|</span>. Min-cut has at most <span class="math inline">2c/n</span> edges (by handshake lemma style argument). Survival probability <span class="math inline">\ge 1 - 2/n</span>.</li>
-<li>After <span class="math inline">n-2</span> contractions: <span class="math inline">\prod_{i=3}^n (1 - 2/i) = \prod_{i=3}^n (i-2)/i = 2/(n(n-1)) = \binom{n}{2}^{-1}</span>.</li>
-<li>To succeed with probability <span class="math inline">1-\delta</span>, repeat <span class="math inline">O(\binom{n}{2} \ln(1/\delta))</span> times = <span class="math inline">O(n^2 \log(1/\delta))</span>.</li>
+<li><span class="math inline">X \sim \text{Geometric}(1/2)</span>: <span class="math inline">\Pr[X = k] = (1/2)^{k-1} \cdot (1/2) = (1/2)^k</span>.</li>
+<li><span class="math inline">\mathbb{E}[X] = \sum_{k=1}^\infty \Pr[X \ge k] = \sum_{k=1}^\infty (1/2)^{k-1} = 2</span>. Or using tail sum: <span class="math inline">\mathbb{E}[X] = \sum_{k=0}^\infty \Pr[X &gt; k] = \sum_{k=0}^\infty (1/2)^k = 2</span>.</li>
+<li><span class="math inline">Y = \sum_{i=1}^n I_i</span> where <span class="math inline">I_i \sim \text{Bernoulli}(1/2)</span>. By linearity, <span class="math inline">\mathbb{E}[Y] = \sum_{i=1}^n \mathbb{E}[I_i] = n \cdot 1/2 = n/2</span>, even though the <span class="math inline">I_i</span> are independent.</li>
 </ol>
 </div>
 </div>
@@ -400,13 +411,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider the problem of <strong>polynomial identity testing (PIT)</strong>. Given two arithmetic circuits computing polynomials <span class="math inline">P</span> and <span class="math inline">Q</span> in <span class="math inline">n</span> variables, each of degree <span class="math inline">d</span>, determine if <span class="math inline">P \equiv Q</span> as polynomials.</p>
-<ol type="1">
-<li>Describe a randomized algorithm using Schwartz-Zippel.</li>
-<li>Analyze the error probability.</li>
-<li>Why is this problem believed to be hard for deterministic algorithms?</li>
-<li>Show how PIT can be used to check if a program computing a matrix determinant is correct (program checking).</li>
-</ol>
+<p>Suppose we have a randomized algorithm that solves a decision problem with error probability <span class="math inline">1/3</span> (i.e., it is correct with probability at least <span class="math inline">2/3</span>). How many independent runs are needed to boost the success probability to at least <span class="math inline">1 - \delta</span>? Use the union bound to give a simple bound, then use Chernoff/Hoeffding for a tighter bound.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -421,12 +426,8 @@ window.Quarto = {
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>Evaluate <span class="math inline">P(r) - Q(r)</span> at random points <span class="math inline">r \in S^n</span> where <span class="math inline">S \subseteq \mathbb{F}</span> of size <span class="math inline">q</span>. By Schwartz-Zippel, error <span class="math inline">\le d/q</span>.</li>
-<li>Error <span class="math inline">\le d/|S|</span>.</li>
-<li>PIT is believed hard because deterministic algorithms would require derandomizing Schwartz-Zippel, which is connected to circuit lower bounds and other hard problems in complexity theory.</li>
-<li>For determinant checking: given circuit <span class="math inline">C</span> claimed to compute <span class="math inline">\det(A)</span>, use PIT to check <span class="math inline">C(A) \cdot A = \det(A) \cdot I</span> (matrix identity) or check against a known algorithm for small random matrices.</li>
-</ol>
+<p>Union bound: run <span class="math inline">k</span> times and take majority. Error occurs if more than <span class="math inline">k/2</span> runs err. Each run errs with prob <span class="math inline">\le 1/3</span>. By union bound, <span class="math inline">\Pr[\text{majority errs}] \le k \cdot (1/3)^{k/2}</span> (bounding each pattern of <span class="math inline">\ge k/2</span> errors). Set this <span class="math inline">\le \delta</span> and solve.</p>
+<p>Hoeffding bound: Let <span class="math inline">X_i = 1</span> if run <span class="math inline">i</span> errs, <span class="math inline">0</span> otherwise. <span class="math inline">\mathbb{E}[\bar{X}] \le 1/3</span>. By Hoeffding, <span class="math inline">\Pr[\bar{X} \ge 1/2] \le e^{-2k(1/2-1/3)^2} = e^{-2k/36} = e^{-k/18}</span>. Set <span class="math inline">\le \delta \implies k \ge 18 \ln(1/\delta)</span>.</p>
 </div>
 </div>
 </div>
@@ -440,12 +441,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Fingerprinting applications:</strong> For each of the following settings, design a randomized algorithm and analyze its error probability:</p>
-<ol type="1">
-<li><strong>Set equality:</strong> Two parties have subsets <span class="math inline">A,B \subseteq \{1,\dots,U\}</span>. They want to check if <span class="math inline">A = B</span> with <span class="math inline">O(\log U)</span> communication.</li>
-<li><strong>Multiset equality:</strong> Same as above, but duplicates matter.</li>
-<li><strong>Pattern matching:</strong> Given text <span class="math inline">T</span> (length <span class="math inline">n</span>) and pattern <span class="math inline">P</span> (length <span class="math inline">m</span>), find all positions where <span class="math inline">P</span> occurs in <span class="math inline">T</span>. Use fingerprinting (Rabin-Karp). What is the worst-case complexity? What is the expected complexity?</li>
-</ol>
+<p>You are given an unbiased coin. Design a randomized algorithm that uses this coin to simulate a biased coin that lands heads with probability exactly <span class="math inline">1/3</span>. What is the expected number of flips your algorithm uses per output?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
@@ -460,11 +456,9 @@ window.Quarto = {
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><strong>Set equality:</strong> Use polynomial fingerprint <span class="math inline">p_A(t) = \prod_{a \in A} (t - a)</span>. Check <span class="math inline">p_A(r) = p_B(r)</span> for random <span class="math inline">r</span>. Error <span class="math inline">\le |A \cup B|/q</span>. Communication: <span class="math inline">O(\log q)</span>.</li>
-<li><strong>Multiset:</strong> Use <span class="math inline">\sum_{a \in A} \alpha^a</span> evaluated at random <span class="math inline">\alpha</span>, or use polynomial with multiplicities: <span class="math inline">\prod_{a} (t-a)^{m_a}</span>.</li>
-<li><strong>Rabin-Karp:</strong> Hash each length-<span class="math inline">m</span> substring of <span class="math inline">T</span> using rolling hash. Expected <span class="math inline">O(n+m)</span> time (worst-case <span class="math inline">O(nm)</span> with bad hash collisions). False positive rate controlled by hash modulus size.</li>
-</ol>
+<p>Flip the coin twice. Map: HH <span class="math inline">\to</span> H, HT <span class="math inline">\to</span> T, TH <span class="math inline">\to</span> T, TT <span class="math inline">\to</span> repeat. <span class="math inline">\Pr[H] = 1/4</span> conditioned on not repeating, but we need exactly <span class="math inline">1/3</span>. Alternative: flip until you get HT or TH, then output H for HT and T for TH. Each of HT and TH has probability <span class="math inline">1/4</span>, so conditioned on stopping, each has probability <span class="math inline">1/2</span>. Not <span class="math inline">1/3</span>.</p>
+<p>Correct method: flip until you see HHT or HTH or THH. Map HHT <span class="math inline">\to</span> H, HTH <span class="math inline">\to</span> H, THH <span class="math inline">\to</span> T, and repeat on other outcomes. Each of the 3 patterns has probability <span class="math inline">1/8</span> conditioned on one of them occurring, so <span class="math inline">\Pr[H] = 2/3</span> not <span class="math inline">1/3</span>.</p>
+<p>Simpler: flip twice. If HH <span class="math inline">\to</span> H, if HT or TH <span class="math inline">\to</span> T, if TT <span class="math inline">\to</span> repeat. <span class="math inline">\Pr[H] = 1/4</span> and <span class="math inline">\Pr[T] = 1/2</span>, so conditioned on not repeating, <span class="math inline">\Pr[H] = (1/4)/(3/4) = 1/3</span>. Expected flips per output: each trial uses 2 flips and succeeds with probability <span class="math inline">3/4</span>, so expected flips <span class="math inline">= 2 / (3/4) = 8/3</span>.</p>
 </div>
 </div>
 </div>
