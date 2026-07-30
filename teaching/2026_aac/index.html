@@ -161,6 +161,7 @@ window.KATEX_MACROS = {
 </header>
 
 
+<p><a href="Handout/handout.pdf" class="btn btn-primary btn-sm" role="button">Download Course Handout (PDF)</a></p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -173,7 +174,7 @@ About the Course
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>TBD</em></p>
+<p>This course explores advanced paradigms in algorithm design and analysis beyond the core curriculum. Students will engage with randomized and approximation algorithms, game-theoretic techniques, and the design of parallel and distributed algorithms, with applications to modern domains such as the Internet/Web and computational biology.</p>
 </div>
 </div>
 </div>
@@ -205,7 +206,55 @@ Timings and Venue
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>TBD</em></p>
+<p><strong>Instructor:</strong> Tulasimohan Molli (TA: Hans Krupakar)</p>
+<p><strong>Lectures:</strong> Monday 2:00–3:00 PM (I114), Tuesday 12:00–1:00 PM (I114), Thursday 12:00–1:00 PM (I114)<br>
+<strong>Labs:</strong> Wednesday 1:00–3:00 PM (I015), Friday 1:00–3:00 PM (I015)<br>
+<strong>Chamber Consultation:</strong> Monday 3:00–4:00 PM @ H-134</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evaluation
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Component</th>
+<th style="text-align: center;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Midterm</td>
+<td style="text-align: center;">25%</td>
+</tr>
+<tr class="even">
+<td>Comprehensive Exam</td>
+<td style="text-align: center;">35%</td>
+</tr>
+<tr class="odd">
+<td>Term Project (Proposal + Presentation + Report)</td>
+<td style="text-align: center;">20%</td>
+</tr>
+<tr class="even">
+<td>Lab Interaction</td>
+<td style="text-align: center;">10%</td>
+</tr>
+<tr class="odd">
+<td>Class Interaction</td>
+<td style="text-align: center;">10%</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -214,20 +263,110 @@ Timings and Venue
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 42%">
+<col style="width: 16%">
+<col style="width: 22%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Lectures</th>
-<th style="text-align: left;">Learning Objectives</th>
-<th style="text-align: left;">Topics</th>
-<th style="text-align: left;">Reference</th>
+<th>Learning Objectives</th>
+<th>Topics</th>
+<th>Reference</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><em>TBD</em></td>
-<td style="text-align: left;"><em>TBD</em></td>
-<td style="text-align: left;"><em>TBD</em></td>
-<td style="text-align: left;"><em>TBD</em></td>
+<td style="text-align: center;">1</td>
+<td>Course scope and landscape</td>
+<td>Introduction – Advanced Algorithms &amp; Complexity</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td>Refresher on probability and complexity classes</td>
+<td>Review of Probability, Tail Bounds &amp; Complexity Classes</td>
+<td>T1 Ch1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td>Randomized algorithm classifications</td>
+<td>Randomized Algorithms: Las Vegas &amp; Monte Carlo, Freivalds, Min-Cut</td>
+<td>T1 Ch1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td>Success rates via tail inequalities</td>
+<td>Tail Inequalities, Chebyshev, Chernoff Bounds &amp; Applications</td>
+<td>T1 Ch3-4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td>Randomized data structures</td>
+<td>Skip Lists, Hash Tables, Cuckoo Hashing</td>
+<td>T1 Ch8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td>Randomized vs deterministic graph algorithms</td>
+<td>Randomized Graph Algorithms: MST, Shortest Paths, Matching</td>
+<td>T1 Ch10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td>Game-theoretic techniques</td>
+<td>Game Theory: Minimax, Zero-Sum, Nash Equilibrium, Multiplicative Weights</td>
+<td>T1 Ch4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td>Online decision-making under uncertainty</td>
+<td>Online Algorithms: Competitive Ratio, Ski Rental, Paging, Secretary Problem</td>
+<td>T1 Ch13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td>Number-theoretic algorithms</td>
+<td>Number-Theoretic Algorithms: Euclid, Euler’s phi, Primality Testing</td>
+<td>T1 Ch14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td>Parallel and distributed algorithms</td>
+<td>Parallel: PRAM, Prefix, MIS; Distributed: Byzantine Agreement, Consensus</td>
+<td>T1 Ch12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td>Approximation algorithms</td>
+<td>Approximation: Greedy, LP Rounding, Primal-Dual, Local Search, Set Cover, TSP</td>
+<td>R1, R3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td>Limits of approximation</td>
+<td>Hardness of Approximation: Gap Technique, APX, PTAS, Inapproximability</td>
+<td>R4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td>Algorithms for Web/Internet</td>
+<td>Web Algorithms: PageRank, Web Graph, Recommendation Systems</td>
+<td>AR</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td>Algorithms for computational biology</td>
+<td>Computational Biology: Sequence Alignment, String Algorithms</td>
+<td>AR</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td>Student project proposal presentations</td>
+<td>Project Proposal Presentations</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
