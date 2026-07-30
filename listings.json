@@ -8,35 +8,11 @@
     "items": []
   },
   {
-    "listing": "/legacy-v1/v2_dev/src/pages/notes.html",
-    "items": []
-  },
-  {
-    "listing": "/legacy-v1/src/pages/notes.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
     "listing": "/about.html",
     "items": []
   },
   {
-    "listing": "/legacy-v1/v2_dev/src/pages/projects/index.html",
-    "items": []
-  },
-  {
-    "listing": "/legacy-v1/v2_dev/src/pages/research/index.html",
-    "items": []
-  },
-  {
-    "listing": "/lite.html",
-    "items": []
-  },
-  {
-    "listing": "/news.html",
+    "listing": "/index.html",
     "items": []
   }
 ]
