@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="600" height="250">
+  <rect x="0" y="0" width="600" height="250" fill="#ffffff"/>
+  
+  <!-- Problem A box -->
+  <rect x="40" y="70" width="180" height="120" rx="12" fill="#e8f4f8" stroke="#3498db" stroke-width="2.5"/>
+  <text x="130" y="108" text-anchor="middle" font-size="18" font-family="sans-serif" font-weight="bold" fill="#2980b9">Problem $A$</text>
+  <text x="130" y="135" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#555">(e.g., 3-SAT)</text>
+  
+  <!-- Instance x -->
+  <text x="130" y="170" text-anchor="middle" font-size="14" font-family="monospace" fill="#333">instance $x$</text>
+  
+  <!-- Problem B box -->
+  <rect x="380" y="70" width="180" height="120" rx="12" fill="#fef9e7" stroke="#f39c12" stroke-width="2.5"/>
+  <text x="470" y="108" text-anchor="middle" font-size="18" font-family="sans-serif" font-weight="bold" fill="#d68910">Problem $B$</text>
+  <text x="470" y="135" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#555">(e.g., CLIQUE)</text>
+  
+  <!-- Instance f(x) -->
+  <text x="470" y="170" text-anchor="middle" font-size="14" font-family="monospace" fill="#333">instance $f(x)$</text>
+  
+  <!-- Reduction arrow -->
+  <g>
+    <defs>
+      <marker id="arrowRed" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#e74c3c"/>
+      </marker>
+    </defs>
+    <line x1="222" y1="130" x2="375" y2="130" stroke="#e74c3c" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+  </g>
+  
+  <!-- f label on arrow -->
+  <text x="290" y="120" text-anchor="middle" font-size="15" font-family="sans-serif" font-weight="bold" fill="#e74c3c">$f$</text>
+  <text x="290" y="142" text-anchor="middle" font-size="11" font-family="sans-serif" fill="#e74c3c">poly-time</text>
+  
+  <!-- Equivalence caption -->
+  <text x="300" y="220" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#333">$x \in A \iff f(x) \in B$</text>
+</svg>

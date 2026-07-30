@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 370">
+  <style>
+    .graph-label { font: 600 16px sans-serif; fill: #444; text-anchor: middle; }
+    .vertex-label { font: 15px sans-serif; fill: #333; text-anchor: middle; dominant-baseline: central; }
+    .edge { stroke: #888; stroke-width: 2; stroke-linecap: round; }
+    .clique-edge { stroke: #3498db; stroke-width: 3.5; stroke-linecap: round; }
+    .vc-edge { stroke: #27ae60; stroke-width: 3.5; stroke-linecap: round; }
+    .legend-text { font: 13px sans-serif; fill: #555; }
+    .formula { font: 17px serif; fill: #444; text-anchor: middle; }
+    .arrow { stroke: #999; stroke-width: 2.5; fill: none; }
+  </style>
+
+  <!-- ======== LEFT: Graph G ======== -->
+  <text x="195" y="30" class="graph-label">Graph G</text>
+
+  <!-- G vertices: a(120,160), b(195,80), c(270,160), d(195,280) -->
+  <!-- G edges: (a,b), (b,c), (a,c) — triangle; d is isolated -->
+
+  <!-- Non-clique edges (none in this graph - all edges are in the clique) -->
+
+  <!-- Clique edges: triangle a-b-c -->
+  <line x1="120" y1="160" x2="195" y2="80" class="clique-edge"/>
+  <line x1="195" y1="80" x2="270" y2="160" class="clique-edge"/>
+  <line x1="120" y1="160" x2="270" y2="160" class="clique-edge"/>
+
+  <!-- d isolated — no edges to it -->
+
+  <!-- Clique highlight label -->
+  <rect x="215" y="100" width="80" height="24" rx="4" fill="#3498db" opacity="0.85"/>
+  <text x="255" y="115" font="600 12px sans-serif" fill="white" text-anchor="middle">Clique (3)</text>
+
+  <!-- Vertices -->
+  <circle cx="120" cy="160" r="22" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="120" y="160" class="vertex-label">a</text>
+
+  <circle cx="195" cy="80" r="22" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="195" y="80" class="vertex-label">b</text>
+
+  <circle cx="270" cy="160" r="22" fill="white" stroke="#3498db" stroke-width="2.5"/>
+  <text x="270" y="160" class="vertex-label">c</text>
+
+  <circle cx="195" cy="280" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="195" y="280" class="vertex-label">d</text>
+
+  <!-- |V| = 4 label -->
+  <text x="195" y="325" class="formula">|V| = 4</text>
+
+  <!-- ======== Arrow ======== -->
+  <line x1="340" y1="180" x2="440" y2="180" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="390" y="170" font="14px sans-serif" fill="#999" text-anchor="middle" font-style="italic">complement</text>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- ======== RIGHT: Complement Ḡ ======== -->
+  <text x="585" y="30" class="graph-label">Complement Ḡ</text>
+
+  <!-- Ḡ vertices: a(510,160), b(585,80), c(660,160), d(585,280) -->
+  <!-- Ḡ edges: (a,d), (b,d), (c,d) — star centered at d -->
+
+  <!-- Vertex cover edges (all edges in Ḡ): d-a, d-b, d-c -->
+  <line x1="510" y1="160" x2="585" y2="280" class="vc-edge"/>
+  <line x1="585" y1="80" x2="585" y2="280" class="vc-edge"/>
+  <line x1="660" y1="160" x2="585" y2="280" class="vc-edge"/>
+
+  <!-- No edges among a,b,c in Ḡ -->
+
+  <!-- VC highlight label -->
+  <rect x="548" y="285" width="74" height="24" rx="4" fill="#27ae60" opacity="0.85"/>
+  <text x="585" y="300" font="600 12px sans-serif" fill="white" text-anchor="middle">VC = {d}</text>
+
+  <!-- Vertices -->
+  <circle cx="510" cy="160" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="510" y="160" class="vertex-label">a</text>
+
+  <circle cx="585" cy="80" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="585" y="80" class="vertex-label">b</text>
+
+  <circle cx="660" cy="160" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="660" y="160" class="vertex-label">c</text>
+
+  <circle cx="585" cy="280" r="22" fill="white" stroke="#27ae60" stroke-width="2.5"/>
+  <text x="585" y="280" class="vertex-label">d</text>
+
+  <!-- |V| - k = 1 label -->
+  <text x="585" y="325" class="formula">|V| − k = 1</text>
+
+  <!-- ======== Bottom duality formula ======== -->
+  <rect x="150" y="345" width="480" height="24" rx="4" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+  <text x="390" y="361" font="600 14px sans-serif" fill="#555" text-anchor="middle">
+    k-clique in G  ⇔  (|V| − k)-vertex cover in Ḡ
+  </text>
+</svg>

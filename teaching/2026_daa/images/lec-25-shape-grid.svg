@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect x="20" y="20" width="360" height="360" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+  <text x="380" y="16" text-anchor="end" font-size="12" font-family="sans-serif" fill="#666">BOUNDING BOX</text>
+  <!-- Grid lines -->
+  <g stroke="#ddd" stroke-width="0.8">
+    <line x1="56" y1="20" x2="56" y2="380"/>
+    <line x1="92" y1="20" x2="92" y2="380"/>
+    <line x1="128" y1="20" x2="128" y2="380"/>
+    <line x1="164" y1="20" x2="164" y2="380"/>
+    <line x1="200" y1="20" x2="200" y2="380"/>
+    <line x1="236" y1="20" x2="236" y2="380"/>
+    <line x1="272" y1="20" x2="272" y2="380"/>
+    <line x1="308" y1="20" x2="308" y2="380"/>
+    <line x1="344" y1="20" x2="344" y2="380"/>
+    <line x1="20" y1="56" x2="380" y2="56"/>
+    <line x1="20" y1="92" x2="380" y2="92"/>
+    <line x1="20" y1="128" x2="380" y2="128"/>
+    <line x1="20" y1="164" x2="380" y2="164"/>
+    <line x1="20" y1="200" x2="380" y2="200"/>
+    <line x1="20" y1="236" x2="380" y2="236"/>
+    <line x1="20" y1="272" x2="380" y2="272"/>
+    <line x1="20" y1="308" x2="380" y2="308"/>
+    <line x1="20" y1="344" x2="380" y2="344"/>
+  </g>
+  <!-- Shape -->
+  <path d="M 200 60 
+           C 260 50, 320 80, 340 150 
+           C 360 220, 330 280, 290 310 
+           C 250 340, 180 350, 130 320 
+           C 80 290, 50 240, 60 180 
+           C 70 120, 120 70, 200 60 Z" 
+        fill="rgba(52, 152, 219, 0.2)" stroke="#3498db" stroke-width="3"/>
+  <text x="200" y="210" text-anchor="middle" font-size="18" font-family="sans-serif" fill="#3498db">$S$</text>
+</svg>

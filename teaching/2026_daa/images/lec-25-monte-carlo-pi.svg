@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect x="10" y="10" width="380" height="380" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+  <circle cx="200" cy="200" r="190" fill="none" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="200" y="20" text-anchor="middle" font-size="14" font-family="sans-serif" fill="#666">SQUARE</text>
+  <text x="390" y="210" text-anchor="end" font-size="14" font-family="sans-serif" fill="#e74c3c">CIRCLE</text>
+  <!-- Darts - about 80 scattered randomly, some inside some outside -->
+  <!-- Inside (green) -->
+  <circle cx="120" cy="140" r="4" fill="#27ae60"/>
+  <circle cx="180" cy="110" r="4" fill="#27ae60"/>
+  <circle cx="250" cy="130" r="4" fill="#27ae60"/>
+  <circle cx="90" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="150" cy="180" r="4" fill="#27ae60"/>
+  <circle cx="220" cy="190" r="4" fill="#27ae60"/>
+  <circle cx="310" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="280" cy="220" r="4" fill="#27ae60"/>
+  <circle cx="160" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="130" cy="270" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="280" r="4" fill="#27ae60"/>
+  <circle cx="260" cy="270" r="4" fill="#27ae60"/>
+  <circle cx="300" cy="250" r="4" fill="#27ae60"/>
+  <circle cx="230" cy="150" r="4" fill="#27ae60"/>
+  <circle cx="170" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="110" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="240" cy="240" r="4" fill="#27ae60"/>
+  <circle cx="190" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="210" cy="210" r="4" fill="#27ae60"/>
+  <circle cx="140" cy="210" r="4" fill="#27ae60"/>
+  <circle cx="270" cy="180" r="4" fill="#27ae60"/>
+  <circle cx="290" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="180" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="220" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="160" cy="130" r="4" fill="#27ae60"/>
+  <circle cx="240" cy="110" r="4" fill="#27ae60"/>
+  <circle cx="100" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="320" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="260" cy="310" r="4" fill="#27ae60"/>
+  <circle cx="140" cy="310" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="330" r="4" fill="#27ae60"/>
+  <circle cx="230" cy="290" r="4" fill="#27ae60"/>
+  <circle cx="170" cy="290" r="4" fill="#27ae60"/>
+  <circle cx="130" cy="190" r="4" fill="#27ae60"/>
+  <circle cx="270" cy="140" r="4" fill="#27ae60"/>
+  <circle cx="150" cy="150" r="4" fill="#27ae60"/>
+  <circle cx="210" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="190" cy="250" r="4" fill="#27ae60"/>
+  <circle cx="250" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="110" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="310" cy="210" r="4" fill="#27ae60"/>
+  <circle cx="280" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="120" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="150" r="4" fill="#27ae60"/>
+  <circle cx="160" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="240" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="180" cy="220" r="4" fill="#27ae60"/>
+  <circle cx="220" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="260" cy="190" r="4" fill="#27ae60"/>
+  <circle cx="140" cy="250" r="4" fill="#27ae60"/>
+  <circle cx="300" cy="180" r="4" fill="#27ae60"/>
+  <circle cx="190" cy="140" r="4" fill="#27ae60"/>
+  <circle cx="230" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="170" cy="240" r="4" fill="#27ae60"/>
+  <circle cx="270" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="130" cy="300" r="4" fill="#27ae60"/>
+  <circle cx="290" cy="280" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="150" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="250" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="110" cy="140" r="4" fill="#27ae60"/>
+  <!-- Outside (red) -->
+  <circle cx="50" cy="60" r="4" fill="#e74c3c"/>
+  <circle cx="60" cy="130" r="4" fill="#e74c3c"/>
+  <circle cx="35" cy="200" r="4" fill="#e74c3c"/>
+  <circle cx="55" cy="280" r="4" fill="#e74c3c"/>
+  <circle cx="40" cy="340" r="4" fill="#e74c3c"/>
+  <circle cx="120" cy="370" r="4" fill="#e74c3c"/>
+  <circle cx="200" cy="380" r="4" fill="#e74c3c"/>
+  <circle cx="280" cy="370" r="4" fill="#e74c3c"/>
+  <circle cx="350" cy="340" r="4" fill="#e74c3c"/>
+  <circle cx="360" cy="260" r="4" fill="#e74c3c"/>
+  <circle cx="370" cy="180" r="4" fill="#e74c3c"/>
+  <circle cx="355" cy="100" r="4" fill="#e74c3c"/>
+  <circle cx="340" cy="50" r="4" fill="#e74c3c"/>
+  <circle cx="260" cy="40" r="4" fill="#e74c3c"/>
+  <circle cx="180" cy="35" r="4" fill="#e74c3c"/>
+  <circle cx="100" cy="50" r="4" fill="#e74c3c"/>
+  <circle cx="80" cy="330" r="4" fill="#e74c3c"/>
+  <circle cx="320" cy="330" r="4" fill="#e74c3c"/>
+  <circle cx="70" cy="100" r="4" fill="#e74c3c"/>
+  <circle cx="330" cy="120" r="4" fill="#e74c3c"/>
+  <circle cx="50" cy="360" r="4" fill="#e74c3c"/>
+  <circle cx="350" cy="30" r="4" fill="#e74c3c"/>
+  <!-- Legend -->
+  <rect x="30" y="375" width="12" height="12" fill="#27ae60" rx="6"/>
+  <text x="48" y="386" font-size="11" font-family="sans-serif" fill="#333">Inside (count $M$)</text>
+  <rect x="170" y="375" width="12" height="12" fill="#e74c3c" rx="6"/>
+  <text x="188" y="386" font-size="11" font-family="sans-serif" fill="#333">Outside</text>
+</svg>

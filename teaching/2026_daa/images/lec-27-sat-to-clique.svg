@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420">
+  <style>
+    .clause-label { font: 600 15px sans-serif; fill: #555; text-anchor: middle; }
+    .vertex-label { font: 15px serif; fill: #333; text-anchor: middle; dominant-baseline: central; }
+    .clique-edge { stroke: #e74c3c; stroke-width: 3; stroke-linecap: round; }
+    .conflict-line { stroke: #e74c3c; stroke-width: 1.5; stroke-dasharray: 5,3; }
+    .conflict-x { stroke: #e74c3c; stroke-width: 2; }
+    .legend-text { font: 13px sans-serif; fill: #555; }
+    .formula { font: 16px serif; fill: #333; text-anchor: middle; }
+  </style>
+
+  <!-- Formula -->
+  <text x="390" y="30" class="formula">φ = (x₁ ∨ x₂ ∨ x₃) ∧ (x̄₁ ∨ x̄₂ ∨ x₃) ∧ (x₁ ∨ x̄₂ ∨ x̄₃)</text>
+
+  <!-- Column headers -->
+  <text x="130" y="70" class="clause-label">Clause 1</text>
+  <text x="390" y="70" class="clause-label">Clause 2</text>
+  <text x="650" y="70" class="clause-label">Clause 3</text>
+
+  <!-- Column separator lines -->
+  <line x1="260" y1="85" x2="260" y2="390" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="520" y1="85" x2="520" y2="390" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Vertex coordinates: (col, row) in px -->
+  <!-- C1: x=130, C2: x=390, C3: x=650 -->
+  <!-- rows: y=120, 210, 300 -->
+
+  <!-- CONFLICT lines (dashed red, between conflicting pairs) -->
+  <!-- C1-C2 conflicts: x₁-x̄₁, x₂-x̄₂ -->
+  <line x1="156" y1="120" x2="364" y2="120" class="conflict-line"/>
+  <line x1="156" y1="210" x2="364" y2="210" class="conflict-line"/>
+  <!-- C1-C3 conflicts: x₂-x̄₂, x₃-x̄₃ -->
+  <line x1="156" y1="210" x2="624" y2="210" class="conflict-line"/>
+  <line x1="156" y1="300" x2="624" y2="300" class="conflict-line"/>
+  <!-- C2-C3 conflicts: x̄₁-x₁, x₃-x̄₃ -->
+  <line x1="416" y1="120" x2="624" y2="120" class="conflict-line"/>
+  <line x1="416" y1="300" x2="624" y2="300" class="conflict-line"/>
+
+  <!-- X marks on conflict lines -->
+  <!-- C1-C2 x₁-x̄₁ -->
+  <line x1="248" y1="113" x2="272" y2="127" class="conflict-x"/>
+  <line x1="272" y1="113" x2="248" y2="127" class="conflict-x"/>
+  <!-- C1-C2 x₂-x̄₂ -->
+  <line x1="248" y1="203" x2="272" y2="217" class="conflict-x"/>
+  <line x1="272" y1="203" x2="248" y2="217" class="conflict-x"/>
+
+  <!-- CLIQUE edges (thick red) — picking x₁(C1), x̄₂(C2), x₁(C3) -->
+  <!-- x₁(130,120) ↔ x̄₂(390,210) -->
+  <line x1="152" y1="129" x2="368" y2="201" class="clique-edge"/>
+  <!-- x₁(130,120) ↔ x₁(650,120) -->
+  <line x1="152" y1="129" x2="628" y2="129" class="clique-edge"/>
+  <!-- x̄₂(390,210) ↔ x₁(650,120) -->
+  <line x1="412" y1="201" x2="628" y2="129" class="clique-edge"/>
+
+  <!-- Clique label -->
+  <rect x="290" y="150" width="130" height="22" rx="4" fill="#e74c3c" opacity="0.9"/>
+  <text x="355" y="164" font="600 12px sans-serif" fill="white" text-anchor="middle">3-clique</text>
+
+  <!-- Vertices C1 -->
+  <circle cx="130" cy="120" r="22" fill="white" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="130" y="120" class="vertex-label">x₁</text>
+
+  <circle cx="130" cy="210" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="130" y="210" class="vertex-label">x₂</text>
+
+  <circle cx="130" cy="300" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="130" y="300" class="vertex-label">x₃</text>
+
+  <!-- Vertices C2 -->
+  <circle cx="390" cy="120" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="390" y="120" class="vertex-label">x̄₁</text>
+
+  <circle cx="390" cy="210" r="22" fill="white" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="390" y="210" class="vertex-label">x̄₂</text>
+
+  <circle cx="390" cy="300" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="390" y="300" class="vertex-label">x₃</text>
+
+  <!-- Vertices C3 -->
+  <circle cx="650" cy="120" r="22" fill="white" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="650" y="120" class="vertex-label">x₁</text>
+
+  <circle cx="650" cy="210" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="650" y="210" class="vertex-label">x̄₂</text>
+
+  <circle cx="650" cy="300" r="22" fill="white" stroke="#bbb" stroke-width="1.5"/>
+  <text x="650" y="300" class="vertex-label">x̄₃</text>
+
+  <!-- Legend -->
+  <rect x="520" y="340" width="240" height="65" rx="6" fill="#f8f8f8" stroke="#ddd" stroke-width="1"/>
+  <line x1="535" y1="358" x2="565" y2="358" class="clique-edge"/>
+  <text x="575" y="362" class="legend-text">Clique edge</text>
+  <line x1="535" y1="378" x2="565" y2="378" class="conflict-line"/>
+  <text x="575" y="382" class="legend-text">Conflicting (no edge)</text>
+  <line x1="535" y1="395" x2="548" y2="395" stroke="#e74c3c" stroke-width="2.5"/>
+  <text x="575" y="399" class="legend-text">Vertex in clique</text>
+</svg>
