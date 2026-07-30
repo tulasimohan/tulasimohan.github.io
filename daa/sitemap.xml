@@ -2,10 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/daa/index.html</loc>
-    <lastmod>2026-07-14T07:10:20.318Z</lastmod>
+    <lastmod>2026-07-30T15:46:05.599Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/amortized-analysis.html</loc>
+    <lastmod>2026-07-30T15:46:05.491Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/asymptotic-notation.html</loc>
+    <lastmod>2026-07-30T15:46:05.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/divide-and-conquer.html</loc>
+    <lastmod>2026-07-30T15:46:05.500Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/dynamic-programming.html</loc>
+    <lastmod>2026-07-30T15:46:05.503Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/daa/Practice/end_sem_practice.html</loc>
-    <lastmod>2026-07-14T07:10:20.228Z</lastmod>
+    <lastmod>2026-07-30T15:46:05.505Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/greedy-algorithms.html</loc>
+    <lastmod>2026-07-30T15:46:05.505Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/index.html</loc>
+    <lastmod>2026-07-30T15:46:05.509Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/lp-ip-rounding.html</loc>
+    <lastmod>2026-07-30T15:46:05.511Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/matroids.html</loc>
+    <lastmod>2026-07-30T15:46:05.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/network-flow.html</loc>
+    <lastmod>2026-07-30T15:46:05.517Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/npc-reductions.html</loc>
+    <lastmod>2026-07-30T15:46:05.520Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/randomized-algorithms.html</loc>
+    <lastmod>2026-07-30T15:46:05.531Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/daa/Practice/recurrence-relations.html</loc>
+    <lastmod>2026-07-30T15:46:05.534Z</lastmod>
   </url>
 </urlset>
