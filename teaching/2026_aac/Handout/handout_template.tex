@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in, bottom=1.2in}  % extra space at bottom for page numbers
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{fontawesome5}
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\setcounter{secnumdepth}{2}
+\usepackage{helvet}
+\newcommand*\helf{\fontfamily{phv}\selectfont}
+\newcommand{\bitsfont}[1]{\textcolor{bitsblue}{\helf{#1}}}
+
+\definecolor{bitsblue}{rgb}{0.1, 0.1, 0.5} 
+% Header + Footer setup
+% \setlength{\headheight}{100pt}  % space for logo
+% \setlength{\headsep}{20pt}     % space between header and text
+% \setlength{\footskip}{10pt}    % space for footer (page number)
+% \addtolength{\topmargin}{-20pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{
+}
+\rhead{}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+
+% Section formatting
+\titleformat{\section}{\sf\large\bfseries}{\thesection.}{1ex}{}
+%\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\begin{document}
+
+\vspace*{-2cm}
+\noindent\begin{tabular}{l}
+  \includegraphics[height=2.2cm]{bits-logo.png}\\
+  \end{tabular}
+  \begin{tabular}{l}
+\bitsfont{\large{\bfseries{Birla Institute of Technology \& Science}}, \large{Pilani}}\\
+\bitsfont{[...] Campus}\\
+\bitsfont{Academic-- Undergraduate Studies Division}
+\end{tabular}
+
+%\begin{tabular}{r}
+\includegraphics[width=1.2\textwidth, height=0.6mm]{bits-bar.png}
+%\end{tabular}
+ \begin{sf}
+\begin{center}
+\textbf{FIRST SEMESTER, 2026--2027}\\
+\textbf{Course Handout Part II}
+\end{center}
+\noindent
+ \hfill Date: 1st August 2026 
+
+\noindent
+In addition to part I (General Handout for all courses appended to the Timetable), this portion gives further specific details regarding the course.
+
+\vspace{1em}
+\noindent
+\begin{tabular}{@{}l l}
+\textbf{Course No}             & :  \\
+\textbf{Course Title}          & :  \\
+\textbf{Instructor-in-Charge}  & :  \\
+\textbf{Instructors}           & :  \\
+\end{tabular}
+
+\section{Course Description:}
+[as per the Bulletin]
+
+\section{Scope \& Objective of the Course:}
+\section{Course learning outcomes}
+\begin{enumerate}[label=\bfseries{ CLO{\arabic*}.}, 
+                leftmargin=2cm]
+ \item
+ \item               
+\end{enumerate}
+\section{Textbooks:}
+\begin{enumerate}[label=\bfseries{ TB{\arabic*}.}, 
+                leftmargin=2cm]
+\item  \textit{[Title]}, [Author],[Edition],[Publisher],[Publication year]
+\item 
+\end{enumerate}
+\section*{  References:}
+\begin{enumerate}[label=\bfseries{Ref{\arabic*}.}, 
+                leftmargin=2cm]
+\item  \textit{[Title]}, [Author],[Edition],[Publisher],[Publication year]
+\item 
+\end{enumerate}
+
+\section{ Course Plan:}
+Weekly plan for 14 weeks with [3] lectures per week
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+\textbf{Week no.} & \textbf{Module No.} & \textbf{Description} & \textbf{Reference} & \textbf{Learning Outcomes} \\
+\hline
+
+1.& & &  & \\
+\hline
+ 2. &  & & &  \\
+\hline
+3.  &  &  & &  \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\section{Evaluation Scheme:}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|m{2cm}|m{2.5cm}|m{4cm}|}
+\hline
+\textbf{Component}  & \textbf{Wt (\%)}& \textbf{Duration} &  \textbf{Date \& Time} & \textbf{Comments} \\
+\hline
+Class discussions & 10 (max) & in class &  & \\
+\hline
+Continuous Evaluation$^*$         & 10 -30 &   &   & Type, frequency, method \\
+\hline
+Lab$^\#$& 30-35 &   &  & frequency, method \\
+\hline
+Mid-Semester  (optional) & 20-30 & 90 mins. & TBA & Open/Closed Book \\
+\hline
+Comprehensive Examination & 30-45 & 180 mins. & TBA & Open/closed book \\
+\hline
+\end{tabular}
+\end{center}
+$^*$: Could include in-class quiz, classwork, homework, discussions etc 
+
+$^\#$ Lab wherever applicable
+
+(at least 20\% of evaluation must be open-book)
+
+\noindent
+\textbf{NC Criterion:} [30\% of the average of the top three performers or 40\% of median, whichever is lower, or a suitable modification at the discretion of the IC with the concurrence of the Department.]
+\\
+\section{Attendance Policy}
+
+\section{Office Consultation Hour:}
+Will be announced in the class. Also, feel free to email me to seek a prior appointment.
+
+\section{Make-up Policy:}
+Make-up tests will be given only to genuine cases. No make-up will be given for the tutorial tests.
+
+\vspace{1em}
+\begin{flushright}
+\parbox[t]{5cm}{
+ signature\\
+\textbf{Instructor-in-charge}\\
+\textbf{Course number and Title}
+}
+\end{flushright}
+\end{sf}
+\end{document}

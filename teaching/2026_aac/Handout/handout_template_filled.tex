@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\geometry{margin=1in, bottom=1.2in}  % extra space at bottom for page numbers
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{fontawesome5}
+ \usepackage[utf8]{inputenc}
+ \usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\setcounter{secnumdepth}{2}
+\usepackage{helvet}
+\newcommand*\helf{\fontfamily{phv}\selectfont}
+\newcommand{\bitsfont}[1]{\textcolor{bitsblue}{\helf{#1}}}
+
+\definecolor{bitsblue}{rgb}{0.1, 0.1, 0.5} 
+% Header + Footer setup
+% \setlength{\headheight}{100pt}  % space for logo
+% \setlength{\headsep}{20pt}     % space between header and text
+% \setlength{\footskip}{10pt}    % space for footer (page number)
+% \addtolength{\topmargin}{-20pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{
+}
+\rhead{}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+
+% Section formatting
+\titleformat{\section}{\sf\large\bfseries}{\thesection.}{1ex}{}
+%\titleformat{\subsection}{\normalfont\normalsize\bfseries}{}{0pt}{}
+
+\begin{document}
+
+\vspace*{-2cm}
+\noindent\begin{tabular}{l}
+  \includegraphics[height=2.2cm]{bits-logo.png}\\
+  \end{tabular}
+  \begin{tabular}{l}
+\bitsfont{\large{\bfseries{Birla Institute of Technology \& Science}}, \large{Pilani}}\\
+\bitsfont{Pilani Campus}\\
+\bitsfont{Academic-- Undergraduate Studies Division}
+\end{tabular}
+
+%\begin{tabular}{r}
+\includegraphics[width=1.2\textwidth, height=0.6mm]{bits-bar.png}
+%\end{tabular}
+ \begin{sf}
+\begin{center}
+\textbf{FIRST SEMESTER, 2026--2027}\\
+\textbf{Course Handout Part II}
+\end{center}
+\noindent
+ \hfill Date: 1st August 2026 
+
+\noindent
+In addition to part I (General Handout for all courses appended to the Timetable), this portion gives further specific details regarding the course.
+
+\vspace{1em}
+\noindent
+\begin{tabular}{@{}l l}
+\textbf{Course No}             & :  CS G526 \\
+\textbf{Course Title}          & :  Advanced Algorithms \& Complexity \\
+\textbf{Instructor-in-Charge}  & :  Tulasimohan Molli \quad (TA: Hans Krupakar) \\
+\textbf{Instructors}           & :  Tulasimohan Molli \\
+\end{tabular}
+
+\section{Course Description:}
+This course explores advanced paradigms in algorithm design and analysis beyond the core curriculum: randomized algorithms, approximation algorithms, game-theoretic techniques, and parallel \& distributed algorithms, with applications to modern domains such as the Internet/Web and computational biology.
+
+\section{Scope \& Objective of the Course:}
+The course equips students with the mathematical tools and algorithmic techniques needed to reason about computationally hard problems and to design efficient algorithms under uncertainty. Emphasis is placed on both rigorous theoretical analysis and practical algorithm engineering.
+
+\section{Course learning outcomes}
+\begin{enumerate}[label=\bfseries{ CLO{\arabic*}.}, 
+                leftmargin=2cm]
+ \item Design and analyze randomized (Las Vegas \& Monte Carlo) algorithms and reason about their success probability using tail bounds.
+ \item Apply polynomial identity testing, the Schwartz--Zippel lemma, and the Tutte-matrix framework to randomized algorithmic problems.
+ \item Design and analyze approximation algorithms using greedy, LP-rounding, primal-dual, and local-search techniques, and understand limits of approximation.
+ \item Model strategic and online settings using game-theoretic and online-algorithmic tools, and analyze them via competitive ratios and equilibria.
+ \item Describe the key paradigms of parallel/distributed algorithms and algorithms for the Web/Internet and computational biology.
+ \item Survey and present current literature on an advanced topic in algorithms, culminating in a term project.
+\end{enumerate}
+\section{Textbooks:}
+\begin{enumerate}[label=\bfseries{ TB{\arabic*}.}, 
+                leftmargin=2cm]
+\item  \textit{Randomized Algorithms}, R. Motwani \& P. Raghavan, CUP, 1995.
+\item  \textit{Combinatorial Optimization: Algorithms and Complexity}, C. H. Papadimitriou \& K. Steiglitz, PHI, 1982.
+\end{enumerate}
+\section*{  References:}
+\begin{enumerate}[label=\bfseries{Ref{\arabic*}.}, 
+                leftmargin=2cm]
+\item  \textit{The Design of Approximation Algorithms}, D. Williamson \& D. Shmoys, Cambridge University Press.
+\item  \textit{Design and Analysis of Randomized Algorithms}, J. Hromkovic, Springer.
+\item  \textit{Approximation Algorithms}, V. Vazirani, Springer.
+\item  \textit{Complexity and Approximation}, G. Ausiello, P. Crescenzi, G. Gambosi, V. Kann, A. Marchetti-Spaccamela, M. Protasi, Springer.
+\item  \textit{Algorithm Design}, J. Kleinberg \& E. Tardos, Pearson Education.
+\item  Additional reading assigned by the Instructor.
+\end{enumerate}
+
+\section{ Course Plan:}
+Weekly plan for 14 weeks with 3 lectures per week
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+\textbf{Week no.} & \textbf{Module No.} & \textbf{Description} & \textbf{Reference} & \textbf{Learning Outcomes} \\
+\hline
+1.& M1 & Introduction --- Advanced Algorithms \& Complexity; Review of Probability, Tail Bounds \& Complexity Classes & T1 C1 & 1 \\
+\hline
+ 2. & M1 & Las Vegas \& Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz--Zippel & T1 C1 & 1, 2 \\
+\hline
+ 3.  & M2 & Tail Inequalities, Chebyshev, Chernoff Bounds and Applications & T1 C3--4 & 1 \\
+\hline
+4. & M3 & Skip Lists, Hash Tables, Cuckoo Hashing & T1 C8 & 1 \\
+\hline
+5. & M3 & Randomized Graph Algorithms: MST, Shortest Paths, Matching & T1 C10 & 1, 2 \\
+\hline
+6. & M4 & Game Theory: Minimax, Zero-Sum, Equilibrium, Multiplicative Weights & T1 C4 & 4 \\
+\hline
+7. & M5 & Competitive Ratio, Ski Rental, Paging, Secretary Problem & T1 C13 & 4 \\
+\hline
+8. & M6 & Euclid, Euler's phi, Primality Testing & T1 C14 & 1 \\
+\hline
+9. & M7 & PRAM, Prefix, MIS; Byzantine Agreement, Consensus & T1 C12 & 5 \\
+\hline
+10. & M8 & Tutte Matrix, Perfect Matchings, Isolation Lemma, \#P \& Counting & T1 C1, AR & 2, 5 \\
+\hline
+11. & M9 & Greedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP & R1, R3 & 3 \\
+\hline
+12. & M9 & Approximation Schemes: PTAS, APX; Inapproximability, Gap Technique & R4 & 3 \\
+\hline
+13. & M10 & PageRank, Web Graph, Recommendation Systems; Sequence Alignment & AR & 5 \\
+\hline
+14. & M11 & Student Project Proposal Presentations & --- & 6 \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\section{Evaluation Scheme:}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|m{2cm}|m{2.5cm}|m{4cm}|}
+\hline
+\textbf{Component}  & \textbf{Wt (\%)}& \textbf{Duration} &  \textbf{Date \& Time} & \textbf{Comments} \\
+\hline
+Class discussions & 10 (max) & in class & throughout & Open Book \\
+\hline
+Continuous Evaluation$^*$         & 20 & during sem & throughout & Term Project: proposal + final presentation + report, Open Book \\
+\hline
+Lab$^\#$& 10 & weekly & Wed/Fri & Weekly problems, one-on-one interactions, Open Book \\
+\hline
+Mid-Semester  (optional) & 25 & 90 mins. & 06/10 & Closed Book \\
+\hline
+Comprehensive Examination & 35 & 180 mins. & 04/12 AN & Closed Book \\
+\hline
+\end{tabular}
+\end{center}
+$^*$: Could include in-class quiz, classwork, homework, discussions etc 
+
+$^\#$ Lab wherever applicable
+
+(at least 20\% of evaluation must be open-book)
+
+\noindent
+\textbf{NC Criterion:} 30\% of the average of the top three performers or 40\% of median, whichever is lower, or a suitable modification at the discretion of the IC with the concurrence of the Department.
+\\
+\section{Attendance Policy}
+Students are expected to attend all scheduled lectures and labs. As per Institute regulations, attendance below 75\% (with prior approval where applicable) will result in an NC grade.
+
+\section{Office Consultation Hour:}
+Monday 3:00--4:00 PM, H-134. Also, feel free to email me to seek a prior appointment.
+
+\section{Make-up Policy:}
+Make-up tests will be given only to genuine cases with the prior permission of the Instructor-in-Charge, following the regulations set by the AGSRD office. No make-up will be given for the tutorial tests.
+
+\vspace{1em}
+\begin{flushright}
+\parbox[t]{5cm}{
+ \includegraphics[height=1.2cm]{signature.jpeg}\\
+\textbf{Instructor-in-charge}\\
+\textbf{CS G526: Advanced Algorithms \& Complexity}
+}
+\end{flushright}
+\end{sf}
+\end{document}
