@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>lecture_01_lesson_plan – Tulasimohan Molli</title>
+<title>lecture_03_lesson_plan – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -185,13 +185,13 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lesson-plan-lecture-01-course-overview-the-landscape-of-advanced-algorithms" id="toc-lesson-plan-lecture-01-course-overview-the-landscape-of-advanced-algorithms" class="nav-link active" data-scroll-target="#lesson-plan-lecture-01-course-overview-the-landscape-of-advanced-algorithms">Lesson Plan: Lecture 01 — Course Overview &amp; the Landscape of Advanced Algorithms</a>
+  <li><a href="#lesson-plan-lecture-03-probability-review-ii-complexity-classes" id="toc-lesson-plan-lecture-03-probability-review-ii-complexity-classes" class="nav-link active" data-scroll-target="#lesson-plan-lecture-03-probability-review-ii-complexity-classes">Lesson Plan: Lecture 03 — Probability Review II &amp; Complexity Classes</a>
   <ul class="collapse">
   <li><a href="#lecture-time-breakdown" id="toc-lecture-time-breakdown" class="nav-link" data-scroll-target="#lecture-time-breakdown">⏱️ Lecture Time Breakdown</a></li>
   <li><a href="#key-board-work-formulas" id="toc-key-board-work-formulas" class="nav-link" data-scroll-target="#key-board-work-formulas">📝 Key Board Work &amp; Formulas</a>
   <ul class="collapse">
-  <li><a href="#the-four-paradigms-trade-off-matrix" id="toc-the-four-paradigms-trade-off-matrix" class="nav-link" data-scroll-target="#the-four-paradigms-trade-off-matrix">1. The Four Paradigms Trade-off Matrix</a></li>
-  <li><a href="#week-roadmap-outline" id="toc-week-roadmap-outline" class="nav-link" data-scroll-target="#week-roadmap-outline">2. 14-Week Roadmap Outline</a></li>
+  <li><a href="#moment-generating-functions-bounds" id="toc-moment-generating-functions-bounds" class="nav-link" data-scroll-target="#moment-generating-functions-bounds">1. Moment Generating Functions &amp; Bounds</a></li>
+  <li><a href="#randomized-complexity-matrix" id="toc-randomized-complexity-matrix" class="nav-link" data-scroll-target="#randomized-complexity-matrix">2. Randomized Complexity Matrix</a></li>
   </ul></li>
   <li><a href="#concept-checks-interactive-questions" id="toc-concept-checks-interactive-questions" class="nav-link" data-scroll-target="#concept-checks-interactive-questions">❓ Concept Checks &amp; Interactive Questions</a></li>
   </ul></li>
@@ -204,28 +204,30 @@ window.Quarto = {
 
 
 
-<section id="lesson-plan-lecture-01-course-overview-the-landscape-of-advanced-algorithms" class="level1">
-<h1>Lesson Plan: Lecture 01 — Course Overview &amp; the Landscape of Advanced Algorithms</h1>
+<section id="lesson-plan-lecture-03-probability-review-ii-complexity-classes" class="level1">
+<h1>Lesson Plan: Lecture 03 — Probability Review II &amp; Complexity Classes</h1>
 <hr>
 <section id="lecture-time-breakdown" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-time-breakdown">⏱️ Lecture Time Breakdown</h2>
 <pre class="mermaid"><code>gantt
-    title Lecture 01 Agenda (50 Mins)
+    title Lecture 03 Agenda (50 Mins)
     dateFormat  HH:mm
     axisFormat %M
     section Introduction
-    Welcome and Course Logistics   :active, 00:00, 00:15
-    section Core Concepts
-    Defining "Advanced" Paradigms: 00:15, 00:35
-    Applications and Motivation    : 00:35, 00:45
+    Recap and Motivation           :active, 00:00, 00:05
+    section Moments &amp; Bounds
+    MGFs and Tail Bounds Preview   : 00:05, 00:20
+    section Complexity
+    Randomized Complexity Classes  : 00:20, 00:35
+    Inclusion and Relations        : 00:35, 00:45
     section Wrap-Up
-    Concept Check and Next Class   : 00:45, 00:50</code></pre>
+    Concept Check and Wrap-Up      : 00:45, 00:50</code></pre>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 2%">
-<col style="width: 1%">
-<col style="width: 65%">
-<col style="width: 29%">
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 22%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -237,28 +239,34 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><strong>00:00–00:15</strong></td>
-<td style="text-align: center;">15 mins</td>
-<td style="text-align: left;"><strong>Welcome &amp; Course Logistics</strong>: Introduce course info, evaluation scheme, textbooks (T1, T2, reference books), consultation hours, and lab timings.</td>
-<td style="text-align: left;">Establish expectations. Highlight the 20% weight on the Term Project (Proposal + Presentation + Report).</td>
+<td style="text-align: center;"><strong>00:00–00:05</strong></td>
+<td style="text-align: center;">5 mins</td>
+<td style="text-align: left;"><strong>Recap &amp; Motivation</strong>: Quick recap of expectation and linearity of expectation. Introduce today’s theme: transitioning from expected values to bound deviations (tail bounds) and formalizing randomized computation classes.</td>
+<td style="text-align: left;">Connect probability theory to computational complexity.</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><strong>00:15–00:35</strong></td>
-<td style="text-align: center;">20 mins</td>
-<td style="text-align: left;"><strong>What is “Advanced”? The Four Paradigms</strong>: Discuss why standard polynomial-time exact sequential algorithms are insufficient. Introduce: (1) Randomized (trading certainty for efficiency); (2) Approximation (trading optimality for runtime); (3) Game-theoretic/Online (handling incomplete info); (4) Parallel &amp; Distributed (scaling via hardware).</td>
-<td style="text-align: left;"><strong>Board Work:</strong> Write down the 4 paradigms with a one-sentence summary of what they trade off (e.g.&nbsp;certainty, optimality, space/time, etc.).</td>
+<td style="text-align: center;"><strong>00:05–00:20</strong></td>
+<td style="text-align: center;">15 mins</td>
+<td style="text-align: left;"><strong>Moments &amp; MGFs / Tail Bounds Preview</strong>: Define <span class="math inline">k</span>-th moments. Define the Moment Generating Function (MGF) <span class="math inline">M_X(t) = E[e^{tX}]</span>. Preview tail bounds:<br>- <em>Markov’s:</em> Bound for non-negative RVs.<br>- <em>Chebyshev’s:</em> Bound based on variance.</td>
+<td style="text-align: left;"><strong>Board Work</strong>: Write down definition of MGF. State Markov’s and Chebyshev’s inequalities clearly.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;"><strong>00:35–00:45</strong></td>
-<td style="text-align: center;">10 mins</td>
-<td style="text-align: left;"><strong>Application Domains</strong>: Illustrate paradigms using real-world domains like PageRank/Rec Systems (Online/Randomized) and Sequence Alignment/BLAST (Approximation/Parallel).</td>
-<td style="text-align: left;"><strong>Real-world context:</strong> Show how modern services (Google search, Amazon recommendations) are built on these paradigms rather than standard sorting/searching.</td>
+<td style="text-align: center;"><strong>00:20–00:35</strong></td>
+<td style="text-align: center;">15 mins</td>
+<td style="text-align: left;"><strong>Randomized Complexity Classes</strong>: Define decision problems as languages. Introduce classes:<br>- <strong>RP (Randomized Polynomial-Time)</strong>: One-sided error (yes-instances have <span class="math inline">\ge 1/2</span> success; no-instances always output “no”).<br>- <strong>co-RP</strong>: One-sided error on the other side.<br>- <strong>BPP (Bounded-Error Probabilistic Poly-Time)</strong>: Two-sided bounded error (<span class="math inline">\ge 2/3</span> success for both).<br>- <strong>ZPP (Zero-Error Probabilistic Poly-Time)</strong>: Expected polynomial time, zero error.</td>
+<td style="text-align: left;"><strong>Definition Table</strong>: Write down a matrix defining the error probabilities for RP, co-RP, and BPP on the board.</td>
 </tr>
 <tr class="even">
+<td style="text-align: center;"><strong>00:35–00:45</strong></td>
+<td style="text-align: center;">10 mins</td>
+<td style="text-align: left;"><strong>Complexity Class Relations</strong>: Walk through the inclusion diagram. Focus on <span class="math inline">\text{ZPP} = \text{RP} \cap \text{co-RP}</span>. Discuss the open question: “Is <span class="math inline">\text{BPP} = \text{P}</span>?”.</td>
+<td style="text-align: left;"><strong>Inclusion Drawing</strong>: Draw the Euler diagram of complexity classes (<span class="math inline">P \subseteq ZPP \subseteq RP \subseteq NP</span>, and <span class="math inline">RP \subseteq BPP</span>).</td>
+</tr>
+<tr class="odd">
 <td style="text-align: center;"><strong>00:45–00:50</strong></td>
 <td style="text-align: center;">5 mins</td>
-<td style="text-align: left;"><strong>Concept Check &amp; Next Class Preview</strong>: Run a brief concept check to test intuition on the 4 paradigms. Preview Lecture 2 (Probability Review).</td>
-<td style="text-align: left;">Active learning. Gauge student readiness for mathematical review.</td>
+<td style="text-align: left;"><strong>Concept Check &amp; Next Class Preview</strong>: Walk through the class classification exercise. Preview Week 2 (Las Vegas vs.&nbsp;Monte Carlo and Freivalds’ algorithm).</td>
+<td style="text-align: left;">Confirm that students grasp the difference between one-sided and two-sided error.</td>
 </tr>
 </tbody>
 </table>
@@ -266,68 +274,32 @@ window.Quarto = {
 </section>
 <section id="key-board-work-formulas" class="level2">
 <h2 class="anchored" data-anchor-id="key-board-work-formulas">📝 Key Board Work &amp; Formulas</h2>
-<section id="the-four-paradigms-trade-off-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="the-four-paradigms-trade-off-matrix">1. The Four Paradigms Trade-off Matrix</h3>
+<section id="moment-generating-functions-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="moment-generating-functions-bounds">1. Moment Generating Functions &amp; Bounds</h3>
 <ul>
-<li>Write this table on the board to illustrate what each paradigm trades off:</li>
+<li><strong>Moment Generating Function (MGF):</strong> <span class="math display">M_X(t) = E\left[e^{tX}\right]</span></li>
+<li><strong>Markov’s Inequality:</strong> For a non-negative random variable <span class="math inline">X \ge 0</span> and any <span class="math inline">a &gt; 0</span>: <span class="math display">\Pr[X \ge a] \le \frac{E[X]}{a}</span></li>
+<li><strong>Chebyshev’s Inequality:</strong> For any random variable <span class="math inline">X</span> with mean <span class="math inline">\mu</span> and variance <span class="math inline">\sigma^2</span>, and any <span class="math inline">t &gt; 0</span>: <span class="math display">\Pr[|X - \mu| \ge t] \le \frac{\sigma^2}{t^2}</span></li>
 </ul>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Paradigm</th>
-<th style="text-align: left;">Input/Environment</th>
-<th style="text-align: left;">What We Optimize</th>
-<th style="text-align: left;">What We Trade Off / Accept</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Randomized</strong></td>
-<td style="text-align: left;">Fixed / Arbitrary</td>
-<td style="text-align: left;">Expected Runtime / Error Rate</td>
-<td style="text-align: left;">Small chance of failure or varying runtime</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Approximation</strong></td>
-<td style="text-align: left;">Fixed / NP-Hard</td>
-<td style="text-align: left;">Approximate Solution Quality</td>
-<td style="text-align: left;">Exact global optimality (accept <span class="math inline">\alpha</span>-optimal)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Online / Game-theoretic</strong></td>
-<td style="text-align: left;">Arrives Sequentially / Strategic</td>
-<td style="text-align: left;">Competitive Ratio / Regret</td>
-<td style="text-align: left;">Full knowledge of future inputs</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Parallel / Distributed</strong></td>
-<td style="text-align: left;">Shared or Partitioned</td>
-<td style="text-align: left;">Work and Depth (Speedup)</td>
-<td style="text-align: left;">Single-core synchronous model</td>
-</tr>
-</tbody>
-</table>
 </section>
-<section id="week-roadmap-outline" class="level3">
-<h3 class="anchored" data-anchor-id="week-roadmap-outline">2. 14-Week Roadmap Outline</h3>
+<section id="randomized-complexity-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="randomized-complexity-matrix">2. Randomized Complexity Matrix</h3>
+<p>Write the criteria for a language <span class="math inline">L</span> and a randomized polynomial-time algorithm <span class="math inline">A(x, r)</span> using random string <span class="math inline">r</span>:</p>
 <ul>
-<li>Draw a rough timeline on the board:
+<li><strong>RP</strong>:
 <ul>
-<li><strong>Weeks 1–3</strong>: Foundations &amp; Concentration Bounds (Module 1, 2)</li>
-<li><strong>Weeks 4–5</strong>: Randomized Structures &amp; Graph Algorithms (Module 3)</li>
-<li><strong>Weeks 6–7</strong>: Games &amp; Online Decisions (Module 4, 5)</li>
-<li><strong>Week 8</strong>: Algebraic &amp; Number-Theoretic Algorithms (Module 6)</li>
-<li><strong>Week 9</strong>: Parallel &amp; Distributed Systems (Module 7)</li>
-<li><strong>Week 10</strong>: Advanced Counting / Tutte Matrix (Module 8)</li>
-<li><strong>Weeks 11–12</strong>: Approximation &amp; Inapproximability (Module 9)</li>
-<li><strong>Week 13</strong>: Web &amp; Biological Networks (Module 10)</li>
-<li><strong>Week 14</strong>: Project Presentations (Module 11)</li>
+<li>If <span class="math inline">x \in L \implies \Pr_r[A(x,r) = \text{YES}] \ge 1/2</span></li>
+<li>If <span class="math inline">x \notin L \implies \Pr_r[A(x,r) = \text{YES}] = 0</span> (no false positives)</li>
+</ul></li>
+<li><strong>co-RP</strong>:
+<ul>
+<li>If <span class="math inline">x \in L \implies \Pr_r[A(x,r) = \text{YES}] = 1</span> (no false negatives)</li>
+<li>If <span class="math inline">x \notin L \implies \Pr_r[A(x,r) = \text{YES}] \le 1/2</span></li>
+</ul></li>
+<li><strong>BPP</strong>:
+<ul>
+<li>If <span class="math inline">x \in L \implies \Pr_r[A(x,r) = \text{YES}] \ge 2/3</span></li>
+<li>If <span class="math inline">x \notin L \implies \Pr_r[A(x,r) = \text{YES}] \le 1/3</span></li>
 </ul></li>
 </ul>
 <hr>
@@ -336,8 +308,12 @@ window.Quarto = {
 <section id="concept-checks-interactive-questions" class="level2">
 <h2 class="anchored" data-anchor-id="concept-checks-interactive-questions">❓ Concept Checks &amp; Interactive Questions</h2>
 <ol type="1">
-<li><p><strong>Paradigms and Uncertainty:</strong> &gt; <em>Question:</em> “Which algorithmic paradigm specifically handles uncertainty in: (a) <em>Inputs arriving dynamically over time</em>? (b) <em>Algorithm runtime</em>? (c) <em>Solution quality for NP-hard problems</em>?” &gt; <em>Answer:</em> &gt; - (a) <strong>Online / Game-theoretic Algorithms</strong> (decisions must be made without knowing the future). &gt; - (b) <strong>Randomized Algorithms</strong> (specifically Las Vegas algorithms where runtime is a random variable, but the answer is always correct). &gt; - (c) <strong>Approximation Algorithms</strong> (we guarantee a solution within a factor <span class="math inline">\alpha</span> of the optimal).</p></li>
-<li><p><strong>The Project Proposal Requirement:</strong> &gt; <em>Question:</em> “What constitutes a good Term Project topic for this course?” &gt; <em>Answer:</em> An ideal project involves either applying one of the four paradigms to a domain of interest (e.g., bio-informatics, web graphs, parallel systems) or implementing and evaluating/extending a modern algorithm from recent literature.</p></li>
+<li><p><strong>Classifying a Randomized Primality Tester:</strong> &gt; <em>Question:</em> “Suppose you have a randomized algorithm <span class="math inline">A(n)</span> to test if a number <span class="math inline">n</span> is prime. If <span class="math inline">n</span> is composite, <span class="math inline">A(n)</span> always outputs ‘Composite’. If <span class="math inline">n</span> is prime, <span class="math inline">A(n)</span> outputs ‘Prime’ with probability <span class="math inline">0.6</span>, and ‘Composite’ with probability <span class="math inline">0.4</span>. Which complexity class (from the perspective of the language <span class="math inline">\text{PRIME}</span>) does this algorithm place the problem in?”<br>
+&gt; <em>Answer:</em><br>
+&gt; - The language is <span class="math inline">L = \text{PRIME}</span>. &gt; - If <span class="math inline">n \in L</span> (prime), <span class="math inline">\Pr[A(n) = \text{Prime}] = 0.6 \ge 1/2</span>. &gt; - If <span class="math inline">n \notin L</span> (composite), <span class="math inline">\Pr[A(n) = \text{Prime}] = 0</span> (it always outputs ‘Composite’). &gt; - This matches the definition of <strong>RP</strong> (one-sided error with no false positives for language membership).</p></li>
+<li><p><strong>Las Vegas vs.&nbsp;ZPP:</strong> &gt; <em>Question:</em> “Why is <span class="math inline">\text{ZPP}</span> defined as <span class="math inline">\text{RP} \cap \text{co-RP}</span>?”<br>
+&gt; <em>Answer:</em><br>
+&gt; - If a problem is in both RP and co-RP, we have two algorithms: <span class="math inline">A_1</span> (which never lies when it says “No”) and <span class="math inline">A_2</span> (which never lies when it says “Yes”). &gt; - We can run both on an input <span class="math inline">x</span>. If <span class="math inline">A_1</span> outputs “Yes” or <span class="math inline">A_2</span> outputs “No”, we get a guaranteed correct answer. &gt; - If we don’t get a definitive answer, we simply repeat the trials with new random bits. The expected number of rounds is small (<span class="math inline">O(1)</span>), yielding a zero-error expected polynomial-time algorithm (<span class="math inline">\text{ZPP}</span>).</p></li>
 </ol>
 
 
