@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Bounding box -->
+  <rect x="20" y="20" width="360" height="360" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+  <text x="380" y="16" text-anchor="end" font-size="12" font-family="sans-serif" fill="#666">BOUNDING BOX</text>
+  <!-- Irregular shape (like a kidney/amoeba blob) -->
+  <path d="M 200 60 
+           C 260 50, 320 80, 340 150 
+           C 360 220, 330 280, 290 310 
+           C 250 340, 180 350, 130 320 
+           C 80 290, 50 240, 60 180 
+           C 70 120, 120 70, 200 60 Z" 
+        fill="rgba(52, 152, 219, 0.15)" stroke="#3498db" stroke-width="2.5"/>
+  <text x="200" y="210" text-anchor="middle" font-size="13" font-family="sans-serif" fill="#3498db">$S$</text>
+  <!-- Darts scattered in bounding box -->
+  <!-- Inside S (green) -->
+  <circle cx="180" cy="120" r="4" fill="#27ae60"/>
+  <circle cx="220" cy="110" r="4" fill="#27ae60"/>
+  <circle cx="260" cy="130" r="4" fill="#27ae60"/>
+  <circle cx="300" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="280" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="310" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="290" cy="270" r="4" fill="#27ae60"/>
+  <circle cx="250" cy="300" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="310" r="4" fill="#27ae60"/>
+  <circle cx="160" cy="300" r="4" fill="#27ae60"/>
+  <circle cx="120" cy="280" r="4" fill="#27ae60"/>
+  <circle cx="100" cy="240" r="4" fill="#27ae60"/>
+  <circle cx="90" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="110" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="140" cy="130" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="180" r="4" fill="#27ae60"/>
+  <circle cx="230" cy="190" r="4" fill="#27ae60"/>
+  <circle cx="170" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="150" cy="240" r="4" fill="#27ae60"/>
+  <circle cx="240" cy="250" r="4" fill="#27ae60"/>
+  <circle cx="210" cy="140" r="4" fill="#27ae60"/>
+  <circle cx="270" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="130" cy="200" r="4" fill="#27ae60"/>
+  <circle cx="200" cy="260" r="4" fill="#27ae60"/>
+  <circle cx="170" cy="160" r="4" fill="#27ae60"/>
+  <circle cx="260" cy="230" r="4" fill="#27ae60"/>
+  <circle cx="220" cy="280" r="4" fill="#27ae60"/>
+  <circle cx="140" cy="170" r="4" fill="#27ae60"/>
+  <circle cx="180" cy="250" r="4" fill="#27ae60"/>
+  <circle cx="230" cy="150" r="4" fill="#27ae60"/>
+  <!-- Outside S (red) -->
+  <circle cx="50" cy="60" r="4" fill="#e74c3c"/>
+  <circle cx="150" cy="50" r="4" fill="#e74c3c"/>
+  <circle cx="250" cy="45" r="4" fill="#e74c3c"/>
+  <circle cx="340" cy="60" r="4" fill="#e74c3c"/>
+  <circle cx="360" cy="120" r="4" fill="#e74c3c"/>
+  <circle cx="350" cy="200" r="4" fill="#e74c3c"/>
+  <circle cx="360" cy="290" r="4" fill="#e74c3c"/>
+  <circle cx="340" cy="350" r="4" fill="#e74c3c"/>
+  <circle cx="260" cy="360" r="4" fill="#e74c3c"/>
+  <circle cx="160" cy="365" r="4" fill="#e74c3c"/>
+  <circle cx="60" cy="350" r="4" fill="#e74c3c"/>
+  <circle cx="40" cy="280" r="4" fill="#e74c3c"/>
+  <circle cx="35" cy="160" r="4" fill="#e74c3c"/>
+  <circle cx="80" cy="100" r="4" fill="#e74c3c"/>
+  <circle cx="330" cy="150" r="4" fill="#e74c3c"/>
+  <circle cx="70" cy="320" r="4" fill="#e74c3c"/>
+  <circle cx="310" cy="320" r="4" fill="#e74c3c"/>
+  <circle cx="200" cy="50" r="4" fill="#e74c3c"/>
+  <circle cx="360" cy="40" r="4" fill="#e74c3c"/>
+  <circle cx="40" cy="360" r="4" fill="#e74c3c"/>
+  <!-- Legend -->
+  <rect x="30" y="375" width="12" height="12" fill="#27ae60" rx="6"/>
+  <text x="48" y="386" font-size="11" font-family="sans-serif" fill="#333">Inside (count $M$)</text>
+  <rect x="170" y="375" width="12" height="12" fill="#e74c3c" rx="6"/>
+  <text x="188" y="386" font-size="11" font-family="sans-serif" fill="#333">Outside</text>
+</svg>

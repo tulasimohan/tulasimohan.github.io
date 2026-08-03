@@ -174,7 +174,7 @@ About the Course
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>This course explores advanced paradigms in algorithm design and analysis beyond the core curriculum. Students will engage with randomized and approximation algorithms, game-theoretic techniques, and the design of parallel and distributed algorithms, with applications to modern domains such as the Internet/Web and computational biology.</p>
+<p>This course explores advanced paradigms in algorithm design and analysis beyond the core curriculum, coupled with a serious study of complexity theory. It covers randomized algorithms, approximation algorithms, online algorithms, and a focused introduction to two-player matrix games (von Neumann’s minimax theorem and the multiplicative weights update), alongside parallel &amp; distributed algorithms. Complexity theory is treated in depth — NP-completeness and reductions, the polynomial hierarchy, counting (#P), and interactive &amp; zero-knowledge proofs — showing both what is computationally hard and what can still be achieved for hard problems.</p>
 </div>
 </div>
 </div>
@@ -206,10 +206,8 @@ Timings and Venue
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Instructor:</strong> Tulasimohan Molli (TA: Hans Krupakar)</p>
-<p><strong>Lectures:</strong> Monday 2:00–3:00 PM (I114), Tuesday 12:00–1:00 PM (I114), Thursday 12:00–1:00 PM (I114)<br>
-<strong>Labs:</strong> Wednesday 1:00–3:00 PM (I015), Friday 1:00–3:00 PM (I015)<br>
-<strong>Chamber Consultation:</strong> Monday 3:00–4:00 PM @ H-134</p>
+<p><strong>Instructor:</strong> Tulasimohan Molli (TA: Hans Krupakar) <strong>Venue:</strong> I114 (lectures), I015 (lab) <strong>Venue:</strong> I114 (lectures), I015 (lab) <strong>Lectures:</strong> Monday 2:00–3:00 PM (I114) · Tuesday 12:00–1:00 PM (I114) · Thursday 12:00–1:00 PM (I114) <strong>Lab:</strong> Thursday 9:00–11:00 AM (I015) <strong>Lab:</strong> Thursday 9:00–11:00 AM (I015) <strong>Midsem:</strong> 06/10 <strong>Endsem:</strong> 04/12</p>
+<p><strong>Chamber Consultation:</strong> Monday 3:00–4:00 PM @ H-134</p>
 </div>
 </div>
 </div>
@@ -264,14 +262,16 @@ Evaluation
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 42%">
-<col style="width: 16%">
-<col style="width: 22%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 29%">
+<col style="width: 17%">
+<col style="width: 17%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Lectures</th>
+<th style="text-align: center;">Week</th>
+<th style="text-align: center;">Module</th>
 <th>Learning Objectives</th>
 <th>Topics</th>
 <th>Reference</th>
@@ -280,98 +280,100 @@ Evaluation
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td>Course scope and landscape</td>
-<td>Introduction – Advanced Algorithms &amp; Complexity</td>
-<td>—</td>
+<td style="text-align: center;">M1</td>
+<td>Course scope and landscape; probability &amp; complexity refresher</td>
+<td>Introduction — Advanced Algorithms &amp; Complexity; Review of Probability &amp; Complexity Classes</td>
+<td>T1 Ch1</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td>Refresher on probability and complexity classes</td>
-<td>Review of Probability, Tail Bounds &amp; Complexity Classes</td>
+<td style="text-align: center;">M1</td>
+<td>Classify randomized algorithms; verify matrix products, identities, min-cuts</td>
+<td>Las Vegas &amp; Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz–Zippel</td>
 <td>T1 Ch1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td>Randomized algorithm classifications</td>
-<td>Las Vegas &amp; Monte Carlo, Freivalds, Min-Cut, Polynomial Identity Testing, Schwartz-Zippel</td>
-<td>T1 Ch1</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">4</td>
-<td>Success rates via tail inequalities</td>
-<td>Tail Inequalities, Chebyshev, Chernoff Bounds &amp; Applications</td>
-<td>T1 Ch3-4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td>Randomized data structures</td>
+<td style="text-align: center;">M2</td>
+<td>Bound deviations via tail inequalities</td>
+<td>Tail Inequalities, Chebyshev, Chernoff Bounds &amp; Applications</td>
+<td>T1 Ch3–4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">M3</td>
+<td>Expected-time data structures</td>
 <td>Skip Lists, Hash Tables, Cuckoo Hashing</td>
 <td>T1 Ch8</td>
 </tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>Randomized vs deterministic graph algorithms</td>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">M3</td>
+<td>Randomize classic graph algorithms</td>
 <td>Randomized Graph Algorithms: MST, Shortest Paths, Matching</td>
 <td>T1 Ch10</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">2</td>
-<td>Game-theoretic techniques</td>
-<td>Game Theory: Minimax, Zero-Sum, Nash Equilibrium, Multiplicative Weights</td>
-<td>T1 Ch4</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>Online decision-making under uncertainty</td>
-<td>Online Algorithms: Competitive Ratio, Ski Rental, Paging, Secretary Problem</td>
-<td>T1 Ch13</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2</td>
-<td>Number-theoretic algorithms</td>
-<td>Number-Theoretic Algorithms: Euclid, Euler’s phi, Primality Testing</td>
-<td>T1 Ch14</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">2</td>
-<td>Parallel and distributed algorithms</td>
-<td>Parallel: PRAM, Prefix, MIS; Distributed: Byzantine Agreement, Consensus</td>
-<td>T1 Ch12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">2</td>
-<td>Tutte matrix and counting</td>
-<td>Tutte Matrix, Perfect Matchings, Isolation Lemma, #P &amp; Counting</td>
-<td>T1 Ch1, AR</td>
-</tr>
 <tr class="even">
 <td style="text-align: center;">6</td>
-<td>Approximation algorithms</td>
-<td>Approximation: Greedy, LP Rounding, Primal-Dual, Local Search, Set Cover, TSP</td>
+<td style="text-align: center;">M4</td>
+<td>Two-player matrix games: minimax and multiplicative weights</td>
+<td>Two-Player Matrix Games; von Neumann’s Minimax Theorem; Multiplicative Weights Update</td>
+<td>T1 Ch4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">M5</td>
+<td>Online decision-making under uncertainty</td>
+<td>Competitive Ratio, Ski Rental, Paging, Secretary Problem</td>
+<td>T1 Ch13</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">M6</td>
+<td>Number-theoretic algorithms</td>
+<td>Euclid, Euler’s φ, Primality Testing</td>
+<td>T1 Ch14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">M7</td>
+<td>Parallel and distributed algorithms</td>
+<td>PRAM, Prefix, MIS; Byzantine Agreement, Consensus</td>
+<td>T1 Ch12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">M8</td>
+<td>NP-completeness framework and the polynomial hierarchy</td>
+<td>NP-Completeness &amp; Reductions: Decision Problems, Cook–Levin, Polynomial Hierarchy</td>
+<td>T3 Ch2–4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">M9</td>
+<td>Approximation by greedy, LP rounding, primal-dual, local search</td>
+<td>Greedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP</td>
 <td>R1, R3</td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">4</td>
-<td>Limits of approximation</td>
-<td>Hardness of Approximation: Gap Technique, APX, PTAS, Inapproximability</td>
-<td>R4</td>
-</tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
-<td>Algorithms for Web/Internet</td>
-<td>Web Algorithms: PageRank, Web Graph, Recommendation Systems</td>
-<td>AR</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">M9/M10</td>
+<td>Approximation schemes and limits of approximability; interactive proofs</td>
+<td>PTAS, APX; Inapproximability, Gap Technique; Interactive Proofs</td>
+<td>R4, T3 Ch8, 11</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">1</td>
-<td>Algorithms for computational biology</td>
-<td>Computational Biology: Sequence Alignment, String Algorithms</td>
-<td>AR</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">M10</td>
+<td>Advanced complexity: interactive &amp; zero-knowledge proofs, counting, algebraic methods</td>
+<td>Interactive &amp; Zero-Knowledge Proofs; #P &amp; Counting; Algebraic Counting Methods</td>
+<td>T3 Ch8–9, T1 Ch1</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">2</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">M11</td>
 <td>Student project proposal presentations</td>
-<td>Project Proposal Presentations</td>
+<td>Student Project Proposal Presentations</td>
 <td>—</td>
 </tr>
 </tbody>
@@ -389,13 +391,14 @@ Evaluation
 </thead>
 <tbody>
 <tr class="odd">
-<td><em>TBD</em></td>
-<td><em>TBD</em></td>
-<td><em>TBD</em></td>
-<td><em>TBD</em></td>
+<td>Lecture 1</td>
+<td>2026-08-03</td>
+<td>Course Overview</td>
+<td><a href="lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html"><img src="images/slides-icon.svg" width="14" alt="Slides"></a></td>
 </tr>
 </tbody>
 </table>
+<p>Slides are added after each lecture is delivered.</p>
 </div>
 </div>
 </div>
