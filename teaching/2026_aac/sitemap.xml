@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html</loc>
-    <lastmod>2026-08-03T14:43:56.293Z</lastmod>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-02-probability-review-i-random-variables-and-expectation.html</loc>
+    <lastmod>2026-08-04T08:09:34.838Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/index.html</loc>
-    <lastmod>2026-08-03T14:43:56.292Z</lastmod>
+    <lastmod>2026-08-04T08:09:34.837Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html</loc>
+    <lastmod>2026-08-04T08:09:34.838Z</lastmod>
   </url>
 </urlset>
