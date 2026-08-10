@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-03-probability-review-ii-and-complexity-classes.html</loc>
-    <lastmod>2026-08-10T11:18:58.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html</loc>
-    <lastmod>2026-08-10T11:18:58.472Z</lastmod>
-  </url>
-  <url>
-    <loc>https://tulasimohan.github.io/teaching/2026_aac/index.html</loc>
-    <lastmod>2026-08-10T11:18:58.471Z</lastmod>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-04-applications-and-probabilistic-method.html</loc>
+    <lastmod>2026-08-10T11:30:39.905Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-02-probability-review-i-random-variables-and-expectation.html</loc>
-    <lastmod>2026-08-10T11:18:58.472Z</lastmod>
+    <lastmod>2026-08-10T11:30:39.905Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/index.html</loc>
+    <lastmod>2026-08-10T11:30:39.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html</loc>
+    <lastmod>2026-08-10T11:30:39.905Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-03-probability-review-ii-and-complexity-classes.html</loc>
+    <lastmod>2026-08-10T11:30:39.905Z</lastmod>
   </url>
 </urlset>
