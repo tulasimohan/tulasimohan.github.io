@@ -1218,6 +1218,306 @@ align-items: flex-start;
 overflow-x: visible;
 }
 </style>
+  <style type="text/css">
+.prob-viz {
+--pv-red: #d71920;
+--pv-yellow: #fecc0b;
+--pv-cyan: #5ccae8;
+--pv-dark: #2b2b2b;
+--pv-gray: #888;
+--pv-bg: #fafafa;
+--pv-border: #d0d0d0;
+box-sizing: border-box;
+font-family: "Heliotrope", "Segoe UI", sans-serif;
+margin: 0.5rem auto;
+padding: 0.6rem 0.8rem 0.4rem;
+max-width: 920px;
+background: var(--pv-bg);
+border: 1px solid var(--pv-border);
+border-radius: 8px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.prob-viz *,
+.prob-viz *::before,
+.prob-viz *::after {
+box-sizing: border-box;
+}
+
+.prob-viz .pv-stage {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.9rem;
+flex-wrap: wrap;
+min-height: 150px;
+padding: 0.3rem 0;
+}
+.prob-viz .pv-stage svg,
+.prob-viz .pv-stage canvas {
+display: block;
+max-width: 100%;
+background: #fff;
+border-radius: 6px;
+}
+
+.prob-viz .pv-controls {
+display: flex;
+align-items: center;
+gap: 0.45rem;
+margin-top: 0.4rem;
+padding-top: 0.45rem;
+border-top: 1px solid var(--pv-border);
+}
+.prob-viz button {
+font-family: "Heliotrope", "Segoe UI", sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+color: #fff;
+background: var(--pv-cyan);
+border: none;
+border-radius: 5px;
+padding: 0.28rem 0.9rem;
+cursor: pointer;
+transition: background 0.15s, transform 0.1s;
+}
+.prob-viz button:hover {
+filter: brightness(0.92);
+}
+.prob-viz button:active {
+transform: scale(0.96);
+}
+.prob-viz button.pv-play {
+background: var(--pv-red);
+min-width: 92px;
+}
+.prob-viz button.pv-step {
+background: var(--pv-yellow);
+color: var(--pv-dark);
+}
+.prob-viz button.pv-reset {
+background: #999;
+}
+.prob-viz button:disabled {
+opacity: 0.45;
+cursor: default;
+}
+.prob-viz .pv-status {
+margin-left: auto;
+font-size: 0.8rem;
+color: #555;
+font-weight: 500;
+}
+
+.prob-viz .pv-readout {
+display: flex;
+gap: 0.6rem;
+flex-wrap: wrap;
+justify-content: center;
+font-size: 0.9rem;
+color: var(--pv-dark);
+}
+.prob-viz .pv-badge {
+display: inline-block;
+background: #fff;
+border: 1px solid var(--pv-border);
+border-radius: 999px;
+padding: 0.15rem 0.7rem;
+font-weight: 600;
+}
+.prob-viz .pv-badge b {
+color: var(--pv-red);
+}
+
+.prob-viz .pv-bars {
+display: flex;
+align-items: flex-end;
+gap: 0.35rem;
+height: 120px;
+padding: 0.3rem 0.2rem 0;
+}
+.prob-viz .pv-bar-wrap {
+display: flex;
+flex-direction: column;
+align-items: center;
+flex: 1;
+min-width: 0;
+}
+.prob-viz .pv-bar {
+width: 100%;
+max-width: 56px;
+background: var(--pv-cyan);
+border-radius: 3px 3px 0 0;
+transition: height 0.35s ease, background 0.3s;
+position: relative;
+}
+.prob-viz .pv-bar.pv-hot {
+background: var(--pv-red);
+}
+.prob-viz .pv-bar-label {
+margin-top: 0.18rem;
+font-size: 0.72rem;
+color: #555;
+white-space: nowrap;
+}
+.prob-viz .pv-bar-val {
+position: absolute;
+top: -1.1rem;
+left: 0;
+right: 0;
+text-align: center;
+font-size: 0.68rem;
+color: #333;
+opacity: 0;
+transition: opacity 0.2s;
+}
+.prob-viz .pv-bar-wrap:hover .pv-bar-val {
+opacity: 1;
+}
+
+.prob-viz .pv-line-wrap {
+width: 100%;
+max-width: 560px;
+}
+
+.prob-viz .pv-venn {
+position: relative;
+width: 280px;
+height: 190px;
+}
+.prob-viz .pv-venn ellipse {
+fill-opacity: 0.25;
+stroke-width: 2.5;
+transition: fill-opacity 0.3s;
+}
+.prob-viz .pv-venn .pv-vA {
+fill: var(--pv-red);
+stroke: var(--pv-red);
+}
+.prob-viz .pv-venn .pv-vB {
+fill: var(--pv-cyan);
+stroke: var(--pv-cyan);
+}
+.prob-viz .pv-venn .pv-vA.pv-lit {
+fill-opacity: 0.85;
+}
+.prob-viz .pv-venn .pv-vB.pv-lit {
+fill-opacity: 0.85;
+}
+.prob-viz .pv-venn text {
+font-family: "Heliotrope", sans-serif;
+font-size: 15px;
+fill: #111;
+text-anchor: middle;
+font-weight: 600;
+}
+.prob-viz .pv-venn .pv-count {
+font-size: 15px;
+font-weight: 700;
+fill: #111;
+}
+
+.prob-viz .pv-grid {
+display: grid;
+gap: 0.4rem;
+}
+.prob-viz .pv-cell {
+display: flex;
+align-items: center;
+justify-content: center;
+background: #fff;
+border: 1.5px solid var(--pv-border);
+border-radius: 6px;
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--pv-dark);
+min-height: 44px;
+min-width: 64px;
+transition: background 0.25s, border-color 0.25s, transform 0.15s;
+}
+.prob-viz .pv-cell.pv-hot {
+background: var(--pv-yellow);
+border-color: #c9a300;
+transform: scale(1.04);
+}
+.prob-viz .pv-cell.pv-dim {
+opacity: 0.35;
+}
+
+.prob-viz .pv-object {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 92px;
+height: 92px;
+border-radius: 50%;
+background: var(--pv-yellow);
+color: var(--pv-dark);
+font-size: 2.6rem;
+font-weight: 800;
+box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.12);
+transition: transform 0.4s;
+}
+.prob-viz .pv-object.pv-flip {
+animation: pv-flip 0.45s ease;
+}
+@keyframes pv-flip {
+0% {
+transform: rotateY(0);
+}
+50% {
+transform: rotateY(180deg);
+}
+100% {
+transform: rotateY(360deg);
+}
+}
+.prob-viz .pv-object.pv-die {
+border-radius: 12px;
+background: #fff;
+border: 2px solid var(--pv-dark);
+font-size: 1.6rem;
+}
+
+.prob-viz .pv-tree line {
+stroke: var(--pv-dark);
+stroke-width: 2;
+}
+.prob-viz .pv-tree text {
+font-family: "Heliotrope", sans-serif;
+font-size: 14px;
+fill: #111;
+font-weight: 600;
+}
+.prob-viz .pv-tree .pv-node circle {
+fill: var(--pv-cyan);
+stroke: #3a3a3a;
+stroke-width: 1.5;
+transition: fill 0.3s;
+}
+.prob-viz .pv-tree .pv-node.pv-lit circle {
+fill: var(--pv-red);
+}
+
+.prob-viz .pv-axis {
+font-size: 12px;
+fill: #555;
+}
+.prob-viz .pv-title {
+text-align: center;
+font-weight: 700;
+font-size: 0.9rem;
+color: var(--pv-dark);
+margin-bottom: 0.2rem;
+}
+
+.prob-viz.pv-compact .pv-stage {
+min-height: 110px;
+}
+.prob-viz.pv-compact .pv-bars {
+height: 90px;
+}
+</style>
   
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1764,360 +2064,8 @@ display: block;
 margin-left: auto;
 margin-right: 0; }
 </style>
-  </head><body class="quarto-light">/* ============================================================
-     prob-viz.css — interactive probability visual aids
-     Vanilla JS + inline SVG/canvas, designed for revealjs 1050x700
-     BITS accent palette: red #d71920, yellow #fecc0b, cyan #5ccae8
-     ============================================================ */
-
-  .prob-viz {
-    --pv-red: #d71920;
-    --pv-yellow: #fecc0b;
-    --pv-cyan: #5ccae8;
-    --pv-dark: #2b2b2b;
-    --pv-gray: #888;
-    --pv-bg: #fafafa;
-    --pv-border: #d0d0d0;
-
-    box-sizing: border-box;
-    font-family: &quot;Heliotrope&quot;, &quot;Segoe UI&quot;, sans-serif;
-    margin: 0.5rem auto;
-    padding: 0.6rem 0.8rem 0.4rem;
-    max-width: 920px;
-    background: var(--pv-bg);
-    border: 1px solid var(--pv-border);
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  }
-
-  .prob-viz *,
-  .prob-viz *::before,
-  .prob-viz *::after {
-    box-sizing: border-box;
-  }
-
-  /* ---- stage: where the drawing lives ---- */
-  .prob-viz .pv-stage {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.9rem;
-    flex-wrap: wrap;
-    min-height: 150px;
-    padding: 0.3rem 0;
-  }
-
-  .prob-viz .pv-stage svg,
-  .prob-viz .pv-stage canvas {
-    display: block;
-    max-width: 100%;
-    background: #fff;
-    border-radius: 6px;
-  }
-
-  /* ---- control bar ---- */
-  .prob-viz .pv-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    margin-top: 0.4rem;
-    padding-top: 0.45rem;
-    border-top: 1px solid var(--pv-border);
-  }
-
-  .prob-viz button {
-    font-family: &quot;Heliotrope&quot;, &quot;Segoe UI&quot;, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #fff;
-    background: var(--pv-cyan);
-    border: none;
-    border-radius: 5px;
-    padding: 0.28rem 0.9rem;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-  }
-
-  .prob-viz button:hover {
-    filter: brightness(0.92);
-  }
-
-  .prob-viz button:active {
-    transform: scale(0.96);
-  }
-
-  .prob-viz button.pv-play {
-    background: var(--pv-red);
-    min-width: 92px;
-  }
-
-  .prob-viz button.pv-step {
-    background: var(--pv-yellow);
-    color: var(--pv-dark);
-  }
-
-  .prob-viz button.pv-reset {
-    background: #999;
-  }
-
-  .prob-viz button:disabled {
-    opacity: 0.45;
-    cursor: default;
-  }
-
-  .prob-viz .pv-status {
-    margin-left: auto;
-    font-size: 0.8rem;
-    color: #555;
-    font-weight: 500;
-  }
-
-  /* ---- shared counter / readout ---- */
-  .prob-viz .pv-readout {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 0.9rem;
-    color: var(--pv-dark);
-  }
-
-  .prob-viz .pv-badge {
-    display: inline-block;
-    background: #fff;
-    border: 1px solid var(--pv-border);
-    border-radius: 999px;
-    padding: 0.15rem 0.7rem;
-    font-weight: 600;
-  }
-
-  .prob-viz .pv-badge b {
-    color: var(--pv-red);
-  }
-
-  /* ---- bars (PMF / histograms) ---- */
-  .prob-viz .pv-bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 0.35rem;
-    height: 120px;
-    padding: 0.3rem 0.2rem 0;
-  }
-
-  .prob-viz .pv-bar-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .prob-viz .pv-bar {
-    width: 100%;
-    max-width: 56px;
-    background: var(--pv-cyan);
-    border-radius: 3px 3px 0 0;
-    transition: height 0.35s ease, background 0.3s;
-    position: relative;
-  }
-
-  .prob-viz .pv-bar.pv-hot {
-    background: var(--pv-red);
-  }
-
-  .prob-viz .pv-bar-label {
-    margin-top: 0.18rem;
-    font-size: 0.72rem;
-    color: #555;
-    white-space: nowrap;
-  }
-
-  .prob-viz .pv-bar-val {
-    position: absolute;
-    top: -1.1rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 0.68rem;
-    color: #333;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .prob-viz .pv-bar-wrap:hover .pv-bar-val {
-    opacity: 1;
-  }
-
-  /* ---- running line chart (LLN / convergence) ---- */
-  .prob-viz .pv-line-wrap {
-    width: 100%;
-    max-width: 560px;
-  }
-
-  /* ---- Venn diagrams ---- */
-  .prob-viz .pv-venn {
-    position: relative;
-    width: 280px;
-    height: 190px;
-  }
-
-  .prob-viz .pv-venn ellipse {
-    fill-opacity: 0.25;
-    stroke-width: 2.5;
-    transition: fill-opacity 0.3s;
-  }
-
-  .prob-viz .pv-venn .pv-vA {
-    fill: var(--pv-red);
-    stroke: var(--pv-red);
-  }
-
-  .prob-viz .pv-venn .pv-vB {
-    fill: var(--pv-cyan);
-    stroke: var(--pv-cyan);
-  }
-
-  .prob-viz .pv-venn .pv-vA.pv-lit {
-    fill-opacity: 0.85;
-  }
-
-  .prob-viz .pv-venn .pv-vB.pv-lit {
-    fill-opacity: 0.85;
-  }
-
-  .prob-viz .pv-venn text {
-    font-family: &quot;Heliotrope&quot;, sans-serif;
-    font-size: 15px;
-    fill: #111;
-    text-anchor: middle;
-    font-weight: 600;
-  }
-
-  .prob-viz .pv-venn .pv-count {
-    font-size: 15px;
-    font-weight: 700;
-    fill: #111;
-  }
-
-  /* ---- outcome grids (two coins / indicator grid) ---- */
-  .prob-viz .pv-grid {
-    display: grid;
-    gap: 0.4rem;
-  }
-
-  .prob-viz .pv-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border: 1.5px solid var(--pv-border);
-    border-radius: 6px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--pv-dark);
-    min-height: 44px;
-    min-width: 64px;
-    transition: background 0.25s, border-color 0.25s, transform 0.15s;
-  }
-
-  .prob-viz .pv-cell.pv-hot {
-    background: var(--pv-yellow);
-    border-color: #c9a300;
-    transform: scale(1.04);
-  }
-
-  .prob-viz .pv-cell.pv-dim {
-    opacity: 0.35;
-  }
-
-  /* ---- individual coins / dice ---- */
-  .prob-viz .pv-object {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    background: var(--pv-yellow);
-    color: var(--pv-dark);
-    font-size: 2.6rem;
-    font-weight: 800;
-    box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.12);
-    transition: transform 0.4s;
-  }
-
-  .prob-viz .pv-object.pv-flip {
-    animation: pv-flip 0.45s ease;
-  }
-
-  @keyframes pv-flip {
-    0% {
-      transform: rotateY(0);
-    }
-    50% {
-      transform: rotateY(180deg);
-    }
-    100% {
-      transform: rotateY(360deg);
-    }
-  }
-
-  .prob-viz .pv-object.pv-die {
-    border-radius: 12px;
-    background: #fff;
-    border: 2px solid var(--pv-dark);
-    font-size: 1.6rem;
-  }
-
-  /* ---- tree / partition (Bayes) ---- */
-  .prob-viz .pv-tree line {
-    stroke: var(--pv-dark);
-    stroke-width: 2;
-  }
-
-  .prob-viz .pv-tree text {
-    font-family: &quot;Heliotrope&quot;, sans-serif;
-    font-size: 14px;
-    fill: #111;
-    font-weight: 600;
-  }
-
-  .prob-viz .pv-tree .pv-node circle {
-    fill: var(--pv-cyan);
-    stroke: #3a3a3a;
-    stroke-width: 1.5;
-    transition: fill 0.3s;
-  }
-
-  .prob-viz .pv-tree .pv-node.pv-lit circle {
-    fill: var(--pv-red);
-  }
-
-  /* ---- generic axis text ---- */
-  .prob-viz .pv-axis {
-    font-size: 12px;
-    fill: #555;
-  }
-
-  .prob-viz .pv-title {
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--pv-dark);
-    margin-bottom: 0.2rem;
-  }
-
-  /* compact mode for dense slides */
-  .prob-viz.pv-compact .pv-stage {
-    min-height: 110px;
-  }
-
-  .prob-viz.pv-compact .pv-bars {
-    height: 90px;
-  }
-
-
+</head>
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -3507,1151 +3455,1152 @@ window.QuartoSupport = function () {
         ]
       });
     </script>
-    /* ============================================================
-       prob-viz.js — interactive probability visual aids for revealjs
-       Vanilla JS, no dependencies. Widgets: coin, die, two-coins,
-       venn, rv-map, indicator, linearity, lln-chart, fixed-points,
-       coupon, independence, bayes, tower, variance, distributions,
-       empty-bins, markov, chebyshev, chernoff, balls-bins, sampling,
-       pm-color.
-       ============================================================ */
-    (function (global) {
-      &quot;use strict&quot;;
+    <script>/* ============================================================
+   prob-viz.js — interactive probability visual aids for revealjs
+   Vanilla JS, no dependencies. Widgets: coin, die, two-coins,
+   venn, rv-map, indicator, linearity, lln-chart, fixed-points,
+   coupon, independence, bayes, tower, variance, distributions,
+   empty-bins, markov, chebyshev, chernoff, balls-bins, sampling,
+   pm-color.
+   ============================================================ */
+(function (global) {
+  "use strict";
 
-      const NS = &quot;http://www.w3.org/2000/svg&quot;;
-      const widgets = {};
-      const instances = [];
+  const NS = "http://www.w3.org/2000/svg";
+  const widgets = {};
+  const instances = [];
 
-      /* ---------------- tiny seeded PRNG (mulberry32) ---------------- */
-      function mulberry32(a) {
-        return function () {
-          a |= 0;
-          a = (a + 0x6d2b79f5) | 0;
-          let t = Math.imul(a ^ (a &gt;&gt;&gt; 15), 1 | a);
-          t = (t + Math.imul(t ^ (t &gt;&gt;&gt; 7), 61 | t)) ^ t;
-          return ((t ^ (t &gt;&gt;&gt; 14)) &gt;&gt;&gt; 0) / 4294967296;
-        };
+  /* ---------------- tiny seeded PRNG (mulberry32) ---------------- */
+  function mulberry32(a) {
+    return function () {
+      a |= 0;
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ---------------- DOM / SVG helpers ---------------- */
+  function h(tag, attrs, parent) {
+    const n = document.createElement(tag);
+    if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  function hs(tag, text, attrs, parent) {
+    const n = h(tag, attrs, parent);
+    n.textContent = text;
+    return n;
+  }
+
+  function s(tag, attrs, parent) {
+    const n = document.createElementNS(NS, tag);
+    if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+
+  function st(tag, text, attrs, parent) {
+    const n = s(tag, attrs, parent);
+    n.textContent = text;
+    return n;
+  }
+
+  function clear(node) {
+    while (node.firstChild) node.removeChild(node.firstChild);
+  }
+
+  function fmt(x, d) {
+    return x.toFixed(d == null ? 3 : d);
+  }
+
+  /* ---------------- widget framework ---------------- */
+  function makeStatus(api) {
+    api.status = h("span", { class: "pv-status" });
+    api.controls.appendChild(api.status);
+    const upd = () => {
+      api.status.textContent = api.state.done
+        ? "done"
+        : "step " + api.step + " / " + api.total;
+    };
+    api.updateStatus = upd;
+  }
+
+  function buildControls(api, def) {
+    const bar = h("div", { class: "pv-controls" });
+    api.host.appendChild(bar);
+    api.controls = bar;
+
+    api.playBtn = h("button", { class: "pv-play" }, bar);
+    api.playBtn.textContent = "Play";
+    api.playBtn.addEventListener("click", () => api.toggle());
+
+    api.stepBtn = h("button", { class: "pv-step" }, bar);
+    api.stepBtn.textContent = "Step";
+    api.stepBtn.addEventListener("click", () => {
+      api.stop();
+      api.advance();
+    });
+
+    api.resetBtn = h("button", { class: "pv-reset" }, bar);
+    api.resetBtn.textContent = "Reset";
+    api.resetBtn.addEventListener("click", () => {
+      api.stop();
+      api.reset();
+    });
+
+    makeStatus(api);
+  }
+
+  function instantiate(host) {
+    const name = host.dataset.viz;
+    const def = widgets[name];
+    if (!def) return;
+
+    let cfg = {};
+    try {
+      cfg = JSON.parse(host.dataset.config || "{}");
+    } catch (e) {
+      cfg = {};
+    }
+
+    host.classList.add("prob-viz");
+    if (cfg.compact) host.classList.add("pv-compact");
+
+    const stage = h("div", { class: "pv-stage" });
+    host.appendChild(stage);
+
+    const api = {
+      host,
+      stage,
+      cfg,
+      step: 0,
+      total: 0,
+      state: {},
+      timer: null,
+      done: false,
+      seed: (cfg.seed || (Date.now() % 100000)) >>> 0,
+    };
+
+    api.advance = function () {
+      if (api.done) return;
+      api.step++;
+      def.step(api);
+      if (api.step >= api.total) {
+        api.done = true;
+        api.stop();
       }
+      def.render(api);
+      api.updateStatus();
+    };
 
-      /* ---------------- DOM / SVG helpers ---------------- */
-      function h(tag, attrs, parent) {
-        const n = document.createElement(tag);
-        if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
-        if (parent) parent.appendChild(n);
-        return n;
+    api.play = function () {
+      if (api.done) return;
+      const ms = cfg.stepMs || 650;
+      api.timer = setInterval(() => api.advance(), ms);
+      api.playBtn.textContent = "Pause";
+    };
+
+    api.stop = function () {
+      if (api.timer) {
+        clearInterval(api.timer);
+        api.timer = null;
       }
+      api.playBtn.textContent = "Play";
+    };
 
-      function hs(tag, text, attrs, parent) {
-        const n = h(tag, attrs, parent);
-        n.textContent = text;
-        return n;
-      }
+    api.toggle = function () {
+      if (api.timer) api.stop();
+      else api.play();
+    };
 
-      function s(tag, attrs, parent) {
-        const n = document.createElementNS(NS, tag);
-        if (attrs) for (const k in attrs) n.setAttribute(k, attrs[k]);
-        if (parent) parent.appendChild(n);
-        return n;
-      }
+    api.reset = function () {
+      api.step = 0;
+      api.done = false;
+      api.seed = (cfg.seed || (Date.now() % 100000)) >>> 0;
+      api.state = {};
+      if (def.build) def.build(api);
+      def.render(api);
+      api.updateStatus();
+    };
 
-      function st(tag, text, attrs, parent) {
-        const n = s(tag, attrs, parent);
-        n.textContent = text;
-        return n;
-      }
+    buildControls(api, def);
+    api.total = def.total(cfg);
+    api.reset();
+    instances.push(api);
+  }
 
-      function clear(node) {
-        while (node.firstChild) node.removeChild(node.firstChild);
-      }
+  function resetSlideWidgets(slideEl) {
+    if (!slideEl) return;
+    const hosts = slideEl.querySelectorAll("[data-viz]");
+    instances.forEach((a) => a.stop());
+    hosts.forEach((host) => {
+      const inst = instances.find(
+        (i) => i.host === host && i.host.closest(".reveal")
+      );
+      if (inst) inst.reset();
+      else instantiate(host);
+    });
+  }
 
-      function fmt(x, d) {
-        return x.toFixed(d == null ? 3 : d);
-      }
+  /* ---------------- register widgets ---------------- */
+  function register(name, def) {
+    widgets[name] = def;
+  }
 
-      /* ---------------- widget framework ---------------- */
-      function makeStatus(api) {
-        api.status = h(&quot;span&quot;, { class: &quot;pv-status&quot; });
-        api.controls.appendChild(api.status);
-        const upd = () =&gt; {
-          api.status.textContent = api.state.done
-            ? &quot;done&quot;
-            : &quot;step &quot; + api.step + &quot; / &quot; + api.total;
-        };
-        api.updateStatus = upd;
-      }
+  /* ============================================================
+     COIN FLIP  (coin)
+     ============================================================ */
+  register("coin", {
+    total: (cfg) => (cfg.flips || 12) + 1,
+    build(api) {
+      const row = h("div", { class: "pv-readout" }, api.stage);
+      api.coin = h("div", { class: "pv-object pv-flip" }, api.stage);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.flips = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      api.state.flips.push(r < 0.5 ? "H" : "T");
+    },
+    render(api) {
+      const flips = api.state.flips || [];
+      const last = flips[flips.length - 1];
+      api.coin.textContent = last === undefined ? "?" : last;
+      api.coin.classList.remove("pv-flip");
+      void api.coin.offsetWidth;
+      api.coin.classList.add("pv-flip");
+      const hc = flips.filter((x) => x === "H").length;
+      const heads = hc / Math.max(1, flips.length);
+      api.stat.innerHTML =
+        "<b>" + flips.length + "</b> flips &nbsp;·&nbsp; Heads <b>" + hc +
+        "</b> &nbsp;·&nbsp; rel. freq <b>" + fmt(heads) + "</b> (E = 0.5)";
+    },
+  });
 
-      function buildControls(api, def) {
-        const bar = h(&quot;div&quot;, { class: &quot;pv-controls&quot; });
-        api.host.appendChild(bar);
-        api.controls = bar;
+  /* ============================================================
+     DIE ROLL  (die)
+     ============================================================ */
+  register("die", {
+    total: (cfg) => (cfg.rolls || 10) + 1,
+    build(api) {
+      const row = h("div", { class: "pv-readout" }, api.stage);
+      api.die = h("div", { class: "pv-object pv-die" }, api.stage);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.rolls = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      api.state.rolls.push(1 + Math.floor(r * 6));
+    },
+    render(api) {
+      const rolls = api.state.rolls || [];
+      const last = rolls[rolls.length - 1];
+      api.die.textContent = last === undefined ? "?" : last;
+      const avg = rolls.reduce((a, b) => a + b, 0) / Math.max(1, rolls.length);
+      api.stat.innerHTML =
+        "<b>" + rolls.length + "</b> rolls &nbsp;·&nbsp; average <b>" +
+        fmt(avg, 2) + "</b> (E = 3.5)";
+    },
+  });
 
-        api.playBtn = h(&quot;button&quot;, { class: &quot;pv-play&quot; }, bar);
-        api.playBtn.textContent = &quot;Play&quot;;
-        api.playBtn.addEventListener(&quot;click&quot;, () =&gt; api.toggle());
-
-        api.stepBtn = h(&quot;button&quot;, { class: &quot;pv-step&quot; }, bar);
-        api.stepBtn.textContent = &quot;Step&quot;;
-        api.stepBtn.addEventListener(&quot;click&quot;, () =&gt; {
-          api.stop();
-          api.advance();
-        });
-
-        api.resetBtn = h(&quot;button&quot;, { class: &quot;pv-reset&quot; }, bar);
-        api.resetBtn.textContent = &quot;Reset&quot;;
-        api.resetBtn.addEventListener(&quot;click&quot;, () =&gt; {
-          api.stop();
-          api.reset();
-        });
-
-        makeStatus(api);
-      }
-
-      function instantiate(host) {
-        const name = host.dataset.viz;
-        const def = widgets[name];
-        if (!def) return;
-
-        let cfg = {};
-        try {
-          cfg = JSON.parse(host.dataset.config || &quot;{}&quot;);
-        } catch (e) {
-          cfg = {};
-        }
-
-        host.classList.add(&quot;prob-viz&quot;);
-        if (cfg.compact) host.classList.add(&quot;pv-compact&quot;);
-
-        const stage = h(&quot;div&quot;, { class: &quot;pv-stage&quot; });
-        host.appendChild(stage);
-
-        const api = {
-          host,
-          stage,
-          cfg,
-          step: 0,
-          total: 0,
-          state: {},
-          timer: null,
-          done: false,
-          seed: (cfg.seed || (Date.now() % 100000)) &gt;&gt;&gt; 0,
-        };
-
-        api.advance = function () {
-          if (api.done) return;
-          api.step++;
-          def.step(api);
-          if (api.step &gt;= api.total) {
-            api.done = true;
-            api.stop();
-          }
-          def.render(api);
-          api.updateStatus();
-        };
-
-        api.play = function () {
-          if (api.done) return;
-          const ms = cfg.stepMs || 650;
-          api.timer = setInterval(() =&gt; api.advance(), ms);
-          api.playBtn.textContent = &quot;Pause&quot;;
-        };
-
-        api.stop = function () {
-          if (api.timer) {
-            clearInterval(api.timer);
-            api.timer = null;
-          }
-          api.playBtn.textContent = &quot;Play&quot;;
-        };
-
-        api.toggle = function () {
-          if (api.timer) api.stop();
-          else api.play();
-        };
-
-        api.reset = function () {
-          api.step = 0;
-          api.done = false;
-          api.seed = (cfg.seed || (Date.now() % 100000)) &gt;&gt;&gt; 0;
-          api.state = {};
-          if (def.build) def.build(api);
-          def.render(api);
-          api.updateStatus();
-        };
-
-        buildControls(api, def);
-        api.total = def.total(cfg);
-        api.reset();
-        instances.push(api);
-      }
-
-      function resetSlideWidgets(slideEl) {
-        if (!slideEl) return;
-        const hosts = slideEl.querySelectorAll(&quot;[data-viz]&quot;);
-        instances.forEach((a) =&gt; a.stop());
-        hosts.forEach((host) =&gt; {
-          const inst = instances.find(
-            (i) =&gt; i.host === host &amp;&amp; i.host.closest(&quot;.reveal&quot;)
-          );
-          if (inst) inst.reset();
-          else instantiate(host);
-        });
-      }
-
-      /* ---------------- register widgets ---------------- */
-      function register(name, def) {
-        widgets[name] = def;
-      }
-
-      /* ============================================================
-         COIN FLIP  (coin)
-         ============================================================ */
-      register(&quot;coin&quot;, {
-        total: (cfg) =&gt; (cfg.flips || 12) + 1,
-        build(api) {
-          const row = h(&quot;div&quot;, { class: &quot;pv-readout&quot; }, api.stage);
-          api.coin = h(&quot;div&quot;, { class: &quot;pv-object pv-flip&quot; }, api.stage);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.flips = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          api.state.flips.push(r &lt; 0.5 ? &quot;H&quot; : &quot;T&quot;);
-        },
-        render(api) {
-          const flips = api.state.flips || [];
-          const last = flips[flips.length - 1];
-          api.coin.textContent = last === undefined ? &quot;?&quot; : last;
-          api.coin.classList.remove(&quot;pv-flip&quot;);
-          void api.coin.offsetWidth;
-          api.coin.classList.add(&quot;pv-flip&quot;);
-          const hc = flips.filter((x) =&gt; x === &quot;H&quot;).length;
-          const heads = hc / Math.max(1, flips.length);
-          api.stat.innerHTML =
-            &quot;<b>&quot; + flips.length + &quot;</b> flips  ·  Heads <b>&quot; + hc +
-            &quot;</b>  ·  rel. freq <b>&quot; + fmt(heads) + &quot;</b> (E = 0.5)&quot;;
-        },
+  /* ============================================================
+     TWO COINS  (two-coins)  — empirical grid over 4 outcomes
+     ============================================================ */
+  register("two-coins", {
+    total: (cfg) => (cfg.flips || 12) + 1,
+    build(api) {
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(2, 84px)";
+      const labels = ["HH", "HT", "TH", "TT"];
+      api.cells = {};
+      labels.forEach((lab) => {
+        api.cells[lab] = hs("div", lab + " · 0", { class: "pv-cell" }, api.grid);
       });
-
-      /* ============================================================
-         DIE ROLL  (die)
-         ============================================================ */
-      register(&quot;die&quot;, {
-        total: (cfg) =&gt; (cfg.rolls || 10) + 1,
-        build(api) {
-          const row = h(&quot;div&quot;, { class: &quot;pv-readout&quot; }, api.stage);
-          api.die = h(&quot;div&quot;, { class: &quot;pv-object pv-die&quot; }, api.stage);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.rolls = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          api.state.rolls.push(1 + Math.floor(r * 6));
-        },
-        render(api) {
-          const rolls = api.state.rolls || [];
-          const last = rolls[rolls.length - 1];
-          api.die.textContent = last === undefined ? &quot;?&quot; : last;
-          const avg = rolls.reduce((a, b) =&gt; a + b, 0) / Math.max(1, rolls.length);
-          api.stat.innerHTML =
-            &quot;<b>&quot; + rolls.length + &quot;</b> rolls  ·  average <b>&quot; +
-            fmt(avg, 2) + &quot;</b> (E = 3.5)&quot;;
-        },
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.outcomes = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      const b1 = r < 0.5 ? "H" : "T";
+      const b2 = r < 0.25 ? "H" : "T"; // reuse same r for second bit
+      api.state.outcomes.push(b1 + b2);
+    },
+    render(api) {
+      const out = api.state.outcomes || [];
+      const counts = { HH: 0, HT: 0, TH: 0, TT: 0 };
+      out.forEach((o) => counts[o]++);
+      const last = out[out.length - 1];
+      ["HH", "HT", "TH", "TT"].forEach((lab) => {
+        const cell = api.cells[lab];
+        cell.textContent = lab + " · " + counts[lab];
+        cell.classList.toggle("pv-hot", lab === last);
+        cell.classList.toggle(
+          "pv-dim",
+          last !== undefined && lab !== last && out.length > 0
+        );
       });
+      const even = (counts.HH + counts.TT) / Math.max(1, out.length);
+      const odd = (counts.HT + counts.TH) / Math.max(1, out.length);
+      api.stat.innerHTML =
+        "<b>" + out.length + "</b> experiments &nbsp;·&nbsp; P(HH or TT) = <b>" +
+        fmt(even) + "</b> &nbsp;·&nbsp; P(mixed) = <b>" + fmt(odd) + "</b>";
+    },
+  });
 
-      /* ============================================================
-         TWO COINS  (two-coins)  — empirical grid over 4 outcomes
-         ============================================================ */
-      register(&quot;two-coins&quot;, {
-        total: (cfg) =&gt; (cfg.flips || 12) + 1,
-        build(api) {
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(2, 84px)&quot;;
-          const labels = [&quot;HH&quot;, &quot;HT&quot;, &quot;TH&quot;, &quot;TT&quot;];
-          api.cells = {};
-          labels.forEach((lab) =&gt; {
-            api.cells[lab] = hs(&quot;div&quot;, lab + &quot; · 0&quot;, { class: &quot;pv-cell&quot; }, api.grid);
-          });
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.outcomes = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          const b1 = r &lt; 0.5 ? &quot;H&quot; : &quot;T&quot;;
-          const b2 = r &lt; 0.25 ? &quot;H&quot; : &quot;T&quot;; // reuse same r for second bit
-          api.state.outcomes.push(b1 + b2);
-        },
-        render(api) {
-          const out = api.state.outcomes || [];
-          const counts = { HH: 0, HT: 0, TH: 0, TT: 0 };
-          out.forEach((o) =&gt; counts[o]++);
-          const last = out[out.length - 1];
-          [&quot;HH&quot;, &quot;HT&quot;, &quot;TH&quot;, &quot;TT&quot;].forEach((lab) =&gt; {
-            const cell = api.cells[lab];
-            cell.textContent = lab + &quot; · &quot; + counts[lab];
-            cell.classList.toggle(&quot;pv-hot&quot;, lab === last);
-            cell.classList.toggle(
-              &quot;pv-dim&quot;,
-              last !== undefined &amp;&amp; lab !== last &amp;&amp; out.length &gt; 0
-            );
-          });
-          const even = (counts.HH + counts.TT) / Math.max(1, out.length);
-          const odd = (counts.HT + counts.TH) / Math.max(1, out.length);
-          api.stat.innerHTML =
-            &quot;<b>&quot; + out.length + &quot;</b> experiments  ·  P(HH or TT) = <b>&quot; +
-            fmt(even) + &quot;</b>  ·  P(mixed) = <b>&quot; + fmt(odd) + &quot;</b>&quot;;
-        },
-      });
+  /* ============================================================
+     VENN — union / intersection / inclusion-exclusion / union bound
+     config: {a: <count>, b: <count>, both: <count>, mode: "iex"|"ubound"}
+     ============================================================ */
+  register("venn", {
+    total: (cfg) => (cfg.mode === "ubound" ? 5 : 6),
+    build(api) {
+      const wrap = h("div", { class: "pv-venn-wrap" }, api.stage);
+      const v = s("svg", { width: 320, height: 210, viewBox: "0 0 320 210" }, wrap);
+      api.svg = v;
+      api.vA = s("ellipse", { cx: 122, cy: 105, rx: 86, ry: 66, class: "pv-vA" }, v);
+      api.vB = s("ellipse", { cx: 198, cy: 105, rx: 86, ry: 66, class: "pv-vB" }, v);
+      api.lA = st("text", "A", { x: 66, y: 100, class: "pv-vA" }, v);
+      api.lB = st("text", "B", { x: 252, y: 100 }, v);
+      // count labels: A-only, both, B-only
+      api.cOnlyA = st("text", "", { x: 118, y: 62, class: "pv-count" }, v);
+      api.cBoth = st("text", "", { x: 160, y: 112, class: "pv-count" }, v);
+      api.cOnlyB = st("text", "", { x: 206, y: 62, class: "pv-count" }, v);
+      api.formula = hs("div", "", {}, api.stage);
+      api.formula.style.textAlign = "center";
+      api.formula.style.fontSize = "0.95rem";
+      api.state.cfg = {
+        a: api.cfg.a || 5,
+        b: api.cfg.b || 4,
+        both: api.cfg.both || 2,
+      };
+    },
+    step(api) {
+      api.step = api.step; // no-op; render drives the animation
+    },
+    render(api) {
+      const c = api.state.cfg;
+      const onlyA = c.a - c.both;
+      const onlyB = c.b - c.both;
+      const step = api.step;
+      api.cOnlyA.textContent = step >= 1 ? onlyA : "";
+      api.cBoth.textContent = step >= 3 ? c.both : "";
+      api.cOnlyB.textContent = step >= 2 ? onlyB : "";
+      api.vA.classList.toggle("pv-lit", step === 1 || step === 4);
+      api.vB.classList.toggle("pv-lit", step === 2 || step === 4);
 
-      /* ============================================================
-         VENN — union / intersection / inclusion-exclusion / union bound
-         config: {a: <count>, b: <count>, both: <count>, mode: &quot;iex&quot;|&quot;ubound&quot;}
-         ============================================================ */
-      register(&quot;venn&quot;, {
-        total: (cfg) =&gt; (cfg.mode === &quot;ubound&quot; ? 5 : 6),
-        build(api) {
-          const wrap = h(&quot;div&quot;, { class: &quot;pv-venn-wrap&quot; }, api.stage);
-          const v = s(&quot;svg&quot;, { width: 320, height: 210, viewBox: &quot;0 0 320 210&quot; }, wrap);
-          api.svg = v;
-          api.vA = s(&quot;ellipse&quot;, { cx: 122, cy: 105, rx: 86, ry: 66, class: &quot;pv-vA&quot; }, v);
-          api.vB = s(&quot;ellipse&quot;, { cx: 198, cy: 105, rx: 86, ry: 66, class: &quot;pv-vB&quot; }, v);
-          api.lA = st(&quot;text&quot;, &quot;A&quot;, { x: 66, y: 100, class: &quot;pv-vA&quot; }, v);
-          api.lB = st(&quot;text&quot;, &quot;B&quot;, { x: 252, y: 100 }, v);
-          // count labels: A-only, both, B-only
-          api.cOnlyA = st(&quot;text&quot;, &quot;&quot;, { x: 118, y: 62, class: &quot;pv-count&quot; }, v);
-          api.cBoth = st(&quot;text&quot;, &quot;&quot;, { x: 160, y: 112, class: &quot;pv-count&quot; }, v);
-          api.cOnlyB = st(&quot;text&quot;, &quot;&quot;, { x: 206, y: 62, class: &quot;pv-count&quot; }, v);
-          api.formula = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.formula.style.textAlign = &quot;center&quot;;
-          api.formula.style.fontSize = &quot;0.95rem&quot;;
-          api.state.cfg = {
-            a: api.cfg.a || 5,
-            b: api.cfg.b || 4,
-            both: api.cfg.both || 2,
-          };
-        },
-        step(api) {
-          api.step = api.step; // no-op; render drives the animation
-        },
-        render(api) {
-          const c = api.state.cfg;
-          const onlyA = c.a - c.both;
-          const onlyB = c.b - c.both;
-          const step = api.step;
-          api.cOnlyA.textContent = step &gt;= 1 ? onlyA : &quot;&quot;;
-          api.cBoth.textContent = step &gt;= 3 ? c.both : &quot;&quot;;
-          api.cOnlyB.textContent = step &gt;= 2 ? onlyB : &quot;&quot;;
-          api.vA.classList.toggle(&quot;pv-lit&quot;, step === 1 || step === 4);
-          api.vB.classList.toggle(&quot;pv-lit&quot;, step === 2 || step === 4);
-
-          let formula = &quot;&quot;;
-          if (api.cfg.mode === &quot;ubound&quot;) {
-            if (step === 4)
-              formula = &quot;|A∪B| = &quot; + onlyA + &quot; + &quot; + c.both + &quot; + &quot; + onlyB +
-                &quot; = &quot; + (onlyA + c.both + onlyB);
-            else if (step === 5)
-              formula = &quot;Union bound: |A∪B| ≤ |A| + |B| — no independence needed&quot;;
-          } else {
-            if (step === 4)
-              formula = &quot;|A∪B| = |A| + |B| − |A∩B| = &quot; + c.a + &quot; + &quot; + c.b +
-                &quot; − &quot; + c.both + &quot; = &quot; + (c.a + c.b - c.both);
-            else if (step === 5)
-              formula = &quot;|A∪B| = |A| + |B| − |A∩B| ≤ |A| + |B|  (union bound)&quot;;
-          }
-          api.formula.textContent = formula;
-        },
-      });
-
-      /* ============================================================
-         RV MAP — map outcomes to values of X
-         ============================================================ */
-      register(&quot;rv-map&quot;, {
-        total: (cfg) =&gt; (cfg.outcomes || 6) + 1,
-        build(api) {
-          const n = api.cfg.outcomes || 6;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(&quot; + Math.min(n, 6) + &quot;, 84px)&quot;;
-          api.cells = [];
-          for (let i = 0; i &lt; n; i++) {
-            api.cells.push(hs(&quot;div&quot;, &quot;&quot;, { class: &quot;pv-cell&quot; }, api.grid));
-          }
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.map = api.cfg.map || {
-            values: [0, 1, 2, 3, 4, 5],
-            labels: [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;],
-            ex: 3.5,
-          };
-        },
-        step(api) {
-          // no-op; render cycles highlight
-        },
-        render(api) {
-          const m = api.state.map;
-          m.values.forEach((val, i) =&gt; {
-            api.cells[i].textContent = m.labels[i] + &quot; → &quot; + val;
-            api.cells[i].classList.toggle(&quot;pv-hot&quot;, i === api.step - 1);
-            api.cells[i].classList.toggle(&quot;pv-dim&quot;, i !== api.step - 1 &amp;&amp; api.step &gt; 0);
-          });
-          api.stat.innerHTML =
-            &quot;X maps each outcome to a number;  E[X] = Σ x·Pr(X=x) = <b>&quot; +
-            fmt(m.ex) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         INDICATOR — highlight events, E[I_A] = Pr(A)
-         ============================================================ */
-      register(&quot;indicator&quot;, {
-        total: (cfg) =&gt; (cfg.steps || 8) + 1,
-        build(api) {
-          const cols = api.cfg.cols || 6;
-          const rowsN = api.cfg.rows || 4;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(&quot; + cols + &quot;, 44px)&quot;;
-          api.cells = [];
-          for (let i = 0; i &lt; cols * rowsN; i++) {
-            api.cells.push(hs(&quot;div&quot;, &quot;&quot;, { class: &quot;pv-cell&quot; }, api.grid));
-          }
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.hits = 0;
-          api.state.seen = 0;
-        },
-        step(api) {
-          const cols = api.cfg.cols || 6;
-          const rowsN = api.cfg.rows || 4;
-          const total = cols * rowsN;
-          const r = mulberry32(api.seed + api.step)();
-          const i = Math.floor(r * total);
-          api.state.cell = i;
-          api.state.seen++;
-          if (i % 2 === 0) api.state.hits++; // event A = even cell
-        },
-        render(api) {
-          const cols = api.cfg.cols || 6;
-          const rowsN = api.cfg.rows || 4;
-          api.cells.forEach((cell, i) =&gt; {
-            cell.textContent = (i % 2 === 0 ? &quot;✓&quot; : &quot;&quot;);
-            cell.classList.toggle(&quot;pv-hot&quot;, i === api.state.cell);
-            cell.classList.toggle(&quot;pv-dim&quot;, i !== api.state.cell &amp;&amp; api.state.cell !== undefined);
-          });
-          const seen = api.state.seen || 0;
-          const hits = api.state.hits || 0;
-          api.stat.innerHTML =
-            &quot;Event A = even cells;  I_A = 1 if A occurs.  E[I_A] = Pr(A) = <b>&quot; +
-            fmt(hits / Math.max(1, seen)) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         LINEARITY — two dice, E[X] + E[Y] = E[X+Y]
-         ============================================================ */
-      register(&quot;linearity&quot;, {
-        total: (cfg) =&gt; (cfg.rolls || 10) + 1,
-        build(api) {
-          api.row = h(&quot;div&quot;, { class: &quot;pv-readout&quot; }, api.stage);
-          api.d1 = h(&quot;div&quot;, { class: &quot;pv-object pv-die&quot; }, api.stage);
-          api.d2 = h(&quot;div&quot;, { class: &quot;pv-object pv-die&quot; }, api.stage);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.sums = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          const a = 1 + Math.floor(r * 6);
-          const b = 1 + Math.floor((r * 6 + 3) % 6);
-          api.state.sums.push(a + b);
-          api.state.last = [a, b];
-        },
-        render(api) {
-          const sums = api.state.sums || [];
-          const last = api.state.last || [&quot;?&quot;, &quot;?&quot;];
-          api.d1.textContent = last[0];
-          api.d2.textContent = last[1];
-          const avg = sums.reduce((a, b) =&gt; a + b, 0) / Math.max(1, sums.length);
-          api.stat.innerHTML =
-            &quot;E[X]=3.5, E[Y]=3.5, so E[X+Y]=7 even if dependent.  Emp. avg of sums = <b>&quot; +
-            fmt(avg, 2) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         LLN CHART — running average of coin flips → 0.5
-         ============================================================ */
-      register(&quot;lln-chart&quot;, {
-        total: (cfg) =&gt; (cfg.flips || 40) + 1,
-        build(api) {
-          api.wrap = h(&quot;div&quot;, { class: &quot;pv-line-wrap&quot; }, api.stage);
-          api.svg = s(&quot;svg&quot;, { width: 560, height: 180, viewBox: &quot;0 0 560 180&quot; }, api.wrap);
-          api.state.flips = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          api.state.flips.push(r &lt; 0.5 ? 0 : 1);
-        },
-        render(api) {
-          const flips = api.state.flips || [];
-          clear(api.svg);
-          const W = 560, H = 180;
-          s(&quot;line&quot;, { x1: 0, y1: 15, x2: W, y2: 15, stroke: &quot;#c00&quot;, &quot;stroke-width&quot;: 1.5, &quot;stroke-dasharray&quot;: &quot;4 4&quot; }, api.svg);
-          st(&quot;text&quot;, &quot;0.5&quot;, { x: 6, y: 12, class: &quot;pv-axis&quot; }, api.svg);
-          if (flips.length === 0) return;
-          let sum = 0;
-          const pts = flips.map((v, i) =&gt; {
-            sum += v;
-            return [i / (flips.length - 1) * (W - 40) + 20, 165 - (sum / (i + 1)) * 150];
-          });
-          let d = &quot;M&quot; + pts.map((p) =&gt; p[0].toFixed(1) + &quot; &quot; + p[1].toFixed(1)).join(&quot; L&quot;);
-          s(&quot;path&quot;, { d, fill: &quot;none&quot;, stroke: &quot;#5ccae8&quot;, &quot;stroke-width&quot;: 2.5 }, api.svg);
-          const last = pts[pts.length - 1];
-          s(&quot;circle&quot;, { cx: last[0], cy: last[1], r: 4, fill: &quot;#d71920&quot; }, api.svg);
-          st(&quot;text&quot;, &quot;running avg → 1/2&quot;, { x: 20, y: 172, class: &quot;pv-axis&quot; }, api.svg);
-        },
-      });
-
-      /* ============================================================
-         FIXED POINTS — random permutation, E[# fixed] = 1
-         ============================================================ */
-      register(&quot;fixed-points&quot;, {
-        total: (cfg) =&gt; (cfg.trials || 8) + 1,
-        build(api) {
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(6, 56px)&quot;;
-          api.state.counts = [];
-        },
-        step(api) {
-          const n = api.cfg.n || 6;
-          const r = mulberry32(api.seed + api.step)();
-          const perm = [];
-          const pool = Array.from({ length: n }, (_, i) =&gt; i);
-          for (let i = 0; i &lt; n; i++) {
-            const j = Math.floor(r * (n - i) + i);
-            const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
-          }
-          let fp = 0;
-          for (let i = 0; i &lt; n; i++) if (pool[i] === i) fp++;
-          api.state.lastPerm = pool;
-          api.state.counts.push(fp);
-        },
-        render(api) {
-          const counts = api.state.counts || [];
-          const n = api.cfg.n || 6;
-          if (api.state.lastPerm) {
-            clear(api.grid);
-            api.state.lastPerm.forEach((v, i) =&gt; {
-              const cell = hs(&quot;div&quot;, String(v), { class: &quot;pv-cell&quot; }, api.grid);
-              if (v === i) cell.classList.add(&quot;pv-hot&quot;);
-            });
-          }
-          const avg = counts.reduce((a, b) =&gt; a + b, 0) / Math.max(1, counts.length);
-          api.stat.innerHTML =
-            counts.length + &quot; random permutations of &quot; + n +
-            &quot; elements  ·  avg fixed points = <b>&quot; + fmt(avg, 2) +
-            &quot;</b> (E = 1, regardless of n; indicators are dependent)&quot;;
-        },
-      });
-
-      /* ============================================================
-         COUPON COLLECTOR — draw coupons until all collected
-         ============================================================ */
-      register(&quot;coupon&quot;, {
-        total: (cfg) =&gt; {
-          const n = cfg.n || 10;
-          const Hn = Math.log(n) + 0.57721;
-          return Math.ceil(n * Hn) + 4;
-        },
-        build(api) {
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(5, 56px)&quot;;
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.collected = [];
-          api.state.seen = new Set();
-        },
-        step(api) {
-          const n = api.cfg.n || 10;
-          const r = mulberry32(api.seed + api.step)();
-          const c = Math.floor(r * n);
-          api.state.collected.push(c);
-          api.state.seen.add(c);
-        },
-        render(api) {
-          const n = api.cfg.n || 10;
-          const collected = api.state.collected || [];
-          clear(api.grid);
-          for (let i = 0; i &lt; n; i++) {
-            const cell = hs(&quot;div&quot;, i + 1, { class: &quot;pv-cell&quot; }, api.grid);
-            if (api.state.seen.has(i)) cell.classList.add(&quot;pv-hot&quot;);
-          }
-          const Hn = Math.log(n) + 0.57721;
-          const expect = n * Hn;
-          const done = api.state.seen.size === n;
-          api.stat.innerHTML =
-            collected.length + &quot; draws  ·  &quot; + api.state.seen.size + &quot;/&quot; + n +
-            &quot; distinct  ·  expected draws nHₙ = <b>&quot; + fmt(expect, 1) +
-            &quot;</b>&quot; + (done ? &quot;  🎉 all collected&quot; : &quot;&quot;);
-        },
-      });
-
-      /* ============================================================
-         INDEPENDENCE — 2x2 product rule
-         ============================================================ */
-      register(&quot;independence&quot;, {
-        total: (cfg) =&gt; (cfg.steps || 8) + 1,
-        build(api) {
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(2, 110px)&quot;;
-          api.cells = [];
-          for (let i = 0; i &lt; 4; i++) {
-            api.cells.push(hs(&quot;div&quot;, &quot;&quot;, { class: &quot;pv-cell&quot; }, api.grid));
-          }
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.pA = api.cfg.pA != null ? api.cfg.pA : 0.5;
-          api.state.pB = api.cfg.pB != null ? api.cfg.pB : 0.3;
-          api.state.rolls = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          const a = r &lt; api.state.pA;
-          const b = r &lt; api.state.pB;
-          api.state.rolls.push([a, b]);
-        },
-        render(api) {
-          const rolls = api.state.rolls || [];
-          const pA = api.state.pA, pB = api.state.pB;
-          const counts = [0, 0, 0, 0];
-          rolls.forEach(([a, b]) =&gt; counts[(a ? 2 : 0) + (b ? 1 : 0)]++);
-          const N = Math.max(1, rolls.length);
-          const emp = counts.map((c) =&gt; c / N);
-          api.cells[0].textContent = &quot;¬A ¬B: &quot; + fmt(emp[0], 2);
-          api.cells[1].textContent = &quot;¬A B: &quot; + fmt(emp[1], 2);
-          api.cells[2].textContent = &quot;A ¬B: &quot; + fmt(emp[2], 2);
-          api.cells[3].textContent = &quot;A B: &quot; + fmt(emp[3], 2);
-          const last = rolls[rolls.length - 1];
-          api.cells.forEach((c, i) =&gt; {
-            c.classList.toggle(&quot;pv-hot&quot;, last &amp;&amp; (last[0] ? 2 : 0) + (last[1] ? 1 : 0) === i);
-          });
-          const prod = pA * pB;
-          api.stat.innerHTML =
-            &quot;Pr(A∩B) should be Pr(A)·Pr(B) = &quot; + fmt(prod) +
-            &quot;; empirical AB = <b>&quot; + fmt(emp[3]) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         BAYES — partition + tree, posterior calculation
-         ============================================================ */
-      register(&quot;bayes&quot;, {
-        total: () =&gt; 5,
-        build(api) {
-          const v = s(&quot;svg&quot;, { width: 480, height: 230, viewBox: &quot;0 0 480 230&quot; }, api.stage);
-          api.svg = v;
-          api.state.prior = api.cfg.prior || 0.3;
-          api.state.like = api.cfg.like || 0.8;
-        },
-        step(api) {
-          // render drives
-        },
-        render(api) {
-          clear(api.svg);
-          const v = api.svg;
-          const prior = api.state.prior, like = api.state.like;
-          const pos = api.step;
-          // draw tree
-          const root = [30, 115];
-          const nA = [210, 60], nNotA = [210, 170];
-          const aPos = [400, 35], aNeg = [400, 90];
-          const nPos = [400, 140], nNeg = [400, 195];
-          const lit = (node, on) =&gt; {
-            if (on) {
-              s(&quot;circle&quot;, { cx: node[0], cy: node[1], r: 10, fill: &quot;#d71920&quot; }, v);
-            } else {
-              s(&quot;circle&quot;, { cx: node[0], cy: node[1], r: 10, fill: &quot;#5ccae8&quot;, stroke: &quot;#3a3a3a&quot; }, v);
-            }
-          };
-          s(&quot;line&quot;, { x1: root[0], y1: root[1], x2: nA[0], y2: nA[1], stroke: &quot;#555&quot;, &quot;stroke-width&quot;: 2 }, v);
-          s(&quot;line&quot;, { x1: root[0], y1: root[1], x2: nNotA[0], y2: nNotA[1], stroke: &quot;#555&quot;, &quot;stroke-width&quot;: 2 }, v);
-          st(&quot;text&quot;, &quot;prior P(A)=&quot; + fmt(prior), { x: 20, y: 132, &quot;font-size&quot;: 13 }, v);
-          lit(root, pos &gt;= 1);
-          if (pos &gt;= 1) st(&quot;text&quot;, &quot;A&quot;, { x: 200, y: 40, &quot;font-size&quot;: 14 }, v);
-          if (pos &gt;= 1) st(&quot;text&quot;, &quot;¬A&quot;, { x: 200, y: 190, &quot;font-size&quot;: 14 }, v);
-          if (pos &gt;= 2) {
-            lit(nA, true);
-            lit(nNotA, true);
-          }
-          if (pos &gt;= 3) {
-            s(&quot;line&quot;, { x1: nA[0], y1: nA[1], x2: aPos[0], y2: aPos[1], stroke: &quot;#c00&quot;, &quot;stroke-width&quot;: 2 }, v);
-            s(&quot;line&quot;, { x1: nA[0], y1: nA[1], x2: aNeg[0], y2: aNeg[1], stroke: &quot;#888&quot;, &quot;stroke-width&quot;: 2 }, v);
-            s(&quot;line&quot;, { x1: nNotA[0], y1: nNotA[1], x2: nPos[0], y2: nPos[1], stroke: &quot;#888&quot;, &quot;stroke-width&quot;: 2 }, v);
-            s(&quot;line&quot;, { x1: nNotA[0], y1: nNotA[1], x2: nNeg[0], y2: nNeg[1], stroke: &quot;#c00&quot;, &quot;stroke-width&quot;: 2 }, v);
-          }
-          if (pos &gt;= 4) {
-            const Ppos = prior * like + (1 - prior) * 0.1;
-            const post = (prior * like) / Ppos;
-            st(&quot;text&quot;, &quot;P(A|+) = P(A)P(+|A) / P(+) = &quot; + fmt(post), { x: 150, y: 228, &quot;font-size&quot;: 15, &quot;font-weight&quot;: 700 }, v);
-          }
-        },
-      });
-
-      /* ============================================================
-         TOWER — law of total expectation
-         ============================================================ */
-      register(&quot;tower&quot;, {
-        total: () =&gt; 4,
-        build(api) {
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.y = api.cfg.y || 0.5; // P(Y=1)
-          api.state.e1 = api.cfg.e1 || 2; // E[X|Y=1]
-          api.state.e0 = api.cfg.e0 || 4; // E[X|Y=0]
-        },
-        step(api) {},
-        render(api) {
-          const { y, e1, e0 } = api.state;
-          const ex = y * e1 + (1 - y) * e0;
-          let txt = &quot;E[X] = E[E[X|Y]]  —  two-stage experiment&quot;;
-          if (api.step &gt;= 1) txt = &quot;E[X|Y=1] = &quot; + e1 + &quot;, E[X|Y=0] = &quot; + e0;
-          if (api.step &gt;= 2)
-            txt = &quot;E[E[X|Y]] = &quot; + fmt(y) + &quot;·&quot; + e1 + &quot; + &quot; + fmt(1 - y) + &quot;·&quot; + e0;
-          if (api.step &gt;= 3) txt = &quot;E[X] = E[E[X|Y]] = <b>&quot; + fmt(ex) + &quot;</b>&quot;;
-          api.stat.innerHTML = txt;
-        },
-      });
-
-      /* ============================================================
-         VARIANCE — two distributions, same mean, different spread
-         ============================================================ */
-      register(&quot;variance&quot;, {
-        total: () =&gt; 2,
-        build(api) {
-          api.wrap = h(&quot;div&quot;, {}, api.stage);
-          api.wrap.style.width = &quot;100%&quot;;
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-        },
-        step(api) {},
-        render(api) {
-          const show = api.step &gt;= 1;
-          clear(api.wrap);
-          const barsA = [0.1, 0.2, 0.4, 0.2, 0.1];
-          const barsB = [0.02, 0.08, 0.8, 0.08, 0.02];
-          const labels = [&quot;x-2&quot;, &quot;x-1&quot;, &quot;x&quot;, &quot;x+1&quot;, &quot;x+2&quot;];
-          const mk = (bars, title, color) =&gt; {
-            const blk = h(&quot;div&quot;, {}, api.wrap);
-            blk.style.cssText = &quot;display:inline-block;width:45%;vertical-align:top;margin-right:4%;&quot;;
-            hs(&quot;div&quot;, title, {}, blk).style.cssText = &quot;text-align:center;font-weight:700;font-size:.85rem;&quot;;
-            const barsDiv = h(&quot;div&quot;, { class: &quot;pv-bars&quot; }, blk);
-            bars.forEach((p, i) =&gt; {
-              const wrapb = h(&quot;div&quot;, { class: &quot;pv-bar-wrap&quot; }, barsDiv);
-              const bar = h(&quot;div&quot;, { class: &quot;pv-bar&quot; }, wrapb);
-              bar.style.height = p * 110 + &quot;px&quot;;
-              bar.style.background = color;
-              hs(&quot;div&quot;, labels[i], { class: &quot;pv-bar-label&quot; }, wrapb);
-            });
-          };
-          mk(barsA, &quot;low variance (σ² small)&quot;, &quot;#5ccae8&quot;);
-          mk(barsB, &quot;high variance (σ² large)&quot;, &quot;#d71920&quot;);
-          if (show) {
-            api.stat.innerHTML =
-              &quot;Same mean, different spread.  Chebyshev uses σ² — the wider the spread, the weaker the bound.&quot;;
-          }
-        },
-      });
-
-      /* ============================================================
-         DISTRIBUTIONS — Bernoulli / Binomial / Geometric PMF bars
-         ============================================================ */
-      register(&quot;distributions&quot;, {
-        total: (cfg) =&gt; Math.max(10, (cfg.maxSteps || 24)),
-        build(api) {
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.barsDiv = h(&quot;div&quot;, { class: &quot;pv-bars&quot; }, api.stage);
-          api.barsDiv.style.width = &quot;100%&quot;;
-          api.state.which = api.cfg.which || &quot;binomial&quot;;
-          api.state.n = 0;
-        },
-        step(api) {
-          if (api.cfg.which === &quot;geometric&quot;) api.state.k = (api.state.k || 0) + 1;
-          else api.state.n++;
-        },
-        render(api) {
-          clear(api.barsDiv);
-          const which = api.cfg.which || &quot;binomial&quot;;
-          const p = api.cfg.p || 0.4;
-          const maxN = api.cfg.maxN || 12;
-          const k = api.state.k || 1;
-          const n = Math.min(api.state.n || 1, maxN);
-          let vals = [];
-          let labels = [];
-          if (which === &quot;bernoulli&quot;) {
-            vals = [1 - p, p];
-            labels = [&quot;0&quot;, &quot;1&quot;];
-          } else if (which === &quot;binomial&quot;) {
-            const Nn = Math.min(n, maxN);
-            for (let i = 0; i &lt;= Nn; i++) {
-              vals.push(comb(Nn, i) * Math.pow(p, i) * Math.pow(1 - p, Nn - i));
-              labels.push(String(i));
-            }
-          } else {
-            for (let i = 1; i &lt;= 10; i++) {
-              vals.push(Math.pow(1 - p, i - 1) * p);
-              labels.push(String(i));
-            }
-          }
-          const mx = Math.max.apply(null, vals);
-          vals.forEach((val, i) =&gt; {
-            const wrapb = h(&quot;div&quot;, { class: &quot;pv-bar-wrap&quot; }, api.barsDiv);
-            const bar = h(&quot;div&quot;, { class: &quot;pv-bar&quot; }, wrapb);
-            bar.style.height = (val / mx) * 100 + &quot;px&quot;;
-            hs(&quot;div&quot;, labels[i], { class: &quot;pv-bar-label&quot; }, wrapb);
-          });
-          let desc;
-          if (which === &quot;bernoulli&quot;) desc = &quot;Bernoulli(p): one trial, Pr(X=1)=p&quot;;
-          else if (which === &quot;binomial&quot;)
-            desc = &quot;Binomial(n,p): n=&quot; + Math.min(n, maxN) + &quot; independent trials → E = n·p = &quot; +
-              fmt(Math.min(n, maxN) * p, 2);
-          else desc = &quot;Geometric(p): trials until first success → E = 1/p = &quot; + fmt(1 / p, 2);
-          api.stat.textContent = desc;
-        },
-      });
-
-      function comb(n, k) {
-        let r = 1;
-        for (let i = 0; i &lt; k; i++) r = (r * (n - i)) / (i + 1);
-        return r;
-      }
-
-      /* ============================================================
-         EMPTY BINS — balls into bins, expected empty bins → n·e⁻¹
-         ============================================================ */
-      register(&quot;empty-bins&quot;, {
-        total: (cfg) =&gt; (cfg.balls || 24) + 1,
-        build(api) {
-          const n = api.cfg.bins || 8;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(&quot; + n + &quot;, 52px)&quot;;
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.bins = new Array(n).fill(0);
-        },
-        step(api) {
-          const n = api.cfg.bins || 8;
-          const r = mulberry32(api.seed + api.step)();
-          api.state.bins[Math.floor(r * n)]++;
-        },
-        render(api) {
-          const n = api.cfg.bins || 8;
-          const bins = api.state.bins;
-          clear(api.grid);
-          bins.forEach((cnt, i) =&gt; {
-            const cell = hs(&quot;div&quot;, cnt === 0 ? &quot;∅&quot; : cnt, { class: &quot;pv-cell&quot; }, api.grid);
-            if (cnt === 0) cell.classList.add(&quot;pv-hot&quot;);
-          });
-          const empty = bins.filter((x) =&gt; x === 0).length;
-          const expect = n * Math.exp(-1);
-          api.stat.innerHTML =
-            bins.reduce((a, b) =&gt; a + b, 0) + &quot; balls, &quot; + n + &quot; bins  ·  empty = <b>&quot; +
-            empty + &quot;</b>  ·  E[empty] = n·e⁻¹ = <b>&quot; + fmt(expect, 2) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         MARKOV — histogram + mean line + threshold region
-         ============================================================ */
-      register(&quot;markov&quot;, {
-        total: (cfg) =&gt; (cfg.steps || 10) + 1,
-        build(api) {
-          api.svg = s(&quot;svg&quot;, { width: 520, height: 200, viewBox: &quot;0 0 520 200&quot; }, api.stage);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.values = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          // mixture: 60% value 2, 40% value 10 → E = 5.2
-          const v = r &lt; 0.6 ? 2 : 10;
-          api.state.values.push(v);
-        },
-        render(api) {
-          const vals = api.state.values || [];
-          clear(api.svg);
-          const v = api.svg;
-          const W = 520, H = 200;
-          const a = 12; // threshold
-          const mean = vals.reduce((s, x) =&gt; s + x, 0) / Math.max(1, vals.length);
-          const mx = Math.max(a + 1, Math.max.apply(null, vals.concat([1])));
-          const bins = {};
-          vals.forEach((x) =&gt; (bins[x] = (bins[x] || 0) + 1));
-          const maxBin = Math.max.apply(null, Object.values(bins).concat([1]));
-          Object.keys(bins).forEach((key) =&gt; {
-            const x = +key;
-            const bw = 46;
-            const bx = 30 + (x / mx) * 320;
-            const bh = (bins[key] / maxBin) * 130;
-            s(&quot;rect&quot;, { x: bx, y: H - 30 - bh, width: bw, height: bh, fill: x &gt;= a ? &quot;#d71920&quot; : &quot;#5ccae8&quot; }, v);
-            st(&quot;text&quot;, x, { x: bx + bw / 2, y: H - 12, &quot;font-size&quot;: 12, &quot;text-anchor&quot;: &quot;middle&quot; }, v);
-          });
-          // threshold line
-          s(&quot;line&quot;, { x1: 30 + (a / mx) * 320, y1: 20, x2: 30 + (a / mx) * 320, y2: H - 30, stroke: &quot;#c9a300&quot;, &quot;stroke-width&quot;: 2, &quot;stroke-dasharray&quot;: &quot;5 4&quot; }, v);
-          st(&quot;text&quot;, &quot;a=&quot; + a, { x: 30 + (a / mx) * 320 + 6, y: 22, class: &quot;pv-axis&quot; }, v);
-          s(&quot;line&quot;, { x1: 30 + (mean / mx) * 320, y1: H - 30, x2: 30 + (mean / mx) * 320, y2: 20, stroke: &quot;#2b2b2b&quot;, &quot;stroke-width&quot;: 1.5, &quot;stroke-dasharray&quot;: &quot;2 3&quot; }, v);
-          const emp = vals.filter((x) =&gt; x &gt;= a).length / Math.max(1, vals.length);
-          const bound = mean / a;
-          api.stat.innerHTML =
-            &quot;E[X] = <b>&quot; + fmt(mean, 2) + &quot;</b>  ·  Pr(X ≥ &quot; + a + &quot;) = &quot; +
-            fmt(emp) + &quot; ≤ E[X]/&quot; + a + &quot; = <b>&quot; + fmt(bound, 2) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         CHEBYSHEV — mean ± t band around distribution
-         ============================================================ */
-      register(&quot;chebyshev&quot;, {
-        total: (cfg) =&gt; (cfg.steps || 10) + 1,
-        build(api) {
-          api.svg = s(&quot;svg&quot;, { width: 520, height: 200, viewBox: &quot;0 0 520 200&quot; }, api.stage);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.values = [];
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          api.state.values.push(Math.round(2 + r * 6)); // mean ~5, variance ~3
-        },
-        render(api) {
-          const vals = api.state.values || [];
-          clear(api.svg);
-          const v = api.svg;
-          const W = 520, H = 200;
-          const t = 2;
-          const mean = vals.reduce((s, x) =&gt; s + x, 0) / Math.max(1, vals.length);
-          const varf = vals.reduce((s, x) =&gt; s + (x - mean) * (x - mean), 0) / Math.max(1, vals.length);
-          const mx = 8;
-          const bins = {};
-          vals.forEach((x) =&gt; (bins[x] = (bins[x] || 0) + 1));
-          const maxBin = Math.max.apply(null, Object.values(bins).concat([1]));
-          Object.keys(bins).forEach((key) =&gt; {
-            const x = +key;
-            const bw = 46;
-            const bx = 30 + (x / mx) * 320;
-            const bh = (bins[key] / maxBin) * 130;
-            const outside = Math.abs(x - mean) &gt;= t;
-            s(&quot;rect&quot;, { x: bx, y: H - 30 - bh, width: bw, height: bh, fill: outside ? &quot;#d71920&quot; : &quot;#5ccae8&quot; }, v);
-            st(&quot;text&quot;, x, { x: bx + bw / 2, y: H - 12, &quot;font-size&quot;: 12, &quot;text-anchor&quot;: &quot;middle&quot; }, v);
-          });
-          // band
-          s(&quot;rect&quot;, { x: 30 + ((mean - t) / mx) * 320, y: 18, width: (2 * t / mx) * 320, height: H - 48, fill: &quot;#5ccae8&quot;, opacity: 0.15 }, v);
-          s(&quot;line&quot;, { x1: 30 + (mean / mx) * 320, y1: 12, x2: 30 + (mean / mx) * 320, y2: H - 30, stroke: &quot;#2b2b2b&quot;, &quot;stroke-width&quot;: 2 }, v);
-          const emp = vals.filter((x) =&gt; Math.abs(x - mean) &gt;= t).length / Math.max(1, vals.length);
-          const bound = varf / (t * t);
-          api.stat.innerHTML =
-            &quot;μ = &quot; + fmt(mean, 2) + &quot;, σ² = &quot; + fmt(varf, 2) + &quot;  ·  Pr(|X−μ| ≥ &quot; + t + &quot;) = &quot; +
-            fmt(emp) + &quot; ≤ σ²/&quot; + t + &quot;² = <b>&quot; + fmt(bound, 2) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         CHERNOFF — Bernoulli sum tail vs the three bounds
-         ============================================================ */
-      register(&quot;chernoff&quot;, {
-        total: (cfg) =&gt; (cfg.steps || 12) + 1,
-        build(api) {
-          api.barsDiv = h(&quot;div&quot;, { class: &quot;pv-bars&quot; }, api.stage);
-          api.barsDiv.style.width = &quot;100%&quot;;
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.counts = [];
-        },
-        step(api) {
-          const p = api.cfg.p || 0.5;
-          const r = mulberry32(api.seed + api.step)();
-          api.state.counts.push(r &lt; p ? 1 : 0);
-        },
-        render(api) {
-          clear(api.barsDiv);
-          const counts = api.state.counts || [];
-          const n = Math.max(1, counts.length);
-          const k = counts.filter((x) =&gt; x === 1).length;
-          // histogram of sum over a simulated batch is not feasible per-step;
-          // show a single vertical bar = fraction of heads so far.
-          const frac = k / n;
-          const p = api.cfg.p || 0.5;
-          const wrapb = h(&quot;div&quot;, { class: &quot;pv-bar-wrap&quot; }, api.barsDiv);
-          const bar = h(&quot;div&quot;, { class: &quot;pv-bar&quot; }, wrapb);
-          bar.style.height = frac * 100 + &quot;px&quot;;
-          bar.style.background = &quot;#d71920&quot;;
-          hs(&quot;div&quot;, &quot;frac heads&quot;, { class: &quot;pv-bar-label&quot; }, wrapb);
-          // bounds at 3/4 n
-          const t = Math.ceil(0.75 * n);
-          const delta = 0.75 / p - 1;
-          const chernoff = Math.exp(-(delta * delta * p * n) / 3);
-          const cheb = (p * (1 - p)) / (0.25 * 0.25 * n);
-          api.stat.innerHTML =
-            n + &quot; fair coins, &quot; + k + &quot; heads.  Pr(# ≥ 3n/4):  Markov ≤ &quot; +
-            fmt(p / 0.75, 2) + &quot; · Chebyshev ≤ &quot; + fmt(Math.min(1, cheb), 2) +
-            &quot; · Chernoff ≤ <b>&quot; + fmt(Math.min(1, chernoff), 3) + &quot;</b>&quot;;
-        },
-      });
-
-      /* ============================================================
-         BALLS &amp; BINS — animated max-load
-         ============================================================ */
-      register(&quot;balls-bins&quot;, {
-        total: (cfg) =&gt; (cfg.balls || 20) + 1,
-        build(api) {
-          const n = api.cfg.bins || 8;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(&quot; + n + &quot;, 44px)&quot;;
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.bins = new Array(n).fill(0);
-        },
-        step(api) {
-          const n = api.cfg.bins || 8;
-          const r = mulberry32(api.seed + api.step)();
-          api.state.bins[Math.floor(r * n)]++;
-        },
-        render(api) {
-          const n = api.cfg.bins || 8;
-          const bins = api.state.bins;
-          clear(api.grid);
-          bins.forEach((cnt) =&gt; {
-            const cell = hs(&quot;div&quot;, cnt, { class: &quot;pv-cell&quot; }, api.grid);
-            if (cnt === Math.max.apply(null, bins)) cell.classList.add(&quot;pv-hot&quot;);
-          });
-          const maxl = Math.max.apply(null, bins);
-          api.stat.innerHTML =
-            bins.reduce((a, b) =&gt; a + b, 0) + &quot; balls, &quot; + n +
-            &quot; bins  ·  max load = <b>&quot; + maxl +
-            &quot;</b>  (Chernoff → O(log n / log log n) whp)&quot;;
-        },
-      });
-
-      /* ============================================================
-         SAMPLING — estimate a mean by random sampling, convergence
-         ============================================================ */
-      register(&quot;sampling&quot;, {
-        total: (cfg) =&gt; (cfg.samples || 25) + 1,
-        build(api) {
-          api.wrap = h(&quot;div&quot;, { class: &quot;pv-line-wrap&quot; }, api.stage);
-          api.svg = s(&quot;svg&quot;, { width: 560, height: 170, viewBox: &quot;0 0 560 170&quot; }, api.wrap);
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.state.samples = [];
-          api.state.truth = api.cfg.truth || 0.42;
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          const truth = api.state.truth;
-          // Bernoulli with unknown mean = truth
-          api.state.samples.push(r &lt; truth ? 1 : 0);
-        },
-        render(api) {
-          const samples = api.state.samples || [];
-          clear(api.svg);
-          const v = api.svg;
-          const W = 560, H = 170;
-          const truth = api.state.truth;
-          s(&quot;line&quot;, { x1: 20, y1: 15 + (1 - truth) * 120, x2: W - 20, y2: 15 + (1 - truth) * 120, stroke: &quot;#c00&quot;, &quot;stroke-width&quot;: 1.5, &quot;stroke-dasharray&quot;: &quot;4 4&quot; }, v);
-          st(&quot;text&quot;, &quot;true mean&quot;, { x: W - 20, y: 10 + (1 - truth) * 120, class: &quot;pv-axis&quot;, &quot;text-anchor&quot;: &quot;end&quot; }, v);
-          let sum = 0;
-          const pts = samples.map((val, i) =&gt; {
-            sum += val;
-            return [(i / Math.max(1, samples.length - 1)) * (W - 40) + 20, 15 + (1 - sum / (i + 1)) * 120];
-          });
-          if (pts.length &gt; 1) {
-            s(&quot;path&quot;, { d: &quot;M&quot; + pts.map((p) =&gt; p[0].toFixed(1) + &quot; &quot; + p[1].toFixed(1)).join(&quot; L&quot;), fill: &quot;none&quot;, stroke: &quot;#5ccae8&quot;, &quot;stroke-width&quot;: 2.5 }, v);
-          }
-          if (samples.length) {
-            const last = pts[pts.length - 1];
-            s(&quot;circle&quot;, { cx: last[0], cy: last[1], r: 4, fill: &quot;#d71920&quot; }, v);
-          }
-          const est = sum / Math.max(1, samples.length);
-          const err = Math.abs(est - truth);
-          api.stat.innerHTML =
-            samples.length + &quot; samples  ·  estimate = <b>&quot; + fmt(est, 3) +
-            &quot;</b>  ·  error = <b>&quot; + fmt(err, 3) + &quot;</b> (additive via Chebyshev/Chernoff)&quot;;
-        },
-      });
-
-      /* ============================================================
-         PM COLOR — probabilistic method: existence via expectation
-         ============================================================ */
-      register(&quot;pm-color&quot;, {
-        total: () =&gt; 12,
-        build(api) {
-          api.stat = hs(&quot;div&quot;, &quot;&quot;, {}, api.stage);
-          api.stat.style.textAlign = &quot;center&quot;;
-          api.grid = h(&quot;div&quot;, { class: &quot;pv-grid&quot; }, api.stage);
-          api.grid.style.gridTemplateColumns = &quot;repeat(4, 56px)&quot;;
-          api.state.cells = new Array(16).fill(0);
-        },
-        step(api) {
-          const r = mulberry32(api.seed + api.step)();
-          api.state.cells[Math.floor(r * 16)] = 1;
-        },
-        render(api) {
-          clear(api.grid);
-          const cells = api.state.cells;
-          let colored = 0;
-          cells.forEach((v, i) =&gt; {
-            const cell = hs(&quot;div&quot;, &quot;&quot;, { class: &quot;pv-cell&quot; }, api.grid);
-            if (v) {
-              cell.classList.add(&quot;pv-hot&quot;);
-              colored++;
-            }
-          });
-          const N = Math.max(1, cells.reduce((a, b) =&gt; a + b, 0));
-          api.stat.innerHTML =
-            &quot;Color cells at random (p=1/2).  E[colored] = 16·1/2 = <b>8</b>;  observed = <b>&quot; +
-            colored + &quot;</b>.  If E &gt; 0, some assignment <i>exists</i> (existence via expectation).&quot;;
-        },
-      });
-
-      /* ---------------- boot + reveal hooks ---------------- */
-      function onVisible(slideEl) {
-        if (!slideEl) return;
-        const hosts = slideEl.querySelectorAll(&quot;[data-viz]&quot;);
-        hosts.forEach((host) =&gt; {
-          const inst = instances.find((i) =&gt; i.host === host);
-          if (inst) inst.reset();
-          else instantiate(host);
-        });
-      }
-
-      function init() {
-        document.querySelectorAll(&quot;[data-viz]&quot;).forEach((host) =&gt; instantiate(host));
-      }
-
-      global.ProbViz = { init, widgets, instances };
-
-      // attach to revealjs when available.
-      // reveal.js 3.6.5 fires the &quot;ready&quot; event synchronously inside
-      // Reveal.initialize(), which runs before this include-after-body script,
-      // so guard with Reveal.isReady() instead of waiting for &quot;ready&quot;.
-      if (global.Reveal) {
-        const boot = function () {
-          init();
-          onVisible(global.Reveal.getCurrentSlide());
-        };
-        if (global.Reveal.isReady()) boot();
-        else global.Reveal.on(&quot;ready&quot;, boot);
-        global.Reveal.on(&quot;slidechanged&quot;, function (ev) {
-          onVisible(ev.currentSlide);
-        });
-      } else if (document.readyState === &quot;loading&quot;) {
-        document.addEventListener(&quot;DOMContentLoaded&quot;, init);
+      let formula = "";
+      if (api.cfg.mode === "ubound") {
+        if (step === 4)
+          formula = "|A∪B| = " + onlyA + " + " + c.both + " + " + onlyB +
+            " = " + (onlyA + c.both + onlyB);
+        else if (step === 5)
+          formula = "Union bound: |A∪B| ≤ |A| + |B| — no independence needed";
       } else {
-        init();
+        if (step === 4)
+          formula = "|A∪B| = |A| + |B| − |A∩B| = " + c.a + " + " + c.b +
+            " − " + c.both + " = " + (c.a + c.b - c.both);
+        else if (step === 5)
+          formula = "|A∪B| = |A| + |B| − |A∩B| ≤ |A| + |B|  (union bound)";
       }
-    })(window);
+      api.formula.textContent = formula;
+    },
+  });
+
+  /* ============================================================
+     RV MAP — map outcomes to values of X
+     ============================================================ */
+  register("rv-map", {
+    total: (cfg) => (cfg.outcomes || 6) + 1,
+    build(api) {
+      const n = api.cfg.outcomes || 6;
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(" + Math.min(n, 6) + ", 84px)";
+      api.cells = [];
+      for (let i = 0; i < n; i++) {
+        api.cells.push(hs("div", "", { class: "pv-cell" }, api.grid));
+      }
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.map = api.cfg.map || {
+        values: [0, 1, 2, 3, 4, 5],
+        labels: ["1", "2", "3", "4", "5", "6"],
+        ex: 3.5,
+      };
+    },
+    step(api) {
+      // no-op; render cycles highlight
+    },
+    render(api) {
+      const m = api.state.map;
+      m.values.forEach((val, i) => {
+        api.cells[i].textContent = m.labels[i] + " → " + val;
+        api.cells[i].classList.toggle("pv-hot", i === api.step - 1);
+        api.cells[i].classList.toggle("pv-dim", i !== api.step - 1 && api.step > 0);
+      });
+      api.stat.innerHTML =
+        "X maps each outcome to a number;  E[X] = Σ x·Pr(X=x) = <b>" +
+        fmt(m.ex) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     INDICATOR — highlight events, E[I_A] = Pr(A)
+     ============================================================ */
+  register("indicator", {
+    total: (cfg) => (cfg.steps || 8) + 1,
+    build(api) {
+      const cols = api.cfg.cols || 6;
+      const rowsN = api.cfg.rows || 4;
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(" + cols + ", 44px)";
+      api.cells = [];
+      for (let i = 0; i < cols * rowsN; i++) {
+        api.cells.push(hs("div", "", { class: "pv-cell" }, api.grid));
+      }
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.hits = 0;
+      api.state.seen = 0;
+    },
+    step(api) {
+      const cols = api.cfg.cols || 6;
+      const rowsN = api.cfg.rows || 4;
+      const total = cols * rowsN;
+      const r = mulberry32(api.seed + api.step)();
+      const i = Math.floor(r * total);
+      api.state.cell = i;
+      api.state.seen++;
+      if (i % 2 === 0) api.state.hits++; // event A = even cell
+    },
+    render(api) {
+      const cols = api.cfg.cols || 6;
+      const rowsN = api.cfg.rows || 4;
+      api.cells.forEach((cell, i) => {
+        cell.textContent = (i % 2 === 0 ? "✓" : "");
+        cell.classList.toggle("pv-hot", i === api.state.cell);
+        cell.classList.toggle("pv-dim", i !== api.state.cell && api.state.cell !== undefined);
+      });
+      const seen = api.state.seen || 0;
+      const hits = api.state.hits || 0;
+      api.stat.innerHTML =
+        "Event A = even cells;  I_A = 1 if A occurs.  E[I_A] = Pr(A) = <b>" +
+        fmt(hits / Math.max(1, seen)) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     LINEARITY — two dice, E[X] + E[Y] = E[X+Y]
+     ============================================================ */
+  register("linearity", {
+    total: (cfg) => (cfg.rolls || 10) + 1,
+    build(api) {
+      api.row = h("div", { class: "pv-readout" }, api.stage);
+      api.d1 = h("div", { class: "pv-object pv-die" }, api.stage);
+      api.d2 = h("div", { class: "pv-object pv-die" }, api.stage);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.sums = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      const a = 1 + Math.floor(r * 6);
+      const b = 1 + Math.floor((r * 6 + 3) % 6);
+      api.state.sums.push(a + b);
+      api.state.last = [a, b];
+    },
+    render(api) {
+      const sums = api.state.sums || [];
+      const last = api.state.last || ["?", "?"];
+      api.d1.textContent = last[0];
+      api.d2.textContent = last[1];
+      const avg = sums.reduce((a, b) => a + b, 0) / Math.max(1, sums.length);
+      api.stat.innerHTML =
+        "E[X]=3.5, E[Y]=3.5, so E[X+Y]=7 even if dependent.  Emp. avg of sums = <b>" +
+        fmt(avg, 2) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     LLN CHART — running average of coin flips → 0.5
+     ============================================================ */
+  register("lln-chart", {
+    total: (cfg) => (cfg.flips || 40) + 1,
+    build(api) {
+      api.wrap = h("div", { class: "pv-line-wrap" }, api.stage);
+      api.svg = s("svg", { width: 560, height: 180, viewBox: "0 0 560 180" }, api.wrap);
+      api.state.flips = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      api.state.flips.push(r < 0.5 ? 0 : 1);
+    },
+    render(api) {
+      const flips = api.state.flips || [];
+      clear(api.svg);
+      const W = 560, H = 180;
+      s("line", { x1: 0, y1: 15, x2: W, y2: 15, stroke: "#c00", "stroke-width": 1.5, "stroke-dasharray": "4 4" }, api.svg);
+      st("text", "0.5", { x: 6, y: 12, class: "pv-axis" }, api.svg);
+      if (flips.length === 0) return;
+      let sum = 0;
+      const pts = flips.map((v, i) => {
+        sum += v;
+        return [i / (flips.length - 1) * (W - 40) + 20, 165 - (sum / (i + 1)) * 150];
+      });
+      let d = "M" + pts.map((p) => p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" L");
+      s("path", { d, fill: "none", stroke: "#5ccae8", "stroke-width": 2.5 }, api.svg);
+      const last = pts[pts.length - 1];
+      s("circle", { cx: last[0], cy: last[1], r: 4, fill: "#d71920" }, api.svg);
+      st("text", "running avg → 1/2", { x: 20, y: 172, class: "pv-axis" }, api.svg);
+    },
+  });
+
+  /* ============================================================
+     FIXED POINTS — random permutation, E[# fixed] = 1
+     ============================================================ */
+  register("fixed-points", {
+    total: (cfg) => (cfg.trials || 8) + 1,
+    build(api) {
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(6, 56px)";
+      api.state.counts = [];
+    },
+    step(api) {
+      const n = api.cfg.n || 6;
+      const r = mulberry32(api.seed + api.step)();
+      const perm = [];
+      const pool = Array.from({ length: n }, (_, i) => i);
+      for (let i = 0; i < n; i++) {
+        const j = Math.floor(r * (n - i) + i);
+        const t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+      }
+      let fp = 0;
+      for (let i = 0; i < n; i++) if (pool[i] === i) fp++;
+      api.state.lastPerm = pool;
+      api.state.counts.push(fp);
+    },
+    render(api) {
+      const counts = api.state.counts || [];
+      const n = api.cfg.n || 6;
+      if (api.state.lastPerm) {
+        clear(api.grid);
+        api.state.lastPerm.forEach((v, i) => {
+          const cell = hs("div", String(v), { class: "pv-cell" }, api.grid);
+          if (v === i) cell.classList.add("pv-hot");
+        });
+      }
+      const avg = counts.reduce((a, b) => a + b, 0) / Math.max(1, counts.length);
+      api.stat.innerHTML =
+        counts.length + " random permutations of " + n +
+        " elements &nbsp;·&nbsp; avg fixed points = <b>" + fmt(avg, 2) +
+        "</b> (E = 1, regardless of n; indicators are dependent)";
+    },
+  });
+
+  /* ============================================================
+     COUPON COLLECTOR — draw coupons until all collected
+     ============================================================ */
+  register("coupon", {
+    total: (cfg) => {
+      const n = cfg.n || 10;
+      const Hn = Math.log(n) + 0.57721;
+      return Math.ceil(n * Hn) + 4;
+    },
+    build(api) {
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(5, 56px)";
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.collected = [];
+      api.state.seen = new Set();
+    },
+    step(api) {
+      const n = api.cfg.n || 10;
+      const r = mulberry32(api.seed + api.step)();
+      const c = Math.floor(r * n);
+      api.state.collected.push(c);
+      api.state.seen.add(c);
+    },
+    render(api) {
+      const n = api.cfg.n || 10;
+      const collected = api.state.collected || [];
+      clear(api.grid);
+      for (let i = 0; i < n; i++) {
+        const cell = hs("div", i + 1, { class: "pv-cell" }, api.grid);
+        if (api.state.seen.has(i)) cell.classList.add("pv-hot");
+      }
+      const Hn = Math.log(n) + 0.57721;
+      const expect = n * Hn;
+      const done = api.state.seen.size === n;
+      api.stat.innerHTML =
+        collected.length + " draws &nbsp;·&nbsp; " + api.state.seen.size + "/" + n +
+        " distinct &nbsp;·&nbsp; expected draws nHₙ = <b>" + fmt(expect, 1) +
+        "</b>" + (done ? " &nbsp;🎉 all collected" : "");
+    },
+  });
+
+  /* ============================================================
+     INDEPENDENCE — 2x2 product rule
+     ============================================================ */
+  register("independence", {
+    total: (cfg) => (cfg.steps || 8) + 1,
+    build(api) {
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(2, 110px)";
+      api.cells = [];
+      for (let i = 0; i < 4; i++) {
+        api.cells.push(hs("div", "", { class: "pv-cell" }, api.grid));
+      }
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.pA = api.cfg.pA != null ? api.cfg.pA : 0.5;
+      api.state.pB = api.cfg.pB != null ? api.cfg.pB : 0.3;
+      api.state.rolls = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      const a = r < api.state.pA;
+      const b = r < api.state.pB;
+      api.state.rolls.push([a, b]);
+    },
+    render(api) {
+      const rolls = api.state.rolls || [];
+      const pA = api.state.pA, pB = api.state.pB;
+      const counts = [0, 0, 0, 0];
+      rolls.forEach(([a, b]) => counts[(a ? 2 : 0) + (b ? 1 : 0)]++);
+      const N = Math.max(1, rolls.length);
+      const emp = counts.map((c) => c / N);
+      api.cells[0].textContent = "¬A ¬B: " + fmt(emp[0], 2);
+      api.cells[1].textContent = "¬A B: " + fmt(emp[1], 2);
+      api.cells[2].textContent = "A ¬B: " + fmt(emp[2], 2);
+      api.cells[3].textContent = "A B: " + fmt(emp[3], 2);
+      const last = rolls[rolls.length - 1];
+      api.cells.forEach((c, i) => {
+        c.classList.toggle("pv-hot", last && (last[0] ? 2 : 0) + (last[1] ? 1 : 0) === i);
+      });
+      const prod = pA * pB;
+      api.stat.innerHTML =
+        "Pr(A∩B) should be Pr(A)·Pr(B) = " + fmt(prod) +
+        "; empirical AB = <b>" + fmt(emp[3]) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     BAYES — partition + tree, posterior calculation
+     ============================================================ */
+  register("bayes", {
+    total: () => 5,
+    build(api) {
+      const v = s("svg", { width: 480, height: 230, viewBox: "0 0 480 230" }, api.stage);
+      api.svg = v;
+      api.state.prior = api.cfg.prior || 0.3;
+      api.state.like = api.cfg.like || 0.8;
+    },
+    step(api) {
+      // render drives
+    },
+    render(api) {
+      clear(api.svg);
+      const v = api.svg;
+      const prior = api.state.prior, like = api.state.like;
+      const pos = api.step;
+      // draw tree
+      const root = [30, 115];
+      const nA = [210, 60], nNotA = [210, 170];
+      const aPos = [400, 35], aNeg = [400, 90];
+      const nPos = [400, 140], nNeg = [400, 195];
+      const lit = (node, on) => {
+        if (on) {
+          s("circle", { cx: node[0], cy: node[1], r: 10, fill: "#d71920" }, v);
+        } else {
+          s("circle", { cx: node[0], cy: node[1], r: 10, fill: "#5ccae8", stroke: "#3a3a3a" }, v);
+        }
+      };
+      s("line", { x1: root[0], y1: root[1], x2: nA[0], y2: nA[1], stroke: "#555", "stroke-width": 2 }, v);
+      s("line", { x1: root[0], y1: root[1], x2: nNotA[0], y2: nNotA[1], stroke: "#555", "stroke-width": 2 }, v);
+      st("text", "prior P(A)=" + fmt(prior), { x: 20, y: 132, "font-size": 13 }, v);
+      lit(root, pos >= 1);
+      if (pos >= 1) st("text", "A", { x: 200, y: 40, "font-size": 14 }, v);
+      if (pos >= 1) st("text", "¬A", { x: 200, y: 190, "font-size": 14 }, v);
+      if (pos >= 2) {
+        lit(nA, true);
+        lit(nNotA, true);
+      }
+      if (pos >= 3) {
+        s("line", { x1: nA[0], y1: nA[1], x2: aPos[0], y2: aPos[1], stroke: "#c00", "stroke-width": 2 }, v);
+        s("line", { x1: nA[0], y1: nA[1], x2: aNeg[0], y2: aNeg[1], stroke: "#888", "stroke-width": 2 }, v);
+        s("line", { x1: nNotA[0], y1: nNotA[1], x2: nPos[0], y2: nPos[1], stroke: "#888", "stroke-width": 2 }, v);
+        s("line", { x1: nNotA[0], y1: nNotA[1], x2: nNeg[0], y2: nNeg[1], stroke: "#c00", "stroke-width": 2 }, v);
+      }
+      if (pos >= 4) {
+        const Ppos = prior * like + (1 - prior) * 0.1;
+        const post = (prior * like) / Ppos;
+        st("text", "P(A|+) = P(A)P(+|A) / P(+) = " + fmt(post), { x: 150, y: 228, "font-size": 15, "font-weight": 700 }, v);
+      }
+    },
+  });
+
+  /* ============================================================
+     TOWER — law of total expectation
+     ============================================================ */
+  register("tower", {
+    total: () => 4,
+    build(api) {
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.y = api.cfg.y || 0.5; // P(Y=1)
+      api.state.e1 = api.cfg.e1 || 2; // E[X|Y=1]
+      api.state.e0 = api.cfg.e0 || 4; // E[X|Y=0]
+    },
+    step(api) {},
+    render(api) {
+      const { y, e1, e0 } = api.state;
+      const ex = y * e1 + (1 - y) * e0;
+      let txt = "E[X] = E[E[X|Y]]  —  two-stage experiment";
+      if (api.step >= 1) txt = "E[X|Y=1] = " + e1 + ", E[X|Y=0] = " + e0;
+      if (api.step >= 2)
+        txt = "E[E[X|Y]] = " + fmt(y) + "·" + e1 + " + " + fmt(1 - y) + "·" + e0;
+      if (api.step >= 3) txt = "E[X] = E[E[X|Y]] = <b>" + fmt(ex) + "</b>";
+      api.stat.innerHTML = txt;
+    },
+  });
+
+  /* ============================================================
+     VARIANCE — two distributions, same mean, different spread
+     ============================================================ */
+  register("variance", {
+    total: () => 2,
+    build(api) {
+      api.wrap = h("div", {}, api.stage);
+      api.wrap.style.width = "100%";
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+    },
+    step(api) {},
+    render(api) {
+      const show = api.step >= 1;
+      clear(api.wrap);
+      const barsA = [0.1, 0.2, 0.4, 0.2, 0.1];
+      const barsB = [0.02, 0.08, 0.8, 0.08, 0.02];
+      const labels = ["x-2", "x-1", "x", "x+1", "x+2"];
+      const mk = (bars, title, color) => {
+        const blk = h("div", {}, api.wrap);
+        blk.style.cssText = "display:inline-block;width:45%;vertical-align:top;margin-right:4%;";
+        hs("div", title, {}, blk).style.cssText = "text-align:center;font-weight:700;font-size:.85rem;";
+        const barsDiv = h("div", { class: "pv-bars" }, blk);
+        bars.forEach((p, i) => {
+          const wrapb = h("div", { class: "pv-bar-wrap" }, barsDiv);
+          const bar = h("div", { class: "pv-bar" }, wrapb);
+          bar.style.height = p * 110 + "px";
+          bar.style.background = color;
+          hs("div", labels[i], { class: "pv-bar-label" }, wrapb);
+        });
+      };
+      mk(barsA, "low variance (σ² small)", "#5ccae8");
+      mk(barsB, "high variance (σ² large)", "#d71920");
+      if (show) {
+        api.stat.innerHTML =
+          "Same mean, different spread.  Chebyshev uses σ² — the wider the spread, the weaker the bound.";
+      }
+    },
+  });
+
+  /* ============================================================
+     DISTRIBUTIONS — Bernoulli / Binomial / Geometric PMF bars
+     ============================================================ */
+  register("distributions", {
+    total: (cfg) => Math.max(10, (cfg.maxSteps || 24)),
+    build(api) {
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.barsDiv = h("div", { class: "pv-bars" }, api.stage);
+      api.barsDiv.style.width = "100%";
+      api.state.which = api.cfg.which || "binomial";
+      api.state.n = 0;
+    },
+    step(api) {
+      if (api.cfg.which === "geometric") api.state.k = (api.state.k || 0) + 1;
+      else api.state.n++;
+    },
+    render(api) {
+      clear(api.barsDiv);
+      const which = api.cfg.which || "binomial";
+      const p = api.cfg.p || 0.4;
+      const maxN = api.cfg.maxN || 12;
+      const k = api.state.k || 1;
+      const n = Math.min(api.state.n || 1, maxN);
+      let vals = [];
+      let labels = [];
+      if (which === "bernoulli") {
+        vals = [1 - p, p];
+        labels = ["0", "1"];
+      } else if (which === "binomial") {
+        const Nn = Math.min(n, maxN);
+        for (let i = 0; i <= Nn; i++) {
+          vals.push(comb(Nn, i) * Math.pow(p, i) * Math.pow(1 - p, Nn - i));
+          labels.push(String(i));
+        }
+      } else {
+        for (let i = 1; i <= 10; i++) {
+          vals.push(Math.pow(1 - p, i - 1) * p);
+          labels.push(String(i));
+        }
+      }
+      const mx = Math.max.apply(null, vals);
+      vals.forEach((val, i) => {
+        const wrapb = h("div", { class: "pv-bar-wrap" }, api.barsDiv);
+        const bar = h("div", { class: "pv-bar" }, wrapb);
+        bar.style.height = (val / mx) * 100 + "px";
+        hs("div", labels[i], { class: "pv-bar-label" }, wrapb);
+      });
+      let desc;
+      if (which === "bernoulli") desc = "Bernoulli(p): one trial, Pr(X=1)=p";
+      else if (which === "binomial")
+        desc = "Binomial(n,p): n=" + Math.min(n, maxN) + " independent trials → E = n·p = " +
+          fmt(Math.min(n, maxN) * p, 2);
+      else desc = "Geometric(p): trials until first success → E = 1/p = " + fmt(1 / p, 2);
+      api.stat.textContent = desc;
+    },
+  });
+
+  function comb(n, k) {
+    let r = 1;
+    for (let i = 0; i < k; i++) r = (r * (n - i)) / (i + 1);
+    return r;
+  }
+
+  /* ============================================================
+     EMPTY BINS — balls into bins, expected empty bins → n·e⁻¹
+     ============================================================ */
+  register("empty-bins", {
+    total: (cfg) => (cfg.balls || 24) + 1,
+    build(api) {
+      const n = api.cfg.bins || 8;
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(" + n + ", 52px)";
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.bins = new Array(n).fill(0);
+    },
+    step(api) {
+      const n = api.cfg.bins || 8;
+      const r = mulberry32(api.seed + api.step)();
+      api.state.bins[Math.floor(r * n)]++;
+    },
+    render(api) {
+      const n = api.cfg.bins || 8;
+      const bins = api.state.bins;
+      clear(api.grid);
+      bins.forEach((cnt, i) => {
+        const cell = hs("div", cnt === 0 ? "∅" : cnt, { class: "pv-cell" }, api.grid);
+        if (cnt === 0) cell.classList.add("pv-hot");
+      });
+      const empty = bins.filter((x) => x === 0).length;
+      const expect = n * Math.exp(-1);
+      api.stat.innerHTML =
+        bins.reduce((a, b) => a + b, 0) + " balls, " + n + " bins &nbsp;·&nbsp; empty = <b>" +
+        empty + "</b> &nbsp;·&nbsp; E[empty] = n·e⁻¹ = <b>" + fmt(expect, 2) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     MARKOV — histogram + mean line + threshold region
+     ============================================================ */
+  register("markov", {
+    total: (cfg) => (cfg.steps || 10) + 1,
+    build(api) {
+      api.svg = s("svg", { width: 520, height: 200, viewBox: "0 0 520 200" }, api.stage);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.values = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      // mixture: 60% value 2, 40% value 10 → E = 5.2
+      const v = r < 0.6 ? 2 : 10;
+      api.state.values.push(v);
+    },
+    render(api) {
+      const vals = api.state.values || [];
+      clear(api.svg);
+      const v = api.svg;
+      const W = 520, H = 200;
+      const a = 12; // threshold
+      const mean = vals.reduce((s, x) => s + x, 0) / Math.max(1, vals.length);
+      const mx = Math.max(a + 1, Math.max.apply(null, vals.concat([1])));
+      const bins = {};
+      vals.forEach((x) => (bins[x] = (bins[x] || 0) + 1));
+      const maxBin = Math.max.apply(null, Object.values(bins).concat([1]));
+      Object.keys(bins).forEach((key) => {
+        const x = +key;
+        const bw = 46;
+        const bx = 30 + (x / mx) * 320;
+        const bh = (bins[key] / maxBin) * 130;
+        s("rect", { x: bx, y: H - 30 - bh, width: bw, height: bh, fill: x >= a ? "#d71920" : "#5ccae8" }, v);
+        st("text", x, { x: bx + bw / 2, y: H - 12, "font-size": 12, "text-anchor": "middle" }, v);
+      });
+      // threshold line
+      s("line", { x1: 30 + (a / mx) * 320, y1: 20, x2: 30 + (a / mx) * 320, y2: H - 30, stroke: "#c9a300", "stroke-width": 2, "stroke-dasharray": "5 4" }, v);
+      st("text", "a=" + a, { x: 30 + (a / mx) * 320 + 6, y: 22, class: "pv-axis" }, v);
+      s("line", { x1: 30 + (mean / mx) * 320, y1: H - 30, x2: 30 + (mean / mx) * 320, y2: 20, stroke: "#2b2b2b", "stroke-width": 1.5, "stroke-dasharray": "2 3" }, v);
+      const emp = vals.filter((x) => x >= a).length / Math.max(1, vals.length);
+      const bound = mean / a;
+      api.stat.innerHTML =
+        "E[X] = <b>" + fmt(mean, 2) + "</b> &nbsp;·&nbsp; Pr(X ≥ " + a + ") = " +
+        fmt(emp) + " ≤ E[X]/" + a + " = <b>" + fmt(bound, 2) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     CHEBYSHEV — mean ± t band around distribution
+     ============================================================ */
+  register("chebyshev", {
+    total: (cfg) => (cfg.steps || 10) + 1,
+    build(api) {
+      api.svg = s("svg", { width: 520, height: 200, viewBox: "0 0 520 200" }, api.stage);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.values = [];
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      api.state.values.push(Math.round(2 + r * 6)); // mean ~5, variance ~3
+    },
+    render(api) {
+      const vals = api.state.values || [];
+      clear(api.svg);
+      const v = api.svg;
+      const W = 520, H = 200;
+      const t = 2;
+      const mean = vals.reduce((s, x) => s + x, 0) / Math.max(1, vals.length);
+      const varf = vals.reduce((s, x) => s + (x - mean) * (x - mean), 0) / Math.max(1, vals.length);
+      const mx = 8;
+      const bins = {};
+      vals.forEach((x) => (bins[x] = (bins[x] || 0) + 1));
+      const maxBin = Math.max.apply(null, Object.values(bins).concat([1]));
+      Object.keys(bins).forEach((key) => {
+        const x = +key;
+        const bw = 46;
+        const bx = 30 + (x / mx) * 320;
+        const bh = (bins[key] / maxBin) * 130;
+        const outside = Math.abs(x - mean) >= t;
+        s("rect", { x: bx, y: H - 30 - bh, width: bw, height: bh, fill: outside ? "#d71920" : "#5ccae8" }, v);
+        st("text", x, { x: bx + bw / 2, y: H - 12, "font-size": 12, "text-anchor": "middle" }, v);
+      });
+      // band
+      s("rect", { x: 30 + ((mean - t) / mx) * 320, y: 18, width: (2 * t / mx) * 320, height: H - 48, fill: "#5ccae8", opacity: 0.15 }, v);
+      s("line", { x1: 30 + (mean / mx) * 320, y1: 12, x2: 30 + (mean / mx) * 320, y2: H - 30, stroke: "#2b2b2b", "stroke-width": 2 }, v);
+      const emp = vals.filter((x) => Math.abs(x - mean) >= t).length / Math.max(1, vals.length);
+      const bound = varf / (t * t);
+      api.stat.innerHTML =
+        "μ = " + fmt(mean, 2) + ", σ² = " + fmt(varf, 2) + " &nbsp;·&nbsp; Pr(|X−μ| ≥ " + t + ") = " +
+        fmt(emp) + " ≤ σ²/" + t + "² = <b>" + fmt(bound, 2) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     CHERNOFF — Bernoulli sum tail vs the three bounds
+     ============================================================ */
+  register("chernoff", {
+    total: (cfg) => (cfg.steps || 12) + 1,
+    build(api) {
+      api.barsDiv = h("div", { class: "pv-bars" }, api.stage);
+      api.barsDiv.style.width = "100%";
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.counts = [];
+    },
+    step(api) {
+      const p = api.cfg.p || 0.5;
+      const r = mulberry32(api.seed + api.step)();
+      api.state.counts.push(r < p ? 1 : 0);
+    },
+    render(api) {
+      clear(api.barsDiv);
+      const counts = api.state.counts || [];
+      const n = Math.max(1, counts.length);
+      const k = counts.filter((x) => x === 1).length;
+      // histogram of sum over a simulated batch is not feasible per-step;
+      // show a single vertical bar = fraction of heads so far.
+      const frac = k / n;
+      const p = api.cfg.p || 0.5;
+      const wrapb = h("div", { class: "pv-bar-wrap" }, api.barsDiv);
+      const bar = h("div", { class: "pv-bar" }, wrapb);
+      bar.style.height = frac * 100 + "px";
+      bar.style.background = "#d71920";
+      hs("div", "frac heads", { class: "pv-bar-label" }, wrapb);
+      // bounds at 3/4 n
+      const t = Math.ceil(0.75 * n);
+      const delta = 0.75 / p - 1;
+      const chernoff = Math.exp(-(delta * delta * p * n) / 3);
+      const cheb = (p * (1 - p)) / (0.25 * 0.25 * n);
+      api.stat.innerHTML =
+        n + " fair coins, " + k + " heads.  Pr(# ≥ 3n/4):  Markov ≤ " +
+        fmt(p / 0.75, 2) + " · Chebyshev ≤ " + fmt(Math.min(1, cheb), 2) +
+        " · Chernoff ≤ <b>" + fmt(Math.min(1, chernoff), 3) + "</b>";
+    },
+  });
+
+  /* ============================================================
+     BALLS & BINS — animated max-load
+     ============================================================ */
+  register("balls-bins", {
+    total: (cfg) => (cfg.balls || 20) + 1,
+    build(api) {
+      const n = api.cfg.bins || 8;
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(" + n + ", 44px)";
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.bins = new Array(n).fill(0);
+    },
+    step(api) {
+      const n = api.cfg.bins || 8;
+      const r = mulberry32(api.seed + api.step)();
+      api.state.bins[Math.floor(r * n)]++;
+    },
+    render(api) {
+      const n = api.cfg.bins || 8;
+      const bins = api.state.bins;
+      clear(api.grid);
+      bins.forEach((cnt) => {
+        const cell = hs("div", cnt, { class: "pv-cell" }, api.grid);
+        if (cnt === Math.max.apply(null, bins)) cell.classList.add("pv-hot");
+      });
+      const maxl = Math.max.apply(null, bins);
+      api.stat.innerHTML =
+        bins.reduce((a, b) => a + b, 0) + " balls, " + n +
+        " bins &nbsp;·&nbsp; max load = <b>" + maxl +
+        "</b> &nbsp;(Chernoff → O(log n / log log n) whp)";
+    },
+  });
+
+  /* ============================================================
+     SAMPLING — estimate a mean by random sampling, convergence
+     ============================================================ */
+  register("sampling", {
+    total: (cfg) => (cfg.samples || 25) + 1,
+    build(api) {
+      api.wrap = h("div", { class: "pv-line-wrap" }, api.stage);
+      api.svg = s("svg", { width: 560, height: 170, viewBox: "0 0 560 170" }, api.wrap);
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.state.samples = [];
+      api.state.truth = api.cfg.truth || 0.42;
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      const truth = api.state.truth;
+      // Bernoulli with unknown mean = truth
+      api.state.samples.push(r < truth ? 1 : 0);
+    },
+    render(api) {
+      const samples = api.state.samples || [];
+      clear(api.svg);
+      const v = api.svg;
+      const W = 560, H = 170;
+      const truth = api.state.truth;
+      s("line", { x1: 20, y1: 15 + (1 - truth) * 120, x2: W - 20, y2: 15 + (1 - truth) * 120, stroke: "#c00", "stroke-width": 1.5, "stroke-dasharray": "4 4" }, v);
+      st("text", "true mean", { x: W - 20, y: 10 + (1 - truth) * 120, class: "pv-axis", "text-anchor": "end" }, v);
+      let sum = 0;
+      const pts = samples.map((val, i) => {
+        sum += val;
+        return [(i / Math.max(1, samples.length - 1)) * (W - 40) + 20, 15 + (1 - sum / (i + 1)) * 120];
+      });
+      if (pts.length > 1) {
+        s("path", { d: "M" + pts.map((p) => p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" L"), fill: "none", stroke: "#5ccae8", "stroke-width": 2.5 }, v);
+      }
+      if (samples.length) {
+        const last = pts[pts.length - 1];
+        s("circle", { cx: last[0], cy: last[1], r: 4, fill: "#d71920" }, v);
+      }
+      const est = sum / Math.max(1, samples.length);
+      const err = Math.abs(est - truth);
+      api.stat.innerHTML =
+        samples.length + " samples &nbsp;·&nbsp; estimate = <b>" + fmt(est, 3) +
+        "</b> &nbsp;·&nbsp; error = <b>" + fmt(err, 3) + "</b> (additive via Chebyshev/Chernoff)";
+    },
+  });
+
+  /* ============================================================
+     PM COLOR — probabilistic method: existence via expectation
+     ============================================================ */
+  register("pm-color", {
+    total: () => 12,
+    build(api) {
+      api.stat = hs("div", "", {}, api.stage);
+      api.stat.style.textAlign = "center";
+      api.grid = h("div", { class: "pv-grid" }, api.stage);
+      api.grid.style.gridTemplateColumns = "repeat(4, 56px)";
+      api.state.cells = new Array(16).fill(0);
+    },
+    step(api) {
+      const r = mulberry32(api.seed + api.step)();
+      api.state.cells[Math.floor(r * 16)] = 1;
+    },
+    render(api) {
+      clear(api.grid);
+      const cells = api.state.cells;
+      let colored = 0;
+      cells.forEach((v, i) => {
+        const cell = hs("div", "", { class: "pv-cell" }, api.grid);
+        if (v) {
+          cell.classList.add("pv-hot");
+          colored++;
+        }
+      });
+      const N = Math.max(1, cells.reduce((a, b) => a + b, 0));
+      api.stat.innerHTML =
+        "Color cells at random (p=1/2).  E[colored] = 16·1/2 = <b>8</b>;  observed = <b>" +
+        colored + "</b>.  If E > 0, some assignment <i>exists</i> (existence via expectation).";
+    },
+  });
+
+  /* ---------------- boot + reveal hooks ---------------- */
+  function onVisible(slideEl) {
+    if (!slideEl) return;
+    const hosts = slideEl.querySelectorAll("[data-viz]");
+    hosts.forEach((host) => {
+      const inst = instances.find((i) => i.host === host);
+      if (inst) inst.reset();
+      else instantiate(host);
+    });
+  }
+
+  function init() {
+    document.querySelectorAll("[data-viz]").forEach((host) => instantiate(host));
+  }
+
+  global.ProbViz = { init, widgets, instances };
+
+  // attach to revealjs when available.
+  // reveal.js 3.6.5 fires the "ready" event synchronously inside
+  // Reveal.initialize(), which runs before this include-after-body script,
+  // so guard with Reveal.isReady() instead of waiting for "ready".
+  if (global.Reveal) {
+    const boot = function () {
+      init();
+      onVisible(global.Reveal.getCurrentSlide());
+    };
+    if (global.Reveal.isReady()) boot();
+    else global.Reveal.on("ready", boot);
+    global.Reveal.on("slidechanged", function (ev) {
+      onVisible(ev.currentSlide);
+    });
+  } else if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})(window);
+</script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -4821,4 +4770,4 @@ window.QuartoSupport = function () {
       </script>
     
 
-</count></count></count></body></html>
+</body></html>
