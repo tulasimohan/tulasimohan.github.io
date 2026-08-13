@@ -1,276 +1,157 @@
 [
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#agenda",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#agenda",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#agenda",
+    "href": "lectures/lec-06-randomized-algorithms.html#agenda",
     "title": "Tulasimohan Molli",
     "section": "Agenda",
-    "text": "Agenda\n\nCoupon Collector — expectation and concentration.\nRandom Sampling — estimating a mean.\nWhich Bound, When — comparing tail bounds."
+    "text": "Agenda\n\nA Simple Mathematical Fact — the inner product mod 2.\nApplication: Freivalds’ Algorithm — verifying matrix products in O(n^2) time.\nFormal Foundations — state machines & random tape models.\nTwo Flavors — Las Vegas vs. Monte Carlo.\nBoosting — one-sided error amplification."
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-problem-setup",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-problem-setup",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#a-simple-mathematical-fact",
+    "href": "lectures/lec-06-randomized-algorithms.html#a-simple-mathematical-fact",
     "title": "Tulasimohan Molli",
-    "section": "Coupon Collector: Problem Setup",
-    "text": "Coupon Collector: Problem Setup\n\nThe Experiment: We draw from n distinct coupon types uniformly at random with replacement.\n\nThe Random Variable: Let T be the total number of trials needed to collect at least one coupon of each of the n types.\nRecall the Expectation: We showed that \\mathbb{E}[T] = n H_n \\approx n \\ln n.\nThe Goal (Concentration): How likely is T to exceed its expectation significantly?\n\nSpecifically, we want to bound the tail probability: \\Pr(T &gt; t) for t = c n \\ln n (where c &gt; 1)."
+    "section": "A Simple Mathematical Fact",
+    "text": "A Simple Mathematical Fact\nLet’s begin with a fundamental algebraic property of random vectors:\n\nLet d \\in \\{0, 1\\}^n be a fixed, non-zero boolean vector.\nLet r \\in \\{0, 1\\}^n be a random boolean vector, where each r_i \\in \\{0, 1\\} is chosen independently and uniformly at random: \\Pr[r_i = 1] = \\Pr[r_i = 0] = \\frac{1}{2}\n\n\n\n\nThe Mod-2 Lemma\n\n\nIf d \\neq 0, then the inner product of d and r mod 2 is balanced: \\Pr\\left[ d \\cdot r \\equiv 0 \\pmod 2 \\right] = \\frac{1}{2}"
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-analyzing-the-tail",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-analyzing-the-tail",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#proof-of-the-mod-2-lemma",
+    "href": "lectures/lec-06-randomized-algorithms.html#proof-of-the-mod-2-lemma",
     "title": "Tulasimohan Molli",
-    "section": "Coupon Collector: Analyzing the Tail",
-    "text": "Coupon Collector: Analyzing the Tail\n\nTo bound \\Pr(T &gt; c n \\ln n), let’s examine what must happen after t = c n \\ln n trials.\n\nKey Equivalence: The event \\{T &gt; t\\} occurs if and only if at least one coupon type is still missing after t trials.\nLet M_i be the event that coupon type i is missing after t trials: \\{T &gt; t\\} = \\bigcup_{i=1}^n M_i\nProbability of a Single Miss: In each trial, the probability of not picking type i is 1 - 1/n. By independence of trials: \\Pr(M_i) = \\left(1 - \\frac{1}{n}\\right)^{t} = \\left(1 - \\frac{1}{n}\\right)^{c n \\ln n} \\le e^{-\\frac{c n \\ln n}{n}} = n^{-c}"
+    "section": "Proof of the Mod-2 Lemma",
+    "text": "Proof of the Mod-2 Lemma\nSince d \\neq 0, there exists at least one coordinate k where d_k = 1.\n\nWe can partition the sum: d \\cdot r = d_k r_k + \\sum_{i \\neq k} d_i r_i \\equiv r_k + \\sum_{i \\neq k} d_i r_i \\pmod 2\nLet S = \\sum_{i \\neq k} d_i r_i \\bmod 2. Its value is determined entirely by the choices of r_i for i \\neq k.\nTo make d \\cdot r \\equiv 0 \\pmod 2, we must have: r_k \\equiv S \\pmod 2\nSince r_k is chosen uniformly and independently: \\Pr[r_k = S] = \\frac{1}{2}"
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-union-bound",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-union-bound",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#application-freivalds-algorithm",
+    "href": "lectures/lec-06-randomized-algorithms.html#application-freivalds-algorithm",
     "title": "Tulasimohan Molli",
-    "section": "Coupon Collector: Union Bound",
-    "text": "Coupon Collector: Union Bound\n\nNow, we apply the Union Bound over all n possible missing coupons to bound the total failure probability:\n\n\\Pr(T &gt; c n \\ln n) = \\Pr\\left(\\bigcup_{i=1}^n M_i\\right) \\le \\sum_{i=1}^n \\Pr(M_i) \\le n \\cdot n^{-c} = n^{1-c}\nExample (c=2): The probability of needing more than 2n\\ln n trials is: \\Pr(T &gt; 2n\\ln n) \\le \\frac{1}{n} = o(1)\nConclusion: The total trials T is highly concentrated around its expectation n\\ln n."
+    "section": "Application: Freivalds’ Algorithm",
+    "text": "Application: Freivalds’ Algorithm\nLet’s apply this mathematical property to verify matrix multiplication: AB = C.\n\nWe want to verify the product without spending O(n^3) or O(n^{2.37}) time to multiply them.\nFreivalds’ Protocol:\n\nPick a random vector r \\in \\{0, 1\\}^n.\nCompute A(Br) and check if it equals Cr.\n\nAnalysis:\n\nIf AB = C, then (AB)r = Cr is always true.\nIf AB \\neq C, let D = AB - C \\neq 0. There is a non-zero row in D. Its product with r is 0 with probability \\le 1/2 by the Mod-2 Lemma.\nRuntime: O(n^2) time!"
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#random-sampling-estimating-a-mean",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#random-sampling-estimating-a-mean",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#what-is-a-randomized-algorithm",
+    "href": "lectures/lec-06-randomized-algorithms.html#what-is-a-randomized-algorithm",
     "title": "Tulasimohan Molli",
-    "section": "Random Sampling: Estimating a Mean",
-    "text": "Random Sampling: Estimating a Mean\nWe want to estimate an unknown parameter p \\in [0, 1] (e.g., fraction of biased coins) within error \\varepsilon with failure probability \\le \\delta.\n\nWe draw m i.i.d. samples X_1, \\dots, X_m \\sim \\text{Bernoulli}(p).\nCompute the sample mean \\hat{p} = \\frac{1}{m}\\sum_{j=1}^m X_j.\nLet’s compare Chebyshev and Chernoff bounds for this estimation."
+    "section": "What is a Randomized Algorithm?",
+    "text": "What is a Randomized Algorithm?\nThe protocols we just designed are examples of randomized algorithms:\n\n\n\nState Machine Model: Defined by a set of states Q and a probabilistic transition function: \\delta: Q \\times \\{0, 1\\} \\to Q where transitions depend on a random coin flip b \\in \\{0, 1\\}.\nThe Random Tape Model (WLOG): Equivalent to a deterministic algorithm A(x, r) taking the input x and a pre-flipped random tape r.\nOnce r is fixed, the execution path is deterministic.\nThis model makes it easier to analyze complexity classes."
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#mean-estimation-real-world-applications",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#mean-estimation-real-world-applications",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#las-vegas-algorithms",
+    "href": "lectures/lec-06-randomized-algorithms.html#las-vegas-algorithms",
     "title": "Tulasimohan Molli",
-    "section": "Mean Estimation: Real-World Applications",
-    "text": "Mean Estimation: Real-World Applications\nWhy do we care about estimating p using random samples?\n\nOpinion Polls & Surveys:\n\nEstimating the fraction p of the population supporting a policy/candidate.\nExample: Setting \\varepsilon = 0.03 (3% margin of error) and \\delta = 0.05 (95% confidence).\n\nRandomized Audits & Quality Control:\n\nInspecting a small random sample of factory goods to bound the defect rate.\n\nRandomized Algorithms (Volume Estimation)"
+    "section": "Las Vegas Algorithms",
+    "text": "Las Vegas Algorithms\nWe classify randomized algorithms based on where the uncertainty lies.\n\nCorrectness: Always 100% correct.\nRuntime: A random variable T. We analyze the expected running time \\mathbb{E}[T] or high-probability bounds.\nClassic Example: Randomized Quicksort\n\nPivot is chosen uniformly at random.\nArray is always sorted correctly.\nExpected running time is O(n \\log n) on any input array."
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-chebyshev-vs-chernoff-bounds",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-chebyshev-vs-chernoff-bounds",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#monte-carlo-algorithms",
+    "href": "lectures/lec-06-randomized-algorithms.html#monte-carlo-algorithms",
     "title": "Tulasimohan Molli",
-    "section": "Sampling: Chebyshev vs Chernoff Bounds",
-    "text": "Sampling: Chebyshev vs Chernoff Bounds\n\n\n\nChebyshev Bound\n\nUses variance: \\mathrm{Var}(\\hat{p}) \\le \\frac{1}{4m}.\nBy Chebyshev: \\Pr(|\\hat{p} - p| \\ge \\varepsilon) \\le \\frac{1}{4m\\varepsilon^2}\nSetting failure probability \\le \\delta: m \\ge \\frac{1}{4\\varepsilon^2 \\delta}\n\n\nChernoff Bound\n\nUses Hoeffding’s inequality: \\Pr(|\\hat{p} - p| \\ge \\varepsilon) \\le 2e^{-2m\\varepsilon^2}\nSetting failure probability \\le \\delta: m \\ge \\frac{1}{2\\varepsilon^2} \\ln \\left(\\frac{2}{\\delta}\\right)"
+    "section": "Monte Carlo Algorithms",
+    "text": "Monte Carlo Algorithms\n\nCorrectness: Bounded error probability \\delta.\nRuntime: Deterministic / strictly bounded.\nThe Core Trade-off:\n\nWe swap absolute certainty for computational speed and efficiency.\n\nClassic Example: Freivalds’ Algorithm\n\nStrictly O(n^2) running time.\nError probability is at most 1/2 when AB \\neq C."
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-sample-complexity-comparison",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-sample-complexity-comparison",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#comparing-the-two-flavors",
+    "href": "lectures/lec-06-randomized-algorithms.html#comparing-the-two-flavors",
     "title": "Tulasimohan Molli",
-    "section": "Sampling: Sample Complexity Comparison",
-    "text": "Sampling: Sample Complexity Comparison\nWhy is the difference between Chebyshev and Chernoff bounds so critical?\n\nChebyshev: m \\ge \\Omega\\big(\\frac{1}{\\varepsilon^2 \\delta}\\mathrm{\\big)} — sample size grows linearly with confidence 1/\\delta.\nChernoff: m \\ge \\Omega\\big(\\frac{\\log(1/\\delta)}{\\varepsilon^2}\\mathrm{\\big)} — sample size grows only logarithmically with confidence!\nTakeaway: For high confidence (e.g., \\delta = 10^{-6}), Chernoff requires orders of magnitude fewer samples."
+    "section": "Comparing the Two Flavors",
+    "text": "Comparing the Two Flavors\n\n\n\n\n\n\n\n\n\nFeature\nLas Vegas\nMonte Carlo\n\n\n\n\nCorrectness\nAlways correct\nCorrect with probability 1 - \\delta\n\n\nRunning Time\nRandom variable (analyze expectation)\nBounded / Deterministic\n\n\nError Type\nNone\nOne-sided or Two-sided\n\n\nPrimary Use\nSorting, searching, optimization\nDecision problems, verification"
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#which-bound-when",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#which-bound-when",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#one-sided-error-amplification",
+    "href": "lectures/lec-06-randomized-algorithms.html#one-sided-error-amplification",
     "title": "Tulasimohan Molli",
-    "section": "Which Bound, When?",
-    "text": "Which Bound, When?\n\n\n\n\n\n\n\n\nSituation\nTool\n\n\n\n\nAny non-negative RV, need a quick bound\nMarkov\n\n\nAny RV, deviation from mean, know variance\nChebyshev\n\n\nSum of independent trials, want exponential tail\nChernoff\n\n\nComplicated union of many bad events\nUnion bound on top of any of these\n\n\n\n\nWorked example: max load of n balls into n bins — union bound + Chernoff on each bin."
+    "section": "One-Sided Error Amplification",
+    "text": "One-Sided Error Amplification\nWe can amplify success by running the algorithm k times independently.\n\nSuppose the algorithm errs only on “Yes” inputs with probability \\le \\delta.\nOutput “Yes” if any of the k runs output “Yes”.\nA failure requires every single run to err.\nThe error probability drops exponentially: \\Pr(\\text{error}) \\le \\delta^k\nFor \\delta = 1/2 and k = 30, error is \\le 2^{-30} \\approx 10^{-9}."
   },
   {
-    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#next-lecture",
-    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#next-lecture",
+    "objectID": "lectures/lec-06-randomized-algorithms.html#next-lecture",
+    "href": "lectures/lec-06-randomized-algorithms.html#next-lecture",
     "title": "Tulasimohan Molli",
     "section": "Next Lecture",
-    "text": "Next Lecture\nLas Vegas vs Monte Carlo — the two flavors of randomized algorithms, and amplification by repetition."
+    "text": "Next Lecture\nTwo-Sided Error Amplification & Randomized Complexity Classes (RP, co-RP, BPP, ZPP)."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#agenda",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#agenda",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#agenda",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#agenda",
     "title": "Tulasimohan Molli",
     "section": "Agenda",
-    "text": "Agenda\n\nMotivation — why expectation alone is not enough.\nMarkov’s Inequality — statement & proof.\nChebyshev’s Inequality — variance-based concentration.\nChernoff Bounds — exponential tails via MGFs.\nComparing the Bounds — when to use which."
+    "text": "Agenda\n\nBalls into Bins — max load via Chernoff.\nBirthday Paradox — collision probabilities.\nCoupon Collector — expectation and concentration.\nRandom Sampling — estimating a mean with additive error.\nWhich Bound, When — the decision table.\nConcept Check — apply the right tool."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#motivation-expectation-is-not-enough",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#motivation-expectation-is-not-enough",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#quick-recap-tail-bounds",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#quick-recap-tail-bounds",
     "title": "Tulasimohan Molli",
-    "section": "Motivation: Expectation is Not Enough",
-    "text": "Motivation: Expectation is Not Enough\nWe model an algorithm’s performance (e.g., runtime or quality) as a random variable X. The expected value E[X] is only a single summary statistic.\n\nConcentrating RV (e.g., Fair Flips): X \\sim \\text{Bin}(n, 1/2), E[X] = n/2. As n grows, X is almost always close to n/2 (variance is n/4).\nNon-concentrating RV (e.g., Binary Bet): Y = 0 or n with equal probability. E[Y] = n/2, but Y is never close to its expectation.\nOur Goal: Prove that randomized algorithms concentrate (like X) rather than wildly fluctuate (like Y)."
+    "section": "Quick Recap: Tail Bounds",
+    "text": "Quick Recap: Tail Bounds\nWe use tail bounds to bound the probability that a random variable X deviates from its expectation \\mu = \\mathbb{E}[X].\n\n\nMarkov’s Inequality: For any non-negative R.V. X and a &gt; 0: \\Pr(X \\ge a) \\le \\frac{\\mathbb{E}[X]}{a}\nChebyshev’s Inequality: For any R.V. X with variance \\sigma^2 and k &gt; 0: \\Pr(|X - \\mu| \\ge k) \\le \\frac{\\sigma^2}{k^2}\nChernoff Bounds (Upper): For X = \\sum X_i sum of independent Bernoulli trials: \\Pr(X \\ge (1+\\delta)\\mu) \\le \\left(\\frac{e^\\delta}{(1+\\delta)^{1+\\delta}}\\right)^\\mu"
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#markovs-inequality",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#markovs-inequality",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-the-experiment",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-the-experiment",
     "title": "Tulasimohan Molli",
-    "section": "Markov’s Inequality",
-    "text": "Markov’s Inequality\n\n\n\nMarkov’s Inequality\n\n\nFor any non-negative random variable X and any a &gt; 0: \\Pr(X \\ge a) \\le \\frac{E[X]}{a}\n\n\n\n\nKey Feature: Only requires the mean (E[X]).\nUniversality: Needs no assumption about independence or the distribution.\nLimitation: Often loose, but serves as the foundation for stronger bounds."
+    "section": "Balls into Bins: The Experiment",
+    "text": "Balls into Bins: The Experiment\nThrow n balls into n bins independently and uniformly at random (i.i.d). Let L_i be the load of bin i.\n\nExpected load per bin: \\mu = \\mathbb{E}[L_i] = 1 \\sum_{i=1}^n \\mathbb{E}[L_i] = \\mathbb{E}\\left[\\sum_{i=1}^n L_i\\right] = \\mathbb{E}[n] = n\nThe Question: What is the maximum load of any bin?\nDeterministic worst case: n (all balls in one bin).\nRandomized reality: Concentrates heavily around the mean."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-markovs-inequality",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-markovs-inequality",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-chernoff-bound",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-chernoff-bound",
     "title": "Tulasimohan Molli",
-    "section": "Proof of Markov’s Inequality",
-    "text": "Proof of Markov’s Inequality\nFor a discrete non-negative random variable X:\n\n\\begin{aligned}\nE[X] &= \\sum_x x \\cdot \\Pr(X = x) \\\\\n&\\ge \\sum_{x \\ge a} x \\cdot \\Pr(X = x) \\\\\n&\\ge \\sum_{x \\ge a} a \\cdot \\Pr(X = x) \\\\\n&= a \\sum_{x \\ge a} \\Pr(X = x) \\\\\n&= a \\cdot \\Pr(X \\ge a)\n\\end{aligned}\n\nDividing by a yields \\Pr(X \\ge a) \\le \\frac{E[X]}{a}."
+    "section": "Balls into Bins: Chernoff Bound",
+    "text": "Balls into Bins: Chernoff Bound\nFor the ith bin , L_i = \\sum_{j=1}^n X_j is a sum of independent r.v.s.\n\nChernoff Bound Theorem: For a sum of independent Bernoulli trials with expectation \\mu, and any \\delta &gt; 0: \\Pr(X \\ge (1+\\delta)\\mu) \\le \\left(\\frac{e^\\delta}{(1+\\delta)^{1+\\delta}}\\right)^\\mu\nSubstituting 1+\\delta = \\lambda (since \\mu = \\mathbb{E}[L_i] = 1), we get: \\Pr(L_i \\ge \\lambda) \\le \\left(\\frac{e^{\\lambda - 1}}{\\lambda^\\lambda}\\right)^\\mu = \\frac{e^{\\lambda - 1}}{\\lambda^\\lambda} \\le \\left(\\frac{e}{\\lambda}\\right)^\\lambda\nWe want to find a threshold \\lambda such that this probability is very small."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chebyshevs-inequality",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chebyshevs-inequality",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-setting-the-threshold",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-setting-the-threshold",
     "title": "Tulasimohan Molli",
-    "section": "Chebyshev’s Inequality",
-    "text": "Chebyshev’s Inequality\n\n\n\nChebyshev’s Inequality\n\n\nFor any random variable X with mean \\mu, variance \\mathrm{Var}(X), and any t &gt; 0: \\Pr\\big(|X - \\mu| \\ge t\\big) \\le \\frac{\\mathrm{Var}(X)}{t^2}\n\n\n\n\nKey Feature: Uses variance (\\mathrm{Var}(X)) to bound deviation from the mean.\nUniversality: Works for any distribution with a finite variance.\nLimitation: Decays only polynomially (1/t^2)."
+    "section": "Balls into Bins: Setting the Threshold",
+    "text": "Balls into Bins: Setting the Threshold\n\nLet’s choose \\lambda = \\frac{3 \\ln n}{\\ln \\ln n}.\n\nTaking the natural log of our bound: \\ln \\Pr(L_i \\ge \\lambda) \\le \\lambda (1 - \\ln \\lambda)\nSubstituting \\lambda: \\ln \\Pr(L_i \\ge \\lambda) \\approx -\\frac{3 \\ln n}{\\ln \\ln n} (\\ln \\ln n - \\ln 3) \\le -2 \\ln n\nThis yields: \\Pr(L_i \\ge \\lambda) \\le n^{-2}"
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-chebyshevs-inequality",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-chebyshevs-inequality",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-union-bound",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-union-bound",
     "title": "Tulasimohan Molli",
-    "section": "Proof of Chebyshev’s Inequality",
-    "text": "Proof of Chebyshev’s Inequality\nWe apply Markov’s Inequality to the non-negative random variable Y = (X - \\mu)^2 with threshold a = t^2:\n\n\\Pr\\big(|X - \\mu| \\ge t\\big) = \\Pr\\big((X - \\mu)^2 \\ge t^2\\big)\n\nBy Markov’s Inequality:\n\n\\Pr\\big(Y \\ge t^2\\big) \\le \\frac{E[Y]}{t^2} = \\frac{E[(X - \\mu)^2]}{t^2} = \\frac{\\mathrm{Var}(X)}{t^2}\n\nThis completes the proof."
+    "section": "Balls into Bins: Union Bound",
+    "text": "Balls into Bins: Union Bound\n\nWe want to bound the probability that any bin exceeds our threshold \\lambda.\n\nApplying the Union Bound over all n bins: \\Pr(\\max_i L_i \\ge \\lambda) = \\Pr\\left(\\bigcup_{i=1}^n \\{L_i \\ge \\lambda\\}\\right) \\le \\sum_{i=1}^n \\Pr(L_i \\ge \\lambda)\nSubstituting our per-bin bound: \\Pr(\\max_i L_i \\ge \\lambda) \\le n \\cdot n^{-2} = \\frac{1}{n}\nConclusion: With high probability (1 - 1/n), the max load is O\\big(\\frac{\\log n}{\\log \\log n}\\mathrm{\\big)}."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#i.i.d.-law-of-large-numbers-clt",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#i.i.d.-law-of-large-numbers-clt",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-setting",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-setting",
     "title": "Tulasimohan Molli",
-    "section": "i.i.d., Law of Large Numbers, & CLT",
-    "text": "i.i.d., Law of Large Numbers, & CLT\n\ni.i.d. random variables: Independent and Identically Distributed\n\nExample: Repeatedly tossing the same fair coin; each flip X_i \\in \\{0, 1\\} is independent and has the exact same probability \\Pr(X_i = 1) = 1/2.\n\nLaw of Large Numbers (LLN): As the number of trials n \\to \\infty, the sample average converges to the expected value: \\frac{1}{n} \\sum_{i=1}^n X_i \\;\\longrightarrow\\; E[X] \\qquad \\text{(Proved via Chebyshev!)}\nCentral Limit Theorem (CLT): The sum (or average) of many i.i.d. variables converges to a Normal (Gaussian) distribution N(\\mu, \\sigma^2), regardless of their original distribution shape."
+    "section": "Birthday Paradox: The Setting",
+    "text": "Birthday Paradox: The Setting\nThrow m balls into n bins (e.g., n = 365 days in a year).\n\nThe Question: How large does m need to be so that the probability of at least one collision (a bin with load \\ge 2) is \\ge 1/2?\nPigeon hole principle says that if a class has 366 people, two people always have the same birthday.\nThe Reality: We only need m = 23 people!\nLet’s analyze the math behind this collision rate."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#the-normal-curve-standard-deviations",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#the-normal-curve-standard-deviations",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-analysis",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-analysis",
     "title": "Tulasimohan Molli",
-    "section": "The Normal Curve & Standard Deviations",
-    "text": "The Normal Curve & Standard Deviations\n\n\n\n\nExample (Heights of Indian Men): Adult male height follows a Normal distribution. Let mean \\mu = 165\\text{ cm} and standard deviation \\sigma = 6\\text{ cm}.\nTail Mass (Empirical Rule):\n\n\\ge 1\\sigma away (&lt;159 or &gt;171\\text{ cm}): \\approx 32\\% of population.\n\\ge 2\\sigma away (&lt;153 or &gt;177\\text{ cm}): \\approx 5\\% of population.\n\\ge 3\\sigma away (&lt;147 or &gt;183\\text{ cm}): \\approx 0.3\\% of population.\n\nWhy Chernoff? CLT is asymptotic (n \\to \\infty). In algorithms, we need concrete, non-asymptotic exponential bounds for finite n.\n\nSource: ICMR-NIN Reference Guidelines (2020) & NFHS-5 (2019-21) survey data."
+    "section": "Birthday Paradox: The Analysis",
+    "text": "Birthday Paradox: The Analysis\n\nWhat is the probability of having no collisions (all balls land in distinct bins)?\n\nWe place the balls one by one. The probability that the i-th ball does not collide with any of the previous i-1 balls is 1 - \\frac{i-1}{n}.\nTherefore, the probability of no collisions after placing m balls is: \\Pr(\\text{no collision}) = \\prod_{i=1}^{m} \\left(1 - \\frac{i-1}{n}\\right) = \\prod_{i=1}^{m-1} \\left(1 - \\frac{i}{n}\\right)\nUsing the inequality 1 - x \\le e^{-x} for all x: \\Pr(\\text{no collision}) \\le \\prod_{i=1}^{m-1} e^{-i/n} = e^{-\\frac{1}{n}\\sum_{i=1}^{m-1}i} = e^{-\\frac{m(m-1)}{2n}}"
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-the-mgf-recipe",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-the-mgf-recipe",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-threshold",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-threshold",
     "title": "Tulasimohan Molli",
-    "section": "Chernoff Bounds: The MGF Recipe",
-    "text": "Chernoff Bounds: The MGF Recipe\nTo get exponential tail decay, apply Markov’s Inequality to the exponential function e^{\\lambda X} for a tuning parameter \\lambda &gt; 0:\n\\Pr(X \\ge t) = \\Pr(e^{\\lambda X} \\ge e^{\\lambda t}) \\le \\frac{E[e^{\\lambda X}]}{e^{\\lambda t}}\n\nMoment Generating Function (MGF): M_X(\\lambda) = E[e^{\\lambda X}].\nIndependence Power: If X = \\sum X_i are independent, then: E[e^{\\lambda X}] = E\\Big[\\prod_i e^{\\lambda X_i}\\Big] = \\prod_i E[e^{\\lambda X_i}] Independence turns the expectation of a product into a product of expectations."
+    "section": "Birthday Paradox: The Threshold",
+    "text": "Birthday Paradox: The Threshold\n\nWe want to find m such that the collision probability is at least 1/2 (\\Pr(\\text{no collision}) \\le 1/2).\n\nUsing our exponential bound: e^{-\\frac{m(m-1)}{2n}} \\le \\frac{1}{2} \\iff \\frac{m(m-1)}{2n} \\ge \\ln 2 \\iff m(m-1) \\ge 2n \\ln 2\nApproximating m(m-1) \\approx m^2, this holds when: m \\ge \\sqrt{2n \\ln 2}\nFor n = 365: m \\ge \\sqrt{730 \\ln 2} \\approx 22.49 \\implies m = 23\nApplication: Hash collision boundaries (e.g., why b-bit hashes collide after 2^{b/2} items)."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-multiplicative-form",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-multiplicative-form",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#coupon-collector-concentration",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#coupon-collector-concentration",
     "title": "Tulasimohan Molli",
-    "section": "Chernoff Bounds: Multiplicative Form",
-    "text": "Chernoff Bounds: Multiplicative Form\n\n\n\nChernoff Bounds (Multiplicative Form)\n\n\nLet X = \\sum_{i=1}^n X_i be a sum of independent Bernoulli trials with E[X] = \\mu. For any 0 &lt; \\delta \\le 1: \\Pr\\big(X \\ge (1+\\delta)\\mu\\big) \\le \\exp\\left(-\\frac{\\delta^2 \\mu}{3}\\right) \\Pr\\big(X \\le (1-\\delta)\\mu\\big) \\le \\exp\\left(-\\frac{\\delta^2 \\mu}{2}\\right)\n\n\n\n\nKey Feature: Strong exponential decay in the tail.\nRequirement: Strictly requires mutual independence of the trials."
+    "section": "Coupon Collector: Concentration",
+    "text": "Coupon Collector: Concentration\nRecall the classic Coupon Collector problem: we want to collect n unique coupons.\n\nExpected draws to collect all n coupons: nH_n = \\Theta(n \\log n).\nThe Question: How likely are we to deviate significantly from this expectation?\nWe will show that the probability of needing more draws decays rapidly."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#choosing-the-right-bound",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#choosing-the-right-bound",
-    "title": "Tulasimohan Molli",
-    "section": "Choosing the Right Bound",
-    "text": "Choosing the Right Bound\n\n\n\n\n\n\n\n\n\nGoal\nBest Bound\nInput Requirements\n\n\n\n\nQuick bound, know only mean\nMarkov\nE[X] (RV must be \\ge 0)\n\n\nBound deviation using variance\nChebyshev\n\\mathrm{Var}(X)\n\n\nSum of independent trials\nChernoff\nMutual Independence + Mean\n\n\n\n\nCoin Flips Comparison (n coins, probability of \\ge 3n/4 heads):\n\nMarkov: \\le 2/3.\nChebyshev: \\le 16/(3n) (decays as O(1/n)).\nChernoff: \\le e^{-n/12} (decays exponentially fast)."
-  },
-  {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#concept-check",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#concept-check",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#concept-check",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#concept-check",
     "title": "Tulasimohan Molli",
     "section": "Concept Check",
-    "text": "Concept Check\nAn estimator \\hat{p} has E[\\hat{p}] = 0.5 and \\mathrm{Var}(\\hat{p}) \\le \\frac{1}{4n}. Give the tightest bound on \\Pr(\\hat{p} \\ge 0.75).\n\n\n\n\nMarkov: \\Pr(\\hat{p} \\ge 0.75) \\le \\frac{0.5}{0.75} = \\frac{2}{3}.\nChebyshev: \\Pr(\\hat{p} - 0.5 \\ge 0.25) \\le \\frac{\\mathrm{Var}(\\hat{p})}{0.25^2} \\le \\frac{1/4n}{1/16} = \\frac{4}{n}.\nTakeaway: For large n, Chebyshev gives a vastly superior bound."
+    "text": "Concept Check\nAfter throwing n balls into n bins, bound the probability that some bin has load &gt; 6 \\ln n / \\ln\\ln n.\n\n\n\nHint: per-bin Chernoff gives \\Pr(L_i \\ge \\lambda) \\le n^{-2} for \\lambda = 6\\ln n/\\ln\\ln n; union bound over n bins gives \\le 1/n."
   },
   {
-    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#next-lecture",
-    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#next-lecture",
+    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#next-lecture",
+    "href": "lectures/lec-04-applications-and-probabilistic-method.html#next-lecture",
     "title": "Tulasimohan Molli",
     "section": "Next Lecture",
-    "text": "Next Lecture\nApplications of Tail Bounds & the Probabilistic Method — max load in balls-into-bins, random sampling sample-complexity, and existence proofs."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#course-details",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#course-details",
-    "title": "Tulasimohan Molli",
-    "section": "Course Details",
-    "text": "Course Details\n\nCourse: CS G526 — Advanced Algorithms & Complexity\nInstructor: Tulasimohan Molli\nTA: Hans Krupakar\nSchedule: Mon 2–3 PM, Tue 12–1 PM, Thu 12–1 PM, @ I114\nLab: Thu 9–11 AM @ I015\nOffice Hours: Tue 2–3 PM @ H-134\nCourse page: tulasimohan.github.io/teaching/2026_aac/\nPiazza: LMS or Google Classroom"
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#advanced-algorithms-complexity",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#advanced-algorithms-complexity",
-    "title": "Tulasimohan Molli",
-    "section": "Advanced Algorithms & Complexity",
-    "text": "Advanced Algorithms & Complexity\n\nAdvanced Algorithms: Designing efficient solutions by relaxing strict guarantees.\n\nControlled error (randomization),\nsettling for near-optimal quality (approximation),\nadapting to unknown future data (online),\nexploiting parallelism and distribution (parallel & distributed).\n\nComplexity Theory: Mathematically classifying problems by the resources they demand.\n\nIdentifying the absolute boundary between what is tractable and what is hard.\n\nThe Duality: Understanding what makes problems hard (complexity) to guide how we solve them (advanced paradigms)."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbooks",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbooks",
-    "title": "Tulasimohan Molli",
-    "section": "Textbooks",
-    "text": "Textbooks\n\nT1 Motwani & Raghavan, Randomized Algorithms, Cambridge University Press, 1995.\nT2 Papadimitriou & Steiglitz, Combinatorial Optimization: Algorithms and Complexity, PHI, 1982.\nT3 Arora & Barak, Computational Complexity: A Modern Approach, Cambridge University Press."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-books",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-books",
-    "title": "Tulasimohan Molli",
-    "section": "Reference Books",
-    "text": "Reference Books\n\nR1 Williamson & Shmoys, The Design of Approximation Algorithms, CUP.\nR2 Hromkovič, Design and Analysis of Randomized Algorithms, Springer.\nR3 Vazirani, Approximation Algorithms, Springer.\nR4 Ausiello et al., Complexity and Approximation, Springer.\nR5 Kleinberg & Tardos, Algorithm Design, Pearson.\nR6 Assigned reading (papers, notes)."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbook-covers",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbook-covers",
-    "title": "Tulasimohan Molli",
-    "section": "Textbook Covers",
-    "text": "Textbook Covers\n\n\n\n\n\nT1 Motwani & Raghavan\n\n\n\n\n\n\nT2 Papadimitriou & Steiglitz\n\n\n\n\n\n\nT3 Arora & Barak"
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-covers",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-covers",
-    "title": "Tulasimohan Molli",
-    "section": "Reference Covers",
-    "text": "Reference Covers\n\n\n\n\n\nR1 Williamson & Shmoys\n\n\n\n\n\n\nR2 Hromkovič\n\n\n\n\n\n\nR3 Vazirani\n\n\n\n\n\n\nR4 Ausiello et al.\n\n\n\n\n\n\nR5 Kleinberg & Tardos"
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#evaluation-scheme",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#evaluation-scheme",
-    "title": "Tulasimohan Molli",
-    "section": "Evaluation Scheme",
-    "text": "Evaluation Scheme\n\n\n\n\n\n\n\n\n\n\nComponent\nWeight\nDuration\nDate & Time\nStyle\n\n\n\n\nClass Participation\n10%\nContinuous\nThroughout\nOpen Book\n\n\nLab Participation\n10%\nWeekly\nThu 9–11 AM\nOpen Book\n\n\nTerm Project\n20%\nSemester\nThroughout\nOpen Book (Proposal + Presentation + Report)\n\n\nMid-Semester Exam\n25%\n90 mins\n06/10\nClosed Book\n\n\nComprehensive Exam\n35%\n180 mins\n04/12 AN\nClosed Book\n\n\n\nNC Criterion: 30% of average of top 3 performers or 40% of median, whichever is lower."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#how-this-course-is-useful",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#how-this-course-is-useful",
-    "title": "Tulasimohan Molli",
-    "section": "How this course is useful",
-    "text": "How this course is useful\n\nCoping with Intractability: Standard DSA fails on NP-complete problems. Advanced paradigms allow us to bypass these mathematical limits.\nHandling Uncertainty: Real-world inputs are dynamic and incomplete. Advanced models (online/games) make robust decisions under uncertainty.\nSophisticated Tooling: Equips you with powerful techniques (probabilistic method, LP rounding, game theory) valued in research and advanced software systems.\nCryptography and Complexity Theory: Modern cryptography, cloud databases, and machine learning scaling depend fundamentally on complexity assumptions and randomized tools."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-this-course-is-not",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-this-course-is-not",
-    "title": "Tulasimohan Molli",
-    "section": "What this course is NOT",
-    "text": "What this course is NOT\n\nNOT a DSA course: We assume you are already familiar with asymptotic notation, solving recurrences, data structures like linked lists, arrays, search trees, and heaps, and algorithmic paradigms like greedy, divide and conquer, and dynamic programming.\n\nNOT an implementation-first course: We prioritize analysis and proofs over writing standard code. (We also have a lab.)\nNOT a broad survey: We focus on going deep on a select few powerful paradigms rather than a shallow tour of many.\nNOT a probability course: Randomization is the backbone here; probability is a necessity."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-the-area-of-a-shape",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-the-area-of-a-shape",
-    "title": "Tulasimohan Molli",
-    "section": "Estimating the Area of a Shape",
-    "text": "Estimating the Area of a Shape\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow do you compute the area of this shape?\n\nGrid method: Superimpose a fine grid. Count cells inside. Resolution-dependent and tedious.\n\n\nA faster way — random sampling: 1. Enclose the shape in a bounding box. 2. Throw N darts uniformly at random. 3. Count M that land inside.\n\\text{Area}(S) \\approx \\text{Area}(\\text{box}) \\times \\frac{M}{N}"
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-pi-by-dart-throwing",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-pi-by-dart-throwing",
-    "title": "Tulasimohan Molli",
-    "section": "Estimating \\pi by Dart-Throwing",
-    "text": "Estimating \\pi by Dart-Throwing\n\n\n\n\n\nCircle of radius r inscribed in a square of side 2r:\n\\frac{\\text{Area of circle}}{\\text{Area of square}} = \\frac{\\pi r^2}{4r^2} = \\frac{\\pi}{4}\nThrow N darts uniformly, M land inside:\n\\pi \\approx 4 \\cdot \\frac{M}{N}"
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-do-we-mean-by-random",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-do-we-mean-by-random",
-    "title": "Tulasimohan Molli",
-    "section": "What Do We Mean by “Random”?",
-    "text": "What Do We Mean by “Random”?\n\nNot “arbitrary”: Random means values drawn from a probability distribution (e.g., uniform distribution where every outcome is equally likely).\nPhysical Randomness: Quantum mechanics suggests nature has irreducible randomness (e.g., radioactive decay, thermal noise).\nPractical Randomness: Computers use deterministic Pseudo-Random Number Generators (PRNGs) seeded with entropy to produce sequences that look random.\nWhy it matters: Probability is a way of modelling uncertainity, which is inherent in many real world problems."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#why-the-error-doesnt-cost-us",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#why-the-error-doesnt-cost-us",
-    "title": "Tulasimohan Molli",
-    "section": "Why the Error Doesn’t Cost Us",
-    "text": "Why the Error Doesn’t Cost Us\n\nBackground Failures: An algorithm error probability of 10^{-6} is smaller than background computer failure rates (e.g., cosmic-ray memory flips \\approx 10^{-12} per cell).\nWhat We Gain: Extreme speed, structural simplicity, and robustness in high dimensions compared to exponential grid costs.\nThe Honest Model: Randomness isn’t a hack—it is often a more realistic model of physical computation."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#roadmap-42-lectures-14-weeks",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#roadmap-42-lectures-14-weeks",
-    "title": "Tulasimohan Molli",
-    "section": "Roadmap: 42 Lectures, 14 Weeks",
-    "text": "Roadmap: 42 Lectures, 14 Weeks\n\n\n\nWeeks 1–3 (M1–M2): Probability & randomized algorithms, tail inequalities.\nWeeks 4–5 (M3): Expected-time data structures; randomized graph algorithms.\nWeeks 6–7 (M4–M5): Game theory; online algorithms.\nWeeks 8–9 (M6–M7): Number theory; parallel & distributed algorithms.\n\n\n\nWeek 10 (M8): NP-completeness & reductions; the polynomial hierarchy.\nWeeks 11–12 (M9): Approximation algorithms, schemes, inapproximability.\nWeek 13 (M10): Interactive & ZK proofs, #P counting, algebraic methods.\nWeek 14 (M11): Student project proposal presentations."
-  },
-  {
-    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#next-lecture",
-    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#next-lecture",
-    "title": "Tulasimohan Molli",
-    "section": "Next Lecture",
-    "text": "Next Lecture\nProbability Review I: Random Variables & Expectation\n\nWhy probability in algorithms: randomized inputs and randomized algorithms; the tools we need all term.\nSample space, events, axioms: \\Pr as a function, the three axioms, examples (coin toss, die roll).\nRandom variables & expectation: X: \\Omega \\to \\mathbb{R}, discrete vs continuous, E[X] = \\sum_x x \\cdot \\Pr(X = x).\nLinearity of expectation: E[X + Y] = E[X] + E[Y] — no independence required.\nWorked examples: expected number of heads in n flips; fixed points of a random permutation.\nTeaser: the coupon collector (n H_n draws) — revisited with concentration bounds in Week 3.\n\nWhy this matters: expectation and linearity are the engine behind every expected-runtime analysis in Weeks 1–3."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Advanced Algorithms and Complexity",
-    "section": "",
-    "text": "Download Course Handout (PDF)\n\n\n\n\n\n\nAbout the Course\n\n\n\n\n\nThis course explores advanced paradigms in algorithm design and analysis beyond the core curriculum, coupled with a serious study of complexity theory. It covers randomized algorithms, approximation algorithms, online algorithms, and a focused introduction to two-player matrix games (von Neumann’s minimax theorem and the multiplicative weights update), alongside parallel & distributed algorithms. Complexity theory is treated in depth — NP-completeness and reductions, the polynomial hierarchy, counting (#P), and interactive & zero-knowledge proofs — showing both what is computationally hard and what can still be achieved for hard problems.\n\n\n\n\n\n\n\n\n\nPrerequisites\n\n\n\n\n\nDesign and Analysis of Algorithms (CS F364) or equivalent.\n\n\n\n\n\n\n\n\n\nTimings and Venue\n\n\n\n\n\nInstructor: Tulasimohan Molli (TA: Hans Krupakar) Venue: I114 (lectures), I015 (lab) Venue: I114 (lectures), I015 (lab) Lectures: Monday 2:00–3:00 PM (I114) · Tuesday 12:00–1:00 PM (I114) · Thursday 12:00–1:00 PM (I114) Lab: Thursday 9:00–11:00 AM (I015) Lab: Thursday 9:00–11:00 AM (I015) Midsem: 06/10 Endsem: 04/12\nChamber Consultation: Monday 3:00–4:00 PM @ H-134\n\n\n\n\n\n\n\n\n\nEvaluation\n\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nMidterm\n25%\n\n\nComprehensive Exam\n35%\n\n\nTerm Project (Proposal + Presentation + Report)\n20%\n\n\nLab Interaction\n10%\n\n\nClass Interaction\n10%\n\n\n\n\n\n\n\nSyllabusLectures\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nModule\nLearning Objectives\nTopics\nReference\n\n\n\n\n1\nM1\nCourse scope and landscape; probability & complexity refresher\nIntroduction — Advanced Algorithms & Complexity; Review of Probability & Complexity Classes\nT1 Ch1\n\n\n2\nM1\nClassify randomized algorithms; verify matrix products, identities, min-cuts\nLas Vegas & Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz–Zippel\nT1 Ch1\n\n\n3\nM2\nBound deviations via tail inequalities\nTail Inequalities, Chebyshev, Chernoff Bounds & Applications\nT1 Ch3–4\n\n\n4\nM3\nExpected-time data structures\nSkip Lists, Hash Tables, Cuckoo Hashing\nT1 Ch8\n\n\n5\nM3\nRandomize classic graph algorithms\nRandomized Graph Algorithms: MST, Shortest Paths, Matching\nT1 Ch10\n\n\n6\nM4\nTwo-player matrix games: minimax and multiplicative weights\nTwo-Player Matrix Games; von Neumann’s Minimax Theorem; Multiplicative Weights Update\nT1 Ch4\n\n\n7\nM5\nOnline decision-making under uncertainty\nCompetitive Ratio, Ski Rental, Paging, Secretary Problem\nT1 Ch13\n\n\n8\nM6\nNumber-theoretic algorithms\nEuclid, Euler’s φ, Primality Testing\nT1 Ch14\n\n\n9\nM7\nParallel and distributed algorithms\nPRAM, Prefix, MIS; Byzantine Agreement, Consensus\nT1 Ch12\n\n\n10\nM8\nNP-completeness framework and the polynomial hierarchy\nNP-Completeness & Reductions: Decision Problems, Cook–Levin, Polynomial Hierarchy\nT3 Ch2–4\n\n\n11\nM9\nApproximation by greedy, LP rounding, primal-dual, local search\nGreedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP\nR1, R3\n\n\n12\nM9/M10\nApproximation schemes and limits of approximability; interactive proofs\nPTAS, APX; Inapproximability, Gap Technique; Interactive Proofs\nR4, T3 Ch8, 11\n\n\n13\nM10\nAdvanced complexity: interactive & zero-knowledge proofs, counting, algebraic methods\nInteractive & Zero-Knowledge Proofs; #P & Counting; Algebraic Counting Methods\nT3 Ch8–9, T1 Ch1\n\n\n14\nM11\nStudent project proposal presentations\nStudent Project Proposal Presentations\n—\n\n\n\n\n\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-08-03\nCourse Overview\n\n\n\nLecture 2\n2026-08-04\nProbability Review I: Foundations & Expectation\n\n\n\nLecture 3\n2026-08-06\nProbability Review II: Tail Bounds\n\n\n\nLecture 4\n2026-08-10\nApplications of Tail Bounds\n\n\n\nLecture 5\n2026-08-11\nApplications of Tail Bounds II"
+    "text": "Next Lecture\nCoupon Collector & Random Sampling — concentration details, sample complexity, and comparing bounds."
   },
   {
     "objectID": "lectures/lec-02-probability-review-i-random-variables-and-expectation.html#vocabulary-check-probability-basics",
@@ -378,87 +259,276 @@
     "text": "Next Lecture\nProbability Review II: Tail Bounds — moments & generating functions, then Markov, Chebyshev, and Chernoff bounds with proofs."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#agenda",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#agenda",
-    "title": "Tulasimohan Molli",
-    "section": "Agenda",
-    "text": "Agenda\n\nBalls into Bins — max load via Chernoff.\nBirthday Paradox — collision probabilities.\nCoupon Collector — expectation and concentration.\nRandom Sampling — estimating a mean with additive error.\nWhich Bound, When — the decision table.\nConcept Check — apply the right tool."
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advanced Algorithms and Complexity",
+    "section": "",
+    "text": "Download Course Handout (PDF)\n\n\n\n\n\n\nAbout the Course\n\n\n\n\n\nThis course explores advanced paradigms in algorithm design and analysis beyond the core curriculum, coupled with a serious study of complexity theory. It covers randomized algorithms, approximation algorithms, online algorithms, and a focused introduction to two-player matrix games (von Neumann’s minimax theorem and the multiplicative weights update), alongside parallel & distributed algorithms. Complexity theory is treated in depth — NP-completeness and reductions, the polynomial hierarchy, counting (#P), and interactive & zero-knowledge proofs — showing both what is computationally hard and what can still be achieved for hard problems.\n\n\n\n\n\n\n\n\n\nPrerequisites\n\n\n\n\n\nDesign and Analysis of Algorithms (CS F364) or equivalent.\n\n\n\n\n\n\n\n\n\nTimings and Venue\n\n\n\n\n\nInstructor: Tulasimohan Molli (TA: Hans Krupakar) Venue: I114 (lectures), I015 (lab) Venue: I114 (lectures), I015 (lab) Lectures: Monday 2:00–3:00 PM (I114) · Tuesday 12:00–1:00 PM (I114) · Thursday 12:00–1:00 PM (I114) Lab: Thursday 9:00–11:00 AM (I015) Lab: Thursday 9:00–11:00 AM (I015) Midsem: 06/10 Endsem: 04/12\nChamber Consultation: Monday 3:00–4:00 PM @ H-134\n\n\n\n\n\n\n\n\n\nEvaluation\n\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nMidterm\n25%\n\n\nComprehensive Exam\n35%\n\n\nTerm Project (Proposal + Presentation + Report)\n20%\n\n\nLab Interaction\n10%\n\n\nClass Interaction\n10%\n\n\n\n\n\n\n\nSyllabusLectures\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nModule\nLearning Objectives\nTopics\nReference\n\n\n\n\n1\nM1\nCourse scope and landscape; probability & complexity refresher\nIntroduction — Advanced Algorithms & Complexity; Review of Probability & Complexity Classes\nT1 Ch1\n\n\n2\nM1\nClassify randomized algorithms; verify matrix products, identities, min-cuts\nLas Vegas & Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz–Zippel\nT1 Ch1\n\n\n3\nM2\nBound deviations via tail inequalities\nTail Inequalities, Chebyshev, Chernoff Bounds & Applications\nT1 Ch3–4\n\n\n4\nM3\nExpected-time data structures\nSkip Lists, Hash Tables, Cuckoo Hashing\nT1 Ch8\n\n\n5\nM3\nRandomize classic graph algorithms\nRandomized Graph Algorithms: MST, Shortest Paths, Matching\nT1 Ch10\n\n\n6\nM4\nTwo-player matrix games: minimax and multiplicative weights\nTwo-Player Matrix Games; von Neumann’s Minimax Theorem; Multiplicative Weights Update\nT1 Ch4\n\n\n7\nM5\nOnline decision-making under uncertainty\nCompetitive Ratio, Ski Rental, Paging, Secretary Problem\nT1 Ch13\n\n\n8\nM6\nNumber-theoretic algorithms\nEuclid, Euler’s φ, Primality Testing\nT1 Ch14\n\n\n9\nM7\nParallel and distributed algorithms\nPRAM, Prefix, MIS; Byzantine Agreement, Consensus\nT1 Ch12\n\n\n10\nM8\nNP-completeness framework and the polynomial hierarchy\nNP-Completeness & Reductions: Decision Problems, Cook–Levin, Polynomial Hierarchy\nT3 Ch2–4\n\n\n11\nM9\nApproximation by greedy, LP rounding, primal-dual, local search\nGreedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP\nR1, R3\n\n\n12\nM9/M10\nApproximation schemes and limits of approximability; interactive proofs\nPTAS, APX; Inapproximability, Gap Technique; Interactive Proofs\nR4, T3 Ch8, 11\n\n\n13\nM10\nAdvanced complexity: interactive & zero-knowledge proofs, counting, algebraic methods\nInteractive & Zero-Knowledge Proofs; #P & Counting; Algebraic Counting Methods\nT3 Ch8–9, T1 Ch1\n\n\n14\nM11\nStudent project proposal presentations\nStudent Project Proposal Presentations\n—\n\n\n\n\n\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-08-03\nCourse Overview\n\n\n\nLecture 2\n2026-08-04\nProbability Review I: Foundations & Expectation\n\n\n\nLecture 3\n2026-08-06\nProbability Review II: Tail Bounds\n\n\n\nLecture 4\n2026-08-10\nApplications of Tail Bounds\n\n\n\nLecture 5\n2026-08-11\nApplications of Tail Bounds II\n\n\n\nLecture 6\n2026-08-13\nRandomized Algorithms: Foundations & Verification"
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#quick-recap-tail-bounds",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#quick-recap-tail-bounds",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#course-details",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#course-details",
     "title": "Tulasimohan Molli",
-    "section": "Quick Recap: Tail Bounds",
-    "text": "Quick Recap: Tail Bounds\nWe use tail bounds to bound the probability that a random variable X deviates from its expectation \\mu = \\mathbb{E}[X].\n\n\nMarkov’s Inequality: For any non-negative R.V. X and a &gt; 0: \\Pr(X \\ge a) \\le \\frac{\\mathbb{E}[X]}{a}\nChebyshev’s Inequality: For any R.V. X with variance \\sigma^2 and k &gt; 0: \\Pr(|X - \\mu| \\ge k) \\le \\frac{\\sigma^2}{k^2}\nChernoff Bounds (Upper): For X = \\sum X_i sum of independent Bernoulli trials: \\Pr(X \\ge (1+\\delta)\\mu) \\le \\left(\\frac{e^\\delta}{(1+\\delta)^{1+\\delta}}\\right)^\\mu"
+    "section": "Course Details",
+    "text": "Course Details\n\nCourse: CS G526 — Advanced Algorithms & Complexity\nInstructor: Tulasimohan Molli\nTA: Hans Krupakar\nSchedule: Mon 2–3 PM, Tue 12–1 PM, Thu 12–1 PM, @ I114\nLab: Thu 9–11 AM @ I015\nOffice Hours: Tue 2–3 PM @ H-134\nCourse page: tulasimohan.github.io/teaching/2026_aac/\nPiazza: LMS or Google Classroom"
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-the-experiment",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-the-experiment",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#advanced-algorithms-complexity",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#advanced-algorithms-complexity",
     "title": "Tulasimohan Molli",
-    "section": "Balls into Bins: The Experiment",
-    "text": "Balls into Bins: The Experiment\nThrow n balls into n bins independently and uniformly at random (i.i.d). Let L_i be the load of bin i.\n\nExpected load per bin: \\mu = \\mathbb{E}[L_i] = 1 \\sum_{i=1}^n \\mathbb{E}[L_i] = \\mathbb{E}\\left[\\sum_{i=1}^n L_i\\right] = \\mathbb{E}[n] = n\nThe Question: What is the maximum load of any bin?\nDeterministic worst case: n (all balls in one bin).\nRandomized reality: Concentrates heavily around the mean."
+    "section": "Advanced Algorithms & Complexity",
+    "text": "Advanced Algorithms & Complexity\n\nAdvanced Algorithms: Designing efficient solutions by relaxing strict guarantees.\n\nControlled error (randomization),\nsettling for near-optimal quality (approximation),\nadapting to unknown future data (online),\nexploiting parallelism and distribution (parallel & distributed).\n\nComplexity Theory: Mathematically classifying problems by the resources they demand.\n\nIdentifying the absolute boundary between what is tractable and what is hard.\n\nThe Duality: Understanding what makes problems hard (complexity) to guide how we solve them (advanced paradigms)."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-chernoff-bound",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-chernoff-bound",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbooks",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbooks",
     "title": "Tulasimohan Molli",
-    "section": "Balls into Bins: Chernoff Bound",
-    "text": "Balls into Bins: Chernoff Bound\nFor the ith bin , L_i = \\sum_{j=1}^n X_j is a sum of independent r.v.s.\n\nChernoff Bound Theorem: For a sum of independent Bernoulli trials with expectation \\mu, and any \\delta &gt; 0: \\Pr(X \\ge (1+\\delta)\\mu) \\le \\left(\\frac{e^\\delta}{(1+\\delta)^{1+\\delta}}\\right)^\\mu\nSubstituting 1+\\delta = \\lambda (since \\mu = \\mathbb{E}[L_i] = 1), we get: \\Pr(L_i \\ge \\lambda) \\le \\left(\\frac{e^{\\lambda - 1}}{\\lambda^\\lambda}\\right)^\\mu = \\frac{e^{\\lambda - 1}}{\\lambda^\\lambda} \\le \\left(\\frac{e}{\\lambda}\\right)^\\lambda\nWe want to find a threshold \\lambda such that this probability is very small."
+    "section": "Textbooks",
+    "text": "Textbooks\n\nT1 Motwani & Raghavan, Randomized Algorithms, Cambridge University Press, 1995.\nT2 Papadimitriou & Steiglitz, Combinatorial Optimization: Algorithms and Complexity, PHI, 1982.\nT3 Arora & Barak, Computational Complexity: A Modern Approach, Cambridge University Press."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-setting-the-threshold",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-setting-the-threshold",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-books",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-books",
     "title": "Tulasimohan Molli",
-    "section": "Balls into Bins: Setting the Threshold",
-    "text": "Balls into Bins: Setting the Threshold\n\nLet’s choose \\lambda = \\frac{3 \\ln n}{\\ln \\ln n}.\n\nTaking the natural log of our bound: \\ln \\Pr(L_i \\ge \\lambda) \\le \\lambda (1 - \\ln \\lambda)\nSubstituting \\lambda: \\ln \\Pr(L_i \\ge \\lambda) \\approx -\\frac{3 \\ln n}{\\ln \\ln n} (\\ln \\ln n - \\ln 3) \\le -2 \\ln n\nThis yields: \\Pr(L_i \\ge \\lambda) \\le n^{-2}"
+    "section": "Reference Books",
+    "text": "Reference Books\n\nR1 Williamson & Shmoys, The Design of Approximation Algorithms, CUP.\nR2 Hromkovič, Design and Analysis of Randomized Algorithms, Springer.\nR3 Vazirani, Approximation Algorithms, Springer.\nR4 Ausiello et al., Complexity and Approximation, Springer.\nR5 Kleinberg & Tardos, Algorithm Design, Pearson.\nR6 Assigned reading (papers, notes)."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-union-bound",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#balls-into-bins-union-bound",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbook-covers",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#textbook-covers",
     "title": "Tulasimohan Molli",
-    "section": "Balls into Bins: Union Bound",
-    "text": "Balls into Bins: Union Bound\n\nWe want to bound the probability that any bin exceeds our threshold \\lambda.\n\nApplying the Union Bound over all n bins: \\Pr(\\max_i L_i \\ge \\lambda) = \\Pr\\left(\\bigcup_{i=1}^n \\{L_i \\ge \\lambda\\}\\right) \\le \\sum_{i=1}^n \\Pr(L_i \\ge \\lambda)\nSubstituting our per-bin bound: \\Pr(\\max_i L_i \\ge \\lambda) \\le n \\cdot n^{-2} = \\frac{1}{n}\nConclusion: With high probability (1 - 1/n), the max load is O\\big(\\frac{\\log n}{\\log \\log n}\\mathrm{\\big)}."
+    "section": "Textbook Covers",
+    "text": "Textbook Covers\n\n\n\n\n\nT1 Motwani & Raghavan\n\n\n\n\n\n\nT2 Papadimitriou & Steiglitz\n\n\n\n\n\n\nT3 Arora & Barak"
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-setting",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-setting",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-covers",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#reference-covers",
     "title": "Tulasimohan Molli",
-    "section": "Birthday Paradox: The Setting",
-    "text": "Birthday Paradox: The Setting\nThrow m balls into n bins (e.g., n = 365 days in a year).\n\nThe Question: How large does m need to be so that the probability of at least one collision (a bin with load \\ge 2) is \\ge 1/2?\nPigeon hole principle says that if a class has 366 people, two people always have the same birthday.\nThe Reality: We only need m = 23 people!\nLet’s analyze the math behind this collision rate."
+    "section": "Reference Covers",
+    "text": "Reference Covers\n\n\n\n\n\nR1 Williamson & Shmoys\n\n\n\n\n\n\nR2 Hromkovič\n\n\n\n\n\n\nR3 Vazirani\n\n\n\n\n\n\nR4 Ausiello et al.\n\n\n\n\n\n\nR5 Kleinberg & Tardos"
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-analysis",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-analysis",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#evaluation-scheme",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#evaluation-scheme",
     "title": "Tulasimohan Molli",
-    "section": "Birthday Paradox: The Analysis",
-    "text": "Birthday Paradox: The Analysis\n\nWhat is the probability of having no collisions (all balls land in distinct bins)?\n\nWe place the balls one by one. The probability that the i-th ball does not collide with any of the previous i-1 balls is 1 - \\frac{i-1}{n}.\nTherefore, the probability of no collisions after placing m balls is: \\Pr(\\text{no collision}) = \\prod_{i=1}^{m} \\left(1 - \\frac{i-1}{n}\\right) = \\prod_{i=1}^{m-1} \\left(1 - \\frac{i}{n}\\right)\nUsing the inequality 1 - x \\le e^{-x} for all x: \\Pr(\\text{no collision}) \\le \\prod_{i=1}^{m-1} e^{-i/n} = e^{-\\frac{1}{n}\\sum_{i=1}^{m-1}i} = e^{-\\frac{m(m-1)}{2n}}"
+    "section": "Evaluation Scheme",
+    "text": "Evaluation Scheme\n\n\n\n\n\n\n\n\n\n\nComponent\nWeight\nDuration\nDate & Time\nStyle\n\n\n\n\nClass Participation\n10%\nContinuous\nThroughout\nOpen Book\n\n\nLab Participation\n10%\nWeekly\nThu 9–11 AM\nOpen Book\n\n\nTerm Project\n20%\nSemester\nThroughout\nOpen Book (Proposal + Presentation + Report)\n\n\nMid-Semester Exam\n25%\n90 mins\n06/10\nClosed Book\n\n\nComprehensive Exam\n35%\n180 mins\n04/12 AN\nClosed Book\n\n\n\nNC Criterion: 30% of average of top 3 performers or 40% of median, whichever is lower."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-threshold",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#birthday-paradox-the-threshold",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#how-this-course-is-useful",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#how-this-course-is-useful",
     "title": "Tulasimohan Molli",
-    "section": "Birthday Paradox: The Threshold",
-    "text": "Birthday Paradox: The Threshold\n\nWe want to find m such that the collision probability is at least 1/2 (\\Pr(\\text{no collision}) \\le 1/2).\n\nUsing our exponential bound: e^{-\\frac{m(m-1)}{2n}} \\le \\frac{1}{2} \\iff \\frac{m(m-1)}{2n} \\ge \\ln 2 \\iff m(m-1) \\ge 2n \\ln 2\nApproximating m(m-1) \\approx m^2, this holds when: m \\ge \\sqrt{2n \\ln 2}\nFor n = 365: m \\ge \\sqrt{730 \\ln 2} \\approx 22.49 \\implies m = 23\nApplication: Hash collision boundaries (e.g., why b-bit hashes collide after 2^{b/2} items)."
+    "section": "How this course is useful",
+    "text": "How this course is useful\n\nCoping with Intractability: Standard DSA fails on NP-complete problems. Advanced paradigms allow us to bypass these mathematical limits.\nHandling Uncertainty: Real-world inputs are dynamic and incomplete. Advanced models (online/games) make robust decisions under uncertainty.\nSophisticated Tooling: Equips you with powerful techniques (probabilistic method, LP rounding, game theory) valued in research and advanced software systems.\nCryptography and Complexity Theory: Modern cryptography, cloud databases, and machine learning scaling depend fundamentally on complexity assumptions and randomized tools."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#coupon-collector-concentration",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#coupon-collector-concentration",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-this-course-is-not",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-this-course-is-not",
     "title": "Tulasimohan Molli",
-    "section": "Coupon Collector: Concentration",
-    "text": "Coupon Collector: Concentration\nRecall the classic Coupon Collector problem: we want to collect n unique coupons.\n\nExpected draws to collect all n coupons: nH_n = \\Theta(n \\log n).\nThe Question: How likely are we to deviate significantly from this expectation?\nWe will show that the probability of needing more draws decays rapidly."
+    "section": "What this course is NOT",
+    "text": "What this course is NOT\n\nNOT a DSA course: We assume you are already familiar with asymptotic notation, solving recurrences, data structures like linked lists, arrays, search trees, and heaps, and algorithmic paradigms like greedy, divide and conquer, and dynamic programming.\n\nNOT an implementation-first course: We prioritize analysis and proofs over writing standard code. (We also have a lab.)\nNOT a broad survey: We focus on going deep on a select few powerful paradigms rather than a shallow tour of many.\nNOT a probability course: Randomization is the backbone here; probability is a necessity."
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#concept-check",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#concept-check",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-the-area-of-a-shape",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-the-area-of-a-shape",
     "title": "Tulasimohan Molli",
-    "section": "Concept Check",
-    "text": "Concept Check\nAfter throwing n balls into n bins, bound the probability that some bin has load &gt; 6 \\ln n / \\ln\\ln n.\n\n\n\nHint: per-bin Chernoff gives \\Pr(L_i \\ge \\lambda) \\le n^{-2} for \\lambda = 6\\ln n/\\ln\\ln n; union bound over n bins gives \\le 1/n."
+    "section": "Estimating the Area of a Shape",
+    "text": "Estimating the Area of a Shape\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow do you compute the area of this shape?\n\nGrid method: Superimpose a fine grid. Count cells inside. Resolution-dependent and tedious.\n\n\nA faster way — random sampling: 1. Enclose the shape in a bounding box. 2. Throw N darts uniformly at random. 3. Count M that land inside.\n\\text{Area}(S) \\approx \\text{Area}(\\text{box}) \\times \\frac{M}{N}"
   },
   {
-    "objectID": "lectures/lec-04-applications-and-probabilistic-method.html#next-lecture",
-    "href": "lectures/lec-04-applications-and-probabilistic-method.html#next-lecture",
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-pi-by-dart-throwing",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#estimating-pi-by-dart-throwing",
+    "title": "Tulasimohan Molli",
+    "section": "Estimating \\pi by Dart-Throwing",
+    "text": "Estimating \\pi by Dart-Throwing\n\n\n\n\n\nCircle of radius r inscribed in a square of side 2r:\n\\frac{\\text{Area of circle}}{\\text{Area of square}} = \\frac{\\pi r^2}{4r^2} = \\frac{\\pi}{4}\nThrow N darts uniformly, M land inside:\n\\pi \\approx 4 \\cdot \\frac{M}{N}"
+  },
+  {
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-do-we-mean-by-random",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#what-do-we-mean-by-random",
+    "title": "Tulasimohan Molli",
+    "section": "What Do We Mean by “Random”?",
+    "text": "What Do We Mean by “Random”?\n\nNot “arbitrary”: Random means values drawn from a probability distribution (e.g., uniform distribution where every outcome is equally likely).\nPhysical Randomness: Quantum mechanics suggests nature has irreducible randomness (e.g., radioactive decay, thermal noise).\nPractical Randomness: Computers use deterministic Pseudo-Random Number Generators (PRNGs) seeded with entropy to produce sequences that look random.\nWhy it matters: Probability is a way of modelling uncertainity, which is inherent in many real world problems."
+  },
+  {
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#why-the-error-doesnt-cost-us",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#why-the-error-doesnt-cost-us",
+    "title": "Tulasimohan Molli",
+    "section": "Why the Error Doesn’t Cost Us",
+    "text": "Why the Error Doesn’t Cost Us\n\nBackground Failures: An algorithm error probability of 10^{-6} is smaller than background computer failure rates (e.g., cosmic-ray memory flips \\approx 10^{-12} per cell).\nWhat We Gain: Extreme speed, structural simplicity, and robustness in high dimensions compared to exponential grid costs.\nThe Honest Model: Randomness isn’t a hack—it is often a more realistic model of physical computation."
+  },
+  {
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#roadmap-42-lectures-14-weeks",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#roadmap-42-lectures-14-weeks",
+    "title": "Tulasimohan Molli",
+    "section": "Roadmap: 42 Lectures, 14 Weeks",
+    "text": "Roadmap: 42 Lectures, 14 Weeks\n\n\n\nWeeks 1–3 (M1–M2): Probability & randomized algorithms, tail inequalities.\nWeeks 4–5 (M3): Expected-time data structures; randomized graph algorithms.\nWeeks 6–7 (M4–M5): Game theory; online algorithms.\nWeeks 8–9 (M6–M7): Number theory; parallel & distributed algorithms.\n\n\n\nWeek 10 (M8): NP-completeness & reductions; the polynomial hierarchy.\nWeeks 11–12 (M9): Approximation algorithms, schemes, inapproximability.\nWeek 13 (M10): Interactive & ZK proofs, #P counting, algebraic methods.\nWeek 14 (M11): Student project proposal presentations."
+  },
+  {
+    "objectID": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#next-lecture",
+    "href": "lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html#next-lecture",
     "title": "Tulasimohan Molli",
     "section": "Next Lecture",
-    "text": "Next Lecture\nCoupon Collector & Random Sampling — concentration details, sample complexity, and comparing bounds."
+    "text": "Next Lecture\nProbability Review I: Random Variables & Expectation\n\nWhy probability in algorithms: randomized inputs and randomized algorithms; the tools we need all term.\nSample space, events, axioms: \\Pr as a function, the three axioms, examples (coin toss, die roll).\nRandom variables & expectation: X: \\Omega \\to \\mathbb{R}, discrete vs continuous, E[X] = \\sum_x x \\cdot \\Pr(X = x).\nLinearity of expectation: E[X + Y] = E[X] + E[Y] — no independence required.\nWorked examples: expected number of heads in n flips; fixed points of a random permutation.\nTeaser: the coupon collector (n H_n draws) — revisited with concentration bounds in Week 3.\n\nWhy this matters: expectation and linearity are the engine behind every expected-runtime analysis in Weeks 1–3."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#agenda",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#agenda",
+    "title": "Tulasimohan Molli",
+    "section": "Agenda",
+    "text": "Agenda\n\nMotivation — why expectation alone is not enough.\nMarkov’s Inequality — statement & proof.\nChebyshev’s Inequality — variance-based concentration.\nChernoff Bounds — exponential tails via MGFs.\nComparing the Bounds — when to use which."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#motivation-expectation-is-not-enough",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#motivation-expectation-is-not-enough",
+    "title": "Tulasimohan Molli",
+    "section": "Motivation: Expectation is Not Enough",
+    "text": "Motivation: Expectation is Not Enough\nWe model an algorithm’s performance (e.g., runtime or quality) as a random variable X. The expected value E[X] is only a single summary statistic.\n\nConcentrating RV (e.g., Fair Flips): X \\sim \\text{Bin}(n, 1/2), E[X] = n/2. As n grows, X is almost always close to n/2 (variance is n/4).\nNon-concentrating RV (e.g., Binary Bet): Y = 0 or n with equal probability. E[Y] = n/2, but Y is never close to its expectation.\nOur Goal: Prove that randomized algorithms concentrate (like X) rather than wildly fluctuate (like Y)."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#markovs-inequality",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#markovs-inequality",
+    "title": "Tulasimohan Molli",
+    "section": "Markov’s Inequality",
+    "text": "Markov’s Inequality\n\n\n\nMarkov’s Inequality\n\n\nFor any non-negative random variable X and any a &gt; 0: \\Pr(X \\ge a) \\le \\frac{E[X]}{a}\n\n\n\n\nKey Feature: Only requires the mean (E[X]).\nUniversality: Needs no assumption about independence or the distribution.\nLimitation: Often loose, but serves as the foundation for stronger bounds."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-markovs-inequality",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-markovs-inequality",
+    "title": "Tulasimohan Molli",
+    "section": "Proof of Markov’s Inequality",
+    "text": "Proof of Markov’s Inequality\nFor a discrete non-negative random variable X:\n\n\\begin{aligned}\nE[X] &= \\sum_x x \\cdot \\Pr(X = x) \\\\\n&\\ge \\sum_{x \\ge a} x \\cdot \\Pr(X = x) \\\\\n&\\ge \\sum_{x \\ge a} a \\cdot \\Pr(X = x) \\\\\n&= a \\sum_{x \\ge a} \\Pr(X = x) \\\\\n&= a \\cdot \\Pr(X \\ge a)\n\\end{aligned}\n\nDividing by a yields \\Pr(X \\ge a) \\le \\frac{E[X]}{a}."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chebyshevs-inequality",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chebyshevs-inequality",
+    "title": "Tulasimohan Molli",
+    "section": "Chebyshev’s Inequality",
+    "text": "Chebyshev’s Inequality\n\n\n\nChebyshev’s Inequality\n\n\nFor any random variable X with mean \\mu, variance \\mathrm{Var}(X), and any t &gt; 0: \\Pr\\big(|X - \\mu| \\ge t\\big) \\le \\frac{\\mathrm{Var}(X)}{t^2}\n\n\n\n\nKey Feature: Uses variance (\\mathrm{Var}(X)) to bound deviation from the mean.\nUniversality: Works for any distribution with a finite variance.\nLimitation: Decays only polynomially (1/t^2)."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-chebyshevs-inequality",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#proof-of-chebyshevs-inequality",
+    "title": "Tulasimohan Molli",
+    "section": "Proof of Chebyshev’s Inequality",
+    "text": "Proof of Chebyshev’s Inequality\nWe apply Markov’s Inequality to the non-negative random variable Y = (X - \\mu)^2 with threshold a = t^2:\n\n\\Pr\\big(|X - \\mu| \\ge t\\big) = \\Pr\\big((X - \\mu)^2 \\ge t^2\\big)\n\nBy Markov’s Inequality:\n\n\\Pr\\big(Y \\ge t^2\\big) \\le \\frac{E[Y]}{t^2} = \\frac{E[(X - \\mu)^2]}{t^2} = \\frac{\\mathrm{Var}(X)}{t^2}\n\nThis completes the proof."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#i.i.d.-law-of-large-numbers-clt",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#i.i.d.-law-of-large-numbers-clt",
+    "title": "Tulasimohan Molli",
+    "section": "i.i.d., Law of Large Numbers, & CLT",
+    "text": "i.i.d., Law of Large Numbers, & CLT\n\ni.i.d. random variables: Independent and Identically Distributed\n\nExample: Repeatedly tossing the same fair coin; each flip X_i \\in \\{0, 1\\} is independent and has the exact same probability \\Pr(X_i = 1) = 1/2.\n\nLaw of Large Numbers (LLN): As the number of trials n \\to \\infty, the sample average converges to the expected value: \\frac{1}{n} \\sum_{i=1}^n X_i \\;\\longrightarrow\\; E[X] \\qquad \\text{(Proved via Chebyshev!)}\nCentral Limit Theorem (CLT): The sum (or average) of many i.i.d. variables converges to a Normal (Gaussian) distribution N(\\mu, \\sigma^2), regardless of their original distribution shape."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#the-normal-curve-standard-deviations",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#the-normal-curve-standard-deviations",
+    "title": "Tulasimohan Molli",
+    "section": "The Normal Curve & Standard Deviations",
+    "text": "The Normal Curve & Standard Deviations\n\n\n\n\nExample (Heights of Indian Men): Adult male height follows a Normal distribution. Let mean \\mu = 165\\text{ cm} and standard deviation \\sigma = 6\\text{ cm}.\nTail Mass (Empirical Rule):\n\n\\ge 1\\sigma away (&lt;159 or &gt;171\\text{ cm}): \\approx 32\\% of population.\n\\ge 2\\sigma away (&lt;153 or &gt;177\\text{ cm}): \\approx 5\\% of population.\n\\ge 3\\sigma away (&lt;147 or &gt;183\\text{ cm}): \\approx 0.3\\% of population.\n\nWhy Chernoff? CLT is asymptotic (n \\to \\infty). In algorithms, we need concrete, non-asymptotic exponential bounds for finite n.\n\nSource: ICMR-NIN Reference Guidelines (2020) & NFHS-5 (2019-21) survey data."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-the-mgf-recipe",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-the-mgf-recipe",
+    "title": "Tulasimohan Molli",
+    "section": "Chernoff Bounds: The MGF Recipe",
+    "text": "Chernoff Bounds: The MGF Recipe\nTo get exponential tail decay, apply Markov’s Inequality to the exponential function e^{\\lambda X} for a tuning parameter \\lambda &gt; 0:\n\\Pr(X \\ge t) = \\Pr(e^{\\lambda X} \\ge e^{\\lambda t}) \\le \\frac{E[e^{\\lambda X}]}{e^{\\lambda t}}\n\nMoment Generating Function (MGF): M_X(\\lambda) = E[e^{\\lambda X}].\nIndependence Power: If X = \\sum X_i are independent, then: E[e^{\\lambda X}] = E\\Big[\\prod_i e^{\\lambda X_i}\\Big] = \\prod_i E[e^{\\lambda X_i}] Independence turns the expectation of a product into a product of expectations."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-multiplicative-form",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#chernoff-bounds-multiplicative-form",
+    "title": "Tulasimohan Molli",
+    "section": "Chernoff Bounds: Multiplicative Form",
+    "text": "Chernoff Bounds: Multiplicative Form\n\n\n\nChernoff Bounds (Multiplicative Form)\n\n\nLet X = \\sum_{i=1}^n X_i be a sum of independent Bernoulli trials with E[X] = \\mu. For any 0 &lt; \\delta \\le 1: \\Pr\\big(X \\ge (1+\\delta)\\mu\\big) \\le \\exp\\left(-\\frac{\\delta^2 \\mu}{3}\\right) \\Pr\\big(X \\le (1-\\delta)\\mu\\big) \\le \\exp\\left(-\\frac{\\delta^2 \\mu}{2}\\right)\n\n\n\n\nKey Feature: Strong exponential decay in the tail.\nRequirement: Strictly requires mutual independence of the trials."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#choosing-the-right-bound",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#choosing-the-right-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Choosing the Right Bound",
+    "text": "Choosing the Right Bound\n\n\n\n\n\n\n\n\n\nGoal\nBest Bound\nInput Requirements\n\n\n\n\nQuick bound, know only mean\nMarkov\nE[X] (RV must be \\ge 0)\n\n\nBound deviation using variance\nChebyshev\n\\mathrm{Var}(X)\n\n\nSum of independent trials\nChernoff\nMutual Independence + Mean\n\n\n\n\nCoin Flips Comparison (n coins, probability of \\ge 3n/4 heads):\n\nMarkov: \\le 2/3.\nChebyshev: \\le 16/(3n) (decays as O(1/n)).\nChernoff: \\le e^{-n/12} (decays exponentially fast)."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#concept-check",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#concept-check",
+    "title": "Tulasimohan Molli",
+    "section": "Concept Check",
+    "text": "Concept Check\nAn estimator \\hat{p} has E[\\hat{p}] = 0.5 and \\mathrm{Var}(\\hat{p}) \\le \\frac{1}{4n}. Give the tightest bound on \\Pr(\\hat{p} \\ge 0.75).\n\n\n\n\nMarkov: \\Pr(\\hat{p} \\ge 0.75) \\le \\frac{0.5}{0.75} = \\frac{2}{3}.\nChebyshev: \\Pr(\\hat{p} - 0.5 \\ge 0.25) \\le \\frac{\\mathrm{Var}(\\hat{p})}{0.25^2} \\le \\frac{1/4n}{1/16} = \\frac{4}{n}.\nTakeaway: For large n, Chebyshev gives a vastly superior bound."
+  },
+  {
+    "objectID": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#next-lecture",
+    "href": "lectures/lec-03-probability-review-ii-and-complexity-classes.html#next-lecture",
+    "title": "Tulasimohan Molli",
+    "section": "Next Lecture",
+    "text": "Next Lecture\nApplications of Tail Bounds & the Probabilistic Method — max load in balls-into-bins, random sampling sample-complexity, and existence proofs."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#agenda",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#agenda",
+    "title": "Tulasimohan Molli",
+    "section": "Agenda",
+    "text": "Agenda\n\nCoupon Collector — expectation and concentration.\nRandom Sampling — estimating a mean.\nWhich Bound, When — comparing tail bounds."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-problem-setup",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-problem-setup",
+    "title": "Tulasimohan Molli",
+    "section": "Coupon Collector: Problem Setup",
+    "text": "Coupon Collector: Problem Setup\n\nThe Experiment: We draw from n distinct coupon types uniformly at random with replacement.\n\nThe Random Variable: Let T be the total number of trials needed to collect at least one coupon of each of the n types.\nRecall the Expectation: We showed that \\mathbb{E}[T] = n H_n \\approx n \\ln n.\nThe Goal (Concentration): How likely is T to exceed its expectation significantly?\n\nSpecifically, we want to bound the tail probability: \\Pr(T &gt; t) for t = c n \\ln n (where c &gt; 1)."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-analyzing-the-tail",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-analyzing-the-tail",
+    "title": "Tulasimohan Molli",
+    "section": "Coupon Collector: Analyzing the Tail",
+    "text": "Coupon Collector: Analyzing the Tail\n\nTo bound \\Pr(T &gt; c n \\ln n), let’s examine what must happen after t = c n \\ln n trials.\n\nKey Equivalence: The event \\{T &gt; t\\} occurs if and only if at least one coupon type is still missing after t trials.\nLet M_i be the event that coupon type i is missing after t trials: \\{T &gt; t\\} = \\bigcup_{i=1}^n M_i\nProbability of a Single Miss: In each trial, the probability of not picking type i is 1 - 1/n. By independence of trials: \\Pr(M_i) = \\left(1 - \\frac{1}{n}\\right)^{t} = \\left(1 - \\frac{1}{n}\\right)^{c n \\ln n} \\le e^{-\\frac{c n \\ln n}{n}} = n^{-c}"
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-union-bound",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#coupon-collector-union-bound",
+    "title": "Tulasimohan Molli",
+    "section": "Coupon Collector: Union Bound",
+    "text": "Coupon Collector: Union Bound\n\nNow, we apply the Union Bound over all n possible missing coupons to bound the total failure probability:\n\n\\Pr(T &gt; c n \\ln n) = \\Pr\\left(\\bigcup_{i=1}^n M_i\\right) \\le \\sum_{i=1}^n \\Pr(M_i) \\le n \\cdot n^{-c} = n^{1-c}\nExample (c=2): The probability of needing more than 2n\\ln n trials is: \\Pr(T &gt; 2n\\ln n) \\le \\frac{1}{n} = o(1)\nConclusion: The total trials T is highly concentrated around its expectation n\\ln n."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#random-sampling-estimating-a-mean",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#random-sampling-estimating-a-mean",
+    "title": "Tulasimohan Molli",
+    "section": "Random Sampling: Estimating a Mean",
+    "text": "Random Sampling: Estimating a Mean\nWe want to estimate an unknown parameter p \\in [0, 1] (e.g., fraction of biased coins) within error \\varepsilon with failure probability \\le \\delta.\n\nWe draw m i.i.d. samples X_1, \\dots, X_m \\sim \\text{Bernoulli}(p).\nCompute the sample mean \\hat{p} = \\frac{1}{m}\\sum_{j=1}^m X_j.\nLet’s compare Chebyshev and Chernoff bounds for this estimation."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#mean-estimation-real-world-applications",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#mean-estimation-real-world-applications",
+    "title": "Tulasimohan Molli",
+    "section": "Mean Estimation: Real-World Applications",
+    "text": "Mean Estimation: Real-World Applications\nWhy do we care about estimating p using random samples?\n\nOpinion Polls & Surveys:\n\nEstimating the fraction p of the population supporting a policy/candidate.\nExample: Setting \\varepsilon = 0.03 (3% margin of error) and \\delta = 0.05 (95% confidence).\n\nRandomized Audits & Quality Control:\n\nInspecting a small random sample of factory goods to bound the defect rate.\n\nRandomized Algorithms (Volume Estimation)"
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-chebyshev-vs-chernoff-bounds",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-chebyshev-vs-chernoff-bounds",
+    "title": "Tulasimohan Molli",
+    "section": "Sampling: Chebyshev vs Chernoff Bounds",
+    "text": "Sampling: Chebyshev vs Chernoff Bounds\n\n\n\nChebyshev Bound\n\nUses variance: \\mathrm{Var}(\\hat{p}) \\le \\frac{1}{4m}.\nBy Chebyshev: \\Pr(|\\hat{p} - p| \\ge \\varepsilon) \\le \\frac{1}{4m\\varepsilon^2}\nSetting failure probability \\le \\delta: m \\ge \\frac{1}{4\\varepsilon^2 \\delta}\n\n\nChernoff Bound\n\nUses Hoeffding’s inequality: \\Pr(|\\hat{p} - p| \\ge \\varepsilon) \\le 2e^{-2m\\varepsilon^2}\nSetting failure probability \\le \\delta: m \\ge \\frac{1}{2\\varepsilon^2} \\ln \\left(\\frac{2}{\\delta}\\right)"
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-sample-complexity-comparison",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#sampling-sample-complexity-comparison",
+    "title": "Tulasimohan Molli",
+    "section": "Sampling: Sample Complexity Comparison",
+    "text": "Sampling: Sample Complexity Comparison\nWhy is the difference between Chebyshev and Chernoff bounds so critical?\n\nChebyshev: m \\ge \\Omega\\big(\\frac{1}{\\varepsilon^2 \\delta}\\mathrm{\\big)} — sample size grows linearly with confidence 1/\\delta.\nChernoff: m \\ge \\Omega\\big(\\frac{\\log(1/\\delta)}{\\varepsilon^2}\\mathrm{\\big)} — sample size grows only logarithmically with confidence!\nTakeaway: For high confidence (e.g., \\delta = 10^{-6}), Chernoff requires orders of magnitude fewer samples."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#which-bound-when",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#which-bound-when",
+    "title": "Tulasimohan Molli",
+    "section": "Which Bound, When?",
+    "text": "Which Bound, When?\n\n\n\n\n\n\n\n\nSituation\nTool\n\n\n\n\nAny non-negative RV, need a quick bound\nMarkov\n\n\nAny RV, deviation from mean, know variance\nChebyshev\n\n\nSum of independent trials, want exponential tail\nChernoff\n\n\nComplicated union of many bad events\nUnion bound on top of any of these\n\n\n\n\nWorked example: max load of n balls into n bins — union bound + Chernoff on each bin."
+  },
+  {
+    "objectID": "lectures/lec-05-applications-of-tail-bounds-ii.html#next-lecture",
+    "href": "lectures/lec-05-applications-of-tail-bounds-ii.html#next-lecture",
+    "title": "Tulasimohan Molli",
+    "section": "Next Lecture",
+    "text": "Next Lecture\nLas Vegas vs Monte Carlo — the two flavors of randomized algorithms, and amplification by repetition."
   }
 ]
