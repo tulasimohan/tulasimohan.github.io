@@ -2,58 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/index.html</loc>
-    <lastmod>2026-08-19T20:39:31.849Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.947Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-01-introduction-to-algorithms.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-02-introduction-to-sorting-and-asymptotic-analysis.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-03-asymptotic-notation-and-merge-sort.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-04-solving-recurrences.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-05-divide-and-conquer-maximum-subarray.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-06-closest-pair-of-points-in-2d.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-07-sorting-lower-bounds-and-quicksort.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-08-probability-primer-and-randomized-quicksort.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-09-selection-randomized-and-deterministic.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-10-dynamic-programming-fibonacci-and-lcs.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-11-matrix-chain-multiplication.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-12-graphs-and-dynamic-programming-on-trees.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-13-greedy-interval-scheduling.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-14-huffman-coding.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-15-minimum-spanning-trees.html</loc>
+    <lastmod>2026-08-20T10:09:21.948Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-16-mst-algorithms.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-17-matroids.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-18-matroids-greedy-optimization.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-19-average-case-analysis.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-20-amortized-analysis.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-21-further-amortized-analysis.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-22-network-flow.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-23-max-flow-min-cut.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-24-edmonds-karp-and-bipartite-matching.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-25-randomized-algorithms.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-26-models-of-computation-and-reductions.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-27-np-completeness-reductions.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_daa/lectures/lec-28-lp-ip-relaxations-and-lp-rounding.html</loc>
+    <lastmod>2026-08-20T10:09:21.949Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/amortized-analysis.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/asymptotic-notation.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/divide-and-conquer.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/dynamic-programming.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/end_sem_practice.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/greedy-algorithms.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/index.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/lp-ip-rounding.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/matroids.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/network-flow.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/npc-reductions.html</loc>
-    <lastmod>2026-08-19T20:39:31.803Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/randomized-algorithms.html</loc>
-    <lastmod>2026-08-19T20:39:31.804Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_daa/Practice/recurrence-relations.html</loc>
-    <lastmod>2026-08-19T20:39:31.804Z</lastmod>
+    <lastmod>2026-08-20T10:09:21.902Z</lastmod>
   </url>
 </urlset>
