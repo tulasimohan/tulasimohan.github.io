@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-12-hash-tables-and-universal-hashing.html</loc>
+    <lastmod>2026-09-03T08:07:30.004Z</lastmod>
+  </url>
+  <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-10-randomized-global-min-cut.html</loc>
-    <lastmod>2026-08-25T11:49:34.985Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.004Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-08-randomized-complexity-classes.html</loc>
-    <lastmod>2026-08-25T11:49:25.625Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-06-randomized-algorithms.html</loc>
-    <lastmod>2026-08-19T20:38:42.351Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-04-applications-and-probabilistic-method.html</loc>
-    <lastmod>2026-08-19T20:38:42.350Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-02-probability-review-i-random-variables-and-expectation.html</loc>
-    <lastmod>2026-08-19T20:38:42.350Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/index.html</loc>
-    <lastmod>2026-08-20T08:44:45.345Z</lastmod>
+    <lastmod>2026-09-03T08:07:29.950Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-01-course-overview-and-the-landscape-of-advanced-algorithms.html</loc>
-    <lastmod>2026-08-19T20:38:42.350Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-03-probability-review-ii-and-complexity-classes.html</loc>
-    <lastmod>2026-08-19T20:38:42.350Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-05-applications-of-tail-bounds-ii.html</loc>
-    <lastmod>2026-08-19T20:38:42.351Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-07-las-vegas-to-monte-carlo-and-back.html</loc>
-    <lastmod>2026-08-19T20:46:04.255Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.003Z</lastmod>
   </url>
   <url>
     <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-09-graphs-and-algebraic-matchings.html</loc>
-    <lastmod>2026-08-25T11:49:31.233Z</lastmod>
+    <lastmod>2026-09-03T08:07:30.004Z</lastmod>
+  </url>
+  <url>
+    <loc>https://tulasimohan.github.io/teaching/2026_aac/lectures/lec-11-skip-lists.html</loc>
+    <lastmod>2026-09-03T08:07:30.004Z</lastmod>
   </url>
 </urlset>
