@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-08-13">
+<meta name="author" content="Tulasimohan Molli">
+<meta name="dcterms.date" content="2026-09-05">
 
-<title>Randomized Algorithms: Foundations – Tulasimohan Molli</title>
+<title>Lab Practice Sheet 1 – Tulasimohan Molli</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -188,36 +189,41 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
-  <li><a href="#a-simple-mathematical-fact" id="toc-a-simple-mathematical-fact" class="nav-link" data-scroll-target="#a-simple-mathematical-fact">A Simple Mathematical Fact</a></li>
-  <li><a href="#proof-of-the-mod-2-lemma" id="toc-proof-of-the-mod-2-lemma" class="nav-link" data-scroll-target="#proof-of-the-mod-2-lemma">Proof of the Mod-2 Lemma</a></li>
-  <li><a href="#application-freivalds-algorithm" id="toc-application-freivalds-algorithm" class="nav-link" data-scroll-target="#application-freivalds-algorithm">Application: Freivalds’ Algorithm</a></li>
-  <li><a href="#what-is-a-randomized-algorithm" id="toc-what-is-a-randomized-algorithm" class="nav-link" data-scroll-target="#what-is-a-randomized-algorithm">What is a Randomized Algorithm?</a></li>
-  <li><a href="#las-vegas-algorithms" id="toc-las-vegas-algorithms" class="nav-link" data-scroll-target="#las-vegas-algorithms">Las Vegas Algorithms</a></li>
-  <li><a href="#monte-carlo-algorithms" id="toc-monte-carlo-algorithms" class="nav-link" data-scroll-target="#monte-carlo-algorithms">Monte Carlo Algorithms</a></li>
-  <li><a href="#comparing-the-two-flavors" id="toc-comparing-the-two-flavors" class="nav-link" data-scroll-target="#comparing-the-two-flavors">Comparing the Two Flavors</a></li>
-  <li><a href="#one-sided-error-amplification" id="toc-one-sided-error-amplification" class="nav-link" data-scroll-target="#one-sided-error-amplification">One-Sided Error Amplification</a></li>
-  <li><a href="#next-lecture" id="toc-next-lecture" class="nav-link" data-scroll-target="#next-lecture">Next Lecture</a></li>
+  <li><a href="#q1-the-student-merit-system" id="toc-q1-the-student-merit-system" class="nav-link active" data-scroll-target="#q1-the-student-merit-system">Q1: The Student Merit System</a></li>
+  <li><a href="#q2-matrix-multiplication" id="toc-q2-matrix-multiplication" class="nav-link" data-scroll-target="#q2-matrix-multiplication">Q2: Matrix Multiplication</a></li>
+  <li><a href="#q3-merge-two-sorted-arrays" id="toc-q3-merge-two-sorted-arrays" class="nav-link" data-scroll-target="#q3-merge-two-sorted-arrays">Q3: Merge Two Sorted Arrays</a></li>
+  <li><a href="#q4-string-compression" id="toc-q4-string-compression" class="nav-link" data-scroll-target="#q4-string-compression">Q4: String Compression</a></li>
+  <li><a href="#q5-the-array-rotator" id="toc-q5-the-array-rotator" class="nav-link" data-scroll-target="#q5-the-array-rotator">Q5: The Array Rotator</a></li>
+  <li><a href="#q6-segregate-even-and-odd-values" id="toc-q6-segregate-even-and-odd-values" class="nav-link" data-scroll-target="#q6-segregate-even-and-odd-values">Q6: Segregate Even and Odd Values</a></li>
+  <li><a href="#q7-insert-after-pairs-sum-skip" id="toc-q7-insert-after-pairs-sum-skip" class="nav-link" data-scroll-target="#q7-insert-after-pairs-sum-skip">Q7: Insert After Pairs (Sum &amp; Skip)</a></li>
+  <li><a href="#q8-move-all-occurrences-of-value-x-to-the-end" id="toc-q8-move-all-occurrences-of-value-x-to-the-end" class="nav-link" data-scroll-target="#q8-move-all-occurrences-of-value-x-to-the-end">Q8: Move All Occurrences of Value X to the End</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lec-06-randomized-algorithms.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab-practice-sheet_1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Randomized Algorithms: Foundations</h1>
+<h1 class="title">Lab Practice Sheet 1</h1>
+<p class="subtitle lead">CS G526: Advanced Algorithms &amp; Complexity</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Tulasimohan Molli </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 13, 2026</p>
+      <p class="date">September 5, 2026</p>
     </div>
   </div>
   
@@ -229,209 +235,431 @@ window.Quarto = {
 </header>
 
 
-<section id="agenda" class="level2">
-<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
-<ol type="1">
-<li><strong>A Simple Mathematical Fact</strong> — the inner product mod 2.</li>
-<li><strong>Application: Freivalds’ Algorithm</strong> — verifying matrix products in <span class="math inline">O(n^2)</span> time.</li>
-<li><strong>Formal Foundations</strong> — state machines &amp; random tape models.</li>
-<li><strong>Two Flavors</strong> — Las Vegas vs.&nbsp;Monte Carlo.</li>
-<li><strong>Boosting</strong> — one-sided error amplification.</li>
-</ol>
-<hr>
-</section>
-<section id="a-simple-mathematical-fact" class="level2">
-<h2 class="anchored" data-anchor-id="a-simple-mathematical-fact">A Simple Mathematical Fact</h2>
-<p>Let’s begin with a fundamental algebraic property of random vectors:</p>
-<ul>
-<li>Let <span class="math inline">d \in \{0, 1\}^n</span> be a <strong>fixed, non-zero</strong> boolean vector.</li>
-<li>Let <span class="math inline">r \in \{0, 1\}^n</span> be a <strong>random</strong> boolean vector, where each <span class="math inline">r_i \in \{0, 1\}</span> is chosen independently and uniformly at random: <span class="math display">\Pr[r_i = 1] = \Pr[r_i = 0] = \frac{1}{2}</span></li>
-</ul>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout callout-style-default callout-important callout-titled" title="Evaluation Instructions for Students">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-The Mod-2 Lemma
+Evaluation Instructions for Students
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If <span class="math inline">d \neq 0</span>, then the inner product of <span class="math inline">d</span> and <span class="math inline">r</span> mod 2 is balanced: <span class="math display">\Pr\left[ d \cdot r \equiv 0 \pmod 2 \right] = \frac{1}{2}</span></p>
-</div>
-</div>
-<hr>
-</section>
-<section id="proof-of-the-mod-2-lemma" class="level2">
-<h2 class="anchored" data-anchor-id="proof-of-the-mod-2-lemma">Proof of the Mod-2 Lemma</h2>
-<p>Since <span class="math inline">d \neq 0</span>, there exists at least one coordinate <span class="math inline">k</span> where <span class="math inline">d_k = 1</span>.</p>
-<div class="incremental">
-<ul class="incremental">
-<li>We can partition the sum: <span class="math display">d \cdot r = d_k r_k + \sum_{i \neq k} d_i r_i \equiv r_k + \sum_{i \neq k} d_i r_i \pmod 2</span></li>
-<li>Let <span class="math inline">S = \sum_{i \neq k} d_i r_i \bmod 2</span>. Its value is determined entirely by the choices of <span class="math inline">r_i</span> for <span class="math inline">i \neq k</span>.</li>
-<li>To make <span class="math inline">d \cdot r \equiv 0 \pmod 2</span>, we must have: <span class="math display">r_k \equiv S \pmod 2</span></li>
-<li>Since <span class="math inline">r_k</span> is chosen uniformly and independently: <span class="math display">\Pr[r_k = S] = \frac{1}{2}</span></li>
+<ul>
+<li><strong>Practice all 8 problems below.</strong></li>
+<li>In the next lab session, <strong>one question will be chosen at random</strong> for on-the-spot coding and evaluation.</li>
+<li>Your code will be evaluated by running it against automated test cases.</li>
+<li>You may use <strong>Python</strong>; <strong>C++</strong> and <strong>Java</strong>.</li>
 </ul>
 </div>
-<hr>
-</section>
-<section id="application-freivalds-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="application-freivalds-algorithm">Application: Freivalds’ Algorithm</h2>
-<p>Let’s apply this mathematical property to verify matrix multiplication: <span class="math inline">AB = C</span>.</p>
-<div class="incremental">
-<ul class="incremental">
-<li>We want to verify the product without spending <span class="math inline">O(n^3)</span> or <span class="math inline">O(n^{2.37})</span> time to multiply them.</li>
-<li><strong>Freivalds’ Protocol:</strong>
-<ol class="incremental" type="1">
-<li>Pick a random vector <span class="math inline">r \in \{0, 1\}^n</span>.</li>
-<li>Compute <span class="math inline">A(Br)</span> and check if it equals <span class="math inline">Cr</span>.</li>
-</ol></li>
-<li><strong>Analysis:</strong>
-<ul class="incremental">
-<li>If <span class="math inline">AB = C</span>, then <span class="math inline">(AB)r = Cr</span> is always true.</li>
-<li>If <span class="math inline">AB \neq C</span>, let <span class="math inline">D = AB - C \neq 0</span>. There is a non-zero row in <span class="math inline">D</span>. Its product with <span class="math inline">r</span> is <span class="math inline">0</span> with probability <span class="math inline">\le 1/2</span> by the Mod-2 Lemma.</li>
-<li><strong>Runtime:</strong> <span class="math inline">O(n^2)</span> time!</li>
+</div>
+<section id="q1-the-student-merit-system" class="level2">
+<h2 class="anchored" data-anchor-id="q1-the-student-merit-system">Q1: The Student Merit System</h2>
+<p><strong>Description:</strong> Define a struct/class/object for <code>Student</code> with fields: <code>ID</code> (integer), <code>Name</code> (string), and <code>Marks</code> (3 subject scores). Write a program to:</p>
+<ol type="1">
+<li>Read details for <span class="math inline">N</span> students.</li>
+<li>Calculate the average marks for each student.</li>
+<li>Print a “Merit List” of students whose average score is strictly above 75%.</li>
+<li>Identify and print the name of the Topper (the student with the highest average score).</li>
+</ol>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: An integer <span class="math inline">N</span>, the number of students.</li>
+<li>Next <span class="math inline">N</span> lines: Each line contains an integer <code>ID</code>, a string <code>Name</code>, and 3 space-separated integers representing marks in three subjects.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>First print <code>Merit List:</code> followed by lines of the form <code>ID Name (Avg: XX.XX)</code> for every student with average marks <span class="math inline">&gt; 75.00</span>.</li>
+<li>Then print <code>Topper: Name</code> indicating the student with the highest average score.</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<hr>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>2
+101 Alice 80 90 85
+102 Bob 60 50 55</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>Merit List:
+101 Alice (Avg: 85.00)
+Topper: Alice</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="what-is-a-randomized-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-randomized-algorithm">What is a Randomized Algorithm?</h2>
-<p>The protocols we just designed are examples of <strong>randomized algorithms</strong>:</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="incremental">
-<ul class="incremental">
-<li><strong>State Machine Model:</strong> Defined by a set of states <span class="math inline">Q</span> and a probabilistic transition function: <span class="math display">\delta: Q \times \{0, 1\} \to Q</span> where transitions depend on a random coin flip <span class="math inline">b \in \{0, 1\}</span>.</li>
-<li><strong>The Random Tape Model (WLOG):</strong> Equivalent to a deterministic algorithm <span class="math inline">A(x, r)</span> taking the input <span class="math inline">x</span> and a pre-flipped random tape <span class="math inline">r</span>.</li>
-<li>Once <span class="math inline">r</span> is fixed, the execution path is deterministic.</li>
-<li>This model makes it easier to analyze complexity classes.</li>
-</ul>
-</div>
-</div><div class="column" style="width:40%;">
-<p><img src="images/randomized_loop_flowchart.png" class="img-fluid" style="width: 100%; max-height: 380px; object-fit: contain;"></p>
-</div>
-</div>
-<hr>
-</section>
-<section id="las-vegas-algorithms" class="level2">
-<h2 class="anchored" data-anchor-id="las-vegas-algorithms">Las Vegas Algorithms</h2>
-<p>We classify randomized algorithms based on where the uncertainty lies.</p>
-<div class="incremental">
-<ul class="incremental">
-<li><strong>Correctness:</strong> Always 100% correct.</li>
-<li><strong>Runtime:</strong> A random variable <span class="math inline">T</span>. We analyze the expected running time <span class="math inline">\mathbb{E}[T]</span> or high-probability bounds.</li>
-<li><strong>Classic Example: Randomized Quicksort</strong>
-<ul class="incremental">
-<li>Pivot is chosen uniformly at random.</li>
-<li>Array is always sorted correctly.</li>
-<li>Expected running time is <span class="math inline">O(n \log n)</span> on <em>any</em> input array.</li>
+<section id="q2-matrix-multiplication" class="level2">
+<h2 class="anchored" data-anchor-id="q2-matrix-multiplication">Q2: Matrix Multiplication</h2>
+<p><strong>Description:</strong> Write a program to multiply two matrices <span class="math inline">A</span> and <span class="math inline">B</span>.</p>
+<ol type="1">
+<li>Read matrix <span class="math inline">A</span> of dimensions <span class="math inline">R_1 \times C_1</span>.</li>
+<li>Read matrix <span class="math inline">B</span> of dimensions <span class="math inline">R_2 \times C_2</span>.</li>
+<li>If multiplication is not possible (<span class="math inline">C_1 \neq R_2</span>), output <code>Not Possible</code>.</li>
+<li>Otherwise, compute and print the product matrix <span class="math inline">C = A \times B</span>.</li>
+</ol>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: Two space-separated integers <span class="math inline">R_1</span> and <span class="math inline">C_1</span>, representing dimensions of matrix <span class="math inline">A</span>.</li>
+<li>Next <span class="math inline">R_1</span> lines: Each line contains <span class="math inline">C_1</span> space-separated integers representing the elements of matrix <span class="math inline">A</span>.</li>
+<li>Next line: Two space-separated integers <span class="math inline">R_2</span> and <span class="math inline">C_2</span>, representing dimensions of matrix <span class="math inline">B</span>.</li>
+<li>Next <span class="math inline">R_2</span> lines: Each line contains <span class="math inline">C_2</span> space-separated integers representing the elements of matrix <span class="math inline">B</span>.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>If <span class="math inline">C_1 \neq R_2</span>, output a single line <code>Not Possible</code>.</li>
+<li>Otherwise, print <span class="math inline">R_1</span> lines, each containing <span class="math inline">C_2</span> space-separated integers representing the resulting product matrix <span class="math inline">C = A \times B</span>.</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<hr>
+<div class="callout-title-container flex-fill">
+Sample Input 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>2 2
+1 2
+3 4
+2 2
+1 0
+0 1</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>1 2 
+3 4 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Input 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>2 3
+1 2 3
+4 5 6
+2 2
+1 0
+0 1</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>Not Possible</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="monte-carlo-algorithms" class="level2">
-<h2 class="anchored" data-anchor-id="monte-carlo-algorithms">Monte Carlo Algorithms</h2>
-<div class="incremental">
-<ul class="incremental">
-<li><strong>Correctness:</strong> Bounded error probability <span class="math inline">\delta</span>.</li>
-<li><strong>Runtime:</strong> Deterministic / strictly bounded.</li>
-<li><strong>The Core Trade-off:</strong>
-<ul class="incremental">
-<li>We swap absolute certainty for computational speed and efficiency.</li>
+<section id="q3-merge-two-sorted-arrays" class="level2">
+<h2 class="anchored" data-anchor-id="q3-merge-two-sorted-arrays">Q3: Merge Two Sorted Arrays</h2>
+<p><strong>Description:</strong> Given two sorted arrays <span class="math inline">A</span> of size <span class="math inline">N_1</span> and <span class="math inline">B</span> of size <span class="math inline">N_2</span>, merge them into a single sorted sequence in non-decreasing order using a linear two-pointer scan.</p>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: An integer <span class="math inline">N_1</span>, the size of array <span class="math inline">A</span>.</li>
+<li>Line 2: <span class="math inline">N_1</span> space-separated sorted integers representing array <span class="math inline">A</span>.</li>
+<li>Line 3: An integer <span class="math inline">N_2</span>, the size of array <span class="math inline">B</span>.</li>
+<li>Line 4: <span class="math inline">N_2</span> space-separated sorted integers representing array <span class="math inline">B</span>.</li>
 </ul></li>
-<li><strong>Classic Example: Freivalds’ Algorithm</strong>
-<ul class="incremental">
-<li>Strictly <span class="math inline">O(n^2)</span> running time.</li>
-<li>Error probability is at most <span class="math inline">1/2</span> when <span class="math inline">AB \neq C</span>.</li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>A single line containing <span class="math inline">N_1 + N_2</span> space-separated integers representing the merged sorted sequence.</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<hr>
-</section>
-<section id="comparing-the-two-flavors" class="level2">
-<h2 class="anchored" data-anchor-id="comparing-the-two-flavors">Comparing the Two Flavors</h2>
-<div style="font-size: 85%;">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;"><strong>Las Vegas</strong></th>
-<th style="text-align: left;"><strong>Monte Carlo</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Correctness</strong></td>
-<td style="text-align: left;">Always correct</td>
-<td style="text-align: left;">Correct with probability <span class="math inline">1 - \delta</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Running Time</strong></td>
-<td style="text-align: left;">Random variable (analyze expectation)</td>
-<td style="text-align: left;">Bounded / Deterministic</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Error Type</strong></td>
-<td style="text-align: left;">None</td>
-<td style="text-align: left;">One-sided or Two-sided</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Primary Use</strong></td>
-<td style="text-align: left;">Sorting, searching, optimization</td>
-<td style="text-align: left;">Decision problems, verification</td>
-</tr>
-</tbody>
-</table>
+<div class="callout-title-container flex-fill">
+Sample Input
 </div>
-<hr>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>3
+1 3 5
+3
+2 4 6</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="one-sided-error-amplification" class="level2">
-<h2 class="anchored" data-anchor-id="one-sided-error-amplification">One-Sided Error Amplification</h2>
-<p>We can amplify success by running the algorithm <span class="math inline">k</span> times independently.</p>
-<div class="incremental">
-<ul class="incremental">
-<li>Suppose the algorithm errs only on “Yes” inputs with probability <span class="math inline">\le \delta</span>.</li>
-<li>Output “Yes” if <em>any</em> of the <span class="math inline">k</span> runs output “Yes”.</li>
-<li>A failure requires <em>every</em> single run to err.</li>
-<li>The error probability drops exponentially: <span class="math display">\Pr(\text{error}) \le \delta^k</span></li>
-<li>For <span class="math inline">\delta = 1/2</span> and <span class="math inline">k = 30</span>, error is <span class="math inline">\le 2^{-30} \approx 10^{-9}</span>.</li>
+<section id="q4-string-compression" class="level2">
+<h2 class="anchored" data-anchor-id="q4-string-compression">Q4: String Compression</h2>
+<p><strong>Description:</strong> Given a string of lowercase alphabetic characters, compress consecutive repeating characters using run-length encoding. For example, consecutive occurrences of character <code>c</code> repeated <span class="math inline">k</span> times should be represented as <code>c</code> followed by <span class="math inline">k</span>.</p>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>A single line containing a string consisting of lowercase English letters.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>A single line containing the compressed string.</li>
+</ul></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<hr>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>aaabbc</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>a3b2c1</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 </section>
-<section id="next-lecture" class="level2">
-<h2 class="anchored" data-anchor-id="next-lecture">Next Lecture</h2>
-<p><strong>Two-Sided Error Amplification</strong> &amp; <strong>Randomized Complexity Classes</strong> (RP, co-RP, BPP, ZPP).</p>
-<style>
-.reveal .slides section:not(#main-title-slide):not(.stack) {
-  font-size: 0.80em;
-}
-.reveal .slides section:not(#main-title-slide):not(.stack) p {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-}
-.reveal .slides section:not(#main-title-slide):not(.stack) ul,
-.reveal .slides section:not(#main-title-slide):not(.stack) ol {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-}
-.reveal .slides section:not(#main-title-slide):not(.stack) li {
-  margin-top: 0.1em;
-  margin-bottom: 0.15em;
-}
-.reveal .slides section:not(#main-title-slide):not(.stack) .katex-display {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-}
-</style>
+<section id="q5-the-array-rotator" class="level2">
+<h2 class="anchored" data-anchor-id="q5-the-array-rotator">Q5: The Array Rotator</h2>
+<p><strong>Description:</strong> Given an array of <span class="math inline">N</span> integers, rotate the array by <span class="math inline">K</span> positions.</p>
+<ul>
+<li><p>Direction <span class="math inline">D = 0</span> means <strong>Left Rotation</strong>.</p></li>
+<li><p>Direction <span class="math inline">D = 1</span> means <strong>Right Rotation</strong>.</p></li>
+<li><p><strong>Input Format:</strong></p>
+<ul>
+<li>Line 1: An integer <span class="math inline">N</span>, the size of the array.</li>
+<li>Line 2: <span class="math inline">N</span> space-separated integers representing the array.</li>
+<li>Line 3: An integer <span class="math inline">D \in \{0, 1\}</span>, where <span class="math inline">0</span> indicates Left Rotation and <span class="math inline">1</span> indicates Right Rotation.</li>
+<li>Line 4: An integer <span class="math inline">K</span>, the number of positions to rotate.</li>
+</ul></li>
+<li><p><strong>Output Format:</strong></p>
+<ul>
+<li>A single line containing <span class="math inline">N</span> space-separated integers representing the rotated array.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>5
+1 2 3 4 5
+0
+1</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>2 3 4 5 1</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="q6-segregate-even-and-odd-values" class="level2">
+<h2 class="anchored" data-anchor-id="q6-segregate-even-and-odd-values">Q6: Segregate Even and Odd Values</h2>
+<p><strong>Description:</strong> Given a sequence of <span class="math inline">N</span> integers, rearrange the sequence so that all <strong>even</strong> numbers appear before all <strong>odd</strong> numbers, while strictly preserving their relative order from the original sequence (stable partition).</p>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: An integer <span class="math inline">N</span>, the number of elements.</li>
+<li>Line 2: <span class="math inline">N</span> space-separated integers representing the sequence.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>A single line containing <span class="math inline">N</span> space-separated integers, with all even numbers listed first in original relative order, followed by all odd numbers in original relative order.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>7
+17 15 8 12 10 5 4</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>8 12 10 4 17 15 5</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="q7-insert-after-pairs-sum-skip" class="level2">
+<h2 class="anchored" data-anchor-id="q7-insert-after-pairs-sum-skip">Q7: Insert After Pairs (Sum &amp; Skip)</h2>
+<p><strong>Description:</strong> Given a sequence of <span class="math inline">N</span> integers, process the elements pairwise from left to right. After every pair of consecutive elements, insert a new element equal to their sum. If an odd element is left at the end without a pair, leave it as is.</p>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: An integer <span class="math inline">N</span>, the number of elements.</li>
+<li>Line 2: <span class="math inline">N</span> space-separated integers representing the sequence.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>A single line containing space-separated integers representing the modified sequence with sum elements inserted after each pair.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>4
+2 4 5 3</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>2 4 6 5 3 8</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="q8-move-all-occurrences-of-value-x-to-the-end" class="level2">
+<h2 class="anchored" data-anchor-id="q8-move-all-occurrences-of-value-x-to-the-end">Q8: Move All Occurrences of Value X to the End</h2>
+<p><strong>Description:</strong> Given a sequence of <span class="math inline">N</span> integers and a target value <span class="math inline">X</span>, rearrange the sequence such that all occurrences of <span class="math inline">X</span> are moved to the end of the sequence, while the relative order of all other elements remains unchanged.</p>
+<ul>
+<li><strong>Input Format:</strong>
+<ul>
+<li>Line 1: An integer <span class="math inline">N</span>, the number of elements.</li>
+<li>Line 2: <span class="math inline">N</span> space-separated integers representing the sequence.</li>
+<li>Line 3: An integer <span class="math inline">X</span>, the target value to be moved to the end.</li>
+</ul></li>
+<li><strong>Output Format:</strong>
+<ul>
+<li>A single line containing <span class="math inline">N</span> space-separated integers representing the rearranged sequence.</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Input
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>7
+1 2 3 2 4 2 5
+2</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Sample Output">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>1 3 4 5 2 2 2</code></pre>
+</div>
+</div>
 
 
 </section>
