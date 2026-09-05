@@ -1096,7 +1096,7 @@
     "href": "lectures/lec-11-skip-lists.html#concept-check",
     "title": "Tulasimohan Molli",
     "section": "Concept Check",
-    "text": "Concept Check\n\nQ1: If coin flip probability is p = 1/4, what is the expected number of pointers per node?\nAnswer: 1/p = \\mathbf{4} pointers per node on average.\nQ2: Why is backward analysis preferred over forward analysis?\nAnswer: Forward paths depend on global structure, while backward steps form a simple, memoryless coin-flipping recurrence at each step."
+    "text": "Concept Check\n\nQ1: If the promotion probability is p = 1/4, what is the expected height (or number of levels) of an element in the skip list?\nAnswer: 1/p = \\mathbf{4} levels on average.\nQ2: Why is backward analysis preferred over forward analysis?\nAnswer: Forward paths depend on global structure, while backward steps form a simple, memoryless coin-flipping recurrence at each step."
   },
   {
     "objectID": "lectures/lec-11-skip-lists.html#next-lecture",
