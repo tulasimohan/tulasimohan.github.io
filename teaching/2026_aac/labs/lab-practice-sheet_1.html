@@ -260,7 +260,7 @@ Evaluation Instructions for Students
 <li>Read details for <span class="math inline">N</span> students.</li>
 <li>Calculate the average marks for each student.</li>
 <li>Print a “Merit List” of students whose average score is strictly above 75% in the order they appear in the input.</li>
-<li>Identify and print the Topper (the student with the highest average score). If multiple students share the same highest average score, print <code>Topper: Name</code> for each of them on separate lines in the order they appear in the input.</li>
+<li>Identify and print the Topper (the student with the highest average score). If multiple students share the same highest average score, choose the one whose name comes first in lexicographical (dictionary) order.</li>
 </ol>
 <ul>
 <li><strong>Input Format:</strong>
@@ -271,7 +271,7 @@ Evaluation Instructions for Students
 <li><strong>Output Format:</strong>
 <ul>
 <li>First print <code>Merit List:</code> followed by lines of the form <code>ID Name (Avg: XX.XX)</code> for every student with average marks <span class="math inline">&gt; 75.00</span>.</li>
-<li>Then print <code>Topper: Name</code> indicating the topper. If there is a tie for the highest average, print a <code>Topper: Name</code> line for each tied student in input order.</li>
+<li>Then print <code>Topper: Name</code> indicating the student with the highest average score (breaking ties in favor of lexicographically smaller name).</li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Sample Input">
