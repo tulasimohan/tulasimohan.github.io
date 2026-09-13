@@ -1,66 +1,150 @@
 [
   {
-    "objectID": "labs/lab-practice-sheet_1.html",
-    "href": "labs/lab-practice-sheet_1.html",
-    "title": "Lab Practice Sheet 1",
+    "objectID": "labs/lab-practice-sheet_2.html",
+    "href": "labs/lab-practice-sheet_2.html",
+    "title": "Lab Practice Sheet 2",
     "section": "",
-    "text": "Evaluation Instructions for Students\n\n\n\n\nPractice all 8 problems below.\nIn the next lab session, one question will be chosen at random for on-the-spot coding and evaluation.\nYour code will be evaluated by running it against automated test cases.\nYou may use Python; C++ and Java."
+    "text": "Evaluation Instructions for Students\n\n\n\n\nPractice all 8 problems below.\nIn the next lab session, one question will be chosen at random for on-the-spot coding and evaluation.\nYour code will be evaluated by running it against automated hidden test cases.\nYou may write your solutions in Python, C++, or Java.\nStandard data structure libraries are permitted unless a problem explicitly requires in-place or specific structural manipulation."
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q1-the-student-merit-system",
-    "href": "labs/lab-practice-sheet_1.html#q1-the-student-merit-system",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q1: The Student Merit System",
-    "text": "Q1: The Student Merit System\nDescription: Define a struct/class/object for Student with fields: ID (integer), Name (string), and Marks (3 subject scores). Write a program to:\n\nRead details for N students.\nCalculate the average marks for each student.\nPrint a “Merit List” of students whose average score is strictly above 75% in the order they appear in the input.\nIdentify and print the Topper (the student with the highest average score). If multiple students share the same highest average score, choose the one whose name comes first in lexicographical (dictionary) order.\n\n\nInput Format:\n\nLine 1: An integer N, the number of students.\nNext N lines: Each line contains an integer ID, a string Name, and 3 space-separated integers representing marks in three subjects.\n\nOutput Format:\n\nFirst print Merit List: followed by lines of the form ID Name (Avg: XX.XX) for every student with average marks &gt; 75.00.\nThen print Topper: Name indicating the student with the highest average score (breaking ties in favor of lexicographically smaller name).\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n2\n101 Alice 80 90 85\n102 Bob 60 50 55\n\n\n\n\n\n\n\n\nSample Output\n\n\n\nMerit List:\n101 Alice (Avg: 85.00)\nTopper: Alice"
+    "objectID": "labs/lab-practice-sheet_2.html#q1-the-palindrome-check",
+    "href": "labs/lab-practice-sheet_2.html#q1-the-palindrome-check",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q1: The Palindrome Check",
+    "text": "Q1: The Palindrome Check\nDescription: Given a sequence of N integers representing a singly linked list / sequence, determine whether the sequence forms a palindrome (reads identically forwards and backwards).\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line printing True if the sequence is a palindrome, or False otherwise.\n\n\n\n\n\n\n\n\nSample Input 1\n\n\n\n5\n1 2 3 2 1\n\n\n\n\n\n\n\n\nSample Output 1\n\n\n\nTrue\n\n\n\n\n\n\n\n\nSample Input 2\n\n\n\n4\n1 2 3 4\n\n\n\n\n\n\n\n\nSample Output 2\n\n\n\nFalse"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q2-matrix-multiplication",
-    "href": "labs/lab-practice-sheet_1.html#q2-matrix-multiplication",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q2: Matrix Multiplication",
-    "text": "Q2: Matrix Multiplication\nDescription: Write a program to multiply two matrices A and B.\n\nRead matrix A of dimensions R_1 \\times C_1.\nRead matrix B of dimensions R_2 \\times C_2.\nIf multiplication is not possible (C_1 \\neq R_2), output Not Possible.\nOtherwise, compute and print the product matrix C = A \\times B.\n\n\nInput Format:\n\nLine 1: Two space-separated integers R_1 and C_1, representing dimensions of matrix A.\nNext R_1 lines: Each line contains C_1 space-separated integers representing the elements of matrix A.\nNext line: Two space-separated integers R_2 and C_2, representing dimensions of matrix B.\nNext R_2 lines: Each line contains C_2 space-separated integers representing the elements of matrix B.\n\nOutput Format:\n\nIf C_1 \\neq R_2, output a single line Not Possible.\nOtherwise, print R_1 lines, each containing C_2 space-separated integers representing the resulting product matrix C = A \\times B.\n\n\n\n\n\n\n\n\nSample Input 1\n\n\n\n2 2\n1 2\n3 4\n2 2\n1 0\n0 1\n\n\n\n\n\n\n\n\nSample Output 1\n\n\n\n1 2 \n3 4 \n\n\n\n\n\n\n\n\nSample Input 2\n\n\n\n2 3\n1 2 3\n4 5 6\n2 2\n1 0\n0 1\n\n\n\n\n\n\n\n\nSample Output 2\n\n\n\nNot Possible"
+    "objectID": "labs/lab-practice-sheet_2.html#q2-rotate-list-to-the-right-by-k-places",
+    "href": "labs/lab-practice-sheet_2.html#q2-rotate-list-to-the-right-by-k-places",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q2: Rotate List to the Right by K Places",
+    "text": "Q2: Rotate List to the Right by K Places\nDescription: Given a sequence of N integers and an integer K, rotate the sequence cyclically to the right by K positions. That is, each element moves forward by K positions, and elements that shift past the end wrap around to the beginning.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\nLine 3: An integer K, the number of positions to rotate right.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the rotated sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n5\n10 20 30 40 50\n2\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n40 50 10 20 30"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q3-merge-two-sorted-arrays",
-    "href": "labs/lab-practice-sheet_1.html#q3-merge-two-sorted-arrays",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q3: Merge Two Sorted Arrays",
-    "text": "Q3: Merge Two Sorted Arrays\nDescription: Given two sorted arrays A of size N_1 and B of size N_2, merge them into a single sorted sequence in non-decreasing order using a linear two-pointer scan.\n\nInput Format:\n\nLine 1: An integer N_1, the size of array A.\nLine 2: N_1 space-separated sorted integers representing array A.\nLine 3: An integer N_2, the size of array B.\nLine 4: N_2 space-separated sorted integers representing array B.\n\nOutput Format:\n\nA single line containing N_1 + N_2 space-separated integers representing the merged sorted sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n3\n1 3 5\n3\n2 4 6\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n1 2 3 4 5 6"
+    "objectID": "labs/lab-practice-sheet_2.html#q3-swap-nodes-elements-in-pairs",
+    "href": "labs/lab-practice-sheet_2.html#q3-swap-nodes-elements-in-pairs",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q3: Swap Nodes / Elements in Pairs",
+    "text": "Q3: Swap Nodes / Elements in Pairs\nDescription: Given a sequence of N integers, swap every two adjacent elements. If the number of elements is odd, the last element remains in its original position.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the pairwise swapped sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n4\n10 20 30 40\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n20 10 40 30"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q4-string-compression",
-    "href": "labs/lab-practice-sheet_1.html#q4-string-compression",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q4: String Compression",
-    "text": "Q4: String Compression\nDescription: Given a string of lowercase alphabetic characters, compress consecutive repeating characters using run-length encoding. For example, consecutive occurrences of character c repeated k times should be represented as c followed by k.\n\nInput Format:\n\nA single line containing a string consisting of lowercase English letters.\n\nOutput Format:\n\nA single line containing the compressed string.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\naaabbc\n\n\n\n\n\n\n\n\nSample Output\n\n\n\na3b2c1"
+    "objectID": "labs/lab-practice-sheet_2.html#q4-filter-strictly-increasing-sequence-from-first-element",
+    "href": "labs/lab-practice-sheet_2.html#q4-filter-strictly-increasing-sequence-from-first-element",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q4: Filter Strictly Increasing Sequence from First Element",
+    "text": "Q4: Filter Strictly Increasing Sequence from First Element\nDescription: Given a sequence of N integers, scan from left to right starting at the first element. Eliminate any element that is less than or equal to its immediate predecessor in the retained sequence, preserving only elements that are strictly greater than the preceding kept element.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line printing the filtered sequence with elements separated by -&gt;.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n4\n5 3 6 1\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n5 -&gt; 6"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q5-the-array-rotator",
-    "href": "labs/lab-practice-sheet_1.html#q5-the-array-rotator",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q5: The Array Rotator",
-    "text": "Q5: The Array Rotator\nDescription: Given an array of N integers, rotate the array by K positions.\n\nDirection D = 0 means Left Rotation.\nDirection D = 1 means Right Rotation.\nInput Format:\n\nLine 1: An integer N, the size of the array.\nLine 2: N space-separated integers representing the array.\nLine 3: An integer D \\in \\{0, 1\\}, where 0 indicates Left Rotation and 1 indicates Right Rotation.\nLine 4: An integer K, the number of positions to rotate.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the rotated array.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n5\n1 2 3 4 5\n0\n1\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n2 3 4 5 1"
+    "objectID": "labs/lab-practice-sheet_2.html#q5-find-the-two-added-elements",
+    "href": "labs/lab-practice-sheet_2.html#q5-find-the-two-added-elements",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q5: Find the Two Added Elements",
+    "text": "Q5: Find the Two Added Elements\nDescription: You are given an initial sequence A of N integers. Another sequence B of size N + 2 contains all elements of A (in arbitrary reshuffled order) along with exactly two newly inserted random positive integers. Identify the two new elements and print them in non-decreasing order.\n\nInput Format:\n\nLine 1: An integer N, the size of sequence A.\nLine 2: N space-separated integers representing sequence A.\nLine 3: N + 2 space-separated integers representing sequence B.\n\nOutput Format:\n\nA single line containing the two added integers in ascending order, separated by a space.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n3\n1 2 3\n3 6 2 3 1\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n3 6"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q6-segregate-even-and-odd-values",
-    "href": "labs/lab-practice-sheet_1.html#q6-segregate-even-and-odd-values",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q6: Segregate Even and Odd Values",
-    "text": "Q6: Segregate Even and Odd Values\nDescription: Given a sequence of N integers, rearrange the sequence so that all even numbers appear before all odd numbers, while strictly preserving their relative order from the original sequence (stable partition).\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line containing N space-separated integers, with all even numbers listed first in original relative order, followed by all odd numbers in original relative order.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n7\n17 15 8 12 10 5 4\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n8 12 10 4 17 15 5"
+    "objectID": "labs/lab-practice-sheet_2.html#q6-same-parity-match-count",
+    "href": "labs/lab-practice-sheet_2.html#q6-same-parity-match-count",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q6: Same Parity Match Count",
+    "text": "Q6: Same Parity Match Count\nDescription: Given an array of N integers, sort the array in non-decreasing order. In the sorted array, count: 1. even_count: The number of times an even value appears at an even index (0, 2, 4, \\dots). 2. odd_count: The number of times an odd value appears at an odd index (1, 3, 5, \\dots).\nIndices are 0-based.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers.\n\nOutput Format:\n\nA single line printing even_count,odd_count.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n3\n2 5 4\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n1,0"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q7-insert-after-pairs-sum-skip",
-    "href": "labs/lab-practice-sheet_1.html#q7-insert-after-pairs-sum-skip",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q7: Insert After Pairs (Sum & Skip)",
-    "text": "Q7: Insert After Pairs (Sum & Skip)\nDescription: Given a sequence of N integers, process the elements pairwise from left to right. After every pair of consecutive elements, insert a new element equal to their sum. If an odd element is left at the end without a pair, leave it as is.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line containing space-separated integers representing the modified sequence with sum elements inserted after each pair.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n4\n2 4 5 3\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n2 4 6 5 3 8"
+    "objectID": "labs/lab-practice-sheet_2.html#q7-maximum-elements-in-range-difference-k",
+    "href": "labs/lab-practice-sheet_2.html#q7-maximum-elements-in-range-difference-k",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q7: Maximum Elements in Range Difference K",
+    "text": "Q7: Maximum Elements in Range Difference K\nDescription: Given an array of N integers and an integer K, find the maximum number of elements that can be chosen from the array such that the difference between the maximum and minimum values among all chosen elements is at most K (\\max - \\min \\le K).\n\nInput Format:\n\nLine 1: An integer N, the size of the array.\nLine 2: An integer K, the maximum allowable difference.\nLine 3: N space-separated integers representing the array.\n\nOutput Format:\n\nA single line containing an integer representing the maximum number of elements satisfying the condition.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n5\n1\n2 1 1 3 2\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n4"
   },
   {
-    "objectID": "labs/lab-practice-sheet_1.html#q8-move-all-occurrences-of-value-x-to-the-end",
-    "href": "labs/lab-practice-sheet_1.html#q8-move-all-occurrences-of-value-x-to-the-end",
-    "title": "Lab Practice Sheet 1",
-    "section": "Q8: Move All Occurrences of Value X to the End",
-    "text": "Q8: Move All Occurrences of Value X to the End\nDescription: Given a sequence of N integers and a target value X, rearrange the sequence such that all occurrences of X are moved to the end of the sequence, while the relative order of all other elements remains unchanged.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\nLine 3: An integer X, the target value to be moved to the end.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the rearranged sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n7\n1 2 3 2 4 2 5\n2\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n1 3 4 5 2 2 2"
+    "objectID": "labs/lab-practice-sheet_2.html#q8-search-in-a-row-wise-and-column-wise-sorted-matrix",
+    "href": "labs/lab-practice-sheet_2.html#q8-search-in-a-row-wise-and-column-wise-sorted-matrix",
+    "title": "Lab Practice Sheet 2",
+    "section": "Q8: Search in a Row-wise and Column-wise Sorted Matrix",
+    "text": "Q8: Search in a Row-wise and Column-wise Sorted Matrix\nDescription: Given an M \\times N matrix where every row is sorted in non-decreasing order from left to right, and every column is sorted in non-decreasing order from top to bottom, search for a target value K.\nYour algorithm must locate K in O(M + N) time.\n\nInput Format:\n\nLine 1: Two space-separated integers M and N, the matrix dimensions.\nNext M lines: Each line contains N space-separated integers representing a row of the matrix.\nNext line: An integer K, the target value to search for.\n\nOutput Format:\n\nIf K is found, print its 0-based row and column indices as r c. If multiple occurrences exist, output any valid coordinate.\nIf K is not present, print -1.\n\n\n\n\n\n\n\n\nSample Input 1\n\n\n\n4 4\n10 20 30 40\n15 25 35 45\n27 29 37 48\n32 33 39 50\n29\n\n\n\n\n\n\n\n\nSample Output 1\n\n\n\n2 1\n\n\n\n\n\n\n\n\nSample Input 2\n\n\n\n2 2\n1 2\n3 4\n99\n\n\n\n\n\n\n\n\nSample Output 2\n\n\n\n-1"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "",
+    "text": "The Shortest Path Problem: Formulation & Cost Semantics\nWeighted vs. Unweighted Graphs: Real-World Applications\nThe Shortest Paths Landscape: Classical Complexities\nThe Matrix Powering Perspective: Walks & Distances\nHow to Compute A^k: Repeated Squaring in O(\\log k) Steps\nReachability & Path Existence via A, A^2, \\dots, A^n\nThe Resolvent Trick: Summing Powers via (I - A)^{-1}"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#agenda",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#agenda",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "",
+    "text": "The Shortest Path Problem: Formulation & Cost Semantics\nWeighted vs. Unweighted Graphs: Real-World Applications\nThe Shortest Paths Landscape: Classical Complexities\nThe Matrix Powering Perspective: Walks & Distances\nHow to Compute A^k: Repeated Squaring in O(\\log k) Steps\nReachability & Path Existence via A, A^2, \\dots, A^n\nThe Resolvent Trick: Summing Powers via (I - A)^{-1}"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#what-is-the-shortest-path-problem",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#what-is-the-shortest-path-problem",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "What is the Shortest Path Problem?",
+    "text": "What is the Shortest Path Problem?\nGiven a graph G = (V, E) (directed or undirected) with n = |V| vertices and m = |E| edges:\n\n\n\n\n\n\nFormal Definition\n\n\n\nA path p from source s to destination t is a sequence of vertices p = (v_0, v_1, v_2, \\dots, v_k) where v_0 = s, v_k = t, and (v_{i-1}, v_i) \\in E for all i \\in \\{1, \\dots, k\\}.\n\n\n\n  \n    \n      \n        \n      \n    \n    \n    \n    s\n\n    \n    \n    w(e₁) = 4\n\n    \n    \n    v₁\n\n    \n    \n    w(e₂) = 2\n\n    \n    \n    v₂\n\n    \n    \n    w(e₃) = 5\n\n    \n    \n    t\n\n    \n    \n    w(p) = 4+2+5 = 11\n  \n\n\n\nWeight Function: Each edge e = (u,v) \\in E has a weight w(e) \\in \\mathbb{R}.\nPath Weight: Total cost w(p) = \\sum_{i=1}^k w(v_{i-1}, v_i).\nShortest Distance: \\text{dist}(u, v) = \\min_{p: u \\rightsquigarrow v} w(p)."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#graph-models-weighted-vs.-unweighted",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#graph-models-weighted-vs.-unweighted",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "Graph Models: Weighted vs. Unweighted",
+    "text": "Graph Models: Weighted vs. Unweighted\n\n  \n  \n    Unweighted Graph (w = 1)\n    \n      \n      \n      \n      \n      u\n      \n      \n      \n      v\n      1\n      1\n      1\n    \n    Cost = Number of Hops  |  BFS: O(m + n)\n  \n\n  \n  \n    Weighted Graph (w ∈ ℝ)\n    \n      \n      \n      w = 12 (Direct/Fast)\n      \n      \n      1 + 2 + 1 = 4 (Shortest!)\n      \n      u\n      \n      \n      \n      v\n    \n    Fewest hops ≠ Minimum total cost!\n  \n\n\n\n\nUnweighted: Every edge is a uniform hop. Solvable in O(m + n) time via Breadth-First Search (BFS).\n\n\n\nWeighted: Edges model latency or distance. Greedy choice applies only when w \\ge 0 (Dijkstra)."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#real-world-applications-key-domains",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#real-world-applications-key-domains",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "Real-World Applications: Key Domains",
+    "text": "Real-World Applications: Key Domains\nShortest paths are among the most pervasive algorithmic primitives in modern computing:\n\n  \n  \n    \n      🚗 Road Navigation & Traffic\n      Intersections & Road Segments (Google / Apple Maps)\n      Minimizes travel time, fuel burn, or toll cost.\n    \n    \n      🌐 Internet Packet Routing\n      Routers & Fiber / Satellite Links (OSPF, BGP)\n      Routes packets with lowest millisecond latency and packet drop.\n    \n  \n\n  \n  \n    \n      👥 Social & Collaboration Networks\n      Users & Follows / Friendships (LinkedIn, X)\n      \"Degrees of separation\", mutual recommendations, influence spread.\n    \n    \n      📈 Currency Arbitrage & Finance\n      Currencies & Exchange Rates (w = −log r)\n      Negative cycles correspond to guaranteed riskless trading profits!"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#real-world-applications-problem-mapping",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#real-world-applications-problem-mapping",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "Real-World Applications: Problem Mapping",
+    "text": "Real-World Applications: Problem Mapping\nHow practical domains map to our graph-theoretic models:\n\n\n\n\n\n\n\n\n\n\nDomain\nWeight Model\nVertices (V) & Edges (E)\nCost Semantics\n\n\n\n\nGPS Navigation\nWeighted (w \\ge 0)\nIntersections & Roads\nTravel duration / Distance\n\n\nInternet Routing\nWeighted (w &gt; 0)\nRouters & Network Links\nLatency & Link Congestion\n\n\nSocial Networks\nUnweighted (w = 1)\nUsers & Connections\nNumber of friend / follower hops\n\n\nRobotics & Motion\nWeighted (w \\ge 0)\nConfiguration States\nActuator energy / Path clearance\n\n\nFinancial Arbitrage\nArbitrary (w \\in \\mathbb{R})\nCurrencies & Rates\n-\\log(\\text{rate}): negative cycles = profit\n\n\n\n\n\n\nUnweighted domains (social networks, hop routing) naturally target BFS and Seidel.\nNon-negative weights fit Dijkstra; arbitrary weights (arbitrage, potentials) require Bellman–Ford."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-shortest-paths-landscape",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-shortest-paths-landscape",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "The Shortest Paths Landscape",
+    "text": "The Shortest Paths Landscape\n\n\n\n\n\n\n\n\n\n\nProblem\nAlgorithm\nTime Complexity\nGraph Model / Allowed Weights\n\n\n\n\nSSSP\nDijkstra\nO(m + n \\log n)\nDirected/Undirected, Non-negative (w \\ge 0)\n\n\nSSSP\nBellman–Ford\nO(mn)\nDirected, Arbitrary weights (no negative cycles)\n\n\nAPSP\nFloyd–Warshall\n\\Theta(n^3)\nDense graphs, Arbitrary weights\n\n\nAPSP\nn \\times \\text{BFS}\nO(nm) \\to \\mathbf{O(n^3)}\nUnweighted (w = 1)\n\n\nAPSP\nSeidel’s Algorithm\n\\mathbf{\\tilde{O}(n^\\omega) \\approx O(n^{2.372})}\nUndirected, Unweighted (w = 1)\n\n\n\n\n\n\nThe Classical APSP Barrier: For dense graphs (m \\approx n^2), both Floyd–Warshall and n \\times \\text{BFS} require \\Theta(n^3) time.\nThe Algebraic Breakthrough: Seidel (1995) showed that fast matrix multiplication over \\mathbb{Z} breaks the cubic barrier for unweighted APSP, achieving \\tilde{O}(n^{2.372})!"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-matrix-powering-perspective-walks-paths",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-matrix-powering-perspective-walks-paths",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "The Matrix Powering Perspective: Walks & Paths",
+    "text": "The Matrix Powering Perspective: Walks & Paths\nCan linear algebra compute shortest paths?\n\n\nLet A be the unweighted adjacency matrix of graph G.\nMatrix Multiplication Property: (A^k)_{u,v} = \\sum_{i_1, i_2, \\dots, i_{k-1}} A_{u, i_1} A_{i_1, i_2} \\cdots A_{i_{k-1}, v}\n(A^k)_{u,v} counts the exact number of walks of length k from u to v.\nUnweighted Shortest Path Distance: d(u,v) = \\min \\{ k \\ge 0 \\mid (A^k)_{u,v} &gt; 0 \\}\nIn ordinary matrix algebra over ring (\\mathbb{R}, +, \\times), computing A^2 takes O(n^\\omega) time (\\omega &lt; 2.372)."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#how-to-compute-ak",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#how-to-compute-ak",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "How to Compute A^k",
+    "text": "How to Compute A^k\nCan we compute high powers A^k without performing k sequential multiplications?\n\n\n\n\n\n\nRepeated Squaring (Binary Exponentiation)\n\n\n\nCompute powers by repeatedly squaring previous results: A \\longrightarrow A^2 \\longrightarrow A^4 \\longrightarrow A^8 \\longrightarrow \\cdots \\longrightarrow A^{2^{\\lfloor \\log_2 k \\rfloor}}\n\n\n\n\nRecursive Formulation: A^k = \\begin{cases} (A^{k/2})^2 & \\text{if } k \\text{ is even} \\\\ A \\cdot (A^{(k-1)/2})^2 & \\text{if } k \\text{ is odd} \\end{cases}\nOperation Count: Requires only \\lceil \\log_2 k \\rceil matrix multiplications!\nTotal Runtime: O(n^\\omega \\log k)\nWhen k = n, we can compute A^n in O(n^\\omega \\log n) time."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#reachability-path-existence",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#reachability-path-existence",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "Reachability & Path Existence",
+    "text": "Reachability & Path Existence\nDoes there exist a path between u and v in G?\n\n\nThe Path Length Bound: In any graph with n vertices, any simple path has length at most n - 1.\nThe Reachability Criterion: \\exists \\text{ path } u \\rightsquigarrow v \\iff (A + A^2 + A^3 + \\dots + A^{n-1})_{u,v} &gt; 0\nIf (A^k)_{u,v} &gt; 0 for any 1 \\le k \\le n - 1, there exists a walk (and hence a simple path) of length \\le n - 1 between u and v.\nTransitive Closure Matrix: T = \\sum_{k=0}^{n-1} A^k A pair (u, v) is connected if and only if T_{u,v} &gt; 0."
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-resolvent-trick-i---a-1",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#the-resolvent-trick-i---a-1",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "The Resolvent Trick: (I - A)^{-1}",
+    "text": "The Resolvent Trick: (I - A)^{-1}\nCan we sum all powers of A in a single matrix inversion?\n\n\n\n\n\n\nThe Matrix Geometric Series (Neumann Series)\n\n\n\nRecall the scalar geometric series: for |x| &lt; 1, \\sum_{k=0}^\\infty x^k = \\frac{1}{1 - x}. For a matrix A (scaled so spectral radius \\rho(A) &lt; 1): \\sum_{k=0}^\\infty A^k = (I - A)^{-1}\n\n\n\n\nAlgebraic Verification: (I - A) \\big(I + A + A^2 + \\dots + A^k\\big) = I - A^{k+1}\nIf A^{k+1} \\to 0 (or working over formal power series \\mathbb{R}[[A]]): (I - A) \\sum_{k=0}^\\infty A^k = I \\implies \\sum_{k=0}^\\infty A^k = (I - A)^{-1}\nAlgorithmic Takeaway: The entries of (I - \\epsilon A)^{-1} encode all-paths reachability and walk counts across all lengths simultaneously!"
+  },
+  {
+    "objectID": "lectures/lec-14-shortest-paths-and-matrix-powers.html#next-lecture",
+    "href": "lectures/lec-14-shortest-paths-and-matrix-powers.html#next-lecture",
+    "title": "Shortest Paths & Matrix Powers",
+    "section": "Next Lecture",
+    "text": "Next Lecture\nSeidel’s Algorithm & The Isolation Lemma — Solving unweighted APSP in \\tilde{O}(n^\\omega) via fast matrix multiplication over \\mathbb{Z}, and parallel matchings via the MVV Isolation Lemma."
   },
   {
     "objectID": "lectures/lec-11-skip-lists.html",
@@ -606,7 +690,7 @@
     "href": "index.html",
     "title": "Advanced Algorithms and Complexity",
     "section": "",
-    "text": "Download Course Handout (PDF)\n\n\n\n\n\n\nAbout the Course\n\n\n\n\n\nThis course explores advanced paradigms in algorithm design and analysis beyond the core curriculum, coupled with a serious study of complexity theory. It covers randomized algorithms, approximation algorithms, online algorithms, and a focused introduction to two-player matrix games (von Neumann’s minimax theorem and the multiplicative weights update), alongside parallel & distributed algorithms. Complexity theory is treated in depth — NP-completeness and reductions, the polynomial hierarchy, counting (#P), and interactive & zero-knowledge proofs — showing both what is computationally hard and what can still be achieved for hard problems.\n\n\n\n\n\n\n\n\n\nPrerequisites\n\n\n\n\n\nDesign and Analysis of Algorithms (CS F364) or equivalent.\n\n\n\n\n\n\n\n\n\nTimings and Venue\n\n\n\n\n\nInstructor: Tulasimohan Molli (TA: Hans Krupakar) Venue: I114 (lectures), I015 (lab) Venue: I114 (lectures), I015 (lab) Lectures: Monday 2:00–3:00 PM (I114) · Tuesday 12:00–1:00 PM (I114) · Thursday 12:00–1:00 PM (I114) Lab: Thursday 9:00–11:00 AM (I015) Lab: Thursday 9:00–11:00 AM (I015) Midsem: 06/10 Endsem: 04/12\nChamber Consultation: Monday 3:00–4:00 PM @ H-134\n\n\n\n\n\n\n\n\n\nEvaluation\n\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nMidterm\n25%\n\n\nComprehensive Exam\n35%\n\n\nTerm Project (Proposal + Presentation + Report)\n20%\n\n\nLab Interaction\n10%\n\n\nClass Interaction\n10%\n\n\n\n\n\n\n\nLecturesLabsSyllabus\n\n\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-08-03\nCourse Overview\n\n\n\nLecture 2\n2026-08-04\nProbability Review I: Foundations & Expectation\n\n\n\nLecture 3\n2026-08-06\nProbability Review II: Tail Bounds\n\n\n\nLecture 4\n2026-08-10\nApplications of Tail Bounds\n\n\n\nLecture 5\n2026-08-11\nApplications of Tail Bounds II\n\n\n\nLecture 6\n2026-08-13\nRandomized Algorithms: Foundations\n\n\n\nLecture 7\n2026-08-18\nLas Vegas to Monte Carlo and Back\n\n\n\nLecture 8\n2026-08-20\nRandomized Complexity Classes\n\n\n\nLecture 9\n2026-08-24\nGraphs and Algebraic Matchings\n\n\n\nLecture 10\n2026-08-27\nRandomized Global Min-Cut (Karger’s Algorithm)\n\n\n\nLecture 11\n2026-08-31\nRandomized Data Structures: Skip Lists\n\n\n\nLecture 12 & 13\n2026-09-01\nHash Tables, Universal Hashing & Perfect Hashing (FKS)\n\n\n\n\n\n\n\n\n\n#\nTopic\nMaterials\n\n\n\n\nPractice Sheet 1\nBasics, Arrays & Linked Lists\nHTML · PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nModule\nLearning Objectives\nTopics\nReference\n\n\n\n\n1\nM1\nCourse scope and landscape; probability & complexity refresher\nIntroduction — Advanced Algorithms & Complexity; Review of Probability & Complexity Classes\nT1 Ch1\n\n\n2\nM1\nClassify randomized algorithms; verify matrix products, identities, min-cuts\nLas Vegas & Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz–Zippel\nT1 Ch1\n\n\n3\nM2\nBound deviations via tail inequalities\nTail Inequalities, Chebyshev, Chernoff Bounds & Applications\nT1 Ch3–4\n\n\n4\nM3\nExpected-time data structures\nSkip Lists, Hash Tables, Cuckoo Hashing\nT1 Ch8\n\n\n5\nM3\nRandomize classic graph algorithms\nRandomized Graph Algorithms: MST, Shortest Paths, Matching\nT1 Ch10\n\n\n6\nM4\nTwo-player matrix games: minimax and multiplicative weights\nTwo-Player Matrix Games; von Neumann’s Minimax Theorem; Multiplicative Weights Update\nT1 Ch4\n\n\n7\nM5\nOnline decision-making under uncertainty\nCompetitive Ratio, Ski Rental, Paging, Secretary Problem\nT1 Ch13\n\n\n8\nM6\nNumber-theoretic algorithms\nEuclid, Euler’s φ, Primality Testing\nT1 Ch14\n\n\n9\nM7\nParallel and distributed algorithms\nPRAM, Prefix, MIS; Byzantine Agreement, Consensus\nT1 Ch12\n\n\n10\nM8\nNP-completeness framework and the polynomial hierarchy\nNP-Completeness & Reductions: Decision Problems, Cook–Levin, Polynomial Hierarchy\nT3 Ch2–4\n\n\n11\nM9\nApproximation by greedy, LP rounding, primal-dual, local search\nGreedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP\nR1, R3\n\n\n12\nM9/M10\nApproximation schemes and limits of approximability; interactive proofs\nPTAS, APX; Inapproximability, Gap Technique; Interactive Proofs\nR4, T3 Ch8, 11\n\n\n13\nM10\nAdvanced complexity: interactive & zero-knowledge proofs, counting, algebraic methods\nInteractive & Zero-Knowledge Proofs; #P & Counting; Algebraic Counting Methods\nT3 Ch8–9, T1 Ch1\n\n\n14\nM11\nStudent project proposal presentations\nStudent Project Proposal Presentations\n—"
+    "text": "Download Course Handout (PDF)\n\n\n\n\n\n\nAbout the Course\n\n\n\n\n\nThis course explores advanced paradigms in algorithm design and analysis beyond the core curriculum, coupled with a serious study of complexity theory. It covers randomized algorithms, approximation algorithms, online algorithms, and a focused introduction to two-player matrix games (von Neumann’s minimax theorem and the multiplicative weights update), alongside parallel & distributed algorithms. Complexity theory is treated in depth — NP-completeness and reductions, the polynomial hierarchy, counting (#P), and interactive & zero-knowledge proofs — showing both what is computationally hard and what can still be achieved for hard problems.\n\n\n\n\n\n\n\n\n\nPrerequisites\n\n\n\n\n\nDesign and Analysis of Algorithms (CS F364) or equivalent.\n\n\n\n\n\n\n\n\n\nTimings and Venue\n\n\n\n\n\nInstructor: Tulasimohan Molli (TA: Hans Krupakar) Venue: I114 (lectures), I015 (lab) Venue: I114 (lectures), I015 (lab) Lectures: Monday 2:00–3:00 PM (I114) · Tuesday 12:00–1:00 PM (I114) · Thursday 12:00–1:00 PM (I114) Lab: Thursday 9:00–11:00 AM (I015) Lab: Thursday 9:00–11:00 AM (I015) Midsem: 06/10 Endsem: 04/12\nChamber Consultation: Monday 3:00–4:00 PM @ H-134\n\n\n\n\n\n\n\n\n\nEvaluation\n\n\n\n\n\n\n\n\nComponent\nWeight\n\n\n\n\nMidterm\n25%\n\n\nComprehensive Exam\n35%\n\n\nTerm Project (Proposal + Presentation + Report)\n20%\n\n\nLab Interaction\n10%\n\n\nClass Interaction\n10%\n\n\n\n\n\n\n\nLecturesLabsSyllabus\n\n\n\n\n\n#\nDate\nTopic\nSlides\n\n\n\n\nLecture 1\n2026-08-03\nCourse Overview\n\n\n\nLecture 2\n2026-08-04\nProbability Review I: Foundations & Expectation\n\n\n\nLecture 3\n2026-08-06\nProbability Review II: Tail Bounds\n\n\n\nLecture 4\n2026-08-10\nApplications of Tail Bounds\n\n\n\nLecture 5\n2026-08-11\nApplications of Tail Bounds II\n\n\n\nLecture 6\n2026-08-13\nRandomized Algorithms: Foundations\n\n\n\nLecture 7\n2026-08-18\nLas Vegas to Monte Carlo and Back\n\n\n\nLecture 8\n2026-08-20\nRandomized Complexity Classes\n\n\n\nLecture 9\n2026-08-24\nGraphs and Algebraic Matchings\n\n\n\nLecture 10\n2026-08-27\nRandomized Global Min-Cut (Karger’s Algorithm)\n\n\n\nLecture 11\n2026-08-31\nRandomized Data Structures: Skip Lists\n\n\n\nLecture 12 & 13\n2026-09-01\nHash Tables, Universal Hashing & Perfect Hashing (FKS)\n\n\n\nLecture 14\n2026-09-07\nShortest Paths & Matrix Powers\n\n\n\n\n\n\n\n\n\n#\nTopic\nMaterials\n\n\n\n\nPractice Sheet 1\nBasics, Arrays & Linked Lists\nHTML · PDF\n\n\nPractice Sheet 2\nLinked Lists, Searching & Sequences\nHTML · PDF\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nModule\nLearning Objectives\nTopics\nReference\n\n\n\n\n1\nM1\nCourse scope and landscape; probability & complexity refresher\nIntroduction — Advanced Algorithms & Complexity; Review of Probability & Complexity Classes\nT1 Ch1\n\n\n2\nM1\nClassify randomized algorithms; verify matrix products, identities, min-cuts\nLas Vegas & Monte Carlo, Freivalds, Min-Cut; PIT, Schwartz–Zippel\nT1 Ch1\n\n\n3\nM2\nBound deviations via tail inequalities\nTail Inequalities, Chebyshev, Chernoff Bounds & Applications\nT1 Ch3–4\n\n\n4\nM3\nExpected-time data structures\nSkip Lists, Hash Tables, Cuckoo Hashing\nT1 Ch8\n\n\n5\nM3\nRandomize classic graph algorithms\nRandomized Graph Algorithms: MST, Shortest Paths, Matching\nT1 Ch10\n\n\n6\nM4\nTwo-player matrix games: minimax and multiplicative weights\nTwo-Player Matrix Games; von Neumann’s Minimax Theorem; Multiplicative Weights Update\nT1 Ch4\n\n\n7\nM5\nOnline decision-making under uncertainty\nCompetitive Ratio, Ski Rental, Paging, Secretary Problem\nT1 Ch13\n\n\n8\nM6\nNumber-theoretic algorithms\nEuclid, Euler’s φ, Primality Testing\nT1 Ch14\n\n\n9\nM7\nParallel and distributed algorithms\nPRAM, Prefix, MIS; Byzantine Agreement, Consensus\nT1 Ch12\n\n\n10\nM8\nNP-completeness framework and the polynomial hierarchy\nNP-Completeness & Reductions: Decision Problems, Cook–Levin, Polynomial Hierarchy\nT3 Ch2–4\n\n\n11\nM9\nApproximation by greedy, LP rounding, primal-dual, local search\nGreedy, LP Rounding, Primal-Dual, Local Search; Set Cover, TSP\nR1, R3\n\n\n12\nM9/M10\nApproximation schemes and limits of approximability; interactive proofs\nPTAS, APX; Inapproximability, Gap Technique; Interactive Proofs\nR4, T3 Ch8, 11\n\n\n13\nM10\nAdvanced complexity: interactive & zero-knowledge proofs, counting, algebraic methods\nInteractive & Zero-Knowledge Proofs; #P & Counting; Algebraic Counting Methods\nT3 Ch8–9, T1 Ch1\n\n\n14\nM11\nStudent project proposal presentations\nStudent Project Proposal Presentations\n—"
   },
   {
     "objectID": "lectures/lec-02-probability-review-i-random-variables-and-expectation.html",
@@ -1250,6 +1334,69 @@
     "href": "lectures/lec-12-hash-tables-and-universal-hashing.html#next-frontier",
     "title": "Hash Tables, Universal Hashing & Perfect Hashing (FKS)",
     "section": "Next Frontier",
-    "text": "Next Frontier\nRandomized Graph Algorithms (Lecture 14):\n\nAlgebraic Graph Algorithms: Moving beyond standard pointer structures into algebraic matrix formulations.\nTutte Matrices: Equivalence between graph matchings and non-zero polynomial determinants.\nSchwartz–Zippel Lemma: Randomized polynomial identity testing to find exact maximum matchings in O(n^\\omega) time!"
+    "text": "Next Frontier\nRandomized & Algebraic Shortest Paths (Lecture 14):\n\nAlgebraic Graph Algorithms: Moving beyond standard combinatorial traversals into algebraic matrix operations.\nThe (\\min, +) Tropical Semiring: Why standard fast matrix multiplication fails over shortest path semirings.\nSeidel’s Algorithm (1995): Solving unweighted undirected All-Pairs Shortest Paths in \\tilde{O}(n^\\omega) time using boolean matrix multiplication over rings!"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html",
+    "href": "labs/lab-practice-sheet_1.html",
+    "title": "Lab Practice Sheet 1",
+    "section": "",
+    "text": "Evaluation Instructions for Students\n\n\n\n\nPractice all 8 problems below.\nIn the next lab session, one question will be chosen at random for on-the-spot coding and evaluation.\nYour code will be evaluated by running it against automated test cases.\nYou may use Python; C++ and Java."
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q1-the-student-merit-system",
+    "href": "labs/lab-practice-sheet_1.html#q1-the-student-merit-system",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q1: The Student Merit System",
+    "text": "Q1: The Student Merit System\nDescription: Define a struct/class/object for Student with fields: ID (integer), Name (string), and Marks (3 subject scores). Write a program to:\n\nRead details for N students.\nCalculate the average marks for each student.\nPrint a “Merit List” of students whose average score is strictly above 75% in the order they appear in the input.\nIdentify and print the Topper (the student with the highest average score). If multiple students share the same highest average score, choose the one whose name comes first in lexicographical (dictionary) order.\n\n\nInput Format:\n\nLine 1: An integer N, the number of students.\nNext N lines: Each line contains an integer ID, a string Name, and 3 space-separated integers representing marks in three subjects.\n\nOutput Format:\n\nFirst print Merit List: followed by lines of the form ID Name (Avg: XX.XX) for every student with average marks &gt; 75.00.\nThen print Topper: Name indicating the student with the highest average score (breaking ties in favor of lexicographically smaller name).\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n2\n101 Alice 80 90 85\n102 Bob 60 50 55\n\n\n\n\n\n\n\n\nSample Output\n\n\n\nMerit List:\n101 Alice (Avg: 85.00)\nTopper: Alice"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q2-matrix-multiplication",
+    "href": "labs/lab-practice-sheet_1.html#q2-matrix-multiplication",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q2: Matrix Multiplication",
+    "text": "Q2: Matrix Multiplication\nDescription: Write a program to multiply two matrices A and B.\n\nRead matrix A of dimensions R_1 \\times C_1.\nRead matrix B of dimensions R_2 \\times C_2.\nIf multiplication is not possible (C_1 \\neq R_2), output Not Possible.\nOtherwise, compute and print the product matrix C = A \\times B.\n\n\nInput Format:\n\nLine 1: Two space-separated integers R_1 and C_1, representing dimensions of matrix A.\nNext R_1 lines: Each line contains C_1 space-separated integers representing the elements of matrix A.\nNext line: Two space-separated integers R_2 and C_2, representing dimensions of matrix B.\nNext R_2 lines: Each line contains C_2 space-separated integers representing the elements of matrix B.\n\nOutput Format:\n\nIf C_1 \\neq R_2, output a single line Not Possible.\nOtherwise, print R_1 lines, each containing C_2 space-separated integers representing the resulting product matrix C = A \\times B.\n\n\n\n\n\n\n\n\nSample Input 1\n\n\n\n2 2\n1 2\n3 4\n2 2\n1 0\n0 1\n\n\n\n\n\n\n\n\nSample Output 1\n\n\n\n1 2 \n3 4 \n\n\n\n\n\n\n\n\nSample Input 2\n\n\n\n2 3\n1 2 3\n4 5 6\n2 2\n1 0\n0 1\n\n\n\n\n\n\n\n\nSample Output 2\n\n\n\nNot Possible"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q3-merge-two-sorted-arrays",
+    "href": "labs/lab-practice-sheet_1.html#q3-merge-two-sorted-arrays",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q3: Merge Two Sorted Arrays",
+    "text": "Q3: Merge Two Sorted Arrays\nDescription: Given two sorted arrays A of size N_1 and B of size N_2, merge them into a single sorted sequence in non-decreasing order using a linear two-pointer scan.\n\nInput Format:\n\nLine 1: An integer N_1, the size of array A.\nLine 2: N_1 space-separated sorted integers representing array A.\nLine 3: An integer N_2, the size of array B.\nLine 4: N_2 space-separated sorted integers representing array B.\n\nOutput Format:\n\nA single line containing N_1 + N_2 space-separated integers representing the merged sorted sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n3\n1 3 5\n3\n2 4 6\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n1 2 3 4 5 6"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q4-string-compression",
+    "href": "labs/lab-practice-sheet_1.html#q4-string-compression",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q4: String Compression",
+    "text": "Q4: String Compression\nDescription: Given a string of lowercase alphabetic characters, compress consecutive repeating characters using run-length encoding. For example, consecutive occurrences of character c repeated k times should be represented as c followed by k.\n\nInput Format:\n\nA single line containing a string consisting of lowercase English letters.\n\nOutput Format:\n\nA single line containing the compressed string.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\naaabbc\n\n\n\n\n\n\n\n\nSample Output\n\n\n\na3b2c1"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q5-the-array-rotator",
+    "href": "labs/lab-practice-sheet_1.html#q5-the-array-rotator",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q5: The Array Rotator",
+    "text": "Q5: The Array Rotator\nDescription: Given an array of N integers, rotate the array by K positions.\n\nDirection D = 0 means Left Rotation.\nDirection D = 1 means Right Rotation.\nInput Format:\n\nLine 1: An integer N, the size of the array.\nLine 2: N space-separated integers representing the array.\nLine 3: An integer D \\in \\{0, 1\\}, where 0 indicates Left Rotation and 1 indicates Right Rotation.\nLine 4: An integer K, the number of positions to rotate.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the rotated array.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n5\n1 2 3 4 5\n0\n1\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n2 3 4 5 1"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q6-segregate-even-and-odd-values",
+    "href": "labs/lab-practice-sheet_1.html#q6-segregate-even-and-odd-values",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q6: Segregate Even and Odd Values",
+    "text": "Q6: Segregate Even and Odd Values\nDescription: Given a sequence of N integers, rearrange the sequence so that all even numbers appear before all odd numbers, while strictly preserving their relative order from the original sequence (stable partition).\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line containing N space-separated integers, with all even numbers listed first in original relative order, followed by all odd numbers in original relative order.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n7\n17 15 8 12 10 5 4\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n8 12 10 4 17 15 5"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q7-insert-after-pairs-sum-skip",
+    "href": "labs/lab-practice-sheet_1.html#q7-insert-after-pairs-sum-skip",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q7: Insert After Pairs (Sum & Skip)",
+    "text": "Q7: Insert After Pairs (Sum & Skip)\nDescription: Given a sequence of N integers, process the elements pairwise from left to right. After every pair of consecutive elements, insert a new element equal to their sum. If an odd element is left at the end without a pair, leave it as is.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\n\nOutput Format:\n\nA single line containing space-separated integers representing the modified sequence with sum elements inserted after each pair.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n4\n2 4 5 3\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n2 4 6 5 3 8"
+  },
+  {
+    "objectID": "labs/lab-practice-sheet_1.html#q8-move-all-occurrences-of-value-x-to-the-end",
+    "href": "labs/lab-practice-sheet_1.html#q8-move-all-occurrences-of-value-x-to-the-end",
+    "title": "Lab Practice Sheet 1",
+    "section": "Q8: Move All Occurrences of Value X to the End",
+    "text": "Q8: Move All Occurrences of Value X to the End\nDescription: Given a sequence of N integers and a target value X, rearrange the sequence such that all occurrences of X are moved to the end of the sequence, while the relative order of all other elements remains unchanged.\n\nInput Format:\n\nLine 1: An integer N, the number of elements.\nLine 2: N space-separated integers representing the sequence.\nLine 3: An integer X, the target value to be moved to the end.\n\nOutput Format:\n\nA single line containing N space-separated integers representing the rearranged sequence.\n\n\n\n\n\n\n\n\nSample Input\n\n\n\n7\n1 2 3 2 4 2 5\n2\n\n\n\n\n\n\n\n\nSample Output\n\n\n\n1 3 4 5 2 2 2"
   }
 ]
