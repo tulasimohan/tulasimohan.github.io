@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Term Project – Tulasimohan Molli</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6261e5abcbdcbf04ea828a054a2dd0d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+window.KATEX_MACROS = {
+    "\\AC": "\\mathsf{AC}",
+    "\\bra": "\\left( #1 \\right)",
+    "\\pmone": "\\{-1, 1\\}",
+    "\\seerank": "\\mathrm{rank}",
+    "\\ftwo": "\\mathbb{F}_2",
+    "\\reals": "\\mathbb{R}",
+    "\\zo": "\\{0, 1\\}",
+    "\\lepsinv": "\\log(1/\\epsilon)",
+    "\\bigo": "O\\left( #1 \\right)",
+    "\\ans": "\\log \\binom{n}{\\log(1/\\epsilon)}",
+    "\\distP": "\\mathcal{P}",
+    "\\OR": "\\mathrm{OR}",
+    "\\eps": "\\epsilon"
+};
+</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
+
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles/custom.css">
+<link rel="stylesheet" href="custom-local.css">
+<link rel="stylesheet" href="styles/bits-theme.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Tulasimohan Molli</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./term-project.html" aria-current="page"> 
+<span class="menu-text">Term Project</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#term-project-overview-logistics" id="toc-term-project-overview-logistics" class="nav-link active" data-scroll-target="#term-project-overview-logistics">Term Project Overview &amp; Logistics</a></li>
+  <li><a href="#project-format-evaluation" id="toc-project-format-evaluation" class="nav-link" data-scroll-target="#project-format-evaluation">1. Project Format &amp; Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#deliverables-timeline" id="toc-deliverables-timeline" class="nav-link" data-scroll-target="#deliverables-timeline">Deliverables &amp; Timeline</a></li>
+  </ul></li>
+  <li><a href="#topic-pools" id="toc-topic-pools" class="nav-link" data-scroll-target="#topic-pools">2. Topic Pools</a></li>
+  <li><a href="#proposal-submission-template" id="toc-proposal-submission-template" class="nav-link" data-scroll-target="#proposal-submission-template">3. Proposal Submission Template</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Term Project</h1>
+<p class="subtitle lead">CS G526: Advanced Algorithms &amp; Complexity · Aug–Dec 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.project-header-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.project-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.project-stat-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  backdrop-filter: blur(4px);
+}
+.project-stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 0.2rem;
+}
+.project-stat-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.badge-track-a {
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid #bfdbfe;
+  display: inline-block;
+}
+.badge-track-b {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid #fde68a;
+  display: inline-block;
+}
+.badge-impl {
+  background-color: #dcfce7;
+  color: #166534;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid #bbf7d0;
+  display: inline-block;
+}
+.badge-reading {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid #e9d5ff;
+  display: inline-block;
+}
+.badge-diff-1 { color: #16a34a; font-weight: 700; }
+.badge-diff-2 { color: #d97706; font-weight: 700; }
+.badge-diff-3 { color: #dc2626; font-weight: 700; }
+
+.topic-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.2rem;
+  background-color: #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.topic-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: #cbd5e1;
+}
+.topic-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.topic-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+.topic-body {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #334155;
+  margin-bottom: 0.6rem;
+}
+.topic-refs {
+  font-size: 0.82rem;
+  color: #64748b;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 0.4rem;
+  font-style: italic;
+}
+</style>
+<section id="term-project-overview-logistics" class="level2 project-header-card">
+<h2 class="anchored" data-anchor-id="term-project-overview-logistics">Term Project Overview &amp; Logistics</h2>
+<p>The CS G526 Term Project (accounting for <strong>20% of the overall course grade</strong>) offers students hands-on engagement with advanced algorithmic concepts, either bridging foundational algorithmic theory or diving into research-level paradigms.</p>
+<div class="project-stat-grid">
+<div class="project-stat-box">
+<div class="project-stat-label">
+<p>Team Format</p>
+</div>
+<div class="project-stat-value">
+<p>Teams of 3</p>
+</div>
+</div>
+<div class="project-stat-box">
+<div class="project-stat-label">
+<p>Total Weight</p>
+</div>
+<div class="project-stat-value">
+<p>20% of Grade</p>
+</div>
+</div>
+<div class="project-stat-box">
+<div class="project-stat-label">
+<p>Video Presentation</p>
+</div>
+<div class="project-stat-value">
+<p>15 Minutes</p>
+</div>
+</div>
+<div class="project-stat-box">
+<div class="project-stat-label">
+<p>Live Defense</p>
+</div>
+<div class="project-stat-value">
+<p>3 Min Q&amp;A</p>
+</div>
+</div>
+</div>
+</section>
+<hr>
+<section id="project-format-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="project-format-evaluation">1. Project Format &amp; Evaluation</h2>
+<p>Students work in <strong>groups of 3</strong>. Each team can either: 1. Choose an established topic from <strong>Track A</strong> (Foundation / Bridge) or <strong>Track B</strong> (Advanced Course-Aligned) below, or 2. Propose an original research / implementation topic (subject to prior instructor approval).</p>
+<section id="deliverables-timeline" class="level3">
+<h3 class="anchored" data-anchor-id="deliverables-timeline">Deliverables &amp; Timeline</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 45%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th style="text-align: center;">Target Window</th>
+<th>Deliverable Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Proposal</strong></td>
+<td style="text-align: center;"><em>Week 8</em></td>
+<td>1–2 page PDF detailing team members, chosen topic/problem statement, preliminary bibliography, and milestones.</td>
+</tr>
+<tr class="even">
+<td><strong>Video Presentation</strong></td>
+<td style="text-align: center;"><em>Week 13</em></td>
+<td>A <strong>15-minute recorded video presentation</strong>. Every team member must present. High-resolution slides + visual demos/benchmarks.</td>
+</tr>
+<tr class="odd">
+<td><strong>Live Q&amp;A Defense</strong></td>
+<td style="text-align: center;"><em>Week 14</em></td>
+<td>A <strong>3-minute live interactive Q&amp;A</strong> with the instructor and TA testing depth of understanding and technical contribution.</td>
+</tr>
+<tr class="even">
+<td><strong>Final Report &amp; Code</strong></td>
+<td style="text-align: center;"><em>Week 14</em></td>
+<td>4–6 page report (IEEE / ACM / NeurIPS style) + clean GitHub repository with reproducible code, documentation, and tests.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Presentation &amp; Q&amp;A Guidelines
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>15-Minute Video Recording:</strong> The recording should cover: problem definition, theoretical context, core algorithmic mechanisms/proofs, experimental design or architectural pipeline, and empirical results.</li>
+<li><strong>3-Minute Live Q&amp;A:</strong> Each student will be asked questions on the mathematical foundations, edge cases, and design choices of their project. Individual contributions will be evaluated during this defense.</li>
+</ul>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="topic-pools" class="level2">
+<h2 class="anchored" data-anchor-id="topic-pools">2. Topic Pools</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Track A: Foundation (Bridge) Topics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Track B: Advanced Course-Aligned Topics</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><em>Tailored for students who wish to reinforce their undergraduate core and establish solid algorithmic foundations before tackling research-level literature. These projects emphasize clean, pedagogical expositions alongside reproducible benchmark implementations.</em></p>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A1. B-Trees &amp; B+ Trees</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Why do databases and file systems universally rely on B-trees instead of balanced BSTs? Study multi-way branching, tree height bounds, insertion/deletion with recursive splits/merges, and leaf-linked B+ variants. Implement insert/search and build an interactive visualization of disk-block node splits.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 18; Ramakrishnan &amp; Gehrke, <em>Database Management Systems</em>.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A2. AVL Trees vs.&nbsp;Red–Black Trees</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Two classic answers to maintaining balanced search trees. Derive the strict <span class="math inline">O(\log n)</span> Fibonacci-based height bound for AVL trees, formalize rotation invariants, and experimentally benchmark tree rebalancing overhead under heavy insert/delete skew against Red–Black trees.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 12–13; Sedgewick, <em>Left-Leaning Red-Black Trees</em>.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A3. From Binary Heaps to Fibonacci Heaps</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Priority queues beyond binary heaps: <span class="math inline">d</span>-ary heaps, binomial heaps, and Fibonacci heaps with potential-method amortized analysis. Implement Fibonacci heap decrease-key and empirically compare its wall-clock running time against 4-ary heaps inside Dijkstra’s algorithm on massive road networks.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 6, 19–20; Fredman &amp; Tarjan (1987).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A4. Disjoint Set Union (Union–Find) &amp; Inverse Ackermann</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>The most elegant data structure in computer science: union-by-rank with path compression. Master Tarjan’s potential function proof achieving <span class="math inline">O(m \cdot \alpha(n))</span> amortized time. Explore applications in Kruskal’s MST, dynamic connectivity, and offline Lowest Common Ancestor (Tarjan’s LCA).</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 21; Tarjan (1975), <em>Efficiency of a Good But Not Linear Set Union Algorithm</em>.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A5. Tries, Radix Trees &amp; Suffix Structures</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>String-centric structures: standard prefix tries, space-efficient Patricia/Radix trees, suffix arrays with LCP arrays, and Kasai’s algorithm. Applications: substring pattern matching at scale, genome search, and longest repeated substring computation.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 32; Gusfield, <em>Algorithms on Strings, Trees and Sequences</em>.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A6. Skip Lists: Design &amp; Empirical Comparison</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Probabilistic balancing: expected <span class="math inline">O(\log n)</span> search, insert, and delete using coin flips. Implement randomized skip lists and perform head-to-head empirical evaluations against Treaps and balanced BSTs across concurrent or cache-locality microbenchmarks.</p>
+</div>
+<div class="topic-refs">
+<p>References: Pugh (1990); Motwani &amp; Raghavan Ch. 8.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A7. Comparison Sorts &amp; Their Lower Bounds</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>The <span class="math inline">\Omega(n \log n)</span> decision-tree lower bound for comparison sorting, and algorithmic escape hatches: counting sort, radix sort, and bucket sort. Investigate when linear-time assumptions hold, integer sorting frontiers, and cache-oblivious sorting models.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 8–9.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A8. Dynamic Programming: Structure &amp; Reconstruction</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>The rigorous DP paradigm: optimal substructure <span class="math inline">\to</span> state recurrence <span class="math inline">\to</span> memoization <span class="math inline">\to</span> iterative tabulation. Focus on non-trivial reconstruction of solutions for Sequence Alignment, Edit Distance, and 0/1 Knapsack with space optimizations (Hirschberg’s linear-space algorithm).</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 14–15; Kleinberg &amp; Tardos Ch. 6.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A9. Greedy Invariants vs.&nbsp;Dynamic Programming</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>What makes greedy algorithms provably optimal? Exchange arguments, the matroid theory framework for independence systems, and contrasting case studies where greedy fails catastrophically while dynamic programming succeeds (canonical vs non-canonical coin systems, interval scheduling variants).</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 15–16; Kleinberg &amp; Tardos Ch. 4.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A10. String Matching: KMP vs.&nbsp;Rabin–Karp</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Determinism meets randomization: prefix-automaton mechanics of Knuth–Morris–Pratt vs rolling-hash Monte Carlo Rabin–Karp (with false-match union bound analysis). Benchmark both across synthetic DNA sequences and natural language text.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 32; Motwani &amp; Raghavan Ch. 1.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A11. The Amortized Analysis Toolkit</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>A rigorous deep-dive into Aggregate, Accounting, and Potential methods. Apply all three paradigms across resizing vectors, multipop stacks, binary counters, and self-adjusting splay trees.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 17; Sleator &amp; Tarjan (1985).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A12. Graph Traversals &amp; Connectivity Toolkit</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Two simple traversals, immense consequences: topological sorting, 2-coloring, cycle invariants, and Strongly Connected Components (Kosaraju vs Tarjan SCC algorithms) with full correctness proofs and benchmark comparison on large web graph snapshots.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 22; Tarjan (1972).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A13. Shortest Paths Landscape: Dijkstra, Bellman–Ford, Floyd–Warshall</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Proof mechanics for greedy relaxation, dynamic programming along path lengths, and all-pairs shortest paths. Address negative edge weights, negative cycle detection, and Johnson’s reweighting algorithm for sparse graphs.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 24–25.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A14. Minimum Spanning Trees: One Cut Property, Three Algorithms</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>The universal Cut Property and Cycle Property. Formalize and compare Kruskal, Prim, and Borůvka’s algorithms. Study Borůvka as a parallel paradigm and analyze verification of spanning trees in linear time.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 23; Kleinberg &amp; Tardos Ch. 4.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A15. Network Flows &amp; Bipartite Matching</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Ford–Fulkerson method, Edmonds–Karp <span class="math inline">O(V E^2)</span> BFS bound, Dinic’s blocking flow algorithm, and Max-Flow Min-Cut duality. Explore reductions to Maximum Bipartite Matching, vertex disjoint paths, and project selection.</p>
+</div>
+<div class="topic-refs">
+<p>References: CLRS Ch. 26; Kleinberg &amp; Tardos Ch. 7.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A16. From Regular Expressions to Minimized DFA</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-impl">Reading + Light Implementation</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Build a complete automata compilation pipeline: Thompson’s NFA construction <span class="math inline">\to</span> Powerset Subset construction <span class="math inline">\to</span> Hopcroft’s <span class="math inline">O(k n \log n)</span> DFA minimization. Deliverable includes a functional regular expression parsing engine.</p>
+</div>
+<div class="topic-refs">
+<p>References: Sipser Ch. 1; Hopcroft, Motwani &amp; Ullman Ch. 3.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A17. Context-Free Grammars &amp; The CYK Algorithm</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Context-free grammars, parse trees, Chomsky Normal Form (CNF) conversions, and the <span class="math inline">O(n^3 \cdot |G|)</span> Cocke–Younger–Kasami (CYK) dynamic programming parsing algorithm. Bridge parsing algorithms to matrix multiplication.</p>
+</div>
+<div class="topic-refs">
+<p>References: Sipser Ch. 2; Hopcroft, Motwani &amp; Ullman Ch. 5.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>A18. Turing Machines &amp; The Limits of Decidability</p>
+</div>
+<div>
+<p><span class="badge-track-a">Track A</span> <span class="badge-reading">Reading</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Turing machine models, deciders vs recognizers, Church–Turing thesis, diagonalization, and reduction proofs establishing the Halting Problem, Post Correspondence Problem (PCP), and Rice’s Theorem.</p>
+</div>
+<div class="topic-refs">
+<p>References: Sipser Ch. 3–5.</p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><em>Directly integrated with the core themes of CS G526: Randomized Algorithms, Online Decisions, Game Theory, Approximation, Parallel Computation, Complexity Theory, and Streaming.</em></p>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B1. Bloom Filter Engineering Study</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement standard and counting Bloom filters with multiple independent universal hash functions. Quantitatively measure false-positive rates vs.&nbsp;bits-per-element across theoretical predictions <span class="math inline">(1 - e^{-kn/m})^k</span>. Benchmark on high-throughput URL filtering or database cache admission.</p>
+</div>
+<div class="topic-refs">
+<p>References: Bloom (1970); Broder &amp; Mitzenmacher (2004); Motwani &amp; Raghavan Ch. 8.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B2. Cardinality Estimation at Scale: HyperLogLog</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement LogLog and HyperLogLog cardinality sketches utilizing stochastic averaging and harmonic mean estimation over leading-zero distributions. Evaluate empirical standard error against the theoretical <span class="math inline">1.04/\sqrt{m}</span> guarantee on multi-gigabyte text and network IP streams.</p>
+</div>
+<div class="topic-refs">
+<p>References: Flajolet et al.&nbsp;(2007); Heule et al.&nbsp;(Google HLL++, 2013).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B3. Cuckoo Hashing vs.&nbsp;Cuckoo Filters</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement two-table and <span class="math inline">d</span>-ary cuckoo hashing with random walk eviction cycles. Contrast cuckoo filters (which store fingerprints instead of keys) with counting Bloom filters, evaluating insertion throughput, space efficiency, and deletion performance.</p>
+</div>
+<div class="topic-refs">
+<p>References: Pagh &amp; Rodler (2004); Fan, Andersen, Kaminsky &amp; Mitzenmacher (2014).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B4. Locality-Sensitive Hashing (LSH) for High-Dimensional Similarity</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Build MinHash and LSH banding schemes for Jaccard similarity search across millions of documents or sentence embeddings. Empirically plot S-curves of collision probability against theoretical predictions and benchmark recall vs brute-force KNN.</p>
+</div>
+<div class="topic-refs">
+<p>References: Indyk &amp; Motwani (1998); Gionis, Indyk &amp; Motwani (1999); Leskovec, Rajaraman &amp; Ullman Ch. 3.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B5. Karger–Stein Fast Min-Cut on Real Graphs</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Prove contraction tree branching probabilities for Karger–Stein’s <span class="math inline">O(n^2 \log^3 n)</span> recursive algorithm. Implement the randomized algorithm with adjacency-list contractions and evaluate accuracy and speedups against deterministic Stoer–Wagner on SNAP graph datasets.</p>
+</div>
+<div class="topic-refs">
+<p>References: Karger &amp; Stein (1996); Motwani &amp; Raghavan Ch. 10.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B6. Probabilistic Verification of Computations (Freivalds’ Technique)</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Generalize Freivalds’ <span class="math inline">O(n^2)</span> randomized matrix verification technique to verify polynomial multiplication, matrix inversions, and LU factorizations without recomputing. Evaluate empirical failure probabilities when intentionally perturbing low-rank matrix entries.</p>
+</div>
+<div class="topic-refs">
+<p>References: Freivalds (1979); Motwani &amp; Raghavan Ch. 1.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B7. Learning-Augmented Online Algorithms: Ski Rental</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Study learning-augmented competitive analysis where an untrusted machine learning oracle predicts future demand. Prove consistency (performance when predictions are accurate) and robustness (worst-case fallback when predictions are adversarial). Simulate using real cloud GPU spot-instance traces.</p>
+</div>
+<div class="topic-refs">
+<p>References: Purohit, Prasad &amp; Svitkina (NeurIPS 2018); Gollapudi &amp; Panigrahi (2019).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B8. Online Paging: Competitive Ratio vs.&nbsp;Empirical Cache Traces</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Simulate FIFO, LRU, LFU, Flush-When-Full, and randomized Marking algorithms against offline optimal (Belady’s MIN). Evaluate miss rates on real memory memory traces and compare against the theoretical <span class="math inline">k</span>-competitive deterministic and <span class="math inline">2 H_k</span>-competitive randomized bounds.</p>
+</div>
+<div class="topic-refs">
+<p>References: Sleator &amp; Tarjan (1985); Fiat et al.&nbsp;(1991); Motwani &amp; Raghavan Ch. 13.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B9. The Secretary Problem &amp; Matroid Secretary Generalizations</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Reading + Simulation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Derive the optimal <span class="math inline">1/e</span> stopping rule for the classical secretary problem via backward induction. Extend to multi-choice variants and the Matroid Secretary conjecture (Babaioff et al.), evaluating empirical performance on simulated auction matching markets.</p>
+</div>
+<div class="topic-refs">
+<p>References: Ferguson (1989); Babaioff, Immorlica &amp; Kleinberg (2007).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B10. Solving Zero-Sum Matrix Games: MWU vs.&nbsp;Fictitious Play</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement the Multiplicative Weights Update (MWU/Hedge) method and Brown’s Fictitious Play to compute approximate minimax equilibria in zero-sum matrix games. Analyze empirical convergence rates to the game value <span class="math inline">V^*</span> on security patrol and network routing games.</p>
+</div>
+<div class="topic-refs">
+<p>References: Arora, Hazan &amp; Kale (2012); Freund &amp; Schapire (1999); Motwani &amp; Raghavan Ch. 4.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B11. AdaBoost Derived from Multiplicative Weights</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Derive the foundational AdaBoost machine learning algorithm as an instance of the Multiplicative Weights Update rule over sample distributions. Implement AdaBoost from scratch and experimentally demonstrate margin maximization and training convergence on benchmark datasets.</p>
+</div>
+<div class="topic-refs">
+<p>References: Freund &amp; Schapire (1997); Arora, Hazan &amp; Kale (2012).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B12. Set Cover Three Ways: Greedy, LP Rounding &amp; Primal–Dual</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement Chvátal’s greedy <span class="math inline">H_n</span>-approximation, randomized rounding of the standard LP relaxation, and the primal–dual method for Weighted Set Cover. Construct worst-case integrality gap instances and evaluate empirical performance on benchmark hypergraphs.</p>
+</div>
+<div class="topic-refs">
+<p>References: Williamson &amp; Shmoys Ch. 1; Vazirani Ch. 13–15.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B13. Metric TSP: Christofides Meets Modern Local Search</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement the 1.5-approximation Christofides–Serdyukov algorithm (MST + Minimum-Weight Perfect Matching on odd-degree nodes + Eulerian Tour). Combine with 2-Opt and Lin–Kernighan local search on TSPLIB benchmark instances to contrast worst-case guarantees with practical solution quality.</p>
+</div>
+<div class="topic-refs">
+<p>References: Christofides (1976); Williamson &amp; Shmoys Ch. 2; Reinelt (TSPLIB).</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B14. Knapsack: From Greedy to FPTAS</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Compare greedy 2-approximation, exact pseudo-polynomial DP by profit, and the fully polynomial-time approximation scheme (FPTAS) with scale factor <span class="math inline">K = \epsilon P / n</span>. Empirically map the <span class="math inline">(1 - \epsilon)</span> error guarantee vs execution time trade-off frontier.</p>
+</div>
+<div class="topic-refs">
+<p>References: Ibarra &amp; Kim (1975); Vazirani Ch. 8.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B15. Vertex Cover: Rounding, Primal–Dual &amp; Kernelization</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Study 2-approximations for Minimum Vertex Cover via LP rounding, Bar-Yehuda &amp; Even’s primal–dual scheme, and Nemhauser–Trotter kernelization preprocessing (reducing instances using maximum bipartite matching). Benchmark graph size reduction factors.</p>
+</div>
+<div class="topic-refs">
+<p>References: Bar-Yehuda &amp; Even (1981); Williamson &amp; Shmoys Ch. 1, 7.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B16. Parallel Work–Depth in Practice: Prefix &amp; Sorting</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement work-efficient parallel prefix sums (Blelloch scan), parallel merge sort, and parallel list ranking using OpenMP or modern thread pools. Empirically evaluate speedup and work-efficiency scaling on multi-core CPUs up to theoretical span limits.</p>
+</div>
+<div class="topic-refs">
+<p>References: JáJá, <em>Introduction to Parallel Algorithms</em>; Blelloch (1990); Motwani &amp; Raghavan Ch. 12.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B17. Byzantine Agreement under Adversarial Faults</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Simulate oral-messages consensus protocols with <span class="math inline">f</span> malicious/byzantine nodes. Verify empirically and analytically the impossibility bound <span class="math inline">n \le 3f</span>, measuring network round overhead and message complexity as cluster size scales.</p>
+</div>
+<div class="topic-refs">
+<p>References: Lamport, Shostak &amp; Pease (1982); Motwani &amp; Raghavan Ch. 12.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B18. Luby’s Parallel Maximal Independent Set</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Reading + Simulation</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Prove the expected <span class="math inline">O(\log n)</span> rounds bound for Luby’s randomized MIS algorithm. Build a distributed simulation on synthetic power-law and Erdős–Rényi graphs, comparing parallel convergence rates against greedy sequential MIS.</p>
+</div>
+<div class="topic-refs">
+<p>References: Luby (1986); Alon, Babai &amp; Itai (1986); Motwani &amp; Raghavan Ch. 12.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B19. NP-Hard Reduction Pipeline to Modern SAT Solvers</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Select a non-trivial NP-hard problem (e.g., Exact Graph Coloring, Campus Exam Timetabling, or Hamiltonian Path), formulate a polynomial reduction to CNF-SAT in DIMACS format, and solve with modern CDCL solvers (MiniSat, Glucose, CaDiCaL). Benchmark against heuristic baselines.</p>
+</div>
+<div class="topic-refs">
+<p>References: Arora &amp; Barak Ch. 2; Biere et al., <em>Handbook of Satisfiability</em>.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B20. Zero-Knowledge Proof Protocols in Action</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-3">●●● Challenging</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Implement interactive Zero-Knowledge Identification protocols (Schnorr identification or Graph Isomorphism ZK). Build an interactive prover-verifier CLI demonstrate Completeness, Soundness against malicious provers, and Zero-Knowledge simulator indistinguishability.</p>
+</div>
+<div class="topic-refs">
+<p>References: Goldwasser, Micali &amp; Rackoff (1989); Goldreich, Micali &amp; Wigderson (1991); Arora &amp; Barak Ch. 8.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B21. Approximate Counting in #P: DNF Counting &amp; The Permanent</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Reading + Implementation</span> <span class="badge-diff-3">●●● Challenging</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Explore FPRAS (Fully Polynomial Randomized Approximation Scheme) methods for #P-hard problems. Implement the Karp–Luby Monte Carlo algorithm for counting satisfying assignments of DNF formulas and contrast against exact model counters.</p>
+</div>
+<div class="topic-refs">
+<p>References: Karp &amp; Luby (1983); Jerrum, Sinclair &amp; Vigoda (2004); Arora &amp; Barak Ch. 9.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B22. The PCP Theorem &amp; Hardness of Approximation</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-reading">Reading</span> <span class="badge-diff-3">●●● Challenging</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>A guided theoretical tour of Probabilistically Checkable Proofs and gap-preserving reductions. Show how the PCP theorem leads to inapproximability results for Max-3SAT and Maximum Clique, and why Set Cover cannot be approximated within <span class="math inline">(1 - \epsilon)\ln n</span>.</p>
+</div>
+<div class="topic-refs">
+<p>References: Arora &amp; Barak Ch. 11, 22; Håstad (2001); Vazirani Ch. 29.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B23. Primality Testing: Miller–Rabin vs.&nbsp;AKS</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation + Theory</span> <span class="badge-diff-2">●●○ Intermediate</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Analyze error bounds of the randomized Miller–Rabin test based on Fermat’s Little Theorem and non-trivial square roots of unity. Implement both Miller–Rabin and the deterministic polynomial-time AKS test, benchmarking scalability across 64-bit to 4096-bit primes.</p>
+</div>
+<div class="topic-refs">
+<p>References: Rabin (1980); Agrawal, Kayal &amp; Saxena (2004); Motwani &amp; Raghavan Ch. 14.</p>
+</div>
+</div>
+<div class="topic-card">
+<div class="topic-title-row">
+<div class="topic-title">
+<p>B24. Streaming Frequent Elements: Count-Min Sketch &amp; Misra–Gries</p>
+</div>
+<div>
+<p><span class="badge-track-b">Track B</span> <span class="badge-impl">Implementation</span> <span class="badge-diff-1">●○○ Basic</span></p>
+</div>
+</div>
+<div class="topic-body">
+<p>Estimate heavy hitters and point queries over massive data streams with sublinear space. Implement Count-Min Sketch and Misra–Gries deterministic summary algorithms, evaluating precision/recall of top-K queries against exact counts on real network flow datasets.</p>
+</div>
+<div class="topic-refs">
+<p>References: Cormode &amp; Muthukrishnan (2005); Misra &amp; Gries (1982); Motwani &amp; Raghavan Ch. 3–4.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="proposal-submission-template" class="level2">
+<h2 class="anchored" data-anchor-id="proposal-submission-template">3. Proposal Submission Template</h2>
+<p>Every team of 3 must submit a 1–2 page PDF proposal covering:</p>
+<ol type="1">
+<li><strong>Team Information:</strong> Names, BITS IDs, emails, and designated team coordinator.</li>
+<li><strong>Topic Selection:</strong> Topic code (e.g.&nbsp;<code>B10</code> or <code>A3</code>) or custom proposal title.</li>
+<li><strong>Problem Formulation:</strong> Precise definition of the computational problem, theoretical significance, or engineering motivation.</li>
+<li><strong>Planned Methodology:</strong>
+<ul>
+<li>For <em>Implementation / Benchmarking:</em> Programming languages, libraries/frameworks, dataset sources, and baseline comparisons.</li>
+<li>For <em>Reading / Theoretical Expositions:</em> Key theorems to be unpacked, proof techniques, and pedagogical examples to construct.</li>
+</ul></li>
+<li><strong>Milestone Schedule:</strong> Division of responsibilities across the 3 team members and week-by-week targets leading up to the 15-minute video and final report.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/teaching\/2026_aac\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Tulasimohan Molli</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="https://tulasimohan.github.io/misc/credits.qmd">Credits</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/sitemap.html">
+<p>Sitemap</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/lite/index.html">
+<p>Lite</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
