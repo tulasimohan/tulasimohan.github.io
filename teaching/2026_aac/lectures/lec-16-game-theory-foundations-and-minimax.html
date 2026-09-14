@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-09-21">
+
+<title>Game Theory I: Strategic Foundations &amp; Dominant Strategies – Tulasimohan Molli</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6261e5abcbdcbf04ea828a054a2dd0d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>
+window.KATEX_MACROS = {
+    "\\AC": "\\mathsf{AC}",
+    "\\bra": "\\left( #1 \\right)",
+    "\\pmone": "\\{-1, 1\\}",
+    "\\seerank": "\\mathrm{rank}",
+    "\\ftwo": "\\mathbb{F}_2",
+    "\\reals": "\\mathbb{R}",
+    "\\zo": "\\{0, 1\\}",
+    "\\lepsinv": "\\log(1/\\epsilon)",
+    "\\bigo": "O\\left( #1 \\right)",
+    "\\ans": "\\log \\binom{n}{\\log(1/\\epsilon)}",
+    "\\distP": "\\mathcal{P}",
+    "\\OR": "\\mathrm{OR}",
+    "\\eps": "\\epsilon"
+};
+</script>
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"></script>
+
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles/custom.css">
+<link rel="stylesheet" href="../custom-local.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Tulasimohan Molli</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a>
+  <ul class="collapse">
+  <li><a href="#part-i-strategic-games-representations" id="toc-part-i-strategic-games-representations" class="nav-link" data-scroll-target="#part-i-strategic-games-representations">Part I: Strategic Games &amp; Representations</a></li>
+  <li><a href="#part-ii-solution-concepts-dominance" id="toc-part-ii-solution-concepts-dominance" class="nav-link" data-scroll-target="#part-ii-solution-concepts-dominance">Part II: Solution Concepts &amp; Dominance</a></li>
+  </ul></li>
+  <li><a href="#what-is-a-game-strategic-foundations" id="toc-what-is-a-game-strategic-foundations" class="nav-link" data-scroll-target="#what-is-a-game-strategic-foundations">What is a Game? Strategic Foundations</a></li>
+  <li><a href="#simple-examples-of-everyday-games" id="toc-simple-examples-of-everyday-games" class="nav-link" data-scroll-target="#simple-examples-of-everyday-games">Simple Examples of Everyday Games</a></li>
+  <li><a href="#mechanism-design-reverse-game-theory" id="toc-mechanism-design-reverse-game-theory" class="nav-link" data-scroll-target="#mechanism-design-reverse-game-theory">Mechanism Design: “Reverse Game Theory”</a></li>
+  <li><a href="#game-representations-tree-games-extensive-form" id="toc-game-representations-tree-games-extensive-form" class="nav-link" data-scroll-target="#game-representations-tree-games-extensive-form">Game Representations: Tree Games (Extensive Form)</a></li>
+  <li><a href="#perfect-information-games" id="toc-perfect-information-games" class="nav-link" data-scroll-target="#perfect-information-games">Perfect Information Games</a></li>
+  <li><a href="#tree-games-are-strictly-determined" id="toc-tree-games-are-strictly-determined" class="nav-link" data-scroll-target="#tree-games-are-strictly-determined">Tree Games are Strictly Determined!</a></li>
+  <li><a href="#combinatorial-games-the-game-of-nim" id="toc-combinatorial-games-the-game-of-nim" class="nav-link" data-scroll-target="#combinatorial-games-the-game-of-nim">Combinatorial Games: The Game of NIM</a></li>
+  <li><a href="#boutons-theorem-the-magic-of-nim-sum" id="toc-boutons-theorem-the-magic-of-nim-sum" class="nav-link" data-scroll-target="#boutons-theorem-the-magic-of-nim-sum">Bouton’s Theorem: The Magic of Nim-Sum</a></li>
+  <li><a href="#interactive-nim-lab-2-pile-bouton-strategy" id="toc-interactive-nim-lab-2-pile-bouton-strategy" class="nav-link" data-scroll-target="#interactive-nim-lab-2-pile-bouton-strategy">Interactive NIM Lab: 2-Pile Bouton Strategy</a></li>
+  <li><a href="#simultaneous-moves-bimatrix-games" id="toc-simultaneous-moves-bimatrix-games" class="nav-link" data-scroll-target="#simultaneous-moves-bimatrix-games">Simultaneous Moves: Bimatrix Games</a></li>
+  <li><a href="#the-classic-dilemma-prisoners-dilemma" id="toc-the-classic-dilemma-prisoners-dilemma" class="nav-link" data-scroll-target="#the-classic-dilemma-prisoners-dilemma">The Classic Dilemma: Prisoner’s Dilemma</a></li>
+  <li><a href="#recap-bridge-to-next-lecture" id="toc-recap-bridge-to-next-lecture" class="nav-link" data-scroll-target="#recap-bridge-to-next-lecture">Recap &amp; Bridge to Next Lecture</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lec-16-game-theory-foundations-and-minimax.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Game Theory I: Strategic Foundations &amp; Dominant Strategies</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 21, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<section id="part-i-strategic-games-representations" class="level3">
+<h3 class="anchored" data-anchor-id="part-i-strategic-games-representations">Part I: Strategic Games &amp; Representations</h3>
+<ol type="1">
+<li><strong>What is a Game? Everyday Examples &amp; Mechanism Design (“Inverse Game Theory”)</strong></li>
+<li><strong>Extensive-Form Games &amp; Game Trees (Zermelo: Determined in Pure Strategies!)</strong></li>
+<li><strong>Combinatorial Games: The Game of NIM &amp; Bouton’s Invariant</strong></li>
+<li><strong>Normal-Form &amp; Bimatrix Games</strong></li>
+</ol>
+</section>
+<section id="part-ii-solution-concepts-dominance" class="level3">
+<h3 class="anchored" data-anchor-id="part-ii-solution-concepts-dominance">Part II: Solution Concepts &amp; Dominance</h3>
+<ol start="5" type="1">
+<li><strong>Strictly Dominant Strategies</strong></li>
+<li><strong>The Prisoner’s Dilemma &amp; The Rationality Paradox</strong></li>
+<li><strong>Bridge to Next Lecture: When Dominant Strategies Fail</strong></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="what-is-a-game-strategic-foundations" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-game-strategic-foundations">What is a Game? Strategic Foundations</h2>
+<p>A mathematical framework for modeling <strong>interactive decision-making</strong> between rational agents:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Core Vocabulary of Any Game
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Players (<span class="math inline">i \in N</span>):</strong> The decision-makers (e.g.&nbsp;Row &amp; Column, or Algorithm &amp; Adversary).</li>
+<li><strong>Action / Move (<span class="math inline">a_i \in A_i</span>):</strong> Choices available at a given decision node.</li>
+<li><strong>Strategy (<span class="math inline">s_i \in S_i</span>):</strong> A complete contingency plan for every situation.</li>
+<li><strong>Payoffs / Utility (<span class="math inline">u_i(s_1, \dots, s_k)</span>):</strong> Numerical rewards resulting from joint actions.</li>
+<li><strong>Information Structure:</strong> Perfect (all history known) vs.&nbsp;Imperfect (hidden state).</li>
+</ol>
+</div>
+</div>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Fundamental Tension:</strong> No player controls their destiny alone! Your payoff depends on what others do (<span class="math inline">s_{-i}</span>).</li>
+<li><strong>Our Ultimate Goal:</strong> View <strong>Algorithm Design as a Game</strong> between an Algorithm Designer (minimizing runtime/queries) and an Adversary (maximizing bad inputs).</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="simple-examples-of-everyday-games" class="level2">
+<h2 class="anchored" data-anchor-id="simple-examples-of-everyday-games">Simple Examples of Everyday Games</h2>
+<p>Games appear everywhere across decisions, markets, and competition:</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Rock-Paper-Scissors (Zero-Sum, Simultaneous):</strong>
+<ul class="incremental">
+<li>You and your friend throw hands simultaneously. Pure conflict: <span class="math inline">+1, -1, 0</span>.</li>
+</ul></li>
+<li><strong>Penalty Shootout in Soccer (Zero-Sum, Asymmetric):</strong>
+<ul class="incremental">
+<li>Striker kicks Left/Right; Goalkeeper dives Left/Right. Conflicting goals.</li>
+</ul></li>
+<li><strong>Choosing a Meeting Location / Technology Standard (Coordination Game):</strong>
+<ul class="incremental">
+<li>You and a friend want to meet up: Café vs.&nbsp;Library (both prefer being together over ending up alone at different places).</li>
+<li>Or two cars approaching each other in a narrow alley: swerving to the same relative side allows safe passage; swerving into each other causes a crash!</li>
+</ul></li>
+<li><strong>Tic-Tac-Toe &amp; Chess (Sequential Tree Games):</strong>
+<ul class="incremental">
+<li>Alternating turns on a board with full visibility, no randomness, and no hidden information.</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="mechanism-design-reverse-game-theory" class="level2">
+<h2 class="anchored" data-anchor-id="mechanism-design-reverse-game-theory">Mechanism Design: “Reverse Game Theory”</h2>
+<p>If <strong>Game Theory</strong> asks <em>“Given the rules and payoffs, how will agents behave?”</em>…</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Mechanism Design
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Mechanism Design</strong> asks the reverse question: <em>“Given desired social goals, how do we design the <strong>rules, payment schemes, and payoff functions</strong> so that self-interested agents naturally achieve our goal?”</em></p>
+</div>
+</div>
+<p>. . .</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Also known as “Inverse Game Theory” or “Incentive Engineering”:</strong>
+<ul class="incremental">
+<li>The designer cannot force players to act against their self-interest.</li>
+<li>Instead, the designer <strong>engineers the payoff matrix / utility function</strong>: <span class="math display">u_i(s) = v_i(s) - p_i(s) \quad (\text{valuation minus designed payment } p_i)</span></li>
+</ul></li>
+<li><strong>Famous Classic Examples:</strong>
+<ul class="incremental">
+<li><strong>Vickrey (Second-Price) Auction:</strong> Designing the payment rule such that bidding your true valuation is a <em>dominant strategy</em>!</li>
+<li><strong>Kidney Exchange &amp; Stable Matching:</strong> Designing matching algorithms so participants have no incentive to lie about their preferences (Strategyproofness).</li>
+</ul></li>
+<li><strong>Takeaway:</strong> Payoffs aren’t always given by nature—often, <strong>we get to design them</strong>!</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="game-representations-tree-games-extensive-form" class="level2">
+<h2 class="anchored" data-anchor-id="game-representations-tree-games-extensive-form">Game Representations: Tree Games (Extensive Form)</h2>
+<p>When decisions happen <strong>sequentially in time</strong>, we represent the game as a directed tree.</p>
+<div style="display: flex; justify-content: center; margin: 10px auto; width: 100%; max-width: 520px;">
+  <svg viewbox="0 0 480 160" width="100%" style="font-family: system-ui, -apple-system, sans-serif;">
+    <!-- Root Node: Player 1 -->
+    <circle cx="240" cy="25" r="14" fill="#0284c7"></circle>
+    <text x="240" y="29" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">P1</text>
+    
+    <!-- Edges to P2 -->
+    <line x1="230" y1="36" x2="130" y2="80" stroke="#64748b" stroke-width="2"></line>
+    <line x1="250" y1="36" x2="350" y2="80" stroke="#64748b" stroke-width="2"></line>
+    <text x="165" y="52" font-size="11" font-weight="bold" fill="#0284c7">Left (L)</text>
+    <text x="315" y="52" font-size="11" font-weight="bold" fill="#0284c7">Right (R)</text>
+    
+    <!-- Player 2 Nodes -->
+    <circle cx="130" cy="85" r="14" fill="#16a34a"></circle>
+    <text x="130" y="89" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">P2</text>
+    <circle cx="350" cy="85" r="14" fill="#16a34a"></circle>
+    <text x="350" y="89" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">P2</text>
+    
+    <!-- Leaf Edges -->
+    <line x1="120" y1="96" x2="70" y2="135" stroke="#64748b" stroke-width="1.5"></line>
+    <line x1="140" y1="96" x2="190" y2="135" stroke="#64748b" stroke-width="1.5"></line>
+    <line x1="340" y1="96" x2="290" y2="135" stroke="#64748b" stroke-width="1.5"></line>
+    <line x1="360" y1="96" x2="410" y2="135" stroke="#64748b" stroke-width="1.5"></line>
+    
+    <!-- Payoffs (u1, u2) -->
+    <text x="70" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">(3, 1)</text>
+    <text x="190" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">(0, 0)</text>
+    <text x="290" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">(1, 2)</text>
+    <text x="410" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e293b">(2, 4)</text>
+  </svg>
+</div>
+<div class="incremental" style="font-size: 82%;">
+<ul class="incremental">
+<li><strong>Backward Induction:</strong> Solve from leaves backwards to the root.
+<ul class="incremental">
+<li>P2 chooses the branch maximizing their payoff at each subgame:
+<ul class="incremental">
+<li>At left node: <span class="math inline">\max(1, 0) = 1 \implies</span> chooses Left <span class="math inline">\implies</span> payoff <span class="math inline">(3, 1)</span>.</li>
+<li>At right node: <span class="math inline">\max(2, 4) = 4 \implies</span> chooses Right <span class="math inline">\implies</span> payoff <span class="math inline">(2, 4)</span>.</li>
+</ul></li>
+<li>Anticipating P2’s rational response, P1 compares <span class="math inline">(3, 1)</span> vs <span class="math inline">(2, 4)</span> <span class="math inline">\implies</span> chooses <strong>Left</strong>!</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="perfect-information-games" class="level2">
+<h2 class="anchored" data-anchor-id="perfect-information-games">Perfect Information Games</h2>
+<p>A game has <strong>Perfect Information</strong> if every player, at every turn, knows the <strong>exact history of all prior moves</strong>:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Information Sets are Singletons
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>The current state is completely visible to all players.</li>
+<li><strong>No simultaneous moves</strong>, <strong>no hidden information</strong>, and <strong>no chance events (dice rolls)</strong>.</li>
+<li>In the game tree, each decision node is an <strong>information set of size 1</strong> (players know <em>exactly</em> which vertex of the tree they occupy).</li>
+</ul>
+</div>
+</div>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Examples:</strong> Chess, Checkers, Go, Tic-Tac-Toe, NIM.</li>
+<li><strong>Contrast with Imperfect Information:</strong> Poker (hidden hole cards) or Battleship (hidden ship coordinates) where players must reason under uncertainty!</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="tree-games-are-strictly-determined" class="level2">
+<h2 class="anchored" data-anchor-id="tree-games-are-strictly-determined">Tree Games are Strictly Determined!</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Theorem (Zermelo 1913, Kuhn 1953)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every finite two-player zero-sum game of <strong>perfect information</strong> represented as a game tree is <strong>strictly determined in pure strategies</strong>.</p>
+</div>
+</div>
+<p>. . .</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>What does this mean?</strong>
+<ul class="incremental">
+<li>One player has a guaranteed winning pure strategy (or both can force a draw).</li>
+<li>There is <strong>zero need for randomization or bluffing</strong> in Chess or Tic-Tac-Toe!</li>
+<li><strong>Backward Induction:</strong> The game tree collapses deterministically from leaves to root.</li>
+</ul></li>
+<li><strong>Why do we need Mixed Strategies?</strong>
+<ul class="incremental">
+<li>When moves are <strong>simultaneous</strong> (or information is hidden), backward induction breaks down <span class="math inline">\implies</span> randomization becomes mathematically essential!</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="combinatorial-games-the-game-of-nim" class="level2">
+<h2 class="anchored" data-anchor-id="combinatorial-games-the-game-of-nim">Combinatorial Games: The Game of NIM</h2>
+<p>Two players take turns removing chips from piles. A pure combinatorial game of perfect information without randomness.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rules of NIM
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Start with <span class="math inline">k</span> piles of chips: sizes <span class="math inline">c_1, c_2, \dots, c_k</span>.</li>
+<li>On each turn, a player selects <strong>one pile</strong> and removes any positive number of chips.</li>
+<li><strong>Normal Play Convention:</strong> The player who takes the last chip <strong>wins</strong>.</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>How can we solve who wins in polynomial time?</strong></li>
+<li>The state space is exponential (<span class="math inline">\prod (c_i + 1)</span>), yet NIM is solved instantly using <strong>binary bitwise XOR</strong>!</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="boutons-theorem-the-magic-of-nim-sum" class="level2">
+<h2 class="anchored" data-anchor-id="boutons-theorem-the-magic-of-nim-sum">Bouton’s Theorem: The Magic of Nim-Sum</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition: Nim-Sum (<span class="math inline">\oplus</span>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The nim-sum of pile sizes is their bitwise XOR sum: <span class="math display">S = c_1 \oplus c_2 \oplus \dots \oplus c_k</span></p>
+</div>
+</div>
+<p>. . .</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Bouton’s Theorem (1901):</strong>
+<ul class="incremental">
+<li>If <span class="math inline">S = 0</span>, the state is a <strong>P-position</strong> (Previous-player winning <span class="math inline">\implies</span> second player wins).</li>
+<li>If <span class="math inline">S \neq 0</span>, the state is an <strong>N-position</strong> (Next-player winning <span class="math inline">\implies</span> current player wins).</li>
+</ul></li>
+<li><strong>The Invariant Proof:</strong>
+<ol class="incremental" type="1">
+<li>From any state with <span class="math inline">S \neq 0</span>, there <strong>always exists a move</strong> leaving <span class="math inline">S' = 0</span>.</li>
+<li>From any state with <span class="math inline">S = 0</span>, <strong>every legal move</strong> results in <span class="math inline">S' \neq 0</span>.</li>
+<li>The terminal state has all <span class="math inline">c_i = 0 \implies S = 0</span> (winner just moved).</li>
+</ol></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="interactive-nim-lab-2-pile-bouton-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-nim-lab-2-pile-bouton-strategy">Interactive NIM Lab: 2-Pile Bouton Strategy</h2>
+<div id="nim-stage" style="background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%); border-radius: 14px; padding: 14px 22px; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); max-width: 800px; margin: 0 auto; border: 1px solid #334155;">
+
+  <!-- Header & Turn Status Bar -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 8px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 13.5px; font-weight: 800; letter-spacing: 0.8px; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(56, 189, 248, 0.3);">
+        🎲 2-PILE NIM ARENA
+      </span>
+      <span id="turn-indicator" style="font-size: 11.5px; font-weight: 600; color: #38bdf8; display: flex; align-items: center; gap: 5px;">
+        <span style="width: 7px; height: 7px; background: #38bdf8; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #38bdf8;"></span>
+        Your Turn (Player 1)
+      </span>
+    </div>
+
+    <div id="nim-badge" style="background: #ef4444; color: white; padding: 3px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 0 12px rgba(239,68,68,0.4); transition: all 0.3s;">
+      N-Position (S ≠ 0)
+    </div>
+  </div>
+
+  <!-- Main Playing Arena (2 Piles + Vertical Stacks) -->
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 12px;">
+    
+    <!-- Pile 1 -->
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid #0284c7; border-radius: 10px; padding: 10px 14px; text-align: center; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-weight: 800; color: #38bdf8; font-size: 13px; letter-spacing: 0.5px;">PILE 1</span>
+        <span id="p1-bin" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; background: rgba(3, 105, 161, 0.4); color: #bae6fd; padding: 1px 7px; border-radius: 4px; border: 1px solid #0284c7;">1 0 1₂</span>
+      </div>
+      <!-- Stack -->
+      <div id="stack-p1" style="display: flex; flex-direction: column-reverse; align-items: center; gap: 5px; height: 105px; justify-content: flex-start; padding: 4px 0;"></div>
+      <!-- Controls -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(51, 65, 85, 0.5);">
+        <button class="cnt-btn" onclick="adjustPile(0, -1)" title="Remove 1 chip">−</button>
+        <span style="font-size: 13px; font-weight: 800; min-width: 40px; color: #e2e8f0;"><span id="cnt-p1">5</span> chips</span>
+        <button class="cnt-btn" onclick="adjustPile(0, 1)" title="Add 1 chip">+</button>
+      </div>
+    </div>
+
+    <!-- Pile 2 -->
+    <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid #16a34a; border-radius: 10px; padding: 10px 14px; text-align: center; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <span style="font-weight: 800; color: #4ade80; font-size: 13px; letter-spacing: 0.5px;">PILE 2</span>
+        <span id="p2-bin" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; background: rgba(21, 128, 61, 0.4); color: #bbf7d0; padding: 1px 7px; border-radius: 4px; border: 1px solid #16a34a;">0 1 1₂</span>
+      </div>
+      <!-- Stack -->
+      <div id="stack-p2" style="display: flex; flex-direction: column-reverse; align-items: center; gap: 5px; height: 105px; justify-content: flex-start; padding: 4px 0;"></div>
+      <!-- Controls -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(51, 65, 85, 0.5);">
+        <button class="cnt-btn" onclick="adjustPile(1, -1)" title="Remove 1 chip">−</button>
+        <span style="font-size: 13px; font-weight: 800; min-width: 40px; color: #e2e8f0;"><span id="cnt-p2">3</span> chips</span>
+        <button class="cnt-btn" onclick="adjustPile(1, 1)" title="Add 1 chip">+</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Live Bitwise XOR Matrix & Strategy Advice -->
+  <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center;">
+    
+    <!-- Bit column alignment table -->
+    <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.35; background: #020617; padding: 7px 14px; border-radius: 6px; border: 1px solid #334155; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+      <div style="color: #64748b; font-size: 9.5px; border-bottom: 1px solid #334155; margin-bottom: 3px; letter-spacing: 2px;">BITS: 2² 2¹ 2⁰</div>
+      <div style="color: #38bdf8;">P₁: <span id="bit-r1">1  0  1</span> <span style="color:#64748b; font-size:10px;">(5)</span></div>
+      <div style="color: #4ade80;">P₂: <span id="bit-r2">0  1  1</span> <span style="color:#64748b; font-size:10px;">(3)</span></div>
+      <div style="border-top: 1px solid #475569; margin-top: 3px; padding-top: 2px; font-weight: 800; color: #facc15;">
+        S : <span id="bit-sum">1  1  0</span> <span style="font-size:11px; color:#facc15;">(S = <span id="dec-sum">6</span>)</span>
+      </div>
+    </div>
+
+    <!-- Live Strategic Advice Box -->
+    <div style="font-size: 11.5px; border-left: 1px solid #334155; padding-left: 12px;">
+      <div id="nim-hint-title" style="font-weight: 700; font-size: 12.5px; color: #facc15; margin-bottom: 2px;">
+        ⚡ Strategic Status: S = 6 ≠ 0
+      </div>
+      <div id="nim-hint-desc" style="color: #cbd5e1; line-height: 1.35; font-size: 11px;">
+        For 2 piles, $S = 0 \iff c_1 = c_2$ (<strong>Mirror Symmetry</strong>).<br>
+        <strong>Winning move:</strong> Reduce <strong>Pile 1</strong> from 5 to <strong>3 chips</strong> to make both piles equal!
+      </div>
+    </div>
+
+    <!-- Interactive Buttons -->
+    <div style="display: flex; flex-direction: column; gap: 5px; min-width: 140px;">
+      <button onclick="playOptimalMove()" id="btn-opt" style="background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%); color: white; border: 1px solid #38bdf8; border-radius: 6px; padding: 6px 10px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 6px rgba(2,132,199,0.3);">
+        ⚡ Play Optimal Move
+      </button>
+      <button onclick="playBotTurn()" id="btn-bot" style="background: linear-gradient(180deg, #475569 0%, #334155 100%); color: #e2e8f0; border: 1px solid #64748b; border-radius: 6px; padding: 5px 10px; font-size: 10.5px; font-weight: 600; cursor: pointer; transition: all 0.2s;">
+        🤖 Let Bot Respond
+      </button>
+      <button onclick="resetLab()" style="background: transparent; color: #94a3b8; border: 1px dashed #475569; border-radius: 6px; padding: 4px 10px; font-size: 10px; cursor: pointer;">
+        ↺ Reset to (5, 3)
+      </button>
+    </div>
+
+  </div>
+
+  <div style="font-size: 10.5px; color: #94a3b8; text-align: center; display: flex; justify-content: center; gap: 16px;">
+    <span>💡 <em>Click any chip directly or use <strong>+ / −</strong> to change counts</em></span>
+    <span>•</span>
+    <span>🎯 <em>2-Pile Invariant: Equal piles $(k, k) \implies S = k \oplus k = 0$ (P-position)!</em></span>
+  </div>
+
+</div>
+
+<style>
+.cnt-btn {
+  background: #334155;
+  border: 1px solid #475569;
+  color: #f8fafc;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.cnt-btn:hover {
+  background: #475569;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+.cnt-btn:active {
+  transform: translateY(1px);
+}
+.chip {
+  width: 70px;
+  height: 16px;
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: transform 0.15s, opacity 0.2s, filter 0.15s;
+}
+.chip:hover {
+  transform: scale(1.06);
+  filter: brightness(1.25);
+}
+.c-blue   { background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%); border: 1px solid #7dd3fc; }
+.c-green  { background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%); border: 1px solid #86efac; }
+</style>
+
+<script>
+let piles = [5, 3];
+let currentPlayer = 1; // 1 = User, 2 = Bot
+
+function toBin(val) {
+  return [ (val & 4) ? '1' : '0', (val & 2) ? '1' : '0', (val & 1) ? '1' : '0' ];
+}
+
+function updateStage() {
+  document.getElementById('cnt-p1').innerText = piles[0];
+  document.getElementById('cnt-p2').innerText = piles[1];
+  
+  const b1 = toBin(piles[0]);
+  const b2 = toBin(piles[1]);
+  
+  document.getElementById('p1-bin').innerText = b1.join(' ') + '₂';
+  document.getElementById('p2-bin').innerText = b2.join(' ') + '₂';
+
+  document.getElementById('bit-r1').innerText = b1.join('  ');
+  document.getElementById('bit-r2').innerText = b2.join('  ');
+
+  // Calculate Nim-Sum
+  const S = piles[0] ^ piles[1];
+  const sBin = toBin(S);
+  document.getElementById('bit-sum').innerText = sBin.join('  ');
+  document.getElementById('dec-sum').innerText = S;
+
+  const badge = document.getElementById('nim-badge');
+  const hTitle = document.getElementById('nim-hint-title');
+  const hDesc = document.getElementById('nim-hint-desc');
+  const btnOpt = document.getElementById('btn-opt');
+  const turnInd = document.getElementById('turn-indicator');
+
+  if (currentPlayer === 1) {
+    turnInd.innerHTML = '<span style="width: 7px; height: 7px; background: #38bdf8; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #38bdf8;"></span> Player 1 Turn';
+    turnInd.style.color = '#38bdf8';
+  } else {
+    turnInd.innerHTML = '<span style="width: 7px; height: 7px; background: #facc15; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #facc15;"></span> Bot / Player 2 Turn';
+    turnInd.style.color = '#facc15';
+  }
+
+  // Check Game Over
+  if (piles[0] === 0 && piles[1] === 0) {
+    badge.innerText = 'GAME OVER!';
+    badge.style.background = '#eab308';
+    badge.style.boxShadow = '0 0 12px rgba(234,179,8,0.5)';
+    hTitle.innerText = '🏆 Game Finished!';
+    hTitle.style.color = '#eab308';
+    const winner = currentPlayer === 1 ? 'Player 2 (Bot)' : 'Player 1';
+    hDesc.innerHTML = `<strong>${winner} took the last chip and wins</strong> under normal play convention!`;
+    btnOpt.disabled = true;
+    btnOpt.style.opacity = '0.5';
+    btnOpt.style.cursor = 'not-allowed';
+    renderStack('stack-p1', 0, 'c-blue', 0);
+    renderStack('stack-p2', 0, 'c-green', 1);
+    return;
+  }
+
+  if (S === 0) {
+    // S = 0 implies piles[0] === piles[1]
+    badge.innerText = 'P-Position (S = 0)';
+    badge.style.background = '#16a34a';
+    badge.style.boxShadow = '0 0 12px rgba(22,163,74,0.4)';
+    hTitle.innerText = `🔒 Balanced State: (${piles[0]}, ${piles[1]}) $\\implies$ S = 0`;
+    hTitle.style.color = '#4ade80';
+    hDesc.innerHTML = `Both piles are identical (${piles[0]} = ${piles[1]}). Whatever chip count the opponent removes from one pile, you can <strong>mirror on the other pile</strong> to stay at $S = 0$!`;
+    btnOpt.disabled = true;
+    btnOpt.style.opacity = '0.5';
+    btnOpt.style.cursor = 'not-allowed';
+  } else {
+    badge.innerText = 'N-Position (S ≠ 0)';
+    badge.style.background = '#ef4444';
+    badge.style.boxShadow = '0 0 12px rgba(239,68,68,0.4)';
+    hTitle.innerText = `⚡ Unbalanced State: (${piles[0]}, ${piles[1]}) $\\implies$ S = ${S} ≠ 0`;
+    hTitle.style.color = '#facc15';
+
+    // In 2-pile NIM, winning move is always reducing the larger pile to match the smaller pile!
+    if (piles[0] > piles[1]) {
+      hDesc.innerHTML = `Reduce <strong>Pile 1</strong> from ${piles[0]} to <strong>${piles[1]} chips</strong> to equalize both piles ($S' = 0$)!`;
+    } else {
+      hDesc.innerHTML = `Reduce <strong>Pile 2</strong> from ${piles[1]} to <strong>${piles[0]} chips</strong> to equalize both piles ($S' = 0$)!`;
+    }
+    btnOpt.disabled = false;
+    btnOpt.style.opacity = '1';
+    btnOpt.style.cursor = 'pointer';
+  }
+
+  // Render stacks
+  renderStack('stack-p1', piles[0], 'c-blue', 0);
+  renderStack('stack-p2', piles[1], 'c-green', 1);
+}
+
+function renderStack(id, count, colorClass, pileIdx) {
+  const el = document.getElementById(id);
+  el.innerHTML = '';
+  for (let i = 1; i <= count; i++) {
+    const chip = document.createElement('div');
+    chip.className = `chip ${colorClass}`;
+    chip.innerText = i;
+    chip.title = `Click to leave ${i-1} chips in this pile`;
+    chip.onclick = () => removeTo(pileIdx, i);
+    el.appendChild(chip);
+  }
+}
+
+function adjustPile(pileIdx, delta) {
+  const newVal = piles[pileIdx] + delta;
+  if (newVal >= 0 && newVal <= 7) {
+    piles[pileIdx] = newVal;
+    currentPlayer = (currentPlayer === 1) ? 2 : 1;
+    updateStage();
+  }
+}
+
+function removeTo(pileIdx, keepCount) {
+  if (keepCount - 1 < piles[pileIdx]) {
+    piles[pileIdx] = keepCount - 1;
+    currentPlayer = (currentPlayer === 1) ? 2 : 1;
+    updateStage();
+  }
+}
+
+function playOptimalMove() {
+  const S = piles[0] ^ piles[1];
+  if (S === 0) return;
+  if (piles[0] > piles[1]) {
+    piles[0] = piles[1];
+  } else {
+    piles[1] = piles[0];
+  }
+  currentPlayer = (currentPlayer === 1) ? 2 : 1;
+  updateStage();
+}
+
+function playBotTurn() {
+  const S = piles[0] ^ piles[1];
+  if (S !== 0) {
+    playOptimalMove();
+  } else {
+    // Bot forced to move from a P-position
+    if (piles[0] > 0) piles[0] -= 1;
+    else if (piles[1] > 0) piles[1] -= 1;
+    currentPlayer = (currentPlayer === 1) ? 2 : 1;
+    updateStage();
+  }
+}
+
+function resetLab() {
+  piles = [5, 3];
+  currentPlayer = 1;
+  updateStage();
+}
+
+updateStage();
+</script>
+<div class="incremental" style="font-size: 82%; margin-top: 6px;">
+<ul class="incremental">
+<li><strong>Why does the Nim-Sum Invariant make 2-Pile NIM crystal clear?</strong>
+<ul class="incremental">
+<li>For 2 piles: <span class="math inline">S = c_1 \oplus c_2 = 0 \iff c_1 = c_2</span> (<strong>Mirror Symmetry</strong>).</li>
+<li>From any <strong>unbalanced state</strong> (<span class="math inline">c_1 \neq c_2</span>): You can always reduce the larger pile to match the smaller one, forcing <span class="math inline">S' = 0</span>.</li>
+<li>From any <strong>balanced state</strong> (<span class="math inline">c_1 = c_2</span>): Any legal removal breaks the balance, immediately giving <span class="math inline">S' \neq 0</span>!</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="simultaneous-moves-bimatrix-games" class="level2">
+<h2 class="anchored" data-anchor-id="simultaneous-moves-bimatrix-games">Simultaneous Moves: Bimatrix Games</h2>
+<p>When players move <strong>simultaneously</strong> (or without knowledge of each other’s choice), we represent the game in <strong>Normal Form</strong>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Two-Player Bimatrix Model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Player 1 (Row Player) has <span class="math inline">m</span> strategies: <span class="math inline">i \in \{1, \dots, m\}</span>.</li>
+<li>Player 2 (Column Player) has <span class="math inline">n</span> strategies: <span class="math inline">j \in \{1, \dots, n\}</span>.</li>
+<li>Payoff bimatrix <span class="math inline">(A, B) \in \mathbb{R}^{m \times n} \times \mathbb{R}^{m \times n}</span>:
+<ul>
+<li>If Row plays <span class="math inline">i</span> and Column plays <span class="math inline">j</span>:</li>
+<li>Row Player receives <strong><span class="math inline">A_{ij}</span></strong>, Column Player receives <strong><span class="math inline">B_{ij}</span></strong>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>Zero-Sum Games:</strong> Special case where interests are purely antagonistic: <span class="math display">B = -A \iff A_{ij} + B_{ij} = 0 \quad \forall i, j</span></li>
+<li><strong>General-Sum Games:</strong> Players can have shared interests, coordination, or mutual destruction.</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="the-classic-dilemma-prisoners-dilemma" class="level2">
+<h2 class="anchored" data-anchor-id="the-classic-dilemma-prisoners-dilemma">The Classic Dilemma: Prisoner’s Dilemma</h2>
+<p>Two suspects arrested. Police offer each a deal independently:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Silent / Cooperate (<span class="math inline">C</span>)</th>
+<th style="text-align: center;">Betray / Defect (<span class="math inline">D</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Cooperate (<span class="math inline">C</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">(-1, -1)</span></td>
+<td style="text-align: center;"><span class="math inline">(-3, \;\; 0)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Defect (<span class="math inline">D</span>)</strong></td>
+<td style="text-align: center;"><span class="math inline">(0, -3)</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{(-2, -2)}</span></td>
+</tr>
+</tbody>
+</table>
+<div class="incremental" style="font-size: 82%;">
+<ul class="incremental">
+<li><strong>Strictly Dominant Strategy:</strong>
+<ul class="incremental">
+<li>For Row: If Col plays <span class="math inline">C</span>, Defect gives <span class="math inline">0 &gt; -1</span>. If Col plays <span class="math inline">D</span>, Defect gives <span class="math inline">-2 &gt; -3</span>.</li>
+<li>Defecting (<span class="math inline">D</span>) is strictly better <strong>regardless of what the other player does</strong>!</li>
+</ul></li>
+<li><strong>The Paradox:</strong>
+<ul class="incremental">
+<li>Both players rationally play their dominant strategy <span class="math inline">D \implies</span> outcome is <span class="math inline">(-2, -2)</span>.</li>
+<li>Yet joint cooperation <span class="math inline">(C, C)</span> gives <span class="math inline">(-1, -1)</span>—better for <strong>both</strong> players!</li>
+</ul></li>
+<li><strong>Lesson:</strong> Individual rationality does not imply collective optimality.</li>
+</ul>
+</div>
+<hr>
+</section>
+<section id="recap-bridge-to-next-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="recap-bridge-to-next-lecture">Recap &amp; Bridge to Next Lecture</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Where We Stand
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Game Models:</strong> Extensive Form (Game Trees, Zermelo’s Theorem), Combinatorial Games (NIM, Bouton’s XOR Invariant), and Normal Form (Bimatrix Games).</li>
+<li><strong>Dominant Strategies:</strong> When an action is optimal regardless of the opponent’s choice (e.g.&nbsp;Defect in Prisoner’s Dilemma).</li>
+<li><strong>The Central Paradox:</strong> Individual rationality does not imply global optimality (<span class="math inline">(-2,-2)</span> vs.&nbsp;<span class="math inline">(-1,-1)</span>).</li>
+</ul>
+</div>
+</div>
+<p>. . .</p>
+<div class="incremental" style="font-size: 84%;">
+<ul class="incremental">
+<li><strong>The Next Challenge:</strong>
+<ul class="incremental">
+<li>What if a game has <strong>no dominant strategies</strong> and <strong>no pure equilibrium</strong> (like Rock-Paper-Scissors or Matching Pennies)?</li>
+<li>How do players act rationally? <span class="math inline">\implies</span> <strong>Best Responses &amp; Mixed Strategies</strong>.</li>
+</ul></li>
+<li><strong>Coming up in Lectures 17 &amp; 18 (Combined Double Deck):</strong>
+<ul class="incremental">
+<li><strong>Nash Equilibrium &amp; Nash’s Theorem</strong></li>
+<li><strong>Two-Player Zero-Sum Games &amp; von Neumann’s Minimax Theorem</strong> (via LP Duality)</li>
+<li><strong>Algorithm Design as a Game &amp; Yao’s Minimax Principle</strong></li>
+<li><strong>Randomized Lower Bounds</strong> (Query Complexity &amp; NAND Tree Evaluation)</li>
+</ul></li>
+</ul>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/tulasimohan\.github\.io\/teaching\/2026_aac\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Tulasimohan Molli</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Powered by <a href="https://quarto.org">Quarto</a> | <a href="https://tulasimohan.github.io/misc/credits.qmd">Credits</a></p>
+</div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/sitemap.html">
+<p>Sitemap</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://tulasimohan.github.io/lite/index.html">
+<p>Lite</p>
+</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
